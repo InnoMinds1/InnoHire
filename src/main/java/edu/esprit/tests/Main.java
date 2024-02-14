@@ -16,5 +16,10 @@ public class Main {
         //sc.modifier(new Categorie(1,"new Mobile",sc.getOneByID(1).getDescription()));
         //sc.supprimer(1);
         System.out.println(sc.getOneByID(2));*/
+
+        /*Categorie c = new Categorie(1,"Web","Web cours");
+        Cours cs = new Cours(1,c,"PHP",250,"php cours","php.png");
+        System.out.println(cs);*/
+
     }
 }
