@@ -11,15 +11,21 @@ public class Main {
     {
         DataSource.getInstance();
         ServiceUtilisateur sr= new ServiceUtilisateur();
-        Admin a = new Admin(1,234,"AMENALLAH","KTHIRI","amenallah@esprit.tn","ELKING");
+        Admin a = new Admin(1,234,"AMENALLAH123","KTHIRI","amenallah@esprit.tn","ELKING");
         //sr.ajouter(a);
         Representant r = new Representant(2,33,"AMENALLAH","KTHIRI","amenallah@esprit.tn","ELKING");
         //sr.ajouter(r);
-        Candidat c= new Candidat(3,345,"YO","ee","SLFJ@","TRAHHH");
+        Candidat c= new Candidat(3,322,"YO222","ee","SLFJ@","TRAHHH");
         //sr.ajouter(c);
 
         System.out.println(sr.getAll());
         System.out.println(sr.getAll_admin());
+        sr.modifier(c);
+        sr.modifier_admin(a);
+        sr.supprimer(44);
+        sr.supprimer(3);
+        sr.supprimer_admin(44);
+        sr.supprimer_admin(12);
 
 
 

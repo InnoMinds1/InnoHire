@@ -62,13 +62,76 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     @Override
     public void modifier(Utilisateur utilisateur) {
+        String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE id_utilisateur = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, utilisateur.getCin());
+            ps.setString(2, utilisateur.getNom());
+            ps.setString(3, utilisateur.getPrenom());
+            ps.setString(4, utilisateur.getAdresse());
+            ps.setString(5, utilisateur.getMdp());
+            ps.setInt(6, utilisateur.getId_utilisateur());
+
+            ps.executeUpdate();
+            System.out.println("utilisateur modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+    public void modifier_admin(Admin admin) {
+        String req = "UPDATE admin SET cin =?, nom = ?, prenom = ?, email = ?, mdp = ? WHERE id_admin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, admin.getCin());
+            ps.setString(2, admin.getNom());
+            ps.setString(3, admin.getPrenom());
+            ps.setString(4, admin.getAdresse());
+            ps.setString(5, admin.getMdp());
+            ps.setInt(6, admin.getId_utilisateur());
+
+            ps.executeUpdate();
+            System.out.println("admin modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
 
     }
 
     @Override
     public void supprimer(int id) {
-
+        String req = "DELETE FROM utilisateur WHERE id_utilisateur = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("l'utilisateur avec l'id  " + id + " a ete supprime!");
+            } else {
+                System.out.println("il n'y a pas d'utilisateur avec l'id:  " + id );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
+    public void supprimer_admin(int id) {
+        String req = "DELETE FROM admin WHERE id_admin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("l'admin avec l'id  " + id + " a ete supprime!");
+            } else {
+                System.out.println("il n'y a pas d'admin avec l'id:  " + id );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
     @Override
     public Set<Utilisateur> getAll() {
