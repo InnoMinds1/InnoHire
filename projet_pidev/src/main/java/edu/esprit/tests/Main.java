@@ -14,7 +14,7 @@ public class Main {
         Admin a = new Admin(1,234,"AMENALLAH123","KTHIRI","amenallah@esprit.tn","ELKING");
         //sr.ajouter(a);
         Representant r = new Representant(2,33,"AMENALLAH","KTHIRI","amenallah@esprit.tn","ELKING");
-        //sr.ajouter(r);
+       sr.ajouter(r);
         Candidat c= new Candidat(3,322,"YO222","ee","SLFJ@","TRAHHH");
         //sr.ajouter(c);
 
