@@ -6,6 +6,8 @@ import edu.esprit.entities.Representant;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +26,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 ps.setString(2, a.getNom());
                 ps.setString(3, a.getPrenom());
                 ps.setString(4, a.getAdresse());
-                ps.setString(5, a.getMdp());
+                String hashed =hashPassword(a.getMdp());
+                ps.setString(5, hashed);
                 ps.executeUpdate();
                 System.out.println("Admin added");
 
@@ -40,7 +43,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 ps.setString(2, utilisateur.getNom());
                 ps.setString(3, utilisateur.getPrenom());
                 ps.setString(4, utilisateur.getAdresse());
-                ps.setString(5, utilisateur.getMdp());
+                String hashed= hashPassword(utilisateur.getMdp());
+                ps.setString(5, hashed);
                 if (utilisateur instanceof Representant) {
                     ps.setInt(6, Representant.getROLE());
                     ps.executeUpdate();
@@ -242,5 +246,24 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             System.out.println(e.getMessage());
         }
         return null; // Return null if no user found
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = md.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashBytes) {
+                String hex = Integer.toHexString(0xFF & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Erreur lors du hachage du mot de passe : " + e.getMessage());
+            return null;
+        }
     }
 }
