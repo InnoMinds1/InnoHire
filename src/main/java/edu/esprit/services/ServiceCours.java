@@ -1,11 +1,14 @@
 package edu.esprit.services;
 
+import edu.esprit.entities.Categorie;
 import edu.esprit.entities.Cours;
 import edu.esprit.utils.DataSource;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Set;
 
 public class ServiceCours implements Iservice<Cours>{
@@ -53,11 +56,58 @@ public class ServiceCours implements Iservice<Cours>{
 
     @Override
     public Set<Cours> getAll() {
-        return null;
+        Set<Cours> coursList = new HashSet<>();
+        String req = "SELECT * FROM `cours`";
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Cours cours = new Cours();
+                cours.setId_cours(rs.getInt("id_cours"));
+                cours.setNom(rs.getString("nom"));
+                cours.setPrix(rs.getInt("prix"));
+                cours.setDescription(rs.getString("description"));
+                cours.setImage(rs.getString("image"));
+
+                Categorie categorie = new ServiceCategorie().getOneByID(rs.getInt("id_categorie"));
+                cours.setCat(categorie);
+
+                /*Etablissement etablissement = new ServiceEtablissement().getOneByID(rs.getInt("id_etablissement"));
+                cours.setEtab(etablissement);*/
+
+                coursList.add(cours);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving cours: " + e.getMessage());
+        }
+        return coursList;
     }
 
     @Override
     public Cours getOneByID(int id) {
+        String req = "SELECT * FROM `cours` WHERE `id_cours` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Cours cours = new Cours();
+                    cours.setId_cours(rs.getInt("id_cours"));
+                    cours.setNom(rs.getString("nom"));
+                    cours.setPrix(rs.getInt("prix"));
+                    cours.setDescription(rs.getString("description"));
+                    cours.setImage(rs.getString("image"));
+
+                    Categorie categorie = new ServiceCategorie().getOneByID(rs.getInt("id_categorie"));
+                    cours.setCat(categorie);
+
+                    /*Etablissement etablissement = new ServiceEtablissement().getOneByID(rs.getInt("id_etablissement"));
+                    cours.setEtab(etablissement);*/
+
+                    return cours;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving cours: " + e.getMessage());
+        }
         return null;
     }
 }

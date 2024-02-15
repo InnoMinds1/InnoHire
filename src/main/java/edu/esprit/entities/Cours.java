@@ -10,7 +10,10 @@ public class Cours {
     Categorie cat;
     Etablissement etab;
 
-    public Cours(String nom,int prix,String description, String image) {
+    public Cours() {
+    }
+
+    public Cours(String nom, int prix, String description, String image) {
         this.prix = prix;
         this.nom = nom;
         this.description = description;
