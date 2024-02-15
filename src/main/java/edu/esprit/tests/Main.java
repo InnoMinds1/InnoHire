@@ -19,14 +19,17 @@ public class Main {
         //sc.supprimer(1);
         System.out.println(sc.getOneByID(2));*/
 
-       /* Categorie c = new Categorie(2,"Web","Web cours");
-        Etablissement e = new Etablissement(3,2024,1,"la5dher","soussa","edu");
+        //Categorie c = new Categorie(2,"Web","Web cours");
+       /* Etablissement e = new Etablissement(3,2024,1,"la5dher","soussa","edu");
         //int id_etablissement, int code_etablissement, int id_utilisateur, String nom, String lieu, String type_etablissement
-        Cours cs = new Cours(c,e,"PHP",250,"php cours","php.png");
+        //Cours cs = new Cours(c,e,"PHP",250,"php cours","php.png");
         //System.out.println(cs);
+        //sc.ajouter(new Cours(c,e,"React",1500,"Cours React","React.png"));
+        ServiceCategorie scat = new ServiceCategorie();
+        Categorie catMobile = scat.getOneByID(2);
+        Categorie catWeb = scat.getOneByID(3);
         ServiceCours sc = new ServiceCours();
-        //sc.ajouter(new Cours(c,e,"React",1500,"Cours React","React.png"));*/
-        //
+        sc.modifier(new Cours(8,catWeb,e,"Symfony",9500,"Symfony cours","Symfony.png"));*/
 
 
     }

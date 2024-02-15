@@ -30,7 +30,20 @@ public class ServiceCours implements Iservice<Cours>{
 
     @Override
     public void modifier(Cours cours) {
-
+        String req = "UPDATE `cours` SET `id_categorie` = ?, `id_etablissement` = ?, `nom` = ?, `prix` = ?, `description` = ?, `image` = ? WHERE `id_cours` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, cours.getCat().getId_categorie());
+            ps.setInt(2, cours.getEtab().getId_etablissement());
+            ps.setString(3, cours.getNom());
+            ps.setFloat(4, cours.getPrix());
+            ps.setString(5, cours.getDescription());
+            ps.setString(6, cours.getImage());
+            ps.setInt(7, cours.getId_cours());
+            ps.executeUpdate();
+            System.out.println("Cours modified!");
+        } catch (SQLException e) {
+            System.err.println("Error modifying cours: " + e.getMessage());
+        }
     }
 
     @Override
