@@ -2,7 +2,9 @@ package edu.esprit.tests;
 
 import edu.esprit.entities.Categorie;
 import edu.esprit.entities.Cours;
+import edu.esprit.entities.Etablissement;
 import edu.esprit.services.ServiceCategorie;
+import edu.esprit.services.ServiceCours;
 import edu.esprit.utils.DataSource;
 
 public class Main {
@@ -17,9 +19,15 @@ public class Main {
         //sc.supprimer(1);
         System.out.println(sc.getOneByID(2));*/
 
-        /*Categorie c = new Categorie(1,"Web","Web cours");
-        Cours cs = new Cours(1,c,"PHP",250,"php cours","php.png");
-        System.out.println(cs);*/
+       /* Categorie c = new Categorie(2,"Web","Web cours");
+        Etablissement e = new Etablissement(3,2024,1,"la5dher","soussa","edu");
+        //int id_etablissement, int code_etablissement, int id_utilisateur, String nom, String lieu, String type_etablissement
+        Cours cs = new Cours(c,e,"PHP",250,"php cours","php.png");
+        //System.out.println(cs);
+        ServiceCours sc = new ServiceCours();
+        //sc.ajouter(new Cours(c,e,"React",1500,"Cours React","React.png"));*/
+        //
+
 
     }
 }

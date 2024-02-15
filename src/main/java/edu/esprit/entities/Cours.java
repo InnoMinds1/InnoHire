@@ -8,6 +8,7 @@ public class Cours {
     private String nom,description,image;
 
     Categorie cat;
+    Etablissement etab;
 
     public Cours(String nom,int prix,String description, String image) {
         this.prix = prix;
@@ -16,21 +17,23 @@ public class Cours {
         this.image = image;
     }
 
-    public Cours(Categorie cat,String nom,int prix,  String description, String image) {
+    public Cours(Categorie cat,Etablissement etab,String nom,int prix,  String description, String image) {
         this.prix = prix;
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.cat = cat;
+        this.etab=etab;
     }
 
-    public Cours(int id_cours, Categorie cat, String nom,int prix, String description, String image) {
+    public Cours(int id_cours, Categorie cat, Etablissement etab,String nom,int prix, String description, String image) {
         this.id_cours = id_cours;
         this.prix = prix;
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.cat = cat;
+        this.etab=etab;
     }
 
     public int getId_cours() {
@@ -81,17 +84,25 @@ public class Cours {
         this.cat = cat;
     }
 
+    public Etablissement getEtab() {
+        return etab;
+    }
+
+    public void setEtab(Etablissement etab) {
+        this.etab = etab;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cours cours = (Cours) o;
-        return id_cours == cours.id_cours && Objects.equals(cat, cours.cat);
+        return id_cours == cours.id_cours && Objects.equals(cat, cours.cat) && Objects.equals(etab, cours.etab);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_cours, cat);
+        return Objects.hash(id_cours, cat, etab);
     }
 
     @Override
@@ -102,6 +113,7 @@ public class Cours {
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 ", cat=" + cat +
+                ", etab=" + etab +
                 '}';
     }
 }
