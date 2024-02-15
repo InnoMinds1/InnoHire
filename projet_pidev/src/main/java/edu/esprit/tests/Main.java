@@ -26,6 +26,9 @@ public class Main {
         sr.supprimer(3);
         sr.supprimer_admin(44);
         sr.supprimer_admin(12);
+        System.out.println(sr.getOneByID(1));
+        System.out.println(sr.getOneAdminByID(12));
+        System.out.println(sr.getOneAdminByID(1));
 
 
 
