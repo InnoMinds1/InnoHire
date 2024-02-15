@@ -51,8 +51,16 @@ public class ServiceCours implements Iservice<Cours>{
 
     @Override
     public void supprimer(int id) {
-
+        String req = "DELETE FROM `cours` WHERE `id_cours` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Cours deleted!");
+        } catch (SQLException e) {
+            System.err.println("Error deleting cours: " + e.getMessage());
+        }
     }
+
 
     @Override
     public Set<Cours> getAll() {

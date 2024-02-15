@@ -32,5 +32,6 @@ public class Main {
         //sc.modifier(new Cours(8,catWeb,e,"Symfony",9500,"Symfony cours","Symfony.png"));
         //System.out.println(sc.getAll());
         //System.out.println(sc.getOneByID(8));
+        //sc.supprimer(8);
     }
 }
