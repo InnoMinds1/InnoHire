@@ -35,8 +35,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "gestion-etablissement",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/digoh/IdeaProjects/prosit3",
+    "last_opened_file_path": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,6 +59,7 @@
       <workItem from="1707991291970" duration="122000" />
       <workItem from="1707991535292" duration="1099000" />
       <workItem from="1708000119924" duration="63000" />
+      <workItem from="1708000321688" duration="32000" />
     </task>
     <servers />
   </component>
