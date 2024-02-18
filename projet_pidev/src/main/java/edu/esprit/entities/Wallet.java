@@ -18,6 +18,8 @@ public class Wallet {
         this.id_etablissement = id_etablissement;
     }
 
+
+
     public int getId_wallet() {
         return id_wallet;
     }

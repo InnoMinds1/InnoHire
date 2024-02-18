@@ -30,7 +30,14 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             ps.setString(2, etablissement.getLieu());
             ps.setInt(3, etablissement.getCode_etablissement());
             ps.setString(4, etablissement.getType_etablissement());
-            ps.setInt(5, etablissement.getId_utilisateur());
+            if (etablissement.isIdUtilisateurNull()) {
+                // Si id_utilisateur est null, définir la valeur dans la base de données à NULL
+                ps.setNull(5, java.sql.Types.INTEGER);
+            } else {
+                // Sinon, définir la valeur normalement
+                ps.setInt(5, etablissement.getId_utilisateur());
+            }
+
             ps.executeUpdate();
             System.out.println("Etabliessement added !");
         } catch (SQLException e) {

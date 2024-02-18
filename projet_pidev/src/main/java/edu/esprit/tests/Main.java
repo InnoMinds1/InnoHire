@@ -10,7 +10,7 @@ public class Main {
     {
 
 
-/*----------------------------------------------------Sayari---------------------------------------*/
+/*----------------------------------------------------Sayari ---------------------------------------*/
 
 
 
@@ -26,7 +26,7 @@ public class Main {
 
         /*----------------ajouter-------------------------*/
 
-        //se.ajouter(new Etablissement("isie","Ghazela",123,"Faculte",2));
+        se.ajouter(new Etablissement("isie","Ghazela",123,"Faculte",1));
 
         /*----------------modifier-------------------------*/
 
@@ -40,25 +40,19 @@ public class Main {
         //System.out.println(se.getOneByID(2));
 
         /*----------------afficher tout-------------------------*/
-        //System.out.println(se.getAll());
+        System.out.println(se.getAll());
 
 
 
-        /*--------------------------------------End_Sayari----------------------------------------------------*/
+        /*--------------------------------------End_table_etab----------------------------------------------------*/
 
-                /*
-        DataSource ds = new DataSource();
-        DataSource ds1 = new DataSource();
-        DataSource ds2 = new DataSource();
-        DataSource ds3 = new DataSource();
-       --> bchaamlk barcha instance w twli bel zhar donc lezem patron de conception singleton
-         */
+
 
         ServiceWallet sw = new ServiceWallet();
 
         /*----------------ajouter-------------------------*/
 
-        //sw.ajouter(new Wallet(100,7));
+        //sw.ajouter(new Wallet(100,1));
 
         /*----------------modifier-------------------------*/
 
@@ -69,10 +63,12 @@ public class Main {
        // sw.supprimer(4);
 
         /*-------------------affichage_par_ID-------------------*/
-        System.out.println(sw.getOneByID(3));
+        //System.out.println(sw.getOneByID(3));
 
         /*----------------afficher tout-------------------------*/
-       // System.out.println(sw.getAll());
+      //  System.out.println(sw.getAll());
+
+        /*--------------------------------------End_Sayari----------------------------------------------------*/
 
 
     }
