@@ -1,10 +1,18 @@
 package edu.esprit.tests;
 
+import edu.esprit.entities.Categorie;
+import edu.esprit.services.ServiceCategorie;
 import edu.esprit.utils.DataSource;
 
 public class Main {
     public static void main(String[] args)
     {
-        DataSource.getInstance();
+        /*DataSource.getInstance(); Test connexion base
+        Categorie c = new Categorie(1,"java","java cours");
+        System.out.println(c);*/
+
+        //ServiceCategorie sc = new ServiceCategorie();
+        //sc.ajouter(new Categorie("Web","all belogns to Web"));
+
     }
 }
