@@ -56,11 +56,40 @@ public class ServiceCategorie implements Iservice<Categorie> {
 
     @Override
     public Set<Categorie> getAll() {
-        return null;
+        Set<Categorie> categories = new HashSet<>();
+        String req = "SELECT * FROM `categorie`";
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Categorie categorie = new Categorie();
+                categorie.setId_categorie(rs.getInt("id_categorie"));
+                categorie.setNom(rs.getString("nom"));
+                categorie.setDescription(rs.getString("description"));
+                categories.add(categorie);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return categories;
     }
 
     @Override
     public Categorie getOneByID(int id) {
+        String req = "SELECT * FROM `categorie` WHERE `id_categorie` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Categorie categorie = new Categorie();
+                    categorie.setId_categorie(rs.getInt("id_categorie"));
+                    categorie.setNom(rs.getString("nom"));
+                    categorie.setDescription(rs.getString("description"));
+                    return categorie;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
