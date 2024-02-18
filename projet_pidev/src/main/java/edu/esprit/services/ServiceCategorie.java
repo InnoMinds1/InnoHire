@@ -42,9 +42,17 @@ public class ServiceCategorie implements Iservice<Categorie> {
     }
 
     @Override
-    public void supprimer(int id) {
-
+    public void supprimer(int id_categorie) {
+        String req = "DELETE FROM `categorie` WHERE `id_categorie` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, id_categorie);
+            ps.executeUpdate();
+            System.out.println("Category deleted!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
+
 
     @Override
     public Set<Categorie> getAll() {
