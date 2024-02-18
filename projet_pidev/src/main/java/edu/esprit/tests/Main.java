@@ -5,16 +5,18 @@ import edu.esprit.entities.Candidat;
 import edu.esprit.entities.Representant;
 import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
+import java.util.*;
+
 
 public class Main {
     public static void main(String[] args)
     {
         DataSource.getInstance();
-        ServiceUtilisateur sr= new ServiceUtilisateur();
+      /*  ServiceUtilisateur sr= new ServiceUtilisateur();
         Admin a = new Admin(1,234,"AMENALLAH123","KTHIRI","amenallah@esprit.tn","ELKING");
         //sr.ajouter(a);
         Representant r = new Representant(2,33,"AMENALLAH","KTHIRI","amenallah@esprit.tn","ELKING");
-       sr.ajouter(r);
+       //sr.ajouter(r);
         Candidat c= new Candidat(3,322,"YO222","ee","SLFJ@","TRAHHH");
         //sr.ajouter(c);
 
@@ -28,8 +30,7 @@ public class Main {
         sr.supprimer_admin(12);
         System.out.println(sr.getOneByID(1));
         System.out.println(sr.getOneAdminByID(12));
-        System.out.println(sr.getOneAdminByID(1));
-
+        System.out.println(sr.getOneAdminByID(1));*/
 
 
 

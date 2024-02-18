@@ -34,9 +34,14 @@ public class Candidat extends Utilisateur{
                 '}';
     }
 
-    public Candidat(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
+    /*public Candidat(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
     {
         super(id_utilisateur, cin, nom, prenom, adresse, mdp);
+        this.ROLE=1;
+    }*/
+    public Candidat(int cin,String nom ,String prenom,String adresse, String mdp)
+    {
+        super( cin, nom, prenom, adresse, mdp);
         this.ROLE=1;
     }
 

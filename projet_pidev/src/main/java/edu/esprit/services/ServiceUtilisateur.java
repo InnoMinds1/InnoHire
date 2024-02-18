@@ -16,12 +16,13 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Utilisateur utilisateur) {
+    public void ajouter(Utilisateur utilisateur) throws SQLException {
         if (utilisateur instanceof Admin) {
             Admin a = (Admin) utilisateur;
             String req = "INSERT INTO `admin`( `cin`, `nom`, `prenom`, `email`, `mdp`) VALUES (?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
+                if(!utilisateurExiste(a.getCin())){
                 ps.setInt(1, a.getCin());
                 ps.setString(2, a.getNom());
                 ps.setString(3, a.getPrenom());
@@ -29,7 +30,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String hashed =hashPassword(a.getMdp());
                 ps.setString(5, hashed);
                 ps.executeUpdate();
-                System.out.println("Admin added");
+                System.out.println("Admin added");}
+
 
 
             } catch (SQLException e) {
@@ -39,6 +41,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
+
                 ps.setInt(1, utilisateur.getCin());
                 ps.setString(2, utilisateur.getNom());
                 ps.setString(3, utilisateur.getPrenom());
@@ -147,7 +150,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                int id = rs.getInt(1);
+
                 int cin = rs.getInt(2);
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
@@ -155,10 +158,10 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String mdp = rs.getString("mdp");
                 int role = rs.getInt(7);
                 if (role == 0) {
-                    Utilisateur p = new Representant(id, cin, nom, prenom, adresse, mdp);
+                    Representant p = new Representant(cin, nom, prenom, adresse, mdp);
                     utilisateurs.add(p);
                 } else {
-                    Utilisateur p = new Candidat(id, cin, nom, prenom, adresse, mdp);
+                    Candidat p = new Candidat( cin, nom, prenom, adresse, mdp);
                     utilisateurs.add(p);
                 }
 
@@ -265,5 +268,20 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             System.out.println("Erreur lors du hachage du mot de passe : " + e.getMessage());
             return null;
         }
+    }
+    public boolean utilisateurExiste(int cin) {
+        String req = "SELECT COUNT(*) FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0; // Retourne true si l'utilisateur existe, sinon false
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false; // Si une erreur se produit ou si aucun résultat n'est trouvé
     }
 }

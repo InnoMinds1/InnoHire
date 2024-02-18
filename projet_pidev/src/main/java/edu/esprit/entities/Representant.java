@@ -35,10 +35,17 @@ public class Representant extends Utilisateur{
                 '}';
     }
 
-    public Representant(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp)
+   /* public Representant(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp)
     {
         super(id_utilisateur, cin, nom, prenom, adresse, mdp);
         this.ROLE=0;
+    }*/
+    public Representant(int cin, String nom , String prenom, String adresse, String mdp)
+    {
+        super(cin,nom,prenom, adresse, mdp);
+        this.ROLE=0;
     }
+
+
 
 }

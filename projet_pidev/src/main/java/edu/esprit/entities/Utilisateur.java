@@ -84,7 +84,16 @@ public class Utilisateur {
         return Objects.hash(id_utilisateur, cin, nom, prenom, adresse, mdp);
     }
     public Utilisateur(){};
-    public Utilisateur(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
+
+    public Utilisateur(int cin, String nom, String prenom, String adresse, String mdp) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.mdp = mdp;
+    }
+
+    public Utilisateur(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp)
     {
         this.id_utilisateur=id_utilisateur;
         this.cin=cin;
