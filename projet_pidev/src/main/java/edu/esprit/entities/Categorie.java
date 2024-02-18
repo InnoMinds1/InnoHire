@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Categorie {
     private int id_categorie;
     private String nom,description;
-    
+
     public Categorie() {
     }
 
