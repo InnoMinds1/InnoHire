@@ -26,9 +26,19 @@ public class ServiceCategorie implements Iservice<Categorie> {
         }
     }
 
+
     @Override
     public void modifier(Categorie categorie) {
-
+        String req = "UPDATE `categorie` SET `nom` = ?, `description` = ? WHERE `id_categorie` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setString(1, categorie.getNom());
+            ps.setString(2, categorie.getDescription());
+            ps.setInt(3, categorie.getId_categorie());
+            ps.executeUpdate();
+            System.out.println("Category modified!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
