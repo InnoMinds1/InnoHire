@@ -12,6 +12,11 @@ public class Reponse {
         this.choix_correcte = choix_correcte;
         this.id_question = id_question;
     }
+    public Reponse(int choix_correcte, int id_question) {
+
+        this.choix_correcte = choix_correcte;
+        this.id_question = id_question;
+    }
     public Reponse ()
     {
 
@@ -57,7 +62,6 @@ public class Reponse {
     @Override
     public String toString() {
         return "Reponse{" +
-                "id_reponse=" + id_reponse +
                 ", choix_correcte=" + choix_correcte +
                 ", id_question=" + id_question +
                 '}';

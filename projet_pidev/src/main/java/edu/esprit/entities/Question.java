@@ -11,6 +11,11 @@ public class Question {
     {
 
     }
+    public Question(String question, String choix, int id_quiz) {
+        this.question = question;
+        this.choix = choix;
+        this.id_quiz = id_quiz;
+    }
 
     public Question(int id_question, String question, String choix, int id_quiz) {
         this.id_question = id_question;
@@ -68,10 +73,9 @@ public class Question {
     @Override
     public String toString() {
         return "Question{" +
-                "idquestion=" + id_question +
-                ", question='" + question + '\'' +
+                "question='" + question + '\'' +
                 ", choix='" + choix + '\'' +
-                ", idquiz=" + id_quiz +
+                ", id_quiz=" + id_quiz +
                 '}';
     }
 }

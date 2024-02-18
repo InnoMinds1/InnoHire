@@ -21,6 +21,13 @@ public class Quiz {
         this.prix_quiz = prix_quiz;
         this.id_etablissement = id_etablissement;
     }
+    public Quiz( int code_quiz, String nom_quiz, String description, int prix_quiz, int id_etablissement) {
+        this.code_quiz = code_quiz;
+        this.nom_quiz = nom_quiz;
+        this.description = description;
+        this.prix_quiz = prix_quiz;
+        this.id_etablissement = id_etablissement;
+    }
 
     public int getId_quiz() {
         return id_quiz;
@@ -72,8 +79,8 @@ public class Quiz {
 
     @Override
     public String toString() {
-        return "Quiz{" +
-                "id_quiz=" + id_quiz +
+        return "Quiz{"
+                +
                 ", code_quiz=" + code_quiz +
                 ", nom_quiz='" + nom_quiz + '\'' +
                 ", description='" + description + '\'' +

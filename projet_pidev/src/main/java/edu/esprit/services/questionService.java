@@ -1,3 +1,18 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package edu.esprit.services;
 
 import edu.esprit.entities.Question;
@@ -22,7 +37,7 @@ public class questionService implements IService<Question> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Question question) {
+    public void ajouter(Question question) throws SQLException {
 
         try {
             String query = "INSERT INTO question (question, choix, id_quiz) VALUES (?, ?, ?)";
