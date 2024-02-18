@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class quizService implements IService<Quiz> {
@@ -113,5 +115,26 @@ public class quizService implements IService<Quiz> {
             e.printStackTrace();
         }
         return null;
+    }
+    public List<Integer> getQuizIds() throws SQLException {
+        List<Integer> quizIds = new ArrayList<>();
+        Connection cnx = DataSource.getInstance().getCnx();
+
+        try {
+            String sql = "SELECT id_quiz FROM quiz";
+
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        int idQuiz = resultSet.getInt("id_quiz");
+                        quizIds.add(idQuiz);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return quizIds;
     }
 }
