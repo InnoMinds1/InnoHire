@@ -1,48 +1,48 @@
 package edu.esprit.tests;
 
-import edu.esprit.entities.Evenement;
-
-import edu.esprit.entities.Reservation;
-import edu.esprit.services.ServiceEvenement;
-
-import edu.esprit.services.ServiceReservation;
+import edu.esprit.entities.*;
+import edu.esprit.services.ServicePublication;
+import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
 
+import java.time.LocalDate;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
-        /*
-        DataSource ds = new DataSource();
-        DataSource ds1 = new DataSource();
-        DataSource ds2 = new DataSource();
-        DataSource ds3 = new DataSource();
-       --> bchaamlk barcha instance w twli bel zhar donc lezem patron de conception singleton
-         */
+        //DataSource.getInstance();
+
+        //AJOUT
+        ServicePublication sb = new ServicePublication();
+       ServiceUtilisateur sr= new ServiceUtilisateur();
+        Utilisateur u=new Utilisateur(10,22,"nom","prenom","hh","ppp");
+        //Admin a = new Admin(1,234,"AMENALLAH123","KTHIRI","amenallah@esprit.tn","ELKING");
+        //sr.ajouter(u);
+        //Publication p = new Publication(2,u,"bbbbb","hbbbbh","hh","hh", LocalDate.of(2021,02,4),4);
+       //sb.ajouter(p);
+       //sb.supprimer(2);
+       //System.out.println(sb.getOneByID(4));
+        System.out.println(sb.getAll());
+        //Representant r = new Representant(2,33,"AMENALLAH","KTHIRI","amenallah@esprit.tn","ELKING");
+       //sr.ajouter(r);
+        //Candidat c= new Candidat(3,322,"YO222","ee","SLFJ@","TRAHHH");
+        //sr.ajouter(c);
+
+        //System.out.println(sr.getAll());
+        //System.out.println(sr.getAll_admin());
+        //sr.modifier(c);
+        //sr.modifier_admin(a);
+        //sr.supprimer(44);
+
+        //sr.supprimer_admin(44);
+
+        //System.out.println(sr.getOneByID(1));
+        //System.out.println(sr.getOneAdminByID(12));
 
 
-        //ServiceEvenement se = new ServiceEvenement();
-        ServiceReservation sr = new ServiceReservation();
-
-        /*----------------ajouter-------------------------*/
 
 
-        //se.ajouter(new Evenement(23,"ouma","kantawi","24-02-2023","hhh",12));
-      //sr.ajouter(new Reservation(2,3));
 
-        /*----------------modifier-------------------------*/
-
-      //Evenement evenementModifiee = new Evenement(1,55,"oumayma","kantawiiiii","24-02-2023","hhh",12);
-        //se.modifier(evenementModifiee);
-        Reservation reservationModifiee=new Reservation(9,2,3);
-       sr.modifier(reservationModifiee);
-
-        /*-------------------Supprimer-------------------*/
-      //sr.supprimer(8);
-
-        /*-------------------affichage_par_ID-------------------*/
-        //System.out.println(sr.getOneByID(8));
-
-        /*----------------afficher tout-------------------------*/
-       System.out.println(sr.getAll());
     }
 }
