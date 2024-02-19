@@ -24,7 +24,7 @@ public class Main {
         //sc.ajouter(new Categorie("Web","all belogns to Web"));
         //sc.modifier(new Categorie(1,"new Mobile",sc.getOneByID(1).getDescription()));
        // sr.supprimer(2);
-        System.out.println(sr.getAll());
+        System.out.println(sr.getOneByID(1));
         //System.out.println(sc.getOneByID(2));*/
 
     }

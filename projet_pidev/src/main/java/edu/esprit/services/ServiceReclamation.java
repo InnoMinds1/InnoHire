@@ -99,6 +99,35 @@ public class ServiceReclamation implements Iservice<Reclamation>{
 
     @Override
     public Reclamation getOneByID(int id) {
+        String req = "SELECT * FROM `reclamation` WHERE `id_reclamation` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Reclamation rec = new Reclamation();
+                    rec.setId_reclamation(rs.getInt("id_reclamation"));
+                    rec.setStatus(rs.getInt("status"));
+                    rec.setType(rs.getString("type"));
+                    rec.setTitre(rs.getString("titre"));
+                    rec.setDescription(rs.getString("description"));
+                    rec.setImage(rs.getString("image"));
+                    rec.setDate(rs.getTimestamp("date"));
+
+                    // Use ServicePublication to get Publication by ID
+                   /* Publication publication = new ServicePublication().getOneByID(rs.getInt("id_publication"));
+                    rec.setPub(publication);*/
+
+                    // Use ServiceUtilisateur to get Utilisateur by ID
+                    Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));
+                    rec.setUser(utilisateur);
+
+                    return rec;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving reclamation: " + e.getMessage());
+        }
         return null;
     }
+
 }
