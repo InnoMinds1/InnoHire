@@ -3,24 +3,83 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterUtilisateurController">
+<AnchorPane prefHeight="485.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterUtilisateurController">
     <children>
-        <TextField fx:id="TFnom" layoutX="193.0" layoutY="121.0" promptText="Nom" />
-        <TextField fx:id="TFprenom" layoutX="193.0" layoutY="162.0" promptText="Prenom" />
-        <Button layoutX="282.0" layoutY="332.0" mnemonicParsing="false" onAction="#ajouterUtilisateurAction" text="Ajouter" />
-        <Label layoutX="149.0" layoutY="120.0" prefHeight="26.0" prefWidth="62.0" text="Nom" />
-        <Label layoutX="138.0" layoutY="161.0" prefHeight="26.0" prefWidth="55.0" text="Prenom" />
-        <Button layoutX="496.0" layoutY="59.0" mnemonicParsing="false" onAction="#navigatetoAfficherPersonneAction" text="Navigate" />
-      <Label layoutX="152.0" layoutY="71.0" prefHeight="26.0" prefWidth="62.0" text="CIN" />
-      <TextField fx:id="TFcin" layoutX="193.0" layoutY="72.0" promptText="CIN" />
-      <Label layoutX="138.0" layoutY="208.0" prefHeight="26.0" prefWidth="55.0" text="Email" />
-      <TextField fx:id="TFemail" layoutX="193.0" layoutY="209.0" promptText="Email" />
-      <Label layoutX="138.0" layoutY="253.0" prefHeight="26.0" prefWidth="55.0" text="mdp" />
-      <Label layoutX="138.0" layoutY="293.0" prefHeight="26.0" prefWidth="55.0" text="ROLE" />
-      <TextField fx:id="TFmdp" layoutX="193.0" layoutY="253.0" promptText="mdp" />
-      <TextField fx:id="TFrole" layoutX="193.0" layoutY="294.0" promptText="role" />
-      <Label layoutX="25.0" layoutY="14.0" prefHeight="26.0" prefWidth="195.0" text="AJOUTER UTILISATEUR" />
+      <ImageView fitHeight="500.0" fitWidth="716.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/fond_blanc.PNG" />
+         </image>
+      </ImageView>
+        <TextField fx:id="TFnom" layoutX="284.0" layoutY="225.0" promptText="Nom" />
+        <TextField fx:id="TFprenom" layoutX="284.0" layoutY="264.0" promptText="Prenom" />
+        <Button layoutX="319.0" layoutY="422.0" mnemonicParsing="false" onAction="#ajouterUtilisateurAction" prefHeight="50.0" prefWidth="159.0" text="Ajouter" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Button>
+        <Label layoutX="225.0" layoutY="225.0" prefHeight="26.0" prefWidth="62.0" text="Nom" />
+        <Label layoutX="221.0" layoutY="264.0" prefHeight="26.0" prefWidth="55.0" text="Prenom" />
+        <Button layoutX="513.0" layoutY="129.0" mnemonicParsing="false" onAction="#navigatetoAfficherUtilisateurAction" text="AFFICHER LISTE_Utilisateur">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
+      <Label layoutX="225.0" layoutY="179.0" prefHeight="26.0" prefWidth="62.0" text="CIN" />
+      <TextField fx:id="TFcin" layoutX="284.0" layoutY="179.0" promptText="CIN" />
+      <Label layoutX="221.0" layoutY="299.0" prefHeight="26.0" prefWidth="55.0" text="Email" />
+      <TextField fx:id="TFemail" layoutX="284.0" layoutY="299.0" promptText="Email" />
+      <Label layoutX="221.0" layoutY="336.0" prefHeight="26.0" prefWidth="55.0" text="MDP" />
+      <Label layoutX="221.0" layoutY="374.0" prefHeight="26.0" prefWidth="55.0" text="Role" />
+      <TextField fx:id="TFmdp" layoutX="284.0" layoutY="336.0" promptText="mdp" />
+      <TextField fx:id="TFrole" layoutX="284.0" layoutY="374.0" promptText="role" />
+      <Label layoutX="203.0" layoutY="111.0" prefHeight="26.0" prefWidth="195.0" text="CRUD UTILISATEUR">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font></Label>
+      <ImageView fitHeight="500.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/mauve1.PNG" />
+         </image>
+      </ImageView>
+      <Button layoutY="94.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="177.0" text="Gestion utilisateur">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutY="188.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="177.0" text="Gestion Etablissement">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutY="272.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="177.0" text="Gestion Publication">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutY="345.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="177.0" text="Gestion Quiz">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutY="429.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="177.0" text="Gestion reclamation">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="513.0" layoutY="386.0" prefHeight="26.0" prefWidth="62.0" text="CIN" />
+      <TextField fx:id="TFcin_supprimer" layoutX="553.0" layoutY="387.0" promptText="CIN" />
+      <Button layoutX="513.0" layoutY="422.0" mnemonicParsing="false" onAction="#supprimerUtilisateurAction" prefHeight="50.0" prefWidth="159.0" text="Supprimer" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="525.0" layoutY="253.0" mnemonicParsing="false" onAction="#modifierUtilisateurAction" prefHeight="26.0" prefWidth="159.0" text="MODIFIER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

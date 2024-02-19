@@ -18,19 +18,19 @@ public class Admin extends Utilisateur{
     }
     public String toString() {
         return "Admin{" +
-                "id_utilisateur=" + this.getId_utilisateur() +
-                ", cin=" + this.getCin() +
+
+                "cin=" + this.getCin() +
                 ", nom='" + this.getNom() + '\'' +
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
                 ", mdp='" + this.getMdp() + '\'' +
 
-                '}';
+                '}'+'\n';
     }
 
-    public Admin(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
+    public Admin(int cin,String nom ,String prenom,String adresse, String mdp)
     {
-        super(id_utilisateur, cin, nom, prenom, adresse, mdp);
+        super( cin, nom, prenom, adresse, mdp);
 
     }
 

@@ -62,13 +62,13 @@ public class Utilisateur {
     @Override
     public String toString() {
         return "Utilisateur{" +
-                "id_utilisateur=" + id_utilisateur +
+
                 ", cin=" + cin +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", mdp='" + mdp + '\'' +
-                '}';
+                '}'+'\n';
     }
 
     @Override

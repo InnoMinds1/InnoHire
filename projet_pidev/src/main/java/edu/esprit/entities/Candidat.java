@@ -1,7 +1,7 @@
 package edu.esprit.entities;
 
 public class Candidat extends Utilisateur{
-    private static int ROLE=1;
+    private static int ROLE=2;
 
     public static int getROLE() {
         return ROLE;
@@ -24,14 +24,14 @@ public class Candidat extends Utilisateur{
     }
     public String toString() {
         return "Candidat{" +
-                "id_utilisateur=" + this.getId_utilisateur() +
-                ", cin=" + this.getCin() +
+
+                "cin=" + this.getCin() +
                 ", nom='" + this.getNom() + '\'' +
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
-                ", mdp='" + this.getMdp() + '\'' +
+
                 ", role='" + Candidat.getROLE() + '\'' +
-                '}';
+                '}'+'\n';
     }
 
     /*public Candidat(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
@@ -42,7 +42,7 @@ public class Candidat extends Utilisateur{
     public Candidat(int cin,String nom ,String prenom,String adresse, String mdp)
     {
         super( cin, nom, prenom, adresse, mdp);
-        this.ROLE=1;
+        this.ROLE=2;
     }
 
 

@@ -5,6 +5,7 @@ import edu.esprit.entities.Candidat;
 import edu.esprit.entities.Representant;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
+import jdk.jshell.execution.Util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -49,11 +50,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String hashed= hashPassword(utilisateur.getMdp());
                 ps.setString(5, hashed);
                 if (utilisateur instanceof Representant) {
-                    ps.setInt(6, Representant.getROLE());
+                    ps.setInt(6, 1);
                     ps.executeUpdate();
                     System.out.println("Representant added");
                 } else {
-                    ps.setInt(6, Candidat.getROLE());
+                    ps.setInt(6,2);
                     ps.executeUpdate();
                     System.out.println("Candidat added");
                 }
@@ -68,7 +69,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     }
 
     @Override
-    public void modifier(Utilisateur utilisateur) {
+    public void modifier(Utilisateur utilisateur) throws SQLException {
         String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE id_utilisateur = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -87,6 +88,49 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
 
     }
+    public void modifier_representant_parcin(Representant u) throws SQLException {
+        String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ?,role=? WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getAdresse());
+            String hashed =hashPassword(u.getMdp());
+            ps.setString(4, hashed);
+            ps.setInt(5, 1);
+            ps.setInt(6, u.getCin());
+
+
+            ps.executeUpdate();
+            System.out.println("representant modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void modifier_candidat_parcin(Candidat representant) throws SQLException {
+        String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ?,role=? WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+
+            ps.setString(1, representant.getNom());
+            ps.setString(2, representant.getPrenom());
+            ps.setString(3, representant.getAdresse());
+            String hashed =hashPassword(representant.getMdp());
+            ps.setString(4, hashed);
+            ps.setInt(5, 2);
+            ps.setInt(6, representant.getCin());
+
+
+            ps.executeUpdate();
+            System.out.println("Candidat modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
 
     public void modifier_admin(Admin admin) {
         String req = "UPDATE admin SET cin =?, nom = ?, prenom = ?, email = ?, mdp = ? WHERE id_admin = ?";
@@ -107,9 +151,29 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
 
     }
+    public void modifier_admin_parcin(Admin admin) throws SQLException {
+        String req = "UPDATE admin SET  nom = ?, prenom = ?, email = ?, mdp = ? WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+
+            ps.setString(1, admin.getNom());
+            ps.setString(2, admin.getPrenom());
+            ps.setString(3, admin.getAdresse());
+            String hashed =hashPassword(admin.getMdp());
+            ps.setString(4, hashed);
+            ps.setInt(5, admin.getCin());
+
+            ps.executeUpdate();
+            System.out.println("admin modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
 
     @Override
-    public void supprimer(int id) {
+    public void supprimer(int id) throws SQLException{
         String req = "DELETE FROM utilisateur WHERE id_utilisateur = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -124,6 +188,43 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             System.out.println(e.getMessage());
         }
     }
+    public void supprimer_par_cin(int cin) throws SQLException{
+        String req = "DELETE FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+
+            ps.setInt(1, cin);
+
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("l'utilisateur avec le cin  " + cin + " a ete supprime!");
+            }
+
+            else {
+                System.out.println("il n'y a pas d'utilisateur avec le cin:  " + cin);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public int getUserIdByCin(int cin) {
+        String req = "SELECT id FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                System.out.println("No user found with cin " + cin);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return -1; // Return -1 if no user found
+    }
+
 
     public void supprimer_admin(int id) {
         String req = "DELETE FROM admin WHERE id_admin = ?";
@@ -143,7 +244,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
 
     @Override
-    public Set<Utilisateur> getAll() {
+    public Set<Utilisateur> getAll() throws SQLException{
         Set<Utilisateur> utilisateurs = new HashSet<>();
         String req = "Select * from utilisateur";
         try {
@@ -181,13 +282,13 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                int id = rs.getInt(1);
+
                 int cin = rs.getInt(2);
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 String adresse = rs.getString("email");
                 String mdp = rs.getString("mdp");
-                Admin p = new Admin(id, cin, nom, prenom, adresse, mdp);
+                Admin p = new Admin(cin, nom, prenom, adresse, mdp);
                 admins.add(p);
 
 
@@ -271,6 +372,21 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     }
     public boolean utilisateurExiste(int cin) {
         String req = "SELECT COUNT(*) FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0; // Retourne true si l'utilisateur existe, sinon false
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false; // Si une erreur se produit ou si aucun résultat n'est trouvé
+    }
+    public boolean adminExiste(int cin) {
+        String req = "SELECT COUNT(*) FROM admin WHERE cin = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, cin);
