@@ -1,7 +1,9 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.Personne;
-import edu.esprit.services.ServicePersonne;
+
+import edu.esprit.entities.Etablissement;
+import edu.esprit.services.ServiceEtablissement;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,15 +17,26 @@ import java.sql.SQLException;
 public class AjouterEtablissement {
     @FXML
     private TextField TFnom;
+    @FXML
+    private TextField TFid_utilisateur;
 
     @FXML
-    private TextField TFprenom;
-    private final ServicePersonne sp = new ServicePersonne();
+    private TextField TFcode;
 
     @FXML
-    void ajouterPersonneAction(ActionEvent event) {
+    private TextField TFlieu;
+
+    @FXML
+    private TextField TFtype;
+
+    private final ServiceEtablissement se = new ServiceEtablissement();
+
+    @FXML
+    void ajouterEtablissementAction(ActionEvent event) {
         try {
-            sp.ajouter(new Personne(TFnom.getText(),TFprenom.getText()));
+            int code = Integer.parseInt(TFcode.getText());
+            int id_utilisateur = Integer.parseInt(TFid_utilisateur.getText());
+            se.ajouter(new Etablissement(TFnom.getText(),TFlieu.getText(),code,TFtype.getText(),id_utilisateur));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setContentText("GG");
@@ -37,9 +50,9 @@ public class AjouterEtablissement {
 
     }
 
-    public void navigatetoAfficherPersonneAction(ActionEvent actionEvent) {
+    public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPersonne.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherEtablissement.fxml"));
             TFnom.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -5,9 +5,10 @@ import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceWallet;
 
+import java.sql.SQLException;
+
 public class Main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws SQLException {
 
 
 /*----------------------------------------------------Sayari ---------------------------------------*/
@@ -24,7 +25,7 @@ public class Main {
 
         ServiceEtablissement se = new ServiceEtablissement();
 
-        /*----------------ajouter-------------------------*/
+        //----------------ajouter-------------------------
 
         se.ajouter(new Etablissement("isie","Ghazela",123,"Faculte",null));
 

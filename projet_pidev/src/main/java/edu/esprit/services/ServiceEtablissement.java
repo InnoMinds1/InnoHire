@@ -11,7 +11,7 @@ public class ServiceEtablissement implements IService<Etablissement> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Etablissement etablissement) {
+    public void ajouter(Etablissement etablissement) throws SQLException {
    /*
 String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.getNom()+"','"+personne.getPrenom()+"')";
         try {
@@ -46,7 +46,7 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
     @Override
-    public void modifier(Etablissement etablissement) {
+    public void modifier(Etablissement etablissement) throws SQLException {
         int id = etablissement.getId_etablissement();
         Etablissement existingEtablissement = getOneByID(id);
         if (existingEtablissement != null) {
@@ -73,7 +73,7 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
     @Override
-    public void supprimer(int id_etablissement) {
+    public void supprimer(int id_etablissement) throws SQLException {
 
         Etablissement etablissement = getOneByID(id_etablissement);
         if (etablissement != null) {
@@ -93,7 +93,7 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
     @Override
-    public Set<Etablissement> getAll() {
+    public Set<Etablissement> getAll() throws SQLException {
         Set<Etablissement> etablissements = new HashSet<>();
 
         String req = "Select * from etablissement";
@@ -118,7 +118,7 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
     @Override
-    public Etablissement getOneByID(int id_etablissement) {
+    public Etablissement getOneByID(int id_etablissement) throws SQLException {
         String req = "SELECT * FROM etablissement WHERE id_etablissement = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
