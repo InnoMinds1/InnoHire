@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Reclamation {
     public int id_reclamation,status;
-    public String type,titre,description,adresse,image;
+    public String type,titre,description,image;
     public Date date;
 
     Publication pub;
@@ -15,35 +15,32 @@ public class Reclamation {
     public Reclamation() {
     }
 
-    public Reclamation(int status, String type, String titre, String description, String adresse, String image, Date date) {
+    public Reclamation(int status, String type, String titre, String description, String image, Date date) {
         this.status = status;
         this.type = type;
         this.titre = titre;
         this.description = description;
-        this.adresse = adresse;
         this.image = image;
         this.date = date;
     }
 
-    public Reclamation(int status, String type, String titre, String description, String adresse, String image, Date date, Publication pub, Utilisateur user) {
+    public Reclamation(int status, String type, String titre, String description, String image, Date date, Publication pub, Utilisateur user) {
         this.status = status;
         this.type = type;
         this.titre = titre;
         this.description = description;
-        this.adresse = adresse;
         this.image = image;
         this.date = date;
         this.pub = pub;
         this.user = user;
     }
 
-    public Reclamation(int id_reclamation, int status, String type, String titre, String description, String adresse, String image, Date date, Publication pub, Utilisateur user) {
+    public Reclamation(int id_reclamation, int status, String type, String titre, String description, String image, Date date, Publication pub, Utilisateur user) {
         this.id_reclamation = id_reclamation;
         this.status = status;
         this.type = type;
         this.titre = titre;
         this.description = description;
-        this.adresse = adresse;
         this.image = image;
         this.date = date;
         this.pub = pub;
@@ -90,13 +87,6 @@ public class Reclamation {
         this.description = description;
     }
 
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
 
     public String getImage() {
         return image;
@@ -151,7 +141,6 @@ public class Reclamation {
                 ", type='" + type + '\'' +
                 ", titre='" + titre + '\'' +
                 ", description='" + description + '\'' +
-                ", adresse='" + adresse + '\'' +
                 ", image='" + image + '\'' +
                 ", date=" + date +
                 ", pub=" + pub +
