@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9f83f92-291e-436f-ae7d-40c99f7e56b8" name="Changes" comment="" />
+    <list default="true" id="e9f83f92-291e-436f-ae7d-40c99f7e56b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Messagerie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +74,7 @@
       <workItem from="1708281272018" duration="493000" />
       <workItem from="1708281844351" duration="159000" />
       <workItem from="1708282070844" duration="6015000" />
-      <workItem from="1708369834203" duration="8091000" />
+      <workItem from="1708369834203" duration="8713000" />
     </task>
     <servers />
   </component>
