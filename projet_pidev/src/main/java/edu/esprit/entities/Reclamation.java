@@ -1,38 +1,53 @@
 package edu.esprit.entities;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Reclamation {
-    public int id_reclamation;
-    public String titre,description;
+    public int id_reclamation,status;
+    public String type,titre,description,adresse,image;
+    public Date date;
 
-    Categorie cat;
-    Commentaire com;
     Publication pub;
+
+    Utilisateur user;
 
     public Reclamation() {
     }
 
-    public Reclamation(String titre, String description) {
+    public Reclamation(int status, String type, String titre, String description, String adresse, String image, Date date) {
+        this.status = status;
+        this.type = type;
         this.titre = titre;
         this.description = description;
+        this.adresse = adresse;
+        this.image = image;
+        this.date = date;
     }
 
-    public Reclamation(String titre, String description, Categorie cat, Commentaire com, Publication pub) {
+    public Reclamation(int status, String type, String titre, String description, String adresse, String image, Date date, Publication pub, Utilisateur user) {
+        this.status = status;
+        this.type = type;
         this.titre = titre;
         this.description = description;
-        this.cat = cat;
-        this.com = com;
+        this.adresse = adresse;
+        this.image = image;
+        this.date = date;
         this.pub = pub;
+        this.user = user;
     }
 
-    public Reclamation(int id_reclamation, String titre, String description, Categorie cat, Commentaire com, Publication pub) {
+    public Reclamation(int id_reclamation, int status, String type, String titre, String description, String adresse, String image, Date date, Publication pub, Utilisateur user) {
         this.id_reclamation = id_reclamation;
+        this.status = status;
+        this.type = type;
         this.titre = titre;
         this.description = description;
-        this.cat = cat;
-        this.com = com;
+        this.adresse = adresse;
+        this.image = image;
+        this.date = date;
         this.pub = pub;
+        this.user = user;
     }
 
     public int getId_reclamation() {
@@ -41,6 +56,22 @@ public class Reclamation {
 
     public void setId_reclamation(int id_reclamation) {
         this.id_reclamation = id_reclamation;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getTitre() {
@@ -59,20 +90,28 @@ public class Reclamation {
         this.description = description;
     }
 
-    public Categorie getCat() {
-        return cat;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setCat(Categorie cat) {
-        this.cat = cat;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
-    public Commentaire getCom() {
-        return com;
+    public String getImage() {
+        return image;
     }
 
-    public void setCom(Commentaire com) {
-        this.com = com;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Publication getPub() {
@@ -83,28 +122,40 @@ public class Reclamation {
         this.pub = pub;
     }
 
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reclamation that = (Reclamation) o;
-        return id_reclamation == that.id_reclamation && Objects.equals(cat, that.cat) && Objects.equals(com, that.com) && Objects.equals(pub, that.pub);
+        return id_reclamation == that.id_reclamation && Objects.equals(pub, that.pub) && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_reclamation, cat, com, pub);
+        return Objects.hash(id_reclamation, pub, user);
     }
 
     @Override
     public String toString() {
         return "Reclamation{" +
                 "id_reclamation=" + id_reclamation +
+                ", status=" + status +
+                ", type='" + type + '\'' +
                 ", titre='" + titre + '\'' +
                 ", description='" + description + '\'' +
-                ", cat=" + cat +
-                ", com=" + com +
+                ", adresse='" + adresse + '\'' +
+                ", image='" + image + '\'' +
+                ", date=" + date +
                 ", pub=" + pub +
+                ", user=" + user +
                 '}';
     }
 }
