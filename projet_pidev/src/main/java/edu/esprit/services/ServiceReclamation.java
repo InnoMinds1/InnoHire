@@ -1,11 +1,12 @@
 package edu.esprit.services;
 
+import edu.esprit.entities.Publication;
 import edu.esprit.entities.Reclamation;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.HashSet;
 import java.util.Set;
 
 public class ServiceReclamation implements Iservice<Reclamation>{
@@ -64,8 +65,37 @@ public class ServiceReclamation implements Iservice<Reclamation>{
 
     @Override
     public Set<Reclamation> getAll() {
-        return null;
+        Set<Reclamation> reclamations = new HashSet<>();
+        String req = "SELECT * FROM `reclamation`";
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Reclamation rec = new Reclamation();
+                rec.setId_reclamation(rs.getInt("id_reclamation"));
+                rec.setStatus(rs.getInt("status"));
+                rec.setType(rs.getString("type"));
+                rec.setTitre(rs.getString("titre"));
+                rec.setDescription(rs.getString("description"));
+                rec.setImage(rs.getString("image"));
+                rec.setDate(rs.getTimestamp("date"));
+
+                // Use ServicePublication to get Publication by ID
+                /*Publication publication = new ServicePublication().getOneByID(rs.getInt("id_publication"));
+                rec.setPub(publication);*/
+
+                // Use ServiceUtilisateur to get Utilisateur by ID
+                Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));
+                rec.setUser(utilisateur);
+
+                reclamations.add(rec);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Reclamations: " + e.getMessage());
+        }
+        return reclamations;
     }
+
+
 
     @Override
     public Reclamation getOneByID(int id) {

@@ -23,7 +23,8 @@ public class Main {
         //ServiceCategorie sc = new ServiceCategorie();
         //sc.ajouter(new Categorie("Web","all belogns to Web"));
         //sc.modifier(new Categorie(1,"new Mobile",sc.getOneByID(1).getDescription()));
-        sr.supprimer(2);
+       // sr.supprimer(2);
+        System.out.println(sr.getAll());
         //System.out.println(sc.getOneByID(2));*/
 
     }
