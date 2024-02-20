@@ -21,14 +21,14 @@ public class Main {
         Publication pub=new Publication(1,1,5,"mhaf","#mhaf","seen","mhaf.png","19/02/2024");
         ServiceReclamation sr=new ServiceReclamation();
         ServiceMessagerie sm=new ServiceMessagerie();
-        sm.modifier(new Messagerie(1,"text","chna7welek yal gafsi",new Date(),user,user2));
+        //sm.ajouter(new Messagerie("text","chna7welek yal gafsi",new Date(),user,user2));
         //int status, String type, String titre, String description, String image, Date date, Publication pub, Utilisateur user
         //sr.ajouter(new Reclamation(0,"spam","bleda mhafa","description","mhaf.png",new Date(),pub,user));
         //sr.modifier(new Reclamation(1,1,"spam","modification mhafa","modification","mhaf.png",new Date(),pub,user));
         //ServiceCategorie sc = new ServiceCategorie();
         //sc.ajouter(new Categorie("Web","all belogns to Web"));
         //sc.modifier(new Categorie(1,"new Mobile",sc.getOneByID(1).getDescription()));
-       // sr.supprimer(2);
+        sm.supprimer(2);
         //System.out.println(sr.getOneByID(1));
         //System.out.println(sc.getOneByID(2));*/
 

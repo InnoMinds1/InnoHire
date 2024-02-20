@@ -45,7 +45,14 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
 
     @Override
     public void supprimer(int id) {
-
+        String req = "DELETE FROM `messagerie` WHERE `id_message`=?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Messagerie deleted!");
+        } catch (SQLException e) {
+            System.err.println("Error deleting Messagerie: " + e.getMessage());
+        }
     }
 
     @Override
