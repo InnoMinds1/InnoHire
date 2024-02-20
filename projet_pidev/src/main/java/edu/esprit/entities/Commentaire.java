@@ -10,7 +10,13 @@ public class Commentaire {
  private String description_co ;
  private LocalDate date_co ;
 
- public Commentaire(int id_commentaire, Publication publication,Utilisateur utilisateur, String description_co, LocalDate date_co) {
+ public Commentaire(int id_commentaire, String description_co, LocalDate date_co) {
+  this.id_commentaire = id_commentaire;
+  this.description_co = description_co;
+  this.date_co = date_co;
+ }
+
+ public Commentaire(int id_commentaire, Publication publication, Utilisateur utilisateur, String description_co, LocalDate date_co) {
   this.id_commentaire = id_commentaire;
   this.publication = publication;
   this.utilisateur = utilisateur;
