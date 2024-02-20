@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="502.0" prefWidth="527.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterReclamationController">
+<AnchorPane prefHeight="492.0" prefWidth="527.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterReclamationController">
    <children>
       <TextField fx:id="TFType" layoutX="40.0" layoutY="113.0" prefHeight="25.0" prefWidth="174.0" />
       <TextArea fx:id="TADescription" layoutX="39.0" layoutY="232.0" prefHeight="200.0" prefWidth="450.0" />
@@ -27,5 +27,6 @@
             <Image url="@images/job-offer.png" />
          </image>
       </ImageView>
+      <Button layoutX="39.0" layoutY="450.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" text="Liste Reclamation" />
    </children>
 </AnchorPane>
