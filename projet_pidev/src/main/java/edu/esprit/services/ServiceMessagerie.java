@@ -28,7 +28,19 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
 
     @Override
     public void modifier(Messagerie messagerie) {
-
+        String req = "UPDATE `messagerie` SET `date`=?, `type`=?, `contenu`=?, `sender_id`=?, `reciver_id`=? WHERE `id_message`=?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setTimestamp(1, new java.sql.Timestamp(messagerie.getDate().getTime()));
+            ps.setString(2, messagerie.getType());
+            ps.setString(3, messagerie.getContenu());
+            ps.setInt(4, messagerie.getSender_id().getId_utilisateur());
+            ps.setInt(5, messagerie.getReciver_id().getId_utilisateur());
+            ps.setInt(6, messagerie.getId_message());
+            ps.executeUpdate();
+            System.out.println("Messagerie updated!");
+        } catch (SQLException e) {
+            System.err.println("Error updating Messagerie: " + e.getMessage());
+        }
     }
 
     @Override

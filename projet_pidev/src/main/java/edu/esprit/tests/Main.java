@@ -21,7 +21,7 @@ public class Main {
         Publication pub=new Publication(1,1,5,"mhaf","#mhaf","seen","mhaf.png","19/02/2024");
         ServiceReclamation sr=new ServiceReclamation();
         ServiceMessagerie sm=new ServiceMessagerie();
-        sm.ajouter(new Messagerie("text","www gafsi",new Date(),user,user2));
+        sm.modifier(new Messagerie(1,"text","chna7welek yal gafsi",new Date(),user,user2));
         //int status, String type, String titre, String description, String image, Date date, Publication pub, Utilisateur user
         //sr.ajouter(new Reclamation(0,"spam","bleda mhafa","description","mhaf.png",new Date(),pub,user));
         //sr.modifier(new Reclamation(1,1,"spam","modification mhafa","modification","mhaf.png",new Date(),pub,user));
