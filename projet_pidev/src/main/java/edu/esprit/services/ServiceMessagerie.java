@@ -87,6 +87,29 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
 
     @Override
     public Messagerie getOneByID(int id) {
+        String req = "SELECT * FROM `messagerie` WHERE `id_message` = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Messagerie mess = new Messagerie();
+                    mess.setId_message(rs.getInt("id_message"));
+                    mess.setType(rs.getString("type"));
+                    mess.setContenu(rs.getString("contenu"));
+                    mess.setDate(rs.getTimestamp("date"));
+
+                    // Utilisez ServiceUtilisateur pour obtenir l'Utilisateur par ID
+                    Utilisateur sender = new ServiceUtilisateur().getOneByID(rs.getInt("sender_id"));
+                    Utilisateur receiver = new ServiceUtilisateur().getOneByID(rs.getInt("reciver_id"));
+                    mess.setSender_id(sender);
+                    mess.setReciver_id(receiver);
+
+                    return mess;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving Messagerie: " + e.getMessage());
+        }
         return null;
     }
 }
