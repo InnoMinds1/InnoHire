@@ -13,9 +13,10 @@ public class ServiceReclamation implements Iservice<Reclamation>{
     private Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Reclamation rec) {
+    public void ajouter(Reclamation rec) throws SQLException {
+        //try (PreparedStatement ps = cnx.prepareStatement(req)) {
         String req = "INSERT INTO `reclamation`(`type`, `titre`, `description`, `date`, `status`, `image`, `id_publication`, `id_utilisateur`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+        PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, rec.getType());
             ps.setString(2, rec.getTitre());
             ps.setString(3, rec.getDescription());
@@ -26,9 +27,9 @@ public class ServiceReclamation implements Iservice<Reclamation>{
             ps.setInt(8, rec.getUser().getId_utilisateur());
             ps.executeUpdate();
             System.out.println("Reclamation added!");
-        } catch (SQLException e) {
+       /* } catch (SQLException e) {
             System.err.println("Error adding Reclamation: " + e.getMessage());
-        }
+        }*/
     }
 
     @Override
