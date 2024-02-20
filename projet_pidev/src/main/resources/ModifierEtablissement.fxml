@@ -14,7 +14,7 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="NomSTF" layoutX="283.0" layoutY="140.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom Service" styleClass="text-field">
+      <TextField fx:id="NomETF" layoutX="283.0" layoutY="140.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom" styleClass="text-field">
          <stylesheets>
             <URL value="@service2.css" />
             <URL value="@service2.css" />
@@ -23,40 +23,35 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="TitreSTF" layoutX="283.0" layoutY="193.0" prefHeight="46.0" prefWidth="250.0" promptText="Titre Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+      <TextField fx:id="LieuETF" layoutX="283.0" layoutY="193.0" prefHeight="46.0" prefWidth="250.0" promptText="Lieu" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="PrixSTF" layoutX="283.0" layoutY="250.0" prefHeight="46.0" prefWidth="250.0" promptText="Prix Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+      <TextField fx:id="CodeETF" layoutX="283.0" layoutY="250.0" prefHeight="46.0" prefWidth="250.0" promptText="code" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="DomaineSTF" layoutX="283.0" layoutY="305.0" prefHeight="46.0" prefWidth="250.0" promptText="Domaine Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+      <TextField fx:id="TypeETF" layoutX="283.0" layoutY="305.0" prefHeight="46.0" prefWidth="250.0" promptText="type" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="TempSTF" layoutX="283.0" layoutY="361.0" prefHeight="46.0" prefWidth="250.0" promptText="Temps Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+      <TextField fx:id="Id_utilisateurETF" layoutX="283.0" layoutY="361.0" prefHeight="46.0" prefWidth="250.0" promptText="user" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="309.0" layoutY="422.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="Update" textFill="WHITE">
+      <Button layoutX="309.0" layoutY="422.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="412.0" layoutY="422.0" mnemonicParsing="false" onAction="#afficherService" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="Afficher" textFill="WHITE">
+      <Button layoutX="412.0" layoutY="422.0" mnemonicParsing="false" onAction="#AfficherEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Afficher" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="27.0" layoutY="16.0" prefHeight="27.0" prefWidth="181.0" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="STUDENTORS" textFill="#459bfd">
-         <font>
-            <Font name="Arial" size="24.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
