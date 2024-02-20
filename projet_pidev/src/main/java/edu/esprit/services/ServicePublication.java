@@ -4,6 +4,7 @@ import edu.esprit.entities.Publication;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -79,15 +80,16 @@ public class ServicePublication implements IService<Publication> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                int id_publication =rs.getInt("id_publication");
+                Publication publication =new Publication();
+                int id_publication=rs.getInt("id_publication");
                 String description = rs.getString("description");
                 String hashtag = rs.getString("hashtag");
                 String visibilite = rs.getString("visibilite");
                 String image = rs.getString("image");
                 LocalDate date = rs.getDate("date").toLocalDate();
                 int nb_report = rs.getInt("nb_report");
-                Publication p = new Publication(id_publication,description,hashtag,visibilite,image,date,nb_report);
-                publications.add(p);
+                Publication p= new Publication(id_publication,description,hashtag,visibilite,image,date,nb_report);
+                publications.add(publication);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
