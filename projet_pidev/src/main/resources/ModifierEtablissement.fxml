@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="504.0" prefWidth="816.0" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ServiceC.UpdateService">
+   <children>
+      <Label layoutX="290.0" layoutY="62.0" text="Modifer Services" textFill="#000000a9">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <TextField fx:id="NomSTF" layoutX="283.0" layoutY="140.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom Service" styleClass="text-field">
+         <stylesheets>
+            <URL value="@../../../../../GestionService/src/main/resources/service.css" />
+            <URL value="@../../../../../GestionService/src/main/resources/service.css" />
+         </stylesheets>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TitreSTF" layoutX="283.0" layoutY="193.0" prefHeight="46.0" prefWidth="250.0" promptText="Titre Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="PrixSTF" layoutX="283.0" layoutY="250.0" prefHeight="46.0" prefWidth="250.0" promptText="Prix Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="DomaineSTF" layoutX="283.0" layoutY="305.0" prefHeight="46.0" prefWidth="250.0" promptText="Domaine Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TempSTF" layoutX="283.0" layoutY="361.0" prefHeight="46.0" prefWidth="250.0" promptText="Temps Service" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button layoutX="309.0" layoutY="422.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="Update" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="412.0" layoutY="422.0" mnemonicParsing="false" onAction="#afficherService" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="Afficher" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="27.0" layoutY="16.0" prefHeight="27.0" prefWidth="181.0" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="STUDENTORS" textFill="#459bfd">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
