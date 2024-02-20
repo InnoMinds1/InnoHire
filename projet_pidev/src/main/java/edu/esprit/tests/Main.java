@@ -27,7 +27,13 @@ public class Main {
 
         //----------------ajouter-------------------------
 
-        se.ajouter(new Etablissement("isie","Ghazela",123,"Faculte",null));
+        //
+        //
+        //
+        //
+        //
+        //
+        //  se.ajouter(new Etablissement("isie","Ghazela",123,"Faculte",null));
 
         /*----------------modifier-------------------------*/
 

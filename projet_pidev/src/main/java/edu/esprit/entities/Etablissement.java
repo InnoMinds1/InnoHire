@@ -102,6 +102,6 @@ public class Etablissement {
                 ", code_etablissement=" + code_etablissement +
                 ", type_etablissement='" + type_etablissement + '\'' +
                 ", id_utilisateur=" + id_utilisateur +
-                '}';
+                "}\n";
     }
 }
