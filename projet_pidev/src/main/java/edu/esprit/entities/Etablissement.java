@@ -1,6 +1,8 @@
 package edu.esprit.entities;
 
+import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Set;
 
 public class Etablissement {
     private int id_etablissement;
@@ -96,12 +98,15 @@ public class Etablissement {
     @Override
     public String toString() {
         return "Etablissement{" +
-                "id_etablissement=" + id_etablissement +
+                "id_etablissement='" + id_etablissement +
                 ", nom='" + nom + '\'' +
                 ", lieu='" + lieu + '\'' +
-                ", code_etablissement=" + code_etablissement +
+                ", code_etablissement=" + code_etablissement +  '\''+
                 ", type_etablissement='" + type_etablissement + '\'' +
                 ", id_utilisateur=" + id_utilisateur +
-                "}\n";
+                '}'+'\n';
     }
+
+
+
 }
