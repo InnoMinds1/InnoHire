@@ -4,6 +4,7 @@ import edu.esprit.entities.Admin;
 import edu.esprit.entities.Candidat;
 import edu.esprit.entities.Representant;
 import edu.esprit.entities.Utilisateur;
+import edu.esprit.utils.DataSource;
 
 
 import java.security.MessageDigest;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ServiceUtilisateur implements IService<Utilisateur> {
-    Connection cnx = DataSource.getInstance().getCnx();
+    static Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
     public void ajouter(Utilisateur utilisateur) {
@@ -197,8 +198,9 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     }
 
 
-    @Override
-    public Utilisateur getOneByID(int id) {
+
+    public  Utilisateur getOneByID(int id) {
+
         String req = "SELECT * FROM utilisateur WHERE id_utilisateur = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -266,4 +268,29 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             return null;
         }
     }
+    public Utilisateur getByCin(int cin) {
+        String req = "SELECT * FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Utilisateur user = new Utilisateur();
+                user.setId_utilisateur(rs.getInt("id_utilisateur"));
+                user.setCin(rs.getInt("cin"));
+                user.setNom(rs.getString("nom"));
+                user.setPrenom(rs.getString("prenom"));
+                user.setAdresse(rs.getString("adresse"));
+                user.setMdp(rs.getString("mdp"));
+                // Set other properties as needed
+                return user;
+            } else {
+                System.out.println("Aucun utilisateur avec ce CIN : " + cin);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null; // Retourner null si aucun utilisateur n'est trouvé
+    }
+
 }

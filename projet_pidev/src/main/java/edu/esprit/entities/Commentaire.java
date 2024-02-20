@@ -16,6 +16,7 @@ public class Commentaire {
   this.date_co = date_co;
  }
 
+
  public Commentaire(int id_commentaire, Publication publication, Utilisateur utilisateur, String description_co, LocalDate date_co) {
   this.id_commentaire = id_commentaire;
   this.publication = publication;
@@ -91,8 +92,8 @@ public class Commentaire {
  public String
  toString() {
   return "commentaire{" +
-          "id_publication=" + publication +
-          ", id_utilisateur=" + utilisateur +
+          "Code_publication=" + publication.getCode_pub() +
+          ",Cin_utilisateur=" + utilisateur.getCin() +
           ", description_co='" + description_co + '\'' +
           ", date_co=" + date_co +
           '}';

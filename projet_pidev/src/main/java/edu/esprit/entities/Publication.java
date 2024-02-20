@@ -5,7 +5,9 @@ import java.util.Objects;
 
 public class Publication {
     private int id_publication ;
+    private String code_pub ;
     private  Utilisateur utilisateur ;
+    private int id_utilisateur ;
     private String description ;
     private String hashtag ;
     private String visibilite ;
@@ -17,8 +19,21 @@ public class Publication {
     public Publication() {
     }
 
-    public Publication(int id_publication, Utilisateur utilisateur, String description, String hashtag, String visibilite, String image, LocalDate date, int nb_report) {
+    public Publication(int id_publication,String code_pub,Utilisateur utilisateur , String description, String hashtag, String visibilite, String image, LocalDate date, int nb_report) {
         this.id_publication = id_publication;
+        this.code_pub=code_pub;
+        this.utilisateur=utilisateur;
+        this.description = description;
+        this.hashtag = hashtag;
+        this.visibilite = visibilite;
+        this.image = image;
+        this.date = date;
+        this.nb_report = nb_report;
+    }
+
+
+    public Publication(String code_pub, Utilisateur utilisateur,String description, String hashtag, String visibilite, String image, LocalDate date, int nb_report) {
+        this.code_pub =code_pub;
         this.utilisateur = utilisateur;
         this.description = description;
         this.hashtag = hashtag;
@@ -28,25 +43,19 @@ public class Publication {
         this.nb_report = nb_report;
     }
 
-    public Publication(int id_publication, String description, String hashtag, String visibilite, String image, LocalDate date, int nb_report) {
-        this.id_publication = id_publication;
-        this.description = description;
-        this.hashtag = hashtag;
-        this.visibilite = visibilite;
-        this.image = image;
-        this.date = date;
-        this.nb_report = nb_report;
+
+    public int getId_utilisateur() {
+        return id_utilisateur;
     }
 
-    public Publication(Utilisateur utilisateur, String description, String hashtag, String visibilite, String image, LocalDate date, int nb_report) {
-        this.utilisateur = utilisateur;
-        this.description = description;
-        this.hashtag = hashtag;
-        this.visibilite = visibilite;
-        this.image = image;
-        this.date = date;
-        this.nb_report = nb_report;
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
     }
+
+
+
+
+
 
     public int getId_publication() {
         return id_publication;
@@ -55,6 +64,14 @@ public class Publication {
     public void setId_publication(int id_publication) {
         this.id_publication = id_publication;
     }
+    public String getCode_pub() {
+        return code_pub;
+    }
+
+    public void setCode_pub(String code_pub) {
+        this.code_pub = code_pub;
+    }
+
 
     public Utilisateur getUtilisateur() {
         return utilisateur;
@@ -63,6 +80,7 @@ public class Publication {
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
+
 
     public String getDescription() {
         return description;
@@ -128,7 +146,8 @@ public class Publication {
     @Override
     public String toString() {
         return "Publication{" +
-                "id_publication=" + id_publication +
+                "code_pub=" + code_pub + '\'' +
+                ",utilisateur="+utilisateur.getCin()+  '\'' +
                 ", description='" + description + '\'' +
                 ", hashtag='" + hashtag + '\'' +
                 ", visibilite='" + visibilite + '\'' +
