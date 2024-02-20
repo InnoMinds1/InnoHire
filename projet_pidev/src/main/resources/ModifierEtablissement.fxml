@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="504.0" prefWidth="816.0" styleClass="text-field" stylesheets="@../../../../../GestionService/src/main/resources/service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ServiceC.UpdateService">
+<AnchorPane prefHeight="504.0" prefWidth="816.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierEtablissement">
    <children>
-      <Label layoutX="290.0" layoutY="62.0" text="Modifer Services" textFill="#000000a9">
+      <Label layoutX="290.0" layoutY="62.0" text="Modifer Etablissements" textFill="#000000a9">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
       <TextField fx:id="NomSTF" layoutX="283.0" layoutY="140.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom Service" styleClass="text-field">
          <stylesheets>
-            <URL value="@../../../../../GestionService/src/main/resources/service.css" />
-            <URL value="@../../../../../GestionService/src/main/resources/service.css" />
+            <URL value="@service2.css" />
+            <URL value="@service2.css" />
          </stylesheets>
          <font>
             <Font size="16.0" />
