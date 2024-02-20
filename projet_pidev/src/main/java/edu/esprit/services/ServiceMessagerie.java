@@ -1,11 +1,14 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Messagerie;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Set;
 
 public class ServiceMessagerie implements Iservice<Messagerie> {
@@ -57,7 +60,29 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
 
     @Override
     public Set<Messagerie> getAll() {
-        return null;
+        Set<Messagerie> messages = new HashSet<>();
+        String req = "SELECT * FROM `messagerie`";
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Messagerie mess = new Messagerie();
+                mess.setId_message(rs.getInt("id_message"));
+                mess.setType(rs.getString("type"));
+                mess.setContenu(rs.getString("contenu"));
+                mess.setDate(rs.getTimestamp("date"));
+
+                // Utilisez ServiceUtilisateur pour obtenir l'Utilisateur par ID
+                Utilisateur sender = new ServiceUtilisateur().getOneByID(rs.getInt("sender_id"));
+                Utilisateur receiver = new ServiceUtilisateur().getOneByID(rs.getInt("reciver_id"));
+                mess.setSender_id(sender);
+                mess.setReciver_id(receiver);
+
+                messages.add(mess);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Messagerie: " + e.getMessage());
+        }
+        return messages;
     }
 
     @Override
