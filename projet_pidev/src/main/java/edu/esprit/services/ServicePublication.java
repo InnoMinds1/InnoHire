@@ -36,18 +36,19 @@ public class ServicePublication implements IService<Publication> {
 
     @Override
     public void modifier(Publication publication) throws SQLException {
+        int id = publication.getId_publication();
         String req = "UPDATE publication SET code_pub =?, id_utilisateur =?, description = ?, hashtag = ?, visibilite = ?, image = ?, date = ?, nb_report = ?  WHERE id_publication = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, publication.getCode_pub());
-            ps.setInt(2, publication.getUtilisateur().getCin());
+            ps.setInt(2, publication.getUtilisateur().getId_utilisateur());
             ps.setString(3, publication.getDescription());
             ps.setString(4, publication.getHashtag());
             ps.setString(5, publication.getVisibilite());
             ps.setString(6, publication.getImage());
             ps.setDate(7, Date.valueOf(publication.getDate()));
             ps.setInt(8, publication.getNb_report());
-            ps.setInt(9, publication.getId_publication());
+            ps.setInt(9, id);
 
             ps.executeUpdate();
             System.out.println("publication modifié!");

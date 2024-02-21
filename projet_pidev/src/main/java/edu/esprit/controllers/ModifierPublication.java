@@ -3,6 +3,7 @@ package edu.esprit.controllers;
 import edu.esprit.entities.Publication;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePublication;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,8 +38,6 @@ public class ModifierPublication {
     @FXML
     private TextField TFhashtag;
 
-    @FXML
-    private TextField TFid_publication;
 
     @FXML
     private TextField TFimage;
@@ -73,8 +72,8 @@ public class ModifierPublication {
 
     public void initData(Publication publication) {
         if (publication != null) {
-            TFid_publication.setText(String.valueOf(publication.getId_publication()));
-            TFcode_pub.setText(String.valueOf(publication.getCode_pub()));
+            setId(publication.getId_publication());
+            TFcode_pub.setText(publication.getCode_pub());
             TFcin_utilisateur.setText(String.valueOf(publication.getUtilisateur().getCin()));
             TFdate.setValue(publication.getDate()); // Assuming publication.getDate() returns LocalDate
             TFdescription.setText(publication.getDescription());
@@ -87,26 +86,32 @@ public class ModifierPublication {
 
     @FXML
     void ok(ActionEvent event) throws SQLException {
-        int codePub = Integer.parseInt(TFcode_pub.getText());
-        int idUtilisateur = Integer.parseInt(TFcin_utilisateur.getText());
-        int id_publication = Integer.parseInt(TFid_publication.getText());
+
+        int cinUtilisateur = Integer.parseInt(TFcin_utilisateur.getText());
+
 
         if ( controlSaisie(TFdescription) && controlSaisie(TFhashtag) && controlSaisie(TFimage) && controlSaisie(TFnb_report) && controlSaisie(TFvisibilite)) {
             Publication newPublication = new Publication();
-             Utilisateur Utilisateur= new Utilisateur();
+
             // Récupération de l'ID de la publication à modifier
             //int idPublication = getId(); // Assurez-vous de définir cette méthode
 
             // Configuration des nouvelles valeurs
-            newPublication.setId_publication(Integer.parseInt(TFid_publication.getText()));
-            newPublication.setCode_pub(String.valueOf(codePub));
-            newPublication.setId_utilisateur(idUtilisateur);
+            newPublication.setId_publication(getId());
+            newPublication.setCode_pub(TFcode_pub.getText());
+
             newPublication.setDate(TFdate.getValue()); // Assurez-vous que TFdate est un DatePicker
             newPublication.setDescription(TFdescription.getText());
             newPublication.setHashtag(TFhashtag.getText());
             newPublication.setImage(TFimage.getText());
             newPublication.setNb_report(Integer.parseInt(TFnb_report.getText()));
             newPublication.setVisibilite(TFvisibilite.getText());
+
+            ServiceUtilisateur se=new ServiceUtilisateur();
+            Utilisateur user=se.getByCin(cinUtilisateur);
+
+
+            newPublication.setUtilisateur(user);
 
             // Appel de la méthode pour effectuer la modification dans la base de données
             servicePublication.modifier(newPublication);
@@ -119,7 +124,7 @@ public class ModifierPublication {
 
     public void AfficherPublication(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPublication.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) TFcode_pub.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
