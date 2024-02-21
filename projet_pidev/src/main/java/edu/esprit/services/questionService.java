@@ -37,20 +37,23 @@ public class questionService implements IService<Question> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Question question) throws SQLException {
 
-        try {
+
+    public void ajouter(Question question) throws SQLException {
+        try{
             String query = "INSERT INTO question (question, choix, id_quiz) VALUES (?, ?, ?)";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setString(1, question.getQuestion());
                 preparedStatement.setString(2, question.getChoix());
-                preparedStatement.setInt(3, question.getId_quiz());
+                preparedStatement.setInt(3, question.getQuiz().getId_quiz());
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public void modifier(Question question) {
@@ -60,7 +63,7 @@ public class questionService implements IService<Question> {
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setString(1, question.getQuestion());
                 preparedStatement.setString(2, question.getChoix());
-                preparedStatement.setInt(3, question.getId_quiz());
+                preparedStatement.setInt(3, question.getQuiz().getId_quiz());
                 preparedStatement.setInt(4, question.getId_question());
                 preparedStatement.executeUpdate();
             }
@@ -96,7 +99,7 @@ public class questionService implements IService<Question> {
                         question.setId_question(resultSet.getInt("id_question"));
                         question.setQuestion(resultSet.getString("question"));
                         question.setChoix(resultSet.getString("choix"));
-                        question.setId_quiz(resultSet.getInt("id_quiz"));
+                        question.getQuiz().setId_quiz(resultSet.getInt("id_quiz"));
                         questionSet.add(question);
                     }
                 }
@@ -120,7 +123,7 @@ public class questionService implements IService<Question> {
                         question.setId_question(resultSet.getInt("id_question"));
                         question.setQuestion(resultSet.getString("question"));
                         question.setChoix(resultSet.getString("choix"));
-                        question.setId_quiz(resultSet.getInt("id_quiz"));
+                        question.getQuiz().setId_quiz(resultSet.getInt("id_quiz"));
                         return question;
                     }
                 }

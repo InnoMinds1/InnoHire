@@ -116,18 +116,18 @@ public class quizService implements IService<Quiz> {
         }
         return null;
     }
-    public List<Integer> getQuizIds() throws SQLException {
-        List<Integer> quizIds = new ArrayList<>();
+    public List<Integer> getQuizcodes() throws SQLException {
+        List<Integer> quizcodes = new ArrayList<>();
         Connection cnx = DataSource.getInstance().getCnx();
 
         try {
-            String sql = "SELECT id_quiz FROM quiz";
+            String sql = "SELECT code_quiz FROM quiz";
 
             try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
-                        int idQuiz = resultSet.getInt("id_quiz");
-                        quizIds.add(idQuiz);
+                        int codeQuiz = resultSet.getInt("code_quiz");
+                        quizcodes.add(codeQuiz);
                     }
                 }
             }
@@ -135,6 +135,6 @@ public class quizService implements IService<Quiz> {
             throw new RuntimeException(e);
         }
 
-        return quizIds;
+        return quizcodes;
     }
 }
