@@ -10,13 +10,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import edu.esprit.entities.Etablissement;
+
 
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class ModifierEtablissement {
+
+
+    private int id ;
 
     @FXML
     private TextField CodeETF;
@@ -32,12 +35,13 @@ public class ModifierEtablissement {
 
     @FXML
     private TextField TypeETF;
-    private Etablissement etablissement;
-    private final ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
 
-    public void setEtablissement(Etablissement etablissement) {
-        this.etablissement = etablissement;
-        initData(etablissement);
+    private final ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public static void showAlert(Alert.AlertType type, String title, String content) {
@@ -57,6 +61,7 @@ public class ModifierEtablissement {
 
     public void initData(Etablissement etablissement) {
         if (etablissement != null) {
+            setId(etablissement.getId_etablissement());
             CodeETF.setText(String.valueOf(etablissement.getCode_etablissement()));
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
@@ -71,6 +76,8 @@ public class ModifierEtablissement {
         int Id_utilisateur = Integer.parseInt(Id_utilisateurETF.getText());
         if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF)&& controlSaisie(Id_utilisateurETF)) {
             Etablissement newEtablissement = new Etablissement();
+
+            newEtablissement.setId_etablissement(getId());
             newEtablissement.setNom(NomETF.getText());
             newEtablissement.setLieu(LieuETF.getText());
             newEtablissement.setCode_etablissement(Code);
@@ -100,4 +107,6 @@ public class ModifierEtablissement {
             e.printStackTrace();
         }
     }
+
+
 }
