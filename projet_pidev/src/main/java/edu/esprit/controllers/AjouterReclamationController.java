@@ -38,7 +38,7 @@ public class AjouterReclamationController {
         try {
             LocalDate localDate = datePicker.getValue();
             Timestamp timestamp = Timestamp.valueOf(localDate.atStartOfDay());
-            sr.ajouter(new Reclamation(0, TFType.getText(), TFTitre.getText(), TADescription.getText(), "fx.png", timestamp, pub, user));
+            sr.ajouter(new Reclamation(0, TFType.getText(), TFTitre.getText(), TADescription.getText(), timestamp, pub, user));
             Alert alert =new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setContentText("Your reclamation send with succes");

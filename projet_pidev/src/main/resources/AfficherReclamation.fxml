@@ -5,13 +5,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="332.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherReclamation">
+<AnchorPane prefHeight="332.0" prefWidth="1601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherReclamation">
    <children>
       <Label layoutX="266.0" layoutY="22.0" text="La liste des Reclamations" />
-      <ScrollPane layoutX="136.0" layoutY="83.0" prefHeight="200.0" prefWidth="434.0">
+      <ScrollPane layoutX="136.0" layoutY="83.0" prefHeight="200.0" prefWidth="1445.0">
          <content>
-            <VBox prefHeight="200.0" prefWidth="422.0">
+            <VBox prefHeight="200.0" prefWidth="1454.0">
                <children>
                   <Label fx:id="LabListe" text="Label" />
                </children>

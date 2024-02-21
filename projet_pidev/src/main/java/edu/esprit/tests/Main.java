@@ -23,7 +23,7 @@ public class Main {
         ServiceMessagerie sm=new ServiceMessagerie();
         //sm.ajouter(new Messagerie("text","chna7welek yal gafsi",new Date(),user,user2));
         //int status, String type, String titre, String description, String image, Date date, Publication pub, Utilisateur user
-        //sr.ajouter(new Reclamation(0,"spam","bleda mhafa","description","mhaf.png",new Date(),pub,user));
+        //sr.ajouter(new Reclamation(0,"son image","son image","son image",new Date(),pub,user));
         //sr.modifier(new Reclamation(1,1,"spam","modification mhafa","modification","mhaf.png",new Date(),pub,user));
         //ServiceCategorie sc = new ServiceCategorie();
         //sc.ajouter(new Categorie("Web","all belogns to Web"));
