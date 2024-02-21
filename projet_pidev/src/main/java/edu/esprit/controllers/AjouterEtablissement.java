@@ -45,7 +45,7 @@ public class AjouterEtablissement {
         String Id_utilisateur = Id_utilisateurETF.getText();
 
         // Vérifier si les champs requis sont vides
-        if (nom.isEmpty() || Lieu.isEmpty() || prixStr.isEmpty() || tempService.isEmpty() || domaineService.isEmpty()) {
+        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty() || Id_utilisateur.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -55,46 +55,58 @@ public class AjouterEtablissement {
         }
 
         // Vérifier si le prix est un nombre valide
-        float prix;
+        int codeE;
+        int id_utilisateurE;
+        codeE = Integer.parseInt(Code);
         try {
-            prix = Float.parseFloat(prixStr);
+            codeE = Integer.parseInt(Code);
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Le prix doit être un nombre valide !");
+            alert.setContentText("Le code doit être un nombre valide !");
+            alert.showAndWait();
+            return;
+        }
+        try {
+            id_utilisateurE = Integer.parseInt(Id_utilisateur);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("L'id doit être un nombre valide !");
             alert.showAndWait();
             return;
         }
 
         // Créer un nouvel objet Service avec les valeurs saisies
-        Service service = new Service();
-        service.setNom_service(nomService);
-        service.setTitre_service(titreService);
-        service.setPrix(prix);
-        service.setTmpService(tempService);
-        service.setDomaine(domaineService);
+        Etablissement etablissement = new Etablissement();
+        etablissement.setNom(Nom);
+        etablissement.setCode_etablissement(codeE);
+        etablissement.setLieu(Lieu);
+        etablissement.setType_etablissement(Type);
+        etablissement.setId_utilisateur(id_utilisateurE);
 
         // Ajouter le service à la base de données
         try {
-            serviceService.ajouter(service);
+            serviceEtablissement.ajouter(etablissement);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Succès");
             alert.setHeaderText(null);
-            alert.setContentText("Service ajouté avec succès !");
+            alert.setContentText("Etablissement ajouté avec succès !");
             alert.showAndWait();
 
             // Effacer les champs du formulaire après l'ajout réussi
-            NomSTF.clear();
-            TitreSTF.clear();
-            PrixSTF.clear();
-            TempSTF.clear();
-            DomaineSTF.clear();
+            NomETF.clear();
+            LieuETF.clear();
+            CodeETF.clear();
+            TypeETF.clear();
+            Id_utilisateurETF.clear();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Erreur lors de l'ajout du service : " + e.getMessage());
+            alert.setContentText("Erreur lors de l'ajout d'etablissement' : " + e.getMessage());
             alert.showAndWait();
         }
 
@@ -103,7 +115,7 @@ public class AjouterEtablissement {
     public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/AfficherEtablissement.fxml"));
-            TFnom.getScene().setRoot(root);
+            NomETF.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry");

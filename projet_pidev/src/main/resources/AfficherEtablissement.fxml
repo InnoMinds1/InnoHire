@@ -16,12 +16,12 @@
          </font>
       </Label>
       <ListView fx:id="listView" layoutX="11.0" layoutY="111.0" prefHeight="338.0" prefWidth="643.0" styleClass="text-field" />
-      <Button layoutX="155.0" layoutY="464.0" mnemonicParsing="false" onAction="#modifierEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="Modifier" textFill="WHITE">
+      <Button layoutX="155.0" layoutY="464.0" mnemonicParsing="false" onAction="#modifierEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="265.0" layoutY="464.0" mnemonicParsing="false" onAction="#supprimerEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="Supprimer" textFill="WHITE">
+      <Button layoutX="265.0" layoutY="464.0" mnemonicParsing="false" onAction="#supprimerEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
