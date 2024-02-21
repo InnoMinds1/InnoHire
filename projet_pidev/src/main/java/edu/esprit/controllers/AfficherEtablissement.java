@@ -81,15 +81,32 @@ public class AfficherEtablissement implements Initializable {
                 Parent root = loader.load();
                 ModifierEtablissement controller = loader.getController();
                 controller.initData(selectedEtablissement); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
-                Stage window = (Stage) listView.getScene().getWindow();
-                window.setScene(new Scene(root));
-                window.show();
+
+                // Obtenir la scène actuelle
+                Scene scene = listView.getScene();
+
+                // Changer le contenu de la scène
+                scene.setRoot(root);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
+
+
+    public void ajouterEtablissement(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissement.fxml"));
+            listView.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
+
 }
 

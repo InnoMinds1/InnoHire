@@ -114,19 +114,22 @@ public class AjouterEtablissement {
 
     }
 
-    public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
+
+
+      public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
             Parent root = loader.load();
 
-            Stage stage = new Stage();
+            Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Pour fermer la fenêtre actuelle si nécessaire
+            // Vous pouvez fermer la fenêtre actuelle si nécessaire
             // ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

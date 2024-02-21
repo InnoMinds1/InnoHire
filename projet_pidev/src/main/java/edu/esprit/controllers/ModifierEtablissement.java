@@ -11,10 +11,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
-
 import java.io.IOException;
 import java.sql.SQLException;
+
 
 public class ModifierEtablissement {
 
@@ -87,26 +86,42 @@ public class ModifierEtablissement {
             serviceEtablissement.modifier(newEtablissement);
 
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Service modifié avec succès");
-            Stage stage = (Stage) NomETF.getScene().getWindow();
-            stage.close();
+            AfficherEtablissement(event);
+
         }
     }
 
-    public void AfficherEtablissement(ActionEvent actionEvent) {
+   /* public void AfficherEtablissement(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
             Parent root = loader.load();
 
-            Stage stage = new Stage();
+            Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Pour fermer la fenêtre actuelle si nécessaire
+            // Vous pouvez fermer la fenêtre actuelle si nécessaire
             // ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
+
+      public void AfficherEtablissement(ActionEvent actionEvent) {
+          try {
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
+              Parent root = loader.load();
+
+              Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+              stage.setScene(new Scene(root));
+              stage.show();
+
+              // Vous pouvez fermer la fenêtre actuelle si nécessaire
+              // ((Node)(event.getSource())).getScene().getWindow().hide();
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
 
 
 }
