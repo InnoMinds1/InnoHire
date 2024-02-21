@@ -4,12 +4,14 @@ import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
+import javafx.scene.Parent;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ListCell;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -47,6 +49,25 @@ public class AfficherReclamation implements Initializable {
                         }
                     }
                 };
+            }
+        });
+
+        // Add event handler for item selection
+        listview.setOnMouseClicked(event -> {
+            Reclamation selectedReclamation = listview.getSelectionModel().getSelectedItem();
+            if (selectedReclamation != null) {
+                try {
+                    // Load ModifierReclamation page and pass the selected item's data
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReclamation.fxml"));
+                    Parent root = loader.load();
+                    ModifierReclamationController modifyReclamationController = loader.getController();
+                    modifyReclamationController.initData(selectedReclamation);
+
+                    // Set the root of the scene to the ModifyReclamation page
+                    listview.getScene().setRoot(root);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

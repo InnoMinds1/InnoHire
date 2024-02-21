@@ -1,12 +1,13 @@
 package edu.esprit.entities;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
 public class Reclamation {
     public int id_reclamation,status;
     public String type,titre,description;
-    public Date date;
+    public Timestamp date;
 
     Publication pub;
 
@@ -15,7 +16,7 @@ public class Reclamation {
     public Reclamation() {
     }
 
-    public Reclamation(int status, String type, String titre, String description,Date date) {
+    public Reclamation(int status, String type, String titre, String description,Timestamp  date) {
         this.status = status;
         this.type = type;
         this.titre = titre;
@@ -23,7 +24,7 @@ public class Reclamation {
         this.date = date;
     }
 
-    public Reclamation(int status, String type, String titre, String description, Date date, Publication pub, Utilisateur user) {
+    public Reclamation(int status, String type, String titre, String description, Timestamp  date, Publication pub, Utilisateur user) {
         this.status = status;
         this.type = type;
         this.titre = titre;
@@ -33,7 +34,7 @@ public class Reclamation {
         this.user = user;
     }
 
-    public Reclamation(int id_reclamation, int status, String type, String titre, String description, Date date, Publication pub, Utilisateur user) {
+    public Reclamation(int id_reclamation, int status, String type, String titre, String description, Timestamp  date, Publication pub, Utilisateur user) {
         this.id_reclamation = id_reclamation;
         this.status = status;
         this.type = type;
@@ -89,7 +90,7 @@ public class Reclamation {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp  date) {
         this.date = date;
     }
 
