@@ -61,33 +61,33 @@ public class ModifierEtablissement {
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
             TypeETF.setText(etablissement.getType_etablissement());
-            Id_utilisateurETF.setText(String.valueOf(etablissement.getId_utilisateur());
+            Id_utilisateurETF.setText(String.valueOf(etablissement.getId_utilisateur()));
         }
     }
 
     @FXML
     void ok(ActionEvent event) throws SQLException {
-        int Cin = Float.parseFloat(PrixSTF.getText());
-        int Cin = Float.parseFloat(PrixSTF.getText());
-        if (controlSaisie(NomSTF) && controlSaisie(TempSTF) && controlSaisie(TitreSTF)&& controlSaisie(PrixSTF)&& controlSaisie(DomaineSTF)) {
-            Service newService = new Service();
-            newService.setNom_service(NomSTF.getText());
-            newService.setTmpService(TempSTF.getText());
-            newService.setDomaine(DomaineSTF.getText());
-            newService.setTitre_service(TitreSTF.getText());
-            newService.setPrix(Prix);
+        int Code = Integer.parseInt(CodeETF.getText());
+        int Id_utilisateur = Integer.parseInt(Id_utilisateurETF.getText());
+        if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF)&& controlSaisie(Id_utilisateurETF)) {
+            Etablissement newEtablissement = new Etablissement();
+            newEtablissement.setNom(NomETF.getText());
+            newEtablissement.setLieu(LieuETF.getText());
+            newEtablissement.setCode_etablissement(Code);
+            newEtablissement.setType_etablissement(TypeETF.getText());
+            newEtablissement.setId_utilisateur(Id_utilisateur);
 
-            serviceService.modifier(newService);
+            serviceEtablissement.modifier(newEtablissement);
 
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Service modifié avec succès");
-            Stage stage = (Stage) NomSTF.getScene().getWindow();
+            Stage stage = (Stage) NomETF.getScene().getWindow();
             stage.close();
         }
     }
 
-    public void afficherService(ActionEvent actionEvent) {
+    public void AfficherEtablissement(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ServiceFX/Afficher.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEtablissement.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();

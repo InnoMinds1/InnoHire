@@ -12,6 +12,10 @@ public class Etablissement {
     private String type_etablissement;
     private Integer id_utilisateur;
 
+    public Etablissement() {
+
+    }
+
     public Etablissement(int id_etablissement, String nom, String lieu, int code_etablissement, String type_etablissement, Integer id_utilisateur) {
         this.id_etablissement = id_etablissement;
         this.nom = nom;

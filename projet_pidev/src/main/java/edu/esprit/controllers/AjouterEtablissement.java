@@ -16,35 +16,85 @@ import java.sql.SQLException;
 
 public class AjouterEtablissement {
     @FXML
-    private TextField TFnom;
-    @FXML
-    private TextField TFid_utilisateur;
+    private TextField CodeETF;
 
     @FXML
-    private TextField TFcode;
+    private TextField Id_utilisateurETF;
 
     @FXML
-    private TextField TFlieu;
+    private TextField LieuETF;
 
     @FXML
-    private TextField TFtype;
+    private TextField NomETF;
+
+    @FXML
+    private TextField TypeETF;
 
     private final ServiceEtablissement se = new ServiceEtablissement();
 
     @FXML
     void ajouterEtablissementAction(ActionEvent event) {
-        try {
-            int code = Integer.parseInt(TFcode.getText());
-            int id_utilisateur = Integer.parseInt(TFid_utilisateur.getText());
-            se.ajouter(new Etablissement(TFnom.getText(),TFlieu.getText(),code,TFtype.getText(),id_utilisateur));
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("GG");
-            alert.show();
-        } catch (SQLException e) {
+        // Créer une instance de ServiceService
+        ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
+
+        // Récupérer les valeurs des champs du formulaire
+        String Nom = NomETF.getText();
+        String Lieu = LieuETF.getText();
+        String Code = CodeETF.getText();
+        String Type = TypeETF.getText();
+        String Id_utilisateur = Id_utilisateurETF.getText();
+
+        // Vérifier si les champs requis sont vides
+        if (nom.isEmpty() || Lieu.isEmpty() || prixStr.isEmpty() || tempService.isEmpty() || domaineService.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText(e.getMessage());
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Tous les champs sont obligatoires !");
+            alert.showAndWait();
+            return;
+        }
+
+        // Vérifier si le prix est un nombre valide
+        float prix;
+        try {
+            prix = Float.parseFloat(prixStr);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Le prix doit être un nombre valide !");
+            alert.showAndWait();
+            return;
+        }
+
+        // Créer un nouvel objet Service avec les valeurs saisies
+        Service service = new Service();
+        service.setNom_service(nomService);
+        service.setTitre_service(titreService);
+        service.setPrix(prix);
+        service.setTmpService(tempService);
+        service.setDomaine(domaineService);
+
+        // Ajouter le service à la base de données
+        try {
+            serviceService.ajouter(service);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText(null);
+            alert.setContentText("Service ajouté avec succès !");
+            alert.showAndWait();
+
+            // Effacer les champs du formulaire après l'ajout réussi
+            NomSTF.clear();
+            TitreSTF.clear();
+            PrixSTF.clear();
+            TempSTF.clear();
+            DomaineSTF.clear();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur lors de l'ajout du service : " + e.getMessage());
             alert.showAndWait();
         }
 

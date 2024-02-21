@@ -2,8 +2,8 @@ package edu.esprit.controllers;
 
 import edu.esprit.services.ServiceEtablissement;
 import javafx.scene.control.Alert;
-import org.example.models.Service;
-import org.example.services.ServiceService;
+import edu.esprit.entities.Etablissement;
+import edu.esprit.services.ServiceEtablissement;
 
 import java.sql.SQLException;
 
@@ -11,9 +11,9 @@ public class SupprimerEtablissement {
 
     private ServiceEtablissement ServiceEtablissement = new ServiceEtablissement();
 
-    public void supprimerService(Service service) {
+    public void supprimerEtablissement(Etablissement etablissement) {
         try {
-            ServiceService.supprimer(service.getId_service());
+            ServiceEtablissement.supprimer(etablissement.getId_etablissement());
             // Afficher une alerte de confirmation après la suppression
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Confirmation de suppression");
