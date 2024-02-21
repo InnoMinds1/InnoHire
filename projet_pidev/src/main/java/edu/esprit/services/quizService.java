@@ -1,5 +1,6 @@
 package edu.esprit.services;
 
+import edu.esprit.entities.Question;
 import edu.esprit.entities.Quiz;
 import edu.esprit.utils.DataSource;
 
@@ -137,4 +138,51 @@ public class quizService implements IService<Quiz> {
 
         return quizcodes;
     }
+    private int getCodeQuizbyID(int idQuiz) throws SQLException {
+        Connection connection = DataSource.getInstance().getCnx();
+
+        try {
+            String sql = "SELECT code_quiz FROM quiz WHERE id_quiz = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, idQuiz);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getInt("code_quiz");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return -1;
+    }
+    public Quiz getOneByCode(int code) {
+        Connection connection = DataSource.getInstance().getCnx();
+        try {
+            String query = "SELECT * FROM quiz WHERE code_quiz = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setInt(1, code);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        Quiz quiz = new Quiz();
+                        quiz.setId_quiz(resultSet.getInt("id_quiz"));
+                        quiz.setCode_quiz(resultSet.getInt("code_quiz"));
+                        quiz.setNom_quiz(resultSet.getString("nom_quiz"));
+                        quiz.setDescription(resultSet.getString("description"));
+                        quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
+                        quiz.setId_etablissement(resultSet.getInt("id_etablissement"));
+                        return quiz;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }

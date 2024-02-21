@@ -1,5 +1,11 @@
 package edu.esprit.entities;
 
+import edu.esprit.utils.DataSource;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects ;
 public class Quiz {
     private int id_quiz ;
@@ -95,6 +101,27 @@ public class Quiz {
         if (o == null || getClass() != o.getClass()) return false;
         Quiz quiz = (Quiz) o;
         return id_quiz == quiz.id_quiz && code_quiz == quiz.code_quiz;
+    }
+    public int getCodeQuizbyID(int idQuiz) throws SQLException {
+        Connection connection = DataSource.getInstance().getCnx();
+
+        try {
+            String sql = "SELECT code_quiz FROM quiz WHERE id_quiz = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, idQuiz);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getInt("code_quiz");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return -1;
     }
 
     @Override

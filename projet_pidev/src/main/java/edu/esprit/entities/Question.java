@@ -61,10 +61,10 @@ public class Question {
     @Override
     public String toString() {
         return "Question{" +
-                "id_question=" + id_question +
-                ", question='" + question + '\'' +
+                "question='" + question + '\'' +
                 ", choix='" + choix + '\'' +
-                ", quiz=" + (quiz != null ? quiz.getId_quiz() : null) +
+
+                 ", quiz=" + (quiz != null ? quiz.getCode_quiz() : null) +
                 '}';
     }
 
