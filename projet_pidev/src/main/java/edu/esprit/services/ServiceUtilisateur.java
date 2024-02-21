@@ -89,6 +89,26 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
 
     }
+    public void modifier_par_cin(Utilisateur utilisateur) throws SQLException {
+        String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, utilisateur.getNom());
+            ps.setString(2, utilisateur.getPrenom());
+            ps.setString(3, utilisateur.getAdresse());
+            String mdp = hashPassword(utilisateur.getMdp());
+            ps.setString(4, mdp);
+            ps.setInt(5, utilisateur.getCin());
+
+
+            ps.executeUpdate();
+            System.out.println("utilisateur modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
     public void modifier_representant_parcin(Representant u) throws SQLException {
         String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ?,role=? WHERE cin = ?";
         try {

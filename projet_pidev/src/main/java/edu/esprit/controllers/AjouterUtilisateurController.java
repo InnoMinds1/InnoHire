@@ -8,8 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,7 +19,7 @@ import java.sql.SQLException;
 
 public class AjouterUtilisateurController {
 
-    @FXML
+   /* @FXML
     private TextField TFcin;
 
     @FXML
@@ -218,10 +220,188 @@ public class AjouterUtilisateurController {
 
 
     }
+*/
+   @FXML
+   private TextField TFadresse;
+
+    @FXML
+    private TextField TFcin;
+
+    @FXML
+    private TextField TFnom;
+
+    @FXML
+    private TextField TFprenom;
+
+    @FXML
+    private TextField tfmdp;
+
+    @FXML
+    private TextField tfrole;
+
+    @FXML
+    void ajouterUtilisateurAction(ActionEvent event) {
+        // Créer une instance de ServiceService
+        ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
+
+        // Récupérer les valeurs des champs du formulaire
+            int cin;
+            int role;
+        String Nom = TFnom.getText();
+        String prenom = TFprenom.getText();
+        String adresse = TFadresse.getText();
+        String mdp = tfmdp.getText();
+
+        // Vérifier si les champs requis sont vides
+        if (Nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || mdp.isEmpty() ) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Tous les champs sont obligatoires !");
+            alert.showAndWait();
+            return;
+        }
+
+
+        try {
+             cin = Integer.parseInt(TFcin.getText());
+             role = Integer.parseInt(tfrole.getText());
+
+
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Le cin et le role doivent etre être un nombre valide !");
+            alert.showAndWait();
+            return;
+        }
+
+
+
+        // Créer un nouvel objet Service avec les valeurs saisies
+        if (role==0)
+        {Admin u = new Admin();
+        u.setNom(Nom);
+        u.setCin(cin);
+        u.setMdp(mdp);
+        u.setAdresse(adresse);
+        u.setPrenom(prenom);
+            try {
+                serviceUtilisateur.ajouter(u);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Utilisateur ajouté avec succès !");
+                alert.showAndWait();
+
+                // Effacer les champs du formulaire après l'ajout réussi
+                TFcin.clear();
+                TFprenom.clear();
+                TFnom.clear();
+                TFadresse.clear();
+                tfmdp.clear();
+                tfrole.clear();
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Erreur lors de l'ajout d'Utilisateur' : " + e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        else if(role==1)
+        {Representant u = new Representant();
+            u.setNom(Nom);
+            u.setCin(cin);
+            u.setMdp(mdp);
+            u.setAdresse(adresse);
+            u.setPrenom(prenom);
+            try {
+                serviceUtilisateur.ajouter(u);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Utilisateur ajouté avec succès !");
+                alert.showAndWait();
+
+                // Effacer les champs du formulaire après l'ajout réussi
+                TFcin.clear();
+                TFprenom.clear();
+                TFnom.clear();
+                TFadresse.clear();
+                tfmdp.clear();
+                tfrole.clear();
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Erreur lors de l'ajout d'Utilisateur' : " + e.getMessage());
+                alert.showAndWait();
+            }
+
+
+        }
+        else {
+            {Candidat u = new Candidat();
+                u.setNom(Nom);
+                u.setCin(cin);
+                u.setMdp(mdp);
+                u.setAdresse(adresse);
+                u.setPrenom(prenom);
+                try {
+                    serviceUtilisateur.ajouter(u);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Succès");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Utilisateur ajouté avec succès !");
+                    alert.showAndWait();
+
+                    // Effacer les champs du formulaire après l'ajout réussi
+                    TFcin.clear();
+                    TFprenom.clear();
+                    TFnom.clear();
+                    TFadresse.clear();
+                    tfmdp.clear();
+                    tfrole.clear();
+                } catch (Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Erreur lors de l'ajout d'Utilisateur' : " + e.getMessage());
+                    alert.showAndWait();
+                }
+            }
+        }
+
+
+
+        // Ajouter le service à la base de données
+
+    }
+
+    @FXML
+    void navigatetoAfficherUtilisateurAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUtilisateur.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) TFnom.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Vous pouvez fermer la fenêtre actuelle si nécessaire
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    }
 
 
 
 
 
 
-}
