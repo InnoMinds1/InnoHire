@@ -63,7 +63,7 @@ public class ServiceReclamation implements Iservice<Reclamation>{
     }
 
     @Override
-    public Set<Reclamation> getAll() {
+    public Set<Reclamation> getAll() throws SQLException{
         Set<Reclamation> reclamations = new HashSet<>();
         String req = "SELECT * FROM `reclamation`";
         try (PreparedStatement ps = cnx.prepareStatement(req);
