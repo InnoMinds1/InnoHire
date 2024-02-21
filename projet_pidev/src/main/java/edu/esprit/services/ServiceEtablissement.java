@@ -1,6 +1,7 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
@@ -30,13 +31,8 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             ps.setString(2, etablissement.getLieu());
             ps.setInt(3, etablissement.getCode_etablissement());
             ps.setString(4, etablissement.getType_etablissement());
-            if (etablissement.isIdUtilisateurNull()) {
-                // Si id_utilisateur est null, définir la valeur dans la base de données à NULL
-                ps.setNull(5, java.sql.Types.INTEGER);
-            } else {
-                // Sinon, définir la valeur normalement
-                ps.setInt(5, etablissement.getId_utilisateur());
-            }
+            ps.setInt(5, etablissement.getUser().getId_utilisateur());
+
 
             ps.executeUpdate();
             System.out.println("Etabliessement added !");
@@ -57,7 +53,7 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 ps.setString(2, etablissement.getLieu());
                 ps.setInt(3, etablissement.getCode_etablissement());
                 ps.setString(4, etablissement.getType_etablissement());
-                ps.setInt(5, etablissement.getId_utilisateur());
+                ps.setInt(5, etablissement.getUser().getId_utilisateur());
                 ps.setInt(6, id);
 
                 ps.executeUpdate();
@@ -107,7 +103,11 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 int code_etablissement = rs.getInt("code_etablissement");
                 String type_etablissement = rs.getString("type_etablissement");
                 int id_utilisateur = rs.getInt("id_utilisateur");
-                Etablissement e = new Etablissement(id_etablissement,nom,lieu,code_etablissement,type_etablissement,id_utilisateur);
+
+                ServiceUtilisateur su = new ServiceUtilisateur();
+                Utilisateur user = su.getOneByID(id_utilisateur);
+
+                Etablissement e = new Etablissement(id_etablissement,nom,lieu,code_etablissement,type_etablissement,user);
                 etablissements.add(e);
             }
         } catch (SQLException e) {
@@ -131,7 +131,11 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 int code_etablissement = rs.getInt("code_etablissement");
                 String type_etablissement = rs.getString("type_etablissement");
                 int id_utilisateur = rs.getInt("id_utilisateur");
-                return new Etablissement(id_etablissement, nom, lieu,code_etablissement,type_etablissement,id_utilisateur);
+
+                ServiceUtilisateur su = new ServiceUtilisateur();
+                Utilisateur user = su.getOneByID(id_utilisateur);
+
+                return new Etablissement(id_etablissement, nom, lieu,code_etablissement,type_etablissement,user);
             } else {
                 System.out.print("Echec! Etablissement with ID " + id_etablissement + " est" + " " );
                 return null;

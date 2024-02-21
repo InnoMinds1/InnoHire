@@ -1,6 +1,7 @@
 package edu.esprit.tests;
 
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceWallet;
@@ -33,11 +34,14 @@ public class Main {
         //
         //
         //
-        //  se.ajouter(new Etablissement("isie","Ghazela",123,"Faculte",null));
+        Utilisateur user=new Utilisateur();
+        user.setId_utilisateur(19);
+
+          //se.ajouter(new Etablissement("isie","Ghazela",12345,"Faculte",user));
 
         /*----------------modifier-------------------------*/
 
-        Etablissement etablissementModifie = new Etablissement(1,"test","Ghazela",123,"Faculte",1);
+        Etablissement etablissementModifie = new Etablissement(11,"ff","Ghazela",12345,"Faculte",user);
          //se.modifier(etablissementModifie);
 
         /*-------------------Supprimer-------------------*/

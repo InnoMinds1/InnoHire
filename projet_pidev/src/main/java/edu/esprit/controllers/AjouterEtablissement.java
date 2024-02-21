@@ -2,8 +2,10 @@ package edu.esprit.controllers;
 
 
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceEtablissement;
 
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +23,7 @@ public class AjouterEtablissement {
     private TextField CodeETF;
 
     @FXML
-    private TextField Id_utilisateurETF;
+    private TextField cin_utilisateurETF;
 
     @FXML
     private TextField LieuETF;
@@ -44,10 +46,10 @@ public class AjouterEtablissement {
         String Lieu = LieuETF.getText();
         String Code = CodeETF.getText();
         String Type = TypeETF.getText();
-        String Id_utilisateur = Id_utilisateurETF.getText();
+        String cin_utilisateur = cin_utilisateurETF.getText();
 
         // Vérifier si les champs requis sont vides
-        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty() || Id_utilisateur.isEmpty()) {
+        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty() || cin_utilisateur.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -58,8 +60,9 @@ public class AjouterEtablissement {
 
         // Vérifier si le prix est un nombre valide
         int codeE;
-        int id_utilisateurE;
-        codeE = Integer.parseInt(Code);
+        int cin_utilisateurE;
+
+
         try {
             codeE = Integer.parseInt(Code);
         } catch (NumberFormatException e) {
@@ -71,12 +74,12 @@ public class AjouterEtablissement {
             return;
         }
         try {
-            id_utilisateurE = Integer.parseInt(Id_utilisateur);
+            cin_utilisateurE = Integer.parseInt(cin_utilisateur);
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("L'id doit être un nombre valide !");
+            alert.setContentText("CIN doit être un nombre valide !");
             alert.showAndWait();
             return;
         }
@@ -87,7 +90,10 @@ public class AjouterEtablissement {
         etablissement.setCode_etablissement(codeE);
         etablissement.setLieu(Lieu);
         etablissement.setType_etablissement(Type);
-        etablissement.setId_utilisateur(id_utilisateurE);
+
+        ServiceUtilisateur su=new ServiceUtilisateur();
+        Utilisateur user = su.getOneByCin(cin_utilisateurE);
+        etablissement.setUser(user);
 
         // Ajouter le service à la base de données
         try {
@@ -103,7 +109,7 @@ public class AjouterEtablissement {
             LieuETF.clear();
             CodeETF.clear();
             TypeETF.clear();
-            Id_utilisateurETF.clear();
+            cin_utilisateurETF.clear();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");

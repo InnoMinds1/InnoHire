@@ -405,4 +405,30 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         }
         return false; // Si une erreur se produit ou si aucun résultat n'est trouvé
     }
+
+    public Utilisateur getOneByCin(int cin) {
+        String req = "SELECT * FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                // Assuming Utilisateur has appropriate constructor
+                Utilisateur user = new Utilisateur();
+                user.setId_utilisateur(rs.getInt("id_utilisateur"));
+                user.setCin(rs.getInt("cin"));
+                user.setNom(rs.getString("nom"));
+                user.setPrenom(rs.getString("prenom"));
+                user.setAdresse(rs.getString("adresse"));
+                user.setMdp(rs.getString("mdp"));
+                // Set other properties as needed
+                return user;
+            } else {
+                System.out.println("pas de utilisateur avec ce cin " + cin);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null; // Return null if no user found
+    }
 }

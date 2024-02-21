@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a6f953e-625e-49ba-b711-99a3c03dcba0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Candidat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Representant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Utilisateur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Etablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Etablissement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceEtablissement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

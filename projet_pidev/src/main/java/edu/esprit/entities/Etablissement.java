@@ -3,7 +3,7 @@ package edu.esprit.entities;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Set;
-import 
+import edu.esprit.entities.Utilisateur;
 
 public class Etablissement {
     private int id_etablissement;
@@ -38,6 +38,8 @@ public class Etablissement {
     public Utilisateur getUser() {
         return user;
     }
+
+
 
     public void setUser(Utilisateur user) {
         this.user = user;
@@ -111,7 +113,7 @@ public class Etablissement {
                 ", lieu='" + lieu + '\'' +
                 ", code_etablissement=" + code_etablissement +  '\''+
                 ", type_etablissement='" + type_etablissement + '\'' +
-                ", id_utilisateur=" + user.getCin() +
+                ", Cin_utilisateur=" + user.getCin() +
                 '}'+'\n';
     }
 

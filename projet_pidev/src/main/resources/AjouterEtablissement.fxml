@@ -23,7 +23,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="Id_utilisateurETF" layoutX="261.0" layoutY="325.0" prefHeight="46.0" prefWidth="250.0" promptText="user" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="cin_utilisateurETF" layoutX="261.0" layoutY="325.0" prefHeight="46.0" prefWidth="250.0" promptText="user" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>

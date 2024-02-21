@@ -1,7 +1,9 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceEtablissement;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +26,7 @@ public class ModifierEtablissement {
     private TextField CodeETF;
 
     @FXML
-    private TextField Id_utilisateurETF;
+    private TextField cin_utilisateurETF;
 
     @FXML
     private TextField LieuETF;
@@ -65,15 +67,15 @@ public class ModifierEtablissement {
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
             TypeETF.setText(etablissement.getType_etablissement());
-            Id_utilisateurETF.setText(String.valueOf(etablissement.getId_utilisateur()));
+           cin_utilisateurETF.setText(String.valueOf(etablissement.getUser().getCin()));
         }
     }
 
     @FXML
     void ok(ActionEvent event) throws SQLException {
         int Code = Integer.parseInt(CodeETF.getText());
-        int Id_utilisateur = Integer.parseInt(Id_utilisateurETF.getText());
-        if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF)&& controlSaisie(Id_utilisateurETF)) {
+        int cin_utilisateur = Integer.parseInt(cin_utilisateurETF.getText());
+        if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF)&& controlSaisie(cin_utilisateurETF)) {
             Etablissement newEtablissement = new Etablissement();
 
             newEtablissement.setId_etablissement(getId());
@@ -81,7 +83,13 @@ public class ModifierEtablissement {
             newEtablissement.setLieu(LieuETF.getText());
             newEtablissement.setCode_etablissement(Code);
             newEtablissement.setType_etablissement(TypeETF.getText());
-            newEtablissement.setId_utilisateur(Id_utilisateur);
+
+
+            ServiceUtilisateur se=new ServiceUtilisateur();
+            Utilisateur user=se.getOneByCin(cin_utilisateur);
+
+
+           newEtablissement.setUser(user);
 
             serviceEtablissement.modifier(newEtablissement);
 
