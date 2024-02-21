@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a6f953e-625e-49ba-b711-99a3c03dcba0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/aa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/com'promis.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/download.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Candidat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Representant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Utilisateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEtablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/service.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/service.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/service2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/service2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Etablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Etablissement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,7 @@
     "git-widget-placeholder": "gestion-etablissement",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/resources/images",
+    "last_opened_file_path": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java/edu/esprit/entities",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,6 +54,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\entities" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\services" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\images" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\.idea" />
     </key>

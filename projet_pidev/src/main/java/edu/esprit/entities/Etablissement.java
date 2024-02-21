@@ -3,6 +3,7 @@ package edu.esprit.entities;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Set;
+import 
 
 public class Etablissement {
     private int id_etablissement;
@@ -10,27 +11,36 @@ public class Etablissement {
     private String lieu;
     private int code_etablissement;
     private String type_etablissement;
-    private Integer id_utilisateur;
+
+    private Utilisateur user;
 
     public Etablissement() {
 
     }
 
-    public Etablissement(int id_etablissement, String nom, String lieu, int code_etablissement, String type_etablissement, Integer id_utilisateur) {
+    public Etablissement(int id_etablissement, String nom, String lieu, int code_etablissement, String type_etablissement, Utilisateur user) {
         this.id_etablissement = id_etablissement;
         this.nom = nom;
         this.lieu = lieu;
         this.code_etablissement = code_etablissement;
         this.type_etablissement = type_etablissement;
-        this.id_utilisateur = id_utilisateur;
+        this.user = user;
     }
 
-    public Etablissement(String nom, String lieu, int code_etablissement, String type_etablissement, Integer id_utilisateur) {
+    public Etablissement(String nom, String lieu, int code_etablissement, String type_etablissement, Utilisateur user) {
         this.nom = nom;
         this.lieu = lieu;
         this.code_etablissement = code_etablissement;
         this.type_etablissement = type_etablissement;
-        this.id_utilisateur = id_utilisateur;
+        this.user = user;
+    }
+
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
     }
 
     public int getId_etablissement() {
@@ -73,17 +83,11 @@ public class Etablissement {
         this.type_etablissement = type_etablissement;
     }
 
-    public Integer getId_utilisateur() {
-        return id_utilisateur;
-    }
 
-    public void setId_utilisateur(Integer id_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
-    }
 
-    public boolean isIdUtilisateurNull() {
-        return id_utilisateur == null;
-    }
+
+
+
 
 
     @Override
@@ -107,7 +111,7 @@ public class Etablissement {
                 ", lieu='" + lieu + '\'' +
                 ", code_etablissement=" + code_etablissement +  '\''+
                 ", type_etablissement='" + type_etablissement + '\'' +
-                ", id_utilisateur=" + id_utilisateur +
+                ", id_utilisateur=" + user.getCin() +
                 '}'+'\n';
     }
 
