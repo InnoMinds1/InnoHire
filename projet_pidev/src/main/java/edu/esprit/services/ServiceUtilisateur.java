@@ -20,7 +20,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     public void ajouter(Utilisateur utilisateur) throws SQLException {
         if (utilisateur instanceof Admin) {
             Admin a = (Admin) utilisateur;
-            String req = "INSERT INTO `admin`( `cin`, `nom`, `prenom`, `email`, `mdp`) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 if(!utilisateurExiste(a.getCin())){
@@ -30,6 +30,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 ps.setString(4, a.getAdresse());
                 String hashed =hashPassword(a.getMdp());
                 ps.setString(5, hashed);
+                ps.setInt(6,0);
                 ps.executeUpdate();
                 System.out.println("Admin added");}
 
@@ -133,7 +134,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
 
     public void modifier_admin(Admin admin) {
-        String req = "UPDATE admin SET cin =?, nom = ?, prenom = ?, email = ?, mdp = ? WHERE id_admin = ?";
+        String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE id_utilisateur = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, admin.getCin());
@@ -152,7 +153,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     }
     public void modifier_admin_parcin(Admin admin) throws SQLException {
-        String req = "UPDATE admin SET  nom = ?, prenom = ?, email = ?, mdp = ? WHERE cin = ?";
+        String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE cin = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -258,13 +259,14 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String adresse = rs.getString("adresse");
                 String mdp = rs.getString("mdp");
                 int role = rs.getInt(7);
-                if (role == 0) {
+                if (role == 1) {
                     Representant p = new Representant(cin, nom, prenom, adresse, mdp);
                     utilisateurs.add(p);
-                } else {
+                } else if (role==2) {
                     Candidat p = new Candidat( cin, nom, prenom, adresse, mdp);
                     utilisateurs.add(p);
                 }
+
 
 
             }
@@ -277,7 +279,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     public Set<Admin> getAll_admin() {
         Set<Admin> admins = new HashSet<>();
-        String req = "Select * from admin";
+        String req = "Select * from utilisateur";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
@@ -286,11 +288,14 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 int cin = rs.getInt(2);
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
-                String adresse = rs.getString("email");
+                String adresse = rs.getString("adresse");
                 String mdp = rs.getString("mdp");
-                Admin p = new Admin(cin, nom, prenom, adresse, mdp);
-                admins.add(p);
+                int role = rs.getInt("role");
 
+                if (role == 0) {
+                    Admin p = new Admin(cin, nom, prenom, adresse, mdp);
+                    admins.add(p);
+                }
 
             }
 
@@ -386,7 +391,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         return false; // Si une erreur se produit ou si aucun résultat n'est trouvé
     }
     public boolean adminExiste(int cin) {
-        String req = "SELECT COUNT(*) FROM admin WHERE cin = ?";
+        String req = "SELECT COUNT(*) FROM utilisateur WHERE cin = ? AND role = 0";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, cin);

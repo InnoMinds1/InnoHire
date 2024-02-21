@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 14 fév. 2024 à 16:04
+-- Généré le : mer. 21 fév. 2024 à 13:58
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -36,32 +36,26 @@ CREATE TABLE `admin` (
   `mdp` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `categorie`
+-- Déchargement des données de la table `admin`
 --
 
-CREATE TABLE `categorie` (
-  `id_categorie` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `admin` (`id_admin`, `cin`, `nom`, `prenom`, `email`, `mdp`) VALUES
+(13, 12, 'Alen', 'sqdj', 'qsd', 'ef90d9c1ec76b1edc9edfaf2c0c05359c10ccc49ae8ecf7b7fd25ce9c02e86a4'),
+(14, 122, 'amenallah', 'kthiri', '@', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cours`
+-- Structure de la table `commentaire`
 --
 
-CREATE TABLE `cours` (
-  `id_cours` int(11) NOT NULL,
-  `id_categorie` int(11) NOT NULL,
-  `id_etablissement` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `prix` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL
+CREATE TABLE `commentaire` (
+  `id_commentaire` int(11) NOT NULL,
+  `id_publication` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `description_co` varchar(255) NOT NULL,
+  `date_co` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -82,18 +76,60 @@ CREATE TABLE `etablissement` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement`
+-- Structure de la table `logs`
 --
 
-CREATE TABLE `evenement` (
-  `id_evenement` int(11) NOT NULL,
-  `code_evenement` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `lieu` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `nb_participants` int(11) NOT NULL
+CREATE TABLE `logs` (
+  `id_log` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `id_etablissement` int(11) NOT NULL,
+  `id_wallet` int(11) NOT NULL,
+  `id_publication` int(11) NOT NULL,
+  `id_commentaire` int(11) NOT NULL,
+  `id_quiz` int(11) NOT NULL,
+  `id_reclamation` int(11) NOT NULL,
+  `id_message` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messagerie`
+--
+
+CREATE TABLE `messagerie` (
+  `id_message` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `contenu` varchar(255) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `reciver_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publication`
+--
+
+CREATE TABLE `publication` (
+  `id_publication` int(11) NOT NULL,
+  `code_pub` varchar(255) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `hashtag` varchar(255) NOT NULL,
+  `visibilite` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `nb_report` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `publication`
+--
+
+INSERT INTO `publication` (`id_publication`, `code_pub`, `id_utilisateur`, `description`, `hashtag`, `visibilite`, `image`, `date`, `nb_report`) VALUES
+(1, '', 22, 'H', 'L', 'H', 'G', '2024-02-18', 22);
 
 -- --------------------------------------------------------
 
@@ -126,6 +162,23 @@ CREATE TABLE `quiz` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `reclamation`
+--
+
+CREATE TABLE `reclamation` (
+  `id_reclamation` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
+  `status` int(11) NOT NULL,
+  `id_publication` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `reponse`
 --
 
@@ -133,18 +186,6 @@ CREATE TABLE `reponse` (
   `id_reponse` int(11) NOT NULL,
   `choix_correcte` int(11) NOT NULL,
   `id_question` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `reservation`
---
-
-CREATE TABLE `reservation` (
-  `id_reservation` int(11) NOT NULL,
-  `id_evenement` int(11) NOT NULL,
-  `id_etablissement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -162,6 +203,19 @@ CREATE TABLE `utilisateur` (
   `mdp` varchar(255) NOT NULL,
   `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_utilisateur`, `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES
+(17, 233, 'AMENN', 'IKHDIM', 'YARABY@iii', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 2),
+(19, 66, 'SD', 'AZ', '@', '24a04859593fb924a99c9de70afb8a09c46f5fe29ddd43afa3724e0dcc412106', 1),
+(20, 88, 'tz', 'AZ', 'AZ', '495496f0156b1a6cf5cbebd2d575c02cc9c68884300c14a6a759bc4129d41057', 1),
+(22, 333, 'AZ', 'AZEE', 'ze', '72b289ec78e0a928c565480a435453e30acb92eddb3b78ff168b28737cf6a849', 2),
+(24, 4, 'AZE', 'aa', '@', '6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918', 2),
+(26, 12, 'AZERTY', 'YARABY', '@@', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 0),
+(27, 13, 'AZERTY', 'YARABY', '@@', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 0);
 
 -- --------------------------------------------------------
 
@@ -186,31 +240,43 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Index pour la table `categorie`
+-- Index pour la table `commentaire`
 --
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id_categorie`);
-
---
--- Index pour la table `cours`
---
-ALTER TABLE `cours`
-  ADD PRIMARY KEY (`id_cours`),
-  ADD KEY `id_categorie` (`id_categorie`),
-  ADD KEY `id_etablissement` (`id_etablissement`);
+ALTER TABLE `commentaire`
+  ADD PRIMARY KEY (`id_commentaire`),
+  ADD KEY `id_publication` (`id_publication`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`),
+  ADD KEY `id_publication_2` (`id_publication`);
 
 --
 -- Index pour la table `etablissement`
 --
 ALTER TABLE `etablissement`
   ADD PRIMARY KEY (`id_etablissement`) USING BTREE,
+  ADD UNIQUE KEY `code_etablissement` (`code_etablissement`),
   ADD KEY `id_utilisateur` (`id_utilisateur`);
 
 --
--- Index pour la table `evenement`
+-- Index pour la table `logs`
 --
-ALTER TABLE `evenement`
-  ADD PRIMARY KEY (`id_evenement`);
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`id_log`);
+
+--
+-- Index pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  ADD PRIMARY KEY (`id_message`),
+  ADD KEY `sender_id` (`sender_id`),
+  ADD KEY `reciver_id` (`reciver_id`);
+
+--
+-- Index pour la table `publication`
+--
+ALTER TABLE `publication`
+  ADD PRIMARY KEY (`id_publication`),
+  ADD UNIQUE KEY `code_pub` (`code_pub`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`);
 
 --
 -- Index pour la table `question`
@@ -224,7 +290,16 @@ ALTER TABLE `question`
 --
 ALTER TABLE `quiz`
   ADD PRIMARY KEY (`id_quiz`),
+  ADD UNIQUE KEY `code_quiz` (`code_quiz`),
   ADD KEY `id_etablissement` (`id_etablissement`);
+
+--
+-- Index pour la table `reclamation`
+--
+ALTER TABLE `reclamation`
+  ADD PRIMARY KEY (`id_reclamation`),
+  ADD KEY `id_publication` (`id_publication`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`);
 
 --
 -- Index pour la table `reponse`
@@ -232,15 +307,6 @@ ALTER TABLE `quiz`
 ALTER TABLE `reponse`
   ADD PRIMARY KEY (`id_reponse`),
   ADD KEY `id_question` (`id_question`);
-
---
--- Index pour la table `reservation`
---
-ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id_reservation`),
-  ADD KEY `k` (`id_etablissement`),
-  ADD KEY `id_utilisateur` (`id_etablissement`),
-  ADD KEY `id_evenement` (`id_evenement`);
 
 --
 -- Index pour la table `utilisateur`
@@ -263,43 +329,55 @@ ALTER TABLE `wallet`
 -- AUTO_INCREMENT pour la table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT pour la table `categorie`
+-- AUTO_INCREMENT pour la table `commentaire`
 --
-ALTER TABLE `categorie`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `cours`
---
-ALTER TABLE `cours`
-  MODIFY `id_cours` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `commentaire`
+  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `etablissement`
 --
 ALTER TABLE `etablissement`
-  MODIFY `id_etablissement` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_etablissement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `evenement`
+-- AUTO_INCREMENT pour la table `logs`
 --
-ALTER TABLE `evenement`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `logs`
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `publication`
+--
+ALTER TABLE `publication`
+  MODIFY `id_publication` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `reclamation`
+--
+ALTER TABLE `reclamation`
+  MODIFY `id_reclamation` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `reponse`
@@ -308,16 +386,10 @@ ALTER TABLE `reponse`
   MODIFY `id_reponse` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `reservation`
---
-ALTER TABLE `reservation`
-  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `wallet`
@@ -330,17 +402,30 @@ ALTER TABLE `wallet`
 --
 
 --
--- Contraintes pour la table `cours`
+-- Contraintes pour la table `commentaire`
 --
-ALTER TABLE `cours`
-  ADD CONSTRAINT `cours_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cours_ibfk_2` FOREIGN KEY (`id_etablissement`) REFERENCES `etablissement` (`id_etablissement`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `commentaire`
+  ADD CONSTRAINT `commentaire_ibfk_1` FOREIGN KEY (`id_publication`) REFERENCES `publication` (`id_publication`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `commentaire_ibfk_2` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `etablissement`
 --
 ALTER TABLE `etablissement`
   ADD CONSTRAINT `etablissement_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  ADD CONSTRAINT `messagerie_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messagerie_ibfk_2` FOREIGN KEY (`reciver_id`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `publication`
+--
+ALTER TABLE `publication`
+  ADD CONSTRAINT `publication_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `question`
@@ -355,17 +440,17 @@ ALTER TABLE `quiz`
   ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`id_etablissement`) REFERENCES `etablissement` (`id_etablissement`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Contraintes pour la table `reclamation`
+--
+ALTER TABLE `reclamation`
+  ADD CONSTRAINT `reclamation_ibfk_2` FOREIGN KEY (`id_publication`) REFERENCES `publication` (`id_publication`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reclamation_ibfk_3` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `reponse`
 --
 ALTER TABLE `reponse`
   ADD CONSTRAINT `reponse_ibfk_1` FOREIGN KEY (`id_question`) REFERENCES `question` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `reservation`
---
-ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_evenement`) REFERENCES `evenement` (`id_evenement`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reservation_ibfk_3` FOREIGN KEY (`id_etablissement`) REFERENCES `etablissement` (`id_etablissement`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `wallet`

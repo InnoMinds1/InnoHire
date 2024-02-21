@@ -50,7 +50,7 @@ public class AjouterUtilisateurController {
             String prenom = TFprenom.getText();
             String adresse = TFemail.getText();
             String mdp = TFmdp.getText();
-            if(sp.utilisateurExiste(cin)||sp.adminExiste(cin))
+            if(sp.utilisateurExiste(cin))
             {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("SQL Exception");
