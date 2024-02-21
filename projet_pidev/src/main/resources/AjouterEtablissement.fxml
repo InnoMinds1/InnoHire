@@ -14,7 +14,7 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="NomETF" layoutX="222.0" layoutY="130.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom Etablissement" styleClass="text-field">
+      <TextField fx:id="NomETF" layoutX="261.0" layoutY="104.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom Etablissement" styleClass="text-field">
          <stylesheets>
             <URL value="@service2.css" />
             <URL value="@service2.css" />
@@ -23,32 +23,32 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="Id_utilisateurETF" layoutX="222.0" layoutY="351.0" prefHeight="46.0" prefWidth="250.0" promptText="user" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="Id_utilisateurETF" layoutX="261.0" layoutY="325.0" prefHeight="46.0" prefWidth="250.0" promptText="user" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="TypeETF" layoutX="222.0" layoutY="295.0" prefHeight="46.0" prefWidth="250.0" promptText="type" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="TypeETF" layoutX="261.0" layoutY="269.0" prefHeight="46.0" prefWidth="250.0" promptText="type" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="CodeETF" layoutX="222.0" layoutY="240.0" prefHeight="46.0" prefWidth="250.0" promptText="code" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="CodeETF" layoutX="261.0" layoutY="214.0" prefHeight="46.0" prefWidth="250.0" promptText="code" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="LieuETF" layoutX="222.0" layoutY="183.0" prefHeight="46.0" prefWidth="250.0" promptText="lieu" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="LieuETF" layoutX="261.0" layoutY="157.0" prefHeight="46.0" prefWidth="250.0" promptText="lieu" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="335.0" layoutY="410.0" mnemonicParsing="false" onAction="#ajouterEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+      <Button layoutX="342.0" layoutY="391.0" mnemonicParsing="false" onAction="#ajouterEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="455.0" layoutY="410.0" mnemonicParsing="false" onAction="#navigatetoAfficherEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Afficher" textFill="WHITE">
+      <Button layoutX="699.0" layoutY="437.0" mnemonicParsing="false" onAction="#navigatetoAfficherEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Afficher" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

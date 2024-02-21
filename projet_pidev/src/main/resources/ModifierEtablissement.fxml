@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="504.0" prefWidth="816.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierEtablissement">
    <children>
-      <Label layoutX="290.0" layoutY="62.0" text="Modifer Etablissements" textFill="#000000a9">
+      <Label layoutX="243.20000000000002" layoutY="50.0" prefHeight="46.0" prefWidth="400.0" text="Modifer Etablissements" textFill="#000000a9" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="174.0">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="NomETF" layoutX="283.0" layoutY="140.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom" styleClass="text-field">
+      <TextField fx:id="NomETF" layoutX="280.0" layoutY="100.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom" styleClass="text-field">
          <stylesheets>
             <URL value="@service2.css" />
             <URL value="@service2.css" />
@@ -23,32 +23,32 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="LieuETF" layoutX="283.0" layoutY="193.0" prefHeight="46.0" prefWidth="250.0" promptText="Lieu" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="LieuETF" layoutX="280.0" layoutY="153.0" prefHeight="46.0" prefWidth="250.0" promptText="Lieu" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="CodeETF" layoutX="283.0" layoutY="250.0" prefHeight="46.0" prefWidth="250.0" promptText="code" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="CodeETF" layoutX="280.0" layoutY="210.0" prefHeight="46.0" prefWidth="250.0" promptText="code" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="TypeETF" layoutX="283.0" layoutY="305.0" prefHeight="46.0" prefWidth="250.0" promptText="type" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="TypeETF" layoutX="280.0" layoutY="265.0" prefHeight="46.0" prefWidth="250.0" promptText="type" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="Id_utilisateurETF" layoutX="283.0" layoutY="361.0" prefHeight="46.0" prefWidth="250.0" promptText="user" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="Id_utilisateurETF" layoutX="280.0" layoutY="321.0" prefHeight="46.0" prefWidth="250.0" promptText="user" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="309.0" layoutY="422.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
+      <Button layoutX="361.0" layoutY="382.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="412.0" layoutY="422.0" mnemonicParsing="false" onAction="#AfficherEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Annuler" textFill="WHITE">
+      <Button layoutX="641.0" layoutY="428.0" mnemonicParsing="false" onAction="#AfficherEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Annuler" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
