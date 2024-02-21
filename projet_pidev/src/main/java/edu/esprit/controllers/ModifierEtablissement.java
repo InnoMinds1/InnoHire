@@ -94,7 +94,7 @@ public class ModifierEtablissement {
 
     public void AfficherEtablissement(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEtablissement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();

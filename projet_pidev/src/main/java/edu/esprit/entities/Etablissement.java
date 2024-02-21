@@ -102,8 +102,8 @@ public class Etablissement {
     @Override
     public String toString() {
         return "Etablissement{" +
-                "id_etablissement='" + id_etablissement +
-                ", nom='" + nom + '\'' +
+
+                "nom='" + nom + '\'' +
                 ", lieu='" + lieu + '\'' +
                 ", code_etablissement=" + code_etablissement +  '\''+
                 ", type_etablissement='" + type_etablissement + '\'' +
