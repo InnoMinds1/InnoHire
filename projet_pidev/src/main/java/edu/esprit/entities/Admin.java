@@ -23,7 +23,6 @@ public class Admin extends Utilisateur{
                 ", nom='" + this.getNom() + '\'' +
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
-                ", mdp='" + this.getMdp() + '\'' +
                 ", Role='" + "0" + '\'' +
 
 

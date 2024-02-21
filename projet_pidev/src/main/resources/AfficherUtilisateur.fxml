@@ -5,33 +5,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="537.0" prefWidth="679.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherUtilisateurController">
+<AnchorPane prefHeight="516.0" prefWidth="925.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherUtilisateurController">
     <children>
-        <Label layoutX="158.0" layoutY="43.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Utilisateurs">
+        <Label layoutX="329.0" layoutY="41.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Utilisateurs">
             <font>
                 <Font size="31.0" />
             </font>
         </Label>
-        <ListView fx:id="listView" layoutX="11.0" layoutY="111.0" prefHeight="338.0" prefWidth="643.0" styleClass="text-field" />
-        <Button layoutX="155.0" layoutY="464.0" mnemonicParsing="false" onAction="#modifierUtilisateur" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
+        <ListView fx:id="listView" layoutX="225.0" layoutY="113.0" prefHeight="338.0" prefWidth="643.0" styleClass="text-field" />
+        <Button layoutX="437.0" layoutY="455.0" mnemonicParsing="false" onAction="#modifierUtilisateur" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-        <Button layoutX="265.0" layoutY="464.0" mnemonicParsing="false" onAction="#supprimerUtilisateur" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
+        <Button layoutX="539.0" layoutY="455.0" mnemonicParsing="false" onAction="#supprimerUtilisateur" prefHeight="46.0" prefWidth="126.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-        <Button layoutX="589.0" layoutY="468.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
+        <Button layoutX="851.0" layoutY="459.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-        <TextField fx:id="RechercheETF" layoutX="414.0" layoutY="468.0" prefHeight="31.0" prefWidth="170.0" promptText="Recherche..." styleClass="text-field">
+        <TextField fx:id="RechercheETF" layoutX="671.0" layoutY="459.0" prefHeight="31.0" prefWidth="170.0" promptText="Recherche..." styleClass="text-field">
             <stylesheets>
                 <URL value="@service2.css" />
             </stylesheets>
@@ -39,11 +41,42 @@
                 <Font size="16.0" />
             </font>
         </TextField>
-        <Button layoutX="47.0" layoutY="463.0" mnemonicParsing="false" onAction="#ajouterUtilisateur" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+        <Button layoutX="329.0" layoutY="455.0" mnemonicParsing="false" onAction="#ajouterUtilisateur" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
+
+        <AnchorPane layoutX="-12.0" layoutY="-2.0" prefHeight="537.0" prefWidth="229.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
+            <children>
+                <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Quiz" />
+                <Button layoutX="16.0" layoutY="240.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Etablissement" />
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="36.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/aa.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="33.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/aa.jpg" />
+                    </image>
+                </ImageView>
+                <Button layoutX="18.0" layoutY="120.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Utilisateur" />
+                <Label layoutX="58.0" layoutY="58.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25;" text="InnoHire" />
+                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="96.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/aa.jpg" />
+                    </image>
+                </ImageView>
+            <Button layoutX="18.0" layoutY="300.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer les publications" />
+            <Button layoutX="16.0" layoutY="360.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer les reclamation" />
+                <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="32.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/aa.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
 
     </children>
 </AnchorPane>

@@ -48,7 +48,7 @@ public class AfficherUtilisateurController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation de suppression");
             alert.setHeaderText(null);
-            alert.setContentText("Êtes-vous sûr de vouloir supprimer cette conversation ?");
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 try {

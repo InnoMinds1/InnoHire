@@ -276,6 +276,17 @@ public class AjouterUtilisateurController {
             alert.showAndWait();
             return;
         }
+        if (serviceUtilisateur.utilisateurExiste(cin))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Le cin doit etre unique");
+            alert.showAndWait();
+            return;
+
+        }
+
 
 
 
@@ -292,7 +303,7 @@ public class AjouterUtilisateurController {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText(null);
-                alert.setContentText("Utilisateur ajouté avec succès !");
+                alert.setContentText("Admin ajouté avec succès !");
                 alert.showAndWait();
 
                 // Effacer les champs du formulaire après l'ajout réussi
@@ -322,7 +333,7 @@ public class AjouterUtilisateurController {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText(null);
-                alert.setContentText("Utilisateur ajouté avec succès !");
+                alert.setContentText("Representant ajouté avec succès !");
                 alert.showAndWait();
 
                 // Effacer les champs du formulaire après l'ajout réussi
@@ -342,7 +353,7 @@ public class AjouterUtilisateurController {
 
 
         }
-        else {
+        else if (role == 2){
             {Candidat u = new Candidat();
                 u.setNom(Nom);
                 u.setCin(cin);
@@ -354,7 +365,7 @@ public class AjouterUtilisateurController {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Succès");
                     alert.setHeaderText(null);
-                    alert.setContentText("Utilisateur ajouté avec succès !");
+                    alert.setContentText("Candidat ajouté avec succès !");
                     alert.showAndWait();
 
                     // Effacer les champs du formulaire après l'ajout réussi
@@ -373,6 +384,14 @@ public class AjouterUtilisateurController {
                 }
             }
         }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("ROLE DOIT ETRE 0 pour admin 1 pour Rep et 2 pour candidat ");
+            alert.showAndWait();
+        }
+
 
 
 
