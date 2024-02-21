@@ -133,7 +133,7 @@ public class Reclamation {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", pub=" + pub +
-                ", user Info= " + user.getNom()+" " + user.getPrenom() +" Cin :"+ user.getCin() +
+                ", user Info= " + user+
                 '}'+'\n';
     }
 }

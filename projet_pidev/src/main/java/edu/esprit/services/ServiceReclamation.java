@@ -32,7 +32,7 @@ public class ServiceReclamation implements Iservice<Reclamation>{
     }
 
     @Override
-    public void modifier(Reclamation reclamation) {
+    public void modifier(Reclamation reclamation) throws SQLException{
         String req = "UPDATE `reclamation` SET `type`=?, `titre`=?, `description`=?, `date`=?, `status`=?, `id_publication`=?, `id_utilisateur`=? WHERE `id_reclamation`=?";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setString(1, reclamation.getType());
@@ -51,7 +51,7 @@ public class ServiceReclamation implements Iservice<Reclamation>{
     }
 
     @Override
-    public void supprimer(int id) {
+    public void supprimer(int id) throws SQLException{
         String req = "DELETE FROM `reclamation` WHERE `id_reclamation`=?";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setInt(1, id);
@@ -78,8 +78,8 @@ public class ServiceReclamation implements Iservice<Reclamation>{
                 rec.setDate(rs.getTimestamp("date"));
 
                 // Use ServicePublication to get Publication by ID
-                /*Publication publication = new ServicePublication().getOneByID(rs.getInt("id_publication"));
-                rec.setPub(publication);*/
+                Publication publication = new ServicePublication().getOneByID(rs.getInt("id_publication"));
+                rec.setPub(publication);
 
                 // Use ServiceUtilisateur to get Utilisateur by ID
                 Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));
@@ -111,8 +111,8 @@ public class ServiceReclamation implements Iservice<Reclamation>{
                     rec.setDate(rs.getTimestamp("date"));
 
                     // Use ServicePublication to get Publication by ID
-                   /* Publication publication = new ServicePublication().getOneByID(rs.getInt("id_publication"));
-                    rec.setPub(publication);*/
+                    Publication publication = new ServicePublication().getOneByID(rs.getInt("id_publication"));
+                    rec.setPub(publication);
 
                     // Use ServiceUtilisateur to get Utilisateur by ID
                     Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));

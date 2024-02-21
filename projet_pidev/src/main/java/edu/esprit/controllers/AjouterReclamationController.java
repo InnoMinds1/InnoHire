@@ -8,10 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,7 +33,7 @@ public class AjouterReclamationController {
 
     private final ServiceReclamation sr = new ServiceReclamation();
     Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789");
-    Publication pub=new Publication(1,1,5,"mhaf","#mhaf","seen","mhaf.png","19/02/2024");
+    Publication pub=new Publication(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
 
     @FXML
     void ajouterReclamationAction(ActionEvent event){
@@ -50,6 +52,8 @@ public class AjouterReclamationController {
             alert.showAndWait();
         }
     }
+
+
 
     public void navigateToAfficherReclamationAction(ActionEvent actionEvent) {
         try {
