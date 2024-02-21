@@ -83,6 +83,7 @@ public class ServicePublication implements IService<Publication> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
+                int id_publication = rs.getInt("id_publication");
                 String code_pub = rs.getString("code_pub");
                 String description = rs.getString("description");
                 String hashtag = rs.getString("hashtag");
@@ -94,7 +95,7 @@ public class ServicePublication implements IService<Publication> {
                 Utilisateur utilisateur;
                 ServiceUtilisateur sc = new ServiceUtilisateur();
                 utilisateur=sc.getOneByID(id_utilisateur);
-                Publication p= new Publication(code_pub,utilisateur,description,hashtag,visibilite,image,date,nb_report);
+                Publication p= new Publication(id_publication,code_pub,utilisateur,description,hashtag,visibilite,image,date,nb_report);
                 publications.add(p);
             }
         } catch (SQLException e) {

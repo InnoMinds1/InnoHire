@@ -4,6 +4,7 @@ import edu.esprit.entities.Publication;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePublication;
 import edu.esprit.services.ServiceUtilisateur;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -72,10 +74,12 @@ public class AjouterPublication {
             TFcode_pub.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry");
+            alert.setContentText("Sorry jjjj");
             alert.setTitle("Error");
             alert.show();
         }
 
     }
+
+
 }

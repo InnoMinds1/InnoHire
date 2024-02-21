@@ -7,17 +7,18 @@ import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
 
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args)
+    public static void main(String[] args) throws SQLException
     {
 
         DataSource.getInstance();
 
         //AJOUT
         //ServicePublication sb = new ServicePublication();
-        Utilisateur u=new Utilisateur(10,22,"nom","prenom","hh","ppp");
+        Utilisateur u=new Utilisateur(28,22,"p","kj","bbj","lbj");
 
 
 
@@ -27,22 +28,23 @@ public class Main {
 
         //---------------------Publication---------------------------------------//
 
-        Publication p = new Publication("22",u,"22","11","444","111",LocalDate.of(2021,02,4),125);
-        //sb.ajouter(p);
-        //sb.modifier(p);
-        //sb.supprimer(10);
+        Publication p = new Publication(3,"22",u,"888888","111111","4qv","111",LocalDate.of(2021,02,4),125);
+       //sb.ajouter(pc);
+        sb.modifier(p);
+        //sb.supprimer(2);
         //System.out.println(sb.getOneByID(11));
         //System.out.println(sb.getAll());
 
         //----------------------Commentaire--------------------------------------//
-        Publication pc = new Publication(11,"22",u,"22","11","444","111",LocalDate.of(2021,02,4),125);
-        Commentaire c=new Commentaire(pc,u,"ccccc", LocalDate.of(2023,02,4));
+        Publication pc = new Publication(3,"22",u,"22","11","444","111",LocalDate.of(2021,02,4),125);
+        //sb.ajouter(pc);
+         Commentaire c=new Commentaire(pc,u,"ok", LocalDate.of(2023,02,4));
 
         //sc.ajouter(c);
         //sc.modifier(c);
         //sc.supprimer(10);
         //System.out.println(sc.getOneByID(10));
-        //System.out.println(sc.getAll());
+       // System.out.println(sc.getAll());
 
 
 
