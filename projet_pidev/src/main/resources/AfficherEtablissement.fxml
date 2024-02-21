@@ -33,17 +33,13 @@
       </Button>
       <TextField fx:id="RechercheETF" layoutX="414.0" layoutY="468.0" prefHeight="31.0" prefWidth="170.0" promptText="Recherche..." styleClass="text-field">
          <stylesheets>
-            <URL value="@../../../../../GestionService/src/main/resources/service.css" />
-            <URL value="@../../../../../GestionService/src/main/resources/service.css" />
+            <URL value="@service2.css" />
+            <URL value="@service2.css" />
          </stylesheets>
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="39.0" layoutY="464.0" mnemonicParsing="false" onAction="#ajouterEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@../../../../../GestionService/src/main/resources/service.css" text="Ajouter" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
+
    </children>
 </AnchorPane>
