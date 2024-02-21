@@ -16,7 +16,7 @@ public class MainFX extends Application {
         stage.setTitle("Gestion Reclamation");
         // Set the width and height of the Stage
         stage.setWidth(1000); // Set your desired width
-        stage.setHeight(620); // Set your desired height
+        stage.setHeight(660); // Set your desired height
         stage.show();
     }
 
