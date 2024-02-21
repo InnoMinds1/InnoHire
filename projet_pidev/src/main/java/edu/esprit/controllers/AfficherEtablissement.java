@@ -77,7 +77,7 @@ public class AfficherEtablissement implements Initializable {
         Etablissement selectedEtablissement = listView.getSelectionModel().getSelectedItem();
         if (selectedEtablissement != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierEtablissement.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEtablissement.fxml"));
                 Parent root = loader.load();
                 ModifierEtablissement controller = loader.getController();
                 controller.initData(selectedEtablissement); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification

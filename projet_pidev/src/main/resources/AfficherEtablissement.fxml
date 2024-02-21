@@ -34,7 +34,6 @@
       <TextField fx:id="RechercheETF" layoutX="414.0" layoutY="468.0" prefHeight="31.0" prefWidth="170.0" promptText="Recherche..." styleClass="text-field">
          <stylesheets>
             <URL value="@service2.css" />
-            <URL value="@service2.css" />
          </stylesheets>
          <font>
             <Font size="16.0" />
