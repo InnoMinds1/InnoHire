@@ -71,23 +71,48 @@ public class questionService implements IService<Question> {
             e.printStackTrace();
         }
     }
+    private int getIdQuizByCode(Integer codeQuiz) throws SQLException {
+
+        Connection connection = DataSource.getInstance().getCnx();
+
+        try {
+            String sql = "SELECT id_quiz FROM quiz WHERE code_quiz = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, codeQuiz);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getInt("id_quiz");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return -1;
+    }
+
 
     @Override
-    public void supprimer(int id) {
-        Connection cnx = DataSource.getInstance().getCnx();
-        try {
-            String query = "DELETE FROM question WHERE id_question = ?";
-            try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
-                preparedStatement.setInt(1, id);
-                preparedStatement.executeUpdate();
-            }
+
+    public void supprimer(int id_question) throws SQLException{
+        String query = "DELETE FROM `question` WHERE `id_question`= ?";
+
+        try (
+             PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+            preparedStatement.setInt(1, id_question);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
+
     @Override
-    public Set<Question> getAll() {
+    public Set<Question> getAll() throws SQLException{
         Set<Question> questionSet = new HashSet<>();
 
         try {

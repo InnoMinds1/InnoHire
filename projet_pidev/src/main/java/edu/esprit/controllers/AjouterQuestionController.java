@@ -18,10 +18,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+
 public class AjouterQuestionController {
 
 
@@ -113,8 +116,24 @@ public class AjouterQuestionController {
 
         return -1;
     }
+    public void navigateToAfficher(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuestion.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) TFcode_quiz.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
 
 
-}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    }
+
+
+
 
 

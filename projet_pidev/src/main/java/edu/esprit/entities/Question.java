@@ -55,8 +55,7 @@ public class Question {
         return quiz;
     }
 
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
+    public void setQuiz(Quiz quiz) {this.quiz = quiz;
     }
     @Override
     public String toString() {
