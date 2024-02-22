@@ -46,26 +46,37 @@ public class AfficherEtablissement implements Initializable {
     @FXML
     void supprimerEtablissement(ActionEvent event) {
         Etablissement selectedEtablissement = listView.getSelectionModel().getSelectedItem();
-        if (selectedEtablissement != null) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation de suppression");
+
+        if (selectedEtablissement == null) {
+            // Aucun élément sélectionné, afficher une alerte
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Avertissement");
             alert.setHeaderText(null);
-            alert.setContentText("Êtes-vous sûr de vouloir supprimer cette conversation ?");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                try {
-                    int id_etablissement = selectedEtablissement.getId_etablissement();
-                    ServiceEtablissement ServiceEtablissement = new ServiceEtablissement();
-                    ServiceEtablissement.supprimer(id_etablissement);
-                    listView.getItems().remove(selectedEtablissement);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            alert.setContentText("Veuillez sélectionner un établissement à supprimer.");
+            alert.showAndWait();
+            return; // Sortir de la méthode, car rien à supprimer
         }
 
+        // Si un élément est sélectionné, afficher la confirmation de suppression
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation de suppression");
+        alert.setHeaderText(null);
+        alert.setContentText("Êtes-vous sûr de vouloir supprimer cette conversation ?");
 
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                int id_etablissement = selectedEtablissement.getId_etablissement();
+                ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
+                serviceEtablissement.supprimer(id_etablissement);
+                listView.getItems().remove(selectedEtablissement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 
 
 

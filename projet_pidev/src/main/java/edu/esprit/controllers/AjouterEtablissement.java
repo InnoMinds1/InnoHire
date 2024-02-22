@@ -6,19 +6,26 @@ import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceEtablissement;
 
 import edu.esprit.services.ServiceUtilisateur;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ResourceBundle;
+import java.util.Set;
 
-public class AjouterEtablissement {
+public class AjouterEtablissement implements Initializable {
     @FXML
     private TextField CodeETF;
 
@@ -34,10 +41,15 @@ public class AjouterEtablissement {
     @FXML
     private TextField TypeETF;
 
+    @FXML
+    private ListView<Utilisateur> ListViewUser;
+
     private final ServiceEtablissement se = new ServiceEtablissement();
 
+
+
     @FXML
-    void ajouterEtablissementAction(ActionEvent event) {
+    void ajouterEtablissementAction(ActionEvent event) throws SQLException {
         // Créer une instance de ServiceService
         ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
 
@@ -46,10 +58,10 @@ public class AjouterEtablissement {
         String Lieu = LieuETF.getText();
         String Code = CodeETF.getText();
         String Type = TypeETF.getText();
-        String cin_utilisateur = cin_utilisateurETF.getText();
+
 
         // Vérifier si les champs requis sont vides
-        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty() || cin_utilisateur.isEmpty()) {
+        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -58,11 +70,9 @@ public class AjouterEtablissement {
             return;
         }
 
+
         // Vérifier si le prix est un nombre valide
         int codeE;
-        int cin_utilisateurE;
-
-
         try {
             codeE = Integer.parseInt(Code);
         } catch (NumberFormatException e) {
@@ -73,16 +83,54 @@ public class AjouterEtablissement {
             alert.showAndWait();
             return;
         }
-        try {
-            cin_utilisateurE = Integer.parseInt(cin_utilisateur);
-        } catch (NumberFormatException e) {
+        if (serviceEtablissement.existe(codeE)) {
+            // Afficher une alerte si le code existe déjà
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("CIN doit être un nombre valide !");
+            alert.setContentText("Erreur Un établissement avec le même code existe déjà !");
             alert.showAndWait();
+
             return;
         }
+
+
+
+
+        String cin_utilisateur = cin_utilisateurETF.getText();
+        int cin_utilisateurE;
+
+        if (cin_utilisateur.isEmpty()) {
+            // Si le TextField est vide, vérifiez si un utilisateur est sélectionné dans la ListView
+            Utilisateur selectedUser = ListViewUser.getSelectionModel().getSelectedItem();
+            if (selectedUser == null) {
+                // Si rien n'est saisi et rien n'est sélectionné, afficher une alerte
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Veuillez saisir un CIN ou sélectionner un utilisateur !");
+                alert.showAndWait();
+                return;
+            }
+
+            // Utiliser le CIN de l'utilisateur sélectionné dans la ListView
+            cin_utilisateurE = selectedUser.getCin();
+        } else {
+            try {
+                cin_utilisateurE = Integer.parseInt(cin_utilisateur);
+            } catch (NumberFormatException e) { Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Le CIN doit être un nombre valide !");
+                alert.showAndWait();
+                return;
+            }
+        }
+
+
+
+
+
 
         // Créer un nouvel objet Service avec les valeurs saisies
         Etablissement etablissement = new Etablissement();
@@ -110,7 +158,9 @@ public class AjouterEtablissement {
             CodeETF.clear();
             TypeETF.clear();
             cin_utilisateurETF.clear();
-        } catch (Exception e) {
+        }
+
+        catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -136,6 +186,28 @@ public class AjouterEtablissement {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ServiceUtilisateur serviceService = new ServiceUtilisateur();
+        Set<Utilisateur> users = null;
+
+        try {
+            users = serviceService.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        ListViewUser.setItems(FXCollections.observableArrayList(users));
+
+        // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
+        ListViewUser.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                cin_utilisateurETF.setText(String.valueOf(newValue.getCin()));
+            }
+        });
 
     }
 }

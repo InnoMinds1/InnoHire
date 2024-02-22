@@ -145,4 +145,18 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             return null;
         }
     }
+    public boolean existe(int codeEtablissement) throws SQLException {
+        String req = "SELECT * FROM etablissement WHERE code_etablissement = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, codeEtablissement);
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // Retourne true si un établissement avec le code existe déjà
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+
 }
