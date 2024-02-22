@@ -86,7 +86,16 @@ public class AfficherEtablissement implements Initializable {
     public void modifierEtablissement(ActionEvent actionEvent) {
         // Code pour modifier l'utilisateur sélectionné dans la liste
         Etablissement selectedEtablissement = listView.getSelectionModel().getSelectedItem();
-        if (selectedEtablissement != null) {
+        if (selectedEtablissement == null) {
+            // Aucun élément sélectionné, afficher une alerte
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner un établissement à modifier.");
+            alert.showAndWait();
+            return; // Sortir de la méthode, car rien à supprimer
+        }
+        else {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEtablissement.fxml"));
                 Parent root = loader.load();
