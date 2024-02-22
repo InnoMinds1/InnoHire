@@ -35,7 +35,7 @@ public class AfficherReclamation implements Initializable {
             // Set the fetched reclamations to the ListView
             listView.setItems(FXCollections.observableArrayList(reclamations));
 
-            // Customize the list view cell rendering if needed
+            // Customize the list view cell rendering to display more information
             listView.setCellFactory(new Callback<ListView<Reclamation>, ListCell<Reclamation>>() {
                 @Override
                 public ListCell<Reclamation> call(ListView<Reclamation> listView) {
@@ -44,7 +44,8 @@ public class AfficherReclamation implements Initializable {
                         protected void updateItem(Reclamation reclamation, boolean empty) {
                             super.updateItem(reclamation, empty);
                             if (reclamation != null) {
-                                setText(reclamation.toString()); // Customize this based on your Reclamation class
+                                setText("     " + reclamation.getUser().getNom()+"  "+ reclamation.getUser().getPrenom()+ "                 " + reclamation.getTitre() + "                                     " + reclamation.getType() +
+                                        "                            " + reclamation.getPub().getCode_pub()+"                                  "+reclamation.getDate()) ;
                             } else {
                                 setText(null);
                             }
