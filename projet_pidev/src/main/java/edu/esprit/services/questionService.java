@@ -18,6 +18,7 @@ package edu.esprit.services;
 import edu.esprit.entities.Question;
 
 
+import edu.esprit.entities.Quiz;
 import edu.esprit.utils.DataSource;
 
 import java.security.MessageDigest;
@@ -71,28 +72,7 @@ public class questionService implements IService<Question> {
             e.printStackTrace();
         }
     }
-    private int getIdQuizByCode(Integer codeQuiz) throws SQLException {
 
-        Connection connection = DataSource.getInstance().getCnx();
-
-        try {
-            String sql = "SELECT id_quiz FROM quiz WHERE code_quiz = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, codeQuiz);
-
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return resultSet.getInt("id_quiz");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        return -1;
-    }
 
 
     @Override
@@ -121,10 +101,17 @@ public class questionService implements IService<Question> {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
                         Question question = new Question();
+                        Quiz quiz = new Quiz();
                         question.setId_question(resultSet.getInt("id_question"));
                         question.setQuestion(resultSet.getString("question"));
                         question.setChoix(resultSet.getString("choix"));
-                        question.getQuiz().setId_quiz(resultSet.getInt("id_quiz"));
+
+                        int id_quiz = resultSet.getInt("id_quiz");
+                        quizService qs=new quizService();
+                      Quiz quiz2 = qs.getOneByID(id_quiz);
+                        question.setQuiz(quiz2);
+
+
                         questionSet.add(question);
                     }
                 }

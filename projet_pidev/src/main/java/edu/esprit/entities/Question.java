@@ -63,7 +63,7 @@ public class Question {
                 "question='" + question + '\'' +
                 ", choix='" + choix + '\'' +
 
-                 ", quiz=" + (quiz != null ? quiz.getCode_quiz() : null) +
+                 ", quiz=" + getQuiz().getCode_quiz() +
                 '}';
     }
 

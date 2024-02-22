@@ -102,27 +102,7 @@ public class Quiz {
         Quiz quiz = (Quiz) o;
         return id_quiz == quiz.id_quiz && code_quiz == quiz.code_quiz;
     }
-    public int getCodeQuizbyID(int idQuiz) throws SQLException {
-        Connection connection = DataSource.getInstance().getCnx();
 
-        try {
-            String sql = "SELECT code_quiz FROM quiz WHERE id_quiz = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, idQuiz);
-
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return resultSet.getInt("code_quiz");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        return -1;
-    }
 
     @Override
     public int hashCode() {

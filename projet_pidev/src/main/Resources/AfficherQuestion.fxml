@@ -65,7 +65,6 @@
       </AnchorPane>
 
       <Button layoutX="364.0" layoutY="473.0" mnemonicParsing="false" onAction="#SupprimerQuestion" prefHeight="26.0" prefWidth="94.0" text="SUPPRIMER" />
-      <Button layoutX="249.0" layoutY="473.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Modifier" />
       <Button layoutX="487.0" layoutY="473.0" mnemonicParsing="false" onAction="#navigateToAjouter" prefHeight="26.0" prefWidth="88.0" text="AJOUTER" />
 
    </children>
