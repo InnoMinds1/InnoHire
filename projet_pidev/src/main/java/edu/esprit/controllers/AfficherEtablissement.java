@@ -161,9 +161,9 @@ public class AfficherEtablissement implements Initializable {
         }
         else {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEtablissement.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierWallet.fxml"));
                 Parent root = loader.load();
-                ModifierEtablissement controller = loader.getController();
+                ModifierWallet controller = loader.getController();
                 controller.initDataWallet(selectedWallet); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
 
                 // Obtenir la scène actuelle

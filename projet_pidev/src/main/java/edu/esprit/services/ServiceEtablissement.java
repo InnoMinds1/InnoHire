@@ -189,5 +189,25 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
         return null; // Return null if no user found
     }
 
+    int getIdEtablissement(int codeEtablissement) throws SQLException {
+        String reqIdEtablissement = "SELECT id_etablissement FROM etablissement WHERE code_etablissement = ?";
+        try {
+            PreparedStatement psIdEtablissement = cnx.prepareStatement(reqIdEtablissement);
+            psIdEtablissement.setInt(1, codeEtablissement);
+            ResultSet rsIdEtablissement = psIdEtablissement.executeQuery();
+
+            // Vérifier si un établissement avec le code existe
+            if (rsIdEtablissement.next()) {
+                return rsIdEtablissement.getInt("id_etablissement");
+            } else {
+                // Aucun établissement trouvé
+                return -1; // Retourne -1 pour indiquer l'absence d'établissement
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return -1; // Retourne -1 en cas d'erreur
+        }
+    }
+
 
 }

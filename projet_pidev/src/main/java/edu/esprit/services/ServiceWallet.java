@@ -143,4 +143,35 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
         }
     }
 
+
+    // Fonction pour obtenir l'id_etablissement à partir du code_etablissement
+
+
+    public boolean portefeuilleExistePourEtablissement(int codeEtablissement) throws SQLException {
+        ServiceEtablissement se=new ServiceEtablissement();
+        int idEtablissement = se.getIdEtablissement(codeEtablissement);
+
+        // Vérifier si on a pu obtenir l'id_etablissement
+        if (idEtablissement == -1) {
+            return false; // Aucun établissement trouvé
+        }
+
+        // Requête pour vérifier si un portefeuille existe pour cet id_etablissement
+        String reqPortefeuille = "SELECT * FROM wallet WHERE id_etablissement = ?";
+        try {
+            PreparedStatement psPortefeuille = cnx.prepareStatement(reqPortefeuille);
+            psPortefeuille.setInt(1, idEtablissement);
+            ResultSet rsPortefeuille = psPortefeuille.executeQuery();
+
+            return rsPortefeuille.next(); // Retourne true si un portefeuille pour l'établissement existe déjà
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+
+
+
+
 }

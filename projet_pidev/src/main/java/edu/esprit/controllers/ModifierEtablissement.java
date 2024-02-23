@@ -2,7 +2,7 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;
-import edu.esprit.entities.Wallet;
+
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.collections.FXCollections;
@@ -29,7 +29,7 @@ public class ModifierEtablissement implements Initializable {
 
     private int codeInit ;
 
-    private int idW ;
+
 
 
 
@@ -52,14 +52,7 @@ public class ModifierEtablissement implements Initializable {
     private ListView<Utilisateur> ListViewUser;
 
 //----------------------wallet------------------------------------
-    @FXML
-    private TextField BalanceETF;
 
-    @FXML
-    private ListView<Wallet> ListViewEtab;
-
-    @FXML
-    private TextField code_EtabETF;
 
     private final ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
     public int getId() {
@@ -76,13 +69,7 @@ public class ModifierEtablissement implements Initializable {
         this.codeInit = codeInit;
     }
 
-    public int getIdW() {
-        return idW;
-    }
 
-    public void setIdW(int idW) {
-        this.idW = idW;
-    }
 
 
 
@@ -115,16 +102,7 @@ public class ModifierEtablissement implements Initializable {
         }
     }
 
-    public void initDataWallet(Wallet wallet) {
-        if (wallet != null) {
-            setIdW(wallet.getId_wallet());
 
-            BalanceETF.setText(String.valueOf(wallet.getBalance()));
-
-            code_EtabETF.setText(String.valueOf(wallet.getEtablissement().getCode_etablissement()));
-
-        }
-    }
 
     @FXML
     void ok(ActionEvent event) throws SQLException {
@@ -189,8 +167,7 @@ public class ModifierEtablissement implements Initializable {
         }
     }
 
-    public void okWallet(ActionEvent actionEvent) {
-    }
+
 
    /* public void AfficherEtablissement(ActionEvent actionEvent) {
         try {

@@ -114,7 +114,15 @@ public class AjouterWallet implements Initializable {
             }
         }
 
-
+// Vérifier si un portefeuille existe déjà pour cet établissement
+        if (serviceWallet.portefeuilleExistePourEtablissement(code_EtabE)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Un portefeuille existe déjà pour cet établissement !");
+            alert.showAndWait();
+            return;
+        }
 
 
 

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="545.0" prefWidth="862.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierEtablissement">
+<AnchorPane prefHeight="545.0" prefWidth="862.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWallet">
    <children>
       <Label layoutX="245.0" layoutY="24.0" prefHeight="46.0" prefWidth="400.0" text="Modifer Wallet" textFill="#000000a9" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="173.39999999999986">
          <font>
