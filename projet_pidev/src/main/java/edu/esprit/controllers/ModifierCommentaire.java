@@ -3,6 +3,7 @@ package edu.esprit.controllers;
 import edu.esprit.entities.Commentaire;
 import edu.esprit.entities.Publication;
 import edu.esprit.entities.Utilisateur;
+import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,38 +39,30 @@ public class ModifierCommentaire {
 
     @FXML
     void modifierCommentaire(ActionEvent event) {
-
-            int cinUtilisateur = Integer.parseInt(TFcin_utilisateur.getText());
-
-
-            if ( controlSaisie(TFdescription) && controlSaisie(TFhashtag) && controlSaisie(TFimage) && controlSaisie(TFnb_report) && controlSaisie(TFvisibilite)) {
+        if ( controlSaisie(descriptionTF1) && controlSaisie(dateTf1)  && controlSaisie(ratingTF1)) {
                 Commentaire c = new Commentaire();
 
                 // Récupération de l'ID de la publication à modifier
                 //int idPublication = getId(); // Assurez-vous de définir cette méthode
 
                 // Configuration des nouvelles valeurs
-                c.setId_commmentaire(getId());
+                c.setId_commentaire(getId());
 
 
                  // Assurez-vous que TFdate est un DatePicker
-               c.setDescription(TFdescription.getText());
-                c.setDate(TFdate.getValue());
-               c.setNb_report(Integer.parseInt(nb_etoileTF.getText()));
+               c.setDescription_co(descriptionTF1.getText());
+                c.setDate_co(dateTf1.getValue());
+               c.setNb_etoile(Integer.parseInt(ratingTF1.getText()));
+            ServiceCommentaire sc=new ServiceCommentaire();
 
 
-                ServiceUtilisateur se=new ServiceUtilisateur();
-                Utilisateur user=se.getByCin(cinUtilisateur);
-
-
-                newPublication.setUtilisateur(user);
 
                 // Appel de la méthode pour effectuer la modification dans la base de données
-                servicePublication.modifier(newPublication);
+              sc.modifier(c);
 
                 showAlert(Alert.AlertType.INFORMATION, "Succès", "Publication modifiée avec succès");
                 // Assurez-vous d'ajuster le code pour afficher les publications après la modification
-                AfficherPublication(event);
+                AfficherCommentaire(event);
             }
 
     }
