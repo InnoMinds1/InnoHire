@@ -5,17 +5,28 @@ import java.util.Objects;
 public class Wallet {
     private int id_wallet;
     private int balance;
-    private int id_etablissement;
+    private Etablissement etablissement;
 
-    public Wallet(int id_wallet, int balance, int id_etablissement) {
-        this.id_wallet = id_wallet;
-        this.balance = balance;
-        this.id_etablissement = id_etablissement;
+    public Etablissement getEtablissement() {
+        return etablissement;
     }
 
-    public Wallet(int balance, int id_etablissement) {
+    public void setEtablissement(Etablissement etablissement) {
+        this.etablissement = etablissement;
+    }
+    public Wallet() {
+
+    }
+
+    public Wallet(int id_wallet, int balance, Etablissement etablissement) {
+        this.id_wallet = id_wallet;
         this.balance = balance;
-        this.id_etablissement = id_etablissement;
+        this.etablissement = etablissement;
+    }
+
+    public Wallet(int balance, Etablissement etablissement) {
+        this.balance = balance;
+        this.etablissement = etablissement;
     }
 
 
@@ -36,13 +47,7 @@ public class Wallet {
         this.balance = balance;
     }
 
-    public int getId_etablissement() {
-        return id_etablissement;
-    }
 
-    public void setId_etablissement(int id_etablissement) {
-        this.id_etablissement = id_etablissement;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -62,7 +67,9 @@ public class Wallet {
         return "Wallet{" +
                 "id_wallet=" + id_wallet +
                 ", balance=" + balance +
-                ", id_etablissement=" + id_etablissement +
+                ", code_etablissement=" + etablissement.getCode_etablissement() +
                 '}';
     }
+
+
 }

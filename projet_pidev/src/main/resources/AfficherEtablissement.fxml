@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="482.0" prefWidth="888.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherEtablissement">
+<AnchorPane prefHeight="668.0" prefWidth="982.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherEtablissement">
 
    <children>
       <Label layoutX="399.0" layoutY="5.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Etablissements">
@@ -18,23 +18,23 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <ListView fx:id="listView" layoutX="241.0" layoutY="57.0" prefHeight="390.0" prefWidth="634.0" styleClass="text-field" />
-      <Button layoutX="364.0" layoutY="463.0" mnemonicParsing="false" onAction="#modifierEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
+      <ListView fx:id="listView" layoutX="229.0" layoutY="57.0" prefHeight="256.0" prefWidth="634.0" styleClass="text-field" />
+      <Button layoutX="876.0" layoutY="111.0" mnemonicParsing="false" onAction="#modifierEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="464.0" layoutY="463.0" mnemonicParsing="false" onAction="#supprimerEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
+      <Button layoutX="876.0" layoutY="166.0" mnemonicParsing="false" onAction="#supprimerEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="800.0" layoutY="468.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
+      <Button layoutX="885.0" layoutY="275.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <TextField fx:id="RechercheETF" layoutX="613.0" layoutY="467.0" prefHeight="31.0" prefWidth="170.0" promptText="Recherche..." styleClass="text-field">
+      <TextField fx:id="RechercheETF" layoutX="866.0" layoutY="237.0" prefHeight="38.0" prefWidth="110.0" promptText="Recherche..." styleClass="text-field">
          <stylesheets>
             <URL value="@service2.css" />
          </stylesheets>
@@ -42,12 +42,12 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="264.0" layoutY="463.0" mnemonicParsing="false" onAction="#ajouterEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+      <Button layoutX="876.0" layoutY="57.0" mnemonicParsing="false" onAction="#ajouterEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <AnchorPane layoutX="1.0" layoutY="-2.0" prefHeight="520.0" prefWidth="219.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
+      <AnchorPane layoutX="-17.0" layoutY="-2.0" prefHeight="691.0" prefWidth="238.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
          <children>
             <Button layoutX="18.0" layoutY="160.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Formation" />
             <Button layoutX="16.0" layoutY="210.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Société" />
@@ -75,6 +75,40 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <ListView fx:id="listView1" layoutX="241.0" layoutY="385.0" prefHeight="290.0" prefWidth="634.0" styleClass="text-field" />
+      <Label layoutX="408.0" layoutY="331.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Wallets">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Button layoutX="886.0" layoutY="390.0" mnemonicParsing="false" onAction="#ajouterWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="883.0" layoutY="449.0" mnemonicParsing="false" onAction="#modifierWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="882.0" layoutY="507.0" mnemonicParsing="false" onAction="#supprimerWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="RechercheETF2" layoutX="876.0" layoutY="584.0" prefHeight="38.0" prefWidth="110.0" promptText="Recherche..." styleClass="text-field">
+         <stylesheets>
+            <URL value="@service2.css" />
+         </stylesheets>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button layoutX="886.0" layoutY="623.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
 
    </children>
 

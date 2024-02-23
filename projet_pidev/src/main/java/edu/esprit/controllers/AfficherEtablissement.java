@@ -1,8 +1,10 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 
+import edu.esprit.services.ServiceWallet;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,27 +21,30 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 public class AfficherEtablissement implements Initializable {
     @FXML
     private ListView<Etablissement> listView; // Assurez-vous que l'attribut fx:id correspond à celui dans votre fichier FXML
 
+    @FXML
+    private ListView<Wallet> listView1;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ServiceEtablissement serviceService = new ServiceEtablissement();
+        ServiceWallet serviceWallet = new ServiceWallet();
         Set<Etablissement> etablissements = null;
+        Set<Wallet> wallets = null;
 
         try {
             etablissements = serviceService.getAll();
+            wallets = serviceWallet.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         listView.setItems(FXCollections.observableArrayList(etablissements));
+        listView1.setItems(FXCollections.observableArrayList(wallets));
     }
 
 
@@ -128,5 +133,82 @@ public class AfficherEtablissement implements Initializable {
 
     }
 
+    public void ajouterWallet(ActionEvent actionEvent) {
+
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AjouterWallet.fxml")));
+            listView.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
+    public void modifierWallet(ActionEvent actionEvent) {
+
+        // Code pour modifier l'utilisateur sélectionné dans la liste
+        Wallet selectedWallet = listView1.getSelectionModel().getSelectedItem();
+        if (selectedWallet == null) {
+            // Aucun élément sélectionné, afficher une alerte
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner un Wallet à modifier.");
+            alert.showAndWait();
+            return; // Sortir de la méthode, car rien à supprimer
+        }
+        else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEtablissement.fxml"));
+                Parent root = loader.load();
+                ModifierEtablissement controller = loader.getController();
+                controller.initDataWallet(selectedWallet); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
+
+                // Obtenir la scène actuelle
+                Scene scene = listView1.getScene();
+
+                // Changer le contenu de la scène
+                scene.setRoot(root);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void supprimerWallet(ActionEvent actionEvent) {
+        Wallet selectedWallet = listView1.getSelectionModel().getSelectedItem();
+
+        if (selectedWallet == null) {
+            // Aucun élément sélectionné, afficher une alerte
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner un Wallet à supprimer.");
+            alert.showAndWait();
+            return; // Sortir de la méthode, car rien à supprimer
+        }
+
+        // Si un élément est sélectionné, afficher la confirmation de suppression
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation de suppression");
+        alert.setHeaderText(null);
+        alert.setContentText("Êtes-vous sûr de vouloir supprimer cette conversation ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                int id_wallet = selectedWallet.getId_wallet();
+                ServiceWallet serviceWallet = new ServiceWallet();
+                serviceWallet.supprimer(id_wallet);
+                listView1.getItems().remove(selectedWallet);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 

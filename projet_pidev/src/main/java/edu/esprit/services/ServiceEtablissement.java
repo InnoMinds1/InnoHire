@@ -158,5 +158,36 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
         }
     }
 
+    public Etablissement getOneByCode(int code) {
+        String req = "SELECT * FROM etablissement WHERE code_etablissement = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, code);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                // Assuming Utilisateur has appropriate constructor
+                Etablissement etablissement = new Etablissement();
+                etablissement.setId_etablissement(rs.getInt("id_etablissement"));
+                etablissement.setCode_etablissement(rs.getInt("code_etablissement"));
+                etablissement.setNom(rs.getString("nom"));
+                etablissement.setLieu(rs.getString("lieu"));
+                etablissement.setType_etablissement(rs.getString("type_etablissement"));
+                int id_user=rs.getInt("id_utilisateur");
+
+
+                ServiceUtilisateur su=new ServiceUtilisateur();
+                Utilisateur user1=su.getOneByID(id_user);
+                etablissement.setUser(user1);
+                // Set other properties as needed
+                return etablissement;
+            } else {
+                System.out.println("pas de utilisateur avec ce code " + code);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null; // Return null if no user found
+    }
+
 
 }

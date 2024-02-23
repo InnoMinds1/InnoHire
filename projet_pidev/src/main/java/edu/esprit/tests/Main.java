@@ -25,6 +25,7 @@ public class Main {
          */
 
         ServiceEtablissement se = new ServiceEtablissement();
+        System.out.println(se.getOneByCode(524));
 
         //----------------ajouter-------------------------
 
@@ -41,7 +42,7 @@ public class Main {
 
         /*----------------modifier-------------------------*/
 
-        Etablissement etablissementModifie = new Etablissement(11,"ff","Ghazela",12345,"Faculte",user);
+        Etablissement etablissementModifie = new Etablissement(35,"ff","Ghazela",12345,"Faculte",user);
          //se.modifier(etablissementModifie);
 
         /*-------------------Supprimer-------------------*/
@@ -51,7 +52,7 @@ public class Main {
         //System.out.println(se.getOneByID(2));
 
         /*----------------afficher tout-------------------------*/
-        System.out.println(se.getAll());
+      //  System.out.println(se.getAll());
 
         /*--------------------------------------------------------------------------------------------------------*/
         /*--------------------------------------End_table_etab----------------------------------------------------*/
@@ -63,11 +64,11 @@ public class Main {
 
         /*----------------ajouter-------------------------*/
 
-        //sw.ajouter(new Wallet(100,1));
+        sw.ajouter(new Wallet(100,etablissementModifie));
 
         /*----------------modifier-------------------------*/
 
-        Wallet walletModifie = new Wallet(3,200,7);
+        Wallet walletModifie = new Wallet(3,200,etablissementModifie);
        // sw.modifier(walletModifie);
 
         /*-------------------Supprimer-------------------*/
@@ -77,7 +78,8 @@ public class Main {
         //System.out.println(sw.getOneByID(3));
 
         /*----------------afficher tout-------------------------*/
-      //  System.out.println(sw.getAll());
+      // System.out.println(sw.getAll());
+
 
         /*--------------------------------------End_Sayari----------------------------------------------------*/
 

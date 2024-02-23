@@ -2,6 +2,7 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;
+import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.collections.FXCollections;
@@ -26,10 +27,12 @@ public class ModifierEtablissement implements Initializable {
 
     private int id ;
 
-
-
-
     private int codeInit ;
+
+    private int idW ;
+
+
+
 
     @FXML
     private TextField CodeETF;
@@ -48,6 +51,16 @@ public class ModifierEtablissement implements Initializable {
     @FXML
     private ListView<Utilisateur> ListViewUser;
 
+//----------------------wallet------------------------------------
+    @FXML
+    private TextField BalanceETF;
+
+    @FXML
+    private ListView<Wallet> ListViewEtab;
+
+    @FXML
+    private TextField code_EtabETF;
+
     private final ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
     public int getId() {
         return id;
@@ -62,6 +75,15 @@ public class ModifierEtablissement implements Initializable {
     public void setCodeInit(int codeInit) {
         this.codeInit = codeInit;
     }
+
+    public int getIdW() {
+        return idW;
+    }
+
+    public void setIdW(int idW) {
+        this.idW = idW;
+    }
+
 
 
 
@@ -89,6 +111,17 @@ public class ModifierEtablissement implements Initializable {
             NomETF.setText(etablissement.getNom());
             TypeETF.setText(etablissement.getType_etablissement());
            cin_utilisateurETF.setText(String.valueOf(etablissement.getUser().getCin()));
+
+        }
+    }
+
+    public void initDataWallet(Wallet wallet) {
+        if (wallet != null) {
+            setIdW(wallet.getId_wallet());
+
+            BalanceETF.setText(String.valueOf(wallet.getBalance()));
+
+            code_EtabETF.setText(String.valueOf(wallet.getEtablissement().getCode_etablissement()));
 
         }
     }
@@ -156,6 +189,9 @@ public class ModifierEtablissement implements Initializable {
         }
     }
 
+    public void okWallet(ActionEvent actionEvent) {
+    }
+
    /* public void AfficherEtablissement(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
@@ -209,5 +245,7 @@ public class ModifierEtablissement implements Initializable {
             }
         });
     }
+
+
 
 }

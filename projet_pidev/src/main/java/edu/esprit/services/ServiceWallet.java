@@ -1,6 +1,8 @@
 package edu.esprit.services;
 
 
+import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.entities.Wallet;
 import edu.esprit.utils.DataSource;
 
@@ -12,7 +14,7 @@ public class ServiceWallet implements IService<Wallet> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Wallet wallet) {
+    public void ajouter(Wallet wallet) throws SQLException {
    /*
 String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()+"','"+personne.getPrenom()+"')";
         try {
@@ -28,7 +30,8 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, wallet.getBalance());
-            ps.setInt(2, wallet.getId_etablissement());
+
+            ps.setInt(2, wallet.getEtablissement().getId_etablissement());
 
             ps.executeUpdate();
             System.out.println("Wallet added !");
@@ -38,7 +41,7 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
     }
 
     @Override
-    public void modifier(Wallet wallet) {
+    public void modifier(Wallet wallet) throws SQLException {
         int id = wallet.getId_wallet();
         Wallet existingWallet = getOneByID(id);
         if (existingWallet != null) {
@@ -46,7 +49,8 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setInt(1, wallet.getBalance());
-                ps.setInt(2, wallet.getId_etablissement());
+
+                ps.setInt(2, wallet.getEtablissement().getId_etablissement());
 
                 ps.setInt(3, id);
 
@@ -63,7 +67,7 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
     }
 
     @Override
-    public void supprimer(int id_wallet) {
+    public void supprimer(int id_wallet) throws SQLException {
 
         Wallet wallet = getOneByID(id_wallet);
         if (wallet != null) {
@@ -96,7 +100,11 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
 
                 int id_etablissement = rs.getInt("id_etablissement");
 
-                Wallet e = new Wallet(id_wallet,balance,id_etablissement);
+
+                ServiceEtablissement se = new ServiceEtablissement();
+                Etablissement etablissement = se.getOneByID(id_etablissement);
+
+                Wallet e = new Wallet(id_wallet,balance,etablissement);
                 wallets.add(e);
             }
         } catch (SQLException e) {
@@ -118,7 +126,13 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
                 int balance = rs.getInt(2); //wala t7ot esm colomn kima eli fou9ha
 
                 int id_etablissement = rs.getInt("id_etablissement");
-                return new Wallet(id_wallet, balance, id_etablissement);
+
+
+                ServiceEtablissement se = new ServiceEtablissement();
+                Etablissement etablissement = se.getOneByID(id_etablissement);
+
+
+                return new Wallet(id_wallet, balance, etablissement);
             } else {
                 System.out.print("Echec! Wallet with ID " + id_wallet + " est" + " " );
                 return null;
@@ -128,4 +142,5 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
             return null;
         }
     }
+
 }

@@ -3,9 +3,11 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;
+import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 
 import edu.esprit.services.ServiceUtilisateur;
+import edu.esprit.services.ServiceWallet;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +46,9 @@ public class AjouterEtablissement implements Initializable {
     @FXML
     private ListView<Utilisateur> ListViewUser;
 
+
     private final ServiceEtablissement se = new ServiceEtablissement();
+
 
 
 
@@ -192,15 +196,19 @@ public class AjouterEtablissement implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
+
         Set<Utilisateur> users = null;
+
 
         try {
             users = serviceService.getAll();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         ListViewUser.setItems(FXCollections.observableArrayList(users));
+
 
         // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
         ListViewUser.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -209,5 +217,9 @@ public class AjouterEtablissement implements Initializable {
             }
         });
 
+
+
     }
+
+
 }
