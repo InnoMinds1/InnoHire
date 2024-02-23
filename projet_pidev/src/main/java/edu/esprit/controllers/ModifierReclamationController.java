@@ -4,8 +4,11 @@ import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -40,6 +43,7 @@ public class ModifierReclamationController {
 
 
     public void ModifierReclamation(ActionEvent event) {
+
         // Get the modified values from the input fields
         String newType = TFType.getText();
         String newTitre = TFTitre.getText();
@@ -74,6 +78,7 @@ public class ModifierReclamationController {
                 successAlert.setTitle("Success");
                 successAlert.setContentText("Reclamation updated successfully!");
                 successAlert.show();
+                navigateToAfficherReclamationAction(event);
             } catch (SQLException e) {
                 // Handle any SQL exception that might occur during the update
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -90,4 +95,15 @@ public class ModifierReclamationController {
         }
     }
 
+    public void navigateToAfficherReclamationAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamation.fxml"));
+            TFTitre.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
 }

@@ -35,25 +35,6 @@ public class AjouterReclamationController {
     Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789");
     Publication pub=new Publication(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
 
-    @FXML
-    void ajouterReclamationAction(ActionEvent event){
-        try {
-            LocalDate localDate = datePicker.getValue();
-            Timestamp timestamp = Timestamp.valueOf(localDate.atStartOfDay());
-            sr.ajouter(new Reclamation(0, TFType.getText(), TFTitre.getText(), TADescription.getText(), timestamp, pub, user));
-            Alert alert =new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Your reclamation send with succes");
-            alert.show();
-        }catch (SQLException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-        }
-    }
-
-
 
     public void navigateToAfficherReclamationAction(ActionEvent actionEvent) {
         try {
@@ -67,6 +48,29 @@ public class AjouterReclamationController {
         }
 
     }
+    @FXML
+    void ajouterReclamationAction(ActionEvent event){
+        try {
+            LocalDate localDate = datePicker.getValue();
+            Timestamp timestamp = Timestamp.valueOf(localDate.atStartOfDay());
+            sr.ajouter(new Reclamation(0, TFType.getText(), TFTitre.getText(), TADescription.getText(), timestamp, pub, user));
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setContentText("Your reclamation send with succes");
+            alert.show();
+            navigateToAfficherReclamationAction(event);
+        }catch (SQLException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("SQL Exception");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+
+
+
+
 
 
 

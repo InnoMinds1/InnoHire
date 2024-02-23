@@ -13,9 +13,9 @@
       <AnchorPane layoutX="234.0" layoutY="12.0" prefHeight="677.0" prefWidth="1121.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
             <ListView fx:id="listView" layoutX="28.0" layoutY="107.0" prefHeight="495.0" prefWidth="1066.0" style="-fx-border-width: 2; -fx-background-color: transparent; -fx-fixed-cell-size: 40; -fx-background-radius: 30; -fx-cursor: hand;" stylesheets="@css/styles.css" />
-            <Label layoutX="39.0" layoutY="14.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 25;" text="Liste Claim" />
+            <Label layoutX="39.0" layoutY="14.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 25;" text="Liste Claim" />
             <Label layoutX="46.0" layoutY="71.0" prefHeight="36.0" prefWidth="768.0" style="-fx-text-fill: #ede8f6; -fx-font-weight: bold; -fx-font-size: 15;" text="Name                         Title                                                   Type                     Code                                 Date " />
-            <Button layoutX="996.0" layoutY="617.0" mnemonicParsing="false" onAction="#DeleteReclamation" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Delete">
+            <Button layoutX="1000.0" layoutY="627.0" mnemonicParsing="false" onAction="#DeleteReclamation" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Delete">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -27,7 +27,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="883.0" layoutY="619.0" mnemonicParsing="false" onAction="#navigateToModifyReclamationAction" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
+            <Button layoutX="889.0" layoutY="627.0" mnemonicParsing="false" onAction="#navigateToModifyReclamationAction" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,6 +68,18 @@
                      </image>
                   </ImageView>
                </graphic>
+            </Button>
+            <Button layoutX="770.0" layoutY="627.0" mnemonicParsing="false" onAction="#navigateToAjouterReclamationAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Add New">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
 
          </children>

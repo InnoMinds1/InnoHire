@@ -62,6 +62,8 @@ public class AfficherReclamation implements Initializable {
     @FXML
     void navigateToModifyReclamationAction() {
         Reclamation selectedReclamation = listView.getSelectionModel().getSelectedItem();
+
+        // Check if an item is selected
         if (selectedReclamation != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReclamation.fxml"));
@@ -76,8 +78,15 @@ public class AfficherReclamation implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            // Show an alert if no reclamation is selected
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+            infoAlert.setTitle("Information");
+            infoAlert.setContentText("No reclamation selected for modification.");
+            infoAlert.showAndWait();
         }
     }
+
 
     @FXML
     void DeleteReclamation(ActionEvent event) {
@@ -128,4 +137,19 @@ public class AfficherReclamation implements Initializable {
         }
     }
 
+
+    public void navigateToAjouterReclamationAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterReclamation.fxml"));
+            listView.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
 }
+
+
+

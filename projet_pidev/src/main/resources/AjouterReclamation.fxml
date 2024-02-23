@@ -35,23 +35,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="900.0" layoutY="637.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
+            <Button layoutX="900.0" layoutY="637.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/multiply.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="61.0" layoutY="636.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #9c95a7; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List Claim">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/file-storage.png" />
                      </image>
                   </ImageView>
                </graphic>
