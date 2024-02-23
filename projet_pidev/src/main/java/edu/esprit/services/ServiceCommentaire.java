@@ -16,14 +16,14 @@ public class ServiceCommentaire implements IService<Commentaire>  {
 
     @Override
     public void ajouter(Commentaire commentaire) throws SQLException {
-        String req = "INSERT INTO `commentaire`( `id_publication`,`id_utilisateur`,`description_co`, `date_co`) VALUES (?,?,?,?)";
+        String req = "INSERT INTO `commentaire`( `id_publication`,`id_utilisateur`,`description_co`, `date_co`,`nb_etoile`) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, commentaire.getPublication().getId_publication());
             ps.setInt(2, commentaire.getUtilisateur().getId_utilisateur());
             ps.setString(3, commentaire.getDescription_co());
             ps.setDate(4, Date.valueOf(commentaire.getDate_co())); // Assuming date is a java.util.Date
-
+            ps.setInt(5, commentaire.getNb_etoile());
             ps.executeUpdate();
             System.out.println("Commentaire added successfully!");
         } catch (SQLException e) {
@@ -35,14 +35,15 @@ public class ServiceCommentaire implements IService<Commentaire>  {
 
     @Override
     public void modifier(Commentaire commentaire) throws SQLException {
-        String req = "UPDATE commentaire SET id_publication = ?, id_utilisateur = ?, description_co = ?, date_co = ? WHERE id_commentaire = ?";
+        String req = "UPDATE commentaire SET id_publication = ?, id_utilisateur = ?, description_co = ?, date_co = ? , nb_etoile = ?WHERE id_commentaire = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
           ps.setInt(1, commentaire.getPublication().getId_publication());
             ps.setInt(2, commentaire.getUtilisateur().getId_utilisateur());
             ps.setString(3, commentaire.getDescription_co());
             ps.setDate(4, Date.valueOf(commentaire.getDate_co()));
-            ps.setInt(5, commentaire.getId_commentaire());
+            ps.setInt(5, commentaire.getNb_etoile());
+            ps.setInt(6, commentaire.getId_commentaire());
 
             ps.executeUpdate();
             System.out.println("Commentaire modifié!");
@@ -87,6 +88,7 @@ public class ServiceCommentaire implements IService<Commentaire>  {
                 LocalDate date_co = rs.getDate("date_co").toLocalDate();
                 int id_utilisateur=rs.getInt("id_utilisateur");
                 int id_publication=rs.getInt("id_publication");
+                int nb_etoile=rs.getInt("nb_etoile");
                 Utilisateur utilisateur;
                 ServiceUtilisateur sc=new ServiceUtilisateur();
                 utilisateur=sc.getOneByID(id_utilisateur);
@@ -94,7 +96,7 @@ public class ServiceCommentaire implements IService<Commentaire>  {
                 ServicePublication sb=new ServicePublication();
                 publication=sb.getOneByID(id_publication);
 
-                Commentaire c = new Commentaire(id_commentaire,publication,utilisateur,description_co,date_co);
+                Commentaire c = new Commentaire(id_commentaire,publication,utilisateur,description_co,date_co,nb_etoile);
                 commentaires.add(c);
             }
         } catch (SQLException e) {
@@ -116,6 +118,7 @@ public class ServiceCommentaire implements IService<Commentaire>  {
                 LocalDate date_co = rs.getDate("date_co").toLocalDate();
                 int id_utilisateur=rs.getInt("id_utilisateur");
                 int id_publication=rs.getInt("id_publication");
+                int nb_etoile=rs.getInt("nb_etoile");
                 Utilisateur utilisateur;
                 ServiceUtilisateur sc=new ServiceUtilisateur();
                 utilisateur=sc.getOneByID(id_utilisateur);
@@ -123,7 +126,7 @@ public class ServiceCommentaire implements IService<Commentaire>  {
                 ServicePublication sb=new ServicePublication();
                 publication=sb.getOneByID(id_publication);
 
-                return new Commentaire(id_commentaire,publication,utilisateur,description_co,date_co);
+                return new Commentaire(id_commentaire,publication,utilisateur,description_co,date_co,nb_etoile);
             } else {
                 System.out.print("Echec! Etablissement with ID " + id_commentaire + " est" + " " );
                 return null;

@@ -10,21 +10,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="482.0" prefWidth="888.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherPublication">
+<AnchorPane prefHeight="482.0" prefWidth="888.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherCommentaire">
 
    <children>
-      <Label layoutX="399.0" layoutY="5.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Publications">
+      <Label layoutX="399.0" layoutY="5.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Commentaires">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <ListView fx:id="listView" layoutX="241.0" layoutY="57.0" prefHeight="390.0" prefWidth="634.0" styleClass="text-field" />
-      <Button layoutX="340.0" layoutY="463.0" mnemonicParsing="false" onAction="#modifierPublication" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
+      <ListView fx:id="ListviewC" layoutX="241.0" layoutY="57.0" prefHeight="390.0" prefWidth="634.0" styleClass="text-field" />
+      <Button fx:id="modifierCommentaire" layoutX="340.0" layoutY="463.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="442.0" layoutY="463.0" mnemonicParsing="false" onAction="#supprimerPublication" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
+      <Button fx:id="supprimerCommentaire" layoutX="442.0" layoutY="463.0" mnemonicParsing="false" onAction="#supprimerCommentaire" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -42,7 +42,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="231.0" layoutY="463.0" mnemonicParsing="false" onAction="#ajouterPublication" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+      <Button fx:id="ajouterCommentaire" layoutX="231.0" layoutY="463.0" mnemonicParsing="false" onAction="#ajouterCommentaire" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -75,11 +75,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button fx:id="allerverscommentaire" layoutX="533.0" layoutY="463.0" mnemonicParsing="false" onAction="#allerverscommentaire" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Commentaire" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
+
 
    </children>
 

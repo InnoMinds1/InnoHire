@@ -30,7 +30,7 @@ public class Main {
 
         Publication p = new Publication(3,"22",u,"888888","111111","4qv","111",LocalDate.of(2021,02,4),125);
        //sb.ajouter(pc);
-        sb.modifier(p);
+        //sb.modifier(p);
         //sb.supprimer(2);
         //System.out.println(sb.getOneByID(11));
         //System.out.println(sb.getAll());
@@ -38,13 +38,13 @@ public class Main {
         //----------------------Commentaire--------------------------------------//
         Publication pc = new Publication(3,"22",u,"22","11","444","111",LocalDate.of(2021,02,4),125);
         //sb.ajouter(pc);
-         Commentaire c=new Commentaire(pc,u,"ok", LocalDate.of(2023,02,4));
+         Commentaire c=new Commentaire(pc,u,"ok", LocalDate.of(2023,02,4),12);
 
         //sc.ajouter(c);
         //sc.modifier(c);
         //sc.supprimer(10);
         //System.out.println(sc.getOneByID(10));
-       // System.out.println(sc.getAll());
+       System.out.println(sc.getAll());
 
 
 
