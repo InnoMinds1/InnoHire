@@ -1,5 +1,6 @@
 package edu.esprit.services;
 
+import edu.esprit.controllers.AjouterAfficherMessageController;
 import edu.esprit.entities.Messagerie;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
@@ -112,4 +113,7 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
         }
         return null;
     }
+
+
+
 }

@@ -1,55 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="699.0" prefWidth="1388.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterReclamationController">
+<AnchorPane prefHeight="714.0" prefWidth="1408.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterAfficherMessageController">
    <children>
-      <AnchorPane layoutX="248.0" layoutY="15.0" prefHeight="675.0" prefWidth="732.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
-         <children>
-            <TextField fx:id="TFType" layoutX="62.0" layoutY="158.0" prefHeight="32.0" prefWidth="270.0" stylesheets="@css/styles.css" />
-            <TextArea fx:id="TADescription" layoutX="61.0" layoutY="295.0" prefHeight="330.0" prefWidth="651.0" stylesheets="@css/styles.css" />
-            <TextField fx:id="TFTitre" layoutX="61.0" layoutY="86.0" prefHeight="32.0" prefWidth="270.0" stylesheets="@css/styles.css" />
-            <DatePicker fx:id="datePicker" layoutX="61.0" layoutY="226.0" prefHeight="32.0" prefWidth="270.0" stylesheets="@css/styles.css" />
-            <Label layoutX="61.0" layoutY="14.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 25;" text="Add Claim" />
-            <Label layoutX="61.0" layoutY="50.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Titre" />
-            <Label layoutX="61.0" layoutY="118.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Type" />
-            <Label layoutX="61.0" layoutY="190.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Date" />
-            <Label layoutX="61.0" layoutY="259.0" prefHeight="36.0" prefWidth="171.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
-            <Button layoutX="630.0" layoutY="634.0" mnemonicParsing="false" onAction="#ajouterReclamationAction" prefHeight="32.0" prefWidth="76.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Add">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="51.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/plus.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="519.0" layoutY="636.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
-               <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/multiply.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="8.0" layoutY="22.0" prefHeight="568.0" prefWidth="225.0" style="-fx-background-color: #5955b3;">
+      <AnchorPane layoutX="18.0" layoutY="32.0" prefHeight="568.0" prefWidth="225.0" style="-fx-background-color: #5955b3;">
          <children>
             <Button layoutY="359.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="236.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 15;" text=" Manage establishment">
                <cursor>
@@ -114,19 +79,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button layoutX="58.0" layoutY="651.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 15;" text="LogOut">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/door.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <AnchorPane layoutX="990.0" layoutY="12.0" prefHeight="675.0" prefWidth="359.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
+      <AnchorPane layoutX="1000.0" layoutY="22.0" prefHeight="665.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
          <children>
             <Label layoutX="296.0" layoutY="64.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Admin" />
             <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="295.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -146,6 +99,53 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="254.0" layoutY="25.0" prefHeight="665.0" prefWidth="721.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
+         <children>
+            <Label layoutX="334.0" layoutY="7.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Chat" />
+            <ScrollPane fx:id="chatScrollPane" layoutX="13.0" layoutY="164.0" prefHeight="444.0" prefWidth="695.0" style="-fx-background-color: #ffffff;">
+               <content>
+                  <VBox fx:id="chatVbox" prefHeight="442.0" prefWidth="692.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <HBox fx:id="chatHbox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-padding: 20;">
+                           <children>
+                              <ImageView fitHeight="45.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/profile.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <AnchorPane fx:id="AnchoPaneMessage" prefHeight="100.0" prefWidth="410.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 0 30 30 30;">
+                                 <children>
+                                    <Label fx:id="contenuReciver" layoutX="17.0" layoutY="20.0" prefHeight="21.0" prefWidth="379.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 10;" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <TextField layoutX="13.0" layoutY="618.0" prefHeight="35.0" prefWidth="612.0" stylesheets="@css/styles.css" />
+            <Button layoutX="630.0" layoutY="618.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="78.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Send">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="51.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="84.0" layoutY="111.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Hachem Dhawai" />
          </children>
       </AnchorPane>
    </children>
