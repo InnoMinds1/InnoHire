@@ -21,18 +21,33 @@ import java.util.Set;
 public class AjouterAfficherMessageController implements Initializable{
     @FXML
     private VBox chatVbox;
+    @FXML
+    private Label receiverNameLabel;
+
+    @FXML
+    private ImageView receiverProfileImage;
 
     private final ServiceMessagerie serviceMessagerie = new ServiceMessagerie();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        updateReceiverInfo();
         updateChatMessages();
+    }
+    public void updateReceiverInfo() {
+        // Get the name and profile image URL of the receiver
+        String receiverName = "Receiver Name"; // Replace with the actual receiver's name
+        String profileImageUrl = "/images/inner.png"; // Replace with the actual image URL
+
+        // Set the receiver's name and profile image
+        receiverNameLabel.setText(receiverName);
+        receiverProfileImage.setImage(new Image(profileImageUrl));
     }
     public void updateChatMessages() {
         // Get the reference to the chatVbox
         // VBox chatVbox ;// reference to your chatVbox, you can use FXMLLoader to get it.
 
         // Get the messages from the database
-        Set<Messagerie> messages = serviceMessagerie.getAll();
+        Set<Messagerie> messages = serviceMessagerie.getAllMessagesByReciverAndSender(1,9);
 
         // Clear the existing content
         chatVbox.getChildren().clear();
@@ -44,7 +59,6 @@ public class AjouterAfficherMessageController implements Initializable{
             chatVbox.getChildren().add(messageBox);
         }
     }
-
     private HBox createMessageBox(Messagerie message) {
         // Create an HBox for each message
         HBox messageHbox = new HBox();
@@ -53,94 +67,51 @@ public class AjouterAfficherMessageController implements Initializable{
         // Add UI components for displaying the message, e.g., Label, ImageView, etc.
         // Example:
         ImageView profileImage = new ImageView(new Image("/images/profile.png"));
-        profileImage.setFitWidth(30.0); // Set the desired width
-        profileImage.setFitHeight(30.0); // Set the desired height
+        profileImage.setFitWidth(40.0); // Set the desired width
+        profileImage.setFitHeight(40.0); // Set the desired height
 
         AnchorPane messagePane = new AnchorPane();
-        messagePane.setPrefHeight(100.0);
-        messagePane.setPrefWidth(410.0);
         messagePane.setStyle("-fx-background-color: #f2f5ec; -fx-background-radius: 0 30 30 30;");
 
         Label contentLabel = new Label(message.getContenu());
         contentLabel.setLayoutX(17.0);
         contentLabel.setLayoutY(10.0);
-        //contentLabel.setPrefHeight(21.0);
-        //contentLabel.setPrefWidth(308.0);
-        contentLabel.setStyle("-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 10;");
+        //5955b3
+        contentLabel.setStyle("-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 10; -fx-padding: 0 0 15 0;");
 
-        messagePane.getChildren().add(contentLabel);
+        contentLabel.setWrapText(true); // Enable text wrapping
+        contentLabel.setMaxWidth(400.0); // Set a max width to trigger wrapping
 
-        // Add components to the HBox
+        // Bind the prefWidth of the AnchorPane to the width of the Label
+        messagePane.prefWidthProperty().bind(contentLabel.widthProperty().add(34.0)); // Adjusted for padding
+
+        Label dateLabel = new Label(message.getDate().toString()); // Adjust this based on your date format
+        dateLabel.setLayoutX(370.0); // Adjusted X position to place it in the bottom-right corner
+        dateLabel.setLayoutY(40.0); // Adjusted Y position to place it below the message
+        dateLabel.setStyle("-fx-text-fill: #888888; -fx-font-size: 10;");
+
+        if (message.getSender_id().getId_utilisateur() == 1) {
+            profileImage = new ImageView(new Image("/images/business.png"));
+            profileImage.setFitWidth(40.0);
+            profileImage.setFitHeight(40.0);
+           // messageHbox.getChildren().addAll(messagePane, dateLabel);
+            messagePane.getChildren().addAll(contentLabel);
+            messageHbox.getChildren().addAll(profileImage, messagePane);
+            messageHbox.getChildren().add(dateLabel);
+        } else {
+             profileImage = new ImageView(new Image("/images/profile.png"));
+            profileImage.setFitWidth(40.0);
+            profileImage.setFitHeight(40.0);
+            //messageHbox.getChildren().addAll(profileImage, messagePane, dateLabel);
+            messagePane.getChildren().addAll(contentLabel);
+            messageHbox.getChildren().addAll(profileImage, messagePane);
+            messageHbox.getChildren().add(dateLabel);
+        }
+
+        /*messagePane.getChildren().addAll(contentLabel);
         messageHbox.getChildren().addAll(profileImage, messagePane);
+        messageHbox.getChildren().add(dateLabel);*/
 
         return messageHbox;
     }
-
-
-
-
-//    @FXML
-//    private GridPane chatGridPane;
-//
-//    private ServiceMessagerie serviceMessagerie = new ServiceMessagerie();
-//
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//        System.out.println("Controller initialized."); // Check if this line is printed
-//        displayMessages();
-//    }
-//
-//    private void displayMessages() {
-//        Set<Messagerie> messages = serviceMessagerie.getAll();
-//        System.out.println("Number of messages retrieved: " + messages.size()); // Check if this line is printed
-//
-//        int rowIndex = 0; // Start from the first row
-//
-//        for (Messagerie message : messages) {
-//            addMessageToUI(message, rowIndex);
-//            rowIndex++;
-//        }
-//    }
-//
-//    private void addMessageToUI(Messagerie message, int rowIndex) {
-//        Label contenuReciverLabel = new Label(message.getContenu());
-//
-//        contenuReciverLabel.setId("contenuReciver");
-//        contenuReciverLabel.setLayoutX(70.0); // Adjusted layoutX to accommodate the profile image
-//        contenuReciverLabel.setLayoutY(20.0);
-//        contenuReciverLabel.setMaxWidth(340);
-//        contenuReciverLabel.setWrapText(true);
-//        contenuReciverLabel.setStyle("-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 10;");
-//        contenuReciverLabel.setText(message.getContenu());
-//
-//        // For receiver messages, use a profile image on the left
-//        ImageView profileImage = new ImageView(new Image("/images/blog.png"));
-//        profileImage.setFitHeight(45.0);
-//        profileImage.setFitWidth(47.0);
-//        profileImage.setLayoutX(23.0);
-//        profileImage.setLayoutY(10.0);
-//
-//        // Add the profile image and labels to the chatGridPane
-//        chatGridPane.addRow(rowIndex, profileImage, createMessageContainer(contenuReciverLabel));
-//    }
-//
-//
-//
-//
-//    private AnchorPane createMessageContainer(Label contenuReciverLabel) {
-//        AnchorPane messageContainer = new AnchorPane();
-//
-//        messageContainer.prefWidthProperty().bind(contenuReciverLabel.widthProperty().add(100)); // Adjusted padding
-//        messageContainer.prefHeightProperty().bind(contenuReciverLabel.heightProperty().add(20));
-//
-//        messageContainer.setStyle("-fx-background-color: #f2f5ec; -fx-background-radius: 0 30 30 30;");
-//
-//        // Add the label to the message container
-//        messageContainer.getChildren().add(contenuReciverLabel);
-//
-//        return messageContainer;
-//    }
-
-
-
 }

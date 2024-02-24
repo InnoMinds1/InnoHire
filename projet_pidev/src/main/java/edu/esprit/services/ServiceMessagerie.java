@@ -114,6 +114,39 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
         return null;
     }
 
+    public Set<Messagerie> getAllMessagesByReciverAndSender(int senderId, int receiverId) {
+        Set<Messagerie> messages = new HashSet<>();
+        String req = "SELECT * FROM `messagerie` WHERE (sender_id = ? AND reciver_id = ?) OR (sender_id = ? AND reciver_id = ?) ORDER BY date";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, senderId);
+            ps.setInt(2, receiverId);
+            ps.setInt(3, receiverId);  // Set the receiver as the sender and vice versa
+            ps.setInt(4, senderId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Messagerie mess = new Messagerie();
+                    mess.setId_message(rs.getInt("id_message"));
+                    mess.setType(rs.getString("type"));
+                    mess.setContenu(rs.getString("contenu"));
+                    mess.setDate(rs.getTimestamp("date"));
+
+                    // Utilize ServiceUtilisateur to get the User by ID
+                    Utilisateur sender = new ServiceUtilisateur().getOneByID(rs.getInt("sender_id"));
+                    Utilisateur receiver = new ServiceUtilisateur().getOneByID(rs.getInt("reciver_id"));
+                    mess.setSender_id(sender);
+                    mess.setReciver_id(receiver);
+
+                    messages.add(mess);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Messagerie: " + e.getMessage());
+        }
+        return messages;
+    }
+
+
 
 
 }

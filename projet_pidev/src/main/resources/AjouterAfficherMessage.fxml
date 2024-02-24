@@ -112,7 +112,7 @@
                            <children>
                               <ImageView fitHeight="45.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@images/profile.png" />
+                                    <Image url="@images/business.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets />
@@ -145,7 +145,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="84.0" layoutY="111.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Hachem Dhawai" />
+            <Label fx:id="receiverNameLabel" layoutX="85.0" layoutY="87.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Hachem Dhawai" />
+            <ImageView fx:id="receiverProfileImage" fitHeight="45.0" fitWidth="47.0" layoutX="25.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/inner.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

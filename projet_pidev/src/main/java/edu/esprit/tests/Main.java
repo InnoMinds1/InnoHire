@@ -23,6 +23,7 @@ public class Main {
        // Publication pub=new Publication(1,1,5,"mhaf","#mhaf","seen","mhaf.png","19/02/2024");
 
         ServiceMessagerie sm=new ServiceMessagerie();
+        System.out.println(sm.getAllMessagesByReciverAndSender(1,9));
         //sm.ajouter(new Messagerie("text","chna7welek yal gafsi",new Date(),user,user2));
         //int status, String type, String titre, String description, String image, Date date, Publication pub, Utilisateur user
         //sr.ajouter(new Reclamation(0,"son image","son image","son image",new Date(),pub,user));
@@ -30,12 +31,12 @@ public class Main {
         //ServiceCategorie sc = new ServiceCategorie();
         //sc.ajouter(new Categorie("Web","all belogns to Web"));
         //sc.modifier(new Categorie(1,"new Mobile",sc.getOneByID(1).getDescription()));
-        ServiceReclamation sr=new ServiceReclamation();
+       /* ServiceReclamation sr=new ServiceReclamation();
         System.out.println(sr.getOneByID(1));
         ServicePublication pb = new ServicePublication();
         System.out.println(pb.getOneByID(1));
         ServiceUtilisateur ss = new ServiceUtilisateur();
-        System.out.println(ss.getOneByID(1));
+        System.out.println(ss.getOneByID(1));*/
         //System.out.println(sr.getOneByID(1));
         //System.out.println(sc.getOneByID(2));*/
 
