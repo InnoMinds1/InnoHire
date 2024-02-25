@@ -23,8 +23,7 @@ import java.util.*;
 
 public class AfficherPublication implements Initializable {
 
-    @FXML
-    private Button allerverscommentaire;
+
 
 
     @FXML
@@ -109,7 +108,7 @@ public class AfficherPublication implements Initializable {
     @FXML
     void allerverscommentaire(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterCommentaire.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCommentaire.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

@@ -6,16 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterCommentaire">
+<AnchorPane prefHeight="496.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterCommentaire">
    <children>
-      <ListView fx:id="listView" layoutX="271.0" layoutY="23.0" prefHeight="366.0" prefWidth="315.0" />
+      <ListView fx:id="listView" layoutX="271.0" layoutY="23.0" prefHeight="366.0" prefWidth="523.0" />
       <TextField fx:id="cinTF1" layoutX="35.0" layoutY="86.0" promptText="cin" />
       <DatePicker fx:id="dateTf1" layoutX="35.0" layoutY="206.0" promptText="jj-mm-yyyy" />
       <TextField fx:id="ratingTF1" layoutX="35.0" layoutY="270.0" promptText="rating" />
       <TextField fx:id="descriptionTF1" layoutX="35.0" layoutY="145.0" promptText="description" />
       <Button fx:id="validerCommentaire" layoutX="35.0" layoutY="330.0" mnemonicParsing="false" onAction="#validerCommentaire" text="Button" />
 
-      <Button fx:id="afficherCommentaire" layoutX="699.0" layoutY="537.0" mnemonicParsing="false" onAction="#navigatetoAfficherCommentaireAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Afficher" textFill="WHITE">
+      <Button fx:id="afficherCommentaire" layoutX="363.0" layoutY="403.0" mnemonicParsing="false" onAction="#navigatetoAfficherCommentaireAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Afficher" textFill="WHITE">
 
       </Button>
 

@@ -103,12 +103,18 @@ public class AfficherCommentaire implements Initializable {
             }
         }
     }
-     
-    
-    
 
 
+    public void allerverspublication(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPublication.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-
-
+    }
 }
