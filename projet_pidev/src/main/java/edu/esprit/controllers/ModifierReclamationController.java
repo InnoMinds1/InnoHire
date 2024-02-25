@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ModifierReclamationController {
 
@@ -19,8 +20,6 @@ public class ModifierReclamationController {
     private TextField TFType;
     @FXML
     private TextField TFTitre;
-    @FXML
-    private DatePicker datePicker;
     @FXML
     private TextArea TADescription;
     @FXML
@@ -36,7 +35,7 @@ public class ModifierReclamationController {
         // Initialize the fields with data from the selected Reclamation
         TFType.setText(selectedReclamation.getType());
         TFTitre.setText(selectedReclamation.getTitre());
-        datePicker.setValue(LocalDate.now());
+        //datePicker.setValue(LocalDate.now());
         TADescription.setText(selectedReclamation.getDescription());
 
     }
@@ -47,7 +46,7 @@ public class ModifierReclamationController {
         // Get the modified values from the input fields
         String newType = TFType.getText();
         String newTitre = TFTitre.getText();
-        LocalDate newDate = datePicker.getValue();
+        //LocalDate newDate = datePicker.getValue();
         String newDescription = TADescription.getText();
 
         // Store the original values
@@ -55,6 +54,9 @@ public class ModifierReclamationController {
         String originalTitre = selectedReclamation.getTitre();
         //LocalDate originalDate = selectedReclamation.getDate().toLocalDateTime().toLocalDate();
         String originalDescription = selectedReclamation.getDescription();
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(currentDateTime);
 
         // Check if any field is modified
         boolean isModified = !newType.equals(originalType) ||
@@ -66,7 +68,7 @@ public class ModifierReclamationController {
             // Update the selectedReclamation object with the modified values
             selectedReclamation.setType(newType);
             selectedReclamation.setTitre(newTitre);
-            selectedReclamation.setDate(Timestamp.valueOf(newDate.atStartOfDay()));
+            selectedReclamation.setDate(timestamp);
             selectedReclamation.setDescription(newDescription);
 
             try {

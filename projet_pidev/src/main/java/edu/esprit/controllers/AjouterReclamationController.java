@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class AjouterReclamationController {
@@ -26,8 +27,6 @@ public class AjouterReclamationController {
     private TextField TFTitre;
     @FXML
     private TextField TFType;
-    @FXML
-    private DatePicker datePicker;
     @FXML
     private TextArea TADescription;
 
@@ -49,23 +48,45 @@ public class AjouterReclamationController {
 
     }
     @FXML
-    void ajouterReclamationAction(ActionEvent event){
-        try {
-            LocalDate localDate = datePicker.getValue();
-            Timestamp timestamp = Timestamp.valueOf(localDate.atStartOfDay());
-            sr.ajouter(new Reclamation(0, TFType.getText(), TFTitre.getText(), TADescription.getText(), timestamp, pub, user));
-            Alert alert =new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Your reclamation send with succes");
-            alert.show();
-            navigateToAfficherReclamationAction(event);
-        }catch (SQLException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+    void ajouterReclamationAction(ActionEvent event) {
+        String type = TFType.getText();
+        String titre = TFTitre.getText();
+        String description = TADescription.getText();
+
+        // Get the current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(currentDateTime);
+
+        // Check if any field is empty
+        if (type.trim().isEmpty() || titre.trim().isEmpty() || description.trim().isEmpty()) {
+            // Show a warning alert if any field is empty
+            Alert emptyFieldAlert = new Alert(Alert.AlertType.WARNING);
+            emptyFieldAlert.setTitle("Empty Fields");
+            emptyFieldAlert.setContentText("Please fill in all fields before adding a reclamation.");
+            emptyFieldAlert.showAndWait();
+        } else {
+            try {
+                // Proceed to add the reclamation if all fields are filled
+                sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, user));
+
+                // Show a success alert
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Success");
+                successAlert.setContentText("Your reclamation has been added successfully.");
+                successAlert.showAndWait();
+
+                navigateToAfficherReclamationAction(event);
+            } catch (SQLException e) {
+                // Show an alert for SQL exception
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("SQL Exception");
+                errorAlert.setContentText(e.getMessage());
+                errorAlert.showAndWait();
+            }
         }
     }
+
+
 
 
 

@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="699.0" prefWidth="1365.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierReclamationController">
+<AnchorPane prefHeight="699.0" prefWidth="1365.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierReclamationController">
    <children>
       <AnchorPane layoutX="230.0" layoutY="14.0" prefHeight="678.0" prefWidth="1113.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
             <TextField fx:id="TFType" layoutX="56.0" layoutY="162.0" prefHeight="25.0" prefWidth="270.0" stylesheets="@css/styles.css" />
-            <TextArea fx:id="TADescription" layoutX="56.0" layoutY="312.0" prefHeight="292.0" prefWidth="1039.0" stylesheets="@css/styles.css" />
+            <TextArea fx:id="TADescription" layoutX="56.0" layoutY="245.0" prefHeight="292.0" prefWidth="1039.0" stylesheets="@css/styles.css" />
             <TextField fx:id="TFTitre" layoutX="56.0" layoutY="94.0" prefHeight="25.0" prefWidth="270.0" stylesheets="@css/styles.css" />
-            <DatePicker fx:id="datePicker" layoutX="56.0" layoutY="233.0" prefHeight="32.0" prefWidth="270.0" stylesheets="@css/styles.css" />
             <Label layoutX="56.0" layoutY="14.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 25;" text="Update Claim" />
             <Button layoutX="997.0" layoutY="622.0" mnemonicParsing="false" onAction="#ModifierReclamation" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
                <graphic>
@@ -45,8 +39,7 @@
             </Button>
             <Label layoutX="56.0" layoutY="58.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Title" />
             <Label layoutX="56.0" layoutY="126.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Type" />
-            <Label layoutX="56.0" layoutY="197.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Date" />
-            <Label layoutX="56.0" layoutY="276.0" prefHeight="36.0" prefWidth="134.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
+            <Label layoutX="56.0" layoutY="209.0" prefHeight="36.0" prefWidth="134.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
             <Label layoutX="1049.0" layoutY="65.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 15;" text="Admin" />
             <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="1048.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>

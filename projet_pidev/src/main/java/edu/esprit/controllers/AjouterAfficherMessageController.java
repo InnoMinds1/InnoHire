@@ -12,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -52,7 +49,7 @@ public class AjouterAfficherMessageController implements Initializable{
         // Get the name and profile image URL of the receiver
         //String receiverName = serviceMessagerie.getOneByID(9).getReciver_id().getNom(); // Replace with the actual receiver's name
         String receiverName = hachem.getNom()+" "+hachem.getPrenom();
-        String profileImageUrl = "/images/business.png"; // Replace with the actual image URL
+        String profileImageUrl = "/images/manh.png"; // Replace with the actual image URL
 
         // Set the receiver's name and profile image
         receiverNameLabel.setText(receiverName);
@@ -87,7 +84,7 @@ public class AjouterAfficherMessageController implements Initializable{
 
         // Add UI components for displaying the message, e.g., Label, ImageView, etc.
         // Example:
-        ImageView profileImage = new ImageView(new Image("/images/profile.png"));
+        ImageView profileImage = new ImageView(new Image("/images/manh.png"));
         profileImage.setFitWidth(40.0); // Set the desired width
         profileImage.setFitHeight(40.0); // Set the desired height
 
@@ -98,7 +95,7 @@ public class AjouterAfficherMessageController implements Initializable{
         contentLabel.setLayoutX(17.0);
         contentLabel.setLayoutY(10.0);
         //5955b3
-        contentLabel.setStyle("-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 10; -fx-padding: 0 0 15 0;");
+        contentLabel.setStyle("-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 13; -fx-padding: 0 0 15 0;");
 
         contentLabel.setWrapText(true); // Enable text wrapping
         contentLabel.setMaxWidth(400.0); // Set a max width to trigger wrapping
@@ -111,14 +108,54 @@ public class AjouterAfficherMessageController implements Initializable{
         dateLabel.setLayoutY(40.0); // Adjusted Y position to place it below the message
         dateLabel.setStyle("-fx-text-fill: #888888; -fx-font-size: 10;");
 
+        // Create a static button with an image
+        // Create a static button with an image
+        Button staticButton = new Button("", new ImageView(new Image("/images/de.png")));
+        staticButton.setLayoutX(370);
+        staticButton.setLayoutY(-40);
+
+// Set the fit width and fit height for the image
+        ((ImageView) staticButton.getGraphic()).setFitWidth(15);
+        ((ImageView) staticButton.getGraphic()).setFitHeight(15);
+
+        staticButton.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13; -fx-cursor: hand;");
+
+// Attach an event handler to the button
+        staticButton.setOnAction(event -> {
+            // Show a confirmation dialog
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmation Dialog");
+            confirmationAlert.setHeaderText("Delete Message");
+            confirmationAlert.setContentText("Are you sure you want to delete this message?");
+
+            // Customize the buttons in the confirmation dialog
+            ButtonType confirmButton = new ButtonType("Yes");
+            ButtonType cancelButton = new ButtonType("No");
+
+            confirmationAlert.getButtonTypes().setAll(confirmButton, cancelButton);
+
+            // Show and wait for the user's choice
+            confirmationAlert.showAndWait().ifPresent(buttonType -> {
+                if (buttonType == confirmButton) {
+                    // User clicked "Yes," so proceed with deletion
+                    serviceMessagerie.supprimer(message.getId_message());
+                    navigateToAfficherReclamationAction(event);
+                } else {
+                    // User clicked "No" or closed the dialog, do nothing
+                }
+            });
+        });
+        
+        // <Button layoutX="519.0" layoutY="636.0" mnemonicParsing="false"prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
         if (message.getSender_id().getId_utilisateur() != 1) {
-            profileImage = new ImageView(new Image("/images/business.png"));
+            profileImage = new ImageView(new Image("/images/manh.png"));
             profileImage.setFitWidth(40.0);
             profileImage.setFitHeight(40.0);
            // messageHbox.getChildren().addAll(messagePane, dateLabel);
             messagePane.getChildren().addAll(contentLabel);
             messageHbox.getChildren().addAll(profileImage, messagePane);
             messageHbox.getChildren().add(dateLabel);
+            //messageHbox.getChildren().add(staticButton);
         } else {
              profileImage = new ImageView(new Image("/images/profile.png"));
             profileImage.setFitWidth(40.0);
@@ -127,6 +164,7 @@ public class AjouterAfficherMessageController implements Initializable{
             messagePane.getChildren().addAll(contentLabel);
             messageHbox.getChildren().addAll(profileImage, messagePane);
             messageHbox.getChildren().add(dateLabel);
+            messageHbox.getChildren().add(staticButton);
         }
 
         /*messagePane.getChildren().addAll(contentLabel);
@@ -150,26 +188,32 @@ public class AjouterAfficherMessageController implements Initializable{
     }
 
     @FXML
-    void ajouterMessageAction(ActionEvent event){
-        try {
-            serviceMessagerie.ajouter(new Messagerie("text",TFmessage.getText(),new Date(),hachem,amen));
-            TFmessage.setText("");
-           /* LocalDate localDate = datePicker.getValue();
-            Timestamp timestamp = Timestamp.valueOf(localDate.atStartOfDay());
-            sr.ajouter(new Reclamation(0, TFType.getText(), TFTitre.getText(), TADescription.getText(), timestamp, pub, user));*/
-           /* Alert alert =new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Your Message send with succes");
-            alert.show();*/
-             navigateToAfficherReclamationAction(event);
-             //AjouterAfficherMessage
-        }catch (SQLException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+    void ajouterMessageAction(ActionEvent event) {
+        String messageContent = TFmessage.getText();
+
+        // Check if TFmessage is empty
+        if (messageContent.trim().isEmpty()) {
+            // Show an alert indicating that the message is empty
+            Alert emptyMessageAlert = new Alert(Alert.AlertType.WARNING);
+            emptyMessageAlert.setTitle("Empty Message");
+            emptyMessageAlert.setContentText("Please enter a non-empty message before sending.");
+            emptyMessageAlert.showAndWait();
+        } else {
+            try {
+                // Proceed to send the message if it's not empty
+                serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), hachem, amen));
+                TFmessage.setText("");
+                navigateToAfficherReclamationAction(event);
+            } catch (SQLException e) {
+                // Show an alert for SQL exception
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("SQL Exception");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
         }
     }
+
 
 
 }
