@@ -11,7 +11,7 @@ public class Etablissement {
     private String lieu;
     private int code_etablissement;
     private String type_etablissement;
-
+//image
     private Utilisateur user;
 
     public Etablissement() {

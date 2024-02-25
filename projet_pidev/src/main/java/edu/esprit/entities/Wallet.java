@@ -5,6 +5,9 @@ import java.util.Objects;
 public class Wallet {
     private int id_wallet;
     private int balance;
+    //regledenommage
+    //date
+    //inactivity
     private Etablissement etablissement;
 
     public Etablissement getEtablissement() {
