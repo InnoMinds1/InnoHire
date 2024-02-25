@@ -1,7 +1,11 @@
 package edu.esprit.controllers;
 import edu.esprit.entities.Admin;
+import edu.esprit.entities.Candidat;
+import edu.esprit.entities.Representant;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceUtilisateur;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +29,7 @@ public class AfficherUtilisateurController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ServiceUtilisateur serviceService = new ServiceUtilisateur();
+       /* ServiceUtilisateur serviceService = new ServiceUtilisateur();
         Set<Utilisateur> utilisateurs = null;
         Set<Admin> admins = null;
 
@@ -36,12 +41,121 @@ public class AfficherUtilisateurController implements Initializable {
             throw new RuntimeException(e);
         }
 
+        for (Utilisateur u : utilisateurs){
+            listView.setItems(FXCollections.observableArrayList(utilisateurs));
+
+        }*/
+        // mch aligneeeee
+        /*ServiceUtilisateur serviceService = new ServiceUtilisateur();
+        Set<Utilisateur> utilisateurs = null;
+        Set<Admin> admins = null;
+
+        try {
+            utilisateurs = serviceService.getAll();
+            admins = serviceService.getAll_admin();
+            utilisateurs.addAll(admins);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         listView.setItems(FXCollections.observableArrayList(utilisateurs));
+
+// Custom cell factory to display attributes of Utilisateur
+        listView.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<Utilisateur> call(ListView<Utilisateur> param) {
+                return new ListCell<Utilisateur>() {
+
+                    @Override
+                    protected void updateItem(Utilisateur item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (empty || item == null) {
+                            setText(null);
+                        } else if (item instanceof Admin) {
+                            // Customize how you want to display each Admin
+                            setText(
+                                    "" + item.getCin() +
+                                            "              " + item.getNom() +
+                                            "              " + "              " + item.getPrenom() +
+                                            "              " + "              " + "              " + item.getAdresse() +
+                                            "              " + "              " + 0
+                            );
+                        } else if (item instanceof Representant) {
+                            // Customize how you want to display each Representant
+                            setText(
+                                    "" + item.getCin() +
+                                            "              " + item.getNom() +
+                                            "              " + "              " + item.getPrenom() +
+                                            "              " + "              " + "              " + item.getAdresse() +
+                                            "              " + "              " + 1
+                            );
+                        } else if (item instanceof Candidat) {
+                            // Customize how you want to display each Candidat
+                            setText(
+                                    "" + item.getCin() +
+                                            "              " + item.getNom() +
+                                            "              " + "              " + item.getPrenom() +
+                                            "              " + "              " + "              " + item.getAdresse() +
+                                            "              " + "              " +  "              " +2
+                            );
+                        }
+                    }
+                };
+            }
+
+        });*/
+        ServiceUtilisateur serviceService = new ServiceUtilisateur();
+        Set<Utilisateur> utilisateurs = null;
+        Set<Admin> admins = null;
+
+        try {
+            utilisateurs = serviceService.getAll();
+            admins = serviceService.getAll_admin();
+            utilisateurs.addAll(admins);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        listView.setItems(FXCollections.observableArrayList(utilisateurs));
+
+// Custom cell factory to display attributes of Utilisateur
+        listView.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<Utilisateur> call(ListView<Utilisateur> param) {
+                return new ListCell<Utilisateur>() {
+
+                    @Override
+                    protected void updateItem(Utilisateur item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (empty || item == null) {
+                            setText(null);
+                        } else {
+                            String format = "%-15s%-20s%-25s%-30s%-10d"; // Adjust the widths as needed
+
+                            if (item instanceof Admin) {
+                                // Customize how you want to display each Admin
+                                setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 0));
+                            } else if (item instanceof Representant) {
+                                // Customize how you want to display each Representant
+                                setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 1));
+                            } else if (item instanceof Candidat) {
+                                // Customize how you want to display each Candidat
+                                setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 2));
+                            }
+                        }
+                    }
+                };
+            }
+        });
 
     }
 
 
-    @FXML
+
+
+        @FXML
     void supprimerUtilisateur(ActionEvent event) {
         Utilisateur selectedUtilisateur = listView.getSelectionModel().getSelectedItem();
         if (selectedUtilisateur != null) {
