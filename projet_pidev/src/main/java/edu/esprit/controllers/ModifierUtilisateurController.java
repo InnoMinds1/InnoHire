@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class ModifierUtilisateurController {
@@ -96,6 +98,55 @@ public class ModifierUtilisateurController {
             u.setPrenom(TFprenom.getText());
             u.setAdresse(TFadresse.getText());
             u.setMdp(TFmdp.getText());
+
+
+
+            String Nom = TFnom.getText();
+            String prenom = TFprenom.getText();
+            String adresse = TFadresse.getText();
+            String mdp = TFmdp.getText();
+
+            // Vérifier si les champs requis sont vides
+            if (Nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || mdp.isEmpty() ) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Tous les champs sont obligatoires !");
+                alert.showAndWait();
+                return;
+            }
+            if (Nom.matches(".*[\\d\\W].*")) {
+                // Nom contains digits or symbols
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Le champ 'Nom' ne doit pas contenir de chiffres ou de symboles !");
+                alert.showAndWait();
+                return;
+            }
+
+            if (prenom.matches(".*[\\d\\W].*")) {
+                // Prenom contains digits or symbols
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Le champ 'Prenom' ne doit pas contenir de chiffres ou de symboles !");
+                alert.showAndWait();
+                return;
+            }
+            String emailPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,6}$";
+            Pattern pattern = Pattern.compile(emailPattern);
+            Matcher matcher = pattern.matcher(adresse);
+
+            if (!matcher.matches()) {
+                // Invalid email format
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Adresse email invalide !");
+                alert.showAndWait();
+                return;
+            }
 
             serviceUtilisateur.modifier_par_cin(u);
 

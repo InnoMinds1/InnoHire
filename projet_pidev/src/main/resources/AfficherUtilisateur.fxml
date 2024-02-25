@@ -77,7 +77,7 @@
                 </ImageView>
             </children>
         </AnchorPane>
-      <Label layoutX="257.0" layoutY="103.0" prefHeight="32.0" prefWidth="634.0" text="CIN                    Nom                    Prenom                                    Email                                          Role          " />
+      <Label layoutX="257.0" layoutY="103.0" prefHeight="32.0" prefWidth="634.0" text="CIN           Nom                 Prenom                           Email                       Role          " />
 
     </children>
 </AnchorPane>

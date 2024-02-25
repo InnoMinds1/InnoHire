@@ -62,5 +62,35 @@
             <Font size="16.0" />
          </font>
       </TextField>
+      <Label layoutX="199.0" layoutY="117.0" text="CIN" textFill="#000000a9">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="187.0" layoutY="170.0" text="NOM" textFill="#000000a9">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="227.0" prefHeight="46.0" prefWidth="140.0" text="PRENOM" textFill="#000000a9">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="183.0" layoutY="282.0" prefHeight="46.0" prefWidth="140.0" text="EMAIL" textFill="#000000a9">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="195.0" layoutY="338.0" prefHeight="46.0" prefWidth="140.0" text="MDP" textFill="#000000a9">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="195.0" layoutY="397.0" prefHeight="46.0" prefWidth="140.0" text="ROLE" textFill="#000000a9">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

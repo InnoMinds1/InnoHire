@@ -351,7 +351,26 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         }
         return null; // Return null if no user found
     }
-    public Utilisateur getOneByCin(int cin) {
+    public int verifyRoleByCin(int cin)
+    {
+        String req = "SELECT * FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                // Assuming Utilisateur has appropriate constructor
+                int role = rs.getInt("role");
+
+                return role;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return -1;
+
+    }
+    public Utilisateur getOneByCin(int cin) throws SQLException {
         String req = "SELECT * FROM utilisateur WHERE cin = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -401,7 +420,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         return null; // Return null if no user found
     }
 
-    private String hashPassword(String password) {
+
+    public String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashBytes = md.digest(password.getBytes());
