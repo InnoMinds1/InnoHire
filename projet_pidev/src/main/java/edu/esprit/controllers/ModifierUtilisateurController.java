@@ -12,8 +12,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
@@ -41,6 +45,8 @@ public class ModifierUtilisateurController {
 
     @FXML
     private TextField TFrole;
+    @FXML
+    private ImageView profileImageView;
 
 
 
@@ -90,6 +96,7 @@ public class ModifierUtilisateurController {
 
     @FXML
     void ok(ActionEvent event) throws SQLException {
+        String photoUrl = (selectedFile != null) ? selectedFile.toURI().toString() : null;
         int role = Integer.parseInt(TFrole.getText());
         if (controlSaisie(TFnom) && controlSaisie(TFprenom) && controlSaisie(TFadresse) && controlSaisie(TFmdp)) {
             Utilisateur u = new Utilisateur();
@@ -98,6 +105,7 @@ public class ModifierUtilisateurController {
             u.setPrenom(TFprenom.getText());
             u.setAdresse(TFadresse.getText());
             u.setMdp(TFmdp.getText());
+            u.setImage(photoUrl);
 
 
 
@@ -105,6 +113,7 @@ public class ModifierUtilisateurController {
             String prenom = TFprenom.getText();
             String adresse = TFadresse.getText();
             String mdp = TFmdp.getText();
+
 
             // Vérifier si les champs requis sont vides
             if (Nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || mdp.isEmpty() ) {
@@ -185,6 +194,23 @@ public class ModifierUtilisateurController {
             // ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    private File selectedFile;
+    @FXML
+    void choosePhoto(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Afficher la boîte de dialogue de choix de fichier
+        selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            // Charger l'image sélectionnée dans ImageView
+            Image selectedImage = new Image(selectedFile.toURI().toString());
+            profileImageView.setImage(selectedImage);
         }
     }
 

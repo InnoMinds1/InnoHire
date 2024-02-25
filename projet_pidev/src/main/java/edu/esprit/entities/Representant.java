@@ -45,6 +45,12 @@ public class Representant extends Utilisateur{
         super(cin,nom,prenom, adresse, mdp);
         this.ROLE=1;
     }
+    public Representant(int cin, String nom , String prenom, String adresse, String mdp,String image)
+    {
+        super(cin,nom,prenom, adresse, mdp,image);
+        this.ROLE=1;
+    }
+
 
 
 

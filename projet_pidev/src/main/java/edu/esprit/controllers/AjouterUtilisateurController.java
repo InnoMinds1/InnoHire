@@ -10,9 +10,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
@@ -21,7 +26,8 @@ import java.util.regex.Pattern;
 
 public class AjouterUtilisateurController {
 
-   /* @FXML
+
+    /* @FXML
     private TextField TFcin;
 
     @FXML
@@ -223,7 +229,9 @@ public class AjouterUtilisateurController {
 
     }
 */
-   @FXML
+    private File selectedFile;
+
+    @FXML
    private TextField TFadresse;
 
     @FXML
@@ -240,10 +248,35 @@ public class AjouterUtilisateurController {
 
     @FXML
     private TextField tfrole;
+    @FXML
+    private ImageView profileImageView;
+
+    @FXML
+    private Button choosePhotoButton;
+
+    @FXML
+    void choosePhoto(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Afficher la boîte de dialogue de choix de fichier
+        selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            // Charger l'image sélectionnée dans ImageView
+            Image selectedImage = new Image(selectedFile.toURI().toString());
+            profileImageView.setImage(selectedImage);
+        }
+    }
+
 
     @FXML
     void ajouterUtilisateurAction(ActionEvent event) {
         // Créer une instance de ServiceService
+        String photoUrl = (selectedFile != null) ? selectedFile.toURI().toString() : null;
+
         ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
 
             int cin;
@@ -331,6 +364,8 @@ public class AjouterUtilisateurController {
         u.setMdp(mdp);
         u.setAdresse(adresse);
         u.setPrenom(prenom);
+        u.setImage(photoUrl);
+
             try {
                 serviceUtilisateur.ajouter(u);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -361,6 +396,7 @@ public class AjouterUtilisateurController {
             u.setMdp(mdp);
             u.setAdresse(adresse);
             u.setPrenom(prenom);
+            u.setImage(photoUrl);
             try {
                 serviceUtilisateur.ajouter(u);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -393,6 +429,7 @@ public class AjouterUtilisateurController {
                 u.setMdp(mdp);
                 u.setAdresse(adresse);
                 u.setPrenom(prenom);
+                u.setImage(photoUrl);
                 try {
                     serviceUtilisateur.ajouter(u);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -449,6 +486,8 @@ public class AjouterUtilisateurController {
         }
 
     }
+
+
 
     }
 

@@ -20,7 +20,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     public void ajouter(Utilisateur utilisateur) throws SQLException {
         if (utilisateur instanceof Admin) {
             Admin a = (Admin) utilisateur;
-            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
+            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`,`image`) VALUES (?,?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 if(!utilisateurExiste(a.getCin())){
@@ -31,6 +31,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String hashed =hashPassword(a.getMdp());
                 ps.setString(5, hashed);
                 ps.setInt(6,0);
+                ps.setString(7,a.getImage());
                 ps.executeUpdate();
                 System.out.println("Admin added");}
 
@@ -40,7 +41,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 System.out.println(e.getMessage());
             }
         } else {
-            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
+            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`,`image`) VALUES (?,?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -52,10 +53,12 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 ps.setString(5, hashed);
                 if (utilisateur instanceof Representant) {
                     ps.setInt(6, 1);
+                    ps.setString(7,utilisateur.getImage());
                     ps.executeUpdate();
                     System.out.println("Representant added");
                 } else {
                     ps.setInt(6,2);
+                    ps.setString(7,utilisateur.getImage());
                     ps.executeUpdate();
                     System.out.println("Candidat added");
                 }
@@ -71,7 +74,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     @Override
     public void modifier(Utilisateur utilisateur) throws SQLException {
-        String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE id_utilisateur = ?";
+        String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? , image=? WHERE id_utilisateur = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, utilisateur.getCin());
@@ -79,7 +82,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setString(3, utilisateur.getPrenom());
             ps.setString(4, utilisateur.getAdresse());
             ps.setString(5, utilisateur.getMdp());
-            ps.setInt(6, utilisateur.getId_utilisateur());
+            ps.setString(6,utilisateur.getImage());
+            ps.setInt(7, utilisateur.getId_utilisateur());
 
             ps.executeUpdate();
             System.out.println("utilisateur modifié!");
