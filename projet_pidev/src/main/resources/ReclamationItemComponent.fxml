@@ -22,7 +22,7 @@
                <Label fx:id="userFullName" layoutX="76.0" layoutY="20.0" prefHeight="27.0" prefWidth="155.0" style="-fx-text-fill: #000000; -fx-font-size: 14; -fx-font-weight: bold;" text="Mohamed Amine" />
                <Label fx:id="userCode" layoutX="257.0" layoutY="20.0" prefHeight="27.0" prefWidth="48.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="2750" />
                <Label fx:id="dateRec" layoutX="338.0" layoutY="20.0" prefHeight="27.0" prefWidth="179.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="2024-02-22 00:00:00" />
-               <Button layoutX="657.0" layoutY="17.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="26.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
+               <Button layoutX="657.0" layoutY="17.0" mnemonicParsing="false" onAction="#deleteReclamationAction" prefHeight="27.0" prefWidth="26.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                   <graphic>
                      <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -58,7 +58,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </Button>
-               <Button layoutX="531.0" layoutY="18.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="0.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
+               <Button layoutX="531.0" layoutY="18.0" mnemonicParsing="false" onAction="#navigateToChatRec" prefHeight="36.0" prefWidth="0.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                         <image>

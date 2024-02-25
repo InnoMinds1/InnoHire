@@ -5,6 +5,7 @@ import edu.esprit.services.ServiceReclamation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -20,6 +21,10 @@ public class AfficherReclamationController implements Initializable {
     @FXML
     private VBox reclamationsContainer;
 
+    // Add the container variable
+    @FXML
+    private AnchorPane container;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Retrieve data from the database
@@ -32,7 +37,8 @@ public class AfficherReclamationController implements Initializable {
                 try {
                     reclamationsContainer.getChildren().add(loader.load());
                     ReclamationItemComponentController controller = loader.getController();
-                    controller.setReclamationData(reclamation);
+                    controller.setReclamationData(reclamation, container);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

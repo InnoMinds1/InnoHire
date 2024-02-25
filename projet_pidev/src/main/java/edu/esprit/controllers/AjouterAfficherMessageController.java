@@ -40,6 +40,7 @@ public class AjouterAfficherMessageController implements Initializable{
     Utilisateur amen=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789");
     Utilisateur hachem=new Utilisateur(9,11417264,"dhawadi","hachem","bizerte","123456789");
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateReceiverInfo();
