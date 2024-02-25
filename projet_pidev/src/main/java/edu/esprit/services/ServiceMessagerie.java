@@ -15,7 +15,7 @@ import java.util.Set;
 public class ServiceMessagerie implements Iservice<Messagerie> {
     private Connection cnx = DataSource.getInstance().getCnx();
     @Override
-    public void ajouter(Messagerie mess) {
+    public void ajouter(Messagerie mess) throws SQLException{
         String req = "INSERT INTO `messagerie`(`date`, `type`, `contenu`, `sender_id`, `reciver_id`) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setTimestamp(1, new java.sql.Timestamp(mess.getDate().getTime()));
@@ -113,15 +113,12 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
         }
         return null;
     }
-
-    public Set<Messagerie> getAllMessagesByReciverAndSender(int senderId, int receiverId) {
+    public Set<Messagerie> getAllMessagesByReciverAndSender(int userId) {
         Set<Messagerie> messages = new HashSet<>();
-        String req = "SELECT * FROM `messagerie` WHERE (sender_id = ? AND reciver_id = ?) OR (sender_id = ? AND reciver_id = ?) ORDER BY date";
+        String req = "SELECT * FROM `messagerie` WHERE sender_id = ? OR reciver_id = ? ORDER BY date";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setInt(1, senderId);
-            ps.setInt(2, receiverId);
-            ps.setInt(3, receiverId);  // Set the receiver as the sender and vice versa
-            ps.setInt(4, senderId);
+            ps.setInt(1, userId);
+            ps.setInt(2, userId);
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -131,7 +128,6 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
                     mess.setContenu(rs.getString("contenu"));
                     mess.setDate(rs.getTimestamp("date"));
 
-                    // Utilize ServiceUtilisateur to get the User by ID
                     Utilisateur sender = new ServiceUtilisateur().getOneByID(rs.getInt("sender_id"));
                     Utilisateur receiver = new ServiceUtilisateur().getOneByID(rs.getInt("reciver_id"));
                     mess.setSender_id(sender);
@@ -145,6 +141,7 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
         }
         return messages;
     }
+
 
 
 
