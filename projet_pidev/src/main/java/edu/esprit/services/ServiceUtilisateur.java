@@ -234,7 +234,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         }
     }
     public int getUserIdByCin(int cin) {
-        String req = "SELECT id FROM utilisateur WHERE cin = ?";
+        String req = "SELECT id_utilisateur FROM utilisateur WHERE cin = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, cin);
@@ -243,11 +243,13 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 return rs.getInt(1);
             } else {
                 System.out.println("No user found with cin " + cin);
+                return -1;
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
+            e.printStackTrace();
+            return -1;
         }
-        return -1; // Return -1 if no user found
     }
 
 

@@ -1,8 +1,7 @@
 package edu.esprit.tests;
 
-import edu.esprit.entities.Admin;
-import edu.esprit.entities.Candidat;
-import edu.esprit.entities.Representant;
+import edu.esprit.entities.*;
+import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
 
@@ -15,7 +14,7 @@ public class Main {
     {
         DataSource.getInstance();
 
-      ServiceUtilisateur sr= new ServiceUtilisateur();
+     /* ServiceUtilisateur sr= new ServiceUtilisateur();
         try {
             sr.supprimer_par_cin(33);
         } catch (SQLException e) {
@@ -25,6 +24,16 @@ public class Main {
             sr.supprimer_par_cin(12);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
+        }*/
+        Utilisateur u = new Utilisateur();
+        u.setCin(123);
+        Etablissement e = new Etablissement("esprit","lie",133,"er",u);
+        ServiceEtablissement se= new ServiceEtablissement();
+        try {
+            se.ajouter(e);
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
         }
       /*  Admin a = new Admin(1,234,"AMENALLAH123","KTHIRI","amenallah@esprit.tn","ELKING");
         //sr.ajouter(a);

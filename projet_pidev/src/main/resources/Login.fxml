@@ -42,7 +42,7 @@
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="323.0" layoutY="390.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="259.0" text="CREER COMPTE">
+      <Button layoutX="323.0" layoutY="390.0" mnemonicParsing="false" onAction="#navigateToCreateAccount" prefHeight="44.0" prefWidth="259.0" text="CREER COMPTE">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>

@@ -138,5 +138,17 @@ public class LoginController {
             alert.show();
         }
     }
+    @FXML
+    void navigateToCreateAccount(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/CreateAccount.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        TFcin.getScene().setRoot(root);
+
+
+    }
 
 }
