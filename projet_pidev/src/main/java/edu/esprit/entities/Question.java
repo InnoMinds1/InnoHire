@@ -8,23 +8,27 @@ public class Question {
     private String question;
     private String choix;
     private Quiz quiz ;
-    private int id_quiz ;
+
+    private int reponse_correcte ;
+
     public Question ()
     {
 
     }
 
-    public Question(int id_question, String question, String choix, Quiz quiz) {
+    public Question(int id_question, String question, String choix, Quiz quiz,int reponse_correcte) {
         this.id_question = id_question;
         this.question = question;
         this.choix = choix;
         this.quiz = quiz;
+        this.reponse_correcte=reponse_correcte;
     }
 
-    public Question(String question, String choix, Quiz quiz) {
+    public Question(String question, String choix, Quiz quiz,int reponse_correcte) {
         this.question = question;
         this.choix = choix;
         this.quiz = quiz;
+        this.reponse_correcte=reponse_correcte;
     }
 
     public int getId_question() {
@@ -33,6 +37,13 @@ public class Question {
 
     public void setId_question(int id_question) {
         this.id_question = id_question;
+    }
+    public int getReponse_correcte() {
+        return reponse_correcte;
+    }
+
+    public void setReponse_correcte(int reponse_correcte) {
+        this.reponse_correcte = reponse_correcte;
     }
 
     public String getQuestion() {
@@ -61,7 +72,8 @@ public class Question {
     public String toString() {
         return "Question{" +
                 "question='" + question + '\'' +
-                ", choix='" + choix + '\'' +
+                ", choix='" + choix + '\'' + "reponse_correcte="+reponse_correcte+
+
 
                  ", quiz=" + getQuiz().getCode_quiz() +
                 '}';

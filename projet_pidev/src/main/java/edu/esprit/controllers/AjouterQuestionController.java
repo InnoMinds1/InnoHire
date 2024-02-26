@@ -36,6 +36,8 @@ public class AjouterQuestionController {
 
         @FXML
         private TextField TFquestion;
+        @FXML
+        private TextField TFreponse_correcte;
 
         private final questionService qs = new questionService();
         private final quizService quizService = new quizService();
@@ -65,13 +67,15 @@ public class AjouterQuestionController {
             try {
 
                 Integer codeQuiz = TFcode_quiz.getValue();
+                int reponseCorrecte = Integer.parseInt(TFreponse_correcte.getText());
+
 
 
                 int idQuiz = getIdQuizByCode(codeQuiz);
                 quizService qs= new quizService();
 
                 if (idQuiz != -1) {
-                    this.qs.ajouter(new Question(TFquestion.getText(), TFchoix.getText(), qs.getOneByID(idQuiz)));
+                    this.qs.ajouter(new Question(TFquestion.getText(), TFchoix.getText(), qs.getOneByID(idQuiz),reponseCorrecte));
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Success");
                     alert.setContentText("GG");

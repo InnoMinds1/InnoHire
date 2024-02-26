@@ -19,13 +19,13 @@ public class quizService implements IService<Quiz> {
     public void ajouter(Quiz quiz) {
         Connection cnx = DataSource.getInstance().getCnx();
         try {
-            String query = "INSERT INTO quiz (code_quiz, nom_quiz, description, prix_quiz, id_etablissement) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO quiz (code_quiz, nom_quiz, description, prix_quiz, image_quiz) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setInt(1, quiz.getCode_quiz());
                 preparedStatement.setString(2, quiz.getNom_quiz());
                 preparedStatement.setString(3, quiz.getDescription());
                 preparedStatement.setInt(4, quiz.getPrix_quiz());
-                preparedStatement.setInt(5, quiz.getId_etablissement());
+                preparedStatement.setString(5, quiz.getImage_quiz());
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -37,13 +37,13 @@ public class quizService implements IService<Quiz> {
     public void modifier(Quiz quiz) {
         Connection cnx = DataSource.getInstance().getCnx();
         try {
-            String query = "UPDATE quiz SET code_quiz = ?, nom_quiz = ?, description = ?, prix_quiz = ?, id_etablissement = ? WHERE id_quiz = ?";
+            String query = "UPDATE quiz SET code_quiz = ?, nom_quiz = ?, description = ?, prix_quiz = ?, image_quiz = ? WHERE id_quiz = ?";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setInt(1, quiz.getCode_quiz());
                 preparedStatement.setString(2, quiz.getNom_quiz());
                 preparedStatement.setString(3, quiz.getDescription());
                 preparedStatement.setInt(4, quiz.getPrix_quiz());
-                preparedStatement.setInt(5, quiz.getId_etablissement());
+                preparedStatement.setString(5, quiz.getImage_quiz());
                 preparedStatement.setInt(6, quiz.getId_quiz());
                 preparedStatement.executeUpdate();
             }
@@ -81,7 +81,7 @@ public class quizService implements IService<Quiz> {
                         quiz.setNom_quiz(resultSet.getString("nom_quiz"));
                         quiz.setDescription(resultSet.getString("description"));
                         quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
-                        quiz.setId_etablissement(resultSet.getInt("id_etablissement"));
+                        quiz.setImage_quiz(resultSet.getString("image_quiz"));
                         quizSet.add(quiz);
                     }
                 }
@@ -107,7 +107,7 @@ public class quizService implements IService<Quiz> {
                         quiz.setNom_quiz(resultSet.getString("nom_quiz"));
                         quiz.setDescription(resultSet.getString("description"));
                         quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
-                        quiz.setId_etablissement(resultSet.getInt("id_etablissement"));
+                        quiz.setImage_quiz(resultSet.getString("id_etablissement"));
                         return quiz;
                     }
                 }
@@ -173,7 +173,7 @@ public class quizService implements IService<Quiz> {
                         quiz.setNom_quiz(resultSet.getString("nom_quiz"));
                         quiz.setDescription(resultSet.getString("description"));
                         quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
-                        quiz.setId_etablissement(resultSet.getInt("id_etablissement"));
+                        quiz.setImage_quiz(resultSet.getString("image_quiz"));
                         return quiz;
                     }
                 }

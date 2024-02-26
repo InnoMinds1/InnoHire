@@ -42,11 +42,13 @@ public class questionService implements IService<Question> {
 
     public void ajouter(Question question) throws SQLException {
         try{
-            String query = "INSERT INTO question (question, choix, id_quiz) VALUES (?, ?, ?)";
+            String query = "INSERT INTO question (question, choix, id_quiz,reponse_correcte) VALUES (?, ?, ?,?)";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setString(1, question.getQuestion());
                 preparedStatement.setString(2, question.getChoix());
                 preparedStatement.setInt(3, question.getQuiz().getId_quiz());
+                preparedStatement.setInt(3, question.getReponse_correcte());
+
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -60,12 +62,14 @@ public class questionService implements IService<Question> {
     public void modifier(Question question) {
 
         try {
-            String query = "UPDATE question SET question = ?, choix = ?, id_quiz = ? WHERE id_question = ?";
+            String query = "UPDATE question SET question = ?, choix = ?, id_quiz = ?,reponse_correcte=? WHERE id_question = ?";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setString(1, question.getQuestion());
                 preparedStatement.setString(2, question.getChoix());
                 preparedStatement.setInt(3, question.getQuiz().getId_quiz());
                 preparedStatement.setInt(4, question.getId_question());
+                preparedStatement.setInt(5, question.getReponse_correcte());
+
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -105,6 +109,7 @@ public class questionService implements IService<Question> {
                         question.setId_question(resultSet.getInt("id_question"));
                         question.setQuestion(resultSet.getString("question"));
                         question.setChoix(resultSet.getString("choix"));
+                        question.setReponse_correcte(resultSet.getInt("reponse_correcte"));
 
                         int id_quiz = resultSet.getInt("id_quiz");
                         quizService qs=new quizService();
@@ -136,6 +141,8 @@ public class questionService implements IService<Question> {
                         question.setQuestion(resultSet.getString("question"));
                         question.setChoix(resultSet.getString("choix"));
                         question.getQuiz().setId_quiz(resultSet.getInt("id_quiz"));
+                        question.setReponse_correcte(resultSet.getInt("reponse_correcte"));
+
                         return question;
                     }
                 }
