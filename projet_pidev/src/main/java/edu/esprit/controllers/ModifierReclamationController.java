@@ -54,21 +54,23 @@ public class ModifierReclamationController {
 
 
     public void ModifierReclamation(ActionEvent event) {
-
         // Get the modified values from the input fields
         String newType = TFType.getText();
         String newTitre = TFTitre.getText();
-        //LocalDate newDate = datePicker.getValue();
+        // LocalDate newDate = datePicker.getValue();  // Uncomment this line if you have a DatePicker
         String newDescription = TADescription.getText();
 
         // Store the original values
         String originalType = selectedReclamation.getType();
         String originalTitre = selectedReclamation.getTitre();
-        //LocalDate originalDate = selectedReclamation.getDate().toLocalDateTime().toLocalDate();
+        // LocalDate originalDate = selectedReclamation.getDate().toLocalDateTime().toLocalDate();
         String originalDescription = selectedReclamation.getDescription();
 
         LocalDateTime currentDateTime = LocalDateTime.now();
         Timestamp timestamp = Timestamp.valueOf(currentDateTime);
+
+        // Regular expression to allow only letters
+        String lettersOnlyRegex = "^[a-zA-Z]+$";
 
         // Check if any field is modified
         boolean isModified = !newType.equals(originalType) ||
@@ -77,6 +79,26 @@ public class ModifierReclamationController {
                 !newDescription.equals(originalDescription);
 
         if (isModified) {
+            // Check if the newType contains only letters
+            if (!newType.matches(lettersOnlyRegex)) {
+                // Show a warning alert if newType contains symbols or numbers
+                Alert typeAlert = new Alert(Alert.AlertType.WARNING);
+                typeAlert.setTitle("Invalid Type");
+                typeAlert.setContentText("Type should contain only letters.");
+                typeAlert.showAndWait();
+                return;  // Exit the method if newType is invalid
+            }
+
+            // Check if the newTitre contains only letters
+            if (!newTitre.matches(lettersOnlyRegex)) {
+                // Show a warning alert if newTitre contains symbols or numbers
+                Alert titreAlert = new Alert(Alert.AlertType.WARNING);
+                titreAlert.setTitle("Invalid Titre");
+                titreAlert.setContentText("Titre should contain only letters.");
+                titreAlert.showAndWait();
+                return;  // Exit the method if newTitre is invalid
+            }
+
             // Update the selectedReclamation object with the modified values
             selectedReclamation.setType(newType);
             selectedReclamation.setTitre(newTitre);
@@ -108,6 +130,7 @@ public class ModifierReclamationController {
             infoAlert.show();
         }
     }
+
 
     public void navigateToAfficherReclamationAction(ActionEvent event) {
         try {

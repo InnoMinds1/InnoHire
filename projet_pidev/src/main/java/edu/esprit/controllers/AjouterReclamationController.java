@@ -15,7 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -57,6 +60,9 @@ public class AjouterReclamationController {
         LocalDateTime currentDateTime = LocalDateTime.now();
         Timestamp timestamp = Timestamp.valueOf(currentDateTime);
 
+        // Regular expression to allow only letters
+        String lettersOnlyRegex = "^[a-zA-Z]+$";
+
         // Check if any field is empty
         if (type.trim().isEmpty() || titre.trim().isEmpty() || description.trim().isEmpty()) {
             // Show a warning alert if any field is empty
@@ -65,35 +71,58 @@ public class AjouterReclamationController {
             emptyFieldAlert.setContentText("Please fill in all fields before adding a reclamation.");
             emptyFieldAlert.showAndWait();
         } else {
-            try {
-                // Proceed to add the reclamation if all fields are filled
-                sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, user));
+            // Check if type contains only letters
+            if (!type.matches(lettersOnlyRegex)) {
+                // Show a warning alert if type contains symbols or numbers
+                Alert typeAlert = new Alert(Alert.AlertType.WARNING);
+                typeAlert.setTitle("Invalid Type");
+                typeAlert.setContentText("Type should contain only letters.");
+                typeAlert.showAndWait();
+            }
+            // Check if titre contains only letters
+            else if (!titre.matches(lettersOnlyRegex)) {
+                // Show a warning alert if titre contains symbols or numbers
+                Alert titreAlert = new Alert(Alert.AlertType.WARNING);
+                titreAlert.setTitle("Invalid Titre");
+                titreAlert.setContentText("Titre should contain only letters.");
+                titreAlert.showAndWait();
+            } else {
+                try {
+                    // Proceed to add the reclamation if all fields are filled and type/titre are valid
+                    sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, user));
 
-                // Show a success alert
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Success");
-                successAlert.setContentText("Your reclamation has been added successfully.");
-                successAlert.showAndWait();
+                    // Show a success alert
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Success");
+                    successAlert.setContentText("Your reclamation has been added successfully.");
+                    successAlert.showAndWait();
 
-                navigateToAfficherReclamationAction(event);
-            } catch (SQLException e) {
-                // Show an alert for SQL exception
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.setTitle("SQL Exception");
-                errorAlert.setContentText(e.getMessage());
-                errorAlert.showAndWait();
+                    navigateToAfficherReclamationAction(event);
+                } catch (SQLException e) {
+                    // Show an alert for SQL exception
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setTitle("SQL Exception");
+                    errorAlert.setContentText(e.getMessage());
+                    errorAlert.showAndWait();
+                }
             }
         }
     }
 
 
 
+    public void openGitHubLink(ActionEvent event) {
+        String githubLink = "https://github.com/InnoMinds1/InnoHire";
 
+        try {
+            // Create a URI object from the GitHub link
+            URI uri = new URI(githubLink);
 
-
-
-
-
-
-
+            // Open the link in the default browser
+            Desktop.getDesktop().browse(uri);
+        } catch (URISyntaxException | IOException e) {
+            // Handle any exceptions that might occur
+            e.printStackTrace();
+        }
+    }
 }
