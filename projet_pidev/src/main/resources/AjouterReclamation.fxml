@@ -14,13 +14,13 @@
       <AnchorPane layoutX="230.0" layoutY="15.0" prefHeight="675.0" prefWidth="744.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
             <TextField fx:id="TFType" layoutX="32.0" layoutY="158.0" prefHeight="32.0" prefWidth="270.0" stylesheets="@css/styles.css" />
-            <TextArea fx:id="TADescription" layoutX="31.0" layoutY="242.0" prefHeight="330.0" prefWidth="651.0" stylesheets="@css/styles.css" />
+            <TextArea fx:id="TADescription" layoutX="31.0" layoutY="236.0" prefHeight="357.0" prefWidth="687.0" stylesheets="@css/styles.css" />
             <TextField fx:id="TFTitre" layoutX="31.0" layoutY="86.0" prefHeight="32.0" prefWidth="270.0" stylesheets="@css/styles.css" />
             <Label layoutX="31.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Add Claim" />
             <Label layoutX="31.0" layoutY="50.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Titre" />
             <Label layoutX="31.0" layoutY="118.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Type" />
-            <Label layoutX="31.0" layoutY="206.0" prefHeight="36.0" prefWidth="171.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
-            <Button layoutX="606.0" layoutY="610.0" mnemonicParsing="false" onAction="#ajouterReclamationAction" prefHeight="27.0" prefWidth="76.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Add">
+            <Label layoutX="32.0" layoutY="200.0" prefHeight="36.0" prefWidth="171.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
+            <Button layoutX="642.0" layoutY="610.0" mnemonicParsing="false" onAction="#ajouterReclamationAction" prefHeight="27.0" prefWidth="76.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Add">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="51.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -32,7 +32,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="495.0" layoutY="612.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
+            <Button layoutX="531.0" layoutY="612.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -131,18 +131,6 @@
                   <Image url="@images/profile.png" />
                </image>
             </ImageView>
-            <Button layoutX="61.0" layoutY="13.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="26.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/cogwheel.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
             <Label layoutX="34.0" layoutY="256.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Chat" />
             <Button layoutX="13.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="29.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                <graphic>
@@ -207,29 +195,30 @@
                </children>
             </AnchorPane>
             <Label layoutX="283.0" layoutY="266.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See All" />
-            <AnchorPane fx:id="AnchoPaneMessage13" layoutX="24.0" layoutY="76.0" prefHeight="169.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
+            <Label layoutX="101.0" layoutY="644.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
+            <AnchorPane fx:id="AnchoPaneMessage13" layoutX="24.0" layoutY="74.0" prefHeight="169.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                <children>
-                  <Label layoutX="275.0" layoutY="20.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="New" />
-                  <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Google">
+                  <Label layoutX="275.0" layoutY="14.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="New" />
+                  <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Settings &amp; Privacy">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/google.png" />
+                              <Image url="@images/cogwheel.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="14.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Youtube">
+                  <Button layoutX="14.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Help &amp; Support">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/youtube.png" />
+                              <Image url="@images/chatbot.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -248,7 +237,6 @@
                   </Button>
                </children>
             </AnchorPane>
-            <Label layoutX="101.0" layoutY="644.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
          </children>
       </AnchorPane>
    </children>

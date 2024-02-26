@@ -15,6 +15,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ModifierReclamationController {
+    @FXML
+    private Label labelFullName;
+    @FXML
+    private Label labelCin;
+    @FXML
+    private Label labelCodePub;
+    @FXML
+    private Label labelNbReports;
 
     @FXML
     private TextField TFType;
@@ -37,6 +45,10 @@ public class ModifierReclamationController {
         TFTitre.setText(selectedReclamation.getTitre());
         //datePicker.setValue(LocalDate.now());
         TADescription.setText(selectedReclamation.getDescription());
+        labelFullName.setText(selectedReclamation.getUser().getNom()+" "+selectedReclamation.getUser().getPrenom());
+        labelCin.setText(String.valueOf(selectedReclamation.getUser().getCin()));
+        labelCodePub.setText(selectedReclamation.getPub().getCode_pub());
+        labelNbReports.setText(String.valueOf(selectedReclamation.getPub().getNb_report()));
 
     }
 

@@ -100,7 +100,7 @@
             <AnchorPane fx:id="AnchoPaneMessage13" layoutX="24.0" layoutY="76.0" prefHeight="169.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                <children>
                   <Label layoutX="275.0" layoutY="20.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="New" />
-                  <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Google">
+                  <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Settings">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -195,7 +195,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="32.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/phone.png" />
                      </image>
@@ -207,7 +207,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="45.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/zoom.png" />
                      </image>

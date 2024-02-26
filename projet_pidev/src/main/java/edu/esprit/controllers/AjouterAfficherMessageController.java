@@ -148,7 +148,7 @@ public class AjouterAfficherMessageController implements Initializable{
         });
         
         // <Button layoutX="519.0" layoutY="636.0" mnemonicParsing="false"prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
-        if (message.getSender_id().getId_utilisateur() != 1) {
+        if (message.getSender_id().getId_utilisateur() == 1) {
             profileImage = new ImageView(new Image("/images/manh.png"));
             profileImage.setFitWidth(40.0);
             profileImage.setFitHeight(40.0);

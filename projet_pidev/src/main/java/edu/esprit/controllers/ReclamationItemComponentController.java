@@ -44,7 +44,7 @@ public class ReclamationItemComponentController {
 
         // Set data to UI elements
         userFullName.setText(reclamation.getUser().getNom() + " " + reclamation.getUser().getPrenom());
-        userCode.setText(String.valueOf(reclamation.getPub().getCode_pub()));
+        //userCode.setText(reclamation.getPub().getCode_pub());
         dateRec.setText(String.valueOf(reclamation.getDate()));
     }
 
@@ -89,5 +89,37 @@ public class ReclamationItemComponentController {
     }
 
     public void navigateToChatRec(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterAfficherMessage.fxml"));
+            userCode.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
     }
+
+    public void DetailsReclamationAction(ActionEvent event) {
+        try {
+            // Load the DetailsReclamation.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReclamation.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller for the DetailsReclamation page
+            ModifierReclamationController detailsController = loader.getController();
+
+            // Pass the selected reclamation data to the DetailsReclamationController
+            detailsController.initData(reclamation);
+
+            // Set the root of the scene to the DetailsReclamation page
+            userCode.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
 }
