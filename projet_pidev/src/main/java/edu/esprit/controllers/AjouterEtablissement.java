@@ -18,8 +18,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -42,6 +44,8 @@ public class AjouterEtablissement implements Initializable {
 
     @FXML
     private TextField TypeETF;
+    @FXML
+    private TextField imageETF;
 
     @FXML
     private ListView<Utilisateur> ListViewUser;
@@ -62,10 +66,11 @@ public class AjouterEtablissement implements Initializable {
         String Lieu = LieuETF.getText();
         String Code = CodeETF.getText();
         String Type = TypeETF.getText();
+        String image = imageETF.getText();
 
 
         // Vérifier si les champs requis sont vides
-        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty() ) {
+        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty()|| image.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -139,9 +144,11 @@ public class AjouterEtablissement implements Initializable {
         // Créer un nouvel objet Service avec les valeurs saisies
         Etablissement etablissement = new Etablissement();
         etablissement.setNom(Nom);
-        etablissement.setCode_etablissement(codeE);
+        etablissement.setCodeEtablissement(codeE);
         etablissement.setLieu(Lieu);
-        etablissement.setType_etablissement(Type);
+        etablissement.setTypeEtablissement(Type);
+        etablissement.setImage(image);
+
 
         ServiceUtilisateur su=new ServiceUtilisateur();
         Utilisateur user = su.getOneByCin(cin_utilisateurE);
@@ -161,6 +168,7 @@ public class AjouterEtablissement implements Initializable {
             LieuETF.clear();
             CodeETF.clear();
             TypeETF.clear();
+            imageETF.clear();
             cin_utilisateurETF.clear();
         }
 
@@ -178,7 +186,7 @@ public class AjouterEtablissement implements Initializable {
 
       public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
@@ -221,5 +229,36 @@ public class AjouterEtablissement implements Initializable {
 
     }
 
+    @FXML
+    public void importImage(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
 
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/img"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        if (selectedFile != null) {
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
+
+            // Set the image file name to the TextField
+            imageETF.setText(selectedFile.getName());
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+            System.out.println("Selected Image: " + imagePath);
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
+        }
+    }
 }

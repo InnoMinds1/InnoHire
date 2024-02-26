@@ -62,5 +62,11 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <Button layoutX="90.0" layoutY="467.0" mnemonicParsing="false" onAction="#importImage" text="importer image" />
+      <TextField fx:id="imageETF" layoutX="75.0" layoutY="422.0" prefHeight="46.0" prefWidth="250.0" promptText="image" styleClass="text-field" stylesheets="@service2.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

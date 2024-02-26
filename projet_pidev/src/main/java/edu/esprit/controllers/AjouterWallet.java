@@ -47,7 +47,7 @@ public class AjouterWallet implements Initializable {
         // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
         ListViewEtab.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                code_EtabETF.setText(String.valueOf(newValue.getCode_etablissement()));
+                code_EtabETF.setText(String.valueOf(newValue.getCodeEtablissement()));
             }
         });
 
@@ -101,7 +101,7 @@ public class AjouterWallet implements Initializable {
             }
 
             // Utiliser le CIN de l'utilisateur sélectionné dans la ListView
-            code_EtabE = selectedEtab.getCode_etablissement();
+            code_EtabE = selectedEtab.getCodeEtablissement();
         } else {
             try {
                 code_EtabE = Integer.parseInt(code_Etab);

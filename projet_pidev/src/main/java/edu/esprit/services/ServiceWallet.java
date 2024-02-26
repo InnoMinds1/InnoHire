@@ -7,6 +7,7 @@ import edu.esprit.entities.Wallet;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,12 +27,15 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
         }
         --> cest pas pratique car si on a plusieur attributs on doit faire concatenation(+) pour chacun
 */
-        String req = "INSERT INTO `wallet`(`balance`, `id_etablissement`) VALUES (?,?)";
+        String req = "INSERT INTO `wallet`(`balance`,`date_c`,`status`, `id_etablissement`) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, wallet.getBalance());
+            ps.setDate(2, Date.valueOf(wallet.getDateCreation()));
 
-            ps.setInt(2, wallet.getEtablissement().getId_etablissement());
+            ps.setInt(3, wallet.getStatus());
+
+            ps.setInt(4, wallet.getEtablissement().getIdEtablissement());
 
             ps.executeUpdate();
             System.out.println("Wallet added !");
@@ -42,17 +46,20 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
 
     @Override
     public void modifier(Wallet wallet) throws SQLException {
-        int id = wallet.getId_wallet();
+        int id = wallet.getIdWallet();
         Wallet existingWallet = getOneByID(id);
         if (existingWallet != null) {
-            String req = "UPDATE `wallet` SET `balance`=?, `id_etablissement`=? WHERE `id_wallet`=?";
+            String req = "UPDATE `wallet` SET `balance`=?,`date_c`=?, `status`=?, `id_etablissement`=? WHERE `id_wallet`=?";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setInt(1, wallet.getBalance());
+                ps.setDate(2, Date.valueOf(wallet.getDateCreation()));
+                ps.setInt(3, wallet.getStatus());
 
-                ps.setInt(2, wallet.getEtablissement().getId_etablissement());
 
-                ps.setInt(3, id);
+                ps.setInt(4, wallet.getEtablissement().getIdEtablissement());
+
+                ps.setInt(5, id);
 
                 ps.executeUpdate();
                 System.out.println("Wallet updated !");
@@ -67,14 +74,14 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
     }
 
     @Override
-    public void supprimer(int id_wallet) throws SQLException {
+    public void supprimer(int idWallet) throws SQLException {
 
-        Wallet wallet = getOneByID(id_wallet);
+        Wallet wallet = getOneByID(idWallet);
         if (wallet != null) {
             String req = "DELETE FROM `wallet` WHERE `id_wallet`=?";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
-                ps.setInt(1, id_wallet);
+                ps.setInt(1, idWallet);
                 ps.executeUpdate();
                 System.out.println("Wallet deleted !");
             } catch (SQLException e) {
@@ -95,16 +102,18 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                int id_wallet = rs.getInt("id_wallet"); //wala t7ot num colomn kima eli ta7etha
+                int idWallet = rs.getInt("id_wallet"); //wala t7ot num colomn kima eli ta7etha
                 int balance = rs.getInt(2); //wala t7ot esm colomn kima eli fou9ha
+                LocalDate dateCreation = rs.getDate("date_c").toLocalDate();
 
-                int id_etablissement = rs.getInt("id_etablissement");
+                int status = rs.getInt("status");
+                int idEtablissement = rs.getInt("id_etablissement");
 
 
                 ServiceEtablissement se = new ServiceEtablissement();
-                Etablissement etablissement = se.getOneByID(id_etablissement);
+                Etablissement etablissement = se.getOneByID(idEtablissement);
 
-                Wallet e = new Wallet(id_wallet,balance,etablissement);
+                Wallet e = new Wallet(idWallet,balance,dateCreation,status,etablissement);
                 wallets.add(e);
             }
         } catch (SQLException e) {
@@ -115,15 +124,18 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
     }
 
     @Override
-    public Wallet getOneByID(int id_wallet) {
+    public Wallet getOneByID(int idWallet) {
         String req = "SELECT * FROM wallet WHERE id_wallet = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, id_wallet);
+            ps.setInt(1, idWallet);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
                 int balance = rs.getInt(2); //wala t7ot esm colomn kima eli fou9ha
+                LocalDate dateCreation = rs.getDate("date_c").toLocalDate();
+
+                int status = rs.getInt("status");
 
                 int id_etablissement = rs.getInt("id_etablissement");
 
@@ -132,9 +144,9 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
                 Etablissement etablissement = se.getOneByID(id_etablissement);
 
 
-                return new Wallet(id_wallet, balance, etablissement);
+                return new Wallet(idWallet, balance,dateCreation,status, etablissement);
             } else {
-                System.out.print("Echec! Wallet with ID " + id_wallet + " est" + " " );
+                System.out.print("Echec! Wallet with ID " + idWallet + " est" + " " );
                 return null;
             }
         } catch (SQLException e) {

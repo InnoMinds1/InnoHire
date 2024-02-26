@@ -91,12 +91,12 @@ public class ModifierEtablissement implements Initializable {
 
     public void initData(Etablissement etablissement) {
         if (etablissement != null) {
-            setId(etablissement.getId_etablissement());
-            setCodeInit(etablissement.getCode_etablissement());
-            CodeETF.setText(String.valueOf(etablissement.getCode_etablissement()));
+            setId(etablissement.getIdEtablissement());
+            setCodeInit(etablissement.getCodeEtablissement());
+            CodeETF.setText(String.valueOf(etablissement.getCodeEtablissement()));
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
-            TypeETF.setText(etablissement.getType_etablissement());
+            TypeETF.setText(etablissement.getTypeEtablissement());
            cin_utilisateurETF.setText(String.valueOf(etablissement.getUser().getCin()));
 
         }
@@ -145,11 +145,11 @@ public class ModifierEtablissement implements Initializable {
 
             Etablissement newEtablissement = new Etablissement();
 
-            newEtablissement.setId_etablissement(getId());
+            newEtablissement.setIdEtablissement(getId());
             newEtablissement.setNom(NomETF.getText());
             newEtablissement.setLieu(LieuETF.getText());
-            newEtablissement.setCode_etablissement(Code);
-            newEtablissement.setType_etablissement(TypeETF.getText());
+            newEtablissement.setCodeEtablissement(Code);
+            newEtablissement.setTypeEtablissement(TypeETF.getText());
 
 
             ServiceUtilisateur se=new ServiceUtilisateur();

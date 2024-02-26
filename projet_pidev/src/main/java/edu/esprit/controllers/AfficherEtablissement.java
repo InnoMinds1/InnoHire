@@ -72,7 +72,7 @@ public class AfficherEtablissement implements Initializable {
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-                int id_etablissement = selectedEtablissement.getId_etablissement();
+                int id_etablissement = selectedEtablissement.getIdEtablissement();
                 ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
                 serviceEtablissement.supprimer(id_etablissement);
                 listView.getItems().remove(selectedEtablissement);
@@ -201,7 +201,7 @@ public class AfficherEtablissement implements Initializable {
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-                int id_wallet = selectedWallet.getId_wallet();
+                int id_wallet = selectedWallet.getIdWallet();
                 ServiceWallet serviceWallet = new ServiceWallet();
                 serviceWallet.supprimer(id_wallet);
                 listView1.getItems().remove(selectedWallet);

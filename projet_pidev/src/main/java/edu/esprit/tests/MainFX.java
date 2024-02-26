@@ -7,9 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainFX extends Application {
+    public static final String CURRENCY = "$";
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

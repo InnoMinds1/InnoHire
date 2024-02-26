@@ -67,7 +67,7 @@ public class ModifierWallet implements Initializable {
         // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
         ListViewEtab.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                code_EtabETF.setText(String.valueOf(newValue.getCode_etablissement()));
+                code_EtabETF.setText(String.valueOf(newValue.getCodeEtablissement()));
             }
         });
 
@@ -89,12 +89,12 @@ public class ModifierWallet implements Initializable {
 
     public void initDataWallet(Wallet wallet) {
         if (wallet != null) {
-            setIdW(wallet.getId_wallet());
+            setIdW(wallet.getIdWallet());
 
             BalanceETF.setText(String.valueOf(wallet.getBalance()));
 
-            code_EtabETF.setText(String.valueOf(wallet.getEtablissement().getCode_etablissement()));
-            setCodeInit(wallet.getEtablissement().getCode_etablissement());
+            code_EtabETF.setText(String.valueOf(wallet.getEtablissement().getCodeEtablissement()));
+            setCodeInit(wallet.getEtablissement().getCodeEtablissement());
 
         }
     }
@@ -126,7 +126,7 @@ public class ModifierWallet implements Initializable {
 
             Wallet newWallet = new Wallet();
 
-            newWallet.setId_wallet(getIdW());
+            newWallet.setIdWallet(getIdW());
 
             newWallet.setBalance(Balance);
 
@@ -138,8 +138,8 @@ public class ModifierWallet implements Initializable {
 
             newWallet.setEtablissement(etab);
 
-if (getCodeInit()!=etab.getCode_etablissement()) {
-    if (serviceWallet.portefeuilleExistePourEtablissement(etab.getCode_etablissement())) {
+if (getCodeInit()!=etab.getCodeEtablissement()) {
+    if (serviceWallet.portefeuilleExistePourEtablissement(etab.getCodeEtablissement())) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText(null);

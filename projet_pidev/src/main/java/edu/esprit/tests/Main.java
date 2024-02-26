@@ -1,12 +1,16 @@
 package edu.esprit.tests;
 
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Quiz;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceWallet;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -25,7 +29,7 @@ public class Main {
          */
 
         ServiceEtablissement se = new ServiceEtablissement();
-        System.out.println(se.getOneByCode(524));
+       // System.out.println(se.getOneByCode(524));
 
         //----------------ajouter-------------------------
 
@@ -36,23 +40,38 @@ public class Main {
         //
         //
         Utilisateur user=new Utilisateur();
-        user.setId_utilisateur(19);
+        user.setId_utilisateur(2215);
 
-          //se.ajouter(new Etablissement("isie","Ghazela",12345,"Faculte",user));
+
+
+
+
+        //  se.ajouter(new Etablissement("isie","Ghazela",123456,"Faculte","gg",user));
 
         /*----------------modifier-------------------------*/
+        Etablissement etablissementModifie = new Etablissement(46,"ff","Ghazela",12345,"Faculte","gg",null,user);
+       // System.out.println(etablissementModifie);
 
-        Etablissement etablissementModifie = new Etablissement(35,"ff","Ghazela",12345,"Faculte",user);
+        Quiz quiz =new Quiz();
+        Quiz quiz2 =new Quiz();
+        quiz.setPrix_quiz(1);
+        quiz2.setPrix_quiz(2);
+        etablissementModifie.addQuiz(quiz);
+        etablissementModifie.addQuiz(quiz2);
+        //System.out.println(etablissementModifie);
          //se.modifier(etablissementModifie);
 
         /*-------------------Supprimer-------------------*/
-        //se.supprimer(1);
+        //se.supprimer(42);
 
         /*-------------------affichage_par_ID-------------------*/
-        //System.out.println(se.getOneByID(2));
+      //  System.out.println(se.getOneByID(46));
 
         /*----------------afficher tout-------------------------*/
       //  System.out.println(se.getAll());
+
+
+        System.out.println(se.getQuizzesPourEtablissement(etablissementModifie));
 
         /*--------------------------------------------------------------------------------------------------------*/
         /*--------------------------------------End_table_etab----------------------------------------------------*/
@@ -61,21 +80,25 @@ public class Main {
 
 
         ServiceWallet sw = new ServiceWallet();
+        Wallet wallet = new Wallet(1,100, LocalDate.of(2021,02,4),0,etablissementModifie);
+        Wallet wallet1 = new Wallet(2,100, LocalDate.of(2021,02,4),0,etablissementModifie);
+        Wallet wallet2 = new Wallet(3,100, LocalDate.of(2021,02,4),0,etablissementModifie);
+
 
         /*----------------ajouter-------------------------*/
 
-        sw.ajouter(new Wallet(100,etablissementModifie));
+      //sw.ajouter(wallet);
 
         /*----------------modifier-------------------------*/
 
-        Wallet walletModifie = new Wallet(3,200,etablissementModifie);
-       // sw.modifier(walletModifie);
+       Wallet walletModifie = new Wallet(17,400, LocalDate.of(2021,02,4),0,etablissementModifie);
+      //  sw.modifier(walletModifie);
 
         /*-------------------Supprimer-------------------*/
-       // sw.supprimer(4);
+        //sw.supprimer(17);
 
         /*-------------------affichage_par_ID-------------------*/
-        //System.out.println(sw.getOneByID(3));
+      //  System.out.println(sw.getOneByID(18));
 
         /*----------------afficher tout-------------------------*/
       // System.out.println(sw.getAll());

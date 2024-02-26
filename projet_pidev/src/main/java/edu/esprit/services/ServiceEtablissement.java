@@ -1,11 +1,14 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Quiz;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ServiceEtablissement implements IService<Etablissement> {
@@ -24,14 +27,16 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
         }
         --> cest pas pratique car si on a plusieur attributs on doit faire concatenation(+) pour chacun
 */
-        String req = "INSERT INTO `etablissement`(`nom`, `lieu`, `code_etablissement`, `type_etablissement`, `id_utilisateur`) VALUES (?,?,?,?,?)";
+        String req = "INSERT INTO `etablissement`(`nom`, `lieu`, `code_etablissement`, `type_etablissement`, `image`,`id_utilisateur`) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, etablissement.getNom());
             ps.setString(2, etablissement.getLieu());
-            ps.setInt(3, etablissement.getCode_etablissement());
-            ps.setString(4, etablissement.getType_etablissement());
-            ps.setInt(5, etablissement.getUser().getId_utilisateur());
+            ps.setInt(3, etablissement.getCodeEtablissement());
+            ps.setString(4, etablissement.getTypeEtablissement());
+            ps.setString(5, etablissement.getImage());
+            ps.setInt(6, etablissement.getUser().getId_utilisateur());
+
 
 
             ps.executeUpdate();
@@ -43,18 +48,20 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
 
     @Override
     public void modifier(Etablissement etablissement) throws SQLException {
-        int id = etablissement.getId_etablissement();
+        int id = etablissement.getIdEtablissement();
         Etablissement existingEtablissement = getOneByID(id);
         if (existingEtablissement != null) {
-            String req = "UPDATE `etablissement` SET `nom`=?, `lieu`=?, `code_etablissement`=?, `type_etablissement`=?, `id_utilisateur`=? WHERE `id_etablissement`=?";
+            String req = "UPDATE `etablissement` SET `nom`=?, `lieu`=?, `code_etablissement`=?, `type_etablissement`=?,`image`=?, `id_utilisateur`=? WHERE `id_etablissement`=?";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setString(1, etablissement.getNom());
                 ps.setString(2, etablissement.getLieu());
-                ps.setInt(3, etablissement.getCode_etablissement());
-                ps.setString(4, etablissement.getType_etablissement());
-                ps.setInt(5, etablissement.getUser().getId_utilisateur());
-                ps.setInt(6, id);
+                ps.setInt(3, etablissement.getCodeEtablissement());
+                ps.setString(4, etablissement.getTypeEtablissement());
+                ps.setString(5, etablissement.getImage());
+                ps.setInt(6, etablissement.getUser().getId_utilisateur());
+
+                ps.setInt(7, id);
 
                 ps.executeUpdate();
                 System.out.println("Etablissement updated !");
@@ -69,14 +76,14 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
     @Override
-    public void supprimer(int id_etablissement) throws SQLException {
+    public void supprimer(int idEtablissement) throws SQLException {
 
-        Etablissement etablissement = getOneByID(id_etablissement);
+        Etablissement etablissement = getOneByID(idEtablissement);
         if (etablissement != null) {
             String req = "DELETE FROM `etablissement` WHERE `id_etablissement`=?";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
-                ps.setInt(1, id_etablissement);
+                ps.setInt(1, idEtablissement);
                 ps.executeUpdate();
                 System.out.println("Etablissement deleted !");
             } catch (SQLException e) {
@@ -97,17 +104,19 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                int id_etablissement = rs.getInt("id_etablissement"); //wala t7ot num colomn kima eli ta7etha
+                int idEtablissement = rs.getInt("id_etablissement"); //wala t7ot num colomn kima eli ta7etha
                 String nom = rs.getString(2); //wala t7ot esm colomn kima eli fou9ha
                 String lieu = rs.getString("lieu");
-                int code_etablissement = rs.getInt("code_etablissement");
-                String type_etablissement = rs.getString("type_etablissement");
-                int id_utilisateur = rs.getInt("id_utilisateur");
+                int codeEtablissement = rs.getInt("code_etablissement");
+                String typeEtablissement = rs.getString("type_etablissement");
+                String image = rs.getString("image");
+                int idUtilisateur = rs.getInt("id_utilisateur");
+
 
                 ServiceUtilisateur su = new ServiceUtilisateur();
-                Utilisateur user = su.getOneByID(id_utilisateur);
+                Utilisateur user = su.getOneByID(idUtilisateur);
 
-                Etablissement e = new Etablissement(id_etablissement,nom,lieu,code_etablissement,type_etablissement,user);
+                Etablissement e = new Etablissement(idEtablissement,nom,lieu,codeEtablissement,typeEtablissement,image,null,user);
                 etablissements.add(e);
             }
         } catch (SQLException e) {
@@ -119,25 +128,27 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
 
 
     @Override
-    public Etablissement getOneByID(int id_etablissement) throws SQLException {
+    public Etablissement getOneByID(int idEtablissement) throws SQLException {
         String req = "SELECT * FROM etablissement WHERE id_etablissement = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, id_etablissement);
+            ps.setInt(1, idEtablissement);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String nom = rs.getString(2); //wala t7ot esm colomn kima eli fou9ha
                 String lieu = rs.getString("lieu");
-                int code_etablissement = rs.getInt("code_etablissement");
-                String type_etablissement = rs.getString("type_etablissement");
-                int id_utilisateur = rs.getInt("id_utilisateur");
+                int codeEtablissement = rs.getInt("code_etablissement");
+                String typeEtablissement = rs.getString("type_etablissement");
+                String image = rs.getString("image");
+                int idUtilisateur = rs.getInt("id_utilisateur");
+
 
                 ServiceUtilisateur su = new ServiceUtilisateur();
-                Utilisateur user = su.getOneByID(id_utilisateur);
+                Utilisateur user = su.getOneByID(idUtilisateur);
 
-                return new Etablissement(id_etablissement, nom, lieu,code_etablissement,type_etablissement,user);
+                return new Etablissement(idEtablissement, nom, lieu,codeEtablissement,typeEtablissement,image,null,user);
             } else {
-                System.out.print("Echec! Etablissement with ID " + id_etablissement + " est" + " " );
+                System.out.print("Echec! Etablissement with ID " + idEtablissement + " est" + " " );
                 return null;
             }
         } catch (SQLException e) {
@@ -167,11 +178,13 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             if (rs.next()) {
                 // Assuming Utilisateur has appropriate constructor
                 Etablissement etablissement = new Etablissement();
-                etablissement.setId_etablissement(rs.getInt("id_etablissement"));
-                etablissement.setCode_etablissement(rs.getInt("code_etablissement"));
+                etablissement.setIdEtablissement(rs.getInt("id_etablissement"));
+                etablissement.setCodeEtablissement(rs.getInt("code_etablissement"));
                 etablissement.setNom(rs.getString("nom"));
                 etablissement.setLieu(rs.getString("lieu"));
-                etablissement.setType_etablissement(rs.getString("type_etablissement"));
+                etablissement.setTypeEtablissement(rs.getString("type_etablissement"));
+                etablissement.setImage(rs.getString("image"));
+
                 int id_user=rs.getInt("id_utilisateur");
 
 
@@ -208,6 +221,36 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             return -1; // Retourne -1 en cas d'erreur
         }
     }
+
+
+
+
+    // Récupérer les quiz attribués à un établissement
+    public List<Quiz> getQuizzesPourEtablissement(Etablissement etablissement) throws SQLException {
+        List<Quiz> quizzes = new ArrayList<>();
+        String query = "SELECT q.* FROM quiz q " +
+                "JOIN etablissement_quiz eq ON q.id_quiz = eq.id_quiz " +
+                "WHERE eq.id_etablissement = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setInt(1, etablissement.getIdEtablissement());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Quiz quiz = new Quiz();
+                    quiz.setId_quiz(resultSet.getInt("id_quiz"));
+                    quiz.setCode_quiz(resultSet.getInt("code_quiz"));
+                    quiz.setNom_quiz(resultSet.getString("nom_quiz"));
+                    quiz.setDescription(resultSet.getString("description"));
+                    quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
+                    // quiz.setImage_quiz(resultSet.getString("id_etablissement"));
+                    quizzes.add(quiz);
+                }
+            }
+        }
+        return quizzes;
+    }
+
+
+
 
 
 }
