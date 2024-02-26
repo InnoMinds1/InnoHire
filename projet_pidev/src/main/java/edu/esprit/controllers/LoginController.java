@@ -84,12 +84,15 @@ public class LoginController {
                        }
                    }
                    else if(role == 1)
-                   {     CurrentUser.setCin(u.getCin());
+                   {
+                       CurrentUser.setCin(u.getCin());
                        CurrentUser.setNom(u.getNom());
                        CurrentUser.setPrenom(u.getPrenom());
                        CurrentUser.setAdresse(u.getAdresse());
                        CurrentUser.setMdp(u.getMdp());
                        CurrentUser.setRole(1);
+                       int status= sp.getStatusfromCIN(u.getCin());
+                       if (status==1){
                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
                        alert.setContentText("WELCOME Rep");
                        alert.setTitle("Oui");
@@ -102,6 +105,21 @@ public class LoginController {
                            alert1.setContentText("Sorry");
                            alert1.setTitle("Error");
                            alert1.show();
+                       }
+                       }
+                       else
+                       {
+                           Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                           alert1.setContentText("VEILLEZ CREER UNE SOCIETE");
+                           alert1.setTitle("Error");
+                           alert1.show();
+                           Parent root = null;
+                           try {
+                               root = FXMLLoader.load(getClass().getResource("/AjouterEtablissementAfterCreate.fxml"));
+                           } catch (IOException e) {
+                               throw new RuntimeException(e);
+                           }
+                           TFcin.getScene().setRoot(root);
                        }
                    }
                    else if(role == 2)

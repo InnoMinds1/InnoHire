@@ -5,7 +5,6 @@ import edu.esprit.entities.Candidat;
 import edu.esprit.entities.Representant;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
-import jdk.jshell.execution.Util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -475,4 +474,25 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         }
         return false; // Si une erreur se produit ou si aucun résultat n'est trouvé
     }
+    public int getStatusfromCIN(int cin)
+    {
+        String req = "SELECT status FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                System.out.println("No user found with cin " + cin);
+                return -1;
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+
 }
