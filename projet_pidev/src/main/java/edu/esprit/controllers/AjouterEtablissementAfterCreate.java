@@ -23,6 +23,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.plaf.ColorUIResource;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -148,6 +149,12 @@ public class AjouterEtablissementAfterCreate implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Etablissement ajouté avec succès !");
             alert.showAndWait();
+            CurrentUser.setId_utilisateur(user.getId_utilisateur());
+            CurrentUser.setNom(user.getNom());
+            CurrentUser.setPrenom(user.getPrenom());
+            CurrentUser.setAdresse(user.getAdresse());
+            CurrentUser.setMdp(user.getMdp());
+            CurrentUser.setRole(1);
 
             // Effacer les champs du formulaire après l'ajout réussi
             NomETF.clear();
@@ -155,7 +162,7 @@ public class AjouterEtablissementAfterCreate implements Initializable {
             CodeETF.clear();
             TypeETF.clear();
             cin_utilisateurETF.clear();
-            Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
             cin_utilisateurETF.getScene().setRoot(root);
         }
 
@@ -191,9 +198,19 @@ public class AjouterEtablissementAfterCreate implements Initializable {
     @FXML
     void skip(ActionEvent event) {
         Parent root = null;
+        ServiceUtilisateur su = new ServiceUtilisateur();
         try {
-            root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
-        } catch (IOException e) {
+            Utilisateur user = su.getOneByCin(CurrentUser.getCin());
+            CurrentUser.setId_utilisateur(user.getId_utilisateur());
+            CurrentUser.setNom(user.getNom());
+            CurrentUser.setPrenom(user.getPrenom());
+            CurrentUser.setAdresse(user.getAdresse());
+            CurrentUser.setMdp(user.getMdp());
+            CurrentUser.setRole(1);
+
+
+            root = FXMLLoader.load(getClass().getResource("/accueil.fxml"));
+        } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
         cin_utilisateurETF.getScene().setRoot(root);

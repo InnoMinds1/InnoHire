@@ -8,44 +8,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.LoginController">
+<AnchorPane prefHeight="504.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.LoginController">
    <children>
-      <ImageView fitHeight="448.0" fitWidth="282.0" layoutX="305.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="504.0" fitWidth="461.0" layoutX="355.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/fond.PNG" />
+            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/fond_login.PNG" />
          </image>
       </ImageView>
-      <ImageView fitHeight="435.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/inoohire1.PNG" />
-         </image>
-      </ImageView>
-      <TextField fx:id="TFcin" layoutX="410.0" layoutY="223.0" />
-      <Label layoutX="340.0" layoutY="82.0" prefHeight="96.0" prefWidth="219.0" text="SE CONNECTER">
+      <TextField fx:id="TFcin" layoutX="559.0" layoutY="223.0" />
+      <Label layoutX="485.0" layoutY="106.0" prefHeight="96.0" prefWidth="219.0" text="SE CONNECTER">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="340.0" layoutY="221.0" prefHeight="28.0" prefWidth="61.0" text="CIN:">
+      <Label layoutX="466.0" layoutY="222.0" prefHeight="28.0" prefWidth="61.0" text="CIN:">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="340.0" layoutY="278.0" prefHeight="28.0" prefWidth="74.0" text="MDP:">
+      <Label layoutX="475.0" layoutY="279.0" prefHeight="28.0" prefWidth="74.0" text="MDP:">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="TFmdp" layoutX="410.0" layoutY="280.0" />
-      <Button layoutX="323.0" layoutY="330.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="44.0" prefWidth="259.0" text="LOGIN">
+      <TextField fx:id="TFmdp" layoutX="559.0" layoutY="280.0" />
+      <Button layoutX="475.0" layoutY="331.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="44.0" prefWidth="259.0" text="LOGIN">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="323.0" layoutY="390.0" mnemonicParsing="false" onAction="#navigateToCreateAccount" prefHeight="44.0" prefWidth="259.0" text="CREER COMPTE">
+      <Button layoutX="475.0" layoutY="387.0" mnemonicParsing="false" onAction="#navigateToCreateAccount" prefHeight="44.0" prefWidth="259.0" text="CREER COMPTE">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Button>
+      <ImageView fitHeight="504.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/inoohire_login.PNG" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
