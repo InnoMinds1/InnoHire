@@ -74,6 +74,7 @@ public class AjouterQuestionController {
                 int idQuiz = getIdQuizByCode(codeQuiz);
                 quizService qs= new quizService();
 
+
                 if (idQuiz != -1) {
                     this.qs.ajouter(new Question(TFquestion.getText(), TFchoix.getText(), qs.getOneByID(idQuiz),reponseCorrecte));
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -98,7 +99,7 @@ public class AjouterQuestionController {
         }
 
 
-    private int getIdQuizByCode(Integer codeQuiz) throws SQLException {
+    public int getIdQuizByCode(Integer codeQuiz) throws SQLException {
 
         Connection connection = DataSource.getInstance().getCnx();
 

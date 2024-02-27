@@ -47,7 +47,7 @@ public class questionService implements IService<Question> {
                 preparedStatement.setString(1, question.getQuestion());
                 preparedStatement.setString(2, question.getChoix());
                 preparedStatement.setInt(3, question.getQuiz().getId_quiz());
-                preparedStatement.setInt(3, question.getReponse_correcte());
+                preparedStatement.setInt(4, question.getReponse_correcte());
 
                 preparedStatement.executeUpdate();
             }
@@ -59,16 +59,15 @@ public class questionService implements IService<Question> {
 
 
     @Override
-    public void modifier(Question question) {
-
+    public void modifier(Question question) throws SQLException {
         try {
-            String query = "UPDATE question SET question = ?, choix = ?, id_quiz = ?,reponse_correcte=? WHERE id_question = ?";
+            String query = "UPDATE question SET question = ?, choix = ?, id_quiz = ?, reponse_correcte = ? WHERE id_question = ?";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setString(1, question.getQuestion());
                 preparedStatement.setString(2, question.getChoix());
                 preparedStatement.setInt(3, question.getQuiz().getId_quiz());
-                preparedStatement.setInt(4, question.getId_question());
-                preparedStatement.setInt(5, question.getReponse_correcte());
+                preparedStatement.setInt(4, question.getReponse_correcte());
+                preparedStatement.setInt(5, question.getId_question());
 
                 preparedStatement.executeUpdate();
             }
@@ -96,35 +95,32 @@ public class questionService implements IService<Question> {
 
 
     @Override
-    public Set<Question> getAll() throws SQLException{
-        Set<Question> questionSet = new HashSet<>();
+    public  Set<Question> getAll() throws SQLException {
+        Set<Question> questions = new HashSet<>();
 
+        String req = "Select * from question";
         try {
-            String query = "SELECT * FROM question";
-            try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    while (resultSet.next()) {
-                        Question question = new Question();
-                        Quiz quiz = new Quiz();
-                        question.setId_question(resultSet.getInt("id_question"));
-                        question.setQuestion(resultSet.getString("question"));
-                        question.setChoix(resultSet.getString("choix"));
-                        question.setReponse_correcte(resultSet.getInt("reponse_correcte"));
-
-                        int id_quiz = resultSet.getInt("id_quiz");
-                        quizService qs=new quizService();
-                      Quiz quiz2 = qs.getOneByID(id_quiz);
-                        question.setQuiz(quiz2);
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                int id_question = rs.getInt("id_question"); //wala t7ot num colomn kima eli ta7etha
+                String question1 = rs.getString("question");
+                String choix = rs.getString("choix");
+                int id_quiz = rs.getInt("id_quiz");
+                int repC = rs.getInt("reponse_correcte");
 
 
-                        questionSet.add(question);
-                    }
-                }
+                quizService QS= new quizService();
+                Quiz Q = QS.getOneByID(id_quiz);
+
+                Question q = new Question(id_question,question1,choix,Q,repC);
+                questions.add(q);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return questionSet;
+
+        return questions;
     }
 
     @Override

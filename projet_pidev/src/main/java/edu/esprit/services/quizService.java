@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Set;
 
 public class quizService implements IService<Quiz> {
-
+    Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouter(Quiz quiz) {
-        Connection cnx = DataSource.getInstance().getCnx();
+
         try {
             String query = "INSERT INTO quiz (code_quiz, nom_quiz, description, prix_quiz, image_quiz) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
@@ -35,7 +35,7 @@ public class quizService implements IService<Quiz> {
 
     @Override
     public void modifier(Quiz quiz) {
-        Connection cnx = DataSource.getInstance().getCnx();
+
         try {
             String query = "UPDATE quiz SET code_quiz = ?, nom_quiz = ?, description = ?, prix_quiz = ?, image_quiz = ? WHERE id_quiz = ?";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
@@ -54,7 +54,7 @@ public class quizService implements IService<Quiz> {
 
     @Override
     public void supprimer(int id) {
-        Connection cnx = DataSource.getInstance().getCnx();
+
         try {
             String query = "DELETE FROM quiz WHERE id_quiz = ?";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
@@ -69,7 +69,7 @@ public class quizService implements IService<Quiz> {
     @Override
     public Set<Quiz> getAll() {
         Set<Quiz> quizSet = new HashSet<>();
-        Connection cnx = DataSource.getInstance().getCnx();
+
         try {
             String query = "SELECT * FROM quiz";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
@@ -94,7 +94,6 @@ public class quizService implements IService<Quiz> {
 
     @Override
     public Quiz getOneByID(int id) {
-        Connection cnx = DataSource.getInstance().getCnx();
         try {
             String query = "SELECT * FROM quiz WHERE id_quiz = ?";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
@@ -107,7 +106,7 @@ public class quizService implements IService<Quiz> {
                         quiz.setNom_quiz(resultSet.getString("nom_quiz"));
                         quiz.setDescription(resultSet.getString("description"));
                         quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
-                        quiz.setImage_quiz(resultSet.getString("id_etablissement"));
+                        quiz.setImage_quiz(resultSet.getString("image_quiz"));
                         return quiz;
                     }
                 }
@@ -119,7 +118,7 @@ public class quizService implements IService<Quiz> {
     }
     public List<Integer> getQuizcodes() throws SQLException {
         List<Integer> quizcodes = new ArrayList<>();
-        Connection cnx = DataSource.getInstance().getCnx();
+
 
         try {
             String sql = "SELECT code_quiz FROM quiz";
@@ -139,11 +138,11 @@ public class quizService implements IService<Quiz> {
         return quizcodes;
     }
     private int getCodeQuizbyID(int idQuiz) throws SQLException {
-        Connection connection = DataSource.getInstance().getCnx();
+
 
         try {
             String sql = "SELECT code_quiz FROM quiz WHERE id_quiz = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
                 preparedStatement.setInt(1, idQuiz);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -160,10 +159,10 @@ public class quizService implements IService<Quiz> {
         return -1;
     }
     public Quiz getOneByCode(int code) {
-        Connection connection = DataSource.getInstance().getCnx();
+
         try {
             String query = "SELECT * FROM quiz WHERE code_quiz = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
                 preparedStatement.setInt(1, code);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
@@ -182,6 +181,28 @@ public class quizService implements IService<Quiz> {
             e.printStackTrace();
         }
         return null;
+    }
+    public int getIdQuizByCode(Integer codeQuiz) throws SQLException {
+
+
+
+        try {
+            String sql = "SELECT id_quiz FROM quiz WHERE code_quiz = ?";
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
+                preparedStatement.setInt(1, codeQuiz);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getInt("id_quiz");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return -1;
     }
 
 

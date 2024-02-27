@@ -1,99 +1,89 @@
 package edu.esprit.controllers;
 
-
 import edu.esprit.entities.Question;
-
+import edu.esprit.entities.Quiz;
 import edu.esprit.services.questionService;
-
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Set;
 
 public class AfficherQuestionController implements Initializable {
-
+    @FXML
+    private GridPane gridA;
 
     @FXML
-    private ListView<Question> TFaffiche;
+    private ScrollPane scrollA;
 
 
+    private questionService serviceQ = new questionService();
+    Set<Question> setQ;
 
-    @FXML
-    void SupprimerQuestion(ActionEvent event) {
-        Question selectedQ = TFaffiche.getSelectionModel().getSelectedItem();
-        if (selectedQ != null) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation de suppression");
-            alert.setHeaderText(null);
-            alert.setContentText("Êtes-vous sûr de vouloir supprimer cette question ?");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                try {
-                    int id_question = selectedQ.getId_question();
-                    questionService Service = new questionService();
-                    Service.supprimer(id_question);
-                    TFaffiche.getItems().remove(selectedQ);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+    {
+        try {
+            setQ = serviceQ.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
-
     }
 
 
+    // Méthode pour récupérer la question à partir de la grille
 
-    public void navigateToAjouter(ActionEvent actionEvent) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        int column = 0;
+        int row = 1;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterQuestion.fxml"));
-            Parent root = loader.load();
+            for (Question question : setQ) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/QuestionItem.fxml"));
+                HBox hbox = fxmlLoader.load();
 
-            Stage stage = (Stage) TFaffiche.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
-            stage.show();
+                QuestionItemController itemController = fxmlLoader.getController();
+                itemController.setData(question);
 
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
 
+                gridA.add(hbox, column++, row);
+                gridA.setMinWidth(Region.USE_COMPUTED_SIZE);
+                gridA.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridA.setMaxWidth(Region.USE_PREF_SIZE);
+                gridA.setMinHeight(Region.USE_COMPUTED_SIZE);
+                gridA.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridA.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(hbox, new Insets(10));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        questionService serviceService = new questionService();
-        Set<Question> questions = null;
 
-        try {
-            questions = serviceService.getAll();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
-        TFaffiche.setItems(FXCollections.observableArrayList(questions));
-    }
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-

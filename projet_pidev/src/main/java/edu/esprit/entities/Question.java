@@ -72,12 +72,12 @@ public class Question {
     public String toString() {
         return "Question{" +
                 "question='" + question + '\'' +
-                ", choix='" + choix + '\'' + "reponse_correcte="+reponse_correcte+
-
-
-                 ", quiz=" + getQuiz().getCode_quiz() +
+                ", choix='" + choix + '\'' +
+                ", reponse_correcte=" + reponse_correcte +
+                ", quiz=" + quiz.getCode_quiz() +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {

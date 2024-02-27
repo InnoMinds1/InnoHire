@@ -5,17 +5,24 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="504.0" prefWidth="816.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterQuestionController">
     <children>
-        <Label layoutX="229.0" layoutY="52.0" text="Ajouter Question" textFill="#000000a9">
+      <ImageView fitHeight="504.0" fitWidth="816.0" layoutX="479.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mauve.jpg" />
+         </image>
+      </ImageView>
+        <Label layoutX="367.0" layoutY="14.0" text="Ajouter Question" textFill="#000000a9">
             <font>
                 <Font size="31.0" />
             </font>
         </Label>
-        <TextField fx:id="TFquestion" layoutX="261.0" layoutY="104.0" prefHeight="46.0" prefWidth="250.0" promptText="Question" styleClass="text-field">
+        <TextField fx:id="TFquestion" layoutX="367.0" layoutY="103.0" prefHeight="46.0" prefWidth="290.0" styleClass="text-field">
             <stylesheets>
                 <URL value="@service2.css" />
                 <URL value="@service2.css" />
@@ -24,22 +31,55 @@
                 <Font size="16.0" />
             </font>
         </TextField>
-        <TextField fx:id="TFchoix" layoutX="261.0" layoutY="177.0" prefHeight="46.0" prefWidth="250.0" promptText="Choix" styleClass="text-field" stylesheets="@service2.css">
+        <TextField fx:id="TFchoix" layoutX="367.0" layoutY="176.0" prefHeight="46.0" prefWidth="290.0" styleClass="text-field" stylesheets="@service2.css">
             <font>
                 <Font size="16.0" />
             </font>
         </TextField>
-        <ComboBox fx:id="TFcode_quiz" layoutX="525.0" layoutY="261.0" prefHeight="26.0" prefWidth="76.0" />
+        <ComboBox fx:id="TFcode_quiz" layoutX="441.0" layoutY="324.0" prefHeight="26.0" prefWidth="76.0" />
 
 
-        <Button layoutX="332.0" layoutY="381.0" mnemonicParsing="false" onAction="#AjouterQuestionAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+        <Button layoutX="431.0" layoutY="378.0" mnemonicParsing="false" onAction="#AjouterQuestionAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="AJOUTER" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-      <TextField layoutX="266.0" layoutY="255.0" prefHeight="38.0" prefWidth="250.0" text="CHOISIR LE CODE " />
-      <Button layoutX="332.0" layoutY="438.0" mnemonicParsing="false" onAction="#navigateToAfficher" prefHeight="38.0" prefWidth="95.0" text="AFFICHER" />
-      <TextField fx:id="TFreponse_correcte" layoutX="266.0" layoutY="312.0" prefHeight="38.0" prefWidth="250.0" text="ReponseCorrecte est : " />
+      <TextField fx:id="TFreponse_correcte" layoutX="367.0" layoutY="251.0" prefHeight="46.0" prefWidth="290.0" />
+      <Label layoutX="107.0" layoutY="110.0" text="DONNEZ LA QUESTION" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="431.0" layoutY="437.0" mnemonicParsing="false" onAction="#navigateToAfficher" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="AFFICHER" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="107.0" layoutY="183.0" text="DONNEZ LES CHOIX" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="99.0" layoutY="258.0" prefHeight="32.0" prefWidth="321.0" text="DONNEZ LA REPONSE :)" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="99.0" layoutY="321.0" text="SELECTIONNEZ LE CODE" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/tase2ol.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="110.0" fitWidth="183.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/tase2ol2.jpg" />
+         </image>
+      </ImageView>
 
     </children>
 </AnchorPane>

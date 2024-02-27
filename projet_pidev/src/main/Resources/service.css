@@ -16,6 +16,10 @@
       -fx-border-radius: 20px; /* Rayon de courbure de la bordure */
       -fx-background-radius: 20px; /* Rayon de courbure du fond */
     }
+.mauveBackground {
+    -fx-background-image: url('/images/mauve.jpg');
+    -fx-background-size: cover;
+}
   .text-field {
       -fx-background-color: #FFFFFF; /* Couleur de fond blanche */
       -fx-border-color:  #5d20d3; /* Couleur de la bordure */
