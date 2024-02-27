@@ -4,6 +4,7 @@ import edu.esprit.entities.Post;
 import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -67,22 +68,33 @@ public class PubController implements Initializable {
     }
 
 
+    private Post getPost() throws SQLException {
+
+        ServicePost sp=new ServicePost();
+
+        ServiceUtilisateur su=new ServiceUtilisateur();
+
+
+        Post post1 = sp.getOneByID(1);
+
+        Post post = new Post();
+        Utilisateur user = new Utilisateur();
+        user.setName(post1.getUtilisateur().getName());
+        user.setProfileImg(post1.getUtilisateur().getProfileImg());
+        user.setVerified(post1.getUtilisateur().getVerified());
+        post.setUtilisateur(user);
+        post.setDate(post1.getDate());
+        post.setAudience(post1.getAudience());
+        post.setCaption(post1.getCaption());
+        post.setImage(post1.getImage());
+        post.setTotalReactions(post1.getTotalReactions());
+        post.setNbComments(post1.getNbComments());
+        post.setNbShares(post1.getNbShares());
+        return post;
+    }
 
 
     private List<Post> getData() throws SQLException {
-        List<Post> postList = new ArrayList<>();
-        ServicePost servicePost = new ServicePost();
-
-        // Récupérer tous les posts
-        Set<Post> posts = servicePost.getAll();
-
-        // Ajouter tous les posts à la liste
-        postList.addAll(posts);
-
-        return postList;
-    }
-
-    /*private List<Post> getData() throws SQLException {
         ServicePost sp = new ServicePost();
 
 
@@ -109,16 +121,22 @@ public class PubController implements Initializable {
 
 
             // If setPrice method is available, you can uncomment the following line
-            modifiedEtablissement.setPrice(etablissement.getPrice());
+
             modifiedEtablissement.setImage(etablissement.getImage());
 
-            modifiedEtablissement.setUtilisateur(etablissement.getUtilisateur());
+
+            ServiceUtilisateur su = new ServiceUtilisateur();
+          Utilisateur  user=su.getOneByID(etablissement.getUtilisateur().getId_utilisateur())     ;
+
+
+
+            modifiedEtablissement.setUtilisateur(user);
 
             modifiedEtablissements.add(modifiedEtablissement);
         }
 
         return modifiedEtablissements;
-    }*/
+    }
 
 
 }
