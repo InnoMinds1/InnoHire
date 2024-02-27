@@ -1,17 +1,19 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.Post;
 import edu.esprit.entities.Publication;
+import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServicePublication;
 import javafx.scene.control.Alert;
 
 import java.sql.SQLException;
 
 public class SupprimerPublication {
-    private ServicePublication ServicePublication = new ServicePublication();
+    private ServicePost ServicePost = new ServicePost();
 
-    public void supprimerPublication(Publication publication) {
+    public void supprimerPublication(Post post) {
         try {
-            ServicePublication.supprimer(publication.getId_publication());
+            ServicePost.supprimer(post.getId_post());
             // Afficher une alerte de confirmation après la suppression
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Confirmation de suppression");

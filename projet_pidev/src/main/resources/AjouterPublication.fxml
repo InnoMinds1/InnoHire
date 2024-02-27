@@ -1,70 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import java.net.URL?>
+
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="504.0" prefWidth="816.0" styleClass="text-field" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterPublication">
+<AnchorPane prefHeight="608.0" prefWidth="821.0" styleClass="text-field" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterPublication">
    <children>
-      <Label layoutX="229.0" layoutY="52.0" text="Ajouter Etablissement" textFill="#000000a9">
+      <Label layoutX="229.0" layoutY="52.0" prefHeight="46.0" prefWidth="362.0" text="Ajouter Une Publication" textFill="#000000a9">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="TFcode_pub" layoutX="261.0" layoutY="104.0" prefHeight="46.0" prefWidth="250.0" promptText="Code pub" styleClass="text-field">
-         <stylesheets>
-            <URL value="@service2.css" />
-            <URL value="@service2.css" />
-         </stylesheets>
+      <TextField fx:id="TFcaption" alignment="TOP_LEFT" layoutX="82.0" layoutY="220.0" prefHeight="210.0" prefWidth="228.0" promptText="Caption" styleClass="text-field">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="TFcin_utilisateur" layoutX="261.0" layoutY="151.0" prefHeight="46.0" prefWidth="250.0" promptText="Cin utilisateur" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <DatePicker fx:id="TFdate" layoutX="261.0" layoutY="198.0" prefHeight="46.0" prefWidth="250.0" promptText="Date" styleClass="text-field">
-
-      </DatePicker>
-      <TextField fx:id="TFdescription" layoutX="261.0" layoutY="245.0" prefHeight="46.0" prefWidth="250.0" promptText="Description" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="TFhashtag" layoutX="261.0" layoutY="292.0" prefHeight="46.0" prefWidth="250.0" promptText="Hashtag" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="TFimage" layoutX="261.0" layoutY="339.0" prefHeight="46.0" prefWidth="250.0" promptText="Image" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="TFnb_report" layoutX="261.0" layoutY="386.0" prefHeight="46.0" prefWidth="250.0" promptText="Nombre de rapports" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="TFvisibilite" layoutX="261.0" layoutY="433.0" prefHeight="46.0" prefWidth="250.0" promptText="Visibilité" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-         <Button layoutX="342.0" layoutY="491.0" mnemonicParsing="false" onAction="#ajouterPublicationAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Ajouter" textFill="WHITE">
+         <Button layoutX="322.0" layoutY="547.0" mnemonicParsing="false" onAction="#ajouterPublicationAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Ajouter" textFill="#2e25d1">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="699.0" layoutY="537.0" mnemonicParsing="false" onAction="#navigatetoAfficherPublicationAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Afficher" textFill="WHITE">
+      <Button layoutX="691.0" layoutY="521.0" mnemonicParsing="false" onAction="#navigatetoAfficherPublicationAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Afficher" textFill="#1416b8">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="TFaudience" layoutX="82.0" layoutY="127.0" prefHeight="54.0" prefWidth="228.0" promptText="Audience" styleClass="text-field">
          <font>
             <Font size="16.0" />
          </font>
-      </Button>
+      </TextField>
+      <ImageView fx:id="imgPost" fitHeight="294.0" fitWidth="422.0" layoutX="380.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="button" layoutX="438.0" layoutY="129.0" mnemonicParsing="false" onAction="#importImage" text="image" />
+      <TextField fx:id="imageETF" layoutX="512.0" layoutY="123.0" prefHeight="33.0" prefWidth="206.0" promptText="image" styleClass="text-field">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

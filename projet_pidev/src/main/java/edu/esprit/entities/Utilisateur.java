@@ -6,10 +6,42 @@ public class Utilisateur {
 
     private int id_utilisateur ;
     private int cin;
-    private String nom;
+    private String name;
     private String prenom;
     private String adresse;
     private String mdp;
+    private int role;
+
+    private String profileImg;
+    private Boolean isVerified ;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
+    }
+
+    public Boolean getVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(Boolean verified) {
+        isVerified = verified;
+    }
+    public boolean isVerified() {
+        return isVerified;
+    }
+
 
     public int getId_utilisateur() {
         return id_utilisateur;
@@ -27,13 +59,7 @@ public class Utilisateur {
         this.cin = cin;
     }
 
-    public String getNom() {
-        return nom;
-    }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 
     public String getPrenom() {
         return prenom;
@@ -64,7 +90,7 @@ public class Utilisateur {
         return "Utilisateur{" +
                 "id_utilisateur=" + id_utilisateur +
                 ", cin=" + cin +
-                ", nom='" + nom + '\'' +
+                ", name='" + name + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", mdp='" + mdp + '\'' +
@@ -76,23 +102,30 @@ public class Utilisateur {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Utilisateur that = (Utilisateur) o;
-        return id_utilisateur == that.id_utilisateur && cin == that.cin && Objects.equals(nom, that.nom) && Objects.equals(prenom, that.prenom) && Objects.equals(adresse, that.adresse) && Objects.equals(mdp, that.mdp);
+        return id_utilisateur == that.id_utilisateur && cin == that.cin && Objects.equals(name, that.name) && Objects.equals(prenom, that.prenom) && Objects.equals(adresse, that.adresse) && Objects.equals(mdp, that.mdp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_utilisateur, cin, nom, prenom, adresse, mdp);
+        return Objects.hash(id_utilisateur, cin, name, prenom, adresse, mdp);
     }
     public Utilisateur(){};
-    public Utilisateur(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
+    public Utilisateur(int id_utilisateur,int cin,String name ,String prenom,String adresse, String mdp)
     {
         this.id_utilisateur=id_utilisateur;
         this.cin=cin;
-        this.nom=nom;
+        this.name=name;
         this.prenom=prenom;
         this.adresse=adresse;
         this.mdp=mdp;
 
     }
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
 }

@@ -1,10 +1,9 @@
 package edu.esprit.entities;
 
-/**
- * Created by Mahmoud Hamwi on 17-Feb-21.
- */
+
 public class Post {
-    private Account account;
+    private int id_post ;
+    private Utilisateur utilisateur;
     private PostAudience audience;
     private String date;
     private String caption;
@@ -13,12 +12,46 @@ public class Post {
     private int nbComments;
     private int nbShares;
 
-    public Account getAccount() {
-        return account;
+    public Post() {
+        this.totalReactions=0;
+         this.nbComments=0;
+         this.nbShares=0;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+
+    public Post(PostAudience audience, String caption,String image) {
+        this.audience = audience;
+        this.caption = caption;
+        this.image=image;
+
+    }
+
+    public Post(int id_post , Utilisateur utilisateur, PostAudience audience, String date, String caption, String image, int totalReactions, int nbComments, int nbShares) {
+        this.id_post=id_post;
+        this.utilisateur = utilisateur;
+        this.audience = audience;
+        this.date = date;
+        this.caption = caption;
+        this.image = image;
+        this.totalReactions = totalReactions;
+        this.nbComments = nbComments;
+        this.nbShares = nbShares;
+    }
+
+    public int getId_post() {
+        return id_post;
+    }
+
+    public void setId_post(int id_post) {
+        this.id_post = id_post;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public PostAudience getAudience() {
@@ -75,5 +108,20 @@ public class Post {
 
     public void setNbShares(int nbShares) {
         this.nbShares = nbShares;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id_post=" + id_post +
+                ", utilisateur=" + utilisateur +
+                ", audience=" + audience +
+                ", date='" + date + '\'' +
+                ", caption='" + caption + '\'' +
+                ", image='" + image + '\'' +
+                ", totalReactions=" + totalReactions +
+                ", nbComments=" + nbComments +
+                ", nbShares=" + nbShares +
+                '}';
     }
 }

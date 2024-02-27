@@ -24,7 +24,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setInt(1, a.getCin());
-                ps.setString(2, a.getNom());
+                ps.setString(2, a.getName());
                 ps.setString(3, a.getPrenom());
                 ps.setString(4, a.getAdresse());
                 String hashed =hashPassword(a.getMdp());
@@ -41,7 +41,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setInt(1, utilisateur.getCin());
-                ps.setString(2, utilisateur.getNom());
+                ps.setString(2, utilisateur.getName());
                 ps.setString(3, utilisateur.getPrenom());
                 ps.setString(4, utilisateur.getAdresse());
                 String hashed= hashPassword(utilisateur.getMdp());
@@ -71,7 +71,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, utilisateur.getCin());
-            ps.setString(2, utilisateur.getNom());
+            ps.setString(2, utilisateur.getName());
             ps.setString(3, utilisateur.getPrenom());
             ps.setString(4, utilisateur.getAdresse());
             ps.setString(5, utilisateur.getMdp());
@@ -91,7 +91,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, admin.getCin());
-            ps.setString(2, admin.getNom());
+            ps.setString(2, admin.getName());
             ps.setString(3, admin.getPrenom());
             ps.setString(4, admin.getAdresse());
             ps.setString(5, admin.getMdp());
@@ -209,11 +209,13 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             if (rs.next()) {
                 // Assuming Utilisateur has appropriate constructor
                 Utilisateur user = new Utilisateur();
+                user.setId_utilisateur(id);
                 user.setCin(rs.getInt("cin"));
-                user.setNom(rs.getString("nom"));
+                user.setName(rs.getString("name"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));
+                user.setRole(rs.getInt("role"));
                 // Set other properties as needed
                 return user;
             } else {
@@ -235,7 +237,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 // Assuming Utilisateur has appropriate constructor
                 Admin user = new Admin();
                 user.setCin(rs.getInt("cin"));
-                user.setNom(rs.getString("nom"));
+                user.setName(rs.getString("nom"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("email"));
                 user.setMdp(rs.getString("mdp"));
@@ -278,7 +280,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 Utilisateur user = new Utilisateur();
                 user.setId_utilisateur(rs.getInt("id_utilisateur"));
                 user.setCin(rs.getInt("cin"));
-                user.setNom(rs.getString("nom"));
+                user.setName(rs.getString("nom"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));

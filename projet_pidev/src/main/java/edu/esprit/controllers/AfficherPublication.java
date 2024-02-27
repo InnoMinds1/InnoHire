@@ -73,7 +73,7 @@ public class AfficherPublication implements Initializable {
     @FXML
     public void modifierPublication(ActionEvent actionEvent) {
 
-        Publication selectedPublication = listView.getSelectionModel().getSelectedItem();
+        /*Publication selectedPublication = listView.getSelectionModel().getSelectedItem();
         if (selectedPublication != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierPublication.fxml"));
@@ -101,7 +101,7 @@ public class AfficherPublication implements Initializable {
             alert.setContentText("Sorry");
             alert.setTitle("Error");
             alert.show();
-        }
+        }*/
 
     }
 

@@ -2,6 +2,7 @@ package edu.esprit.tests;
 
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceCommentaire;
+import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServicePublication;
 import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
@@ -23,17 +24,22 @@ public class Main {
 
 
         ServicePublication sb = new ServicePublication();
+        ServicePost so = new ServicePost();
         ServiceUtilisateur sr= new ServiceUtilisateur();
         ServiceCommentaire sc=new ServiceCommentaire();
 
         //---------------------Publication---------------------------------------//
 
         Publication p = new Publication(3,"22",u,"888888","111111","4qv","111",LocalDate.of(2021,02,4),125);
-       //sb.ajouter(pc);
+        Post po = new Post(1,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
+        //sb.ajouter(pc);
         //sb.modifier(p);
         //sb.supprimer(2);
         //System.out.println(sb.getOneByID(11));
-        //System.out.println(sb.getAll());
+        System.out.println(so.getAll());
+      //  System.out.println(so.getOneByID(1));
+        LocalDate dateActuelle = LocalDate.now();
+     //   System.out.println(dateActuelle);
 
         //----------------------Commentaire--------------------------------------//
         Publication pc = new Publication(3,"22",u,"22","11","444","111",LocalDate.of(2021,02,4),125);
@@ -44,7 +50,7 @@ public class Main {
         //sc.modifier(c);
         //sc.supprimer(10);
         //System.out.println(sc.getOneByID(10));
-       System.out.println(sc.getAll());
+     //  System.out.println(sc.getAll());
 
 
 
