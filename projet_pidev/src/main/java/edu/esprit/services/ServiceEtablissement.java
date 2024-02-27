@@ -125,6 +125,36 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
 
         return etablissements;
     }
+    public Set<Etablissement> getByUserId(int idUtilisateur) throws SQLException {
+        Set<Etablissement> etablissements = new HashSet<>();
+
+        String req = "SELECT * FROM etablissement WHERE id_utilisateur = ?";
+        try (PreparedStatement pst = cnx.prepareStatement(req)) {
+            pst.setInt(1, idUtilisateur);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                int idEtablissement = rs.getInt("id_etablissement");
+                String nom = rs.getString("nom");
+                String lieu = rs.getString("lieu");
+                int codeEtablissement = rs.getInt("code_etablissement");
+                String typeEtablissement = rs.getString("type_etablissement");
+                String image = rs.getString("image");
+
+                ServiceUtilisateur su = new ServiceUtilisateur();
+                 Utilisateur user = su.getOneByID(idUtilisateur);
+
+                // Vous pouvez créer l'objet Etablissement sans l'utilisateur
+                Etablissement e = new Etablissement(idEtablissement, nom, lieu, codeEtablissement, typeEtablissement, image, null, user);
+                etablissements.add(e);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return etablissements;
+    }
+
 
 
     @Override

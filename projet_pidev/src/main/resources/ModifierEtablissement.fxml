@@ -55,5 +55,11 @@
          </font>
       </Button>
       <ListView fx:id="ListViewUser" layoutX="394.0" layoutY="132.0" prefHeight="360.0" prefWidth="557.0" />
+      <TextField fx:id="imageETF" layoutX="118.0" layoutY="452.0" prefHeight="46.0" prefWidth="250.0" promptText="image" styleClass="text-field" stylesheets="@service2.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button layoutX="132.0" layoutY="498.0" mnemonicParsing="false" onAction="#importImage" text="Button" />
    </children>
 </AnchorPane>

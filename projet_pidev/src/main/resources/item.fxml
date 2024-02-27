@@ -22,7 +22,7 @@
                         <Font name="Cambria" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceLable" prefHeight="49.0" prefWidth="101.0" text="\$0.99">
+                  <Label fx:id="codeLable" prefHeight="49.0" prefWidth="101.0" text="\$0.99">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
@@ -47,7 +47,7 @@
       </VBox>
    </children>
    <styleClass>
-      <String fx:value="fruit-item" />
+      <String fx:value="etablissement-item" />
       <String fx:value="shadow" />
    </styleClass>
 </AnchorPane>

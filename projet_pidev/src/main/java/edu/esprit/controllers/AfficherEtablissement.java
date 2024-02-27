@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
@@ -16,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +31,13 @@ public class AfficherEtablissement implements Initializable {
 
     @FXML
     private ListView<Wallet> listView1;
+
+    @FXML
+    private AnchorPane NavBar;
+    @FXML
+    private AnchorPane grandAnchor;
+    @FXML
+    private AnchorPane anchorContenu;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ServiceEtablissement serviceService = new ServiceEtablissement();
@@ -45,6 +54,13 @@ public class AfficherEtablissement implements Initializable {
 
         listView.setItems(FXCollections.observableArrayList(etablissements));
         listView1.setItems(FXCollections.observableArrayList(wallets));
+        if (CurrentUser.getRole() != 0) {
+            NavBar.setVisible(false);
+            NavBar.setManaged(false);
+
+            anchorContenu.setLayoutX(0);
+            grandAnchor.setPrefWidth(anchorContenu.getPrefWidth());
+        }
     }
 
 

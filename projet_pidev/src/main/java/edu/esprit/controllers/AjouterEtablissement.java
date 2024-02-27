@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -28,6 +29,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ResourceBundle;
 import java.util.Set;
+import javafx.scene.image.Image;
+
 
 public class AjouterEtablissement implements Initializable {
     @FXML
@@ -46,9 +49,12 @@ public class AjouterEtablissement implements Initializable {
     private TextField TypeETF;
     @FXML
     private TextField imageETF;
+    @FXML
+    private ImageView imageViewETF;
 
     @FXML
     private ListView<Utilisateur> ListViewUser;
+
 
 
     private final ServiceEtablissement se = new ServiceEtablissement();
@@ -252,6 +258,11 @@ public class AjouterEtablissement implements Initializable {
 
             // Set the image file name to the TextField
             imageETF.setText(selectedFile.getName());
+
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
+            imageViewETF.setImage(image);
+
 
             // Do something with the imagePath, for example, display the image
             // imageView.setImage(new Image(imagePath));

@@ -5,42 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a6f953e-625e-49ba-b711-99a3c03dcba0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/MarketController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Fruit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Quiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/MyListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/banana.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/cherry.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/coconut.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/grapes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/ic_cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/ic_delivery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/ic_stopwatch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/kiwi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/mango.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/orange.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/peach.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/strawberry.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/watermelon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/item.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/market.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherEtablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterWallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterWallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/MarketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/MarketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Etablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Etablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Wallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceEtablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceWallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceWallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEtablissement.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/item.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/market.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/market.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,32 +46,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainFX.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;gestion-etablissement&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.MainFX.executor": "Run",
+    "Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor": "Run",
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "gestion-etablissement",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/resources/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\images" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\entities" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\services" />
-      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\images" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\.idea" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -136,7 +114,8 @@
       <workItem from="1708895167416" duration="19124000" />
       <workItem from="1708916528908" duration="2518000" />
       <workItem from="1708960399559" duration="6427000" />
-      <workItem from="1708974859994" duration="5906000" />
+      <workItem from="1708974859994" duration="12978000" />
+      <workItem from="1708992079700" duration="6760000" />
     </task>
     <servers />
   </component>

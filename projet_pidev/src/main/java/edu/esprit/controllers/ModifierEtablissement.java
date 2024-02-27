@@ -13,8 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -48,6 +50,8 @@ public class ModifierEtablissement implements Initializable {
 
     @FXML
     private TextField TypeETF;
+    @FXML
+    private TextField  imageETF;
     @FXML
     private ListView<Utilisateur> ListViewUser;
 
@@ -97,6 +101,12 @@ public class ModifierEtablissement implements Initializable {
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
             TypeETF.setText(etablissement.getTypeEtablissement());
+
+            String cheminImage = etablissement.getImage();
+            int indexDernierSlash = cheminImage.lastIndexOf('/');
+            String nomPhoto = cheminImage.substring(indexDernierSlash + 1);
+            imageETF.setText(nomPhoto);
+
            cin_utilisateurETF.setText(String.valueOf(etablissement.getUser().getCin()));
 
         }
@@ -108,7 +118,7 @@ public class ModifierEtablissement implements Initializable {
     void ok(ActionEvent event) throws SQLException {
 
 
-        if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF))
+        if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF)&& controlSaisie(imageETF))
         {
             int Code = Integer.parseInt(CodeETF.getText());
             if(Code != getCodeInit() ) {
@@ -150,6 +160,7 @@ public class ModifierEtablissement implements Initializable {
             newEtablissement.setLieu(LieuETF.getText());
             newEtablissement.setCodeEtablissement(Code);
             newEtablissement.setTypeEtablissement(TypeETF.getText());
+            newEtablissement.setImage(imageETF.getText());
 
 
             ServiceUtilisateur se=new ServiceUtilisateur();
@@ -187,7 +198,7 @@ public class ModifierEtablissement implements Initializable {
 
       public void AfficherEtablissement(ActionEvent actionEvent) {
           try {
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
               Parent root = loader.load();
 
               Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
@@ -224,5 +235,36 @@ public class ModifierEtablissement implements Initializable {
     }
 
 
+    public void importImage(ActionEvent actionEvent) {
 
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/img"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        if (selectedFile != null) {
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
+
+            // Set the image file name to the TextField
+            imageETF.setText(selectedFile.getName());
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+            System.out.println("Selected Image: " + imagePath);
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
+        }
+    }
 }

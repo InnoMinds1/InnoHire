@@ -10,44 +10,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="668.0" prefWidth="982.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherEtablissement">
+<AnchorPane fx:id="grandAnchor" prefHeight="694.0" prefWidth="993.0" styleClass="text-field" stylesheets="@service.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherEtablissement">
 
    <children>
-      <Label layoutX="399.0" layoutY="5.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Etablissements">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </Label>
-      <ListView fx:id="listView" layoutX="229.0" layoutY="57.0" prefHeight="256.0" prefWidth="634.0" styleClass="text-field" />
-      <Button layoutX="876.0" layoutY="111.0" mnemonicParsing="false" onAction="#modifierEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="876.0" layoutY="166.0" mnemonicParsing="false" onAction="#supprimerEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="885.0" layoutY="275.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <TextField fx:id="RechercheETF" layoutX="866.0" layoutY="237.0" prefHeight="38.0" prefWidth="110.0" promptText="Recherche..." styleClass="text-field">
-         <stylesheets>
-            <URL value="@service2.css" />
-         </stylesheets>
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Button layoutX="876.0" layoutY="57.0" mnemonicParsing="false" onAction="#ajouterEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <AnchorPane layoutX="-17.0" layoutY="-2.0" prefHeight="691.0" prefWidth="238.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
+      <AnchorPane fx:id="NavBar" layoutX="-17.0" layoutY="-2.0" prefHeight="705.0" prefWidth="238.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
          <children>
             <Button layoutX="18.0" layoutY="160.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Formation" />
             <Button layoutX="16.0" layoutY="210.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Société" />
@@ -75,40 +41,78 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ListView fx:id="listView1" layoutX="241.0" layoutY="385.0" prefHeight="290.0" prefWidth="634.0" styleClass="text-field" />
-      <Label layoutX="408.0" layoutY="331.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Wallets">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </Label>
-      <Button layoutX="886.0" layoutY="390.0" mnemonicParsing="false" onAction="#ajouterWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="883.0" layoutY="449.0" mnemonicParsing="false" onAction="#modifierWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="882.0" layoutY="507.0" mnemonicParsing="false" onAction="#supprimerWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <TextField fx:id="RechercheETF2" layoutX="876.0" layoutY="584.0" prefHeight="38.0" prefWidth="110.0" promptText="Recherche..." styleClass="text-field">
-         <stylesheets>
-            <URL value="@service2.css" />
-         </stylesheets>
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Button layoutX="886.0" layoutY="623.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
+      <AnchorPane fx:id="anchorContenu" layoutX="222.0" layoutY="5.0" prefHeight="698.0" prefWidth="761.0">
+         <children>
+            <Label layoutX="197.0" layoutY="8.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Etablissements">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <ListView fx:id="listView" layoutX="28.0" layoutY="67.0" prefHeight="256.0" prefWidth="602.0" styleClass="text-field" />
+            <Button layoutX="652.0" layoutY="113.0" mnemonicParsing="false" onAction="#modifierEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="652.0" layoutY="159.0" mnemonicParsing="false" onAction="#supprimerEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="662.0" layoutY="292.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="RechercheETF" layoutX="633.0" layoutY="253.0" prefHeight="38.0" prefWidth="110.0" promptText="Recherche..." styleClass="text-field">
+               <stylesheets>
+                  <URL value="@service2.css" />
+               </stylesheets>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button layoutX="662.0" layoutY="67.0" mnemonicParsing="false" onAction="#ajouterEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <ListView fx:id="listView1" layoutX="14.0" layoutY="386.0" prefHeight="290.0" prefWidth="534.0" styleClass="text-field" />
+            <Label layoutX="214.0" layoutY="331.0" prefHeight="59.0" prefWidth="363.0" text="Liste des Wallets">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Button layoutX="624.0" layoutY="425.0" mnemonicParsing="false" onAction="#ajouterWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="624.0" layoutY="484.0" mnemonicParsing="false" onAction="#modifierWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="624.0" layoutY="542.0" mnemonicParsing="false" onAction="#supprimerWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="RechercheETF2" layoutX="562.0" layoutY="599.0" prefHeight="38.0" prefWidth="110.0" promptText="Recherche..." styleClass="text-field">
+               <stylesheets>
+                  <URL value="@service2.css" />
+               </stylesheets>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button layoutX="647.0" layoutY="599.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
 
    </children>
 
