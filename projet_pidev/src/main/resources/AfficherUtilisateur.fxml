@@ -75,6 +75,7 @@
                         <Image url="@images/aa.jpg" />
                     </image>
                 </ImageView>
+            <Button layoutX="27.0" layoutY="448.0" mnemonicParsing="false" onAction="#NavigateToAcc" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="ACCUEIL" />
             </children>
         </AnchorPane>
       <Label layoutX="257.0" layoutY="103.0" prefHeight="32.0" prefWidth="634.0" text="CIN           Nom                 Prenom                           Email                       Role          " />

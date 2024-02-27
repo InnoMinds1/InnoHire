@@ -51,4 +51,18 @@ public class AccueilController implements Initializable {
 
 
     }
+    @FXML
+    void profilAction(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/Profil.fxml"));
+            TFcurrentusercin.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
 }

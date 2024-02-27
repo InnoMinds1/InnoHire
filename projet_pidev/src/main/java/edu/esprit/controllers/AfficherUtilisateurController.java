@@ -219,6 +219,19 @@ public class AfficherUtilisateurController implements Initializable {
         }
 
     }
+    @FXML
+    void NavigateToAcc(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
+            listView.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
 
    /* @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

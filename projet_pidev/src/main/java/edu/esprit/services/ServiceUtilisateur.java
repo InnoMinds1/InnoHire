@@ -93,7 +93,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     }
     public void modifier_par_cin(Utilisateur utilisateur) throws SQLException {
-        String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE cin = ?";
+        String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ?  WHERE cin = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, utilisateur.getNom());
@@ -102,6 +102,42 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             String mdp = hashPassword(utilisateur.getMdp());
             ps.setString(4, mdp);
             ps.setInt(5, utilisateur.getCin());
+
+
+            ps.executeUpdate();
+            System.out.println("utilisateur modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+    }
+    public void modifier_Image(Utilisateur u,String image )
+    {        String req = "UPDATE utilisateur SET   image = ?  WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, image);
+            ps.setInt(2, u.getCin());
+
+
+
+            ps.executeUpdate();
+            System.out.println("Image modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+    public void modifier_par_cin_sansmdp(Utilisateur utilisateur) throws SQLException {
+        ServiceUtilisateur su = new ServiceUtilisateur();
+        String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, utilisateur.getNom());
+            ps.setString(2, utilisateur.getPrenom());
+            ps.setString(3, utilisateur.getAdresse());
+            ps.setInt(4, utilisateur.getCin());
 
 
             ps.executeUpdate();
@@ -491,6 +527,44 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             System.out.println("SQLException: " + e.getMessage());
             e.printStackTrace();
             return -1;
+        }
+    }
+    public String getMDPfromCIN(int cin)
+    {
+        String req = "SELECT mdp FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString(1);
+            } else {
+                System.out.println("No user found with cin " + cin);
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getImagefromCin(int cin)
+    {
+        String req = "SELECT image FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString(1);
+            } else {
+                System.out.println("No user found with cin " + cin);
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 

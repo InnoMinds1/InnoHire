@@ -156,8 +156,16 @@ public class ModifierUtilisateurController {
                 alert.showAndWait();
                 return;
             }
-
-            serviceUtilisateur.modifier_par_cin(u);
+                Utilisateur utilisateur = serviceUtilisateur.getOneByCin(u.getCin());
+                if(!mdp.equals(utilisateur.getMdp()))
+                {serviceUtilisateur.modifier_par_cin(u);
+                    serviceUtilisateur.modifier_Image(u,photoUrl);
+                }
+                else
+                {
+                    serviceUtilisateur.modifier_par_cin_sansmdp(u);
+                    serviceUtilisateur.modifier_Image(u,photoUrl);
+                }
 
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Utilisateur modifié avec succès");  // Corrected line
             AfficherUtilisateur(event);

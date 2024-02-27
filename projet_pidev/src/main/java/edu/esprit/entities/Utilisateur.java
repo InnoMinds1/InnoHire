@@ -1,5 +1,7 @@
 package edu.esprit.entities;
 
+import edu.esprit.services.ServiceUtilisateur;
+
 import java.util.Objects;
 
 public class Utilisateur {
@@ -11,6 +13,13 @@ public class Utilisateur {
     private String adresse;
     private String mdp;
     private String image;
+   //this is for modifier usage
+    private  String ProfileImagePath;
+    static ServiceUtilisateur su = new ServiceUtilisateur();
+    public  String getProfileImagePath() {
+        return su.getImagefromCin(this.getCin());
+    }
+
 
     public String getImage() {
         return image;
