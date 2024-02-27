@@ -20,15 +20,18 @@ import java.util.Set;
 public class PubController implements Initializable {
     @FXML
     private VBox postsContainer;
-    List<Post>  posts;
+    private List<Post>  posts = new ArrayList<>() ;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
         try {
-            posts = new ArrayList<>(getData());
+            posts.addAll(getData());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
 
         try {  for (Post post : posts)
               {
@@ -62,14 +65,29 @@ public class PubController implements Initializable {
         }
         return ls;
     }
+
+
+
+
     private List<Post> getData() throws SQLException {
+        List<Post> postList = new ArrayList<>();
+        ServicePost servicePost = new ServicePost();
+
+        // Récupérer tous les posts
+        Set<Post> posts = servicePost.getAll();
+
+        // Ajouter tous les posts à la liste
+        postList.addAll(posts);
+
+        return postList;
+    }
+
+    /*private List<Post> getData() throws SQLException {
         ServicePost sp = new ServicePost();
 
 
         Set<Post> etablissements = sp.getAll();//admin
-       /* if (CurrentUser.getRole() != 0) {
-            etablissements = se.getByUserId(CurrentUser.getId_utilisateur());//front
-        }*/
+
 
 
 
@@ -87,14 +105,12 @@ public class PubController implements Initializable {
             modifiedEtablissement.setTotalReactions(etablissement.getTotalReactions());
 
 
-            /*modifiedEtablissement.setLieu(etablissement.getLieu());
-            modifiedEtablissement.setCodeEtablissement(etablissement.getCodeEtablissement());
-            modifiedEtablissement.setTypeEtablissement(etablissement.getTypeEtablissement());
-*/
+
+
 
             // If setPrice method is available, you can uncomment the following line
-            // modifiedEtablissement.setPrice(etablissement.getPrice());
-            modifiedEtablissement.setImage("/img/" + etablissement.getImage());
+            modifiedEtablissement.setPrice(etablissement.getPrice());
+            modifiedEtablissement.setImage(etablissement.getImage());
 
             modifiedEtablissement.setUtilisateur(etablissement.getUtilisateur());
 
@@ -102,7 +118,7 @@ public class PubController implements Initializable {
         }
 
         return modifiedEtablissements;
-    }
+    }*/
 
 
 }

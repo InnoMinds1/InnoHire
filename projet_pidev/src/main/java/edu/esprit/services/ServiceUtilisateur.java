@@ -216,6 +216,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));
                 user.setRole(rs.getInt("role"));
+                user.setProfileImg(rs.getString("image"));
+                user.setVerified(rs.getInt("verified"));
                 // Set other properties as needed
                 return user;
             } else {

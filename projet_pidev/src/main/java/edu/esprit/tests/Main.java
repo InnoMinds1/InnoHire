@@ -36,7 +36,7 @@ public class Main {
         //sb.modifier(p);
         //sb.supprimer(2);
         //System.out.println(sb.getOneByID(11));
-        System.out.println(so.getAll());
+        System.out.println(sr.getOneByID(17));
       //  System.out.println(so.getOneByID(1));
         LocalDate dateActuelle = LocalDate.now();
      //   System.out.println(dateActuelle);

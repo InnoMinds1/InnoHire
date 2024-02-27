@@ -140,7 +140,8 @@ public class ServicePost implements IService<Post> {
 
                 PostAudience audience = PostAudience.valueOf(audienceStr); // Assuming PostAudience is an enum
 
-                return new Post(id_post, user, audience, dateStr, caption, image, totalReactions, nbComments, nbShares);
+                Post post1 = new Post(id_post,user,audience,dateStr,caption,image,totalReactions,nbComments,nbShares);
+                return post1 ;
             } else {
                 System.out.println("Post with ID " + id_post + " not found");
                 return null;

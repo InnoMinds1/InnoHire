@@ -125,7 +125,7 @@ public class ServicePublication implements IService<Publication> {
                  Utilisateur utilisateur;
                 ServiceUtilisateur sc= new ServiceUtilisateur();
                 utilisateur = sc.getOneByID(id_utilisateur);
-                return new Publication(code_pub,utilisateur,description,hashtag,visibilite,image,date,nb_report);
+                return new Publication(id_publication,code_pub,utilisateur,description,hashtag,visibilite,image,date,nb_report);
             } else {
                 System.out.print("Echec! Etablissement with ID " + id_publication + " est" + " " );
                 return null;

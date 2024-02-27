@@ -16,7 +16,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class PostController implements Initializable{
+public class PostController{
     @FXML
     private ImageView imgProfile;
 
@@ -151,14 +151,72 @@ public class PostController implements Initializable{
 
         nbReactions.setText(String.valueOf(post.getTotalReactions()));
     }
+    public void setData(Post post) {
+        this.post = post;
 
+        // Set profile image
+        if (post.getUtilisateur() != null && post.getUtilisateur().getProfileImg() != null) {
+            Image img = new Image(this.getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
+            this.imgProfile.setImage(img);
+        }
+
+        // Set username and verified status
+        if (post.getUtilisateur() != null) {
+            username.setText(post.getUtilisateur().getName());
+            imgVerified.setVisible(post.getUtilisateur().getVerified() == 1);
+        }
+
+        // Set date
+        date.setText(post.getDate());
+
+        // Set audience image
+        Image img;
+        if (post.getAudience() == PostAudience.PUBLIC) {
+            img = new Image(getClass().getResourceAsStream(PostAudience.PUBLIC.getImgSrc()));
+        } else {
+            img = new Image(getClass().getResourceAsStream(PostAudience.FRIENDS.getImgSrc()));
+        }
+        audience.setImage(img);
+
+        // Set caption
+        if (post.getCaption() != null && !post.getCaption().isEmpty()) {
+            caption.setText(post.getCaption());
+        } else {
+            caption.setManaged(false);
+        }
+
+        // Set post image
+        if (post.getImage() != null && !post.getImage().isEmpty()) {
+            Image img2 = new Image(this.getClass().getResourceAsStream(post.getImage()));
+            this.imgPost.setImage(img2);
+        } else {
+            imgPost.setVisible(false);
+            imgPost.setManaged(false);
+        }
+
+        // Set reactions count
+        nbReactions.setText(String.valueOf(post.getTotalReactions()));
+
+        // Set comments count
+        nbComments.setText(post.getNbComments() + " comments");
+
+        // Set shares count
+        nbShares.setText(post.getNbShares() + " shares");
+
+        // Reset current reaction
+        currentReaction = Reactions.NON;
+    }
+
+/*
     public void setData(Post post){
         this.post = post;
-        Image img;
-        img = new Image(getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
-        imgProfile.setImage(img);
+        Image img = new Image(this.getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
+        this.imgProfile.setImage(img);
+
+
+
         username.setText(post.getUtilisateur().getName());
-        if(post.getUtilisateur().isVerified()){
+        if(post.getUtilisateur().getVerified()==1){
             imgVerified.setVisible(true);
         }else{
             imgVerified.setVisible(false);
@@ -179,8 +237,11 @@ public class PostController implements Initializable{
         }
 
         if(post.getImage() != null && !post.getImage().isEmpty()){
-            img = new Image(getClass().getResourceAsStream(post.getImage()));
-            imgPost.setImage(img);
+           Image img2 ;
+                   img2 = new Image(this.getClass().getResourceAsStream(post.getImage()));
+            //Image img = new Image(this.getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
+
+            this.imgPost.setImage(img2);
         }else{
             imgPost.setVisible(false);
             imgPost.setManaged(false);
@@ -191,67 +252,9 @@ public class PostController implements Initializable{
         nbShares.setText(post.getNbShares()+" shares");
 
         currentReaction = Reactions.NON;
-    }
-    public void initData(Post post) {
-        this.post = post;
-        Image img;
-        img = new Image(getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
-        imgProfile.setImage(img);
-        username.setText(post.getUtilisateur().getName());
-        if(post.getUtilisateur().isVerified()){
-            imgVerified.setVisible(true);
-        }else{
-            imgVerified.setVisible(false);
-        }
-
-        date.setText(post.getDate());
-        if(post.getAudience() == PostAudience.PUBLIC){
-            img = new Image(getClass().getResourceAsStream(PostAudience.PUBLIC.getImgSrc()));
-        }else{
-            img = new Image(getClass().getResourceAsStream(PostAudience.FRIENDS.getImgSrc()));
-        }
-        audience.setImage(img);
-
-        if(post.getCaption() != null && !post.getCaption().isEmpty()){
-            caption.setText(post.getCaption());
-        }else{
-            caption.setManaged(false);
-        }
-
-        if(post.getImage() != null && !post.getImage().isEmpty()){
-            img = new Image(getClass().getResourceAsStream(post.getImage()));
-            imgPost.setImage(img);
-        }else{
-            imgPost.setVisible(false);
-            imgPost.setManaged(false);
-        }
-        if (post != null) {
-            //setId(post.getIdPost());
-            //TFcode_pub.setText(post.getCode_pub());
-
-            date.setText(post.getDate()); // Assuming publication.getDate() returns LocalDate
-            caption.setText(post.getCaption());
-            //v imgPost.set(post.getImage());
-            nbReactions.setText(String.valueOf(post.getTotalReactions()));
-            nbComments.setText(String.valueOf(post.getNbComments()));
-            nbShares.setText(String.valueOf(post.getNbShares()));
-        }
-    }
+    }*/
 
     private Post getPost() throws SQLException {
-        /*Post post = new Post();
-        ServicePost sp=new ServicePost();
-        Post post1 = sp.getOneByID(1);
-        post.setUtilisateur(post1.getUtilisateur());
-        post.setDate(post1.getDate());
-        post.setAudience(post1.getAudience());
-        post.setCaption(post1.getCaption());
-        post.setImage("/img/img2.jpg");
-        post.setTotalReactions(post1.getTotalReactions());
-        post.setNbComments(post1.getNbComments());
-        post.setNbShares(post1.getNbShares());
-
-        return post;*/
 
         ServicePost sp=new ServicePost();
 
@@ -263,26 +266,26 @@ public class PostController implements Initializable{
         Post post = new Post();
         Utilisateur user = new Utilisateur();
         user.setName(post1.getUtilisateur().getName());
-        user.setProfileImg("/img/user.png");
-        user.setVerified(true);
+        user.setProfileImg(post1.getUtilisateur().getProfileImg());
+        user.setVerified(post1.getUtilisateur().getVerified());
         post.setUtilisateur(user);
         post.setDate(post1.getDate());
-        post.setAudience(PostAudience.PUBLIC);
+        post.setAudience(post1.getAudience());
         post.setCaption(post1.getCaption());
-        post.setImage("/img/img2.jpg");
+        post.setImage(post1.getImage());
         post.setTotalReactions(post1.getTotalReactions());
         post.setNbComments(post1.getNbComments());
         post.setNbShares(post1.getNbShares());
         return post;
     }
-    @Override
+   /* @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             setData(getPost());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
 
 

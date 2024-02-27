@@ -13,7 +13,7 @@ public class Utilisateur {
     private int role;
 
     private String profileImg;
-    private Boolean isVerified ;
+    private int verified ;
 
     public String getName() {
         return name;
@@ -31,16 +31,14 @@ public class Utilisateur {
         this.profileImg = profileImg;
     }
 
-    public Boolean getVerified() {
-        return isVerified;
+    public int getVerified() {
+        return verified;
     }
 
-    public void setVerified(Boolean verified) {
-        isVerified = verified;
+    public void setVerified(int verified) {
+        verified = verified;
     }
-    public boolean isVerified() {
-        return isVerified;
-    }
+
 
 
     public int getId_utilisateur() {
