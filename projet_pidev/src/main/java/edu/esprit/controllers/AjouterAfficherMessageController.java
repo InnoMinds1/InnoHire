@@ -12,10 +12,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +37,8 @@ public class AjouterAfficherMessageController implements Initializable{
     private ImageView receiverProfileImage;
     @FXML
     private TextField TFmessage;
+    @FXML
+    private Label messageError;
 
     private final ServiceMessagerie serviceMessagerie = new ServiceMessagerie();
 
@@ -92,7 +97,7 @@ public class AjouterAfficherMessageController implements Initializable{
         AnchorPane messagePane = new AnchorPane();
         messagePane.setStyle("-fx-background-color: #f2f5ec; -fx-background-radius: 0 30 30 30;");
 
-        Label contentLabel = new Label(message.getContenu());
+        Label   contentLabel = new Label(message.getContenu());
         contentLabel.setLayoutX(17.0);
         contentLabel.setLayoutY(10.0);
         //5955b3
@@ -111,18 +116,29 @@ public class AjouterAfficherMessageController implements Initializable{
 
         // Create a static button with an image
         // Create a static button with an image
-        Button staticButton = new Button("", new ImageView(new Image("/images/de.png")));
-        staticButton.setLayoutX(370);
-        staticButton.setLayoutY(-40);
+        Button DeleteButton = new Button("", new ImageView(new Image("/images/de.png")));
+        DeleteButton.setLayoutX(370);
+        DeleteButton.setLayoutY(-40);
+
+        Button EditButton = new Button("", new ImageView(new Image("/images/message.png")));
+        EditButton.setLayoutX(380);
+        EditButton.setLayoutY(-40);
 
 // Set the fit width and fit height for the image
-        ((ImageView) staticButton.getGraphic()).setFitWidth(15);
-        ((ImageView) staticButton.getGraphic()).setFitHeight(15);
+        ((ImageView) DeleteButton.getGraphic()).setFitWidth(15);
+        ((ImageView) DeleteButton.getGraphic()).setFitHeight(15);
+        ((ImageView) EditButton.getGraphic()).setFitWidth(17);
+        ((ImageView) EditButton.getGraphic()).setFitHeight(17);
 
-        staticButton.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13; -fx-cursor: hand;");
+        DeleteButton.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13; -fx-cursor: hand;");
+        EditButton.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13; -fx-cursor: hand;");
 
+        EditButton.setOnAction(event -> {
+            // Open a pop-up window to edit the message
+            openEditMessagePopup(message);
+        });
 // Attach an event handler to the button
-        staticButton.setOnAction(event -> {
+        DeleteButton.setOnAction(event -> {
             // Show a confirmation dialog
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setTitle("Confirmation Dialog");
@@ -146,9 +162,10 @@ public class AjouterAfficherMessageController implements Initializable{
                 }
             });
         });
-        
+
         // <Button layoutX="519.0" layoutY="636.0" mnemonicParsing="false"prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
-        if (message.getSender_id().getId_utilisateur() == 1) {
+        if (message.getSender_id().getId_utilisateur()!=amen.getId_utilisateur()) {
+            //  if (message.getSender_id().getId_utilisateur() == 1) {
             profileImage = new ImageView(new Image("/images/manh.png"));
             profileImage.setFitWidth(40.0);
             profileImage.setFitHeight(40.0);
@@ -156,16 +173,19 @@ public class AjouterAfficherMessageController implements Initializable{
             messagePane.getChildren().addAll(contentLabel);
             messageHbox.getChildren().addAll(profileImage, messagePane);
             messageHbox.getChildren().add(dateLabel);
-            //messageHbox.getChildren().add(staticButton);
+            //messageHbox.getChildren().add(DeleteButton);
         } else {
              profileImage = new ImageView(new Image("/images/profile.png"));
             profileImage.setFitWidth(40.0);
             profileImage.setFitHeight(40.0);
+            //DeleteButton.setLayoutX(370);
+            //DeleteButton.setLayoutY(-40);
             //messageHbox.getChildren().addAll(profileImage, messagePane, dateLabel);
             messagePane.getChildren().addAll(contentLabel);
             messageHbox.getChildren().addAll(profileImage, messagePane);
             messageHbox.getChildren().add(dateLabel);
-            messageHbox.getChildren().add(staticButton);
+            messageHbox.getChildren().add(DeleteButton);
+            messageHbox.getChildren().add(EditButton);
         }
 
         /*messagePane.getChildren().addAll(contentLabel);
@@ -194,15 +214,14 @@ public class AjouterAfficherMessageController implements Initializable{
 
         // Check if TFmessage is empty
         if (messageContent.trim().isEmpty()) {
-            // Show an alert indicating that the message is empty
-            Alert emptyMessageAlert = new Alert(Alert.AlertType.WARNING);
-            emptyMessageAlert.setTitle("Empty Message");
-            emptyMessageAlert.setContentText("Please enter a non-empty message before sending.");
-            emptyMessageAlert.showAndWait();
+            // Set the messageError label to red
+            messageError.setTextFill(Color.RED);
+            //messageError.setText("Please enter a non-empty message before sending.");
+            TFmessage.setStyle("-fx-border-color:  #FF0000;");
         } else {
             try {
                 // Proceed to send the message if it's not empty
-                serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), hachem, amen));
+                serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), amen, hachem));
                 TFmessage.setText("");
                 navigateToAfficherReclamationAction(event);
             } catch (SQLException e) {
@@ -213,6 +232,48 @@ public class AjouterAfficherMessageController implements Initializable{
                 alert.showAndWait();
             }
         }
+    }
+
+    private void openEditMessagePopup(Messagerie message) {
+        // Create a new stage for the pop-up window
+        Stage editStage = new Stage();
+        editStage.setTitle("Edit Message");
+
+        // Create a TextArea to allow the user to edit the message content
+        TextArea editTextArea = new TextArea(message.getContenu());
+        editTextArea.setWrapText(true); // Enable text wrapping
+        editTextArea.setMaxWidth(300); // Set a max width to trigger wrapping
+        editTextArea.setPrefRowCount(5);
+        editTextArea.setPrefColumnCount(20);
+
+        // Create a button to save the edited message
+        Button saveButton = new Button("Update", new ImageView(new Image("/images/edit.png")));
+        ((ImageView) saveButton.getGraphic()).setFitWidth(15);
+        ((ImageView) saveButton.getGraphic()).setFitHeight(15);
+
+        saveButton.setStyle("-fx-background-color:  #008000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;");
+        saveButton.setOnAction(saveEvent -> {
+            // Update the message content in the database
+            message.setContenu(editTextArea.getText());
+            //message.setDate(new Date());
+            serviceMessagerie.modifier(message);
+            // Close the pop-up window
+            editStage.close();
+            // Update the chat messages
+            updateChatMessages();
+        });
+
+        // Create a VBox to hold the TextArea and the Save button
+        VBox editVBox = new VBox(editTextArea, saveButton);
+        editVBox.setSpacing(10.0);
+        editVBox.setPadding(new Insets(10.0));
+
+        // Create a scene and set it on the stage
+        Scene editScene = new Scene(editVBox);
+        editStage.setScene(editScene);
+
+        // Show the pop-up window
+        editStage.show();
     }
 
 

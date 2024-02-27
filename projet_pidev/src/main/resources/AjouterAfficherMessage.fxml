@@ -21,18 +21,6 @@
                   <Image url="@images/profile.png" />
                </image>
             </ImageView>
-            <Button layoutX="61.0" layoutY="13.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="26.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/cogwheel.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
             <Label layoutX="34.0" layoutY="256.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Chat" />
             <Button layoutX="13.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="29.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                <graphic>
@@ -143,9 +131,9 @@
       </AnchorPane>
       <AnchorPane layoutX="254.0" layoutY="25.0" prefHeight="670.0" prefWidth="721.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
          <children>
-            <ScrollPane fx:id="chatScrollPane" layoutX="13.0" layoutY="109.0" prefHeight="484.0" prefWidth="695.0" style="-fx-background-color: #ffffff;">
+            <ScrollPane fx:id="chatScrollPane" layoutX="13.0" layoutY="109.0" prefHeight="486.0" prefWidth="695.0" style="-fx-background-color: #ffffff;">
                <content>
-                  <VBox fx:id="chatVbox" prefHeight="483.0" prefWidth="671.0" style="-fx-background-color: #ffffff;">
+                  <VBox fx:id="chatVbox" prefHeight="484.0" prefWidth="692.0" style="-fx-background-color: #ffffff;">
                      <children>
                         <HBox fx:id="chatHbox" prefHeight="100.0" prefWidth="666.0" style="-fx-background-color: #ffffff; -fx-padding: 20;">
                            <children>
@@ -171,7 +159,7 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <TextField fx:id="TFmessage" layoutX="13.0" layoutY="618.0" prefHeight="35.0" prefWidth="612.0" stylesheets="@css/styles.css" />
+            <TextField fx:id="TFmessage" layoutX="13.0" layoutY="618.0" prefHeight="35.0" prefWidth="612.0" promptText="Write your message her ..." stylesheets="@css/styles.css" />
             <Button layoutX="630.0" layoutY="618.0" mnemonicParsing="false" onAction="#ajouterMessageAction" prefHeight="35.0" prefWidth="78.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Send">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
@@ -214,7 +202,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="receiverNameLabel1" layoutX="21.0" layoutY="591.0" prefHeight="27.0" prefWidth="148.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 10;" text="Write your message her ..." />
             <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="23.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -228,6 +215,7 @@
                </graphic>
             </Button>
             <AnchorPane layoutX="242.0" layoutY="64.0" prefHeight="9.0" prefWidth="8.0" style="-fx-background-color: #008000; -fx-background-radius: 30;" />
+            <Label fx:id="messageError" layoutX="14.0" layoutY="595.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty message before sending !!" />
          </children>
       </AnchorPane>
       <Label fx:id="receiverNameLabel3" layoutX="93.0" layoutY="59.0" prefHeight="36.0" prefWidth="94.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 20;" text="InnoHire" />

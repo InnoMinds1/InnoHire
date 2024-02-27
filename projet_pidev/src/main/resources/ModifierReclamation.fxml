@@ -13,11 +13,11 @@
    <children>
       <AnchorPane layoutX="196.0" layoutY="14.0" prefHeight="678.0" prefWidth="766.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
-            <TextField fx:id="TFType" layoutX="38.0" layoutY="173.0" prefHeight="25.0" prefWidth="270.0" stylesheets="@css/styles.css" />
-            <TextArea fx:id="TADescription" layoutX="38.0" layoutY="256.0" prefHeight="330.0" prefWidth="651.0" stylesheets="@css/styles.css" />
-            <TextField fx:id="TFTitre" layoutX="38.0" layoutY="105.0" prefHeight="25.0" prefWidth="270.0" stylesheets="@css/styles.css" />
+            <TextField fx:id="TFType" layoutX="37.0" layoutY="179.0" prefHeight="25.0" prefWidth="270.0" promptText="Type" stylesheets="@css/styles.css" />
+            <TextArea fx:id="TADescription" layoutX="37.0" layoutY="263.0" prefHeight="330.0" prefWidth="651.0" promptText="Description" stylesheets="@css/styles.css" />
+            <TextField fx:id="TFTitre" layoutX="38.0" layoutY="105.0" prefHeight="25.0" prefWidth="270.0" promptText="Title" stylesheets="@css/styles.css" />
             <Label layoutX="38.0" layoutY="14.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 25;" text="Update Claim" />
-            <Button layoutX="591.0" layoutY="612.0" mnemonicParsing="false" onAction="#ModifierReclamation" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
+            <Button layoutX="590.0" layoutY="618.0" mnemonicParsing="false" onAction="#ModifierReclamation" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,7 +29,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="481.0" layoutY="612.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
+            <Button layoutX="480.0" layoutY="618.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,9 +41,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="38.0" layoutY="69.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Title" />
-            <Label layoutX="38.0" layoutY="137.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Type" />
-            <Label layoutX="38.0" layoutY="220.0" prefHeight="36.0" prefWidth="134.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
+            <Label layoutX="38.0" layoutY="85.0" prefHeight="20.0" prefWidth="72.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Title" />
+            <Label layoutX="38.0" layoutY="159.0" prefHeight="20.0" prefWidth="72.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Type" />
+            <Label layoutX="43.0" layoutY="235.0" prefHeight="17.0" prefWidth="134.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
             <AnchorPane fx:id="AnchoPaneMessage14" layoutX="373.0" layoutY="95.0" prefHeight="111.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                <children>
                   <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -83,6 +83,9 @@
                   </Button>
                </children>
             </AnchorPane>
+            <Label fx:id="TitleError" layoutX="38.0" layoutY="142.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty title" />
+            <Label fx:id="TypeError" layoutX="37.0" layoutY="218.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty type" />
+            <Label fx:id="DescriptionError" layoutX="43.0" layoutY="601.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty description" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-40.0" layoutY="14.0" prefHeight="429.0" prefWidth="0.0" style="-fx-background-color: #632DE9;">

@@ -146,7 +146,7 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <TextField layoutX="467.0" layoutY="16.0" prefHeight="32.0" prefWidth="229.0" stylesheets="@css/styles.css" />
+            <TextField layoutX="467.0" layoutY="16.0" prefHeight="32.0" prefWidth="229.0" promptText="Search" stylesheets="@css/styles.css" />
             <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="706.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/search.png" />
