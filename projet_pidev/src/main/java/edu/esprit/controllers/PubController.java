@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -46,10 +47,14 @@ public class PubController implements Initializable {
             for (Post post : posts) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/post.fxml"));
-                VBox vBox = fxmlLoader.load();
+               // VBox vBox = fxmlLoader.load();
+                AnchorPane anchorPane = fxmlLoader.load();
+
                 PostController postController = fxmlLoader.getController();
                 postController.setData(post);
-                postsContainer.getChildren().add(vBox);
+               // postsContainer.getChildren().add(vBox);
+                postsContainer.getChildren().add(anchorPane);
+
             }
 
 
