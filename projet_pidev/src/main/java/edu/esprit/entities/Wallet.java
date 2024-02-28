@@ -1,38 +1,19 @@
 package edu.esprit.entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
+
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Wallet {
+
     private int idWallet;
     private int balance;
-
-
-    private LocalDate dateCreation ;
-   private int status;
+    private LocalDateTime dateCreation;
+    private int status;
     private Etablissement etablissement;
-
-
-    public Wallet() {
-
-    }
-
-    public Wallet(int id_wallet, int balance,LocalDate dateCreation,int status ,Etablissement etablissement) {
-        this.idWallet = id_wallet;
-        this.balance = balance;
-        this.dateCreation = dateCreation;
-        this.status = status;
-        this.etablissement = etablissement;
-    }
-
-    public Wallet(int balance,LocalDate dateCreation,int status ,Etablissement etablissement) {
-        this.balance = balance;
-        this.dateCreation = dateCreation;
-        this.status = status;
-        this.etablissement = etablissement;
-    }
-
-
 
     public int getIdWallet() {
         return idWallet;
@@ -50,11 +31,11 @@ public class Wallet {
         this.balance = balance;
     }
 
-    public LocalDate getDateCreation() {
+    public LocalDateTime getDateCreation() {
         return dateCreation;
     }
 
-    public void setDateCreation(LocalDate dateCreation) {
+    public void setDateCreation(LocalDateTime dateCreation) {
         this.dateCreation = dateCreation;
     }
 
@@ -65,6 +46,7 @@ public class Wallet {
     public void setStatus(int status) {
         this.status = status;
     }
+
     public Etablissement getEtablissement() {
         return etablissement;
     }
@@ -72,6 +54,42 @@ public class Wallet {
     public void setEtablissement(Etablissement etablissement) {
         this.etablissement = etablissement;
     }
+
+
+
+
+    public Wallet() {
+    }
+
+    public Wallet(int idWallet, int balance,LocalDateTime dateCreation, int status, Etablissement etablissement) {
+        this.idWallet = idWallet;
+        this.balance = balance;
+        this.dateCreation = dateCreation;
+        this.status = status;
+        this.etablissement = etablissement;
+    }
+    public Wallet(int idWallet, int balance, int status, Etablissement etablissement) {
+        this.idWallet = idWallet;
+        this.balance = balance;
+        //pas besoin de date parceque il est inchangable
+        this.status = status;
+        this.etablissement = etablissement;
+    }
+
+    public Wallet(int balance, LocalDateTime dateCreation, int status, Etablissement etablissement) {
+        this.balance = balance;
+        this.dateCreation = dateCreation;
+        this.status = status;
+        this.etablissement = etablissement;
+    }
+    public Wallet(int balance,int status, Etablissement etablissement) {
+        this.balance = balance;
+        this.status = status;
+        this.etablissement = etablissement;
+    }
+
+
+    // Getters and setters...
 
     @Override
     public boolean equals(Object o) {
@@ -88,16 +106,14 @@ public class Wallet {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateCreation.format(formatter);
         return "Wallet{" +
-                "id_wallet=" + idWallet +
-                ", balance=" + balance +
-                ", date=" + dateCreation +
+
+                "balance=" + balance +
+                ", dateCreation=" + formattedDate +
                 ", status=" + status +
-
-
-                ", code_etablissement=" + etablissement.getCodeEtablissement() +
+                ", code etablissement=" + etablissement.getCodeEtablissement() +
                 '}';
     }
-
-
 }

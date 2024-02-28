@@ -22,6 +22,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class AjouterWallet implements Initializable {
     //--------------------wallet
     @FXML
@@ -32,10 +35,23 @@ public class AjouterWallet implements Initializable {
 
     @FXML
     private TextField code_EtabETF;
+
+    @FXML
+    private TextField statusETF;
+
+    @FXML
+    private TextField dateCreationETF;
     private final ServiceWallet sw = new ServiceWallet();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LocalDateTime currentDate = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = currentDate.format(formatter);
+        dateCreationETF.setText(formattedDate);
+
+
+
         ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
         Set<Etablissement> etablissements = null;
         try {
@@ -57,11 +73,13 @@ public class AjouterWallet implements Initializable {
 
         // Récupérer les valeurs des champs du formulaire
         String Balance = BalanceETF.getText();
+        String Date=dateCreationETF.getText();
+        String status = statusETF.getText();
 
 
 
         // Vérifier si les champs requis sont vides
-        if (Balance.isEmpty()) {
+        if (Balance.isEmpty()||Date.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -83,6 +101,21 @@ public class AjouterWallet implements Initializable {
             alert.showAndWait();
             return;
         }
+        int statueE;
+        try {
+            statueE = Integer.parseInt(status);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Le status doit être un nombre valide !");
+            alert.showAndWait();
+            return;
+        }
+
+
+
+
 
         String code_Etab = code_EtabETF.getText();
         int code_EtabE;
@@ -131,6 +164,8 @@ public class AjouterWallet implements Initializable {
         Wallet wallet = new Wallet();
 
         wallet.setBalance(balanceE);
+        wallet.setStatus(statueE);
+
 
         ServiceEtablissement se=new ServiceEtablissement();
         Etablissement etab = se.getOneByCode(code_EtabE);
@@ -147,6 +182,7 @@ public class AjouterWallet implements Initializable {
 
             // Effacer les champs du formulaire après l'ajout réussi
             BalanceETF.clear();
+            statusETF.clear();
             code_EtabETF.clear();
 
         }
@@ -155,7 +191,7 @@ public class AjouterWallet implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Erreur lors de l'ajout d'etablissement' : " + e.getMessage());
+            alert.setContentText("Erreur lors de l'ajout de Wallet' : " + e.getMessage());
             alert.showAndWait();
         }
 

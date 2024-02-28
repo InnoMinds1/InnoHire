@@ -51,7 +51,7 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
         int id = etablissement.getIdEtablissement();
         Etablissement existingEtablissement = getOneByID(id);
         if (existingEtablissement != null) {
-            String req = "UPDATE `etablissement` SET `nom`=?, `lieu`=?, `code_etablissement`=?, `type_etablissement`=?,`image`=?, `id_utilisateur`=? WHERE `id_etablissement`=?";
+            String req = "UPDATE `etablissement` SET `nom`=?, `lieu`=?, `code_etablissement`=?, `type_etablissement`=?, `image`=?, `id_utilisateur`=? WHERE `id_etablissement`=?";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setString(1, etablissement.getNom());
@@ -69,11 +69,10 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 System.out.println(e.getMessage());
             }
         } else {
-            System.out.println("introuvable : Échec de mise à jour ");
+            System.out.println("Introuvable : Échec de mise à jour");
         }
-
-
     }
+
 
     @Override
     public void supprimer(int idEtablissement) throws SQLException {

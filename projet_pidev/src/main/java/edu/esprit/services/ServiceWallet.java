@@ -8,8 +8,10 @@ import edu.esprit.utils.DataSource;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.sql.Timestamp;
 
 public class ServiceWallet implements IService<Wallet> {
     Connection cnx = DataSource.getInstance().getCnx();
@@ -27,11 +29,12 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
         }
         --> cest pas pratique car si on a plusieur attributs on doit faire concatenation(+) pour chacun
 */
+        LocalDateTime currentDate = LocalDateTime.now();
         String req = "INSERT INTO `wallet`(`balance`,`date_c`,`status`, `id_etablissement`) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, wallet.getBalance());
-            ps.setDate(2, Date.valueOf(wallet.getDateCreation()));
+            ps.setTimestamp(2, Timestamp.valueOf(currentDate));
 
             ps.setInt(3, wallet.getStatus());
 
@@ -49,17 +52,16 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
         int id = wallet.getIdWallet();
         Wallet existingWallet = getOneByID(id);
         if (existingWallet != null) {
-            String req = "UPDATE `wallet` SET `balance`=?,`date_c`=?, `status`=?, `id_etablissement`=? WHERE `id_wallet`=?";
+            String req = "UPDATE `wallet` SET `balance`=?,`status`=?, `id_etablissement`=? WHERE `id_wallet`=?";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setInt(1, wallet.getBalance());
-                ps.setDate(2, Date.valueOf(wallet.getDateCreation()));
-                ps.setInt(3, wallet.getStatus());
 
+                ps.setInt(2, wallet.getStatus());
 
-                ps.setInt(4, wallet.getEtablissement().getIdEtablissement());
+                ps.setInt(3, wallet.getEtablissement().getIdEtablissement());
 
-                ps.setInt(5, id);
+                ps.setInt(4, id);
 
                 ps.executeUpdate();
                 System.out.println("Wallet updated !");
@@ -93,27 +95,33 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
 
     }
 
+
+
+// ...
+
     @Override
     public Set<Wallet> getAll() {
         Set<Wallet> wallets = new HashSet<>();
 
-        String req = "Select * from wallet";
+        String req = "SELECT * FROM wallet";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
-            while(rs.next()){
-                int idWallet = rs.getInt("id_wallet"); //wala t7ot num colomn kima eli ta7etha
-                int balance = rs.getInt(2); //wala t7ot esm colomn kima eli fou9ha
-                LocalDate dateCreation = rs.getDate("date_c").toLocalDate();
+            while(rs.next()) {
+                int idWallet = rs.getInt("id_wallet");
+                int balance = rs.getInt("balance");
+
+                // Utilisation de Timestamp pour récupérer les dates de type datetime
+                Timestamp timestamp = rs.getTimestamp("date_c");
+                LocalDateTime dateCreation = timestamp.toLocalDateTime();
 
                 int status = rs.getInt("status");
                 int idEtablissement = rs.getInt("id_etablissement");
 
-
                 ServiceEtablissement se = new ServiceEtablissement();
                 Etablissement etablissement = se.getOneByID(idEtablissement);
 
-                Wallet e = new Wallet(idWallet,balance,dateCreation,status,etablissement);
+                Wallet e = new Wallet(idWallet, balance, dateCreation, status, etablissement);
                 wallets.add(e);
             }
         } catch (SQLException e) {
@@ -123,6 +131,7 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
         return wallets;
     }
 
+
     @Override
     public Wallet getOneByID(int idWallet) {
         String req = "SELECT * FROM wallet WHERE id_wallet = ?";
@@ -131,22 +140,21 @@ String req = "INSERT INTO `wallet`(`nom`, `prenom`) VALUES ('"+personne.getNom()
             ps.setInt(1, idWallet);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                int balance = rs.getInt("balance");
 
-                int balance = rs.getInt(2); //wala t7ot esm colomn kima eli fou9ha
-                LocalDate dateCreation = rs.getDate("date_c").toLocalDate();
+                // Utilisation de Timestamp pour récupérer les dates de type datetime
+                Timestamp timestamp = rs.getTimestamp("date_c");
+                LocalDateTime dateCreation = timestamp.toLocalDateTime();
 
                 int status = rs.getInt("status");
-
                 int id_etablissement = rs.getInt("id_etablissement");
-
 
                 ServiceEtablissement se = new ServiceEtablissement();
                 Etablissement etablissement = se.getOneByID(id_etablissement);
 
-
-                return new Wallet(idWallet, balance,dateCreation,status, etablissement);
+                return new Wallet(idWallet, balance, dateCreation, status, etablissement);
             } else {
-                System.out.print("Echec! Wallet with ID " + idWallet + " est" + " " );
+                System.out.print("Echec! Wallet with ID " + idWallet + " is not found.");
                 return null;
             }
         } catch (SQLException e) {

@@ -10,6 +10,7 @@ import edu.esprit.services.ServiceWallet;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class Main {
         Utilisateur user=new Utilisateur();
         ServiceUtilisateur su=new ServiceUtilisateur();
         user.setId_utilisateur(2215);
-System.out.println(su.getAll());
+//System.out.println(su.getAll());
 
 
 
@@ -51,8 +52,10 @@ System.out.println(su.getAll());
         //  se.ajouter(new Etablissement("isie","Ghazela",123456,"Faculte","gg",user));
 
         /*----------------modifier-------------------------*/
-        Etablissement etablissementModifie = new Etablissement(46,"ff","Ghazela",12345,"Faculte","gg",null,user);
-       // System.out.println(etablissementModifie);
+        Etablissement etablissementModifie = new Etablissement(618,"ff","Ghazela",12345,"Faculte","gg",null,user);
+        Etablissement etablissementModifie2 = new Etablissement(621,"ff","Ghazela",12345,"Faculte","gg",null,user);
+
+        // System.out.println(etablissementModifie);
 
         Quiz quiz =new Quiz();
         Quiz quiz2 =new Quiz();
@@ -73,38 +76,41 @@ System.out.println(su.getAll());
       //  System.out.println(se.getAll());
 
 
-        System.out.println(se.getQuizzesPourEtablissement(etablissementModifie));
+      //  System.out.println(se.getQuizzesPourEtablissement(etablissementModifie));
 
         /*--------------------------------------------------------------------------------------------------------*/
         /*--------------------------------------End_table_etab----------------------------------------------------*/
         /*--------------------------------------------------------------------------------------------------------*/
 
 
-
+        LocalDateTime currentDate = LocalDateTime.now();
         ServiceWallet sw = new ServiceWallet();
-        Wallet wallet = new Wallet(1,100, LocalDate.of(2021,02,4),0,etablissementModifie);
-        Wallet wallet1 = new Wallet(2,100, LocalDate.of(2021,02,4),0,etablissementModifie);
-        Wallet wallet2 = new Wallet(3,100, LocalDate.of(2021,02,4),0,etablissementModifie);
+        Wallet wallet = new Wallet(100, currentDate,1,etablissementModifie);
+        Wallet wallet1 = new Wallet(100, currentDate,1,etablissementModifie2);
+        Wallet wallet2 = new Wallet(100, currentDate,1,etablissementModifie2);
+        Wallet wallet3= new Wallet(100,1,etablissementModifie2);
+       // System.out.println(wallet1);
+
 
 
         /*----------------ajouter-------------------------*/
 
-      //sw.ajouter(wallet);
+     // sw.ajouter(wallet3);
 
         /*----------------modifier-------------------------*/
 
-       Wallet walletModifie = new Wallet(17,400, LocalDate.of(2021,02,4),0,etablissementModifie);
-      //  sw.modifier(walletModifie);
+        Wallet walletModifie = new Wallet(30, 500,2, etablissementModifie);
+
+     //  sw.modifier(walletModifie);
 
         /*-------------------Supprimer-------------------*/
-        //sw.supprimer(17);
+        //sw.supprimer(30);
 
         /*-------------------affichage_par_ID-------------------*/
-      //  System.out.println(sw.getOneByID(18));
+        //System.out.println(sw.getOneByID(28));
 
         /*----------------afficher tout-------------------------*/
-      // System.out.println(sw.getAll());
-
+       System.out.println(sw.getAll());
 
         /*--------------------------------------End_Sayari----------------------------------------------------*/
 
