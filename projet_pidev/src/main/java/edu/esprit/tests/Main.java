@@ -34,11 +34,11 @@ public class Main {
         Post po = new Post(1,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
         //sb.ajouter(pc);
         //sb.modifier(p);
-        //sb.supprimer(2);
+        so.supprimer(2);
         //System.out.println(sb.getOneByID(11));
-        System.out.println(sr.getOneByID(17));
+        //System.out.println(sr.getOneByID(17));
       //  System.out.println(so.getOneByID(1));
-        LocalDate dateActuelle = LocalDate.now();
+        //LocalDate dateActuelle = LocalDate.now();
      //   System.out.println(dateActuelle);
 
         //----------------------Commentaire--------------------------------------//

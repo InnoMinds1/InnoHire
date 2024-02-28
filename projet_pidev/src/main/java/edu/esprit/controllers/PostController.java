@@ -12,17 +12,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PostController{
@@ -91,6 +94,8 @@ public class PostController{
 
     @FXML
     private Button Modifier;
+    @FXML
+    private Button supprimer;
 
     private long startTime = 0;
     private Reactions currentReaction;
@@ -340,6 +345,7 @@ public class PostController{
            }
        }
    }
+
 
 
 }
