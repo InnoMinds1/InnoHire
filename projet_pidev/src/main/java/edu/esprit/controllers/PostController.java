@@ -3,15 +3,23 @@ package edu.esprit.controllers;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServiceUtilisateur;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -79,6 +87,9 @@ public class PostController{
 
     @FXML
     private Label reactionName;
+
+    @FXML
+    private Button Modifier;
 
     private long startTime = 0;
     private Reactions currentReaction;
@@ -286,7 +297,19 @@ public class PostController{
             throw new RuntimeException(e);
         }
     }*/
+   @FXML
+   void navigatetoModifierPublicationAction(ActionEvent event) {
+       try {
+           Parent root = FXMLLoader.load(getClass().getResource("/ModifierPublication.fxml"));
+           Scene scene = new Scene(root);
+           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           stage.setScene(scene);
+           stage.show();
+       } catch (IOException e) {
+           throw new RuntimeException(e);
+       }
 
+   }
 
 
 }

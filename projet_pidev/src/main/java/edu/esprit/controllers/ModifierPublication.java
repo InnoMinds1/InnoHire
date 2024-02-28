@@ -52,6 +52,7 @@ public class ModifierPublication {
     @FXML
     private ImageView imgPost;
 
+
     private final ServicePost sp=new ServicePost();
     private final ServiceUtilisateur  su=new ServiceUtilisateur();
 

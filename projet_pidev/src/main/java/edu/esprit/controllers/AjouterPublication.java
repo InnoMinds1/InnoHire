@@ -82,7 +82,7 @@ public class AjouterPublication  {
                 alert.showAndWait();
                 return;
             }
-String imageBDD= "/img/"+imageETF.getText();
+            String imageBDD= "/img/"+imageETF.getText();
 
             int idUtilisateur = CurrentUser.getId_utilisateur();
             Utilisateur utilisateur = su.getOneByID(idUtilisateur);
