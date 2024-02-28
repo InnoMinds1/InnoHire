@@ -7,11 +7,12 @@ import edu.esprit.services.quizService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 
-import javafx.scene.control.ButtonType;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import javafx.scene.image.Image;
@@ -31,6 +32,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 public class QuizItemController {
@@ -142,9 +144,71 @@ public class QuizItemController {
             alert.show();
         }
     }
+    @FXML
+    private void showQuizDetails(ActionEvent event) {
+        int codeQuiz = quiz.getCode_quiz();
+        if (qs == null) {
+            qs = new quizService();
+        }
 
+        // Récupérer les questions associées à ce code de quiz
+        List<Question> questions = qs.getQuestionsByCodeQuiz(codeQuiz);
 
+        // Créer une ListView pour afficher les détails des questions
+        ListView<HBox> listView = new ListView<>();
+        questionService qs1=new questionService();
+
+        // Ajouter des boutons de suppression à côté de chaque question
+        for (Question question : questions) {
+            Button deleteButton = new Button("Supprimer Question");
+            deleteButton.setOnAction(event1 -> {
+                try {
+                    qs1.supprimer(question.getId_question());
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            // Ajouter seulement l'attribut "question" et "reponse_correcte"
+            String questionDetails = "Question: " + question.getQuestion() +
+                    "\nRéponse correcte: " + question.getReponse_correcte() + "\n";
+
+            HBox hbox = new HBox(new Label(questionDetails), deleteButton);
+            hbox.setSpacing(10);
+
+            // Ajouter la ligne entière (Label + Button) à la liste d'affichage
+            listView.getItems().add(hbox);
+        }
+
+        // Créer une boîte pour contenir la ListView
+        VBox vbox = new VBox(listView);
+        vbox.setPadding(new Insets(10));
+
+        // Afficher la boîte de dialogue
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Questions associées au quiz");
+        alert.getDialogPane().setContent(vbox);
+
+        // Ajouter un bouton "Fermer"
+        ButtonType closeButton = new ButtonType("Fermer", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().add(closeButton);
+
+        // Afficher la boîte de dialogue
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.showAndWait();
+    }
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+

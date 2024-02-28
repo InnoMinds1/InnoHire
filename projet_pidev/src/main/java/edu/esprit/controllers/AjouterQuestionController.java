@@ -62,41 +62,82 @@ public class AjouterQuestionController {
 
 
 
-        @FXML
-        void AjouterQuestionAction(ActionEvent event) throws SQLException {
-            try {
+    @FXML
+    void AjouterQuestionAction(ActionEvent event) throws SQLException {
+        try {
+            // Réinitialiser le style des TextFields
+            resetTextFieldStyles();
 
-                Integer codeQuiz = TFcode_quiz.getValue();
+            // Vérification de la question et des choix non vides
+            String question = TFquestion.getText();
+            String choix = TFchoix.getText();
+
+            if (question.isEmpty() || choix.isEmpty()) {
+                // Afficher un message d'erreur
+                setTextFieldErrorStyle(TFquestion);
+                setTextFieldErrorStyle(TFchoix);
+                showAlert("Erreur de saisie", "Veuillez saisir une question et des choix.");
+                return;
+            }
+
+            // Vérification de la réponse correcte
+            try {
                 int reponseCorrecte = Integer.parseInt(TFreponse_correcte.getText());
 
+                if (reponseCorrecte < 1 || reponseCorrecte > 3) {
+                    // Afficher un message d'erreur
+                    setTextFieldErrorStyle(TFreponse_correcte);
+                    showAlert("Erreur de saisie", "La réponse correcte doit être entre 1 et 3.");
+                    return;
+                }
 
-
-                int idQuiz = getIdQuizByCode(codeQuiz);
-                quizService qs= new quizService();
-
+                quizService qs1 = new quizService();
+                int idQuiz = getIdQuizByCode(TFcode_quiz.getValue());
 
                 if (idQuiz != -1) {
-                    this.qs.ajouter(new Question(TFquestion.getText(), TFchoix.getText(), qs.getOneByID(idQuiz),reponseCorrecte));
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success");
-                    alert.setContentText("GG");
-                    alert.show();
+                    qs.ajouter(new Question(question, choix, qs1.getOneByID(idQuiz), reponseCorrecte));
+                    showAlert("Success", "GG");
                 } else {
-
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("Impossible de trouver l'id_quiz pour le code_quiz sélectionné.");
-                    alert.showAndWait();
+                    showAlert("Warning", "Impossible de trouver l'id_quiz pour le code_quiz sélectionné.");
                 }
-            } catch (NumberFormatException e) {
 
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("SQL Exception");
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();
+            } catch (NumberFormatException e) {
+                // Afficher un message d'erreur
+                setTextFieldErrorStyle(TFreponse_correcte);
+                showAlert("Erreur de saisie", "Veuillez saisir une réponse correcte valide (nombre entier).");
             }
+
+        } catch (Exception e) {
+            // Gérer les autres exceptions
+            e.printStackTrace();
+            showAlert("SQL Exception", e.getMessage());
         }
+    }
+
+    // Méthode pour réinitialiser le style des TextFields
+    private void resetTextFieldStyles() {
+        TFquestion.setStyle(null);
+        TFchoix.setStyle(null);
+        TFcode_quiz.setStyle(null);
+        TFreponse_correcte.setStyle(null);
+    }
+
+    // Méthode pour définir le style d'erreur sur un TextField
+    private void setTextFieldErrorStyle(TextField textField) {
+        textField.getStyleClass().add("error-text-field");
+    }
+
+// Le reste du code reste inchangé
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+
+
 
 
     public int getIdQuizByCode(Integer codeQuiz) throws SQLException {

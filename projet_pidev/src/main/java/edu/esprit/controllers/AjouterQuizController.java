@@ -42,15 +42,29 @@ public class AjouterQuizController {
     private void AjouterQuizAction(ActionEvent event) {
         try {
             // Récupérer les valeurs des champs
-            int codeQuiz = Integer.parseInt(TFCode.getText());
+            String codeQuizText = TFCode.getText();
             String nomQuiz = TFNom.getText();
             String description = TFDesc.getText();
-            int prixQuiz = Integer.parseInt(TFprix.getText());
+            String prixQuizText = TFprix.getText();
+            String nomImage = imageView.getText(); // Assurez-vous que vous récupérez le chemin correctement
 
-            // Récupérer le chemin de l'image depuis le TextField
-            String nomImage = imageView.getText();
+            // Vérifier si tous les champs sont remplis
+            if (codeQuizText.isEmpty() || nomQuiz.isEmpty() || description.isEmpty() || prixQuizText.isEmpty() || nomImage.isEmpty()) {
+                // Afficher une alerte en cas de champs manquants
+                showAlert("Champs manquants", "Veuillez remplir tous les champs.");
+                return;
+            }
 
-            // Construire le chemin complet de l'image
+            // Convertir les valeurs en types appropriés
+            int codeQuiz = Integer.parseInt(codeQuizText);
+            int prixQuiz = Integer.parseInt(prixQuizText);
+
+            // Vérifier que prixQuiz est supérieur à 0 et inférieur à 50
+            if (prixQuiz <= 0 || prixQuiz >= 50) {
+                // Afficher une alerte en cas de prix incorrect
+                showAlert("Erreur de saisie", "Le prix du quiz doit être supérieur à 0 et inférieur à 50.");
+                return;
+            }
 
             // Créer une instance de Quiz
             Quiz quiz = new Quiz(codeQuiz, nomQuiz, description, prixQuiz, nomImage);
@@ -60,25 +74,25 @@ public class AjouterQuizController {
             qs.ajouter(quiz);
 
             // Afficher une alerte de succès
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Le quiz a été ajouté avec succès.");
-            alert.show();
+            showAlert("Success", "Le quiz a été ajouté avec succès.");
+
         } catch (NumberFormatException e) {
             // Afficher une alerte d'erreur si une exception de format numérique se produit
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Number Format Exception");
-            alert.setContentText("Erreur de format numérique : " + e.getMessage());
-            alert.showAndWait();
+            showAlert("Number Format Exception", "Erreur de format numérique : " + e.getMessage());
         } catch (SQLException e) {
             // Afficher une alerte d'erreur si une exception SQL se produit
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText("Erreur SQL : " + e.getMessage());
-            alert.showAndWait();
+            showAlert("SQL Exception", "Erreur SQL : " + e.getMessage());
         }
+    }
+
+    // Méthode pour afficher une alerte
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
     public void navigateToAfficher(ActionEvent actionEvent) {
         try {

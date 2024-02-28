@@ -31,7 +31,8 @@
       <ImageView fx:id="imageView" fitHeight="39.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" />
 
         <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#supprimerQuizOnClick" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #FF6347; -fx-text-fill: white;" text="Supprimer" />
-        <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#modifierQuizOnClick" prefHeight="27.0" prefWidth="86.0" text="Modifier" style="-fx-background-color: #32CD32; -fx-text-fill: white;" />
+        <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#modifierQuizOnClick" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #32CD32; -fx-text-fill: white;" text="Modifier" />
+      <Button mnemonicParsing="false" onAction="#showQuizDetails" prefHeight="26.0" prefWidth="82.0" text="Details" />
 
 
 

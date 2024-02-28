@@ -58,9 +58,8 @@ public class ModifierQuestionController {
 
     void modifierQuestionAction() {
         try {
-            if (qs == null) {
-                qs = new questionService();
-            }
+            // Réinitialiser le style des TextFields
+            resetModifyTextFieldStyles();
 
             Integer selectedCodeQuiz = TFcode_quizModify.getSelectionModel().getSelectedItem();
             Integer codeQuiz = TFcode_quizModify.getValue();
@@ -68,34 +67,80 @@ public class ModifierQuestionController {
             quizService qs1 = new quizService();
             int idQuiz = qs1.getIdQuizByCode(codeQuiz);
 
-            question.setQuestion(TFquestionModify.getText());
-            question.setChoix(TFchoixModify.getText());
+            // Vérification de la question et des choix non vides
+            String modifiedQuestion = TFquestionModify.getText();
+            String modifiedChoix = TFchoixModify.getText();
 
-            // Assurez-vous que la méthode getOneByID dans quizService renvoie le quiz avec le bon ID
+            if (modifiedQuestion.isEmpty() || modifiedChoix.isEmpty()) {
+                // Afficher un message d'erreur
+                setModifyTextFieldErrorStyle(TFquestionModify);
+                setModifyTextFieldErrorStyle(TFchoixModify);
+                showAlert("Erreur de saisie", "Veuillez saisir une question et des choix.");
+                return;
+            }
 
+            // Vérification de la réponse correcte
+            try {
+                int modifiedReponseCorrecte = Integer.parseInt(TFreponse_correcteModify.getText());
 
+                if (modifiedReponseCorrecte < 1 || modifiedReponseCorrecte > 3) {
+                    // Afficher un message d'erreur
+                    setModifyTextFieldErrorStyle(TFreponse_correcteModify);
+                    showAlert("Erreur de saisie", "La réponse correcte doit être entre 1 et 3.");
+                    return;
+                }
 
+                question.setQuestion(modifiedQuestion);
+                question.setChoix(modifiedChoix);
+
+                // Assurez-vous que la méthode getOneByID dans quizService renvoie le quiz avec le bon ID
                 question.setQuiz(qs1.getOneByID(idQuiz));
                 question.getQuiz().setCode_quiz(selectedCodeQuiz);
-                question.setReponse_correcte(Integer.parseInt(TFreponse_correcteModify.getText()));
-               try{
-                   qs.modifier(question);
-               } catch (SQLException e) {
-                   throw new RuntimeException(e);
-               }
+                question.setReponse_correcte(modifiedReponseCorrecte);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                try {
+                    qs.modifier(question);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Question modifiée avec succès.");
                 alert.setTitle("Modification réussie");
                 alert.show();
+            } catch (NumberFormatException e) {
+                // Afficher un message d'erreur
+                setModifyTextFieldErrorStyle(TFreponse_correcteModify);
+                showAlert("Erreur de saisie", "Veuillez saisir une réponse correcte valide (nombre entier).");
+            }
+
         } catch (Exception e) {
+            // Gérer les autres exceptions
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Erreur lors de la modification de la question.");
-            alert.setTitle("Erreur de modification");
-            alert.show();
+            showAlert("Erreur de modification", "Erreur lors de la modification de la question.");
         }
     }
+
+    // Méthode pour réinitialiser le style des TextFields de modification
+    private void resetModifyTextFieldStyles() {
+        TFquestionModify.setStyle(null);
+        TFchoixModify.setStyle(null);
+        TFcode_quizModify.setStyle(null);
+        TFreponse_correcteModify.setStyle(null);
+    }
+
+    // Méthode pour définir le style d'erreur sur un TextField de modification
+    private void setModifyTextFieldErrorStyle(TextField textField) {
+        textField.setStyle("-fx-text-box-border: red ; -fx-focus-color: red ;");
+    }
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+// Le reste du code reste inchangé
 
     public void navigateToAfficher(ActionEvent actionEvent) {
         try {

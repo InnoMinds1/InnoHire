@@ -55,15 +55,34 @@ public class ModifierQuizController {
             imageViewQ1.setImage(image);
         }
     }
-
-    @FXML
+@FXML
     void ModifierQuizAction(ActionEvent event) {
         try {
-            int codeQuiz = Integer.parseInt(TFCode1.getText());
+            // Récupérer les valeurs des champs
+            String codeQuizText = TFCode1.getText();
             String nomQuiz = TFNom1.getText();
             String description = TFDesc1.getText();
-            int prixQuiz = Integer.parseInt(TFprix1.getText());
+            String prixQuizText = TFprix1.getText();
 
+            // Vérifier si tous les champs sont remplis
+            if (codeQuizText.isEmpty() || nomQuiz.isEmpty() || description.isEmpty() || prixQuizText.isEmpty()) {
+                // Afficher une alerte en cas de champs manquants
+                showAlert("Champs manquants", "Veuillez remplir tous les champs.");
+                return;
+            }
+
+            // Convertir les valeurs en types appropriés
+            int codeQuiz = Integer.parseInt(codeQuizText);
+            int prixQuiz = Integer.parseInt(prixQuizText);
+
+            // Vérifier que prixQuiz est supérieur à 0 et inférieur à 50
+            if (prixQuiz <= 0 || prixQuiz >= 50) {
+                // Afficher une alerte en cas de prix incorrect
+                showAlert("Erreur de saisie", "Le prix du quiz doit être supérieur à 0 et inférieur à 50.");
+                return;
+            }
+
+            // Mettre à jour les attributs du quiz
             quiz.setCode_quiz(codeQuiz);
             quiz.setNom_quiz(nomQuiz);
             quiz.setDescription(description);
@@ -78,23 +97,26 @@ public class ModifierQuizController {
 
             qs.modifier(quiz);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Le quiz a été modifié avec succès.");
-            alert.show();
+            // Afficher une alerte de succès
+            showAlert("Success", "Le quiz a été modifié avec succès.");
+
         } catch (NumberFormatException e) {
+            // Afficher une alerte d'erreur si une exception de format numérique se produit
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Number Format Exception");
-            alert.setContentText("Erreur de format numérique : " + e.getMessage());
-            alert.showAndWait();
+            showAlert("Number Format Exception", "Erreur de format numérique : " + e.getMessage());
         } catch (SQLException e) {
+            // Afficher une alerte d'erreur si une exception SQL se produit
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText("Erreur SQL : " + e.getMessage());
-            alert.showAndWait();
+            showAlert("SQL Exception", "Erreur SQL : " + e.getMessage());
         }
+    }
+
+    // Méthode pour afficher une alerte
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     @FXML

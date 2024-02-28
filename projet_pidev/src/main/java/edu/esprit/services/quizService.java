@@ -137,51 +137,40 @@ public class quizService implements IService<Quiz> {
 
         return quizcodes;
     }
-    private int getCodeQuizbyID(int idQuiz) throws SQLException {
 
-
-        try {
-            String sql = "SELECT code_quiz FROM quiz WHERE id_quiz = ?";
-            try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
-                preparedStatement.setInt(1, idQuiz);
-
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return resultSet.getInt("code_quiz");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        return -1;
-    }
-    public Quiz getOneByCode(int code) {
+    public List<Question> getQuestionsByCodeQuiz(int codeQuiz) {
+        List<Question> questions = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM quiz WHERE code_quiz = ?";
+            // Utilisez la fonction getIdQuizByCode pour récupérer l'ID du quiz
+            int idQuiz = getIdQuizByCode(codeQuiz);
+
+            // Modifiez la requête pour utiliser l'ID du quiz
+            String query = "SELECT * FROM question WHERE id_quiz = ?";
             try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
-                preparedStatement.setInt(1, code);
+                preparedStatement.setInt(1, idQuiz);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        Quiz quiz = new Quiz();
-                        quiz.setId_quiz(resultSet.getInt("id_quiz"));
-                        quiz.setCode_quiz(resultSet.getInt("code_quiz"));
-                        quiz.setNom_quiz(resultSet.getString("nom_quiz"));
-                        quiz.setDescription(resultSet.getString("description"));
-                        quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
-                        quiz.setImage_quiz(resultSet.getString("image_quiz"));
-                        return quiz;
+                    while (resultSet.next()) {
+                        Question question = new Question();
+                        question.setId_question(resultSet.getInt("id_question"));
+                        question.setQuestion(resultSet.getString("question"));
+                        question.setChoix(resultSet.getString("choix"));
+                        // ...
+                        question.setReponse_correcte(resultSet.getInt("reponse_correcte"));
+
+                        // Ajoutez la question à la liste
+                        questions.add(question);
                     }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+
+        return questions;
     }
+
+
     public int getIdQuizByCode(Integer codeQuiz) throws SQLException {
 
 
