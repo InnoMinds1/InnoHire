@@ -142,17 +142,6 @@ private void AfficherErreur(String titre, String contenu, String details) {
 
 
     @FXML
-    /*void navigatetoAfficherCommentaireAction(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCommentaire.fxml"));
-            descriptionTF1.getScene().setRoot(root);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry jjjj");
-            alert.setTitle("Error");
-            alert.show();
-        }
-    }*/
     void navigatetoAfficherCommentaireAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/AfficherCommentaire.fxml"));

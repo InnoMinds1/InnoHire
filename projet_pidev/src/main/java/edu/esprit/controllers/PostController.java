@@ -6,6 +6,7 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,10 +21,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class PostController {
+public class PostController implements Initializable {
     @FXML
     private ImageView imgProfile;
 
@@ -92,11 +95,18 @@ public class PostController {
     @FXML
     private Button supprimer;
 
+    @FXML
+    private Button AjouterC;
+
+
     private long startTime = 0;
     private Reactions currentReaction;
     private Post post;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
+    }
 
     @FXML
     public void onLikeContainerPressed(MouseEvent me){
@@ -221,54 +231,6 @@ public class PostController {
         // Reset current reaction
         currentReaction = Reactions.NON;
     }
-
-/*
-    public void setData(Post post){
-        this.post = post;
-        Image img = new Image(this.getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
-        this.imgProfile.setImage(img);
-
-
-
-        username.setText(post.getUtilisateur().getName());
-        if(post.getUtilisateur().getVerified()==1){
-            imgVerified.setVisible(true);
-        }else{
-            imgVerified.setVisible(false);
-        }
-
-        date.setText(post.getDate());
-        if(post.getAudience() == PostAudience.PUBLIC){
-            img = new Image(getClass().getResourceAsStream(PostAudience.PUBLIC.getImgSrc()));
-        }else{
-            img = new Image(getClass().getResourceAsStream(PostAudience.FRIENDS.getImgSrc()));
-        }
-        audience.setImage(img);
-
-        if(post.getCaption() != null && !post.getCaption().isEmpty()){
-            caption.setText(post.getCaption());
-        }else{
-            caption.setManaged(false);
-        }
-
-        if(post.getImage() != null && !post.getImage().isEmpty()){
-           Image img2 ;
-                   img2 = new Image(this.getClass().getResourceAsStream(post.getImage()));
-            //Image img = new Image(this.getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
-
-            this.imgPost.setImage(img2);
-        }else{
-            imgPost.setVisible(false);
-            imgPost.setManaged(false);
-        }
-
-        nbReactions.setText(String.valueOf(post.getTotalReactions()));
-        nbComments.setText(post.getNbComments() + " comments");
-        nbShares.setText(post.getNbShares()+" shares");
-
-        currentReaction = Reactions.NON;
-    }*/
-
     private Post getPost() throws SQLException {
 
         ServicePost sp=new ServicePost();
@@ -360,7 +322,7 @@ public class PostController {
 
     public void supprimer(ActionEvent actionEvent) {
 
-        
+
         // Si un élément est sélectionné, afficher la confirmation de suppression
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation de suppression");
@@ -381,4 +343,32 @@ public class PostController {
             }
         }
     }
+    /*public void Naviguerversajouter(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterCommentaire.fxml"));
+            caption.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }*/
+    @FXML
+    void NavigatetoC(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterCommentaire.fxml"));
+            caption.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
+
+
 }
+

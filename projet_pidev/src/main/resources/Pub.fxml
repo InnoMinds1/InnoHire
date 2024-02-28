@@ -12,5 +12,5 @@
    </content>
 </ScrollPane>
    <Button fx:id="Naviguerversajouter" layoutX="635.0" layoutY="110.0" mnemonicParsing="false" onAction="#Naviguerversajouter" prefHeight="38.0" prefWidth="170.0" text="Ajouter votre publication" />
-   <Button fx:id="Naviguerversajouter1" layoutX="635.0" layoutY="180.0" mnemonicParsing="false" onAction="#Naviguerversajouter" prefHeight="38.0" prefWidth="170.0" text="Ajouter votre publication" />
+
 </AnchorPane>
