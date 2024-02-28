@@ -83,11 +83,11 @@ public class ModifierUtilisateurController {
 
             // Assign the cin to the user
             if (utilisateur instanceof Admin) {
-                TFrole.setText(String.valueOf(0));
+                TFrole.setText("Admin");
             } else if (utilisateur instanceof Representant) {
-                TFrole.setText(String.valueOf(1));
+                TFrole.setText("Representant");
             } else {
-                TFrole.setText(String.valueOf(2));
+                TFrole.setText("Candidat");
             }
         }
     }
@@ -97,7 +97,7 @@ public class ModifierUtilisateurController {
     @FXML
     void ok(ActionEvent event) throws SQLException {
         String photoUrl = (selectedFile != null) ? selectedFile.toURI().toString() : null;
-        int role = Integer.parseInt(TFrole.getText());
+        //int role = Integer.parseInt(TFrole.getText());
         if (controlSaisie(TFnom) && controlSaisie(TFprenom) && controlSaisie(TFadresse) && controlSaisie(TFmdp)) {
             Utilisateur u = new Utilisateur();
             u.setCin(Integer.parseInt(TFcin.getText()));

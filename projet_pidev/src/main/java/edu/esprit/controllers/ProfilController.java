@@ -106,7 +106,7 @@ public class ProfilController implements Initializable {
     @FXML
     void ok(ActionEvent event) throws SQLException {
         String photoUrl = (selectedFile != null) ? selectedFile.toURI().toString() : null;
-        int role = Integer.parseInt(TFrole.getText());
+
         if (controlSaisie(TFnom) && controlSaisie(TFprenom) && controlSaisie(TFadresse) ){
             Utilisateur u = new Utilisateur();
             u.setCin(Integer.parseInt(TFcin.getText()));
@@ -183,7 +183,20 @@ public class ProfilController implements Initializable {
         TFadresse.setText(CurrentUser.getAdresse());
         TFnom.setText(CurrentUser.getNom());
         TFprenom.setText(CurrentUser.getPrenom());
-        TFrole.setText(String.valueOf(CurrentUser.getRole()));
+
+
+        if(CurrentUser.getRole()==0)
+        {
+            TFrole.setText("Admin");
+        }
+        else if(CurrentUser.getRole()==1)
+        {
+            TFrole.setText("Representant");
+        }
+        else if(CurrentUser.getRole()==2)
+        {
+            TFrole.setText("Candidat");
+        }
         tfnom_init.setText(CurrentUser.getNom());
         String imagePath = CurrentUser.getProfileImagePath();  // Change this to the actual method to get the image path
         if (imagePath != null && !imagePath.isEmpty()) {

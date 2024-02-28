@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -250,6 +251,8 @@ public class AjouterUtilisateurController {
     private TextField tfrole;
     @FXML
     private ImageView profileImageView;
+    @FXML
+    private ComboBox<?> comboRole;
 
     @FXML
     private Button choosePhotoButton;
@@ -280,7 +283,7 @@ public class AjouterUtilisateurController {
         ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
 
             int cin;
-            int role;
+
         String Nom = TFnom.getText();
         String prenom = TFprenom.getText();
         String adresse = TFadresse.getText();
@@ -331,7 +334,7 @@ public class AjouterUtilisateurController {
 
         try {
              cin = Integer.parseInt(TFcin.getText());
-             role = Integer.parseInt(tfrole.getText());
+
 
 
         } catch (NumberFormatException e) {
@@ -342,6 +345,10 @@ public class AjouterUtilisateurController {
             alert.showAndWait();
             return;
         }
+        String role = (String) comboRole.getSelectionModel().getSelectedItem();
+
+        // Validate if a role is selected
+
         if (serviceUtilisateur.utilisateurExiste(cin))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -352,12 +359,29 @@ public class AjouterUtilisateurController {
             return;
 
         }
+        if (photoUrl==null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("veillez inserer une photo");
+            alert.showAndWait();
+            return;
+        }
 
+       if(role==null){
 
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner un rôle !");
+            alert.showAndWait();
+            return;
 
+        }
 
         // Créer un nouvel objet Service avec les valeurs saisies
-        if (role==0)
+        if (role.equals("Admin"))
         {Admin u = new Admin();
         u.setNom(Nom);
         u.setCin(cin);
@@ -389,7 +413,7 @@ public class AjouterUtilisateurController {
                 alert.showAndWait();
             }
         }
-        else if(role==1)
+        else if(role.equals("Representant"))
         {Representant u = new Representant();
             u.setNom(Nom);
             u.setCin(cin);
@@ -411,7 +435,6 @@ public class AjouterUtilisateurController {
                 TFnom.clear();
                 TFadresse.clear();
                 tfmdp.clear();
-                tfrole.clear();
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
@@ -422,7 +445,7 @@ public class AjouterUtilisateurController {
 
 
         }
-        else if (role == 2){
+        else if (role.equals("Candidat")){
             {Candidat u = new Candidat();
                 u.setNom(Nom);
                 u.setCin(cin);
@@ -454,13 +477,7 @@ public class AjouterUtilisateurController {
                 }
             }
         }
-        else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("ROLE DOIT ETRE 0 pour admin 1 pour Rep et 2 pour candidat ");
-            alert.showAndWait();
-        }
+
 
 
 
