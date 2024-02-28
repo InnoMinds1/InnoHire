@@ -43,7 +43,7 @@ public class AjouterReclamationController {
 
 
     private final ServiceReclamation sr = new ServiceReclamation();
-    Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789");
+    Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
     Publication pub=new Publication(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
 
 

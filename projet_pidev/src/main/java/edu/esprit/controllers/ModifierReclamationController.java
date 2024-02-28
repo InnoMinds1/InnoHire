@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
@@ -38,6 +40,8 @@ public class ModifierReclamationController {
     @FXML
     private TextArea TADescription;
     @FXML
+    private ImageView userPhoto;
+    @FXML
     private Button confirmButton;
 
     private Reclamation selectedReclamation;
@@ -56,6 +60,17 @@ public class ModifierReclamationController {
         labelCin.setText(String.valueOf(selectedReclamation.getUser().getCin()));
         labelCodePub.setText(selectedReclamation.getPub().getCode_pub());
         labelNbReports.setText(String.valueOf(selectedReclamation.getPub().getNb_report()));
+        // Set user photo
+        String imageName = selectedReclamation.getUser().getImage();
+        System.out.println(imageName);// Replace with the actual method to get the image name
+        if (imageName != null && !imageName.isEmpty()) {
+            String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
+            Image image = new Image(getClass().getResource(imagePath).toExternalForm());
+            userPhoto.setImage(image);
+        } else {
+            // Set a default image if the name is not available
+            userPhoto.setImage(new Image(getClass().getResource("/images/edit.png.jpg").toExternalForm()));
+        }
 
     }
 

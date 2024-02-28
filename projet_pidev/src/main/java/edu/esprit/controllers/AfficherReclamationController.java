@@ -2,9 +2,12 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -45,6 +48,18 @@ public class AfficherReclamationController implements Initializable {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void navigateToAddReclamation(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterReclamation.fxml"));
+            reclamationsContainer.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
         }
     }
 }

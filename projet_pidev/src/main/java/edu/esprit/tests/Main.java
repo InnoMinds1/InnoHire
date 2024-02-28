@@ -18,12 +18,12 @@ public class Main {
     {
         DataSource.getInstance();
         //(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp)
-        Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789");
-        Utilisateur user2=new Utilisateur(9,11417264,"dhawadi","hachem","bizerte","123456789");
+        Utilisateur user=new Utilisateur(1,11417264,"hachem","dhawadi","bizerte","1663","123456789");
+        Utilisateur user2=new Utilisateur(9,11417264,"hachem","dhawadi","bizetz","15156","123456789");
        // Publication pub=new Publication(1,1,5,"mhaf","#mhaf","seen","mhaf.png","19/02/2024");
 
         ServiceMessagerie sm=new ServiceMessagerie();
-        System.out.println(sm.getAllMessagesByReciverAndSender(1));
+        //System.out.println(sm.getAllMessagesByReciverAndSender(1));
         //sm.ajouter(new Messagerie("text","chna7welek yal gafsi",new Date(),user,user2));
         //int status, String type, String titre, String description, String image, Date date, Publication pub, Utilisateur user
         //sr.ajouter(new Reclamation(0,"son image","son image","son image",new Date(),pub,user));

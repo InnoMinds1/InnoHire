@@ -9,9 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -24,7 +26,9 @@ public class ReclamationItemComponentController {
     private Label userFullName;
 
     @FXML
-    private Label userCode;
+    private Label pubCode;
+    @FXML
+    private Label tag;
 
     @FXML
     private Label dateRec;
@@ -44,15 +48,27 @@ public class ReclamationItemComponentController {
 
         // Set data to UI elements
         userFullName.setText(reclamation.getUser().getNom() + " " + reclamation.getUser().getPrenom());
-        //userCode.setText(reclamation.getPub().getCode_pub());
+        tag.setText("#"+reclamation.getPub().getHashtag());
+        //pubCode.setText(reclamation.getPub().getCode_pub());
         dateRec.setText(String.valueOf(reclamation.getDate()));
+        // Set user photo
+        String imageName = reclamation.getUser().getImage();
+        //System.out.println(imageName);// Replace with the actual method to get the image name
+        if (imageName != null && !imageName.isEmpty()) {
+            String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
+            Image image = new Image(getClass().getResource(imagePath).toExternalForm());
+            userPhoto.setImage(image);
+        } else {
+            // Set a default image if the name is not available
+            userPhoto.setImage(new Image(getClass().getResource("/images/edit.png.jpg").toExternalForm()));
+        }
     }
 
 
     public void navigateToAfficherReclamationAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamation.fxml"));
-            userCode.getScene().setRoot(root);
+            pubCode.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry");
@@ -90,8 +106,18 @@ public class ReclamationItemComponentController {
 
     public void navigateToChatRec(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterAfficherMessage.fxml"));
-            userCode.getScene().setRoot(root);
+            // Load the AjouterAfficherMessage.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAfficherMessage.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller for the AjouterAfficherMessage page
+            AjouterAfficherMessageController chatController = loader.getController();
+
+            // Pass the selected reclamation data to the AjouterAfficherMessageController
+            chatController.initData(reclamation);
+
+            // Set the root of the scene to the AjouterAfficherMessage page
+            pubCode.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry");
@@ -99,6 +125,7 @@ public class ReclamationItemComponentController {
             alert.show();
         }
     }
+
 
     public void DetailsReclamationAction(ActionEvent event) {
         try {
@@ -113,7 +140,7 @@ public class ReclamationItemComponentController {
             detailsController.initData(reclamation);
 
             // Set the root of the scene to the DetailsReclamation page
-            userCode.getScene().setRoot(root);
+            pubCode.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry");

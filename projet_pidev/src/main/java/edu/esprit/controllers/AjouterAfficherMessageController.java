@@ -39,33 +39,57 @@ public class AjouterAfficherMessageController implements Initializable{
     private TextField TFmessage;
     @FXML
     private Label messageError;
+    @FXML
+    private Label emptyMessage;
+    String userPhoto;
+    Utilisateur userReciver;
+
+
+
 
     private final ServiceMessagerie serviceMessagerie = new ServiceMessagerie();
 
-    Utilisateur amen=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789");
-    Utilisateur hachem=new Utilisateur(9,11417264,"dhawadi","hachem","bizerte","123456789");
+    Utilisateur amen=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
+    //Utilisateur userReciver=new Utilisateur(9,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
 
+    public void initData(Reclamation selectedReclamation) {
+        userReciver = selectedReclamation.getUser();
+        userPhoto=userReciver.getImage();
+        //System.out.println(userReciver);
+        updateReceiverInfo();
+        updateChatMessages();
+        // You can do additional initialization with the passed data if needed
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateReceiverInfo();
-        updateChatMessages();
+       // updateReceiverInfo();
+        //updateChatMessages();
     }
     public void updateReceiverInfo() {
         // Get the name and profile image URL of the receiver
         //String receiverName = serviceMessagerie.getOneByID(9).getReciver_id().getNom(); // Replace with the actual receiver's name
-        String receiverName = hachem.getNom()+" "+hachem.getPrenom();
-        String profileImageUrl = "/images/manh.png"; // Replace with the actual image URL
+        String receiverName = userReciver.getNom()+" "+userReciver.getPrenom();
+        String profileImageUrl = userReciver.getImage(); // Replace with the actual image URL
 
         // Set the receiver's name and profile image
         receiverNameLabel.setText(receiverName);
-        receiverProfileImage.setImage(new Image(profileImageUrl));
+        String imageName = userReciver.getImage();
+        if (imageName != null && !imageName.isEmpty()) {
+            String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
+            Image image = new Image(getClass().getResource(imagePath).toExternalForm());
+            receiverProfileImage.setImage(image);
+        } else {
+            // Set a default image if the name is not available
+            receiverProfileImage.setImage(new Image(getClass().getResource("/images/edit.png.jpg").toExternalForm()));
+        }
+        //receiverProfileImage.setImage(new Image(profileImageUrl));
     }
     // AjouterAfficherMessageController class
     public void updateChatMessages() {
         // Get the messages from the database for both sender and receiver
-        Set<Messagerie> senderMessages = serviceMessagerie.getAllMessagesByReciverAndSender(1); // Replace 1 with the sender's user ID
-        Set<Messagerie> receiverMessages = serviceMessagerie.getAllMessagesByReciverAndSender(9); // Replace 9 with the receiver's user ID
+        Set<Messagerie> senderMessages = serviceMessagerie.getAllMessagesByReciverAndSender(1, userReciver.getId_utilisateur()); // Replace 1 with the sender's user ID
+        Set<Messagerie> receiverMessages = serviceMessagerie.getAllMessagesByReciverAndSender(userReciver.getId_utilisateur(), 1); // Replace 9 with the receiver's user ID
 
         // Combine the messages and order them by date
         Set<Messagerie> allMessages = new TreeSet<>(Comparator.comparing(Messagerie::getDate));
@@ -75,13 +99,22 @@ public class AjouterAfficherMessageController implements Initializable{
         // Clear the existing content
         chatVbox.getChildren().clear();
 
-        // Iterate through the messages and add them to the chatVbox with margins
-        for (Messagerie message : allMessages) {
-            HBox messageBox = createMessageBox(message);
-            VBox.setMargin(messageBox, new Insets(0.0, 0.0, 10.0, 0.0)); // Set top and bottom margins
-            chatVbox.getChildren().add(messageBox);
+        // Check if there are no messages
+        if (allMessages.isEmpty()) {
+            emptyMessage.setText("Start chatting now!");
+            emptyMessage.setVisible(true);
+        } else {
+            emptyMessage.setVisible(false);
+
+            // Iterate through the messages and add them to the chatVbox with margins
+            for (Messagerie message : allMessages) {
+                HBox messageBox = createMessageBox(message);
+                VBox.setMargin(messageBox, new Insets(0.0, 0.0, 10.0, 0.0)); // Set top and bottom margins
+                chatVbox.getChildren().add(messageBox);
+            }
         }
     }
+
 
     private HBox createMessageBox(Messagerie message) {
         // Create an HBox for each message
@@ -104,7 +137,7 @@ public class AjouterAfficherMessageController implements Initializable{
         contentLabel.setStyle("-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 13; -fx-padding: 0 0 15 0;");
 
         contentLabel.setWrapText(true); // Enable text wrapping
-        contentLabel.setMaxWidth(400.0); // Set a max width to trigger wrapping
+        contentLabel.setMaxWidth(550); // Set a max width to trigger wrapping
 
         // Bind the prefWidth of the AnchorPane to the width of the Label
         messagePane.prefWidthProperty().bind(contentLabel.widthProperty().add(34.0)); // Adjusted for padding
@@ -156,7 +189,8 @@ public class AjouterAfficherMessageController implements Initializable{
                 if (buttonType == confirmButton) {
                     // User clicked "Yes," so proceed with deletion
                     serviceMessagerie.supprimer(message.getId_message());
-                    navigateToAfficherReclamationAction(event);
+                    updateChatMessages();
+                    //navigateToAfficherReclamationAction(event);
                 } else {
                     // User clicked "No" or closed the dialog, do nothing
                 }
@@ -166,7 +200,8 @@ public class AjouterAfficherMessageController implements Initializable{
         // <Button layoutX="519.0" layoutY="636.0" mnemonicParsing="false"prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
         if (message.getSender_id().getId_utilisateur()!=amen.getId_utilisateur()) {
             //  if (message.getSender_id().getId_utilisateur() == 1) {
-            profileImage = new ImageView(new Image("/images/manh.png"));
+            //System.out.println(receiverProfileImage);
+            profileImage = new ImageView(new Image("/images/"+userPhoto));
             profileImage.setFitWidth(40.0);
             profileImage.setFitHeight(40.0);
            // messageHbox.getChildren().addAll(messagePane, dateLabel);
@@ -197,7 +232,7 @@ public class AjouterAfficherMessageController implements Initializable{
 
     public void navigateToAfficherReclamationAction(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterAfficherMessage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamation.fxml"));
             TFmessage.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -221,9 +256,10 @@ public class AjouterAfficherMessageController implements Initializable{
         } else {
             try {
                 // Proceed to send the message if it's not empty
-                serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), amen, hachem));
+                serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), amen, userReciver));
                 TFmessage.setText("");
-                navigateToAfficherReclamationAction(event);
+                updateChatMessages();
+                //navigateToAfficherReclamationAction(event);
             } catch (SQLException e) {
                 // Show an alert for SQL exception
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -257,10 +293,11 @@ public class AjouterAfficherMessageController implements Initializable{
             message.setContenu(editTextArea.getText());
             //message.setDate(new Date());
             serviceMessagerie.modifier(message);
+            updateChatMessages();
             // Close the pop-up window
             editStage.close();
             // Update the chat messages
-            updateChatMessages();
+            //updateChatMessages();
         });
 
         // Create a VBox to hold the TextArea and the Save button

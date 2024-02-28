@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="714.0" prefWidth="1408.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterAfficherMessageController">
+<AnchorPane prefHeight="714.0" prefWidth="1408.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterAfficherMessageController">
    <children>
-      <AnchorPane layoutX="987.0" layoutY="22.0" prefHeight="670.0" prefWidth="363.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
+      <AnchorPane layoutX="987.0" layoutY="15.0" prefHeight="675.0" prefWidth="363.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
          <children>
             <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="295.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -129,11 +123,11 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="254.0" layoutY="25.0" prefHeight="670.0" prefWidth="721.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
+      <AnchorPane layoutX="84.0" layoutY="15.0" prefHeight="675.0" prefWidth="892.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
          <children>
-            <ScrollPane fx:id="chatScrollPane" layoutX="13.0" layoutY="109.0" prefHeight="486.0" prefWidth="695.0" style="-fx-background-color: #ffffff;">
+            <ScrollPane fx:id="chatScrollPane" layoutX="13.0" layoutY="109.0" prefHeight="486.0" prefWidth="860.0" style="-fx-background-color: #ffffff;">
                <content>
-                  <VBox fx:id="chatVbox" prefHeight="484.0" prefWidth="692.0" style="-fx-background-color: #ffffff;">
+                  <VBox fx:id="chatVbox" prefHeight="484.0" prefWidth="855.0" style="-fx-background-color: #ffffff;">
                      <children>
                         <HBox fx:id="chatHbox" prefHeight="100.0" prefWidth="666.0" style="-fx-background-color: #ffffff; -fx-padding: 20;">
                            <children>
@@ -145,7 +139,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </ImageView>
-                              <AnchorPane fx:id="AnchoPaneMessage" prefHeight="100.0" prefWidth="410.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 0 30 30 30;">
+                              <AnchorPane fx:id="AnchoPaneMessage" prefHeight="55.0" prefWidth="747.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 0 30 30 30;">
                                  <children>
                                     <Label fx:id="contenuReciver" layoutX="17.0" layoutY="20.0" prefHeight="21.0" prefWidth="379.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 10;" />
                                  </children>
@@ -159,8 +153,8 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <TextField fx:id="TFmessage" layoutX="13.0" layoutY="618.0" prefHeight="35.0" prefWidth="612.0" promptText="Write your message her ..." stylesheets="@css/styles.css" />
-            <Button layoutX="630.0" layoutY="618.0" mnemonicParsing="false" onAction="#ajouterMessageAction" prefHeight="35.0" prefWidth="78.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Send">
+            <TextField fx:id="TFmessage" layoutX="13.0" layoutY="618.0" prefHeight="35.0" prefWidth="778.0" promptText="Write your message her ..." stylesheets="@css/styles.css" />
+            <Button layoutX="795.0" layoutY="618.0" mnemonicParsing="false" onAction="#ajouterMessageAction" prefHeight="35.0" prefWidth="78.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Send">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -172,13 +166,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="receiverNameLabel" layoutX="259.0" layoutY="55.0" prefHeight="27.0" prefWidth="162.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 18;" text="Hachem Dhawai" />
-            <ImageView fx:id="receiverProfileImage" fitHeight="45.0" fitWidth="47.0" layoutX="307.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="receiverNameLabel" layoutX="405.0" layoutY="31.0" prefHeight="27.0" prefWidth="162.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 18;" text="Hachem Dhawai22" />
+            <ImageView fx:id="receiverProfileImage" fitHeight="45.0" fitWidth="47.0" layoutX="332.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/folders.png" />
                </image>
             </ImageView>
-            <Button layoutX="580.0" layoutY="21.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
+            <Button layoutX="742.0" layoutY="22.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -190,7 +184,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="638.0" layoutY="17.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
+            <Button layoutX="800.0" layoutY="18.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -206,95 +200,97 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </Button>
+            <AnchorPane layoutX="389.0" layoutY="43.0" prefHeight="9.0" prefWidth="8.0" style="-fx-background-color: #008000; -fx-background-radius: 30;" />
+            <Label fx:id="messageError" layoutX="14.0" layoutY="595.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty message before sending !!" />
+            <Button layoutX="26.0" layoutY="26.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="42.0" prefWidth="50.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/back.png" />
+                        <Image url="@images/left-arrow.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <AnchorPane layoutX="242.0" layoutY="64.0" prefHeight="9.0" prefWidth="8.0" style="-fx-background-color: #008000; -fx-background-radius: 30;" />
-            <Label fx:id="messageError" layoutX="14.0" layoutY="595.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty message before sending !!" />
+            <Label fx:id="emptyMessage" layoutX="405.0" layoutY="60.0" style="-fx-text-fill: #000000; -fx-font-weight: bold;" text="Say hi to" />
          </children>
       </AnchorPane>
-      <Label fx:id="receiverNameLabel3" layoutX="93.0" layoutY="59.0" prefHeight="36.0" prefWidth="94.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 20;" text="InnoHire" />
-      <Button layoutX="35.0" layoutY="172.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Post">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/quiz.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="36.0" layoutY="109.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="User">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/team%20(1).png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="35.0" layoutY="288.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Claim">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/cv.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="36.0" layoutY="230.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Quiz">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="34.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/blog.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="35.0" layoutY="351.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Etablishment">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="41.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/office-building%20(1).png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="35.0" layoutY="646.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="LogOut">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+      <AnchorPane fx:id="AnchoPaneMessage1111" layoutY="15.0" prefHeight="675.0" prefWidth="72.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="15.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/door.png" />
                </image>
             </ImageView>
-         </graphic>
-      </Button>
-      <ImageView fx:id="receiverProfileImage1" fitHeight="52.0" fitWidth="51.0" layoutX="104.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/inner.png" />
-         </image>
-      </ImageView>
+            <Button layoutX="6.0" layoutY="132.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/430069435_692102346331227_3982311539593712258_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="50.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/426833044_769099461944432_7714758008551504351_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="215.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/426742630_1574714176620549_3829640098573710779_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="298.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #9c95a7; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/426360086_334643536230167_8994031759795792389_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="383.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/429765882_1468902934022828_97748761762970682_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="receiverProfileImage1" fitHeight="27.0" fitWidth="48.0" layoutX="22.0" layoutY="8.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/inner.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

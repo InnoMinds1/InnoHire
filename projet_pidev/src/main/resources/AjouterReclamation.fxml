@@ -11,16 +11,16 @@
 
 <AnchorPane prefHeight="699.0" prefWidth="1388.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterReclamationController">
    <children>
-      <AnchorPane layoutX="85.0" layoutY="15.0" prefHeight="672.0" prefWidth="889.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
+      <AnchorPane layoutX="84.0" layoutY="15.0" prefHeight="672.0" prefWidth="890.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
             <TextField fx:id="TFType" layoutX="32.0" layoutY="147.0" prefHeight="32.0" prefWidth="270.0" promptText="Type" stylesheets="@css/styles.css" />
-            <TextArea fx:id="TADescription" layoutX="31.0" layoutY="236.0" prefHeight="368.0" prefWidth="804.0" promptText="Description" stylesheets="@css/styles.css" />
+            <TextArea fx:id="TADescription" layoutX="31.0" layoutY="236.0" prefHeight="368.0" prefWidth="836.0" promptText="Description" stylesheets="@css/styles.css" />
             <TextField fx:id="TFTitre" layoutX="32.0" layoutY="77.0" prefHeight="32.0" prefWidth="270.0" promptText="Title" stylesheets="@css/styles.css" />
             <Label layoutX="31.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Add Claim" />
             <Label layoutX="33.0" layoutY="50.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Titre" />
             <Label layoutX="33.0" layoutY="118.0" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Type" />
             <Label layoutX="33.0" layoutY="198.0" prefHeight="36.0" prefWidth="171.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
-            <Button layoutX="763.0" layoutY="619.0" mnemonicParsing="false" onAction="#ajouterReclamationAction" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #008000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Add">
+            <Button layoutX="795.0" layoutY="620.0" mnemonicParsing="false" onAction="#ajouterReclamationAction" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Add">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="20.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -32,7 +32,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="651.0" layoutY="619.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="27.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
+            <Button layoutX="696.0" layoutY="620.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -120,7 +120,7 @@
                </children>
             </AnchorPane>
             <Label layoutX="283.0" layoutY="266.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See All" />
-            <Label layoutX="101.0" layoutY="650.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
+            <Label layoutX="101.0" layoutY="641.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
             <AnchorPane fx:id="AnchoPaneMessage13" layoutX="24.0" layoutY="74.0" prefHeight="169.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                <children>
                   <Label layoutX="275.0" layoutY="14.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="New" />
@@ -164,45 +164,76 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AnchoPaneMessage1111" layoutY="15.0" prefHeight="672.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+      <AnchorPane fx:id="AnchoPaneMessage1111" layoutY="14.0" prefHeight="672.0" prefWidth="72.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
          <children>
-            <ImageView fx:id="receiverProfileImage1" fitHeight="52.0" fitWidth="51.0" layoutX="3.0" layoutY="18.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/inner.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="8.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/team%20(1).png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="6.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/quiz.png" />
-               </image>
-            </ImageView>
-            <AnchorPane fx:id="AnchoPaneMessage121" layoutX="3.0" layoutY="263.0" prefHeight="59.0" prefWidth="48.0" style="-fx-background-color: #5955b3; -fx-background-radius: 10;">
-               <children>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="6.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/blog.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="9.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/cv.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="7.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/office-building%20(1).png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="15.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/door.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="6.0" layoutY="132.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/430069435_692102346331227_3982311539593712258_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="50.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/426833044_769099461944432_7714758008551504351_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="215.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/426742630_1574714176620549_3829640098573710779_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="298.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/426614547_1950751518660256_7379583078132777504_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="6.0" layoutY="383.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/429765882_1468902934022828_97748761762970682_n.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="receiverProfileImage1" fitHeight="27.0" fitWidth="48.0" layoutX="22.0" layoutY="8.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/inner.png" />
                </image>
             </ImageView>
          </children>

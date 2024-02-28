@@ -113,12 +113,14 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
         }
         return null;
     }
-    public Set<Messagerie> getAllMessagesByReciverAndSender(int userId) {
+    public Set<Messagerie> getAllMessagesByReciverAndSender(int senderId, int receiverId) {
         Set<Messagerie> messages = new HashSet<>();
-        String req = "SELECT * FROM `messagerie` WHERE sender_id = ? OR reciver_id = ? ORDER BY date";
+        String req = "SELECT * FROM `messagerie` WHERE (sender_id = ? AND reciver_id = ?) OR (sender_id = ? AND reciver_id = ?) ORDER BY date";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setInt(1, userId);
-            ps.setInt(2, userId);
+            ps.setInt(1, senderId);
+            ps.setInt(2, receiverId);
+            ps.setInt(3, receiverId);
+            ps.setInt(4, senderId);
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
