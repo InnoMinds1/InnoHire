@@ -219,7 +219,7 @@ private AnchorPane grandAnchor;
 
     public void ajouterEtablissement(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissement.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ModifierEtablissement.fxml"));
             grid.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

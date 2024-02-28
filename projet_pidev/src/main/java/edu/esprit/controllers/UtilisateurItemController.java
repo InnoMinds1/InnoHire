@@ -42,9 +42,13 @@ public class UtilisateurItemController {
     private ServiceUtilisateur su;
 
     private AjouterEtablissement ajouterEtablissementController;
+    private ModifierEtablissement modifierEtablissementController;
 
     public void setAjouterEtablissementController(AjouterEtablissement ajouterEtablissementController) {
         this.ajouterEtablissementController = ajouterEtablissementController;
+    }
+    public void setModifierEtablissement(ModifierEtablissement modifierEtablissementController) {
+        this.modifierEtablissementController = modifierEtablissementController;
     }
 
     public void setData(Utilisateur utilisateur) {
@@ -57,23 +61,13 @@ public class UtilisateurItemController {
     }
 
 
-    public void actualiserVueQuestions() {
 
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissement.fxml"));
-            LabelPrenom.getScene().setRoot(root);
-        } catch (IOException e) {
-
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setContentText("Une erreur s'est produite lors de la redirection.");
-            errorAlert.setTitle("Erreur de redirection");
-            errorAlert.show();
-        }
-    }
 
 
     public void affecterUtilisateurOnClick(ActionEvent actionEvent) {
         // You can now access cin_utilisateurETF and update it in AjouterEtablissement
         ajouterEtablissementController.updateCinTextField(labelCin.getText());
+
     }
+
 }

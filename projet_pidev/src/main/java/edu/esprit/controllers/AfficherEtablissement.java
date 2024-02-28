@@ -118,7 +118,7 @@ public class AfficherEtablissement implements Initializable {
         }
         else {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEtablissement.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
                 Parent root = loader.load();
                 ModifierEtablissement controller = loader.getController();
                 controller.initData(selectedEtablissement); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification

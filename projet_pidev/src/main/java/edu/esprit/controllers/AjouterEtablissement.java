@@ -63,8 +63,7 @@ public class AjouterEtablissement implements Initializable {
     @FXML
     private ImageView imageViewETF;
 
-    @FXML
-    private ListView<Utilisateur> ListViewUser;
+
 
 
 
@@ -363,33 +362,12 @@ public class AjouterEtablissement implements Initializable {
             System.out.println("Operation canceled.");
         }
     }
-    private boolean checkImageExistence(String imageName) {
-        String currentDir = System.getProperty("user.dir");
-        String imagePath = currentDir + "/src/main/resources/img/" + imageName;
 
-        File imageFile = new File(imagePath);
-        return imageFile.exists();
-    }
     @FXML
     void updateCinTextField(String cin) {
         cin_utilisateurETF.setText(cin);
     }
 
-    private boolean isValidType(String type) {
-        // Liste des types valides
-        String[] validTypes = {"ecole", "college", "lycee", "faculte"};
 
-        // Convertir le type en minuscules pour une comparaison insensible à la casse
-        String lowerCaseType = type.toLowerCase();
-
-        // Vérifier si le type est dans la liste des types valides
-        for (String validType : validTypes) {
-            if (validType.equals(lowerCaseType)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
 }

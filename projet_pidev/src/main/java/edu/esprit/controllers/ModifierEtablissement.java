@@ -10,9 +10,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -20,12 +26,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Set;
 
 
-public class ModifierEtablissement implements Initializable {
-
+public class ModifierEtablissement extends AjouterEtablissement implements Initializable {
+//Initializable:setAjouterEtablissementController(this);Set the reference
 
     private int id ;
 
@@ -53,7 +60,21 @@ public class ModifierEtablissement implements Initializable {
     @FXML
     private TextField  imageETF;
     @FXML
-    private ListView<Utilisateur> ListViewUser;
+    private ImageView imageViewETF;
+
+
+    @FXML
+    private GridPane gridA;
+    private ServiceUtilisateur serviceU = new ServiceUtilisateur();
+    Set<Utilisateur> setU;
+
+    {
+        try {
+            setU = serviceU.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 //----------------------wallet------------------------------------
 
@@ -102,6 +123,7 @@ public class ModifierEtablissement implements Initializable {
             NomETF.setText(etablissement.getNom());
             TypeETF.setText(etablissement.getTypeEtablissement());
 
+
             String cheminImage = etablissement.getImage();
             int indexDernierSlash = cheminImage.lastIndexOf('/');
             String nomPhoto = cheminImage.substring(indexDernierSlash + 1);
@@ -134,18 +156,47 @@ public class ModifierEtablissement implements Initializable {
                 }
             }
 
+
+
+
+
+            // Vérifier si le type est valide
+            String[] validTypes = {"ecole", "college", "lycee", "faculte"};
+            String lowerCaseType = TypeETF.getText().trim().toLowerCase(); // Convertir en minuscules et supprimer les espaces inutiles
+
+            if (!Arrays.asList(validTypes).contains(lowerCaseType)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Erreur : Le type d'établissement doit être 'ecole', 'college', 'lycee' ou 'faculte' !");
+                alert.showAndWait();
+                return;
+            }
+
+
+            String currentDir = System.getProperty("user.dir");
+            String imagePath = currentDir + "/src/main/resources/img/" + imageETF.getText();
+            File imageFile = new File(imagePath);
+            if (!imageFile.exists()) {
+                // Afficher une alerte si l'image n'existe pas
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Erreur : L'image spécifiée n'existe pas !");
+                alert.showAndWait();
+                return;
+            }
+
+
+
             if (cin_utilisateurETF.getText().isEmpty()) {
-                // Si le TextField est vide, vérifiez si un utilisateur est sélectionné dans la ListView
-                Utilisateur selectedUser = ListViewUser.getSelectionModel().getSelectedItem();
-                if (selectedUser == null) {
-                    // Si rien n'est saisi et rien n'est sélectionné, afficher une alerte
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erreur");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Veuillez saisir un CIN ou sélectionner un utilisateur !");
-                    alert.showAndWait();
-                    return;
-                }
+                // If the TextField is empty, show an error alert
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Veuillez saisir un CIN ou choisir de la Liste !");
+                alert.showAndWait();
+                return;
             }
 
 
@@ -180,21 +231,7 @@ public class ModifierEtablissement implements Initializable {
 
 
 
-   /* public void AfficherEtablissement(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
-            Parent root = loader.load();
 
-            Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            // Vous pouvez fermer la fenêtre actuelle si nécessaire
-            // ((Node)(event.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 
       public void AfficherEtablissement(ActionEvent actionEvent) {
           try {
@@ -224,19 +261,49 @@ public class ModifierEtablissement implements Initializable {
             throw new RuntimeException(e);
         }
 
-        ListViewUser.setItems(FXCollections.observableArrayList(users));
 
-        // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
-        ListViewUser.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                cin_utilisateurETF.setText(String.valueOf(newValue.getCin()));
+
+
+        int column = 0;
+        int row = 1;
+        try {
+            for (Utilisateur utilisateur : setU) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/UtilisateurItem.fxml"));
+                HBox hbox = fxmlLoader.load();
+
+                UtilisateurItemController itemController = fxmlLoader.getController();
+                itemController.setAjouterEtablissementController(this);// Set the reference
+                itemController.setData(utilisateur);
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                gridA.add(hbox, column++, row);
+                gridA.setMinWidth(Region.USE_COMPUTED_SIZE);
+                gridA.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridA.setMaxWidth(Region.USE_PREF_SIZE);
+                gridA.setMinHeight(Region.USE_COMPUTED_SIZE);
+                gridA.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridA.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(hbox, new Insets(10));
             }
-        });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
     }
 
-
+    @FXML
     public void importImage(ActionEvent actionEvent) {
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir une image");
 
@@ -259,6 +326,11 @@ public class ModifierEtablissement implements Initializable {
             // Set the image file name to the TextField
             imageETF.setText(selectedFile.getName());
 
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
+            imageViewETF.setImage(image);
+
+
             // Do something with the imagePath, for example, display the image
             // imageView.setImage(new Image(imagePath));
             System.out.println("Selected Image: " + imagePath);
@@ -266,5 +338,9 @@ public class ModifierEtablissement implements Initializable {
             // The user canceled the operation
             System.out.println("Operation canceled.");
         }
+    }
+    @FXML
+    void updateCinTextField(String cin) {
+        cin_utilisateurETF.setText(cin);
     }
 }
