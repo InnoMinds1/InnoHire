@@ -198,6 +198,19 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             return false;
         }
     }
+    public boolean existeParNom(String nom) throws SQLException {
+        String req = "SELECT * FROM etablissement WHERE nom = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, nom);
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // Retourne true si un établissement avec le code existe déjà
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 
     public Etablissement getOneByCode(int code) {
         String req = "SELECT * FROM etablissement WHERE code_etablissement = ?";
@@ -251,6 +264,8 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             return -1; // Retourne -1 en cas d'erreur
         }
     }
+
+
 
 
 

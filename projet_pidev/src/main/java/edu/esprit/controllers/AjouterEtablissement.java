@@ -1,6 +1,7 @@
 package edu.esprit.controllers;
 
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.entities.Wallet;
@@ -16,11 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -73,6 +72,15 @@ public class AjouterEtablissement implements Initializable {
     @FXML
     private ScrollPane scrollA;
 
+    @FXML
+    AnchorPane selecUserAnchor;
+    @FXML
+    Label listeUsersLabels;
+    @FXML
+    private Label labelRegle;
+    @FXML
+    private CheckBox checkBoxRegle;
+
 
     private ServiceUtilisateur serviceU = new ServiceUtilisateur();
     Set<Utilisateur> setU;
@@ -116,6 +124,15 @@ public class AjouterEtablissement implements Initializable {
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
             alert.setContentText("Tous les champs sont obligatoires !");
+            alert.showAndWait();
+            return;
+        }
+
+        if (serviceEtablissement.existeParNom(Nom)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur : Un établissement avec le même nom existe déjà !");
             alert.showAndWait();
             return;
         }
@@ -179,6 +196,8 @@ public class AjouterEtablissement implements Initializable {
 
 
 
+
+
         String cin_utilisateur = cin_utilisateurETF.getText();
         int cin_utilisateurE;
 
@@ -205,8 +224,16 @@ public class AjouterEtablissement implements Initializable {
             }
         }
 
-
-
+if (CurrentUser.getRole()!=0) {
+    if (!checkBoxRegle.isSelected()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez accepter les conditions d'utilisation.");
+        alert.showAndWait();
+        return;
+    }
+}
 
 
 
@@ -275,6 +302,25 @@ public class AjouterEtablissement implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(CurrentUser.getRole() == 0) {
+            labelRegle.setVisible(false);
+            labelRegle.setManaged(false);
+            checkBoxRegle.setVisible(false);
+            checkBoxRegle.setManaged(false);
+        }
+        else  {
+            // Hide and reclaim space
+            selecUserAnchor.setVisible(false);
+            selecUserAnchor.setManaged(false);
+            listeUsersLabels.setVisible(false);
+            listeUsersLabels.setManaged(false);
+            cin_utilisateurETF.setText(String.valueOf(CurrentUser.getCin()));
+            cin_utilisateurETF.setEditable(false);
+        }
+
+
+
+
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
 
         Set<Utilisateur> users = null;

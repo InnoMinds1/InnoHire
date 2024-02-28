@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -16,14 +17,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="810.0" prefWidth="1353.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterEtablissement">
+<AnchorPane fx:id="selecUserAnchor" prefHeight="810.0" prefWidth="1353.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterEtablissement">
    <children>
-      <Label layoutX="552.0" layoutY="96.0" text="Ajouter Etablissement" textAlignment="CENTER" textFill="#000000a9">
+      <Label layoutX="414.0" layoutY="97.0" text="Ajouter Etablissement" textAlignment="CENTER" textFill="#000000a9">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="NomETF" layoutX="324.0" layoutY="171.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom Etablissement" styleClass="text-field">
+      <TextField fx:id="NomETF" layoutX="250.0" layoutY="173.0" prefHeight="46.0" prefWidth="250.0" promptText="Nom Etablissement" styleClass="text-field">
          <stylesheets>
             <URL value="@service2.css" />
             <URL value="@service2.css" />
@@ -32,56 +33,56 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="cin_utilisateurETF" layoutX="679.0" layoutY="508.0" prefHeight="46.0" prefWidth="250.0" promptText="cin_user" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="cin_utilisateurETF" layoutX="638.0" layoutY="524.0" prefHeight="46.0" prefWidth="250.0" promptText="cin_user" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="TypeETF" layoutX="322.0" layoutY="408.0" prefHeight="46.0" prefWidth="250.0" promptText="type" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="TypeETF" layoutX="259.0" layoutY="399.0" prefHeight="46.0" prefWidth="250.0" promptText="type" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="CodeETF" layoutX="322.0" layoutY="332.0" prefHeight="46.0" prefWidth="250.0" promptText="code" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="CodeETF" layoutX="259.0" layoutY="331.0" prefHeight="46.0" prefWidth="250.0" promptText="code" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="LieuETF" layoutX="322.0" layoutY="252.0" prefHeight="46.0" prefWidth="250.0" promptText="lieu" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="LieuETF" layoutX="250.0" layoutY="251.0" prefHeight="46.0" prefWidth="250.0" promptText="lieu" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="881.0" layoutY="580.0" mnemonicParsing="false" onAction="#ajouterEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+      <Button layoutX="668.0" layoutY="578.0" mnemonicParsing="false" onAction="#ajouterEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="881.0" layoutY="636.0" mnemonicParsing="false" onAction="#navigatetoAfficherEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Afficher" textFill="WHITE">
+      <Button layoutX="668.0" layoutY="644.0" mnemonicParsing="false" onAction="#navigatetoAfficherEtablissementAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Afficher" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Line endX="5.20001220703125" endY="-9.599998474121094" layoutX="580.0" layoutY="167.0" startX="5.20001220703125" startY="553.0" />
-      <Label layoutX="623.0" layoutY="171.0" prefHeight="0.0" prefWidth="178.0" text="Liste Users" textFill="#000000a9">
+      <Line endX="5.20001220703125" endY="-9.599998474121094" layoutX="522.0" layoutY="167.0" startX="5.20001220703125" startY="553.0" />
+      <Label fx:id="listeUsersLabels" layoutX="547.0" layoutY="196.0" prefHeight="0.0" prefWidth="178.0" text="Liste Users" textFill="#000000a9">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="335.0" layoutY="527.0" mnemonicParsing="false" onAction="#importImage" text="importer image" />
-      <TextField fx:id="imageETF" layoutX="322.0" layoutY="477.0" prefHeight="46.0" prefWidth="250.0" promptText="image" styleClass="text-field" stylesheets="@service2.css">
+      <Button layoutX="276.0" layoutY="518.0" mnemonicParsing="false" onAction="#importImage" text="importer image" />
+      <TextField fx:id="imageETF" layoutX="259.0" layoutY="467.0" prefHeight="46.0" prefWidth="250.0" promptText="image" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Label layoutX="282.0" layoutY="186.0" text="Nom" />
-      <Label layoutX="282.0" layoutY="267.0" text="Lieu" />
-      <Label layoutX="206.0" layoutY="347.0" text="Code Etablissement" />
-      <Label layoutX="284.0" layoutY="423.0" text="Type" />
-      <Label layoutX="280.0" layoutY="491.0" text="Image" />
-      <Label layoutX="621.0" layoutY="522.0" text="Cin User" />
-      <ImageView fx:id="imageViewETF" fitHeight="150.0" fitWidth="200.0" layoutX="347.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane layoutX="603.0" layoutY="233.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="737.0" style="-fx-background-color: #8B5F7A;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+      <Label layoutX="213.0" layoutY="185.0" text="Nom" />
+      <Label layoutX="215.0" layoutY="266.0" text="Lieu" />
+      <Label layoutX="139.0" layoutY="337.0" text="Code Etablissement" />
+      <Label layoutX="213.0" layoutY="422.0" text="Type" />
+      <Label layoutX="209.0" layoutY="482.0" text="Image" />
+      <Label layoutX="588.0" layoutY="534.0" text="Cin User" />
+      <ImageView fx:id="imageViewETF" fitHeight="150.0" fitWidth="200.0" layoutX="259.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane fx:id="selecUserAnchor" layoutX="534.0" layoutY="232.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="691.0" style="-fx-background-color: #8B5F7A;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
          <children>
             <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
@@ -89,7 +90,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="642.0" prefWidth="804.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <ScrollPane fx:id="scrollA" fitToWidth="true" prefHeight="195.0" prefWidth="735.0" styleClass="transparent" HBox.hgrow="ALWAYS">
+                              <ScrollPane fx:id="scrollA" fitToWidth="true" prefHeight="195.0" prefWidth="689.0" styleClass="transparent" HBox.hgrow="ALWAYS">
                                  <content>
                                     <GridPane fx:id="gridA" prefHeight="0.0" prefWidth="0.0" styleClass="grid-pane">
                                        <rowConstraints>
@@ -119,6 +120,8 @@
             </BorderPane>
          </children>
       </AnchorPane>
+      <CheckBox fx:id="checkBoxRegle" layoutX="635.0" layoutY="491.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="119.0" text="j'accepte tout les " />
+      <Label fx:id="labelRegle" layoutX="749.0" layoutY="491.0" text="Regles et Conditions d'utilisation" textFill="#37b8dc" underline="true" />
 
 
 

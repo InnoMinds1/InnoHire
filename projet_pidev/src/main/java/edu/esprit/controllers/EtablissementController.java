@@ -16,16 +16,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import edu.esprit.tests.MainFX;
 import edu.esprit.services.MyListener;
-import edu.esprit.entities.Etablissement;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
 
-public class MarketController implements Initializable {
+public class EtablissementController implements Initializable {
     @FXML
     private VBox chosenetablissementCard;
 
@@ -172,9 +170,11 @@ private AnchorPane grandAnchor;
                     // Display a message when there are no elements in the list
                     label_no_data.setText("Vous n'avez pas encore d'établissement.");
                     Hbox_no_data.setVisible(true);  // Show the HBox
+
                 }
                 populateGrid();
             }
+
         };
     }
 
@@ -194,8 +194,8 @@ private AnchorPane grandAnchor;
                 throw new RuntimeException(e);
             }
 
-            ItemController itemController = fxmlLoader.getController();
-            itemController.setData(etablissements.get(i), myListener);
+            EtablissementItemController etablissementItemController = fxmlLoader.getController();
+            etablissementItemController.setData(etablissements.get(i), myListener);
 
             if (column == 3) {
                 column = 0;

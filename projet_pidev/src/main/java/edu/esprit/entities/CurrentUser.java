@@ -2,12 +2,12 @@ package edu.esprit.entities;
 
 public class CurrentUser {
     private static int id_utilisateur = 2215 ;
-    private static  int cin;
+    private static  int cin=2212;
     private static String nom="sayari";
     private static String prenom;
     private static String adresse;
     private static String mdp;
-    private static int role = 0;
+    private static int role = 1;
 
     public static int getRole() {
         return role;

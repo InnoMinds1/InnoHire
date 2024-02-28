@@ -1,9 +1,7 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Etablissement;
-import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
-import edu.esprit.services.ServiceWallet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,15 +14,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import edu.esprit.tests.MainFX;
 import edu.esprit.services.MyListener;
-import edu.esprit.entities.Fruit;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class ItemController {
+public class EtablissementItemController {
     @FXML
     private Label nameLabel;
 

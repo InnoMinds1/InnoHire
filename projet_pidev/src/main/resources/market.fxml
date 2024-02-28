@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="grandAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1451.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.MarketController">
+<AnchorPane fx:id="grandAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1451.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.EtablissementController">
    <children>
       <AnchorPane fx:id="NavBar" prefHeight="830.0" prefWidth="222.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
          <children>
@@ -97,12 +97,12 @@
                            <children>
                               <HBox prefHeight="60.0" prefWidth="335.0">
                                  <children>
-                                    <Label fx:id="etablissementNameLable" prefHeight="52.0" prefWidth="202.0" text="Peach" textFill="WHITE">
+                                    <Label fx:id="etablissementNameLable" prefHeight="52.0" prefWidth="202.0" text="Nom" textFill="WHITE">
                                        <font>
                                           <Font name="Cambria" size="36.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="etablissementCodeLabel" prefHeight="55.0" prefWidth="120.0" text="\$2.99" textFill="WHITE">
+                                    <Label fx:id="etablissementCodeLabel" prefHeight="55.0" prefWidth="120.0" text="Code" textFill="WHITE">
                                        <font>
                                           <Font name="Cambria" size="36.0" />
                                        </font>
@@ -174,7 +174,7 @@
                                           <Font name="Cambria" size="24.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox" stylesheets="@style.css" />
+                                    <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="Not Added" styleClass="comboBox" stylesheets="@style.css" />
                                  </children>
                               </HBox>
                               <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Acheter Quizz" textFill="#828282">
@@ -208,13 +208,13 @@
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nameUserLabel" prefHeight="30.0" prefWidth="139.0" text="English" textFill="#878787" underline="true">
+                              <Label fx:id="nameUserLabel" prefHeight="30.0" prefWidth="139.0" text="User" textFill="#878787" underline="true">
                                  <font>
                                     <Font name="Cambria" size="18.0" />
                                  </font>
                               </Label>
                               <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                              <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
+                              <Label prefHeight="62.0" prefWidth="100.0" text="My Wallet" textFill="#878787">
                                  <font>
                                     <Font name="Cambria" size="18.0" />
                                  </font>
@@ -245,7 +245,7 @@
                               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
                               <Pane prefHeight="84.0" prefWidth="96.0">
                                  <children>
-                                    <Button layoutX="-47.0" layoutY="39.0" mnemonicParsing="false" onAction="#ajouterEtablissement" text="Ajouter Etablissement" />
+                                    <Button layoutX="-47.0" layoutY="39.0" mnemonicParsing="false" onAction="#ajouterEtablissement" styleClass="search-button" stylesheets="@style.css" text="Ajouter Etablissement" textFill="#faf9f9" />
                                  </children>
                               </Pane>
                            </children>

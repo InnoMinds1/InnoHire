@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;
 
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -35,8 +37,11 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
 //Initializable:setAjouterEtablissementController(this);Set the reference
 
     private int id ;
+    private String nomInit ;
 
     private int codeInit ;
+
+
 
 
 
@@ -65,8 +70,19 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
 
     @FXML
     private GridPane gridA;
+
+    @FXML
+    AnchorPane selecUserAnchor;
+    @FXML
+    Label listeUsersLabels;
+    @FXML
+    private Label labelRegle;
+    @FXML
+    private CheckBox checkBoxRegle;
     private ServiceUtilisateur serviceU = new ServiceUtilisateur();
+
     Set<Utilisateur> setU;
+
 
     {
         try {
@@ -93,6 +109,15 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
     public void setCodeInit(int codeInit) {
         this.codeInit = codeInit;
     }
+    public String getNomInit() {
+        return nomInit;
+    }
+
+    public void setNomInit(String nomInit) {
+        this.nomInit = nomInit;
+    }
+
+
 
 
 
@@ -118,6 +143,9 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
         if (etablissement != null) {
             setId(etablissement.getIdEtablissement());
             setCodeInit(etablissement.getCodeEtablissement());
+            setNomInit(etablissement.getNom());
+
+
             CodeETF.setText(String.valueOf(etablissement.getCodeEtablissement()));
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
@@ -142,6 +170,18 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
 
         if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF)&& controlSaisie(imageETF))
         {
+            if(!NomETF.getText().equals(getNomInit()))
+            {
+            if (serviceEtablissement.existeParNom(NomETF.getText())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Erreur : Un établissement avec le même nom existe déjà !");
+                alert.showAndWait();
+                return;
+            }
+            }
+
             int Code = Integer.parseInt(CodeETF.getText());
             if(Code != getCodeInit() ) {
                 if (serviceEtablissement.existe(Code)) {
@@ -203,6 +243,16 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
 
             int cin_utilisateur = Integer.parseInt(cin_utilisateurETF.getText());
 
+            if (CurrentUser.getRole()!=0) {
+                if (!checkBoxRegle.isSelected()) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Veuillez accepter les conditions d'utilisation.");
+                    alert.showAndWait();
+                    return;
+                }
+            }
 
             Etablissement newEtablissement = new Etablissement();
 
@@ -252,6 +302,22 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        if(CurrentUser.getRole() == 0) {
+            labelRegle.setVisible(false);
+            labelRegle.setManaged(false);
+            checkBoxRegle.setVisible(false);
+            checkBoxRegle.setManaged(false);
+        }
+        else  {
+            // Hide and reclaim space
+            selecUserAnchor.setVisible(false);
+            selecUserAnchor.setManaged(false);
+            listeUsersLabels.setVisible(false);
+            listeUsersLabels.setManaged(false);
+            cin_utilisateurETF.setEditable(false);
+        }
+
 
         imageViewETF.sceneProperty().addListener((observableScene, oldScene, newScene) -> {
             if (oldScene == null && newScene != null) {
