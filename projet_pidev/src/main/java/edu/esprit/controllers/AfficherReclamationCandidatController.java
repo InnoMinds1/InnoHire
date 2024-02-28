@@ -1,0 +1,53 @@
+package edu.esprit.controllers;
+
+import edu.esprit.entities.Reclamation;
+import edu.esprit.entities.Utilisateur;
+import edu.esprit.services.ServiceReclamation;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.Set;
+
+public class AfficherReclamationCandidatController implements Initializable {
+    private final ServiceReclamation serviceReclamation = new ServiceReclamation();
+
+    //connecter user eli howa current
+   private final Utilisateur candidat = new Utilisateur(9);
+
+    @FXML
+    private VBox reclamationsContainer;
+
+    // Add the container variable
+    @FXML
+    private AnchorPane container;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Retrieve data from the database
+        try {
+            Set<Reclamation> reclamations = serviceReclamation.getAllRecByUser(candidat.getId_utilisateur());
+
+            // Load and add ReclamationItemComponent for each Reclamation
+            for (Reclamation reclamation : reclamations) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReclamationItemComponentCandidat.fxml"));
+                try {
+                    reclamationsContainer.getChildren().add(loader.load());
+                    ReclamationItemComponentCandidatController controller = loader.getController();
+                    controller.setReclamationData(reclamation, container);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+

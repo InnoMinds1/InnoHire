@@ -1,11 +1,8 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.Messagerie;
-import edu.esprit.entities.Publication;
-import edu.esprit.entities.Reclamation;
-import edu.esprit.entities.Utilisateur;
+import edu.esprit.entities.*;
 import edu.esprit.services.ServiceMessagerie;
-import edu.esprit.services.ServiceReclamation;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +20,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.*;
 
 public class AjouterAfficherMessageController implements Initializable{
@@ -48,6 +43,16 @@ public class AjouterAfficherMessageController implements Initializable{
 
 
     private final ServiceMessagerie serviceMessagerie = new ServiceMessagerie();
+   /* private final ServiceUtilisateur su = new ServiceUtilisateur();
+    Utilisateur currentUser;
+
+    {
+        try {
+            currentUser = su.getOneByCin(645196);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }*/
 
     Utilisateur amen=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
     //Utilisateur userReciver=new Utilisateur(9,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
