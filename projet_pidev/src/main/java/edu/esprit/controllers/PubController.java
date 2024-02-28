@@ -5,9 +5,13 @@ import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServiceUtilisateur;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -22,6 +26,8 @@ public class PubController implements Initializable {
     @FXML
     private VBox postsContainer;
     private List<Post>  posts = new ArrayList<>() ;
+    @FXML
+    private Button Naviguerversajouter;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -96,15 +102,8 @@ public class PubController implements Initializable {
 
     private List<Post> getData() throws SQLException {
         ServicePost sp = new ServicePost();
-
-
         Set<Post> etablissements = sp.getAll();//admin
-
-
-
-
         List<Post> modifiedEtablissements = new ArrayList<>();
-
         for (Post etablissement : etablissements) {
             // Assuming setNom, setPrice, and setImage methods are available in the Etablissement class
             Post modifiedEtablissement = new Post();
@@ -115,27 +114,28 @@ public class PubController implements Initializable {
             modifiedEtablissement.setNbShares(etablissement.getNbShares());
             modifiedEtablissement.setNbComments(etablissement.getNbComments());
             modifiedEtablissement.setTotalReactions(etablissement.getTotalReactions());
-
-
-
-
-
             // If setPrice method is available, you can uncomment the following line
-
             modifiedEtablissement.setImage(etablissement.getImage());
-
-
             ServiceUtilisateur su = new ServiceUtilisateur();
           Utilisateur  user=su.getOneByID(etablissement.getUtilisateur().getId_utilisateur())     ;
-
-
-
-            modifiedEtablissement.setUtilisateur(user);
-
-            modifiedEtablissements.add(modifiedEtablissement);
+          modifiedEtablissement.setUtilisateur(user);
+          modifiedEtablissements.add(modifiedEtablissement);
         }
 
         return modifiedEtablissements;
+    }
+
+    public void Naviguerversajouter(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterPublication.fxml"));
+            postsContainer.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry jjjj");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
     }
 
 

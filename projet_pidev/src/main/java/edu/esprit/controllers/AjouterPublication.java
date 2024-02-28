@@ -53,9 +53,67 @@ public class AjouterPublication  {
     private final ServicePost sp=new ServicePost();
     private final ServiceUtilisateur  su=new ServiceUtilisateur();
 
-
-        @FXML
+    @FXML
     void ajouterPublicationAction(ActionEvent event) {
+        try {
+            LocalDate dateActuelle = LocalDate.now();
+
+            // Vérifier la conformité de la saisie pour le champ audience
+            String audienceText = TFaudience.getText().toUpperCase();
+            if (!audienceText.equals("PUBLIC") && !audienceText.equals("FRIENDS")) {
+                throw new IllegalArgumentException("Le champ audience doit être 'PUBLIC' ou 'FRIENDS'.");
+            }
+
+            // Vérifier la conformité de la saisie pour le champ caption
+            String captionText = TFcaption.getText();
+            if (captionText.length() > 20) {
+                throw new IllegalArgumentException("Le champ caption doit contenir moins de 20 lettres.");
+            }
+
+            String currentDir = System.getProperty("user.dir");
+            String imagePath = currentDir + "/src/main/resources/img/" + imageETF.getText();
+            File imageFile = new File(imagePath);
+            if (!imageFile.exists()) {
+                // Afficher une alerte si l'image n'existe pas
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Erreur : L'image spécifiée n'existe pas !");
+                alert.showAndWait();
+                return;
+            }
+String imageBDD= "/img/"+imageETF.getText();
+
+            int idUtilisateur = CurrentUser.getId_utilisateur();
+            Utilisateur utilisateur = su.getOneByID(idUtilisateur);
+            Post post = new Post(PostAudience.valueOf(audienceText), captionText, imageBDD);
+            post.setUtilisateur(utilisateur);
+            post.setTotalReactions(0);
+            post.setNbComments(0);
+            post.setNbShares(0);
+            post.setDate(String.valueOf(dateActuelle));
+
+            sp.ajouter(post);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setContentText("Publication ajoutée avec succès.");
+            alert.show();
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("SQL Exception");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        } catch (IllegalArgumentException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+
+    /*void ajouterPublicationAction(ActionEvent event) {
         try {
             LocalDate dateActuelle = LocalDate.now();
 
@@ -85,12 +143,12 @@ public class AjouterPublication  {
             alert.showAndWait();
         }
 
-    }
+    }*/
 
     public void navigatetoAfficherPublicationAction(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPublication.fxml"));
-            imageETF.getScene().setRoot(root);
+            Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
+            TFcaption.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry jjjj");
