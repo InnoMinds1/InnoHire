@@ -41,8 +41,8 @@
 
 /* Bouton Ajouter */
 .add-btn {
-    -fx-background-color: #8E44AD; /* Violet */
-    -fx-background-radius: 100;
+    -fx-background-color: #FFC0CB; /* Rose */
+    -fx-background-radius: 30;
 }
 
 /* Carte Livraison gratuite */

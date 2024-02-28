@@ -13,20 +13,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.scene.image.Image;
@@ -54,6 +65,31 @@ public class AjouterEtablissement implements Initializable {
 
     @FXML
     private ListView<Utilisateur> ListViewUser;
+
+
+
+    @FXML
+    private GridPane gridA;
+
+    @FXML
+    private ScrollPane scrollA;
+
+
+    private ServiceUtilisateur serviceU = new ServiceUtilisateur();
+    Set<Utilisateur> setU;
+
+    {
+        try {
+            setU = serviceU.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+
 
 
 
@@ -111,29 +147,57 @@ public class AjouterEtablissement implements Initializable {
 
 
 
+        // Vérifier si le type est valide
+        String[] validTypes = {"ecole", "college", "lycee", "faculte"};
+        String lowerCaseType = Type.trim().toLowerCase(); // Convertir en minuscules et supprimer les espaces inutiles
+
+        if (!Arrays.asList(validTypes).contains(lowerCaseType)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur : Le type d'établissement doit être 'ecole', 'college', 'lycee' ou 'faculte' !");
+            alert.showAndWait();
+            return;
+        }
+
+
+
+
+
+        String currentDir = System.getProperty("user.dir");
+        String imagePath = currentDir + "/src/main/resources/img/" + image;
+        File imageFile = new File(imagePath);
+        if (!imageFile.exists()) {
+            // Afficher une alerte si l'image n'existe pas
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur : L'image spécifiée n'existe pas !");
+            alert.showAndWait();
+            return;
+        }
+
+
+
 
         String cin_utilisateur = cin_utilisateurETF.getText();
         int cin_utilisateurE;
 
         if (cin_utilisateur.isEmpty()) {
-            // Si le TextField est vide, vérifiez si un utilisateur est sélectionné dans la ListView
-            Utilisateur selectedUser = ListViewUser.getSelectionModel().getSelectedItem();
-            if (selectedUser == null) {
-                // Si rien n'est saisi et rien n'est sélectionné, afficher une alerte
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText(null);
-                alert.setContentText("Veuillez saisir un CIN ou sélectionner un utilisateur !");
-                alert.showAndWait();
-                return;
-            }
-
-            // Utiliser le CIN de l'utilisateur sélectionné dans la ListView
-            cin_utilisateurE = selectedUser.getCin();
+            // If the TextField is empty, show an error alert
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez saisir un CIN ou choisir de la Liste !");
+            alert.showAndWait();
+            return;
         } else {
             try {
+                // Parse the CIN from the TextField
                 cin_utilisateurE = Integer.parseInt(cin_utilisateur);
-            } catch (NumberFormatException e) { Alert alert = new Alert(Alert.AlertType.ERROR);
+            } catch (NumberFormatException e) {
+                // If parsing fails, show an error alert
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
                 alert.setHeaderText(null);
                 alert.setContentText("Le CIN doit être un nombre valide !");
@@ -176,6 +240,8 @@ public class AjouterEtablissement implements Initializable {
             TypeETF.clear();
             imageETF.clear();
             cin_utilisateurETF.clear();
+            imageViewETF.setImage(null);
+
         }
 
         catch (Exception e) {
@@ -185,6 +251,7 @@ public class AjouterEtablissement implements Initializable {
             alert.setContentText("Erreur lors de l'ajout d'etablissement' : " + e.getMessage());
             alert.showAndWait();
         }
+        navigatetoAfficherEtablissementAction(event);
 
     }
 
@@ -221,15 +288,39 @@ public class AjouterEtablissement implements Initializable {
             throw new RuntimeException(e);
         }
 
-        ListViewUser.setItems(FXCollections.observableArrayList(users));
 
+        int column = 0;
+        int row = 1;
+        try {
+            for (Utilisateur utilisateur : setU) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/UtilisateurItem.fxml"));
+                HBox hbox = fxmlLoader.load();
 
-        // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
-        ListViewUser.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                cin_utilisateurETF.setText(String.valueOf(newValue.getCin()));
+                UtilisateurItemController itemController = fxmlLoader.getController();
+                itemController.setAjouterEtablissementController(this);// Set the reference
+                itemController.setData(utilisateur);
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                gridA.add(hbox, column++, row);
+                gridA.setMinWidth(Region.USE_COMPUTED_SIZE);
+                gridA.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridA.setMaxWidth(Region.USE_PREF_SIZE);
+                gridA.setMinHeight(Region.USE_COMPUTED_SIZE);
+                gridA.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridA.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(hbox, new Insets(10));
             }
-        });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
 
 
@@ -272,4 +363,33 @@ public class AjouterEtablissement implements Initializable {
             System.out.println("Operation canceled.");
         }
     }
+    private boolean checkImageExistence(String imageName) {
+        String currentDir = System.getProperty("user.dir");
+        String imagePath = currentDir + "/src/main/resources/img/" + imageName;
+
+        File imageFile = new File(imagePath);
+        return imageFile.exists();
+    }
+    @FXML
+    void updateCinTextField(String cin) {
+        cin_utilisateurETF.setText(cin);
+    }
+
+    private boolean isValidType(String type) {
+        // Liste des types valides
+        String[] validTypes = {"ecole", "college", "lycee", "faculte"};
+
+        // Convertir le type en minuscules pour une comparaison insensible à la casse
+        String lowerCaseType = type.toLowerCase();
+
+        // Vérifier si le type est dans la liste des types valides
+        for (String validType : validTypes) {
+            if (validType.equals(lowerCaseType)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

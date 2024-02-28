@@ -168,6 +168,11 @@ private AnchorPane grandAnchor;
             @Override
             public void onDeleteListener(Etablissement etablissement) {
                 etablissements.remove(etablissement);
+                if (etablissements.isEmpty()) {
+                    // Display a message when there are no elements in the list
+                    label_no_data.setText("Vous n'avez pas encore d'établissement.");
+                    Hbox_no_data.setVisible(true);  // Show the HBox
+                }
                 populateGrid();
             }
         };

@@ -5,6 +5,7 @@ import edu.esprit.entities.Quiz;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
+import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.services.ServiceWallet;
 
 import java.sql.SQLException;
@@ -40,8 +41,9 @@ public class Main {
         //
         //
         Utilisateur user=new Utilisateur();
+        ServiceUtilisateur su=new ServiceUtilisateur();
         user.setId_utilisateur(2215);
-
+System.out.println(su.getAll());
 
 
 
