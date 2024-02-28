@@ -16,7 +16,7 @@ import java.util.Set;
 public class quizService implements IService<Quiz> {
     Connection cnx = DataSource.getInstance().getCnx();
     @Override
-    public void ajouter(Quiz quiz) {
+    public void ajouter(Quiz quiz) throws SQLException {
 
         try {
             String query = "INSERT INTO quiz (code_quiz, nom_quiz, description, prix_quiz, image_quiz) VALUES (?, ?, ?, ?, ?)";
@@ -204,6 +204,7 @@ public class quizService implements IService<Quiz> {
 
         return -1;
     }
+
 
 
 }

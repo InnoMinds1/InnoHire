@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects ;
 public class Quiz {
     private int id_quiz ;
@@ -14,6 +15,7 @@ public class Quiz {
     private String description ;
     private int prix_quiz ;
     private String image_quiz ;
+    private List<Question> questions;
     public Quiz ()
     {
 
@@ -81,6 +83,13 @@ public class Quiz {
 
     public void setImage_quiz(String image_quiz) {
         this.image_quiz= image_quiz;
+    }
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     @Override
