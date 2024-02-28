@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox prefHeight="46.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.UtilisateurItemController">
+<HBox fx:id="hboxMere" prefHeight="46.0" prefWidth="771.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.UtilisateurItemController">
     <children>
       <Label prefHeight="18.0" prefWidth="63.0" />
         <Text fx:id="labelNom" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="214.93674278259277">
@@ -24,6 +24,6 @@
                 <Font size="11.0" />
             </font>
         </Text>
-        <Button mnemonicParsing="false" onAction="#affecterUtilisateurOnClick" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #32CD32; -fx-text-fill: white;" text="Affecter" />
+        <Button fx:id="affecteBtn" mnemonicParsing="false" onAction="#affecterUtilisateurOnClick" prefHeight="26.0" prefWidth="92.0" style="-fx-text-fill: white;" styleClass="chosen-etablissement-card" stylesheets="@style.css" text="Affecter" />
     </children>
 </HBox>

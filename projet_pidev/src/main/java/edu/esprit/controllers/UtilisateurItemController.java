@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -40,16 +41,18 @@ public class UtilisateurItemController {
     private Utilisateur utilisateur;
 
     private ServiceUtilisateur su;
-
+    @FXML
+    private HBox hboxMere; // Assurez-vous d'avoir la référence correcte à votre HBox
+    private static HBox hboxSelectionne; // Champ statique pour suivre le HBox précédemment sélectionné
+    @FXML
+    private Button affecteBtn;
     private AjouterEtablissement ajouterEtablissementController;
-    private ModifierEtablissement modifierEtablissementController;
+
 
     public void setAjouterEtablissementController(AjouterEtablissement ajouterEtablissementController) {
         this.ajouterEtablissementController = ajouterEtablissementController;
     }
-    public void setModifierEtablissement(ModifierEtablissement modifierEtablissementController) {
-        this.modifierEtablissementController = modifierEtablissementController;
-    }
+
 
     public void setData(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
@@ -65,9 +68,27 @@ public class UtilisateurItemController {
 
 
     public void affecterUtilisateurOnClick(ActionEvent actionEvent) {
-        // You can now access cin_utilisateurETF and update it in AjouterEtablissement
-        ajouterEtablissementController.updateCinTextField(labelCin.getText());
+        // Désélectionner le précédent HBox s'il existe
+        if (hboxSelectionne != null) {
+            simulateDeselection(hboxSelectionne);
+        }
 
+        // Affecter le nouvel utilisateur
+        ajouterEtablissementController.updateCinTextField(labelCin.getText());
+        simulateSelection(hboxMere);
+
+        // Mettre à jour le HBox sélectionné actuel
+        hboxSelectionne = hboxMere;
+    }
+
+    // ... (autres méthodes)
+
+    private void simulateSelection(HBox hbox) {
+        hbox.getStyleClass().add("selected-item");
+    }
+
+    private void simulateDeselection(HBox hbox) {
+        hbox.getStyleClass().remove("selected-item");
     }
 
 }
