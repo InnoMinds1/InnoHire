@@ -62,7 +62,7 @@
                   <Image url="@img/ic_more.png" />
                </image>
             </ImageView>
-            <Button fx:id="supprimer" mnemonicParsing="false" prefHeight="26.0" prefWidth="15.0" />
+            <Button mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="15.0" />
          </children>
          <padding>
             <Insets left="20.0" right="20.0" />

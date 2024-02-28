@@ -124,4 +124,10 @@ public class Post {
                 ", nbShares=" + nbShares +
                 '}';
     }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return id_post == post.id_post;
+    }
 }

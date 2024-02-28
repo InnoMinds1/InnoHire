@@ -1,10 +1,10 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Post;
-import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServiceUtilisateur;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,9 +25,11 @@ import java.util.Set;
 public class PubController implements Initializable {
     @FXML
     private VBox postsContainer;
-    private List<Post>  posts = new ArrayList<>() ;
+    private List<Post> posts = new ArrayList<>();
     @FXML
     private Button Naviguerversajouter;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,25 +42,24 @@ public class PubController implements Initializable {
         }
 
 
-        try {  for (Post post : posts)
-              {
-      FXMLLoader fxmlLoader= new FXMLLoader();
-      fxmlLoader.setLocation(getClass().getResource("/post.fxml"));
-      VBox vBox=fxmlLoader.load();
-      PostController postController=fxmlLoader.getController();
-      postController.setData(post);
-      postsContainer.getChildren().add(vBox);
-              }
+        try {
+            for (Post post : posts) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/post.fxml"));
+                VBox vBox = fxmlLoader.load();
+                PostController postController = fxmlLoader.getController();
+                postController.setData(post);
+                postsContainer.getChildren().add(vBox);
+            }
 
 
-                }
-            catch (IOException e)
-          { e.printStackTrace();
-                  }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public List<Post> getpost()  {
+    public List<Post> getpost() {
         List<Post> ls = new ArrayList<>();
         ServicePost servicePost = new ServicePost();
         for (int i = 0; i < 50; i++) {
@@ -76,9 +77,9 @@ public class PubController implements Initializable {
 
     private Post getPost() throws SQLException {
 
-        ServicePost sp=new ServicePost();
+        ServicePost sp = new ServicePost();
 
-        ServiceUtilisateur su=new ServiceUtilisateur();
+        ServiceUtilisateur su = new ServiceUtilisateur();
 
 
         Post post1 = sp.getOneByID(1);
@@ -117,9 +118,9 @@ public class PubController implements Initializable {
             // If setPrice method is available, you can uncomment the following line
             modifiedEtablissement.setImage(etablissement.getImage());
             ServiceUtilisateur su = new ServiceUtilisateur();
-          Utilisateur  user=su.getOneByID(etablissement.getUtilisateur().getId_utilisateur())     ;
-          modifiedEtablissement.setUtilisateur(user);
-          modifiedEtablissements.add(modifiedEtablissement);
+            Utilisateur user = su.getOneByID(etablissement.getUtilisateur().getId_utilisateur());
+            modifiedEtablissement.setUtilisateur(user);
+            modifiedEtablissements.add(modifiedEtablissement);
         }
 
         return modifiedEtablissements;
@@ -139,9 +140,21 @@ public class PubController implements Initializable {
     }
 
 
+    public void refreshUI() {
+        postsContainer.getChildren().clear();
+        for (Post post : posts) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/post.fxml"));
+                VBox vBox = fxmlLoader.load();
+                PostController postController = fxmlLoader.getController();
+                postController.setData(post);
+                postsContainer.getChildren().add(vBox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
-
-
-
+    }
 }

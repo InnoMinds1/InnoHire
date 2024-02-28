@@ -6,7 +6,6 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,17 +17,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
-public class PostController{
+public class PostController {
     @FXML
     private ImageView imgProfile;
 
@@ -101,6 +96,8 @@ public class PostController{
     private Reactions currentReaction;
     private Post post;
 
+
+
     @FXML
     public void onLikeContainerPressed(MouseEvent me){
         startTime = System.currentTimeMillis();
@@ -170,6 +167,7 @@ public class PostController{
     }
     public void setData(Post post) {
         this.post = post;
+
 
         // Set profile image
         if (post.getUtilisateur() != null && post.getUtilisateur().getProfileImg() != null) {
@@ -346,6 +344,40 @@ public class PostController{
        }
    }
 
+    public void NaviguerversPub(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
+            caption.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry jjjj");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
 
 
+    public void supprimer(ActionEvent actionEvent) {
+
+        // Si un élément est sélectionné, afficher la confirmation de suppression
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation de suppression");
+        alert.setHeaderText(null);
+        alert.setContentText("Êtes-vous sûr de vouloir supprimer cette conversation ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                int idPost = post.getId_post();
+                ServicePost servicePost = new ServicePost();
+                servicePost.supprimer(idPost);
+                NaviguerversPub(actionEvent);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
