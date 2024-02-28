@@ -252,6 +252,23 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        imageViewETF.sceneProperty().addListener((observableScene, oldScene, newScene) -> {
+            if (oldScene == null && newScene != null) {
+        if (!imageETF.getText().isEmpty()) {
+            // Construct the full path to the image based on the application's working directory
+            String currentDir = System.getProperty("user.dir");
+            String imagePath = currentDir + "/src/main/resources/img/" + imageETF.getText();
+
+            // Create an Image object with the constructed path
+            Image image = new Image(new File(imagePath).toURI().toString());
+
+            // Set the Image object in the imageViewETF
+            imageViewETF.setImage(image);
+        }
+            }
+        });
+
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
         Set<Utilisateur> users = null;
 
@@ -296,11 +313,12 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
         }
 
 
-
-
-
-
     }
+
+
+
+
+
 
     @FXML
     public void importImage(ActionEvent actionEvent) {
@@ -343,4 +361,5 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
     void updateCinTextField(String cin) {
         cin_utilisateurETF.setText(cin);
     }
+
 }

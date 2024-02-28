@@ -62,3 +62,6 @@
     -fx-background-color: #FFFAFA; /* Blanc neige */
     -fx-background-radius: 30;
 }
+.selected-item {
+    -fx-background-color: lightblue; /* Couleur de fond lors de la sélection */
+}

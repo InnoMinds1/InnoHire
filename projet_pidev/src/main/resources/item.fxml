@@ -34,7 +34,7 @@
             </HBox>
             <ImageView fx:id="img" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/cherry.png" />
+                  <Image url="@img/esprit.png" />
                </image>
             </ImageView>
             <HBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="185.0">
