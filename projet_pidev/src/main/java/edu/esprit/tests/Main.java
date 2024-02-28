@@ -110,9 +110,11 @@ public class Main {
         //System.out.println(sw.getOneByID(28));
 
         /*----------------afficher tout-------------------------*/
-       System.out.println(sw.getAll());
+       //System.out.println(sw.getAll());
 
         /*--------------------------------------End_Sayari----------------------------------------------------*/
+
+System.out.println (se.getWalletByEtablissement(etablissementModifie));
 
 
     }

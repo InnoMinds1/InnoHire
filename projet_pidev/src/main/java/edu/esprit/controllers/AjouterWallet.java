@@ -101,17 +101,24 @@ public class AjouterWallet implements Initializable {
             alert.showAndWait();
             return;
         }
+
         int statueE;
         try {
             statueE = Integer.parseInt(status);
+
+            // Check if the parsed value is either 0 or 1
+            if (statueE != 0 && statueE != 1) {
+                throw new NumberFormatException();
+            }
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Le status doit être un nombre valide !");
+            alert.setContentText("Le statut doit être soit '0 : Wallet non actif ' soit '1 : Wallet actif ' !");
             alert.showAndWait();
             return;
         }
+
 
 
 
@@ -185,6 +192,8 @@ public class AjouterWallet implements Initializable {
             statusETF.clear();
             code_EtabETF.clear();
 
+            navigatetoAfficherEtablissementAction(actionEvent);
+
         }
 
         catch (Exception e) {
@@ -195,11 +204,13 @@ public class AjouterWallet implements Initializable {
             alert.showAndWait();
         }
 
+
+
     }
 
     public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) BalanceETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle

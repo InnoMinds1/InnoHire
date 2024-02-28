@@ -2,19 +2,19 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
+import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
+import edu.esprit.services.ServiceWallet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import edu.esprit.services.MyListener;
 
@@ -65,11 +65,17 @@ private AnchorPane grandAnchor;
     private List<Etablissement> etablissements = new ArrayList<>();
     private Image image;
     private MyListener myListener;
+    ServiceEtablissement se = new ServiceEtablissement();
+    //-----------------------Wallet-------------------------------
+    @FXML
+    private Label balanceLabel;
 
+    @FXML
+    private Button ajouterWalletBtn;
 
 
     private List<Etablissement> getData() throws SQLException {
-        ServiceEtablissement se = new ServiceEtablissement();
+
 
 
          Set<Etablissement> etablissements = se.getAll();//admin
@@ -113,6 +119,26 @@ private AnchorPane grandAnchor;
         lieuETF.setText(etablissement.getLieu());
         typeETF.setText(etablissement.getTypeEtablissement());
         cinETF.setText(String.valueOf(etablissement.getUser().getCin()));
+
+
+       Wallet wallet = se.getWalletByEtablissement(etablissement);
+
+        if (wallet != null) {
+            // Le portefeuille existe pour cet établissement
+            int balance = wallet.getBalance();
+            balanceLabel.setText(String.valueOf(balance));
+
+            // Afficher balanceLabel et masquer ajouterWalletBtn
+            balanceLabel.setVisible(true);
+            ajouterWalletBtn.setVisible(false);
+        } else {
+            // Aucun portefeuille trouvé pour cet établissement
+            balanceLabel.setText("Aucun portefeuille trouvé");
+            // Masquer balanceLabel et afficher ajouterWalletBtn
+            balanceLabel.setVisible(false);
+            ajouterWalletBtn.setVisible(true);
+        }
+
       /*  chosenetablissementCard.setStyle("-fx-background-color: #" + etablissement.getColor() + ";\n" +
                 "    -fx-background-radius: 30;");*/
 
@@ -134,6 +160,11 @@ private AnchorPane grandAnchor;
 
             nameUserLabel.setText(CurrentUser.getNom());
         }
+
+
+
+
+
 
 
 
@@ -220,6 +251,34 @@ private AnchorPane grandAnchor;
     public void ajouterEtablissement(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissement.fxml"));
+            grid.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+    //-------------------WALLETS------------------
+
+    public void ajouterWallet(ActionEvent actionEvent) {
+
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/AjouterWallet.fxml"));
+                grid.getScene().setRoot(root);
+            } catch (IOException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Sorry");
+                alert.setTitle("Error");
+                alert.show();
+            }
+
+
+    }
+
+    public void afficherWalletList(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherEtablissement.fxml"));
             grid.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

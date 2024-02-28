@@ -3,9 +3,11 @@ package edu.esprit.services;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Quiz;
 import edu.esprit.entities.Utilisateur;
+import edu.esprit.entities.Wallet;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -295,6 +297,34 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
 
 
 
+
+    public Wallet getWalletByEtablissement(Etablissement etablissement) {
+        int idEtablissement = etablissement.getIdEtablissement();
+        String req = "SELECT * FROM wallet WHERE id_etablissement = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, idEtablissement);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int idWallet = rs.getInt("id_wallet");
+                int balance = rs.getInt("balance");
+
+                // Utilisation de Timestamp pour récupérer les dates de type datetime
+                Timestamp timestamp = rs.getTimestamp("date_c");
+                LocalDateTime dateCreation = timestamp.toLocalDateTime();
+
+                int status = rs.getInt("status");
+
+                return new Wallet(idWallet, balance, dateCreation, status, etablissement);
+            } else {
+                System.out.print("Echec! Aucun portefeuille trouvé pour l'établissement avec ID " + idEtablissement);
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 
 
 }
