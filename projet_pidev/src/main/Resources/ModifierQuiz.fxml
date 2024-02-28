@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="504.0" prefWidth="816.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierQuizController">
+    <children>
+        <ImageView fitHeight="504.0" fitWidth="816.0" layoutX="479.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/mauve.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="348.0" layoutY="14.0" prefHeight="46.0" prefWidth="201.0" text="Modifier Quiz" textFill="#000000a9">
+            <font>
+                <Font size="31.0" />
+            </font>
+        </Label>
+        <TextField fx:id="TFCode1" layoutX="367.0" layoutY="103.0" prefHeight="46.0" prefWidth="290.0" styleClass="text-field">
+            <stylesheets>
+                <URL value="@service2.css" />
+                <URL value="@service2.css" />
+            </stylesheets>
+            <font>
+                <Font size="16.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="TFNom1" layoutX="367.0" layoutY="160.0" prefHeight="46.0" prefWidth="290.0" styleClass="text-field" stylesheets="@service2.css">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </TextField>
+
+
+        <Button layoutX="386.0" layoutY="454.0" mnemonicParsing="false" onAction="#ModifierQuizAction" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="MODIFIER" textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <TextField fx:id="TFDesc1" layoutX="367.0" layoutY="219.0" prefHeight="46.0" prefWidth="290.0" />
+        <Label layoutX="59.0" layoutY="110.0" text="DONNEZ LE NOUVEAU CODE" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+
+        <Label layoutX="57.0" layoutY="167.0" text="DONNEZ LE  NOUVEAU NOM" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="57.0" layoutY="226.0" prefHeight="32.0" prefWidth="354.0" text="DONNEZ LA DESCRIPTION :)" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="57.0" layoutY="283.0" text="DONNEZ LE NOUVEAU PRIX" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+        <TextField fx:id="TFprix1" layoutX="367.0" layoutY="276.0" prefHeight="46.0" prefWidth="290.0" />
+        <Label layoutX="59.0" layoutY="338.0" text="SELECTIONNEZ IMAGE" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="111.0" fitWidth="178.0" layoutX="8.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fitHeight="111.0" fitWidth="127.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/quiz.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="111.0" fitWidth="127.0" layoutX="29.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/quiz2.jpeg" />
+            </image>
+        </ImageView>
+        <Button layoutX="521.0" layoutY="454.0" mnemonicParsing="false" onAction="#navigateToAfficher" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="AFFICHER" textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button layoutX="644.0" layoutY="338.0" mnemonicParsing="false" onAction="#importImage1" prefHeight="46.0" prefWidth="103.0" styleClass="label2" stylesheets="@service2.css" text="IMPORTER" textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <ImageView fx:id="imageViewQ1" fitHeight="95.0" fitWidth="103.0" layoutX="367.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true" />
+        <TextField fx:id="imageView1" layoutX="479.0" layoutY="345.0" prefHeight="32.0" prefWidth="151.0" />
+
+    </children>
+</AnchorPane>

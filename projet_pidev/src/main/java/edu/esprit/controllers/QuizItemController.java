@@ -117,6 +117,33 @@ public class QuizItemController {
             errorAlert.show();
         }
     }
+    public void modifierQuizOnClick(ActionEvent event) {
+        try {
+            // Initialiser le serviceQuestion si ce n'est pas déjà fait
+            if (qs == null) {
+                qs = new quizService();
+            }
+
+            // Charger la vue de modification de question
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierQuiz.fxml"));
+            Parent root = loader.load();
+
+            // Passer la question à modifier au contrôleur de modification
+            ModifierQuizController controller = loader.getController();
+            controller.setData(quiz);
+
+            // Afficher la vue de modification de question
+            labelDesc.getScene().setRoot(root);
+        } catch (IOException e) {
+            // Gérer les exceptions liées au chargement de la vue de modification
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Erreur lors de la modification du quiz.");
+            alert.setTitle("Erreur de modification");
+            alert.show();
+        }
+    }
+
+
 
 
 

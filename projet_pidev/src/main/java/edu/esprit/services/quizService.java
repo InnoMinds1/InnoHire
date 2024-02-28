@@ -34,7 +34,7 @@ public class quizService implements IService<Quiz> {
     }
 
     @Override
-    public void modifier(Quiz quiz) {
+    public void modifier(Quiz quiz) throws SQLException {
 
         try {
             String query = "UPDATE quiz SET code_quiz = ?, nom_quiz = ?, description = ?, prix_quiz = ?, image_quiz = ? WHERE id_quiz = ?";
