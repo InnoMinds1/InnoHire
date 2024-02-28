@@ -4,6 +4,7 @@ import edu.esprit.entities.Question;
 import edu.esprit.entities.Quiz;
 import edu.esprit.services.questionService;
 import edu.esprit.services.quizService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,8 +16,20 @@ import javafx.scene.text.Text;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -44,26 +57,25 @@ public class QuizItemController {
     private Quiz quiz ;
     private quizService qs;
 
+
+
     public void setData(Quiz quiz) {
         this.quiz = quiz;
         LabelNom.setText(quiz.getNom_quiz());
-        System.out.println("Chemin de l'image : " + quiz.getImage_quiz());
-        try {
-            // Utiliser le chemin relatif stocké dans la base de données
-            String imageUrl = quiz.getImage_quiz();
-            Image image = new Image(imageUrl);
-            imageView.setImage(image);
-        } catch (Exception e) {
-            // Gérer les exceptions, par exemple, afficher une image par défaut ou un message d'erreur
-            e.printStackTrace();
-        }
         labelDesc.setText(quiz.getDescription());
         labelCode.setText(String.valueOf(quiz.getCode_quiz()));
         LabelPrix.setText(String.valueOf(quiz.getPrix_quiz()));
 
-
-
+        // Charger et afficher l'image du Quiz
+        String imagePath = quiz.getImage_quiz();
+        if (imagePath != null && !imagePath.isEmpty()) {
+            Image image = new Image(imagePath);
+            imageView.setImage(image);
+        }
     }
+
+
+
     public void actualiserVueQuiz() {
 
         try {
@@ -105,6 +117,7 @@ public class QuizItemController {
             errorAlert.show();
         }
     }
+
 
 
 }

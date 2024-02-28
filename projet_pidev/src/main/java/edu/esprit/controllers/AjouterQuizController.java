@@ -4,9 +4,19 @@ import edu.esprit.entities.Quiz;
 import edu.esprit.services.quizService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 public class AjouterQuizController {
@@ -20,25 +30,33 @@ public class AjouterQuizController {
     private TextField TFNom;
 
     @FXML
-    private TextField TFimage;
+    private TextField imageView;
+
+    @FXML
+    private ImageView imageViewQ;
 
     @FXML
     private TextField TFprix;
     @FXML
-    void AjouterQuizAction(ActionEvent event) {
+
+    private void AjouterQuizAction(ActionEvent event) {
         try {
             // Récupérer les valeurs des champs
             int codeQuiz = Integer.parseInt(TFCode.getText());
             String nomQuiz = TFNom.getText();
             String description = TFDesc.getText();
             int prixQuiz = Integer.parseInt(TFprix.getText());
-            String imageQuiz = TFimage.getText();
+
+            // Récupérer le chemin de l'image depuis le TextField
+            String nomImage = imageView.getText();
+
+            // Construire le chemin complet de l'image
 
             // Créer une instance de Quiz
-            Quiz quiz = new Quiz(codeQuiz, nomQuiz, description, prixQuiz, imageQuiz);
+            Quiz quiz = new Quiz(codeQuiz, nomQuiz, description, prixQuiz, nomImage);
 
             // Ajouter le quiz à la base de données
-            quizService qs=new quizService();
+            quizService qs = new quizService();
             qs.ajouter(quiz);
 
             // Afficher une alerte de succès
@@ -62,6 +80,34 @@ public class AjouterQuizController {
             alert.showAndWait();
         }
     }
+    public void navigateToAfficher(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuiz.fxml"));
+            Parent root = loader.load();
 
+            Stage stage = (Stage) TFCode.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void importImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            // Mettre à jour le champ d'image avec le chemin de l'image sélectionnée
+            imageView.setText(selectedFile.getAbsolutePath());
+
+            // Charger l'image sélectionnée dans l'ImageView
+            Image image = new Image(selectedFile.toURI().toString());
+            imageViewQ.setImage(image);
+        }
+    }
 
 }
