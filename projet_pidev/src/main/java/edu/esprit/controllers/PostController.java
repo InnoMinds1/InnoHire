@@ -360,6 +360,7 @@ public class PostController {
 
     public void supprimer(ActionEvent actionEvent) {
 
+        
         // Si un élément est sélectionné, afficher la confirmation de suppression
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation de suppression");
