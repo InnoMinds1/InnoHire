@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -297,7 +298,7 @@ public class PostController{
             throw new RuntimeException(e);
         }
     }*/
-   @FXML
+   /*@FXML
    void navigatetoModifierPublicationAction(ActionEvent event) {
        try {
            Parent root = FXMLLoader.load(getClass().getResource("/ModifierPublication.fxml"));
@@ -309,6 +310,35 @@ public class PostController{
            throw new RuntimeException(e);
        }
 
+   }*/
+    @FXML
+   public void navigatetoModifierPublicationAction(ActionEvent actionEvent) {
+       // Code pour modifier l'établissement sélectionné dans la liste
+       Post selectedPost = post;
+       if (selectedPost == null) {
+           // Aucun élément sélectionné, afficher une alerte
+           Alert alert = new Alert(Alert.AlertType.WARNING);
+           alert.setTitle("Avertissement");
+           alert.setHeaderText(null);
+           alert.setContentText("Veuillez sélectionner un établissement à modifier.");
+           alert.showAndWait();
+           return; // Sortir de la méthode, car rien à modifier
+       } else {
+           try {
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierPublication.fxml"));
+               Parent root = loader.load();
+               ModifierPublication controller = loader.getController();
+               controller.initData(selectedPost); // Passer l'établissement sélectionné au contrôleur de l'interface de modification
+
+               // Obtenir la scène actuelle
+               Scene scene = ((Node) actionEvent.getSource()).getScene();
+
+               // Changer le contenu de la scène
+               scene.setRoot(root);
+           } catch (IOException e) {
+               throw new RuntimeException(e);
+           }
+       }
    }
 
 

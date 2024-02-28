@@ -30,6 +30,54 @@ public class ModifierPublication {
 
 
     private int id ;
+    private Utilisateur user;
+    private String date;
+    private int totalReactions;
+    private int nbComments;
+    private int nbShares;
+
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getTotalReactions() {
+        return totalReactions;
+    }
+
+    public void setTotalReactions(int totalReactions) {
+        this.totalReactions = totalReactions;
+    }
+
+    public int getNbComments() {
+        return nbComments;
+    }
+
+    public void setNbComments(int nbComments) {
+        this.nbComments = nbComments;
+    }
+
+    public int getNbShares() {
+        return nbShares;
+    }
+
+    public void setNbShares(int nbShares) {
+        this.nbShares = nbShares;
+    }
+
+
+
 
     @FXML
     private TextField TFaudience;
@@ -81,8 +129,15 @@ public class ModifierPublication {
     public void initData(Post post) {
         if (post != null) {
             setId(post.getId_post());
-            TFaudience.setText(PostAudience.valueOf(TFaudience.getText()).getName());
+            TFaudience.setText(post.getAudience().getName());
             TFcaption.setText(post.getCaption());
+            imageETF.setText(post.getImage());
+            setUser(post.getUtilisateur());
+            setDate(post.getDate());
+            setTotalReactions(post.getTotalReactions());
+            setNbComments(post.getNbComments());
+            setNbShares(post.getNbShares());
+
 
         }
     }
@@ -103,6 +158,12 @@ public class ModifierPublication {
             newPost.setId_post(getId());
             newPost.setAudience(PostAudience.valueOf(TFaudience.getText()));
             newPost.setCaption(TFcaption.getText()); // Assurez-vous que TFdate est un DatePicker
+            newPost.setImage(imageETF.getText());
+            newPost.setUtilisateur(getUser());
+            newPost.setDate(getDate());
+            newPost.setTotalReactions(getTotalReactions());
+            newPost.setNbComments(getNbComments());
+            newPost.setNbShares(getNbShares());
 
 
 
@@ -118,7 +179,7 @@ public class ModifierPublication {
 
     public void AfficherPublication(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPublication.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pub.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) TFaudience.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
