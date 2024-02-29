@@ -194,7 +194,6 @@ public class AfficherUtilisateurController implements Initializable {
         filteredUtilisateurs = FXCollections.observableArrayList(originalUtilisateurs);
         filteredUsers = new FilteredList<>(originalUtilisateurs);
 
-
         listView.setItems(filteredUsers);
 
         listView.setCellFactory(param -> new ListCell<Utilisateur>() {
@@ -219,7 +218,24 @@ public class AfficherUtilisateurController implements Initializable {
         });
 
         comboRole.setOnAction(event -> filterByRole(comboRole.getValue()));
+
+        // Add a listener to the search text field to dynamically update the search
+        TFrecherche.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredUsers.setPredicate(user -> {
+                if (newValue.isEmpty()) {
+                    return true; // Show all users if search term is empty
+                }
+                String cinAsString = String.valueOf(user.getCin());
+
+                // Customize this based on how you want to search (by CIN, Nom, Prenom, Email, etc.)
+                return cinAsString.toLowerCase().contains(newValue.toLowerCase()) ||
+                        user.getNom().toLowerCase().contains(newValue.toLowerCase()) ||
+                        user.getPrenom().toLowerCase().contains(newValue.toLowerCase()) ||
+                        user.getAdresse().toLowerCase().contains(newValue.toLowerCase());
+            });
+        });
     }
+
 
     private void filterByRole(String selectedRole) {
         if ("Admin".equals(selectedRole)) {
@@ -311,31 +327,6 @@ public class AfficherUtilisateurController implements Initializable {
             alert.setTitle("Error");
             alert.show();
         }
-    }
-    @FXML
-    private void search() {
-        String searchTerm = TFrecherche.getText().trim().toLowerCase();
-
-        // Apply a new predicate to the filtered list based on the search term
-        filteredUsers.setPredicate(user -> {
-            if (searchTerm.isEmpty()) {
-                return true; // Show all users if search term is empty
-            }
-            String cinAsString = String.valueOf(user.getCin());
-
-
-            // Customize this based on how you want to search (by CIN, Nom, Prenom, Email, etc.)
-            return cinAsString.toLowerCase().contains(searchTerm) ||
-                    user.getNom().toLowerCase().contains(searchTerm) ||
-                    user.getPrenom().toLowerCase().contains(searchTerm) ||
-                    user.getAdresse().toLowerCase().contains(searchTerm);
-        });
-    }
-    @FXML
-    private void cancelsearch() {
-        // Clear the search field and reset the predicate to show all users
-        TFrecherche.clear();
-        filteredUsers.setPredicate(user -> true);
     }
 
 
