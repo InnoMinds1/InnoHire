@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="grandAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1451.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherCommentaire">
+    <children>
+        <AnchorPane fx:id="NavBar" prefHeight="830.0" prefWidth="222.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
+            <children>
+                <Label layoutX="58.0" layoutY="58.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25;" text="InnoHire" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="anchorContenu" layoutX="225.0" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1226.0">
+            <children>
+                <BorderPane prefHeight="810.0" prefWidth="1170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                                    <VBox.margin>
+                                        <Insets left="20.0" right="20.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <Label prefHeight="30.0" prefWidth="106.0" text="Welcome" textFill="#878787">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="nameUserLabel" prefHeight="30.0" prefWidth="146.0" text="User" textFill="#878787" underline="true">
+                                            <font>
+                                                <Font name="Cambria" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Pane prefHeight="66.0" prefWidth="259.0" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <Pane prefHeight="84.0" prefWidth="96.0" />
+                                        <HBox fx:id="Hbox_no_data" alignment="CENTER" prefHeight="124.0" prefWidth="528.0" styleClass="free-delivery-card" stylesheets="@style.css">
+                                            <children>
+                                                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="445.0">
+                                                    <children>
+                                                        <Label fx:id="label_no_data" prefHeight="72.0" prefWidth="424.0" textFill="#878787">
+                                                            <font>
+                                                                <Font name="Cambria Bold" size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                        <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
+                                        <Pane prefHeight="84.0" prefWidth="96.0">
+                                            <children>
+                                                <Button layoutX="-47.0" layoutY="39.0" mnemonicParsing="false" onAction="#ajouterCommentaire" styleClass="chosen-etablissement-card" stylesheets="@style.css" text="Ajouter Etablissement" textFill="#faf9f9" />
+                                            </children>
+                                        </Pane>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="20.0" right="20.0" top="10.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="552.0" prefWidth="1111.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <ScrollPane fx:id="scroll" prefHeight="652.0" prefWidth="715.0" styleClass="transparent" stylesheets="@style.css">
+                                            <content>
+                                                <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </content>
+                                            <HBox.margin>
+                                                <Insets top="10.0" />
+                                            </HBox.margin>
+                                        </ScrollPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

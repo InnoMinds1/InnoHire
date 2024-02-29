@@ -2,6 +2,7 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.Commentaire;
 import edu.esprit.entities.Publication;
+import edu.esprit.services.MyListener;
 import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePublication;
 import javafx.collections.FXCollections;
@@ -12,21 +13,50 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 public class AfficherCommentaire implements Initializable {
     @FXML
-    private ListView<Commentaire> ListviewC;
+    private HBox Hbox_no_data;
+
+    @FXML
+    private AnchorPane NavBar;
+
+    @FXML
+    private AnchorPane anchorContenu;
+
+    @FXML
+    private AnchorPane grandAnchor;
+
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    private Label label_no_data;
+
+    @FXML
+    private Label nameUserLabel;
+
+    @FXML
+    private ScrollPane scroll;
+    private List<Commentaire> commentaires = new ArrayList<>();
+
+    private MyListener myListener;
+    ServiceCommentaire se = new ServiceCommentaire();
+
+    @FXML
+    void ajouterCommentaire(ActionEvent event) {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
