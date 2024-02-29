@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Messagerie {
-    public int id_message;
+    public int idMessage;
     public String type,contenu;
     public Date date;
-    Utilisateur sender_id,reciver_id;
+    Utilisateur senderId, reciverId;
 
     public Messagerie() {
     }
@@ -18,29 +18,29 @@ public class Messagerie {
         this.date = date;
     }
 
-    public Messagerie(String type, String contenu, Date date, Utilisateur sender_id, Utilisateur reciver_id) {
+    public Messagerie(String type, String contenu, Date date, Utilisateur senderId, Utilisateur reciverId) {
         this.type = type;
         this.contenu = contenu;
         this.date = date;
-        this.sender_id = sender_id;
-        this.reciver_id = reciver_id;
+        this.senderId = senderId;
+        this.reciverId = reciverId;
     }
 
-    public Messagerie(int id_message, String type, String contenu, Date date, Utilisateur sender_id, Utilisateur reciver_id) {
-        this.id_message = id_message;
+    public Messagerie(int idMessage, String type, String contenu, Date date, Utilisateur senderId, Utilisateur reciverId) {
+        this.idMessage = idMessage;
         this.type = type;
         this.contenu = contenu;
         this.date = date;
-        this.sender_id = sender_id;
-        this.reciver_id = reciver_id;
+        this.senderId = senderId;
+        this.reciverId = reciverId;
     }
 
-    public int getId_message() {
-        return id_message;
+    public int getIdMessage() {
+        return idMessage;
     }
 
-    public void setId_message(int id_message) {
-        this.id_message = id_message;
+    public void setIdMessage(int idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getType() {
@@ -67,20 +67,20 @@ public class Messagerie {
         this.date = date;
     }
 
-    public Utilisateur getSender_id() {
-        return sender_id;
+    public Utilisateur getSenderId() {
+        return senderId;
     }
 
-    public void setSender_id(Utilisateur sender_id) {
-        this.sender_id = sender_id;
+    public void setSenderId(Utilisateur senderId) {
+        this.senderId = senderId;
     }
 
-    public Utilisateur getReciver_id() {
-        return reciver_id;
+    public Utilisateur getReciverId() {
+        return reciverId;
     }
 
-    public void setReciver_id(Utilisateur reciver_id) {
-        this.reciver_id = reciver_id;
+    public void setReciverId(Utilisateur reciverId) {
+        this.reciverId = reciverId;
     }
 
     @Override
@@ -88,23 +88,23 @@ public class Messagerie {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Messagerie that = (Messagerie) o;
-        return id_message == that.id_message && Objects.equals(sender_id, that.sender_id) && Objects.equals(reciver_id, that.reciver_id);
+        return idMessage == that.idMessage && Objects.equals(senderId, that.senderId) && Objects.equals(reciverId, that.reciverId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_message, sender_id, reciver_id);
+        return Objects.hash(idMessage, senderId, reciverId);
     }
 
     @Override
     public String toString() {
         return "Messagerie{" +
-                "id_message=" + id_message +
+                "id_message=" + idMessage +
                 ", type='" + type + '\'' +
                 ", contenu='" + contenu + '\'' +
                 ", date=" + date +
-                ", sender_id=" + sender_id +
-                ", reciver_id=" + reciver_id +
+                ", sender_id=" + senderId +
+                ", reciver_id=" + reciverId +
                 '}';
     }
 }

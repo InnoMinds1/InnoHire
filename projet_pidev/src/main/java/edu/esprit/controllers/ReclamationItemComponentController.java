@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -88,7 +87,7 @@ public class ReclamationItemComponentController {
             // Perform deletion logic here
             try {
                 // Delete the reclamation from the database
-                serviceReclamation.supprimer(reclamation.getId_reclamation());
+                serviceReclamation.supprimer(reclamation.getIdReclamation());
 
                 // Remove the HBox from the parent container
                 container.getChildren().remove(container);

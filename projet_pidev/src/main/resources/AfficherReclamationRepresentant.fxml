@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherReclamationRepresentantController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherReclamationRepresentantController">
     <children>
         <AnchorPane fx:id="container" layoutX="12.0" layoutY="14.0" prefHeight="675.0" prefWidth="958.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
             <children>
@@ -116,14 +110,14 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button layoutX="17.0" layoutY="229.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Admin Chat">
+                        <Button layoutX="17.0" layoutY="229.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                             <graphic>
                                 <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@images/meetme.png" />
+                                        <Image url="@images/office-building%20(1).png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -159,7 +153,7 @@
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/office-building%20(1).png" />
+                              <Image url="@images/meetme.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -1,6 +1,5 @@
 package edu.esprit.services;
 
-import edu.esprit.controllers.AjouterAfficherMessageController;
 import edu.esprit.entities.Messagerie;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
@@ -21,8 +20,8 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
             ps.setTimestamp(1, new java.sql.Timestamp(mess.getDate().getTime()));
             ps.setString(2, mess.getType());
             ps.setString(3, mess.getContenu());
-            ps.setInt(4, mess.getSender_id().getId_utilisateur());
-            ps.setInt(5, mess.getReciver_id().getId_utilisateur());
+            ps.setInt(4, mess.getSenderId().getId_utilisateur());
+            ps.setInt(5, mess.getReciverId().getId_utilisateur());
             ps.executeUpdate();
             System.out.println("Messaagerie added!");
         } catch (SQLException e) {
@@ -37,9 +36,9 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
             ps.setTimestamp(1, new java.sql.Timestamp(messagerie.getDate().getTime()));
             ps.setString(2, messagerie.getType());
             ps.setString(3, messagerie.getContenu());
-            ps.setInt(4, messagerie.getSender_id().getId_utilisateur());
-            ps.setInt(5, messagerie.getReciver_id().getId_utilisateur());
-            ps.setInt(6, messagerie.getId_message());
+            ps.setInt(4, messagerie.getSenderId().getId_utilisateur());
+            ps.setInt(5, messagerie.getReciverId().getId_utilisateur());
+            ps.setInt(6, messagerie.getIdMessage());
             ps.executeUpdate();
             System.out.println("Messagerie updated!");
         } catch (SQLException e) {
@@ -67,7 +66,7 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Messagerie mess = new Messagerie();
-                mess.setId_message(rs.getInt("id_message"));
+                mess.setIdMessage(rs.getInt("id_message"));
                 mess.setType(rs.getString("type"));
                 mess.setContenu(rs.getString("contenu"));
                 mess.setDate(rs.getTimestamp("date"));
@@ -75,8 +74,8 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
                 // Utilisez ServiceUtilisateur pour obtenir l'Utilisateur par ID
                 Utilisateur sender = new ServiceUtilisateur().getOneByID(rs.getInt("sender_id"));
                 Utilisateur receiver = new ServiceUtilisateur().getOneByID(rs.getInt("reciver_id"));
-                mess.setSender_id(sender);
-                mess.setReciver_id(receiver);
+                mess.setSenderId(sender);
+                mess.setReciverId(receiver);
 
                 messages.add(mess);
             }
@@ -94,7 +93,7 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Messagerie mess = new Messagerie();
-                    mess.setId_message(rs.getInt("id_message"));
+                    mess.setIdMessage(rs.getInt("id_message"));
                     mess.setType(rs.getString("type"));
                     mess.setContenu(rs.getString("contenu"));
                     mess.setDate(rs.getTimestamp("date"));
@@ -102,8 +101,8 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
                     // Utilisez ServiceUtilisateur pour obtenir l'Utilisateur par ID
                     Utilisateur sender = new ServiceUtilisateur().getOneByID(rs.getInt("sender_id"));
                     Utilisateur receiver = new ServiceUtilisateur().getOneByID(rs.getInt("reciver_id"));
-                    mess.setSender_id(sender);
-                    mess.setReciver_id(receiver);
+                    mess.setSenderId(sender);
+                    mess.setReciverId(receiver);
 
                     return mess;
                 }
@@ -125,15 +124,15 @@ public class ServiceMessagerie implements Iservice<Messagerie> {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Messagerie mess = new Messagerie();
-                    mess.setId_message(rs.getInt("id_message"));
+                    mess.setIdMessage(rs.getInt("id_message"));
                     mess.setType(rs.getString("type"));
                     mess.setContenu(rs.getString("contenu"));
                     mess.setDate(rs.getTimestamp("date"));
 
                     Utilisateur sender = new ServiceUtilisateur().getOneByID(rs.getInt("sender_id"));
                     Utilisateur receiver = new ServiceUtilisateur().getOneByID(rs.getInt("reciver_id"));
-                    mess.setSender_id(sender);
-                    mess.setReciver_id(receiver);
+                    mess.setSenderId(sender);
+                    mess.setReciverId(receiver);
 
                     messages.add(mess);
                 }

@@ -205,18 +205,4 @@ public class AjouterReclamationController {
     }
 
 
-    public void openGitHubLink(ActionEvent event) {
-        String githubLink = "https://github.com/InnoMinds1/InnoHire";
-
-        try {
-            // Create a URI object from the GitHub link
-            URI uri = new URI(githubLink);
-
-            // Open the link in the default browser
-            Desktop.getDesktop().browse(uri);
-        } catch (URISyntaxException | IOException e) {
-            // Handle any exceptions that might occur
-            e.printStackTrace();
-        }
-    }
 }

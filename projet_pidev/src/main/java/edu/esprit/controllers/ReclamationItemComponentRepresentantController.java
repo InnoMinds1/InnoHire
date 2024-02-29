@@ -87,7 +87,7 @@ public class ReclamationItemComponentRepresentantController {
             // Perform deletion logic here
             try {
                 // Delete the reclamation from the database
-                serviceReclamation.supprimer(reclamation.getId_reclamation());
+                serviceReclamation.supprimer(reclamation.getIdReclamation());
 
                 // Remove the HBox from the parent container
                 container.getChildren().remove(container);

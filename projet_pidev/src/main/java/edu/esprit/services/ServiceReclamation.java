@@ -42,7 +42,7 @@ public class ServiceReclamation implements Iservice<Reclamation>{
             ps.setInt(5, reclamation.getStatus());
             ps.setInt(6, reclamation.getPub().getId_publication());
             ps.setInt(7, reclamation.getUser().getId_utilisateur());
-            ps.setInt(8, reclamation.getId_reclamation());
+            ps.setInt(8, reclamation.getIdReclamation());
             ps.executeUpdate();
             System.out.println("Reclamation updated!");
         } catch (SQLException e) {
@@ -70,7 +70,7 @@ public class ServiceReclamation implements Iservice<Reclamation>{
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Reclamation rec = new Reclamation();
-                rec.setId_reclamation(rs.getInt("id_reclamation"));
+                rec.setIdReclamation(rs.getInt("id_reclamation"));
                 rec.setStatus(rs.getInt("status"));
                 rec.setType(rs.getString("type"));
                 rec.setTitre(rs.getString("titre"));
@@ -103,7 +103,7 @@ public class ServiceReclamation implements Iservice<Reclamation>{
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Reclamation rec = new Reclamation();
-                    rec.setId_reclamation(rs.getInt("id_reclamation"));
+                    rec.setIdReclamation(rs.getInt("id_reclamation"));
                     rec.setStatus(rs.getInt("status"));
                     rec.setType(rs.getString("type"));
                     rec.setTitre(rs.getString("titre"));
@@ -135,7 +135,7 @@ public class ServiceReclamation implements Iservice<Reclamation>{
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Reclamation rec = new Reclamation();
-                    rec.setId_reclamation(rs.getInt("id_reclamation"));
+                    rec.setIdReclamation(rs.getInt("id_reclamation"));
                     rec.setStatus(rs.getInt("status"));
                     rec.setType(rs.getString("type"));
                     rec.setTitre(rs.getString("titre"));

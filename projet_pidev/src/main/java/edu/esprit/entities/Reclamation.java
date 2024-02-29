@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Reclamation {
-    public int id_reclamation,status;
+    public int idReclamation,status;
     public String type,titre,description;
     public Timestamp date;
 
@@ -34,8 +34,8 @@ public class Reclamation {
         this.user = user;
     }
 
-    public Reclamation(int id_reclamation, int status, String type, String titre, String description, Timestamp  date, Publication pub, Utilisateur user) {
-        this.id_reclamation = id_reclamation;
+    public Reclamation(int idReclamation, int status, String type, String titre, String description, Timestamp  date, Publication pub, Utilisateur user) {
+        this.idReclamation = idReclamation;
         this.status = status;
         this.type = type;
         this.titre = titre;
@@ -45,12 +45,12 @@ public class Reclamation {
         this.user = user;
     }
 
-    public int getId_reclamation() {
-        return id_reclamation;
+    public int getIdReclamation() {
+        return idReclamation;
     }
 
-    public void setId_reclamation(int id_reclamation) {
-        this.id_reclamation = id_reclamation;
+    public void setIdReclamation(int idReclamation) {
+        this.idReclamation = idReclamation;
     }
 
     public int getStatus() {
@@ -115,18 +115,18 @@ public class Reclamation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reclamation that = (Reclamation) o;
-        return id_reclamation == that.id_reclamation && Objects.equals(pub, that.pub) && Objects.equals(user, that.user);
+        return idReclamation == that.idReclamation && Objects.equals(pub, that.pub) && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_reclamation, pub, user);
+        return Objects.hash(idReclamation, pub, user);
     }
 
     @Override
     public String toString() {
         return "Reclamation{" +
-                "id_reclamation=" + id_reclamation +
+                "id_reclamation=" + idReclamation +
                 ", status=" + status +
                 ", type='" + type + '\'' +
                 ", titre='" + titre + '\'' +

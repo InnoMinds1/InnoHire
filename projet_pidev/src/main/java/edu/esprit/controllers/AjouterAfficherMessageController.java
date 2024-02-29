@@ -2,7 +2,6 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceMessagerie;
-import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +37,16 @@ public class AjouterAfficherMessageController implements Initializable{
     private Label emptyMessage;
     String userPhoto;
     Utilisateur userReciver;
-
+    @FXML
+    private Label userFullName;
+    @FXML
+    private Label userEmail;
+    @FXML
+    private Label userCin;
+    @FXML
+    private Label userRole;
+    @FXML
+    private ImageView userPic;
 
 
 
@@ -84,6 +92,13 @@ public class AjouterAfficherMessageController implements Initializable{
             String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             receiverProfileImage.setImage(image);
+            if (userReciver != null) {
+                //userFullName.setText(userReciver.getNom()+" "+userReciver.getPrenom());
+                userEmail.setText(userReciver.getAdresse());
+                userCin.setText(String.valueOf(userReciver.getCin()));
+                userRole.setText("Represnetant");
+                //userPic.setImage(image);
+            }
         } else {
             // Set a default image if the name is not available
             receiverProfileImage.setImage(new Image(getClass().getResource("/images/edit.png.jpg").toExternalForm()));
@@ -138,11 +153,12 @@ public class AjouterAfficherMessageController implements Initializable{
         Label   contentLabel = new Label(message.getContenu());
         contentLabel.setLayoutX(17.0);
         contentLabel.setLayoutY(10.0);
+
         //5955b3
         contentLabel.setStyle("-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 13; -fx-padding: 0 0 15 0;");
 
         contentLabel.setWrapText(true); // Enable text wrapping
-        contentLabel.setMaxWidth(550); // Set a max width to trigger wrapping
+        contentLabel.setMaxWidth(350); // Set a max width to trigger wrapping
 
         // Bind the prefWidth of the AnchorPane to the width of the Label
         messagePane.prefWidthProperty().bind(contentLabel.widthProperty().add(34.0)); // Adjusted for padding
@@ -193,7 +209,7 @@ public class AjouterAfficherMessageController implements Initializable{
             confirmationAlert.showAndWait().ifPresent(buttonType -> {
                 if (buttonType == confirmButton) {
                     // User clicked "Yes," so proceed with deletion
-                    serviceMessagerie.supprimer(message.getId_message());
+                    serviceMessagerie.supprimer(message.getIdMessage());
                     updateChatMessages();
                     //navigateToAfficherReclamationAction(event);
                 } else {
@@ -203,7 +219,7 @@ public class AjouterAfficherMessageController implements Initializable{
         });
 
         // <Button layoutX="519.0" layoutY="636.0" mnemonicParsing="false"prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
-        if (message.getSender_id().getId_utilisateur()!=amen.getId_utilisateur()) {
+        if (message.getSenderId().getId_utilisateur()!=amen.getId_utilisateur()) {
             //  if (message.getSender_id().getId_utilisateur() == 1) {
             //System.out.println(receiverProfileImage);
             profileImage = new ImageView(new Image("/images/"+userPhoto));
@@ -261,7 +277,7 @@ public class AjouterAfficherMessageController implements Initializable{
         } else {
             try {
                 // Proceed to send the message if it's not empty
-                serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), amen, userReciver));
+                    serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), amen, userReciver));
                 TFmessage.setText("");
                 updateChatMessages();
                 //navigateToAfficherReclamationAction(event);
