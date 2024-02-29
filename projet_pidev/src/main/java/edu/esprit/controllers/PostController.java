@@ -276,35 +276,48 @@ public class PostController implements Initializable {
        }
 
    }*/
-    @FXML
+   @FXML
    public void navigatetoModifierPublicationAction(ActionEvent actionEvent) {
-       // Code pour modifier l'établissement sélectionné dans la liste
+       // Code to modify the selected post in the list
        Post selectedPost = post;
+
+       // Check if an item is selected
        if (selectedPost == null) {
-           // Aucun élément sélectionné, afficher une alerte
+           // No item selected, show a warning alert
            Alert alert = new Alert(Alert.AlertType.WARNING);
            alert.setTitle("Avertissement");
            alert.setHeaderText(null);
-           alert.setContentText("Veuillez sélectionner un établissement à modifier.");
+           alert.setContentText("Veuillez sélectionner une publication à modifier.");
            alert.showAndWait();
-           return; // Sortir de la méthode, car rien à modifier
+           return; // Exit the method as there's nothing to modify
        } else {
-           try {
-               FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierPublication.fxml"));
-               Parent root = loader.load();
-               ModifierPublication controller = loader.getController();
-               controller.initData(selectedPost); // Passer l'établissement sélectionné au contrôleur de l'interface de modification
+           // Check if the current user has the right to modify posts
+           if (CurrentUser.getRole() == 0 || selectedPost.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur()) {
+               try {
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierPublication.fxml"));
+                   Parent root = loader.load();
+                   ModifierPublication controller = loader.getController();
+                   controller.initData(selectedPost); // Pass the selected post to the modification interface controller
 
-               // Obtenir la scène actuelle
-               Scene scene = ((Node) actionEvent.getSource()).getScene();
+                   // Get the current scene
+                   Scene scene = ((Node) actionEvent.getSource()).getScene();
 
-               // Changer le contenu de la scène
-               scene.setRoot(root);
-           } catch (IOException e) {
-               throw new RuntimeException(e);
+                   // Change the content of the scene
+                   scene.setRoot(root);
+               } catch (IOException e) {
+                   throw new RuntimeException(e);
+               }
+           } else {
+               // Display a message indicating that the user doesn't have the right to modify this post
+               Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+               errorAlert.setTitle("Erreur");
+               errorAlert.setHeaderText(null);
+               errorAlert.setContentText("Vous n'avez pas le droit de modifier cette publication.");
+               errorAlert.showAndWait();
            }
        }
    }
+
 
     public void NaviguerversPub(ActionEvent actionEvent) {
         try {
@@ -321,9 +334,7 @@ public class PostController implements Initializable {
 
 
     public void supprimer(ActionEvent actionEvent) {
-
-
-        // Si un élément est sélectionné, afficher la confirmation de suppression
+        // If an item is selected, show the deletion confirmation
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation de suppression");
         alert.setHeaderText(null);
@@ -332,17 +343,28 @@ public class PostController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            try {
-                int idPost = post.getId_post();
-                ServicePost servicePost = new ServicePost();
-                servicePost.supprimer(idPost);
-                NaviguerversPub(actionEvent);
+            // Check if the current user has the right to delete posts
+            if (CurrentUser.getRole() == 0 || (CurrentUser.getRole() != 0 && post.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur())) {
+                try {
+                    int idPost = post.getId_post();
+                    ServicePost servicePost = new ServicePost();
+                    servicePost.supprimer(idPost);
+                    NaviguerversPub(actionEvent);
 
-            } catch (SQLException e) {
-                e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                // Display a message indicating that the user can only delete their own posts
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Erreur");
+                errorAlert.setHeaderText(null);
+                errorAlert.setContentText("Vous ne pouvez supprimer que vos propres publications.");
+                errorAlert.showAndWait();
             }
         }
     }
+
     /*public void Naviguerversajouter(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/AjouterCommentaire.fxml"));
@@ -358,9 +380,11 @@ public class PostController implements Initializable {
     @FXML
     void NavigatetoC(MouseEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterCommentaire.fxml"));
+            CurrentPost.setId_post(post.getId_post());
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCommentaire2.fxml"));
             caption.getScene().setRoot(root);
         } catch (IOException e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry");
             alert.setTitle("Error");

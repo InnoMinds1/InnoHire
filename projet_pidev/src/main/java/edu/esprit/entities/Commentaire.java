@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Commentaire {
  private int id_commentaire ;
- private Publication publication ;
+ private Post publication ;
  private Utilisateur utilisateur ;
  private String description_co ;
  private LocalDate date_co ;
@@ -19,7 +19,7 @@ public class Commentaire {
  }
 
 
- public Commentaire(int id_commentaire, Publication publication, Utilisateur utilisateur, String description_co, LocalDate date_co,int  nb_etoile) {
+ public Commentaire(int id_commentaire, Post publication, Utilisateur utilisateur, String description_co, LocalDate date_co,int  nb_etoile) {
   this.id_commentaire = id_commentaire;
   this.publication = publication;
   this.utilisateur = utilisateur;
@@ -28,7 +28,7 @@ public class Commentaire {
   this.nb_etoile=nb_etoile;
  }
 
- public Commentaire(Publication publication, Utilisateur utilisateur, String description_co, LocalDate date_co,int  nb_etoile) {
+ public Commentaire(Post publication, Utilisateur utilisateur, String description_co, LocalDate date_co,int  nb_etoile) {
   this.publication = publication;
   this.utilisateur = utilisateur;
   this.description_co = description_co;
@@ -47,11 +47,11 @@ public class Commentaire {
   this.id_commentaire = id_commentaire;
  }
 
- public Publication getPublication() {
+ public Post getPublication() {
   return publication;
  }
 
- public void setPublication(Publication publication) {
+ public void setPublication(Post publication) {
   this.publication = publication;
  }
 
@@ -105,7 +105,7 @@ public class Commentaire {
  public String
  toString() {
   return "commentaire{" +
-          "Code_publication=" + publication.getCode_pub() +
+          "Code_publication=" + publication.getId_post() +
           ",Cin_utilisateur=" + utilisateur.getCin() +
           ", description_co='" + description_co + '\'' +
           ", date_co=" + date_co +

@@ -136,6 +136,7 @@ public class PubController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("/AjouterPublication.fxml"));
             postsContainer.getScene().setRoot(root);
         } catch (IOException e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry jjjj");
             alert.setTitle("Error");

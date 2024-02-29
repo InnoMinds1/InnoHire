@@ -1,13 +1,10 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.Commentaire;
-import edu.esprit.entities.Publication;
-import edu.esprit.entities.Utilisateur;
+import edu.esprit.entities.*;
 import edu.esprit.services.ServiceCommentaire;
-import edu.esprit.services.ServicePublication;
+import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,16 +37,19 @@ public class AjouterCommentaire implements Initializable {
     @FXML
     private TextField ratingTF1;
     @FXML
-    private ListView<Publication> listView;
+    private ListView<Post> listView;
 
     @FXML
     private Button afficherCommentaire;
-    private final ServicePublication es = new ServicePublication();
+    private final ServicePost es = new ServicePost();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ServicePublication serviceService = new ServicePublication();
-        Set<Publication> publications = null;
+        listView.setVisible(false);
+        cinTF1.setText(String.valueOf(CurrentUser.getCin()));
+
+        ServicePost serviceService = new ServicePost();
+        Set<Post> publications = null;
 
         try {
             publications = serviceService.getAll();
@@ -67,9 +67,9 @@ public class AjouterCommentaire implements Initializable {
 
 
     @FXML
-    void validerCommentaire(ActionEvent event) {
-
-        Publication publicationSelectionne = listView.getSelectionModel().getSelectedItem();
+    void validerCommentaire(ActionEvent event) throws SQLException {
+ServicePost sp = new ServicePost();
+        Post publicationSelectionne = sp.getOneByID(CurrentPost.getId_post());
         ServiceUtilisateur su = new ServiceUtilisateur();
         // Récupération des données des champs
         int cin = Integer.parseInt(cinTF1.getText());
@@ -145,7 +145,7 @@ private void AfficherErreur(String titre, String contenu, String details) {
     @FXML
     void navigatetoAfficherCommentaireAction(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCommentaire.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCommentaire2.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

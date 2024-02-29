@@ -2,10 +2,8 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.Post;
 import edu.esprit.entities.PostAudience;
-import edu.esprit.entities.Publication;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
-import edu.esprit.services.ServicePublication;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

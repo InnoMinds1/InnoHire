@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="496.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AjouterCommentaire">
    <children>
       <ListView fx:id="listView" layoutX="261.0" layoutY="55.0" prefHeight="334.0" prefWidth="533.0" />
-      <TextField fx:id="cinTF1" layoutX="35.0" layoutY="86.0" promptText="cin" />
+      <TextField fx:id="cinTF1" editable="false" layoutX="35.0" layoutY="86.0" promptText="cin" />
       <DatePicker fx:id="dateTf1" layoutX="35.0" layoutY="206.0" promptText="jj-mm-yyyy" />
       <TextField fx:id="ratingTF1" layoutX="35.0" layoutY="270.0" promptText="rating" />
       <TextField fx:id="descriptionTF1" layoutX="35.0" layoutY="145.0" promptText="description" />

@@ -1,10 +1,8 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Commentaire;
-import edu.esprit.entities.Publication;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceCommentaire;
-import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +34,18 @@ public class ModifierCommentaire {
     @FXML
     private Button AfficherCommentaire;
     int id;
+    Utilisateur utilisateur;
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+
+
 
     public int getId() {
 
@@ -88,7 +98,7 @@ public class ModifierCommentaire {
 
     public void AfficherCommentaire(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaire.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaire2.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) descriptionTF1.getScene().getWindow();

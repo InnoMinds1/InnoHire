@@ -1,6 +1,7 @@
 package edu.esprit.services;
 
 
+import edu.esprit.entities.Commentaire;
 import edu.esprit.entities.Post;
 import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Utilisateur;
@@ -154,5 +155,8 @@ public class ServicePost implements IService<Post> {
 
 
 
-}
+
 //getlistcommentsbyidpost
+
+
+}

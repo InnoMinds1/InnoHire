@@ -1,9 +1,7 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Post;
-import edu.esprit.entities.Publication;
 import edu.esprit.services.ServicePost;
-import edu.esprit.services.ServicePublication;
 import javafx.scene.control.Alert;
 
 import java.sql.SQLException;

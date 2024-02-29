@@ -3,9 +3,9 @@ package edu.esprit.tests;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePost;
-import edu.esprit.services.ServicePublication;
 import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
+import javafx.geometry.Pos;
 
 
 import java.sql.SQLException;
@@ -23,15 +23,14 @@ public class Main {
 
 
 
-        ServicePublication sb = new ServicePublication();
+
         ServicePost so = new ServicePost();
         ServiceUtilisateur sr= new ServiceUtilisateur();
         ServiceCommentaire sc=new ServiceCommentaire();
 
         //---------------------Publication---------------------------------------//
 
-        Publication p = new Publication(3,"22",u,"888888","111111","4qv","111",LocalDate.of(2021,02,4),125);
-        Post po = new Post(1,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
+        Post po = new Post(55968,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
         //sr.ajouter(u);
         //sb.modifier(p);
         //so.supprimer(2);
@@ -42,11 +41,10 @@ public class Main {
      //   System.out.println(dateActuelle);
 
         //----------------------Commentaire--------------------------------------//
-        Publication pc = new Publication(12,"22",u,"hy","ijhu","bhjv","ok",LocalDate.of(2024,02,22),1);
         //sb.ajouter(pc);
-         Commentaire c=new Commentaire(17,pc,u,"heybabygirl", LocalDate.of(2023,02,4),200);
+         Commentaire c=new Commentaire(po,u,"heybabygirl", LocalDate.of(2023,02,4),200);
 
-        //sc.ajouter(c);
+       // sc.ajouter(c);
         //sc.modifier(c);
         //sc.supprimer(10);
         //System.out.println(sc.getOneByID(10));
@@ -82,6 +80,10 @@ public class Main {
         //System.out.println(sc.getAll());
         //System.out.println(sr.getOneAdminByID(12));
 
+
+
+
+System.out.println(sc.getListCommentsByPost(po));
 
 
 
