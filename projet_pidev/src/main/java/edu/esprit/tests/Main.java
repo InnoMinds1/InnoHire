@@ -78,7 +78,7 @@ public class Main {
         //sr.supprimer_admin(44);
 
         //System.out.println(sc.getAll());
-        //System.out.println(sr.getOneAdminByID(12));
+        //System.out.println(sr.getOneAdminByID(12));.
 
 
 
