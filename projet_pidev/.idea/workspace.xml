@@ -92,12 +92,23 @@
       <workItem from="1709025906900" duration="11988000" />
       <workItem from="1709037997264" duration="1177000" />
       <workItem from="1709111974886" duration="5475000" />
-      <workItem from="1709208798910" duration="2606000" />
+      <workItem from="1709208798910" duration="4025000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherUtilisateurController.java</url>
+          <line>327</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

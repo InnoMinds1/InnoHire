@@ -8,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -164,6 +165,10 @@ public class AfficherUtilisateurController implements Initializable {
     private ListView<Utilisateur> listView;
     @FXML
     private ComboBox<String> comboRole;
+    @FXML
+    private TextField TFrecherche;
+    private FilteredList<Utilisateur> filteredUsers;
+
 
     // Original list of Utilisateurs
     private ObservableList<Utilisateur> originalUtilisateurs;
@@ -187,8 +192,10 @@ public class AfficherUtilisateurController implements Initializable {
 
         originalUtilisateurs = FXCollections.observableArrayList(utilisateurs);
         filteredUtilisateurs = FXCollections.observableArrayList(originalUtilisateurs);
+        filteredUsers = new FilteredList<>(originalUtilisateurs);
 
-        listView.setItems(filteredUtilisateurs);
+
+        listView.setItems(filteredUsers);
 
         listView.setCellFactory(param -> new ListCell<Utilisateur>() {
             @Override
@@ -216,13 +223,13 @@ public class AfficherUtilisateurController implements Initializable {
 
     private void filterByRole(String selectedRole) {
         if ("Admin".equals(selectedRole)) {
-            filteredUtilisateurs.setAll(originalUtilisateurs.filtered(u -> u.getRole() == 0));
+            filteredUsers.setPredicate(u -> u.getRole() == 0);
         } else if ("Representant".equals(selectedRole)) {
-            filteredUtilisateurs.setAll(originalUtilisateurs.filtered(u -> u.getRole() == 1));
+            filteredUsers.setPredicate(u -> u.getRole() == 1);
         } else if ("Candidat".equals(selectedRole)) {
-            filteredUtilisateurs.setAll(originalUtilisateurs.filtered(u -> u.getRole() == 2));
+            filteredUsers.setPredicate(u -> u.getRole() == 2);
         } else {
-            filteredUtilisateurs.setAll(originalUtilisateurs);
+            filteredUsers.setPredicate(u -> true);
         }
     }
 
@@ -305,30 +312,31 @@ public class AfficherUtilisateurController implements Initializable {
             alert.show();
         }
     }
+    @FXML
+    private void search() {
+        String searchTerm = TFrecherche.getText().trim().toLowerCase();
+
+        // Apply a new predicate to the filtered list based on the search term
+        filteredUsers.setPredicate(user -> {
+            if (searchTerm.isEmpty()) {
+                return true; // Show all users if search term is empty
+            }
+            String cinAsString = String.valueOf(user.getCin());
 
 
-   /* @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            LLutilisateurs.setText(sp.getAll().toString());
-            LLadmins.setText(sp.getAll_admin().toString());
-        } catch (SQLException e) {
-            System.out.printf(e.getMessage());
-        }
-
-
+            // Customize this based on how you want to search (by CIN, Nom, Prenom, Email, etc.)
+            return cinAsString.toLowerCase().contains(searchTerm) ||
+                    user.getNom().toLowerCase().contains(searchTerm) ||
+                    user.getPrenom().toLowerCase().contains(searchTerm) ||
+                    user.getAdresse().toLowerCase().contains(searchTerm);
+        });
+    }
+    @FXML
+    private void cancelsearch() {
+        // Clear the search field and reset the predicate to show all users
+        TFrecherche.clear();
+        filteredUsers.setPredicate(user -> true);
     }
 
-    @FXML
-    void backtomenuAction(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterUtilisateur.fxml"));
-            LLadmins.getScene().setRoot(root);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry");
-            alert.setTitle("Error");
-            alert.show();
-        }
-    }*/
+
 }
