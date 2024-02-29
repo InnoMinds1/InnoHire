@@ -1,9 +1,9 @@
 package edu.esprit.entities;
 
 public class CurrentUser {
-    private static int id_utilisateur =17 ;
-    private static  int cin=233;
-    private static String name="AMENN";
+    private static int id_utilisateur =30;
+    private static  int cin=99;
+    private static String name="User";
     private static String prenom;
     private static String adresse;
     private static String mdp;
