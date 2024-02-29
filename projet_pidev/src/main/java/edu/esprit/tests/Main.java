@@ -32,9 +32,9 @@ public class Main {
 
         Publication p = new Publication(3,"22",u,"888888","111111","4qv","111",LocalDate.of(2021,02,4),125);
         Post po = new Post(1,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
-        //sb.ajouter(pc);
+        sr.ajouter(u);
         //sb.modifier(p);
-        so.supprimer(2);
+        //so.supprimer(2);
         //System.out.println(sb.getOneByID(11));
         //System.out.println(sr.getOneByID(17));
       //  System.out.println(so.getOneByID(1));

@@ -85,4 +85,6 @@
     -fx-background-radius: 20px; /* Rayon de courbure du fond */
 }
 
-
+.my-label {
+    -fx-font-weight: bold; /* Utilisation d'une valeur valide */
+}

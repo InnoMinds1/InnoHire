@@ -2,6 +2,7 @@ package edu.esprit.entities;
 
 
 public class Post {
+
     private int id_post ;
     private Utilisateur utilisateur;
     private PostAudience audience;

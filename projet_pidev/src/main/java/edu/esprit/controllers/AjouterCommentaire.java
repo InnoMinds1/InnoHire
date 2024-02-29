@@ -70,14 +70,14 @@ public class AjouterCommentaire implements Initializable {
     void validerCommentaire(ActionEvent event) {
 
         Publication publicationSelectionne = listView.getSelectionModel().getSelectedItem();
-        ServiceUtilisateur su =new ServiceUtilisateur();
+        ServiceUtilisateur su = new ServiceUtilisateur();
         // Récupération des données des champs
-        int cin=Integer.parseInt(cinTF1.getText());
+        int cin = Integer.parseInt(cinTF1.getText());
         String descrption_co = descriptionTF1.getText();
         LocalDate date_co = dateTf1.getValue();
         String nb_etoile = ratingTF1.getText();
-        Utilisateur u=new Utilisateur();
-        u=su.getByCin(cin);
+        Utilisateur u = new Utilisateur();
+        u = su.getByCin(cin);
 
 
         if (publicationSelectionne != null && u != null && !descrption_co.isEmpty() && date_co != null && !nb_etoile.isEmpty()) {
@@ -90,7 +90,7 @@ public class AjouterCommentaire implements Initializable {
                 commentaire.setDescription_co(descrption_co);
                 commentaire.setDate_co(date_co);
                 commentaire.setNb_etoile(Integer.parseInt(nb_etoile));
-                 // Ajoutez l'utilisateur actuel au commentaire
+                // Ajoutez l'utilisateur actuel au commentaire
 
                 ServiceCommentaire serviceCommentaire = new ServiceCommentaire();
                 try {
@@ -104,6 +104,7 @@ public class AjouterCommentaire implements Initializable {
             }
         } else {
             AfficherAvertissement("Champs non remplis", "Veuillez remplir tous les champs avant de valider le commentaire.");
+
         }
     }
 

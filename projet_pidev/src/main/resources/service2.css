@@ -80,4 +80,7 @@
  }
 
 
-
+.my-element {
+    -fx-border-width: 1px; /* Spécification de la largeur de la bordure */
+    -fx-border-color: black; /* Spécification de la couleur de la bordure */
+}
