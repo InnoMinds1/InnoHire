@@ -6,7 +6,6 @@ import edu.esprit.entities.Utilisateur;
 
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceUtilisateur;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +32,7 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 
-public class ModifierEtablissement extends AjouterEtablissement implements Initializable {
+public class ModifierEtablissementController extends AjouterEtablissementController implements Initializable {
 //Initializable:setAjouterEtablissementController(this);Set the reference
 
     private int id ;
@@ -285,7 +284,7 @@ public class ModifierEtablissement extends AjouterEtablissement implements Initi
 
       public void AfficherEtablissement(ActionEvent actionEvent) {
           try {
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
               Parent root = loader.load();
 
               Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle

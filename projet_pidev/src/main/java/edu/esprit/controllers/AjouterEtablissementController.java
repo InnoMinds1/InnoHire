@@ -4,12 +4,9 @@ package edu.esprit.controllers;
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;
-import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 
 import edu.esprit.services.ServiceUtilisateur;
-import edu.esprit.services.ServiceWallet;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,21 +25,15 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.scene.image.Image;
 
 
-public class AjouterEtablissement implements Initializable {
+public class AjouterEtablissementController implements Initializable {
     @FXML
     private TextField CodeETF;
 
@@ -285,7 +276,7 @@ if (CurrentUser.getRole()!=0) {
 
       public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle

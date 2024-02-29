@@ -7,33 +7,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="668.0" prefWidth="982.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWallet">
+<AnchorPane prefHeight="830.0" prefWidth="1451.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWalletController">
    <children>
-      <Label layoutX="359.0" layoutY="22.0" prefHeight="46.0" prefWidth="400.0" text="Modifer Wallet" textFill="#000000a9" AnchorPane.leftAnchor="359.0" AnchorPane.rightAnchor="60.999999999999886">
+      <Label layoutX="583.0" layoutY="81.0" prefHeight="46.0" prefWidth="257.0" text="Modifer Wallet" textFill="#000000a9" AnchorPane.leftAnchor="583.0" AnchorPane.rightAnchor="613.0">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="BalanceETF" layoutX="109.0" layoutY="291.0" prefHeight="46.0" prefWidth="250.0" promptText="balance" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="code_EtabETF" layoutX="550.0" layoutY="492.0" prefHeight="46.0" prefWidth="250.0" promptText="code etablissement" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="code_EtabETF" layoutX="424.0" layoutY="478.0" prefHeight="46.0" prefWidth="250.0" promptText="code etablissement" styleClass="text-field" stylesheets="@service2.css">
+      <Button layoutX="558.0" layoutY="547.0" mnemonicParsing="false" onAction="#okWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="558.0" layoutY="602.0" mnemonicParsing="false" onAction="#AfficherWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Annuler" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <ListView fx:id="ListViewEtab" layoutX="521.0" layoutY="148.0" prefHeight="331.0" prefWidth="708.0" />
+      <TextField fx:id="BalanceETF" layoutX="226.0" layoutY="192.0" prefHeight="46.0" prefWidth="250.0" promptText="Balance" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="413.0" layoutY="556.0" mnemonicParsing="false" onAction="#okWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
+      <TextField fx:id="dateCreationETF" editable="false" layoutX="227.0" layoutY="265.0" prefHeight="46.0" prefWidth="250.0" promptText="Date Creattion" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
-      </Button>
-      <Button layoutX="413.0" layoutY="607.0" mnemonicParsing="false" onAction="#AfficherEtablissement" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Annuler" textFill="WHITE">
+      </TextField>
+      <TextField fx:id="statusETF" layoutX="228.0" layoutY="333.0" prefHeight="46.0" prefWidth="250.0" promptText="Statut" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
-      </Button>
-      <ListView fx:id="ListViewEtab" layoutX="387.0" layoutY="125.0" prefHeight="331.0" prefWidth="560.0" />
+      </TextField>
+      <Label layoutX="175.0" layoutY="206.0" text="Balance" />
+      <Label layoutX="145.0" layoutY="279.0" text="Date Creation" />
+      <Label layoutX="188.0" layoutY="345.0" text="Status" />
    </children>
 </AnchorPane>

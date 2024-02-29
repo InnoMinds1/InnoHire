@@ -65,7 +65,7 @@ public class EtablissementItemController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEtablissement.fxml"));
                 Parent root = loader.load();
-                ModifierEtablissement controller = loader.getController();
+                ModifierEtablissementController controller = loader.getController();
                 controller.initData(selectedEtablissement); // Passer l'établissement sélectionné au contrôleur de l'interface de modification
 
                 // Obtenir la scène actuelle

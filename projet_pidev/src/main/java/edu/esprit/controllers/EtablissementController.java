@@ -1,10 +1,7 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.CurrentUser;
-import edu.esprit.entities.Etablissement;
-import edu.esprit.entities.Wallet;
+import edu.esprit.entities.*;
 import edu.esprit.services.ServiceEtablissement;
-import edu.esprit.services.ServiceWallet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,6 +70,13 @@ private AnchorPane grandAnchor;
     @FXML
     private Button ajouterWalletBtn;
 
+    @FXML
+    private Button acheterQuizzBtn;
+    @FXML
+    private ImageView afficherWalletListImg;
+    @FXML
+  private Label consulterWalletLabel;
+
 
     private List<Etablissement> getData() throws SQLException {
 
@@ -111,6 +115,9 @@ private AnchorPane grandAnchor;
 
 
     private void setChosenetablissement(Etablissement etablissement) {
+
+
+
         etablissementNameLable.setText(etablissement.getNom());
         etablissementCodeLabel.setText(String.valueOf(etablissement.getCodeEtablissement()));
 
@@ -120,37 +127,49 @@ private AnchorPane grandAnchor;
         typeETF.setText(etablissement.getTypeEtablissement());
         cinETF.setText(String.valueOf(etablissement.getUser().getCin()));
 
+        if(CurrentUser.getRole()!=0) {
+            if(etablissementNameLable.getText().equals(etablissement.getNom()))
+            {
+                CurrentEtablissement.setIdEtablissement(etablissement.getIdEtablissement());
+            }
+        }
+
 
        Wallet wallet = se.getWalletByEtablissement(etablissement);
 
         if (wallet != null) {
             // Le portefeuille existe pour cet établissement
             int balance = wallet.getBalance();
-            balanceLabel.setText(String.valueOf(balance));
+            balanceLabel.setText(String.valueOf(balance)+"DT");
+            CurrentWallet.setIdWallet(wallet.getIdWallet());
 
             // Afficher balanceLabel et masquer ajouterWalletBtn
             balanceLabel.setVisible(true);
             ajouterWalletBtn.setVisible(false);
+            acheterQuizzBtn.setVisible(true);
+
         } else {
-            // Aucun portefeuille trouvé pour cet établissement
-            balanceLabel.setText("Aucun portefeuille trouvé");
+
             // Masquer balanceLabel et afficher ajouterWalletBtn
             balanceLabel.setVisible(false);
             ajouterWalletBtn.setVisible(true);
+            acheterQuizzBtn.setVisible(false);
+            CurrentWallet.setIdWallet(0);
         }
+
 
       /*  chosenetablissementCard.setStyle("-fx-background-color: #" + etablissement.getColor() + ";\n" +
                 "    -fx-background-radius: 30;");*/
-
+        chosenetablissementCard.requestLayout(); // Force la mise à jour du layout
     }
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         nameUserLabel.setText("Admin " + CurrentUser.getNom());
-        /*Navbar*/
+
+        /* Navbar */
         if (CurrentUser.getRole() != 0) {
             NavBar.setVisible(false);
             NavBar.setManaged(false);
@@ -161,13 +180,6 @@ private AnchorPane grandAnchor;
             nameUserLabel.setText(CurrentUser.getNom());
         }
 
-
-
-
-
-
-
-
         try {
             etablissements.addAll(getData());
         } catch (SQLException e) {
@@ -177,13 +189,18 @@ private AnchorPane grandAnchor;
         setupListeners();
 
         if (etablissements.isEmpty()) {
-            // Display a message when there are no elements in the list
             label_no_data.setText("Vous n'avez pas encore d'établissement.");
-            Hbox_no_data.setVisible(true);  // Show the HBox
+            Hbox_no_data.setVisible(true);
+            chosenetablissementCard.setVisible(false); // Hide chosenetablissementCard
+            afficherWalletListImg.setVisible(false);
+            consulterWalletLabel.setText("Selectionne Etablissement");
         } else {
             setChosenetablissement(etablissements.get(0));
+            afficherWalletListImg.setVisible(true);
+            consulterWalletLabel.setText("Consulte Wallet");
             populateGrid();
-            Hbox_no_data.setVisible(false);  // Hide the HBox when there is data
+            Hbox_no_data.setVisible(false);
+            chosenetablissementCard.setVisible(true); // Show chosenetablissementCard
         }
     }
 
@@ -192,15 +209,21 @@ private AnchorPane grandAnchor;
             @Override
             public void onClickListener(Etablissement etablissement) {
                 setChosenetablissement(etablissement);
+
+                CurrentEtablissement.setIdEtablissement(etablissement.getIdEtablissement());
             }
 
             @Override
             public void onDeleteListener(Etablissement etablissement) {
                 etablissements.remove(etablissement);
+                rafraichirPage();
+
                 if (etablissements.isEmpty()) {
                     // Display a message when there are no elements in the list
                     label_no_data.setText("Vous n'avez pas encore d'établissement.");
-                    Hbox_no_data.setVisible(true);  // Show the HBox
+                    Hbox_no_data.setVisible(true);
+                   // chosenetablissementCard.setVisible(false);// Show the HBox
+
 
                 }
                 populateGrid();
@@ -217,7 +240,7 @@ private AnchorPane grandAnchor;
 
         for (int i = 0; i < etablissements.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/item.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/ItemEtablissement.fxml"));
             AnchorPane anchorPane = null;
             try {
                 anchorPane = fxmlLoader.load();
@@ -276,15 +299,83 @@ private AnchorPane grandAnchor;
 
     }
 
-    public void afficherWalletList(MouseEvent mouseEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherEtablissement.fxml"));
-            grid.getScene().setRoot(root);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry");
-            alert.setTitle("Error");
-            alert.show();
+    public void afficherWalletList(MouseEvent mouseEvent) throws SQLException {
+        if (CurrentUser.getRole() == 0) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/AfficherWallet.fxml"));
+                grid.getScene().setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+                afficherAlerte("Erreur lors du chargement d'AfficherWallet.fxml : " + e.getMessage());
+            }
+        } else {
+            Etablissement etablissementConnecte = null;
+            try {
+                etablissementConnecte = se.getOneByID(CurrentEtablissement.getIdEtablissement());
+            } catch (SQLException e) {
+                e.printStackTrace();
+                afficherAlerte("Erreur lors de la récupération de l'établissement connecté : " + e.getMessage());
+            }
+
+            // Vérifier d'abord si etablissementConnecte est null
+            if (etablissementConnecte != null) {
+                Wallet walletConnecte = null;
+                try {
+                    walletConnecte = se.getWalletByEtablissement(etablissementConnecte);
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                    afficherAlerte("Erreur lors de la récupération du portefeuille : " + t.getMessage());
+                }
+
+                if (walletConnecte != null) {
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getResource("/AfficherWallet.fxml"));
+                        grid.getScene().setRoot(root);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        afficherAlerte("Erreur lors du chargement d'AfficherWallet.fxml : " + e.getMessage());
+                    }
+                } else {
+                    // Afficher une alerte demandant d'ajouter un portefeuille
+                    afficherAlerte("Ajoutez un portefeuille à votre établissement.");
+                }
+            } else {
+                // Si etablissementConnecte est null, afficher un message spécifique
+                afficherAlerte("Ajoutez un portefeuille à votre établissement.");
+            }
         }
     }
+
+
+    private void afficherAlerte(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(message);
+        alert.setTitle("Error");
+        alert.show();
+    }
+
+    public void rafraichirPage() {
+        try {
+            etablissements.clear(); // Efface les données existantes
+            etablissements.addAll(getData()); // Recharge les données
+
+            if (etablissements.isEmpty()) {
+                label_no_data.setText("Vous n'avez pas encore d'établissement.");
+                Hbox_no_data.setVisible(true);
+                afficherWalletListImg.setVisible(false);
+                consulterWalletLabel.setText("Selectionne Etablissement");
+                chosenetablissementCard.setVisible(false); // Hide chosenetablissementCard
+            } else {
+                setChosenetablissement(etablissements.get(0));
+                afficherWalletListImg.setVisible(true);
+                consulterWalletLabel.setText("Consulte Wallet");
+                populateGrid();
+                Hbox_no_data.setVisible(false);
+                chosenetablissementCard.setVisible(true); // Show chosenetablissementCard
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

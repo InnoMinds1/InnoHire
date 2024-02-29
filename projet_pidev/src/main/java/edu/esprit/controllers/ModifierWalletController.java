@@ -1,10 +1,8 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Etablissement;
-import edu.esprit.entities.Utilisateur;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
-import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.services.ServiceWallet;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -24,11 +22,17 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class ModifierWallet implements Initializable {
+public class ModifierWalletController implements Initializable {
     private int idW ;
     private int CodeInit;
     @FXML
     private TextField BalanceETF;
+    @FXML
+    private TextField statusETF;
+
+    @FXML
+    private TextField dateCreationETF;
+
 
     @FXML
     private ListView<Etablissement> ListViewEtab;
@@ -53,6 +57,7 @@ public class ModifierWallet implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
         Set<Etablissement> etablissements = null;
 
@@ -92,18 +97,37 @@ public class ModifierWallet implements Initializable {
             setIdW(wallet.getIdWallet());
 
             BalanceETF.setText(String.valueOf(wallet.getBalance()));
-
+            statusETF.setText(String.valueOf(wallet.getStatus()));
             code_EtabETF.setText(String.valueOf(wallet.getEtablissement().getCodeEtablissement()));
+            dateCreationETF.setText(String.valueOf(wallet.getDateCreation()));
+
             setCodeInit(wallet.getEtablissement().getCodeEtablissement());
 
         }
     }
 
     public void okWallet(ActionEvent actionEvent) throws SQLException {
-        if (controlSaisie(BalanceETF))
-        {
-            int Balance = Integer.parseInt(BalanceETF.getText());
+        if (controlSaisie(BalanceETF)&&controlSaisie(statusETF)) {
+            int Balance ;
+            try {
+                Balance = Integer.parseInt(BalanceETF.getText());
 
+            } catch (NumberFormatException e) {
+                showAlert(Alert.AlertType.ERROR, "Format invalide", "Balance doit etre un nombre valide.");
+                return;
+            }
+            int status;
+            try {
+                status = Integer.parseInt(statusETF.getText());
+            } catch (NumberFormatException e) {
+                showAlert(Alert.AlertType.ERROR, "Format invalide", "status doit etre un nombre valide.");
+                return;
+            }
+            // Additional check for valid status (should be 0 or 1)
+            if (status != 0 && status != 1) {
+                showAlert(Alert.AlertType.ERROR, "Erreur de statut", "Le statut doit être 0 ou 1.");
+                return;
+            }
 
             if (code_EtabETF.getText().isEmpty()) {
                 // Si le TextField est vide, vérifiez si un utilisateur est sélectionné dans la ListView
@@ -120,7 +144,6 @@ public class ModifierWallet implements Initializable {
             }
 
 
-
             int code_Etab = Integer.parseInt(code_EtabETF.getText());
 
 
@@ -129,38 +152,38 @@ public class ModifierWallet implements Initializable {
             newWallet.setIdWallet(getIdW());
 
             newWallet.setBalance(Balance);
+            newWallet.setStatus(status);
 
 
-
-            ServiceEtablissement se=new ServiceEtablissement();
-            Etablissement etab=se.getOneByCode(code_Etab);
+            ServiceEtablissement se = new ServiceEtablissement();
+            Etablissement etab = se.getOneByCode(code_Etab);
 
 
             newWallet.setEtablissement(etab);
 
-if (getCodeInit()!=etab.getCodeEtablissement()) {
-    if (serviceWallet.portefeuilleExistePourEtablissement(etab.getCodeEtablissement())) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur");
-        alert.setHeaderText(null);
-        alert.setContentText("Erreur : Cet établissement est déjà associé à un portefeuille. La modification n'est pas autorisée.");
-        alert.showAndWait();
-        return;
-    }
-}
+            if (getCodeInit() != etab.getCodeEtablissement()) {
+                if (serviceWallet.portefeuilleExistePourEtablissement(etab.getCodeEtablissement())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Erreur : Cet établissement est déjà associé à un portefeuille. La modification n'est pas autorisée.");
+                    alert.showAndWait();
+                    return;
+                }
+            }
 
 
             serviceWallet.modifier(newWallet);
 
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Service modifié avec succès");
-            AfficherEtablissement(actionEvent);
+            AfficherWallet(actionEvent);
 
         }
     }
 
-    public void AfficherEtablissement(ActionEvent actionEvent) {
+    public void AfficherWallet(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEtablissement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherWallet.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) BalanceETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle

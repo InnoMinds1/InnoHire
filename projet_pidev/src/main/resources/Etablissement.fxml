@@ -82,7 +82,7 @@
                                     <Font name="Cambria" size="18.0" />
                                  </font>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@style.css" text="Search" textFill="WHITE" />
+                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="chosen-etablissement-card" stylesheets="@style.css" text="Search" textFill="WHITE" />
                            </children>
                            <styleClass>
                               <String fx:value="search-box" />
@@ -114,7 +114,7 @@
                               </HBox>
                               <ImageView fx:id="etablissementImg" fitHeight="140.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@img/esprit.png" />
+                                    <Image url="@img/no-image.jpg" />
                                  </image>
                                  <VBox.margin>
                                     <Insets top="20.0" />
@@ -127,7 +127,7 @@
                                           <Font name="Cambria" size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="lieuETF" alignment="TOP_CENTER" editable="false" />
+                                    <TextField fx:id="lieuETF" alignment="TOP_CENTER" editable="false" text=".." />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="20.0" />
@@ -140,7 +140,7 @@
                                           <Font name="Cambria" size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="typeETF" alignment="TOP_CENTER" editable="false" />
+                                    <TextField fx:id="typeETF" alignment="TOP_CENTER" editable="false" text=".." />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
@@ -150,7 +150,7 @@
                                           <Font name="Cambria" size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="cinETF" alignment="TOP_CENTER" editable="false" />
+                                    <TextField fx:id="cinETF" alignment="TOP_CENTER" editable="false" text=".." />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
@@ -176,13 +176,17 @@
                                     </Label>
                                     <StackPane prefHeight="34.0" prefWidth="145.0">
                                        <children>
-                                          <Button fx:id="ajouterWalletBtn" mnemonicParsing="false" onAction="#ajouterWallet" text="AjouterWallet" />
-                                          <Label fx:id="balanceLabel" text="floussi" />
+                                          <Button fx:id="ajouterWalletBtn" mnemonicParsing="false" onAction="#ajouterWallet" styleClass="white-to-gray" stylesheets="@style.css" text="AjouterWallet" />
+                                          <Label fx:id="balanceLabel" prefHeight="53.0" prefWidth="167.0" text="Balance" textFill="WHITE">
+                                             <font>
+                                                <Font name="Cambria" size="24.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </StackPane>
                                  </children>
                               </HBox>
-                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Acheter Quizz" textFill="#828282">
+                              <Button fx:id="acheterQuizzBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Acheter Quizz" textFill="#828282">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="30.0" />
                                  </VBox.margin>
@@ -208,23 +212,23 @@
                               <Insets left="20.0" right="20.0" />
                            </VBox.margin>
                            <children>
-                              <Label prefHeight="29.0" prefWidth="88.0" text="Welcome" textFill="#878787">
+                              <Label prefHeight="30.0" prefWidth="106.0" text="Welcome" textFill="#878787">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nameUserLabel" prefHeight="30.0" prefWidth="139.0" text="User" textFill="#878787" underline="true">
+                              <Label fx:id="nameUserLabel" prefHeight="30.0" prefWidth="146.0" text="User" textFill="#878787" underline="true">
                                  <font>
                                     <Font name="Cambria" size="18.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                              <Label prefHeight="62.0" prefWidth="100.0" text="Wallets List" textFill="#878787">
+                              <Pane prefHeight="66.0" prefWidth="259.0" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="consulterWalletLabel" prefHeight="62.0" prefWidth="152.0" text="Consulte Wallet" textFill="#878787">
                                  <font>
                                     <Font name="Cambria" size="18.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="50.0" fitWidth="55.0" onMouseClicked="#afficherWalletList" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="afficherWalletListImg" fitHeight="50.0" fitWidth="55.0" onMouseClicked="#afficherWalletList" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@img/ic_cart.png" />
                                  </image>
@@ -250,7 +254,7 @@
                               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
                               <Pane prefHeight="84.0" prefWidth="96.0">
                                  <children>
-                                    <Button layoutX="-47.0" layoutY="39.0" mnemonicParsing="false" onAction="#ajouterEtablissement" styleClass="search-button" stylesheets="@style.css" text="Ajouter Etablissement" textFill="#faf9f9" />
+                                    <Button layoutX="-47.0" layoutY="39.0" mnemonicParsing="false" onAction="#ajouterEtablissement" styleClass="chosen-etablissement-card" stylesheets="@style.css" text="Ajouter Etablissement" textFill="#faf9f9" />
                                  </children>
                               </Pane>
                            </children>

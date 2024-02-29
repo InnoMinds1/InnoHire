@@ -25,7 +25,7 @@ import java.util.Set;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class AjouterWallet implements Initializable {
+public class AjouterWalletController implements Initializable {
     //--------------------wallet
     @FXML
     private TextField BalanceETF;
@@ -210,7 +210,7 @@ public class AjouterWallet implements Initializable {
 
     public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/market.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) BalanceETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle

@@ -26,12 +26,12 @@
   }
 .label {
     -fx-font-weight: bold;
+}
 
-    }
-    .label2 {
-        -fx-font-weight: SemiBold;
+.label2 {
+    -fx-font-weight: normal; /* Use "bold", "normal", or a numeric value */
+}
 
-        }
 /* Style de base pour un tableau */
 .table {
     width: 100%;
