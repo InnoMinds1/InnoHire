@@ -106,11 +106,11 @@ public class ReclamationItemComponentRepresentantController {
     public void DetailsReclamationAction(ActionEvent event) {
         try {
             // Load the DetailsReclamation.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReclamationCandidat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReclamationRepresantant.fxml"));
             Parent root = loader.load();
 
             // Get the controller for the DetailsReclamation page
-            ModifierReclamationCandidatController detailsController = loader.getController();
+            ModifierReclamationRepresantantController detailsController = loader.getController();
 
             // Pass the selected reclamation data to the DetailsReclamationController
             detailsController.initData(reclamation);

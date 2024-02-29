@@ -165,7 +165,7 @@ public class ModifierReclamationRepresantantController {
 
     public void navigateToAfficherReclamationAction(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamationRepresantant.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamationRepresentant.fxml"));
             TFTitre.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
