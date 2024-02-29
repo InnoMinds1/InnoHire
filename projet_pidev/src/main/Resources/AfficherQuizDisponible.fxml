@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" style="-fx-background-color: #8B5F7A;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AfficherQuizDisponibleController">
+    <children>
+        <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <left>
+                <VBox prefHeight="200.0" prefWidth="435.0" styleClass="left-bar" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+                            <children>
+                                <Label text="LA LISTE DES QUIZ DISPO" textFill="#FFFFFF">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <HBox layoutX="42.0" layoutY="14.0" prefHeight="30.0" prefWidth="393.0" spacing="20.0" style="-fx-background-color: #8B5F7A;">
+                                    <children>
+                                        <Label text="Image" textFill="#FFFFFF">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Nom" textFill="#FFFFFF">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Prix" textFill="#FFFFFF">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <ImageView fitHeight="325.0" fitWidth="200.0" layoutX="98.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/liste.jpg" />
+                                    </image>
+                                </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="98.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/acheter.jpg" />
+                           </image>
+                        </ImageView>
+                            </children>
+                        </Pane>
+                    </children>
+                </VBox>
+            </left>
+            <center>
+                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="642.0" prefWidth="804.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <ScrollPane fx:id="scrollA" fitToWidth="true" prefHeight="710.0" prefWidth="879.0" styleClass="transparent" HBox.hgrow="ALWAYS">
+                                    <content>
+                                        <GridPane fx:id="gridA" prefHeight="0.0" prefWidth="0.0" styleClass="grid-pane">
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                            </rowConstraints>
+                                        </GridPane>
+                                    </content>
+                                    <HBox.margin>
+                                        <Insets top="10.0" />
+                                    </HBox.margin>
+                                </ScrollPane>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
