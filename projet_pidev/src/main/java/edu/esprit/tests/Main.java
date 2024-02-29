@@ -19,7 +19,7 @@ public class Main {
 
         //AJOUT
         //ServicePublication sb = new ServicePublication();
-        Utilisateur u=new Utilisateur(28,22,"p","kj","bbj","lbj");
+        Utilisateur u=new Utilisateur(17,233,"AMEN","LKHDIM","","Y@i");
 
 
 
@@ -32,7 +32,7 @@ public class Main {
 
         Publication p = new Publication(3,"22",u,"888888","111111","4qv","111",LocalDate.of(2021,02,4),125);
         Post po = new Post(1,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
-        sr.ajouter(u);
+        //sr.ajouter(u);
         //sb.modifier(p);
         //so.supprimer(2);
         //System.out.println(sb.getOneByID(11));
@@ -42,15 +42,15 @@ public class Main {
      //   System.out.println(dateActuelle);
 
         //----------------------Commentaire--------------------------------------//
-        Publication pc = new Publication(3,"22",u,"22","11","444","111",LocalDate.of(2021,02,4),125);
+        Publication pc = new Publication(12,"22",u,"hy","ijhu","bhjv","ok",LocalDate.of(2024,02,22),1);
         //sb.ajouter(pc);
-         Commentaire c=new Commentaire(pc,u,"ok", LocalDate.of(2023,02,4),12);
+         Commentaire c=new Commentaire(17,pc,u,"heybabygirl", LocalDate.of(2023,02,4),200);
 
         //sc.ajouter(c);
         //sc.modifier(c);
         //sc.supprimer(10);
         //System.out.println(sc.getOneByID(10));
-     //  System.out.println(sc.getAll());
+     //System.out.println(sc.getAll());
 
 
 

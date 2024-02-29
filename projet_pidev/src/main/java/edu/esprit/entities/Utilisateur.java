@@ -119,6 +119,18 @@ public class Utilisateur {
 
     }
 
+    public Utilisateur(int id_utilisateur, int cin, String name, String prenom, String adresse, String mdp, int role, String profileImg, int verified) {
+        this.id_utilisateur = id_utilisateur;
+        this.cin = cin;
+        this.name = name;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.mdp = mdp;
+        this.role = role;
+        this.profileImg = profileImg;
+        this.verified = verified;
+    }
+
     public int getRole() {
         return role;
     }

@@ -59,21 +59,11 @@ public class ModifierCommentaire {
     void modifierCommentaire(ActionEvent event) throws SQLException {
         if (controlSaisie(descriptionTF1) && controlSaisie(ratingTF1)) {
             Commentaire c = new Commentaire();
-
-            // Récupération de l'ID de la publication à modifier
-            //int idPublication = getId(); // Assurez-vous de définir cette méthode
-
-            // Configuration des nouvelles valeurs
             c.setId_commentaire(getId());
-
-
-            // Assurez-vous que TFdate est un DatePicker
             c.setDescription_co(descriptionTF1.getText());
             c.setDate_co(dateTf1.getValue());
             c.setNb_etoile(Integer.parseInt(ratingTF1.getText()));
             ServiceCommentaire sc = new ServiceCommentaire();
-
-
             // Appel de la méthode pour effectuer la modification dans la base de données
             sc.modifier(c);
 

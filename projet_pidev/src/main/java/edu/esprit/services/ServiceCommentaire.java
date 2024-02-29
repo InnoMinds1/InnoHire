@@ -35,10 +35,10 @@ public class ServiceCommentaire implements IService<Commentaire>  {
 
     @Override
     public void modifier(Commentaire commentaire) throws SQLException {
-        String req = "UPDATE commentaire SET id_publication = ?, id_utilisateur = ?, description_co = ?, date_co = ? , nb_etoile = ?WHERE id_commentaire = ?";
+        String req = "UPDATE commentaire SET id_publication = ? , id_utilisateur = ? , description_co = ? , date_co = ? , nb_etoile = ? WHERE id_commentaire = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-          ps.setInt(1, commentaire.getPublication().getId_publication());
+            ps.setInt(1, commentaire.getPublication().getId_publication());
             ps.setInt(2, commentaire.getUtilisateur().getId_utilisateur());
             ps.setString(3, commentaire.getDescription_co());
             ps.setDate(4, Date.valueOf(commentaire.getDate_co()));
