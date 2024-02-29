@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,19 +29,6 @@
                 <Font size="16.0" />
             </font>
         </Button>
-        <Button layoutX="853.0" layoutY="478.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="Search" textFill="#f7f3f3">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Button>
-        <TextField fx:id="RechercheETF" layoutX="671.0" layoutY="478.0" prefHeight="31.0" prefWidth="170.0" promptText="Recherche..." styleClass="text-field">
-            <stylesheets>
-                <URL value="@service2.css" />
-            </stylesheets>
-            <font>
-                <Font size="16.0" />
-            </font>
-        </TextField>
         <Button layoutX="329.0" layoutY="473.0" mnemonicParsing="false" onAction="#ajouterUtilisateur" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
             <font>
                 <Font size="16.0" />
@@ -79,6 +67,17 @@
             </children>
         </AnchorPane>
       <Label layoutX="257.0" layoutY="103.0" prefHeight="32.0" prefWidth="634.0" text="CIN           Nom                 Prenom                           Email                       Role          " />
+        <ComboBox fx:id="comboRole" layoutX="671.0" layoutY="63.0" prefHeight="46.0" prefWidth="250.0" promptText="Select Role" styleClass="text-field" stylesheets="@service2.css">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="NO FILTER" />
+                    <String fx:value="Admin" />
+                    <String fx:value="Representant" />
+                    <String fx:value="Candidat" />
+                    <!-- Add more roles as needed -->
+                </FXCollections>
+            </items>
 
+        </ComboBox>
     </children>
 </AnchorPane>

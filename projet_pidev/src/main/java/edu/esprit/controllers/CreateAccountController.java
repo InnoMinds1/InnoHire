@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 
+import javax.swing.plaf.ColorUIResource;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -50,6 +51,8 @@ public class CreateAccountController {
 
     @FXML
     private TextField tfrole;
+    @FXML
+    private ComboBox<?> comboRole;
 
     @FXML
     void ajouterUtilisateurAction(ActionEvent event) {
@@ -59,7 +62,7 @@ public class CreateAccountController {
         ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
 
         int cin;
-        int role;
+       // int role;
         String Nom = TFnom.getText();
         String prenom = TFprenom.getText();
         String adresse = TFadresse.getText();
@@ -119,7 +122,6 @@ public class CreateAccountController {
 
         try {
             cin = Integer.parseInt(TFcin.getText());
-            role = Integer.parseInt(tfrole.getText());
 
 
         } catch (NumberFormatException e) {
@@ -130,6 +132,8 @@ public class CreateAccountController {
             alert.showAndWait();
             return;
         }
+
+
         if (serviceUtilisateur.utilisateurExiste(cin))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -140,20 +144,22 @@ public class CreateAccountController {
             return;
 
         }
+        String role = (String) comboRole.getSelectionModel().getSelectedItem();
+
 
 
 
 
         // Créer un nouvel objet Service avec les valeurs saisies
-        if (role==0)
+        if (role==null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("le ROLE 0 est reserve pour les admine utilisez 1 pour representant et 2 pour candidat");
+            alert.setContentText("veillez choisir un role");
             alert.showAndWait();
         }
-        else if(role==1)
+        else if(role.equals("Representant"))
         {Representant u = new Representant();
             u.setNom(Nom);
             u.setCin(cin);
@@ -178,7 +184,7 @@ public class CreateAccountController {
                 TFnom.clear();
                 TFadresse.clear();
                 tfmdp.clear();
-                tfrole.clear();
+
                 Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissementAfterCreate.fxml"));
                 TFadresse.getScene().setRoot(root);
             } catch (Exception e) {
@@ -193,7 +199,7 @@ public class CreateAccountController {
 
 
         }
-        else if (role == 2){
+        else if (role .equals("Candidat")){
             {Candidat u = new Candidat();
                 u.setNom(Nom);
                 u.setCin(cin);
@@ -215,7 +221,12 @@ public class CreateAccountController {
                     TFnom.clear();
                     TFadresse.clear();
                     tfmdp.clear();
-                    tfrole.clear();
+                    CurrentUser.setCin(u.getCin());
+                    CurrentUser.setNom(u.getNom());
+                    CurrentUser.setPrenom(u.getPrenom());
+                    CurrentUser.setAdresse(u.getAdresse());
+                    CurrentUser.setMdp(u.getMdp());
+                    CurrentUser.setRole(2);
                     Parent root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
                     TFadresse.getScene().setRoot(root);
 

@@ -45,6 +45,13 @@ public class LoginController {
             alert.setTitle("NON");
             alert.show();
         }
+        /*else if (!sp.utilisateurExiste(cin))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("CIN n EXISTE PAS");
+            alert.setTitle("NON");
+            alert.show();
+        }*/
 
        else if (sp.utilisateurExiste(cin))
         {
@@ -151,7 +158,7 @@ public class LoginController {
         }
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("An error occurred while processing your request.");
+            alert.setContentText("USER AVEC CE CIN N EXISTE PAS");
             alert.setTitle("Error");
             alert.show();
         }

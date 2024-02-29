@@ -76,6 +76,18 @@ public class Utilisateur {
     public void setMdp(String mdp) {
         this.mdp = mdp;
     }
+    public int getRole() {
+        // Assuming Admin, Representant, and Candidat are subclasses of Utilisateur
+        if (this instanceof Admin) {
+            return 0; // Admin role
+        } else if (this instanceof Representant) {
+            return 1; // Representant role
+        } else if (this instanceof Candidat) {
+            return 2; // Candidat role
+        } else {
+            return -1; // Default role (modify according to your logic)
+        }
+    }
 
     @Override
     public String toString() {

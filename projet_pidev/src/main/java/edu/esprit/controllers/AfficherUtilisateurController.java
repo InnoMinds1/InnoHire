@@ -7,6 +7,7 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,13 +20,17 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class AfficherUtilisateurController implements Initializable {
+/*public class AfficherUtilisateurController implements Initializable {
     @FXML
-    private ListView<Utilisateur> listView; // Assurez-vous que l'attribut fx:id correspond à celui dans votre fichier FXML
+    private ListView<Utilisateur> listView;
+    @FXML
+    private ComboBox<?> comboRole;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -104,10 +109,11 @@ public class AfficherUtilisateurController implements Initializable {
                 };
             }
 
-        });*/
+        });// lahne toufa
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
         Set<Utilisateur> utilisateurs = null;
         Set<Admin> admins = null;
+
 
         try {
             utilisateurs = serviceService.getAll();
@@ -132,16 +138,15 @@ public class AfficherUtilisateurController implements Initializable {
                         if (empty || item == null) {
                             setText(null);
                         } else {
-                            String format = "%-15s%-20s%-25s%-30s%-10d"; // Adjust the widths as needed
+                            String format = "%-15s%-20s%-25s%-30s%-10d";
 
                             if (item instanceof Admin) {
-                                // Customize how you want to display each Admin
                                 setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 0));
                             } else if (item instanceof Representant) {
-                                // Customize how you want to display each Representant
+
                                 setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 1));
                             } else if (item instanceof Candidat) {
-                                // Customize how you want to display each Candidat
+
                                 setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 2));
                             }
                         }
@@ -152,10 +157,79 @@ public class AfficherUtilisateurController implements Initializable {
 
     }
 
+    // Method to filter Utilisateurs based on search text
+*/
+public class AfficherUtilisateurController implements Initializable {
+    @FXML
+    private ListView<Utilisateur> listView;
+    @FXML
+    private ComboBox<String> comboRole;
+
+    // Original list of Utilisateurs
+    private ObservableList<Utilisateur> originalUtilisateurs;
+
+    // Filtered list based on role
+    private ObservableList<Utilisateur> filteredUtilisateurs;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ServiceUtilisateur serviceService = new ServiceUtilisateur();
+        Set<Utilisateur> utilisateurs = null;
+        Set<Admin> admins = null;
+
+        try {
+            utilisateurs = serviceService.getAll();
+            admins = serviceService.getAll_admin();
+            utilisateurs.addAll(admins);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        originalUtilisateurs = FXCollections.observableArrayList(utilisateurs);
+        filteredUtilisateurs = FXCollections.observableArrayList(originalUtilisateurs);
+
+        listView.setItems(filteredUtilisateurs);
+
+        listView.setCellFactory(param -> new ListCell<Utilisateur>() {
+            @Override
+            protected void updateItem(Utilisateur item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    String format = "%-15s%-20s%-25s%-30s%-10d";
+
+                    if (item instanceof Admin) {
+                        setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 0));
+                    } else if (item instanceof Representant) {
+                        setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 1));
+                    } else if (item instanceof Candidat) {
+                        setText(String.format(format, item.getCin(), item.getNom(), item.getPrenom(), item.getAdresse(), 2));
+                    }
+                }
+            }
+        });
+
+        comboRole.setOnAction(event -> filterByRole(comboRole.getValue()));
+    }
+
+    private void filterByRole(String selectedRole) {
+        if ("Admin".equals(selectedRole)) {
+            filteredUtilisateurs.setAll(originalUtilisateurs.filtered(u -> u.getRole() == 0));
+        } else if ("Representant".equals(selectedRole)) {
+            filteredUtilisateurs.setAll(originalUtilisateurs.filtered(u -> u.getRole() == 1));
+        } else if ("Candidat".equals(selectedRole)) {
+            filteredUtilisateurs.setAll(originalUtilisateurs.filtered(u -> u.getRole() == 2));
+        } else {
+            filteredUtilisateurs.setAll(originalUtilisateurs);
+        }
+    }
 
 
 
-        @FXML
+
+    @FXML
     void supprimerUtilisateur(ActionEvent event) {
         Utilisateur selectedUtilisateur = listView.getSelectionModel().getSelectedItem();
         if (selectedUtilisateur != null) {
