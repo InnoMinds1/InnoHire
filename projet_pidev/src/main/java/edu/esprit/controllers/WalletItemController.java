@@ -1,22 +1,27 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceWallet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class WalletItemController {
+public class WalletItemController implements Initializable {
     @FXML
     private Text LabelBalance;
 
@@ -31,6 +36,8 @@ public class WalletItemController {
 
     @FXML
     private Text labelStatus;
+    @FXML
+    private Button modifierBtn;
 
 
     private Wallet wallet;
@@ -40,16 +47,14 @@ public class WalletItemController {
     private static HBox hboxSelectionne; // Champ statique pour suivre le HBox précédemment sélectionné
 
 
-
-
-
-
     public void setData(Wallet wallet) {
         this.wallet = wallet;
         LabelBalance.setText(String.valueOf(wallet.getBalance()));
         labelCode.setText(String.valueOf(wallet.getEtablissement().getCodeEtablissement()));
         labelDate.setText(String.valueOf(wallet.getDateCreation()));
-        labelStatus.setText(String.valueOf(wallet.getStatus()));
+        int status = wallet.getStatus();
+        labelStatus.setText(status != 0 ? "Actif" : "Non Actif");
+
 
     }
 
@@ -60,21 +65,21 @@ public class WalletItemController {
         Wallet selectedWallet = wallet;
 
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierWallet.fxml"));
-                Parent root = loader.load();
-                ModifierWalletController controller = loader.getController();
-                controller.initDataWallet(selectedWallet); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierWallet.fxml"));
+            Parent root = loader.load();
+            ModifierWalletController controller = loader.getController();
+            controller.initDataWallet(selectedWallet); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
 
-                // Obtenir la scène actuelle
-                Scene scene = labelCode.getScene();
+            // Obtenir la scène actuelle
+            Scene scene = labelCode.getScene();
 
-                // Changer le contenu de la scène
-                scene.setRoot(root);
+            // Changer le contenu de la scène
+            scene.setRoot(root);
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -105,10 +110,10 @@ public class WalletItemController {
     public void actualiserVueQuestions() {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherWallet.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Etablissement.fxml"));
             labelCode.getScene().setRoot(root);
         } catch (IOException e) {
-
+            e.printStackTrace();
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setContentText("Une erreur s'est produite lors de la redirection.");
             errorAlert.setTitle("Erreur de redirection");
@@ -117,9 +122,15 @@ public class WalletItemController {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (CurrentUser.getRole() != 0) {
+            modifierBtn.setVisible(false);
+            modifierBtn.setManaged(false);
+        }
     }
 
-
+}
     // ... (autres méthodes)
 
 

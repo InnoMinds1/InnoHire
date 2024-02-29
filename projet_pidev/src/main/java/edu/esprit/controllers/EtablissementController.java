@@ -139,8 +139,19 @@ private AnchorPane grandAnchor;
 
         if (wallet != null) {
             // Le portefeuille existe pour cet établissement
-            int balance = wallet.getBalance();
-            balanceLabel.setText(String.valueOf(balance)+"DT");
+
+
+
+
+            if (wallet.getStatus() != 0) {
+                int balance = wallet.getBalance();
+                balanceLabel.setText(String.valueOf(balance) + "DT");
+            } else {
+                balanceLabel.setText("Non Actif");
+            }
+
+
+
             CurrentWallet.setIdWallet(wallet.getIdWallet());
 
             // Afficher balanceLabel et masquer ajouterWalletBtn
@@ -287,6 +298,7 @@ private AnchorPane grandAnchor;
     public void ajouterWallet(ActionEvent actionEvent) {
 
             try {
+
                 Parent root = FXMLLoader.load(getClass().getResource("/AjouterWallet.fxml"));
                 grid.getScene().setRoot(root);
             } catch (IOException e) {

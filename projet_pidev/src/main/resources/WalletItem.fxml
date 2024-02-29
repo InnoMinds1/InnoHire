@@ -19,7 +19,7 @@
                 <Font size="11.0" />
             </font>
         </Text>
-        <Text fx:id="labelDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="267.73682498931885">
+        <Text fx:id="labelDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="244.53687381744385">
             <font>
                 <Font size="11.0" />
             </font>
@@ -29,7 +29,12 @@
             <Font size="11.0" />
          </font>
       </Text>
-        <Button mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="22.0" style="-fx-text-fill: white;" styleClass="chosen-etablissement-card" stylesheets="@style.css" text=".." />
+        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="22.0" style="-fx-text-fill: white;" styleClass="chosen-etablissement-card" stylesheets="@style.css" text=".." />
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="22.0" style="-fx-text-fill: white;" styleClass="green-button" stylesheets="@style.css" text="+">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
       <Button mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="22.0" style="-fx-text-fill: white;" styleClass="delete-button" stylesheets="@style.css" text="x" />
     </children>
 </HBox>

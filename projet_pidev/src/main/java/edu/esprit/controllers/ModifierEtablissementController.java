@@ -41,12 +41,6 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     private int codeInit ;
 
 
-
-
-
-
-
-
     @FXML
     private TextField CodeETF;
 
@@ -227,8 +221,10 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             }
 
 
+            String cin_utilisateur = cin_utilisateurETF.getText();
+            int cin_utilisateurE;
 
-            if (cin_utilisateurETF.getText().isEmpty()) {
+            if (cin_utilisateur.isEmpty()) {
                 // If the TextField is empty, show an error alert
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
@@ -236,11 +232,33 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
                 alert.setContentText("Veuillez saisir un CIN ou choisir de la Liste !");
                 alert.showAndWait();
                 return;
+            } else {
+                try {
+                    // Parse the CIN from the TextField
+                    cin_utilisateurE = Integer.parseInt(cin_utilisateur);
+                } catch (NumberFormatException e) {
+                    // If parsing fails, show an error alert
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Le CIN doit être un nombre valide !");
+                    alert.showAndWait();
+                    return;
+                }
             }
 
+            ServiceUtilisateur su = new ServiceUtilisateur();
+            Utilisateur user = su.getOneByCin(cin_utilisateurE);
 
-
-            int cin_utilisateur = Integer.parseInt(cin_utilisateurETF.getText());
+            if (user == null) {
+                // Show an error alert for non-existent user
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Aucun utilisateur trouvé avec le CIN saisi !");
+                alert.showAndWait();
+                return;
+            }
 
             if (CurrentUser.getRole()!=0) {
                 if (!checkBoxRegle.isSelected()) {
@@ -253,6 +271,8 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
                 }
             }
 
+
+
             Etablissement newEtablissement = new Etablissement();
 
             newEtablissement.setIdEtablissement(getId());
@@ -263,8 +283,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             newEtablissement.setImage(imageETF.getText());
 
 
-            ServiceUtilisateur se=new ServiceUtilisateur();
-            Utilisateur user=se.getOneByCin(cin_utilisateur);
+
 
 
            newEtablissement.setUser(user);

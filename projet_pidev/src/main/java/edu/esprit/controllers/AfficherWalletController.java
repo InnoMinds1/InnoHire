@@ -44,6 +44,7 @@ public class AfficherWalletController extends AjouterEtablissementController imp
     private GridPane gridA;
     @FXML
     private ScrollPane scrollA;
+
     ServiceWallet serviceW = new ServiceWallet();
 
 
@@ -127,18 +128,7 @@ public class AfficherWalletController extends AjouterEtablissementController imp
 
 
 
-    public void ajouterWallet(ActionEvent actionEvent) {
 
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AjouterWallet.fxml")));
-            gridA.getScene().setRoot(root);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry");
-            alert.setTitle("Error");
-            alert.show();
-        }
-    }
 
 
     public void afiicherEtablissement(MouseEvent mouseEvent) {

@@ -1,5 +1,7 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentEtablissement;
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
@@ -11,9 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,8 +30,7 @@ public class AjouterWalletController implements Initializable {
     @FXML
     private TextField BalanceETF;
 
-    @FXML
-    private ListView<Etablissement> ListViewEtab;
+
 
     @FXML
     private TextField code_EtabETF;
@@ -41,7 +40,12 @@ public class AjouterWalletController implements Initializable {
 
     @FXML
     private TextField dateCreationETF;
+    @FXML
+    private Label labelRegle;
+    @FXML
+    private CheckBox checkBoxRegle;
     private final ServiceWallet sw = new ServiceWallet();
+    private final ServiceEtablissement se = new ServiceEtablissement();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,23 +53,35 @@ public class AjouterWalletController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDate = currentDate.format(formatter);
         dateCreationETF.setText(formattedDate);
+if (CurrentEtablissement.getIdEtablissement()!=0) {
+    Etablissement etablissement = null;
+    try {
+        etablissement = se.getOneByID(CurrentEtablissement.getIdEtablissement());
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+    code_EtabETF.setText(String.valueOf(etablissement.getCodeEtablissement()));
+    code_EtabETF.setEditable(false);
 
 
+}
 
-        ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
-        Set<Etablissement> etablissements = null;
-        try {
-            etablissements = serviceEtablissement.getAll();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (CurrentUser.getRole() != 0) {
+            BalanceETF.setText("0");
+            BalanceETF.setEditable(false);
+            statusETF.setText("0");
+            statusETF.setEditable(false);
         }
-        ListViewEtab.setItems(FXCollections.observableArrayList(etablissements));
-        // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
-        ListViewEtab.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                code_EtabETF.setText(String.valueOf(newValue.getCodeEtablissement()));
-            }
-        });
+        else {
+            labelRegle.setVisible(false);
+            labelRegle.setManaged(false);
+            checkBoxRegle.setVisible(false);
+            checkBoxRegle.setManaged(false);
+        }
+
+
+
+
 
     }
     public void ajouterWalletAction(ActionEvent actionEvent) throws SQLException {
@@ -127,22 +143,7 @@ public class AjouterWalletController implements Initializable {
         String code_Etab = code_EtabETF.getText();
         int code_EtabE;
 
-        if (code_Etab.isEmpty()) {
-            // Si le TextField est vide, vérifiez si un utilisateur est sélectionné dans la ListView
-            Etablissement selectedEtab = ListViewEtab.getSelectionModel().getSelectedItem();
-            if (selectedEtab == null) {
-                // Si rien n'est saisi et rien n'est sélectionné, afficher une alerte
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText(null);
-                alert.setContentText("Veuillez saisir un code_etab ou sélectionner un etablissement !");
-                alert.showAndWait();
-                return;
-            }
 
-            // Utiliser le CIN de l'utilisateur sélectionné dans la ListView
-            code_EtabE = selectedEtab.getCodeEtablissement();
-        } else {
             try {
                 code_EtabE = Integer.parseInt(code_Etab);
             } catch (NumberFormatException e) { Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -152,7 +153,7 @@ public class AjouterWalletController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-        }
+
 
 // Vérifier si un portefeuille existe déjà pour cet établissement
         if (serviceWallet.portefeuilleExistePourEtablissement(code_EtabE)) {
@@ -164,16 +165,22 @@ public class AjouterWalletController implements Initializable {
             return;
         }
 
-
+        if (CurrentUser.getRole()!=0) {
+            if (!checkBoxRegle.isSelected()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Veuillez accepter les conditions d'utilisation.");
+                alert.showAndWait();
+                return;
+            }
+        }
 
 
         // Créer un nouvel objet Service avec les valeurs saisies
         Wallet wallet = new Wallet();
-
         wallet.setBalance(balanceE);
         wallet.setStatus(statueE);
-
-
         ServiceEtablissement se=new ServiceEtablissement();
         Etablissement etab = se.getOneByCode(code_EtabE);
         wallet.setEtablissement(etab);

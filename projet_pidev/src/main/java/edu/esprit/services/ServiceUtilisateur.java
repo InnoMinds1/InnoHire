@@ -408,27 +408,30 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     public Utilisateur getOneByCin(int cin) {
         String req = "SELECT * FROM utilisateur WHERE cin = ?";
-        try {
-            PreparedStatement ps = cnx.prepareStatement(req);
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setInt(1, cin);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                // Assuming Utilisateur has appropriate constructor
-                Utilisateur user = new Utilisateur();
-                user.setId_utilisateur(rs.getInt("id_utilisateur"));
-                user.setCin(rs.getInt("cin"));
-                user.setNom(rs.getString("nom"));
-                user.setPrenom(rs.getString("prenom"));
-                user.setAdresse(rs.getString("adresse"));
-                user.setMdp(rs.getString("mdp"));
-                // Set other properties as needed
-                return user;
-            } else {
-                System.out.println("pas de utilisateur avec ce cin " + cin);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Assuming Utilisateur has an appropriate constructor
+                    Utilisateur user = new Utilisateur();
+                    user.setId_utilisateur(rs.getInt("id_utilisateur"));
+                    user.setCin(rs.getInt("cin"));
+                    user.setNom(rs.getString("nom"));
+                    user.setPrenom(rs.getString("prenom"));
+                    user.setAdresse(rs.getString("adresse"));
+                    user.setMdp(rs.getString("mdp"));
+                    // Set other properties as needed
+                    return user;
+                } else {
+                    // If no user found, return null
+                    return null;
+                }
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace(); // Log the exception for debugging
+            // Handle or rethrow the exception as needed
         }
-        return null; // Return null if no user found
+        return null; // Return null in case of an exception
     }
+
 }

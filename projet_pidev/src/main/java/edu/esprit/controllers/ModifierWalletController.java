@@ -33,10 +33,6 @@ public class ModifierWalletController implements Initializable {
     @FXML
     private TextField dateCreationETF;
 
-
-    @FXML
-    private ListView<Etablissement> ListViewEtab;
-
     @FXML
     private TextField code_EtabETF;
     private final ServiceWallet serviceWallet = new ServiceWallet();
@@ -58,23 +54,6 @@ public class ModifierWalletController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
-        Set<Etablissement> etablissements = null;
-
-        try {
-            etablissements = serviceEtablissement.getAll();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        ListViewEtab.setItems(FXCollections.observableArrayList(etablissements));
-
-        // Ajouter un ChangeListener pour mettre à jour le TextField lorsqu'un utilisateur est sélectionné
-        ListViewEtab.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                code_EtabETF.setText(String.valueOf(newValue.getCodeEtablissement()));
-            }
-        });
 
     }
     public static void showAlert(Alert.AlertType type, String title, String content) {
@@ -100,7 +79,6 @@ public class ModifierWalletController implements Initializable {
             statusETF.setText(String.valueOf(wallet.getStatus()));
             code_EtabETF.setText(String.valueOf(wallet.getEtablissement().getCodeEtablissement()));
             dateCreationETF.setText(String.valueOf(wallet.getDateCreation()));
-
             setCodeInit(wallet.getEtablissement().getCodeEtablissement());
 
         }
@@ -129,19 +107,6 @@ public class ModifierWalletController implements Initializable {
                 return;
             }
 
-            if (code_EtabETF.getText().isEmpty()) {
-                // Si le TextField est vide, vérifiez si un utilisateur est sélectionné dans la ListView
-                Etablissement selectedEtab = ListViewEtab.getSelectionModel().getSelectedItem();
-                if (selectedEtab == null) {
-                    // Si rien n'est saisi et rien n'est sélectionné, afficher une alerte
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erreur");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Veuillez saisir un code ou sélectionner un etablissement !");
-                    alert.showAndWait();
-                    return;
-                }
-            }
 
 
             int code_Etab = Integer.parseInt(code_EtabETF.getText());

@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="830.0" prefWidth="1451.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWalletController">
@@ -14,7 +14,7 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="code_EtabETF" layoutX="550.0" layoutY="492.0" prefHeight="46.0" prefWidth="250.0" promptText="code etablissement" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="code_EtabETF" editable="false" layoutX="550.0" layoutY="492.0" prefHeight="46.0" prefWidth="250.0" promptText="code etablissement" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
@@ -29,7 +29,6 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <ListView fx:id="ListViewEtab" layoutX="521.0" layoutY="148.0" prefHeight="331.0" prefWidth="708.0" />
       <TextField fx:id="BalanceETF" layoutX="226.0" layoutY="192.0" prefHeight="46.0" prefWidth="250.0" promptText="Balance" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
@@ -48,5 +47,6 @@
       <Label layoutX="175.0" layoutY="206.0" text="Balance" />
       <Label layoutX="145.0" layoutY="279.0" text="Date Creation" />
       <Label layoutX="188.0" layoutY="345.0" text="Status" />
+      <Line endX="11.4000244140625" endY="359.6000061035156" layoutX="483.0" layoutY="138.0" startX="11.4000244140625" startY="-7.600006103515625" />
    </children>
 </AnchorPane>

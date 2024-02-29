@@ -215,6 +215,22 @@ public class AjouterEtablissementController implements Initializable {
             }
         }
 
+        ServiceUtilisateur su = new ServiceUtilisateur();
+        Utilisateur user = su.getOneByCin(cin_utilisateurE);
+
+        if (user == null) {
+            // Show an error alert for non-existent user
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Aucun utilisateur trouvé avec le CIN saisi !");
+            alert.showAndWait();
+            return;
+        }
+
+
+
+
 if (CurrentUser.getRole()!=0) {
     if (!checkBoxRegle.isSelected()) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -235,10 +251,6 @@ if (CurrentUser.getRole()!=0) {
         etablissement.setLieu(Lieu);
         etablissement.setTypeEtablissement(Type);
         etablissement.setImage(image);
-
-
-        ServiceUtilisateur su=new ServiceUtilisateur();
-        Utilisateur user = su.getOneByCin(cin_utilisateurE);
         etablissement.setUser(user);
 
         // Ajouter le service à la base de données

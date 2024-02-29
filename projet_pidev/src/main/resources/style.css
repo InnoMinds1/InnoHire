@@ -102,3 +102,15 @@
 .white-to-gray:pressed {
     -fx-background-color: linear-gradient(to right, #C0C0C0, #808080); /* Dégradé plus sombre de Blanc à Gris lorsqu'il est pressé */
 }
+.green-button {
+    -fx-background-radius: 30;
+    -fx-background-color: linear-gradient(to right, #00FF00, #008000); /* Dégradé de Vert à Vert foncé de gauche à droite */
+}
+
+.green-button:hover {
+    -fx-background-color: linear-gradient(to right, #00FF00, #00C000); /* Dégradé plus clair de Vert à Vert foncé au survol */
+}
+
+.green-button:pressed {
+    -fx-background-color: linear-gradient(to right, #008000, #004000); /* Dégradé plus sombre de Vert à Vert foncé lorsqu'il est pressé */
+}
