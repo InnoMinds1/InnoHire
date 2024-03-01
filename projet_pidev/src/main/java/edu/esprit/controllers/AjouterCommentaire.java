@@ -67,7 +67,7 @@ public class AjouterCommentaire implements Initializable {
 
 
     @FXML
-    void validerCommentaire(ActionEvent event) throws SQLException {
+   /* void validerCommentaire(ActionEvent event) throws SQLException {
 ServicePost sp = new ServicePost();
         Post publicationSelectionne = sp.getOneByID(CurrentPost.getId_post());
         ServiceUtilisateur su = new ServiceUtilisateur();
@@ -106,6 +106,64 @@ ServicePost sp = new ServicePost();
             AfficherAvertissement("Champs non remplis", "Veuillez remplir tous les champs avant de valider le commentaire.");
 
         }
+    }*/
+    void validerCommentaire(ActionEvent event) throws SQLException {
+        ServicePost sp = new ServicePost();
+        Post publicationSelectionne = sp.getOneByID(CurrentPost.getId_post());
+        ServiceUtilisateur su = new ServiceUtilisateur();
+
+        // Récupération des données des champs
+        int cin = Integer.parseInt(cinTF1.getText());
+        String description_co = descriptionTF1.getText();
+        LocalDate date_co = dateTf1.getValue();
+        String nb_etoile = ratingTF1.getText();
+        Utilisateur u = new Utilisateur();
+        u = su.getByCin(cin);
+
+        // Vérification de la longueur de la description
+        if (description_co.split("\\s+").length > 50) {
+            AfficherAvertissement("Description trop longue", "La description ne doit pas dépasser 50 mots.");
+            return;
+        }
+
+        // Vérification du nombre d'étoiles
+        try {
+            int nbEtoiles = Integer.parseInt(nb_etoile);
+            if (nbEtoiles < 1 || nbEtoiles > 5) {
+                AfficherAvertissement("Nombre d'étoiles invalide", "Le nombre d'étoiles doit être compris entre 1 et 5.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            AfficherAvertissement("Nombre d'étoiles invalide", "Veuillez entrer un nombre valide pour les étoiles.");
+            return;
+        }
+
+        // Vérification des autres champs
+        if (publicationSelectionne != null && u != null && !description_co.isEmpty() && date_co != null && !nb_etoile.isEmpty()) {
+            LocalDate dateActuelle = LocalDate.now();
+            if (!date_co.isBefore(dateActuelle) && !date_co.isAfter(dateActuelle)) {
+                // La date est valide, procédez à l'ajout du commentaire
+                Commentaire commentaire = new Commentaire();
+                commentaire.setPublication(publicationSelectionne);
+                commentaire.setUtilisateur(u);
+                commentaire.setDescription_co(description_co);
+                commentaire.setDate_co(date_co);
+                commentaire.setNb_etoile(Integer.parseInt(nb_etoile));
+                // Ajoutez l'utilisateur actuel au commentaire
+
+                ServiceCommentaire serviceCommentaire = new ServiceCommentaire();
+                try {
+                    serviceCommentaire.ajouter(commentaire);
+                    AfficherInformation("Commentaire ajouté", "Le commentaire a été ajouté avec succès.");
+                } catch (SQLException e) {
+                    AfficherErreur("Erreur d'ajout", "Une erreur s'est produite lors de l'ajout du commentaire.", e.getMessage());
+                }
+            } else {
+                AfficherAvertissement("Date non valide", "Veuillez sélectionner une date valide.");
+            }
+        } else {
+            AfficherAvertissement("Champs non remplis", "Veuillez remplir tous les champs avant de valider le commentaire.");
+        }
     }
 
 
@@ -114,7 +172,8 @@ ServicePost sp = new ServicePost();
 
 
 
-private void AfficherAvertissement(String titre, String contenu) {
+
+    private void AfficherAvertissement(String titre, String contenu) {
     Alert alert = new Alert(Alert.AlertType.WARNING);
     alert.setTitle(titre);
     alert.setHeaderText(null);

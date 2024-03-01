@@ -66,7 +66,7 @@ public class ModifierCommentaire {
     }
 
     @FXML
-    void modifierCommentaire(ActionEvent event) throws SQLException {
+   /* void modifierCommentaire(ActionEvent event) throws SQLException {
         if (controlSaisie(descriptionTF1) && controlSaisie(ratingTF1)) {
             Commentaire c = new Commentaire();
             c.setId_commentaire(getId());
@@ -81,8 +81,45 @@ public class ModifierCommentaire {
             // Assurez-vous d'ajuster le code pour afficher les publications après la modification
             AfficherCommentaire(event);
         }
-    }
+    }*/
 
+       void modifierCommentaire(ActionEvent event) throws SQLException {
+        if (controlSaisie(descriptionTF1) && controlSaisie(ratingTF1)) {
+            String description_co = descriptionTF1.getText();
+            String nb_etoile = ratingTF1.getText();
+
+            // Vérification de la longueur de la description
+            if (description_co.split("\\s+").length > 50) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "La description ne doit pas dépasser 50 mots.");
+                return;
+            }
+
+            // Vérification du nombre d'étoiles
+            try {
+                int nbEtoiles = Integer.parseInt(nb_etoile);
+                if (nbEtoiles < 1 || nbEtoiles > 5) {
+                    showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Le nombre d'étoiles doit être compris entre 1 et 5.");
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Veuillez entrer un nombre valide pour les étoiles.");
+                return;
+            }
+
+            Commentaire c = new Commentaire();
+            c.setId_commentaire(getId());
+            c.setDescription_co(description_co);
+            c.setDate_co(dateTf1.getValue());
+            c.setNb_etoile(Integer.parseInt(nb_etoile));
+            ServiceCommentaire sc = new ServiceCommentaire();
+            // Appel de la méthode pour effectuer la modification dans la base de données
+            sc.modifier(c);
+
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Commentaire modifié avec succès");
+            // Assurez-vous d'ajuster le code pour afficher les publications après la modification
+            AfficherCommentaire(event);
+        }
+    }
 
 
     public void initData(Commentaire commentaire) {
