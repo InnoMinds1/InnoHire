@@ -7,24 +7,24 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="830.0" prefWidth="1451.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWalletController">
+<AnchorPane fx:id="mainAnchor" prefHeight="830.0" prefWidth="1451.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWalletController">
    <children>
-      <Label layoutX="583.0" layoutY="81.0" prefHeight="46.0" prefWidth="257.0" text="Modifer Wallet" textFill="#000000a9" AnchorPane.leftAnchor="583.0" AnchorPane.rightAnchor="613.0">
+      <Label layoutX="549.5999999999999" layoutY="215.0" prefHeight="86.0" prefWidth="324.0" text="Modifer Wallet" textFill="#000000a9" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="578.0">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="code_EtabETF" editable="false" layoutX="550.0" layoutY="492.0" prefHeight="46.0" prefWidth="250.0" promptText="code etablissement" styleClass="text-field" stylesheets="@service2.css">
+      <TextField fx:id="code_EtabETF" editable="false" layoutX="550.0" layoutY="379.0" prefHeight="46.0" prefWidth="250.0" promptText="code etablissement" styleClass="text-field" stylesheets="@service2.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button layoutX="558.0" layoutY="547.0" mnemonicParsing="false" onAction="#okWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
+      <Button layoutX="630.0" layoutY="428.0" mnemonicParsing="false" onAction="#okWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="558.0" layoutY="602.0" mnemonicParsing="false" onAction="#AfficherWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Annuler" textFill="WHITE">
+      <Button layoutX="631.0" layoutY="476.0" mnemonicParsing="false" onAction="#AfficherWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Annuler" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

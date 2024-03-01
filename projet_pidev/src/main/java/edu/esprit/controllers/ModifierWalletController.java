@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,6 +26,8 @@ import java.util.Set;
 public class ModifierWalletController implements Initializable {
     private int idW ;
     private int CodeInit;
+    @FXML
+   private AnchorPane mainAnchor;
     @FXML
     private TextField BalanceETF;
     @FXML
@@ -151,16 +154,21 @@ public class ModifierWalletController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherWallet.fxml"));
             Parent root = loader.load();
 
-            Stage stage = (Stage) BalanceETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
+            // Obtenir la scène actuelle
+            Scene currentScene = BalanceETF.getScene();
+
+            // Créer une nouvelle scène avec la même taille que la scène actuelle
+            Scene newScene = new Scene(root, currentScene.getWidth(), currentScene.getHeight());
+
+            Stage stage = (Stage) BalanceETF.getScene().getWindow();
+            stage.setScene(newScene);
             stage.show();
 
-            // Vous pouvez fermer la fenêtre actuelle si nécessaire
-            // ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 
 

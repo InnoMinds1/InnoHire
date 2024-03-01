@@ -127,12 +127,12 @@ private AnchorPane grandAnchor;
         typeETF.setText(etablissement.getTypeEtablissement());
         cinETF.setText(String.valueOf(etablissement.getUser().getCin()));
 
-        if(CurrentUser.getRole()!=0) {
+
             if(etablissementNameLable.getText().equals(etablissement.getNom()))
             {
                 CurrentEtablissement.setIdEtablissement(etablissement.getIdEtablissement());
             }
-        }
+
 
 
        Wallet wallet = se.getWalletByEtablissement(etablissement);
@@ -312,15 +312,7 @@ private AnchorPane grandAnchor;
     }
 
     public void afficherWalletList(MouseEvent mouseEvent) throws SQLException {
-        if (CurrentUser.getRole() == 0) {
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("/AfficherWallet.fxml"));
-                grid.getScene().setRoot(root);
-            } catch (IOException e) {
-                e.printStackTrace();
-                afficherAlerte("Erreur lors du chargement d'AfficherWallet.fxml : " + e.getMessage());
-            }
-        } else {
+
             Etablissement etablissementConnecte = null;
             try {
                 etablissementConnecte = se.getOneByID(CurrentEtablissement.getIdEtablissement());
@@ -355,7 +347,7 @@ private AnchorPane grandAnchor;
                 // Si etablissementConnecte est null, afficher un message spécifique
                 afficherAlerte("Ajoutez un portefeuille à votre établissement.");
             }
-        }
+
     }
 
 

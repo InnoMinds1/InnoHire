@@ -59,7 +59,7 @@ public class AfficherWalletController extends AjouterEtablissementController imp
 
         Set<Wallet> setW;
 
-        if (CurrentUser.getRole() != 0) {
+
             //-----------------------Navebar setup
             NavBar.setVisible(false);
             NavBar.setManaged(false);
@@ -79,10 +79,7 @@ public class AfficherWalletController extends AjouterEtablissementController imp
             Wallet walletConnecte = se.getWalletByEtablissement(etablassimentConnecte);
             setW = new HashSet<>(); // Créez un nouvel ensemble
             setW.add(walletConnecte); // Ajoutez le walletConnecte à l'ensemble
-        } else {
-            // Si CurrentUser.getRole() == 0, obtenez tous les wallets
-            setW = serviceW.getAll();
-        }
+
 
 
 
