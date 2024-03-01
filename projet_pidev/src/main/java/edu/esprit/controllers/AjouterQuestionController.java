@@ -72,13 +72,28 @@ public class AjouterQuestionController {
             String question = TFquestion.getText();
             String choix = TFchoix.getText();
 
-            if (question.isEmpty() || choix.isEmpty()) {
+            if (question.isEmpty()) /*|| choix.isEmpty()||!isValidChoiceFormat(choix))*/  {
                 // Afficher un message d'erreur
                 setTextFieldErrorStyle(TFquestion);
-                setTextFieldErrorStyle(TFchoix);
-                showAlert("Erreur de saisie", "Veuillez saisir une question et des choix.");
+
+                showAlert("Erreur de saisie", "Veuillez saisir une question .");
                 return;
             }
+            if (choix.isEmpty()) /*|| choix.isEmpty()||!isValidChoiceFormat(choix))*/  {
+                // Afficher un message d'erreur
+
+                setTextFieldErrorStyle(TFchoix);
+                showAlert("Erreur de saisie", "Veuillez saisir des choix.");
+                return;
+            }
+            if (!isValidChoiceFormat(choix)) /*|| choix.isEmpty()||!isValidChoiceFormat(choix))*/  {
+                // Afficher un message d'erreur
+
+                setTextFieldErrorStyle(TFchoix);
+                showAlert("Erreur de saisie", "Veuillez saisir des choix sous la forme 1)...2)...3)...");
+                return;
+            }
+
 
             // Vérification de la réponse correcte
             try {
@@ -113,6 +128,15 @@ public class AjouterQuestionController {
             showAlert("SQL Exception", e.getMessage());
         }
     }
+
+    private boolean isValidChoiceFormat(String choix) {
+        // Le format attendu est "1)..... 2)...... 3)......"
+        return choix.matches("^\\d+\\)\\s*.*\\d+\\)\\s*.*\\d+\\)\\s*.*$");
+    }
+
+
+
+
 
     // Méthode pour réinitialiser le style des TextFields
     private void resetTextFieldStyles() {
@@ -168,10 +192,11 @@ public class AjouterQuestionController {
             Parent root = loader.load();
 
             Stage stage = (Stage) TFcode_quiz.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

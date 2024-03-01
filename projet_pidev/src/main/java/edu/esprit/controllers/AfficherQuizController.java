@@ -4,16 +4,20 @@ import edu.esprit.entities.Question;
 import edu.esprit.entities.Quiz;
 import edu.esprit.services.questionService;
 import edu.esprit.services.quizService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -70,6 +74,44 @@ public class AfficherQuizController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    void navigateToafficherQuestions(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuestion.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+    @FXML
+    void navigateToAjouter(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterQuiz.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 
 

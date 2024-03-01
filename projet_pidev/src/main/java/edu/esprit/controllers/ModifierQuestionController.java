@@ -57,6 +57,10 @@ public class ModifierQuestionController {
     @FXML
 
     void modifierQuestionAction() {
+        if (this.qs==null)
+        {
+            qs=new questionService();
+        }
         try {
             // Réinitialiser le style des TextFields
             resetModifyTextFieldStyles();
@@ -71,13 +75,29 @@ public class ModifierQuestionController {
             String modifiedQuestion = TFquestionModify.getText();
             String modifiedChoix = TFchoixModify.getText();
 
-            if (modifiedQuestion.isEmpty() || modifiedChoix.isEmpty()) {
+            if (modifiedQuestion.isEmpty())/* || modifiedChoix.isEmpty())*/ {
                 // Afficher un message d'erreur
                 setModifyTextFieldErrorStyle(TFquestionModify);
-                setModifyTextFieldErrorStyle(TFchoixModify);
-                showAlert("Erreur de saisie", "Veuillez saisir une question et des choix.");
+
+                showAlert("Erreur de saisie", "Veuillez saisir une nouvelle question ");
                 return;
             }
+            if (modifiedChoix.isEmpty())/* || modifiedChoix.isEmpty())*/ {
+                // Afficher un message d'erreur
+                setModifyTextFieldErrorStyle(TFchoixModify);
+
+                showAlert("Erreur de saisie", "Veuillez saisir des nouveaux choix ");
+                return;
+            }
+            if (!isValidChoiceFormat(modifiedChoix)) /*|| choix.isEmpty()||!isValidChoiceFormat(choix))*/  {
+                // Afficher un message d'erreur
+
+
+                showAlert("Erreur de saisie", "Veuillez saisir des nouveaux choix sous la forme 1)...2)...3)...");
+                return;
+            }
+
+
 
             // Vérification de la réponse correcte
             try {
@@ -120,6 +140,10 @@ public class ModifierQuestionController {
             showAlert("Erreur de modification", "Erreur lors de la modification de la question.");
         }
     }
+    private boolean isValidChoiceFormat(String choix) {
+        // Le format attendu est "1)..... 2)...... 3)......"
+        return choix.matches("^\\d+\\)\\s*.*\\d+\\)\\s*.*\\d+\\)\\s*.*$");
+    }
 
     // Méthode pour réinitialiser le style des TextFields de modification
     private void resetModifyTextFieldStyles() {
@@ -148,10 +172,11 @@ public class ModifierQuestionController {
             Parent root = loader.load();
 
             Stage stage = (Stage) TFcode_quizModify.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

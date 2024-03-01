@@ -8,7 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import javafx.scene.layout.HBox;
@@ -66,7 +68,7 @@ public class QuizItemController {
         LabelNom.setText(quiz.getNom_quiz());
         labelDesc.setText(quiz.getDescription());
         labelCode.setText(String.valueOf(quiz.getCode_quiz()));
-        LabelPrix.setText(String.valueOf(quiz.getPrix_quiz()));
+        LabelPrix.setText(String.valueOf(quiz.getPrix_quiz())+"DT");
 
         // Charger et afficher l'image du Quiz
         String imagePath = quiz.getImage_quiz();
@@ -121,29 +123,20 @@ public class QuizItemController {
     }
     public void modifierQuizOnClick(ActionEvent event) {
         try {
-            // Initialiser le serviceQuestion si ce n'est pas déjà fait
-            if (qs == null) {
-                qs = new quizService();
-            }
-
-            // Charger la vue de modification de question
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierQuiz.fxml"));
             Parent root = loader.load();
 
-            // Passer la question à modifier au contrôleur de modification
-            ModifierQuizController controller = loader.getController();
-            controller.setData(quiz);
+            Stage stage = (Stage) labelCode.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            Scene scene = new Scene(root);
 
-            // Afficher la vue de modification de question
-            labelDesc.getScene().setRoot(root);
+            stage.setScene(scene);
+            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
+            stage.show();
         } catch (IOException e) {
-            // Gérer les exceptions liées au chargement de la vue de modification
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Erreur lors de la modification du quiz.");
-            alert.setTitle("Erreur de modification");
-            alert.show();
+            e.printStackTrace();
         }
     }
+
     @FXML
     private void showQuizDetails(ActionEvent event) {
         int codeQuiz = quiz.getCode_quiz();
@@ -170,8 +163,9 @@ public class QuizItemController {
             });
 
             // Ajouter seulement l'attribut "question" et "reponse_correcte"
-            String questionDetails = "Question: " + question.getQuestion() +
-                    "\nRéponse correcte: " + question.getReponse_correcte() + "\n";
+            String questionDetails = "Question: " + question.getQuestion() +"\n"+ "Les choix:"+ question.getChoix()+
+                    "\nRéponse correcte: " + question.getReponse_correcte() + "\n"
+                    ;
 
             HBox hbox = new HBox(new Label(questionDetails), deleteButton);
             hbox.setSpacing(10);
