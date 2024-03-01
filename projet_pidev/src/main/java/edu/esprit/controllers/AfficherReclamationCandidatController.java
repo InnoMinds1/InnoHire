@@ -19,7 +19,7 @@ public class AfficherReclamationCandidatController implements Initializable {
     private final ServiceReclamation serviceReclamation = new ServiceReclamation();
 
     //connecter user eli howa current
-   private final Utilisateur candidat = new Utilisateur(9);
+   private final Utilisateur candidat = new Utilisateur(3);
 
     @FXML
     private VBox reclamationsContainer;

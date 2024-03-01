@@ -92,7 +92,7 @@ public class AfficherReclamationController implements Initializable {
 
         // Show the pop-up window
         aiHelperStage.show();*/
-         String githubLink = "https://chat.openai.com/";
+         String githubLink = "https://github.com/InnoMinds1/InnoHire";
 
         try {
             // Create a URI object from the GitHub link
