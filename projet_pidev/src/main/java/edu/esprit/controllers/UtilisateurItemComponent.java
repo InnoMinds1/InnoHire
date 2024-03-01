@@ -53,6 +53,9 @@ public class UtilisateurItemComponent {
     private ImageView userPhoto;
 
     private Utilisateur utilisateur;
+    public Utilisateur getUser() {
+        return utilisateur;
+    }
     private AnchorPane container;
     ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
 
@@ -99,7 +102,7 @@ public class UtilisateurItemComponent {
     @FXML
     void deleteUtilisateurAction(ActionEvent event) {
         // Display a confirmation dialog before deleting
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel this reclamation?", ButtonType.YES, ButtonType.NO);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel this USER?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
