@@ -191,7 +191,7 @@ public class AfficherUtilisateurController implements Initializable {
         }
 
         originalUtilisateurs = FXCollections.observableArrayList(utilisateurs);
-        filteredUtilisateurs = FXCollections.observableArrayList(originalUtilisateurs);
+        //filteredUtilisateurs = FXCollections.observableArrayList(originalUtilisateurs);
         filteredUsers = new FilteredList<>(originalUtilisateurs);
 
         listView.setItems(filteredUsers);

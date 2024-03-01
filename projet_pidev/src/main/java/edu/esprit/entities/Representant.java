@@ -1,15 +1,12 @@
 package edu.esprit.entities;
 
 public class Representant extends Utilisateur{
-    private static int ROLE=1;
+    private int ROLE=1;
 
-    public static int getROLE() {
+    public  int getROLE() {
         return ROLE;
     }
 
-    public static void setROLE(int ROLE) {
-        Representant.ROLE = ROLE;
-    }
 
     public Representant() {
     }
@@ -31,7 +28,7 @@ public class Representant extends Utilisateur{
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
 
-                ", role='" + Representant.getROLE() + '\'' +
+                ", role='" + this.getROLE() + '\'' +
                 '}'+'\n';
     }
 

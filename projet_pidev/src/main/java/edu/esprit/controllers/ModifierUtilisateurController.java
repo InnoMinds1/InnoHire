@@ -191,7 +191,7 @@ public class ModifierUtilisateurController {
 
     public void AfficherUtilisateur(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUtilisateur.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/listUsers.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) TFnom.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle

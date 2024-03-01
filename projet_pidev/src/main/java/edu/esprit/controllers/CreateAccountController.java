@@ -132,6 +132,15 @@ public class CreateAccountController {
             alert.showAndWait();
             return;
         }
+        if(cin<0)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Le cin  doivent etre être un nombre valide !");
+            alert.showAndWait();
+            return;
+        }
 
 
         if (serviceUtilisateur.utilisateurExiste(cin))

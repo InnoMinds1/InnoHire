@@ -1,4 +1,5 @@
 package edu.esprit.controllers;
+import com.google.protobuf.StringValue;
 import edu.esprit.entities.Admin;
 import edu.esprit.entities.Candidat;
 import edu.esprit.entities.Representant;
@@ -248,8 +249,6 @@ public class AjouterUtilisateurController {
     private TextField tfmdp;
 
     @FXML
-    private TextField tfrole;
-    @FXML
     private ImageView profileImageView;
     @FXML
     private ComboBox<?> comboRole;
@@ -332,6 +331,7 @@ public class AjouterUtilisateurController {
 
 
 
+
         try {
              cin = Integer.parseInt(TFcin.getText());
 
@@ -341,10 +341,19 @@ public class AjouterUtilisateurController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Le cin et le role doivent etre être un nombre valide !");
+            alert.setContentText("Le cin  doivent etre être un nombre valide !");
             alert.showAndWait();
             return;
         }
+       if(cin<0)
+       {
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Erreur");
+           alert.setHeaderText(null);
+           alert.setContentText("Le cin  doivent etre être un nombre valide !");
+           alert.showAndWait();
+           return;
+       }
         String role = (String) comboRole.getSelectionModel().getSelectedItem();
 
         // Validate if a role is selected
@@ -404,7 +413,7 @@ public class AjouterUtilisateurController {
                 TFnom.clear();
                 TFadresse.clear();
                 tfmdp.clear();
-                tfrole.clear();
+
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
@@ -467,7 +476,7 @@ public class AjouterUtilisateurController {
                     TFnom.clear();
                     TFadresse.clear();
                     tfmdp.clear();
-                    tfrole.clear();
+
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Erreur");
@@ -489,7 +498,7 @@ public class AjouterUtilisateurController {
     @FXML
     void navigatetoAfficherUtilisateurAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUtilisateur.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/listUsers.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) TFnom.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
