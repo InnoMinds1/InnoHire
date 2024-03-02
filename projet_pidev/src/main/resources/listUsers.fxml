@@ -86,8 +86,8 @@
                </image>
             </ImageView>
             <Label layoutX="34.0" layoutY="121.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Desktop" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="98.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
-            <Label fx:id="currentUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="77.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
+            <Label fx:id="CurrentUserEmail" alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="98.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
+            <Label fx:id="currentUserName" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="77.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
             <Label layoutX="292.0" layoutY="139.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See all" />
             <AnchorPane fx:id="AnchoPaneMessage131" layoutX="24.0" layoutY="165.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                <children>

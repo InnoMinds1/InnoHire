@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,46 +8,41 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="504.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1417.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.LoginController">
    <children>
-      <ImageView fitHeight="504.0" fitWidth="461.0" layoutX="355.0" pickOnBounds="true" preserveRatio="true">
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="676.0" prefWidth="773.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 30 30 30;">
+         <children>
+            <TextField fx:id="TFcin" layoutX="153.0" layoutY="225.0" prefHeight="45.0" prefWidth="453.0" promptText="Cin" style="-fx-background-color: #f2f5ec; -fx-border-radius: 10;" />
+            <Label fx:id="LabelCIN" alignment="CENTER" contentDisplay="CENTER" layoutX="153.0" layoutY="200.0" prefHeight="25.0" prefWidth="42.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 16;" text="Cin" textAlignment="CENTER" />
+            <Label fx:id="LabelPASSWORD" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="290.0" prefHeight="30.0" prefWidth="75.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 16;" text="Password" textAlignment="CENTER" />
+            <Label fx:id="LabelFORGOT" alignment="CENTER" contentDisplay="CENTER" layoutX="499.0" layoutY="365.0" prefHeight="30.0" prefWidth="107.0" style="-fx-text-fill: #632DE9; -fx-font-size: 12;" text="Forget Password ?" textAlignment="CENTER" />
+            <Button layoutX="153.0" layoutY="421.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="45.0" prefWidth="453.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Sign In">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="receiverNameLabel2121" alignment="CENTER" contentDisplay="CENTER" layoutX="518.0" layoutY="631.0" prefHeight="30.0" prefWidth="128.0" style="-fx-text-fill: #632DE9; -fx-font-size: 12;" text="Dont have an account ? " textAlignment="CENTER" />
+            <Label layoutX="277.0" layoutY="110.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 35;" text="Welcome Back" />
+            <ImageView fitHeight="110.0" fitWidth="97.0" layoutX="349.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Documents/java/InnoHire/projet_pidev/src/main/resources/images/blink.gif" />
+               </image>
+            </ImageView>
+            <Button layoutX="653.0" layoutY="631.0" mnemonicParsing="false" onAction="#navigateToCreateAccount" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 12;" text="Reister Now !!">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <PasswordField fx:id="TFmdp" layoutX="153.0" layoutY="320.0" prefHeight="45.0" prefWidth="453.0" promptText="Password" style="-fx-background-color: #f2f5ec; -fx-border-radius: 10;" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/fond_login.PNG" />
+            <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/429633241_3224965130971874_9121688183739140822_n.png" />
          </image>
       </ImageView>
-      <TextField fx:id="TFcin" layoutX="559.0" layoutY="223.0" />
-      <Label layoutX="485.0" layoutY="106.0" prefHeight="96.0" prefWidth="219.0" text="SE CONNECTER">
-         <font>
-            <Font name="System Bold Italic" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="466.0" layoutY="222.0" prefHeight="28.0" prefWidth="61.0" text="CIN:">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="475.0" layoutY="279.0" prefHeight="28.0" prefWidth="74.0" text="MDP:">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="475.0" layoutY="331.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="44.0" prefWidth="259.0" text="LOGIN">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="475.0" layoutY="387.0" mnemonicParsing="false" onAction="#navigateToCreateAccount" prefHeight="44.0" prefWidth="259.0" text="CREER COMPTE">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="504.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/inoohire_login.PNG" />
-         </image>
-      </ImageView>
-      <PasswordField fx:id="TFmdp" layoutX="559.0" layoutY="281.0" />
+      <Label layoutX="1027.0" layoutY="60.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 35;" text="InnoHire" />
+      <Label layoutX="990.0" layoutY="656.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 15;" text="InnoHire 2024/2025 © (copyright)" />
    </children>
 </AnchorPane>
