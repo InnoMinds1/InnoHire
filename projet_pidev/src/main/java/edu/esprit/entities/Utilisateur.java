@@ -101,6 +101,7 @@ public class Utilisateur {
                 '}'+'\n';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,7 +114,11 @@ public class Utilisateur {
     public int hashCode() {
         return Objects.hash(id_utilisateur, cin, nom, prenom, adresse, mdp);
     }
-    public Utilisateur(){};
+    public Utilisateur(){}
+    public Utilisateur(int id_utilisateur )
+    {
+        this.id_utilisateur=id_utilisateur;
+    }
 
     public Utilisateur(int cin, String nom, String prenom, String adresse, String mdp,String image) {
         this.cin = cin;

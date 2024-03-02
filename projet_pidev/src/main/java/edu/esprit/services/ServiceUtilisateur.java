@@ -382,6 +382,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));
+                user.setImage(rs.getString("image"));
                 // Set other properties as needed
                 return user;
             } else {
