@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -24,11 +25,40 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 public class PubController implements Initializable {
-    @FXML
+    /*@FXML
     private VBox postsContainer;
     private List<Post> posts = new ArrayList<>();
     @FXML
+    private Button Naviguerversajouter;*/
+    @FXML
+    private AnchorPane AnchoPaneMessage131;
+
+    @FXML
     private Button Naviguerversajouter;
+
+    @FXML
+    private AnchorPane container;
+
+    @FXML
+    private VBox postsContainer;
+
+    @FXML
+    private Label receiverNameLabel2;
+    private List<Post> posts = new ArrayList<>();
+
+    @FXML
+    void Naviguerversajouter(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterPublication.fxml"));
+            postsContainer.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry jjjj");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
 
 
 
@@ -131,19 +161,6 @@ public class PubController implements Initializable {
         return modifiedEtablissements;
     }
 
-    public void Naviguerversajouter(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterPublication.fxml"));
-            postsContainer.getScene().setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry jjjj");
-            alert.setTitle("Error");
-            alert.show();
-        }
-
-    }
 
 
     public void refreshUI() {

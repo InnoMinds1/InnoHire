@@ -7,39 +7,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="608.0" prefWidth="821.0" styleClass="text-field" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierPublication">
+<AnchorPane prefHeight="506.0" prefWidth="605.0" style="-fx-background-color: #5955b3;" styleClass="text-field" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierPublication">
    <children>
-      <Label layoutX="229.0" layoutY="52.0" prefHeight="46.0" prefWidth="362.0" text="Modifier Une Publication" textFill="#000000a9">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </Label>
-      <TextField fx:id="TFcaption" alignment="TOP_LEFT" layoutX="250.0" layoutY="279.0" prefHeight="210.0" prefWidth="228.0" promptText="Caption" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Button layoutX="322.0" layoutY="547.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Modifier" textFill="#2e25d1">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="691.0" layoutY="521.0" mnemonicParsing="false" onAction="#AfficherPublication" prefHeight="46.0" prefWidth="95.0" styleClass="label2" text="Afficher" textFill="#1416b8">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <TextField fx:id="TFaudience" layoutX="250.0" layoutY="149.0" prefHeight="54.0" prefWidth="199.0" promptText="Audience" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <ImageView fx:id="imgPost" fitHeight="356.0" fitWidth="267.0" layoutX="532.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="button" layoutX="591.0" layoutY="472.0" mnemonicParsing="false" onAction="#importImage" text="image" />
-      <TextField fx:id="imageETF" layoutX="478.0" layoutY="520.0" prefHeight="54.0" prefWidth="199.0" promptText="image" styleClass="text-field">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
+      <AnchorPane fx:id="container" layoutX="14.0" layoutY="23.0" prefHeight="458.0" prefWidth="581.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
+         <children>
+            <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="List Claim" />
+            <ImageView fx:id="imgPost" fitHeight="167.0" fitWidth="242.0" layoutX="294.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="TFcaption" alignment="TOP_LEFT" layoutX="14.0" layoutY="125.0" prefHeight="210.0" prefWidth="228.0" promptText="Caption" styleClass="text-field">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button layoutX="332.0" layoutY="396.0" mnemonicParsing="false" onAction="#ok" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 9;" styleClass="label2" text="Modifier" textFill="#2e25d1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="467.0" layoutY="393.0" mnemonicParsing="false" onAction="#AfficherPublication" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 9;" styleClass="label2" text="Afficher" textFill="#1416b8">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="TFaudience" layoutX="16.0" layoutY="76.0" prefHeight="36.0" prefWidth="135.0" promptText="Audience" styleClass="text-field">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="button" layoutX="270.0" layoutY="94.0" mnemonicParsing="false" onAction="#importImage" text="image" />
+            <TextField fx:id="imageETF" layoutX="332.0" layoutY="85.0" prefHeight="54.0" prefWidth="199.0" promptText="image" styleClass="text-field">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

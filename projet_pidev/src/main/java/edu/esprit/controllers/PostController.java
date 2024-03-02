@@ -178,11 +178,15 @@ public class PostController implements Initializable {
     public void setData(Post post) {
         this.post = post;
 
-
         // Set profile image
         if (post.getUtilisateur() != null && post.getUtilisateur().getProfileImg() != null) {
-            Image img = new Image(this.getClass().getResourceAsStream(post.getUtilisateur().getProfileImg()));
-            this.imgProfile.setImage(img);
+            String profileImgPath = post.getUtilisateur().getProfileImg();
+            if (getClass().getResource(profileImgPath) != null) { // Vérifie si le chemin d'accès est valide
+                Image img = new Image(getClass().getResourceAsStream(profileImgPath));
+                this.imgProfile.setImage(img);
+            } else {
+                System.err.println("Chemin d'accès à l'image de profil invalide : " +profileImgPath);
+            }
         }
 
         // Set username and verified status
@@ -212,7 +216,7 @@ public class PostController implements Initializable {
 
         // Set post image
         if (post.getImage() != null && !post.getImage().isEmpty()) {
-            Image img2 = new Image(this.getClass().getResourceAsStream(post.getImage()));
+            Image img2 = new Image(getClass().getResourceAsStream(post.getImage()));
             this.imgPost.setImage(img2);
         } else {
             imgPost.setVisible(false);
@@ -231,6 +235,7 @@ public class PostController implements Initializable {
         // Reset current reaction
         currentReaction = Reactions.NON;
     }
+
     private Post getPost() throws SQLException {
 
         ServicePost sp=new ServicePost();
