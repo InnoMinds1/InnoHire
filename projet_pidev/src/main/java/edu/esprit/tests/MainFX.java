@@ -12,7 +12,7 @@ public class MainFX extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 500, 500); // Set width and height as per your requirement
         stage.setScene(scene);
         stage.setTitle("Gestion Etablissement");
         stage.show();

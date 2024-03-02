@@ -1,287 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="grandAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1451.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.EtablissementController">
+<AnchorPane fx:id="grandAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1451.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.EtablissementController">
    <children>
-      <AnchorPane fx:id="NavBar" prefHeight="830.0" prefWidth="222.0" style="-fx-background-color: #5d20d3; -fx-background-radius: 00;">
+      <AnchorPane fx:id="NavBar" layoutX="1015.0" layoutY="42.0" prefHeight="675.0" prefWidth="362.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
          <children>
-            <Button layoutX="18.0" layoutY="160.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Formation" />
-            <Button layoutX="16.0" layoutY="210.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Société" />
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="36.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="13.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="29.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/businessmanOwner.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="101.0" layoutY="644.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
+            <ImageView fitHeight="70.0" fitWidth="84.0" layoutX="154.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/aa.jpg" />
+                  <Image url="@img/businessmanOwner.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="33.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/aa.jpg" />
-               </image>
-            </ImageView>
-            <Button layoutX="18.0" layoutY="111.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10;" text="Gérer Utilisateur" />
-            <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="32.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/aa.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="58.0" layoutY="58.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25;" text="InnoHire" />
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="96.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/aa.jpg" />
-               </image>
-            </ImageView>
+            <Label layoutX="34.0" layoutY="121.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Desktop" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="98.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
+            <Label fx:id="nameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="77.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
+            <Label layoutX="292.0" layoutY="139.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See all" />
+            <AnchorPane fx:id="AnchoPaneMessage131" layoutX="24.0" layoutY="165.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
+               <children>
+                  <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Home">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List users">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="118.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Make Post">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List Claim">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="17.0" layoutY="229.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="17.0" layoutY="345.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Settings &amp; Privacy">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="17.0" layoutY="399.0" mnemonicParsing="false" onAction="#openAiHelper" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Help &amp; Support">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="17.0" layoutY="288.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Chat">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/businessmanOwner.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Button layoutX="307.0" layoutY="13.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="37.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/businessmanOwner.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorContenu" layoutX="225.0" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1226.0">
+      <AnchorPane fx:id="container" layoutX="44.0" layoutY="42.0" prefHeight="675.0" prefWidth="956.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
-            <BorderPane prefHeight="810.0" prefWidth="1170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <left>
-                  <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+            <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Company &amp; Wallet" />
+            <Button layoutX="837.0" layoutY="637.0" mnemonicParsing="false" onAction="#ajouterEtablissement" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="New">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/add%20(2).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <AnchorPane layoutX="25.0" layoutY="64.0" prefHeight="472.0" prefWidth="403.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 30;">
+               <children>
+                  <Label fx:id="receiverNameLabel21" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="87.0" prefHeight="25.0" prefWidth="64.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Name : " textAlignment="JUSTIFY" />
+                  <Label fx:id="receiverNameLabel211" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="112.0" prefHeight="25.0" prefWidth="56.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Code : " textAlignment="CENTER" />
+                  <ImageView fx:id="etablissementImg" fitHeight="126.0" fitWidth="127.0" layoutX="40.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/office-building%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="receiverNameLabel2111" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="137.0" prefHeight="25.0" prefWidth="81.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Location :" textAlignment="CENTER" />
+                  <Label fx:id="receiverNameLabel21111" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="162.0" prefHeight="25.0" prefWidth="56.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Type : " textAlignment="CENTER" />
+                  <Label fx:id="receiverNameLabel211111" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="187.0" prefHeight="25.0" prefWidth="98.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Owner Cin : " textAlignment="CENTER" />
+                  <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="17.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/building.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="80.0" layoutY="33.0" prefHeight="26.0" prefWidth="167.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 17;" text="Company " />
+                  <Label fx:id="etablissementNameLable" layoutX="244.0" layoutY="87.0" prefHeight="25.0" prefWidth="133.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Esprit" />
+                  <Label fx:id="etablissementCodeLabel" layoutX="236.0" layoutY="112.0" prefHeight="25.0" prefWidth="167.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="3205" />
+                  <Label fx:id="lieuETF" layoutX="261.0" layoutY="137.0" prefHeight="25.0" prefWidth="133.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Tunis,Ghazela" />
+                  <Label fx:id="typeETF" layoutX="236.0" layoutY="162.0" prefHeight="25.0" prefWidth="145.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="University" />
+                  <Label fx:id="cinETF" layoutX="278.0" layoutY="187.0" prefHeight="25.0" prefWidth="114.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="11425368" />
+                  <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="24.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/wallet%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="87.0" layoutY="242.0" prefHeight="26.0" prefWidth="167.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 17;" text="Wallet " />
+                  <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="73.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/bitcoin.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="receiverNameLabel2111111" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="284.0" prefHeight="25.0" prefWidth="72.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Balance : " textAlignment="CENTER" />
+                  <Label fx:id="balanceLabel" layoutX="172.0" layoutY="285.0" prefHeight="25.0" prefWidth="114.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="11425368 $" />
+                  <Button fx:id="ajouterWalletBtn" layoutX="100.0" layoutY="331.0" mnemonicParsing="false" onAction="#ajouterWallet" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Wallet">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/wallet%20(2).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="afficherWalletListImg" layoutX="218.0" layoutY="331.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Details">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="acheterQuizzBtn" layoutX="60.0" layoutY="400.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="296.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="By Quiz">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/add-to-cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="356.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/exclamation-mark.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label fx:id="consulterWalletLabel" layoutX="719.0" layoutY="644.0" text="consulter wallet" />
+            <HBox fx:id="Hbox_no_data" layoutX="247.0" layoutY="572.0" prefHeight="36.0" prefWidth="187.0">
+               <children>
+                  <AnchorPane prefHeight="57.0" prefWidth="381.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+                        <AnchorPane layoutX="-4.0" layoutY="30.0" prefHeight="42.0" prefWidth="385.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 30;">
                            <children>
-                              <Label prefHeight="50.0" prefWidth="89.0" text="Inno" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Hire" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria" size="40.0" />
-                                 </font>
-                              </Label>
+                              <Label fx:id="label_no_data" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="10.0" prefHeight="25.0" prefWidth="315.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Please Create a company first,Thank you" textAlignment="CENTER" />
                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@style.css" VBox.vgrow="NEVER">
-                           <VBox.margin>
-                              <Insets left="30.0" right="30.0" />
-                           </VBox.margin>
-                           <children>
-                              <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@style.css">
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="chosen-etablissement-card" stylesheets="@style.css" text="Search" textFill="WHITE" />
-                           </children>
-                           <styleClass>
-                              <String fx:value="search-box" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                        </HBox>
-                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="chosenetablissementCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@style.css">
-                           <VBox.margin>
-                              <Insets left="50.0" right="50.0" />
-                           </VBox.margin>
-                           <children>
-                              <HBox prefHeight="60.0" prefWidth="335.0">
-                                 <children>
-                                    <Label fx:id="etablissementNameLable" prefHeight="52.0" prefWidth="202.0" text="Nom" textFill="WHITE">
-                                       <font>
-                                          <Font name="Cambria" size="36.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="etablissementCodeLabel" prefHeight="55.0" prefWidth="120.0" text="Code" textFill="WHITE">
-                                       <font>
-                                          <Font name="Cambria" size="36.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="20.0" top="30.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <ImageView fx:id="etablissementImg" fitHeight="140.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/no-image.jpg" />
-                                 </image>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </ImageView>
-                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                                 <children>
-                                    <Label prefHeight="53.0" prefWidth="167.0" text="lieu" textFill="WHITE">
-                                       <font>
-                                          <Font name="Cambria" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="lieuETF" alignment="TOP_CENTER" editable="false" text=".." />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                                 <children>
-                                    <Label prefHeight="53.0" prefWidth="167.0" text="type" textFill="WHITE">
-                                       <font>
-                                          <Font name="Cambria" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="typeETF" alignment="TOP_CENTER" editable="false" text=".." />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                                 <children>
-                                    <Label prefHeight="53.0" prefWidth="167.0" text="Cin user" textFill="WHITE">
-                                       <font>
-                                          <Font name="Cambria" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="cinETF" alignment="TOP_CENTER" editable="false" text=".." />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" top="20.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <Separator prefHeight="0.0" prefWidth="118.0" />
-                                    <Label alignment="CENTER" prefHeight="45.0" prefWidth="64.0" text="Wallet" textFill="WHITE">
-                                       <font>
-                                          <Font name="Cambria" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Separator prefHeight="0.0" prefWidth="118.0" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                                 <children>
-                                    <Label prefHeight="53.0" prefWidth="167.0" text="Balance" textFill="WHITE">
-                                       <font>
-                                          <Font name="Cambria" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <StackPane prefHeight="34.0" prefWidth="145.0">
-                                       <children>
-                                          <Button fx:id="ajouterWalletBtn" mnemonicParsing="false" onAction="#ajouterWallet" styleClass="white-to-gray" stylesheets="@style.css" text="AjouterWallet" />
-                                          <Label fx:id="balanceLabel" prefHeight="53.0" prefWidth="167.0" text="Balance" textFill="WHITE">
-                                             <font>
-                                                <Font name="Cambria" size="24.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </HBox>
-                              <Button fx:id="acheterQuizzBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Acheter Quizz" textFill="#828282">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" top="30.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                           <styleClass>
-                              <String fx:value="chosen-etablissement-card" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                        </VBox>
-                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                        </AnchorPane>
                      </children>
-                  </VBox>
-               </left>
-               <center>
-                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
-                           <VBox.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </VBox.margin>
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="106.0" text="Welcome" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="nameUserLabel" prefHeight="30.0" prefWidth="146.0" text="User" textFill="#878787" underline="true">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Pane prefHeight="66.0" prefWidth="259.0" HBox.hgrow="ALWAYS" />
-                              <Label fx:id="consulterWalletLabel" prefHeight="62.0" prefWidth="152.0" text="Consulte Wallet" textFill="#878787">
-                                 <font>
-                                    <Font name="Cambria" size="18.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fx:id="afficherWalletListImg" fitHeight="50.0" fitWidth="55.0" onMouseClicked="#afficherWalletList" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/ic_cart.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Pane prefHeight="84.0" prefWidth="96.0" />
-                              <HBox fx:id="Hbox_no_data" alignment="CENTER" prefHeight="124.0" prefWidth="528.0" styleClass="free-delivery-card" stylesheets="@style.css">
-                                 <children>
-                                    <VBox alignment="CENTER" prefHeight="100.0" prefWidth="445.0">
-                                       <children>
-                                          <Label fx:id="label_no_data" prefHeight="72.0" prefWidth="424.0" textFill="#878787">
-                                             <font>
-                                                <Font name="Cambria Bold" size="18.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                              <Pane prefHeight="84.0" prefWidth="96.0">
-                                 <children>
-                                    <Button layoutX="-47.0" layoutY="39.0" mnemonicParsing="false" onAction="#ajouterEtablissement" styleClass="chosen-etablissement-card" stylesheets="@style.css" text="Ajouter Etablissement" textFill="#faf9f9" />
-                                 </children>
-                              </Pane>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="20.0" right="20.0" top="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <ScrollPane fx:id="scroll" prefHeight="478.0" prefWidth="736.0" styleClass="transparent" stylesheets="@style.css">
-                                 <content>
-                                    <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                                       </rowConstraints>
-                                    </GridPane>
-                                 </content>
-                                 <HBox.margin>
-                                    <Insets top="10.0" />
-                                 </HBox.margin>
-                              </ScrollPane>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </center>
-            </BorderPane>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scroll" layoutX="464.0" layoutY="65.0" prefHeight="472.0" prefWidth="467.0" styleClass="transparent" stylesheets="@style.css">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </children>

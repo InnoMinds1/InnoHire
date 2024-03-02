@@ -45,11 +45,11 @@ public class EtablissementController implements Initializable {
     private GridPane grid;
 
     @FXML
-    private TextField typeETF;
+    private Label typeETF;
     @FXML
-    private TextField lieuETF;
+    private Label lieuETF;
     @FXML
-    private TextField cinETF;
+    private Label cinETF;
     @FXML
 private AnchorPane grandAnchor;
     @FXML
