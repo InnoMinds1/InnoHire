@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
 import javafx.event.ActionEvent;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,6 +33,9 @@ public class ReclamationItemComponentController {
 
     @FXML
     private Label dateRec;
+    @FXML
+    private Button chatItemButton;
+
 
     ServiceReclamation serviceReclamation = new ServiceReclamation();
 
@@ -44,6 +49,12 @@ public class ReclamationItemComponentController {
     public void setReclamationData(Reclamation reclamation, AnchorPane container) {
         this.reclamation = reclamation;
         this.container = container;
+        if (CurrentUser.getRole()==0)
+        {
+            chatItemButton.setVisible(true);
+        }else {
+            chatItemButton.setVisible(true);
+        }
 
         // Set data to UI elements
         userFullName.setText(reclamation.getUser().getNom() + " " + reclamation.getUser().getPrenom());

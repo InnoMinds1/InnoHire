@@ -46,7 +46,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </Button>
-               <Button layoutX="699.0" layoutY="19.0" mnemonicParsing="false" onAction="#navigateToChatRec" prefHeight="36.0" prefWidth="0.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
+               <Button fx:id="chatItemButton" layoutX="699.0" layoutY="19.0" mnemonicParsing="false" onAction="#navigateToChatRec" prefHeight="36.0" prefWidth="0.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                         <image>
