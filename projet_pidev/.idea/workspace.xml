@@ -4,149 +4,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9f83f92-291e-436f-ae7d-40c99f7e56b8" name="Changes" comment="">
+    <list default="true" id="750b91a3-14b9-4ec1-b487-4cdb6726728e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Publication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Utilisateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServicePublication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/esprit/utils/DataSource.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="FxmlFile" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2cMooca8ychqTVfkm8DbzLQh1HP" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2d7yUHzcVbZkisUVjeFoa882nEr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.JavaFX.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainFX.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.getionPersonne3A4 [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [javafx:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:jlink].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;gestion-reclamation&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-17.0.10&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainFX.executor": "Run",
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "gestion-reclamation",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HACHEM\Documents\java\InnoHire\projet_pidev\src\main\resources" />
-      <recent name="C:\Users\HACHEM\Documents\java\InnoHire\projet_pidev\src\main\resources\images" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn clean" />
-      <command value="mvn install" />
-      <command value="mvn javafx:run" />
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="JavaFX" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="edu.esprit.tests.MainFX" />
-      <module name="projet_pidev" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-17.0.10\lib&quot; --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.9-jbr-17.0.9-4caba194b151-51f1b679" />
-        <option value="jdk-17.0.9-jbr-17.0.9-f644763e9732-a052894f" />
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e9f83f92-291e-436f-ae7d-40c99f7e56b8" name="Changes" comment="" />
-      <created>1707930987168</created>
+      <changelist id="750b91a3-14b9-4ec1-b487-4cdb6726728e" name="Changes" comment="" />
+      <created>1709373427623</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1707930987168</updated>
-      <workItem from="1707930988241" duration="4372000" />
-      <workItem from="1707948952667" duration="1144000" />
-      <workItem from="1707991291970" duration="122000" />
-      <workItem from="1707991535292" duration="1099000" />
-      <workItem from="1708281272018" duration="493000" />
-      <workItem from="1708281844351" duration="159000" />
-      <workItem from="1708282070844" duration="6015000" />
-      <workItem from="1708369834203" duration="8979000" />
-      <workItem from="1708435490310" duration="10586000" />
-      <workItem from="1708450185545" duration="10511000" />
-      <workItem from="1708515902454" duration="13892000" />
-      <workItem from="1708535795955" duration="19585000" />
-      <workItem from="1708600862607" duration="17620000" />
-      <workItem from="1708619644092" duration="2372000" />
-      <workItem from="1708672298919" duration="3163000" />
-      <workItem from="1708693711347" duration="998000" />
-      <workItem from="1708698615288" duration="40000" />
-      <workItem from="1708701166043" duration="842000" />
-      <workItem from="1708780931890" duration="19747000" />
-      <workItem from="1708813026663" duration="10631000" />
-      <workItem from="1708856280156" duration="2039000" />
-      <workItem from="1708860246253" duration="964000" />
-      <workItem from="1708861560853" duration="22425000" />
-      <workItem from="1708971024697" duration="12646000" />
-      <workItem from="1709040433903" duration="18428000" />
-      <workItem from="1709070357779" duration="2956000" />
-      <workItem from="1709117007740" duration="18190000" />
-      <workItem from="1709144593329" duration="15874000" />
-      <workItem from="1709201100956" duration="37531000" />
-      <workItem from="1709241543041" duration="97000" />
-      <workItem from="1709291808782" duration="1998000" />
-      <workItem from="1709297582877" duration="7515000" />
-      <workItem from="1709317611481" duration="3757000" />
-      <workItem from="1709324937723" duration="8589000" />
-      <workItem from="1709370591770" duration="662000" />
+      <updated>1709373427623</updated>
+      <workItem from="1709373432806" duration="415000" />
     </task>
     <servers />
   </component>
