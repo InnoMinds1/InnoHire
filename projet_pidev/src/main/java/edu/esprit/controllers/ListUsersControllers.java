@@ -1,6 +1,7 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Admin;
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
@@ -63,10 +64,18 @@ public class ListUsersControllers implements Initializable {
 
     @FXML
     private ComboBox<String> comboRole;
+    @FXML
+    private Label CurrentUserEmail;
+    @FXML
+    private Label currentUserName;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
+
+        CurrentUserEmail.setText(CurrentUser.getAdresse());
+        currentUserName.setText(CurrentUser.getNom());
 
         // Load all utilisateurs initially
         Set<Utilisateur> utilisateurs1 = null;

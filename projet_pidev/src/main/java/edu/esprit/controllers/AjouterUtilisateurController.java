@@ -10,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -246,7 +243,10 @@ public class AjouterUtilisateurController {
     private TextField TFprenom;
 
     @FXML
-    private TextField tfmdp;
+    private PasswordField tfmdp;
+
+    @FXML
+    private PasswordField tfmdp_confirm;
 
     @FXML
     private ImageView profileImageView;
@@ -287,8 +287,8 @@ public class AjouterUtilisateurController {
         String prenom = TFprenom.getText();
         String adresse = TFadresse.getText();
         String mdp = tfmdp.getText();
-
-        if (Nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || mdp.isEmpty() ) {
+        String mdp_confirm = tfmdp_confirm.getText();
+        if (Nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || mdp.isEmpty() || mdp_confirm.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -325,6 +325,15 @@ public class AjouterUtilisateurController {
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
             alert.setContentText("Adresse email invalide !");
+            alert.showAndWait();
+            return;
+        }
+        if (!mdp.equals(mdp_confirm))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("CONFIRMATION DE MDP NON CORRECT!");
             alert.showAndWait();
             return;
         }
@@ -413,6 +422,7 @@ public class AjouterUtilisateurController {
                 TFnom.clear();
                 TFadresse.clear();
                 tfmdp.clear();
+                tfmdp_confirm.clear();
 
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -444,6 +454,8 @@ public class AjouterUtilisateurController {
                 TFnom.clear();
                 TFadresse.clear();
                 tfmdp.clear();
+                tfmdp_confirm.clear();
+
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
@@ -476,6 +488,8 @@ public class AjouterUtilisateurController {
                     TFnom.clear();
                     TFadresse.clear();
                     tfmdp.clear();
+                    tfmdp_confirm.clear();
+
 
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);

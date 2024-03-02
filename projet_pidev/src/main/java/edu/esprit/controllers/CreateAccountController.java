@@ -47,10 +47,10 @@ public class CreateAccountController {
 
 
     @FXML
-    private TextField tfmdp;
+    private PasswordField tfmdp;
 
     @FXML
-    private TextField tfrole;
+    private PasswordField tfmdp_confirm;
     @FXML
     private ComboBox<?> comboRole;
 
@@ -67,8 +67,9 @@ public class CreateAccountController {
         String prenom = TFprenom.getText();
         String adresse = TFadresse.getText();
         String mdp = tfmdp.getText();
+        String mdp_confirm= tfmdp_confirm.getText();
 
-        if (Nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || mdp.isEmpty() ) {
+        if (Nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || mdp.isEmpty() ||mdp_confirm.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -114,6 +115,15 @@ public class CreateAccountController {
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
             alert.setContentText("AJOUTER PHOTO !");
+            alert.showAndWait();
+            return;
+        }
+        if (!mdp.equals(mdp_confirm))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("CONFIRMATION DE MDP NON CORRECT!");
             alert.showAndWait();
             return;
         }

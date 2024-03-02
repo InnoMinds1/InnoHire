@@ -375,14 +375,16 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                // Assuming Utilisateur has appropriate constructor
-                Utilisateur user = new Utilisateur();
-                user.setCin(rs.getInt("cin"));
-                user.setNom(rs.getString("nom"));
-                user.setPrenom(rs.getString("prenom"));
-                user.setAdresse(rs.getString("adresse"));
-                user.setMdp(rs.getString("mdp"));
-                user.setImage(rs.getString("image"));
+                // Assuming Utilisateur has an appropriate constructor
+                Utilisateur user = new Utilisateur(
+                        rs.getInt("id_utilisateur"),
+                        rs.getInt("cin"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        rs.getString("adresse"),
+                        rs.getString("mdp"),
+                        rs.getString("image")
+                );
                 // Set other properties as needed
                 return user;
             } else {

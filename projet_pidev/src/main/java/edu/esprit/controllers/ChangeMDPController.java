@@ -24,10 +24,11 @@ import java.util.Set;
 
 public class ChangeMDPController {
     @FXML
-    private TextField TFancienmdp;
+    private PasswordField TFancienmdp;
 
     @FXML
-    private TextField TFnouveau;
+    private PasswordField TFnouveau;
+
 
     @FXML
     void RetourAccueil(ActionEvent event) {
