@@ -165,6 +165,54 @@ public class ServiceCommentaire implements IService<Commentaire>  {
 
         return comments;
     }
+    public void ajouterLike(Commentaire commentaire) throws SQLException {
+        String req = "INSERT INTO `commentaire`( `id_publication`,`id_utilisateur`,`description_co`, `date_co`,`nb_etoile`) VALUES (?,?,?,?,?)";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, commentaire.getPublication().getId_post());
+            ps.setInt(2, commentaire.getUtilisateur().getId_utilisateur());
+            ps.setString(3,null);
+            ps.setDate(4, Date.valueOf(commentaire.getDate_co())); // Assuming date is a java.util.Date
+            ps.setInt(5, commentaire.getNb_etoile());
+            ps.executeUpdate();
+            System.out.println("Commentaire added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding Commentaire: " + e.getMessage());
+        }
+    }
+
+    public Commentaire getCommentaireByUtilisateurAndPublication(int id_utilisateur, int id_publication) throws SQLException {
+        String req = "SELECT * FROM commentaire WHERE id_utilisateur = ? AND id_publication = ? AND description_co IS NULL";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id_utilisateur);
+            ps.setInt(2, id_publication);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int id_commentaire = rs.getInt("id_commentaire");
+                String description_co = rs.getString("description_co");
+                LocalDate date_co = rs.getDate("date_co").toLocalDate();
+                int nb_etoile = rs.getInt("nb_etoile");
+
+                Utilisateur utilisateur;
+                ServiceUtilisateur sc = new ServiceUtilisateur();
+                utilisateur = sc.getOneByID(id_utilisateur);
+
+                Post publication;
+                ServicePost sb = new ServicePost();
+                publication = sb.getOneByID(id_publication);
+
+                return new Commentaire(id_commentaire, publication, utilisateur, description_co, date_co, nb_etoile);
+            } else {
+                System.out.println("No Commentaire found for user " + id_utilisateur + " and publication " + id_publication + " with empty description.");
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting Commentaire: " + e.getMessage());
+            return null;
+        }
+    }
+
 
 
 }

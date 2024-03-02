@@ -1,6 +1,7 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.*;
+import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -100,16 +102,18 @@ public class PostController implements Initializable {
 
 
     private long startTime = 0;
+
     private Reactions currentReaction;
     private Post post;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
     }
 
     @FXML
-    public void onLikeContainerPressed(MouseEvent me){
+    public void onLikeContainerPressed(MouseEvent me) {
         startTime = System.currentTimeMillis();
     }
 
@@ -129,9 +133,10 @@ public class PostController implements Initializable {
         }
     }
 
+
     @FXML
-    public void onReactionImgPressed(MouseEvent me){
-        switch (((ImageView) me.getSource()).getId()){
+    public void onReactionImgPressed(MouseEvent me) {
+        switch (((ImageView) me.getSource()).getId()) {
             case "imgLove":
                 setReaction(Reactions.LOVE);
                 break;
@@ -157,24 +162,54 @@ public class PostController implements Initializable {
         reactionsContainer.setVisible(false);
     }
 
-    public void setReaction(Reactions reaction){
-        Image image = new Image(getClass().getResourceAsStream(reaction.getImgSrc()));
-        imgReaction.setImage(image);
-        reactionName.setText(reaction.getName());
-        reactionName.setTextFill(Color.web(reaction.getColor()));
+    public void setReaction(Reactions reaction) {
+        ServiceCommentaire sc = new ServiceCommentaire();
 
-        if(currentReaction == Reactions.NON){
-            post.setTotalReactions(post.getTotalReactions() + 1);
-        }
 
-        currentReaction = reaction;
 
-        if(currentReaction == Reactions.NON){
-            post.setTotalReactions(post.getTotalReactions() - 1);
-        }
+            Image image = new Image(getClass().getResourceAsStream(reaction.getImgSrc()));
+            imgReaction.setImage(image);
+            reactionName.setText(reaction.getName());
+            reactionName.setTextFill(Color.web(reaction.getColor()));
 
-        nbReactions.setText(String.valueOf(post.getTotalReactions()));
+            if (currentReaction == Reactions.NON) {
+                post.setTotalReactions(post.getTotalReactions() + 1);
+
+
+            }
+
+            currentReaction = reaction;
+
+            if (currentReaction == Reactions.NON) {
+                post.setTotalReactions(post.getTotalReactions() - 1);
+            }
+
+            nbReactions.setText(String.valueOf(post.getTotalReactions()));
+
+
+            this.post = post;
+            ServicePost sp = new ServicePost();
+            int nbRactions = post.getTotalReactions();
+            post.setTotalReactions(nbRactions);
+            try {
+                sp.modifier(post);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+
+            ServiceUtilisateur su = new ServiceUtilisateur();
+            Utilisateur cu = su.getOneByID(CurrentUser.getId_utilisateur());
+            Commentaire c1 = new Commentaire(post, cu, "", LocalDate.of(2023, 02, 4), 1);
+            try {
+                sc.ajouter(c1);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+
     }
+
     public void setData(Post post) {
         this.post = post;
 
@@ -185,7 +220,7 @@ public class PostController implements Initializable {
                 Image img = new Image(getClass().getResourceAsStream(profileImgPath));
                 this.imgProfile.setImage(img);
             } else {
-                System.err.println("Chemin d'accès à l'image de profil invalide : " +profileImgPath);
+                System.err.println("Chemin d'accès à l'image de profil invalide : " + profileImgPath);
             }
         }
 
@@ -234,13 +269,16 @@ public class PostController implements Initializable {
 
         // Reset current reaction
         currentReaction = Reactions.NON;
+
+
+
     }
 
     private Post getPost() throws SQLException {
 
-        ServicePost sp=new ServicePost();
+        ServicePost sp = new ServicePost();
 
-        ServiceUtilisateur su=new ServiceUtilisateur();
+        ServiceUtilisateur su = new ServiceUtilisateur();
 
 
         Post post1 = sp.getOneByID(1);
@@ -260,14 +298,15 @@ public class PostController implements Initializable {
         post.setNbShares(post1.getNbShares());
         return post;
     }
-   /* @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            setData(getPost());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
+
+    /* @Override
+     public void initialize(URL location, ResourceBundle resources) {
+         try {
+             setData(getPost());
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+     }*/
    /*@FXML
    void navigatetoModifierPublicationAction(ActionEvent event) {
        try {
@@ -281,47 +320,47 @@ public class PostController implements Initializable {
        }
 
    }*/
-   @FXML
-   public void navigatetoModifierPublicationAction(ActionEvent actionEvent) {
-       // Code to modify the selected post in the list
-       Post selectedPost = post;
+    @FXML
+    public void navigatetoModifierPublicationAction(ActionEvent actionEvent) {
+        // Code to modify the selected post in the list
+        Post selectedPost = post;
 
-       // Check if an item is selected
-       if (selectedPost == null) {
-           // No item selected, show a warning alert
-           Alert alert = new Alert(Alert.AlertType.WARNING);
-           alert.setTitle("Avertissement");
-           alert.setHeaderText(null);
-           alert.setContentText("Veuillez sélectionner une publication à modifier.");
-           alert.showAndWait();
-           return; // Exit the method as there's nothing to modify
-       } else {
-           // Check if the current user has the right to modify posts
-           if (CurrentUser.getRole() == 0 || selectedPost.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur()) {
-               try {
-                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierPublication.fxml"));
-                   Parent root = loader.load();
-                   ModifierPublication controller = loader.getController();
-                   controller.initData(selectedPost); // Pass the selected post to the modification interface controller
+        // Check if an item is selected
+        if (selectedPost == null) {
+            // No item selected, show a warning alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner une publication à modifier.");
+            alert.showAndWait();
+            return; // Exit the method as there's nothing to modify
+        } else {
+            // Check if the current user has the right to modify posts
+            if (CurrentUser.getRole() == 0 || selectedPost.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur()) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierPublication.fxml"));
+                    Parent root = loader.load();
+                    ModifierPublication controller = loader.getController();
+                    controller.initData(selectedPost); // Pass the selected post to the modification interface controller
 
-                   // Get the current scene
-                   Scene scene = ((Node) actionEvent.getSource()).getScene();
+                    // Get the current scene
+                    Scene scene = ((Node) actionEvent.getSource()).getScene();
 
-                   // Change the content of the scene
-                   scene.setRoot(root);
-               } catch (IOException e) {
-                   throw new RuntimeException(e);
-               }
-           } else {
-               // Display a message indicating that the user doesn't have the right to modify this post
-               Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-               errorAlert.setTitle("Erreur");
-               errorAlert.setHeaderText(null);
-               errorAlert.setContentText("Vous n'avez pas le droit de modifier cette publication.");
-               errorAlert.showAndWait();
-           }
-       }
-   }
+                    // Change the content of the scene
+                    scene.setRoot(root);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                // Display a message indicating that the user doesn't have the right to modify this post
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Erreur");
+                errorAlert.setHeaderText(null);
+                errorAlert.setContentText("Vous n'avez pas le droit de modifier cette publication.");
+                errorAlert.showAndWait();
+            }
+        }
+    }
 
 
     public void NaviguerversPub(ActionEvent actionEvent) {
@@ -399,5 +438,7 @@ public class PostController implements Initializable {
 
 
 
-}
+
+    }
+
 
