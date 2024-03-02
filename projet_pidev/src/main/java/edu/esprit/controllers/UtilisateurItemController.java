@@ -6,21 +6,27 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+import java.io.InputStream;
+
 public class UtilisateurItemController {
-    @FXML
-    private Text LabelPrenom;
+
+
+
 
     @FXML
-    private Button btnModifier;
+    private Label labelCin;
 
     @FXML
-    private Text labelCin;
-
+    private Label labelNom;
     @FXML
-    private Text labelNom;
+    private ImageView imageUser;
 
 
     private Utilisateur utilisateur;
@@ -41,9 +47,17 @@ public class UtilisateurItemController {
 
     public void setData(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
-        LabelPrenom.setText(utilisateur.getPrenom());
+        String imageName = utilisateur.getImage();
+        String imagePath = "/img/" + imageName;
+        Image image = new Image(getClass().getResourceAsStream(imagePath));
+        imageUser.setImage(image);
+
         labelCin.setText(String.valueOf(utilisateur.getCin()));
-        labelNom.setText(utilisateur.getNom());
+        labelNom.setText(utilisateur.getNom()+utilisateur.getPrenom());
+
+
+
+
 
 
     }
@@ -75,5 +89,9 @@ public class UtilisateurItemController {
     private void simulateDeselection(HBox hbox) {
         hbox.getStyleClass().remove("selected-item");
     }
+
+
+
+
 
 }

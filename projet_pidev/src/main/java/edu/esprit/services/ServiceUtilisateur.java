@@ -259,14 +259,14 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String adresse = rs.getString("adresse");
                 String mdp = rs.getString("mdp");
                 int role = rs.getInt(7);
+                String image=rs.getString("image");
                 if (role == 1) {
-                    Representant p = new Representant(cin, nom, prenom, adresse, mdp);
+                    Representant p = new Representant(cin, nom, prenom, adresse, mdp,image);
                     utilisateurs.add(p);
                 } else if (role==2) {
-                    Candidat p = new Candidat( cin, nom, prenom, adresse, mdp);
+                    Candidat p = new Candidat(cin, nom, prenom, adresse, mdp,image);
                     utilisateurs.add(p);
                 }
-
 
 
             }

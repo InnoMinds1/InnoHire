@@ -32,6 +32,7 @@ public class Representant extends Utilisateur{
                 ", adresse='" + this.getAdresse() + '\'' +
 
                 ", role='" + Representant.getROLE() + '\'' +
+                ", image='" + getImage() + '\'' +
                 '}'+'\n';
     }
 
@@ -43,6 +44,10 @@ public class Representant extends Utilisateur{
     public Representant(int cin, String nom , String prenom, String adresse, String mdp)
     {
         super(cin,nom,prenom, adresse, mdp);
+        this.ROLE=1;
+    }
+    public Representant(int cin, String nom, String prenom, String adresse, String mdp,String image) {
+        super(cin,nom,prenom, adresse, mdp,image);
         this.ROLE=1;
     }
 

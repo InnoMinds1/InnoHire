@@ -169,8 +169,7 @@ private AnchorPane grandAnchor;
         }
 
 
-      /*  chosenetablissementCard.setStyle("-fx-background-color: #" + etablissement.getColor() + ";\n" +
-                "    -fx-background-radius: 30;");*/
+
         chosenetablissementCard.requestLayout(); // Force la mise à jour du layout
     }
 
@@ -287,6 +286,7 @@ private AnchorPane grandAnchor;
             Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissement.fxml"));
             grid.getScene().setRoot(root);
         } catch (IOException e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sorry");
             alert.setTitle("Error");

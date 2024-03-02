@@ -31,6 +31,7 @@ public class Candidat extends Utilisateur{
                 ", adresse='" + this.getAdresse() + '\'' +
 
                 ", role='" + Candidat.getROLE() + '\'' +
+                ", image='" + getImage() + '\'' +
                 '}'+'\n';
     }
 
@@ -43,6 +44,10 @@ public class Candidat extends Utilisateur{
     {
         super( cin, nom, prenom, adresse, mdp);
         this.ROLE=2;
+    }
+    public Candidat(int cin, String nom, String prenom, String adresse, String mdp,String image) {
+        super(cin,nom,prenom, adresse, mdp,image);
+        this.ROLE=1;
     }
 
 

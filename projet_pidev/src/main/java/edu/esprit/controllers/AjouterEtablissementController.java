@@ -119,6 +119,17 @@ public class AjouterEtablissementController implements Initializable {
             return;
         }
 
+        if (!Nom.matches("^[a-zA-Z]+(\\d+)?$")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Format invalide");
+            alert.setContentText("Le champ Nom doit contenir des lettres seules ou des lettres suivies de chiffres !");
+            alert.showAndWait();
+            return;
+        }
+
+
+
         if (serviceEtablissement.existeParNom(Nom)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -305,6 +316,8 @@ if (CurrentUser.getRole()!=0) {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cin_utilisateurETF.setVisible(false);
+
         if(CurrentUser.getRole() == 0) {
             labelRegle.setVisible(false);
             labelRegle.setManaged(false);

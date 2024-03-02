@@ -11,6 +11,16 @@ public class Utilisateur {
     private String adresse;
     private String mdp;
 
+
+
+    private String image;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     public int getId_utilisateur() {
         return id_utilisateur;
     }
@@ -68,6 +78,7 @@ public class Utilisateur {
                 ", prenom='" + prenom + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", mdp='" + mdp + '\'' +
+                ", image='" + image + '\'' +
                 '}'+'\n';
     }
 
@@ -92,7 +103,14 @@ public class Utilisateur {
         this.adresse = adresse;
         this.mdp = mdp;
     }
-
+    public Utilisateur(int cin, String nom, String prenom, String adresse, String mdp,String image) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.mdp = mdp;
+        this.image=image;
+    }
     public Utilisateur(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp)
     {
         this.id_utilisateur=id_utilisateur;

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -35,10 +36,10 @@ import java.util.Set;
 public class ModifierEtablissementController extends AjouterEtablissementController implements Initializable {
 //Initializable:setAjouterEtablissementController(this);Set the reference
 
-    private int id ;
-    private String nomInit ;
+    private int id;
+    private String nomInit;
 
-    private int codeInit ;
+    private int codeInit;
 
 
     @FXML
@@ -56,7 +57,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     @FXML
     private TextField TypeETF;
     @FXML
-    private TextField  imageETF;
+    private TextField imageETF;
     @FXML
     private ImageView imageViewETF;
 
@@ -75,6 +76,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     private ServiceUtilisateur serviceU = new ServiceUtilisateur();
 
     Set<Utilisateur> setU;
+    private HBox hboxSelectionne;
 
 
     {
@@ -89,12 +91,15 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
 
 
     private final ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public int getCodeInit() {
         return codeInit;
     }
@@ -102,6 +107,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     public void setCodeInit(int codeInit) {
         this.codeInit = codeInit;
     }
+
     public String getNomInit() {
         return nomInit;
     }
@@ -109,12 +115,6 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     public void setNomInit(String nomInit) {
         this.nomInit = nomInit;
     }
-
-
-
-
-
-
 
 
     public static void showAlert(Alert.AlertType type, String title, String content) {
@@ -150,33 +150,39 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             String nomPhoto = cheminImage.substring(indexDernierSlash + 1);
             imageETF.setText(nomPhoto);
 
-           cin_utilisateurETF.setText(String.valueOf(etablissement.getUser().getCin()));
+            cin_utilisateurETF.setText(String.valueOf(etablissement.getUser().getCin()));
 
         }
     }
-
 
 
     @FXML
     void ok(ActionEvent event) throws SQLException {
 
 
-        if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF)&& controlSaisie(TypeETF)&& controlSaisie(imageETF))
-        {
-            if(!NomETF.getText().equals(getNomInit()))
-            {
-            if (serviceEtablissement.existeParNom(NomETF.getText())) {
+        if (controlSaisie(NomETF) && controlSaisie(LieuETF) && controlSaisie(CodeETF) && controlSaisie(TypeETF) && controlSaisie(imageETF)) {
+            if (!NomETF.getText().matches("^[a-zA-Z]+(\\d+)?$")) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
-                alert.setHeaderText(null);
-                alert.setContentText("Erreur : Un établissement avec le même nom existe déjà !");
+                alert.setHeaderText("Format invalide");
+                alert.setContentText("Le champ Nom doit contenir des lettres seules ou des lettres suivies de chiffres !");
                 alert.showAndWait();
                 return;
             }
+
+            if (!NomETF.getText().equals(getNomInit())) {
+                if (serviceEtablissement.existeParNom(NomETF.getText())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Erreur : Un établissement avec le même nom existe déjà !");
+                    alert.showAndWait();
+                    return;
+                }
             }
 
             int Code = Integer.parseInt(CodeETF.getText());
-            if(Code != getCodeInit() ) {
+            if (Code != getCodeInit()) {
                 if (serviceEtablissement.existe(Code)) {
                     // Afficher une alerte si le code existe déjà
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -188,9 +194,6 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
                     return;
                 }
             }
-
-
-
 
 
             // Vérifier si le type est valide
@@ -260,7 +263,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
                 return;
             }
 
-            if (CurrentUser.getRole()!=0) {
+            if (CurrentUser.getRole() != 0) {
                 if (!checkBoxRegle.isSelected()) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Erreur");
@@ -270,7 +273,6 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
                     return;
                 }
             }
-
 
 
             Etablissement newEtablissement = new Etablissement();
@@ -283,10 +285,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             newEtablissement.setImage(imageETF.getText());
 
 
-
-
-
-           newEtablissement.setUser(user);
+            newEtablissement.setUser(user);
 
 
             serviceEtablissement.modifier(newEtablissement);
@@ -298,36 +297,37 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     }
 
 
+    public void AfficherEtablissement(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
+            Parent root = loader.load();
 
+            Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
 
-
-      public void AfficherEtablissement(ActionEvent actionEvent) {
-          try {
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
-              Parent root = loader.load();
-
-              Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-              stage.setScene(new Scene(root));
-              stage.show();
-
-              // Vous pouvez fermer la fenêtre actuelle si nécessaire
-              // ((Node)(event.getSource())).getScene().getWindow().hide();
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
-      }
+            // Vous pouvez fermer la fenêtre actuelle si nécessaire
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        if(CurrentUser.getRole() == 0) {
+        cin_utilisateurETF.setVisible(false);
+
+
+
+
+        if (CurrentUser.getRole() == 0) {
             labelRegle.setVisible(false);
             labelRegle.setManaged(false);
             checkBoxRegle.setVisible(false);
             checkBoxRegle.setManaged(false);
-        }
-        else  {
+        } else {
             // Hide and reclaim space
             selecUserAnchor.setVisible(false);
             selecUserAnchor.setManaged(false);
@@ -339,17 +339,17 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
 
         imageViewETF.sceneProperty().addListener((observableScene, oldScene, newScene) -> {
             if (oldScene == null && newScene != null) {
-        if (!imageETF.getText().isEmpty()) {
-            // Construct the full path to the image based on the application's working directory
-            String currentDir = System.getProperty("user.dir");
-            String imagePath = currentDir + "/src/main/resources/img/" + imageETF.getText();
+                if (!imageETF.getText().isEmpty()) {
+                    // Construct the full path to the image based on the application's working directory
+                    String currentDir = System.getProperty("user.dir");
+                    String imagePath = currentDir + "/src/main/resources/img/" + imageETF.getText();
 
-            // Create an Image object with the constructed path
-            Image image = new Image(new File(imagePath).toURI().toString());
+                    // Create an Image object with the constructed path
+                    Image image = new Image(new File(imagePath).toURI().toString());
 
-            // Set the Image object in the imageViewETF
-            imageViewETF.setImage(image);
-        }
+                    // Set the Image object in the imageViewETF
+                    imageViewETF.setImage(image);
+                }
             }
         });
 
@@ -361,8 +361,6 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
 
 
         int column = 0;
@@ -398,10 +396,6 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
 
 
     }
-
-
-
-
 
 
     @FXML
@@ -441,9 +435,13 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             System.out.println("Operation canceled.");
         }
     }
+
     @FXML
     void updateCinTextField(String cin) {
         cin_utilisateurETF.setText(cin);
     }
 
+
+
 }
+

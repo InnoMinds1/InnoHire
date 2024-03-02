@@ -114,8 +114,8 @@ public class Main {
 
         /*--------------------------------------End_Sayari----------------------------------------------------*/
 
-System.out.println (se.getWalletByEtablissement(etablissementModifie));
-
+//System.out.println (se.getWalletByEtablissement(etablissementModifie));
+        System.out.println( su.getAll());
 
     }
 }

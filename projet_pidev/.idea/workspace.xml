@@ -6,12 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="2a6f953e-625e-49ba-b711-99a3c03dcba0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherWalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWalletController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherWallet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterWallet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierWallet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/UtilisateurItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/UtilisateurItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Candidat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Candidat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Representant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Representant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Utilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Utilisateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UtilisateurItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UtilisateurItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +127,12 @@
       <workItem from="1709217595770" duration="293000" />
       <workItem from="1709234858384" duration="3526000" />
       <workItem from="1709249203449" duration="2320000" />
+      <workItem from="1709286218080" duration="444000" />
+      <workItem from="1709286875025" duration="390000" />
+      <workItem from="1709292806720" duration="5461000" />
+      <workItem from="1709353511003" duration="391000" />
+      <workItem from="1709381673982" duration="10551000" />
+      <workItem from="1709400819863" duration="6990000" />
     </task>
     <servers />
   </component>
