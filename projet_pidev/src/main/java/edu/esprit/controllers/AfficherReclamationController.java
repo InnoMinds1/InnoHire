@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Messagerie;
 import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
@@ -45,20 +46,40 @@ public class AfficherReclamationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Retrieve data from the database
         try {
-            Set<Reclamation> reclamations = serviceReclamation.getAll();
+            if(CurrentUser.getRole()==0){
+                Set<Reclamation> reclamations = serviceReclamation.getAll();
+                //Set<Reclamation> reclamations = serviceReclamation.getAllRecByUser(candidat.getId_utilisateur());
+                // Load and add ReclamationItemComponent for each Reclamation
+                for (Reclamation reclamation : reclamations) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReclamationItemComponent.fxml"));
+                    try {
+                        reclamationsContainer.getChildren().add(loader.load());
+                        ReclamationItemComponentController controller = loader.getController();
+                        controller.setReclamationData(reclamation, container);
 
-            // Load and add ReclamationItemComponent for each Reclamation
-            for (Reclamation reclamation : reclamations) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReclamationItemComponent.fxml"));
-                try {
-                    reclamationsContainer.getChildren().add(loader.load());
-                    ReclamationItemComponentController controller = loader.getController();
-                    controller.setReclamationData(reclamation, container);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
+            else {
+                //Set<Reclamation> reclamations = serviceReclamation.getAll();
+                System.out.println(CurrentUser.getId_utilisateur());
+                Set<Reclamation> reclamations = serviceReclamation.getAllRecByUser(CurrentUser.getId_utilisateur());
+                // Load and add ReclamationItemComponent for each Reclamation
+                for (Reclamation reclamation : reclamations) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReclamationItemComponent.fxml"));
+                    try {
+                        reclamationsContainer.getChildren().add(loader.load());
+                        ReclamationItemComponentController controller = loader.getController();
+                        controller.setReclamationData(reclamation, container);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -5,20 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="750b91a3-14b9-4ec1-b487-4cdb6726728e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Publication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Utilisateur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServicePublication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceUtilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Candidat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Representant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterAfficherMessage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterAfficherMessage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierReclamation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierReclamation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ReclamationItemComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReclamationItemComponent.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -34,6 +42,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.MainFX.executor": "Run",
+    "Application.MainFx.executor": "Debug",
     "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -47,6 +56,16 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="MainFx" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.esprit.tests.MainFX" />
+      <module name="projet_pidev" />
+      <option name="VM_PARAMETERS" value=" --module-path &quot;C:\Program Files\Java\javafx-sdk-17.0.10\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -62,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709373427623</updated>
-      <workItem from="1709373432806" duration="415000" />
+      <workItem from="1709373432806" duration="22121000" />
     </task>
     <servers />
   </component>

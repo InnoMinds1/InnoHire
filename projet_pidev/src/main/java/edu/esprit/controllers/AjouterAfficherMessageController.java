@@ -2,6 +2,7 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceMessagerie;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,22 +48,23 @@ public class AjouterAfficherMessageController implements Initializable{
     private Label userRole;
     @FXML
     private ImageView userPic;
+    @FXML
+    private AnchorPane RepresentantPane;
 
+    @FXML
+    private AnchorPane AdminPane;
+    @FXML
+    private AnchorPane CandidatPane;
 
 
     private final ServiceMessagerie serviceMessagerie = new ServiceMessagerie();
-   /* private final ServiceUtilisateur su = new ServiceUtilisateur();
-    Utilisateur currentUser;
+    private final ServiceUtilisateur su = new ServiceUtilisateur();
+    Utilisateur userSender = su.getOneByID(CurrentUser.getId_utilisateur());
 
-    {
-        try {
-            currentUser = su.getOneByCin(645196);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
 
-    Utilisateur amen=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
+
+
+    //Utilisateur amen=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
     //Utilisateur userReciver=new Utilisateur(9,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
 
     public void initData(Reclamation selectedReclamation) {
@@ -76,6 +78,22 @@ public class AjouterAfficherMessageController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        if (CurrentUser.getRole() == 0) {
+            // Admin role, so show AdminPane and hide RepresentantPane
+            AdminPane.setVisible(true);
+            RepresentantPane.setVisible(false);
+            CandidatPane.setVisible(false);
+        } else if (CurrentUser.getRole()==1){
+            // Representant role, so show RepresentantPane and hide AdminPane
+            RepresentantPane.setVisible(true);
+            AdminPane.setVisible(false);
+            CandidatPane.setVisible(false);
+        }else {
+            CandidatPane.setVisible(true);
+            AdminPane.setVisible(false);
+            RepresentantPane.setVisible(false);
+        }
        // updateReceiverInfo();
         //updateChatMessages();
     }
@@ -108,8 +126,8 @@ public class AjouterAfficherMessageController implements Initializable{
     // AjouterAfficherMessageController class
     public void updateChatMessages() {
         // Get the messages from the database for both sender and receiver
-        Set<Messagerie> senderMessages = serviceMessagerie.getAllMessagesByReciverAndSender(1, userReciver.getId_utilisateur()); // Replace 1 with the sender's user ID
-        Set<Messagerie> receiverMessages = serviceMessagerie.getAllMessagesByReciverAndSender(userReciver.getId_utilisateur(), 1); // Replace 9 with the receiver's user ID
+        Set<Messagerie> senderMessages = serviceMessagerie.getAllMessagesByReciverAndSender(CurrentUser.getId_utilisateur(), userReciver.getId_utilisateur()); // Replace 1 with the sender's user ID
+        Set<Messagerie> receiverMessages = serviceMessagerie.getAllMessagesByReciverAndSender(userReciver.getId_utilisateur(), CurrentUser.getId_utilisateur()); // Replace 9 with the receiver's user ID
 
         // Combine the messages and order them by date
         Set<Messagerie> allMessages = new TreeSet<>(Comparator.comparing(Messagerie::getDate));
@@ -219,30 +237,64 @@ public class AjouterAfficherMessageController implements Initializable{
         });
 
         // <Button layoutX="519.0" layoutY="636.0" mnemonicParsing="false"prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
-        if (message.getSenderId().getId_utilisateur()!=amen.getId_utilisateur()) {
-            //  if (message.getSender_id().getId_utilisateur() == 1) {
-            //System.out.println(receiverProfileImage);
-            profileImage = new ImageView(new Image("/images/"+userPhoto));
-            profileImage.setFitWidth(40.0);
-            profileImage.setFitHeight(40.0);
-           // messageHbox.getChildren().addAll(messagePane, dateLabel);
-            messagePane.getChildren().addAll(contentLabel);
-            messageHbox.getChildren().addAll(profileImage, messagePane);
-            messageHbox.getChildren().add(dateLabel);
-            //messageHbox.getChildren().add(DeleteButton);
-        } else {
-             profileImage = new ImageView(new Image("/images/profile.png"));
-            profileImage.setFitWidth(40.0);
-            profileImage.setFitHeight(40.0);
-            //DeleteButton.setLayoutX(370);
-            //DeleteButton.setLayoutY(-40);
-            //messageHbox.getChildren().addAll(profileImage, messagePane, dateLabel);
-            messagePane.getChildren().addAll(contentLabel);
-            messageHbox.getChildren().addAll(profileImage, messagePane);
-            messageHbox.getChildren().add(dateLabel);
-            messageHbox.getChildren().add(DeleteButton);
-            messageHbox.getChildren().add(EditButton);
+        //System.out.println(currentUser.getId_utilisateur());
+        //System.out.println(currentUser.getRole());
+        if(CurrentUser.getRole()==0){
+            if (message.getSenderId().getId_utilisateur()!=CurrentUser.getId_utilisateur()) {
+                //  if (message.getSender_id().getId_utilisateur() == 1) {
+                //System.out.println(receiverProfileImage);
+                profileImage = new ImageView(new Image("/images/"+userPhoto));
+                profileImage.setFitWidth(40.0);
+                profileImage.setFitHeight(40.0);
+                // messageHbox.getChildren().addAll(messagePane, dateLabel);
+                messagePane.getChildren().addAll(contentLabel);
+                messageHbox.getChildren().addAll(profileImage, messagePane);
+                messageHbox.getChildren().add(dateLabel);
+                messageHbox.getChildren().add(DeleteButton);
+                messageHbox.getChildren().add(EditButton);
+            } else {
+                profileImage = new ImageView(new Image("/images/"+CurrentUser.getProfileImagePath()));
+                profileImage.setFitWidth(40.0);
+                profileImage.setFitHeight(40.0);
+                //DeleteButton.setLayoutX(370);
+                //DeleteButton.setLayoutY(-40);
+                //messageHbox.getChildren().addAll(profileImage, messagePane, dateLabel);
+                messagePane.getChildren().addAll(contentLabel);
+                messageHbox.getChildren().addAll(profileImage, messagePane);
+                messageHbox.getChildren().add(dateLabel);
+                messageHbox.getChildren().add(DeleteButton);
+                messageHbox.getChildren().add(EditButton);
+            }
+        }else {
+            if (message.getSenderId().getId_utilisateur()!=CurrentUser.getId_utilisateur()) {
+                //  if (message.getSender_id().getId_utilisateur() == 1) {
+                //System.out.println(receiverProfileImage);
+                profileImage = new ImageView(new Image("/images/"+userPhoto));
+                profileImage.setFitWidth(40.0);
+                profileImage.setFitHeight(40.0);
+                // messageHbox.getChildren().addAll(messagePane, dateLabel);
+                messagePane.getChildren().addAll(contentLabel);
+                messageHbox.getChildren().addAll(profileImage, messagePane);
+                messageHbox.getChildren().add(dateLabel);
+                //messageHbox.getChildren().add(DeleteButton);
+                //messageHbox.getChildren().add(EditButton);
+            } else {
+                System.out.println(CurrentUser.getProfileImagePath());
+                profileImage = new ImageView(new Image("/images/"+CurrentUser.getProfileImagePath()));
+                profileImage.setFitWidth(40.0);
+                profileImage.setFitHeight(40.0);
+                //DeleteButton.setLayoutX(370);
+                //DeleteButton.setLayoutY(-40);
+                //messageHbox.getChildren().addAll(profileImage, messagePane, dateLabel);
+                messagePane.getChildren().addAll(contentLabel);
+                messageHbox.getChildren().addAll(profileImage, messagePane);
+                messageHbox.getChildren().add(dateLabel);
+                messageHbox.getChildren().add(DeleteButton);
+                messageHbox.getChildren().add(EditButton);
+            }
         }
+
+
 
         /*messagePane.getChildren().addAll(contentLabel);
         messageHbox.getChildren().addAll(profileImage, messagePane);
@@ -277,7 +329,9 @@ public class AjouterAfficherMessageController implements Initializable{
         } else {
             try {
                 // Proceed to send the message if it's not empty
-                    serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), amen, userReciver));
+                //System.out.println(CurrentUser.getId_utilisateur());
+            //System.out.println(userReciver);
+                serviceMessagerie.ajouter(new Messagerie("text", messageContent, new Date(), userSender, userReciver));
                 TFmessage.setText("");
                 updateChatMessages();
                 //navigateToAfficherReclamationAction(event);
