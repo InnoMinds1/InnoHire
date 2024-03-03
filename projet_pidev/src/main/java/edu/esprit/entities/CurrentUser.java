@@ -3,13 +3,13 @@ package edu.esprit.entities;
 import edu.esprit.services.ServiceUtilisateur;
 
 public class CurrentUser {
-    private static int id_utilisateur = 1 ;
+    private static int id_utilisateur = 2 ;
     private static  int cin = 11417264;
     private static String nom = "amen";
     private static String prenom ="Kthiri";
     private static String adresse="AmenKthiri@esprit.tn";
     private static String mdp="fgffdgdfg";
-    private static int role=0;
+    private static int role=2;
     private static String ProfileImagePath="people.png";
     static ServiceUtilisateur su = new ServiceUtilisateur();
 

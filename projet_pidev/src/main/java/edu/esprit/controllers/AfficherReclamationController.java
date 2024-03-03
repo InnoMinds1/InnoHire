@@ -41,9 +41,31 @@ public class AfficherReclamationController implements Initializable {
     // Add the container variable
     @FXML
     private AnchorPane container;
+    @FXML
+    private AnchorPane RepresentantPane;
+
+    @FXML
+    private AnchorPane AdminPane;
+    @FXML
+    private AnchorPane CandidatPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (CurrentUser.getRole() == 0) {
+            // Admin role, so show AdminPane and hide RepresentantPane
+            AdminPane.setVisible(true);
+            RepresentantPane.setVisible(false);
+            CandidatPane.setVisible(false);
+        } else if (CurrentUser.getRole()==1){
+            // Representant role, so show RepresentantPane and hide AdminPane
+            RepresentantPane.setVisible(true);
+            AdminPane.setVisible(false);
+            CandidatPane.setVisible(false);
+        }else {
+            CandidatPane.setVisible(true);
+            AdminPane.setVisible(false);
+            RepresentantPane.setVisible(false);
+        }
         // Retrieve data from the database
         try {
             if(CurrentUser.getRole()==0){

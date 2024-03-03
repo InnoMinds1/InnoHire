@@ -90,6 +90,13 @@ public class ModifierReclamationController {
 
     @FXML
     private AnchorPane AnchoPaneClaim;
+    @FXML
+    private AnchorPane RepresentantPane;
+
+    @FXML
+    private AnchorPane AdminPane;
+    @FXML
+    private AnchorPane CandidatPane;
 
 
     private Reclamation selectedReclamation;
@@ -97,6 +104,22 @@ public class ModifierReclamationController {
     private ServiceUtilisateur su = new ServiceUtilisateur();
 
     public void initData(Reclamation selectedReclamation) {
+        if (CurrentUser.getRole() == 0) {
+            // Admin role, so show AdminPane and hide RepresentantPane
+            AdminPane.setVisible(true);
+            RepresentantPane.setVisible(false);
+            CandidatPane.setVisible(false);
+        } else if (CurrentUser.getRole()==1){
+            // Representant role, so show RepresentantPane and hide AdminPane
+            RepresentantPane.setVisible(true);
+            AdminPane.setVisible(false);
+            CandidatPane.setVisible(false);
+        }else {
+            CandidatPane.setVisible(true);
+            AdminPane.setVisible(false);
+            RepresentantPane.setVisible(false);
+        }
+
         // Store the selected Reclamation for later use
         this.selectedReclamation = selectedReclamation;
 
@@ -371,4 +394,5 @@ public class ModifierReclamationController {
             alert.show();
         }
     }
+
 }
