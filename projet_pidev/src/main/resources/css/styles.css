@@ -22,13 +22,20 @@
     -fx-padding: 5px;
 }
 
-/* Apply this style to your Button */
-.button-styled {
-    -fx-background-color: #00cc00; /* Green background color */
-    -fx-background-radius: 10; /* Set the background radius */
-    -fx-text-fill: #FFFFFF; /* White text color */
-    -fx-font-weight: bold; /* Set the font weight to bold */
+/* styles.css */
+.button-normal {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-font-size: 13;
 }
+
+.button-normal:hover {
+    -fx-background-color: #5955b3;
+    -fx-text-fill: #ffffff;
+}
+
 
 /* Apply this style to your Label */
 

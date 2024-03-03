@@ -9,13 +9,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="699.0" prefWidth="1365.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierReclamationController">
+<AnchorPane prefHeight="699.0" prefWidth="1365.0" style="-fx-background-color: #632DE9;" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierReclamationController">
    <children>
-      <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="678.0" prefWidth="953.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
+      <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="678.0" prefWidth="953.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" stylesheets="@css/styles.css">
          <children>
             <TextField fx:id="TFType" layoutX="25.0" layoutY="179.0" prefHeight="25.0" prefWidth="270.0" promptText="Type" stylesheets="@css/styles.css" />
             <TextArea fx:id="TADescription" layoutX="25.0" layoutY="263.0" prefHeight="372.0" prefWidth="649.0" promptText="Description" stylesheets="@css/styles.css" />
-            <TextField fx:id="TFTitre" layoutX="26.0" layoutY="105.0" prefHeight="25.0" prefWidth="270.0" promptText="Title" stylesheets="@css/styles.css" />
+            <TextField id="css\styles.css" fx:id="TFTitre" layoutX="26.0" layoutY="105.0" prefHeight="25.0" prefWidth="270.0" promptText="Title" />
             <Label layoutX="38.0" layoutY="14.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 25;" text="Update Claim" />
             <Button layoutX="817.0" layoutY="602.0" mnemonicParsing="false" onAction="#ModifierReclamation" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
                <graphic>
@@ -49,18 +49,24 @@
             <Label fx:id="DescriptionError" layoutX="43.0" layoutY="601.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty description" />
             <AnchorPane fx:id="AnchoPanePub" layoutX="350.0" layoutY="96.0" prefHeight="144.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                <children>
-                  <Label fx:id="labelHashTagPub" layoutX="158.0" layoutY="30.0" prefHeight="27.0" prefWidth="72.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="#HashTag " />
+                  <Label fx:id="labelHashTagPub" layoutX="158.0" layoutY="30.0" prefHeight="27.0" prefWidth="83.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Total Shares" />
                   <Label fx:id="labelDatePub" layoutX="160.0" layoutY="108.0" prefHeight="27.0" prefWidth="141.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="2024-03-02 16:02:14" />
-                  <Label layoutX="158.0" layoutY="54.0" prefHeight="27.0" prefWidth="72.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Code Pub :" />
-                  <Label layoutX="160.0" layoutY="81.0" prefHeight="27.0" prefWidth="98.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Total Reports :" />
-                  <Label fx:id="labelCodePub" layoutX="234.0" layoutY="54.0" prefHeight="27.0" prefWidth="54.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="PUBLIC" />
-                  <Label fx:id="labelNbReports" layoutX="265.0" layoutY="81.0" prefHeight="27.0" prefWidth="28.0" style="-fx-text-fill: #FF0000; -fx-font-weight: bold; -fx-font-size: 14;" text="105" />
-                  <ImageView fitHeight="109.0" fitWidth="123.0" layoutX="24.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                  <Label layoutX="158.0" layoutY="54.0" prefHeight="27.0" prefWidth="109.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Total Reactions" />
+                  <Label layoutX="160.0" layoutY="81.0" prefHeight="27.0" prefWidth="109.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Total Comments" />
+                  <Label fx:id="labelNbComments" layoutX="272.0" layoutY="81.0" prefHeight="27.0" prefWidth="37.0" style="-fx-text-fill: #FF0000; -fx-font-weight: bold; -fx-font-size: 14;" text="105" />
+                  <ImageView fx:id="ImagePub" fitHeight="109.0" fitWidth="123.0" layoutX="24.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/postCandi.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelHashTagPub2" layoutX="42.0" layoutY="1.0" prefHeight="27.0" prefWidth="37.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Post" />
+                  <Label fx:id="labelNbReactions" layoutX="261.0" layoutY="54.0" prefHeight="27.0" prefWidth="37.0" style="-fx-text-fill: #FF0000; -fx-font-weight: bold; -fx-font-size: 14;" text="105" />
+                  <Label fx:id="labelNbShares" layoutX="243.0" layoutY="30.0" prefHeight="27.0" prefWidth="37.0" style="-fx-text-fill: #FF0000; -fx-font-weight: bold; -fx-font-size: 14;" text="105" />
+                  <ImageView fx:id="ppPublic" fitHeight="30.0" fitWidth="30.0" layoutX="279.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/lock.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="AnchoPanePost" layoutX="700.0" layoutY="96.0" prefHeight="222.0" prefWidth="211.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
@@ -93,7 +99,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="978.0" layoutY="14.0" prefHeight="678.0" prefWidth="363.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
+      <AnchorPane layoutX="978.0" layoutY="14.0" prefHeight="678.0" prefWidth="363.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;" stylesheets="@css/styles.css">
          <children>
             <Button layoutX="13.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="29.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
                <graphic>
@@ -117,9 +123,9 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="105.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
             <Label fx:id="receiverNameLabel2" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="84.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
             <Label layoutX="292.0" layoutY="146.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See all" />
-            <AnchorPane fx:id="AnchoPaneMessage131" layoutX="24.0" layoutY="172.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
+            <AnchorPane fx:id="AnchoPaneMessage131" layoutX="24.0" layoutY="172.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;" stylesheets="@css/styles.css">
                <children>
-                  <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Home">
+                  <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@css/styles.css" text="Home">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
