@@ -58,6 +58,9 @@ private AnchorPane grandAnchor;
     private AnchorPane anchorContenu;
     @FXML
     private Label nameUserLabel;
+    @FXML
+    private Button afficherWalletListImg;
+
 
     private List<Etablissement> etablissements = new ArrayList<>();
     private Image image;
@@ -72,8 +75,7 @@ private AnchorPane grandAnchor;
 
     @FXML
     private Button acheterQuizzBtn;
-    @FXML
-    private ImageView afficherWalletListImg;
+
     @FXML
   private Label consulterWalletLabel;
 
@@ -128,10 +130,10 @@ private AnchorPane grandAnchor;
         cinETF.setText(String.valueOf(etablissement.getUser().getCin()));
 
 
-            if(etablissementNameLable.getText().equals(etablissement.getNom()))
-            {
+
+
                 CurrentEtablissement.setIdEtablissement(etablissement.getIdEtablissement());
-            }
+
 
 
 
@@ -261,7 +263,7 @@ private AnchorPane grandAnchor;
             EtablissementItemController etablissementItemController = fxmlLoader.getController();
             etablissementItemController.setData(etablissements.get(i), myListener);
 
-            if (column == 3) {
+            if (column == 2) {
                 column = 0;
                 row++;
             }
@@ -311,44 +313,7 @@ private AnchorPane grandAnchor;
 
     }
 
-    public void afficherWalletList(MouseEvent mouseEvent) throws SQLException {
 
-            Etablissement etablissementConnecte = null;
-            try {
-                etablissementConnecte = se.getOneByID(CurrentEtablissement.getIdEtablissement());
-            } catch (SQLException e) {
-                e.printStackTrace();
-                afficherAlerte("Erreur lors de la récupération de l'établissement connecté : " + e.getMessage());
-            }
-
-            // Vérifier d'abord si etablissementConnecte est null
-            if (etablissementConnecte != null) {
-                Wallet walletConnecte = null;
-                try {
-                    walletConnecte = se.getWalletByEtablissement(etablissementConnecte);
-                } catch (Throwable t) {
-                    t.printStackTrace();
-                    afficherAlerte("Erreur lors de la récupération du portefeuille : " + t.getMessage());
-                }
-
-                if (walletConnecte != null) {
-                    try {
-                        Parent root = FXMLLoader.load(getClass().getResource("/AfficherWallet.fxml"));
-                        grid.getScene().setRoot(root);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        afficherAlerte("Erreur lors du chargement d'AfficherWallet.fxml : " + e.getMessage());
-                    }
-                } else {
-                    // Afficher une alerte demandant d'ajouter un portefeuille
-                    afficherAlerte("Ajoutez un portefeuille à votre établissement.");
-                }
-            } else {
-                // Si etablissementConnecte est null, afficher un message spécifique
-                afficherAlerte("Ajoutez un portefeuille à votre établissement.");
-            }
-
-    }
 
 
     private void afficherAlerte(String message) {
@@ -382,4 +347,43 @@ private AnchorPane grandAnchor;
         }
     }
 
+    public void openAiHelper(ActionEvent actionEvent) {
+    }
+
+    public void afficherWalletList(ActionEvent actionEvent) {
+        Etablissement etablissementConnecte = null;
+        try {
+            etablissementConnecte = se.getOneByID(CurrentEtablissement.getIdEtablissement());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            afficherAlerte("Erreur lors de la récupération de l'établissement connecté : " + e.getMessage());
+        }
+
+        // Vérifier d'abord si etablissementConnecte est null
+        if (etablissementConnecte != null) {
+            Wallet walletConnecte = null;
+            try {
+                walletConnecte = se.getWalletByEtablissement(etablissementConnecte);
+            } catch (Throwable t) {
+                t.printStackTrace();
+                afficherAlerte("Erreur lors de la récupération du portefeuille : " + t.getMessage());
+            }
+
+            if (walletConnecte != null) {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/AfficherWallet.fxml"));
+                    grid.getScene().setRoot(root);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    afficherAlerte("Erreur lors du chargement d'AfficherWallet.fxml : " + e.getMessage());
+                }
+            } else {
+                // Afficher une alerte demandant d'ajouter un portefeuille
+                afficherAlerte("Ajoutez un portefeuille à votre établissement.");
+            }
+        } else {
+            // Si etablissementConnecte est null, afficher un message spécifique
+            afficherAlerte("Ajoutez un portefeuille à votre établissement.");
+        }
+    }
 }

@@ -46,8 +46,7 @@ public class AjouterEtablissementController implements Initializable {
     @FXML
     private TextField NomETF;
 
-    @FXML
-    private TextField TypeETF;
+
     @FXML
     private TextField imageETF;
     @FXML
@@ -71,6 +70,11 @@ public class AjouterEtablissementController implements Initializable {
     private Label labelRegle;
     @FXML
     private CheckBox checkBoxRegle;
+
+    @FXML
+    private RadioButton faculteRadio,ecoleRadio,lyceeRadio,collegeRadio;
+    @FXML
+    private Label labelType;
 
 
     private ServiceUtilisateur serviceU = new ServiceUtilisateur();
@@ -105,12 +109,12 @@ public class AjouterEtablissementController implements Initializable {
         String Nom = NomETF.getText();
         String Lieu = LieuETF.getText();
         String Code = CodeETF.getText();
-        String Type = TypeETF.getText();
+      //  String Type = TypeETF.getText();
         String image = imageETF.getText();
 
 
         // Vérifier si les champs requis sont vides
-        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || Type.isEmpty()|| image.isEmpty() ) {
+        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() ||  image.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -165,18 +169,7 @@ public class AjouterEtablissementController implements Initializable {
 
 
 
-        // Vérifier si le type est valide
-        String[] validTypes = {"ecole", "college", "lycee", "faculte"};
-        String lowerCaseType = Type.trim().toLowerCase(); // Convertir en minuscules et supprimer les espaces inutiles
 
-        if (!Arrays.asList(validTypes).contains(lowerCaseType)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Erreur : Le type d'établissement doit être 'ecole', 'college', 'lycee' ou 'faculte' !");
-            alert.showAndWait();
-            return;
-        }
 
 
 
@@ -260,7 +253,7 @@ if (CurrentUser.getRole()!=0) {
         etablissement.setNom(Nom);
         etablissement.setCodeEtablissement(codeE);
         etablissement.setLieu(Lieu);
-        etablissement.setTypeEtablissement(Type);
+        etablissement.setTypeEtablissement(labelType.getText());
         etablissement.setImage(image);
         etablissement.setUser(user);
 
@@ -277,7 +270,6 @@ if (CurrentUser.getRole()!=0) {
             NomETF.clear();
             LieuETF.clear();
             CodeETF.clear();
-            TypeETF.clear();
             imageETF.clear();
             cin_utilisateurETF.clear();
             imageViewETF.setImage(null);
@@ -431,5 +423,19 @@ if (CurrentUser.getRole()!=0) {
     }
 
 
+    public void getType(ActionEvent actionEvent) {
+        if(faculteRadio.isSelected()) {
+            labelType.setText(faculteRadio.getText());
+        }
+        else if(lyceeRadio.isSelected()) {
+            labelType.setText(lyceeRadio.getText());
+        }
+        else if(collegeRadio.isSelected()) {
+            labelType.setText(collegeRadio.getText());
+        }
+        else if(ecoleRadio.isSelected()) {
+            labelType.setText(ecoleRadio.getText());
+        }
 
+    }
 }

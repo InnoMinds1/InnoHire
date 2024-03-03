@@ -79,6 +79,9 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     private HBox hboxSelectionne;
 
 
+
+
+
     {
         try {
             setU = serviceU.getAll();
@@ -143,6 +146,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
             TypeETF.setText(etablissement.getTypeEtablissement());
+
 
 
             String cheminImage = etablissement.getImage();
@@ -320,8 +324,6 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
         cin_utilisateurETF.setVisible(false);
 
 
-
-
         if (CurrentUser.getRole() == 0) {
             labelRegle.setVisible(false);
             labelRegle.setManaged(false);
@@ -352,6 +354,10 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
                 }
             }
         });
+
+
+
+
 
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
         Set<Utilisateur> users = null;

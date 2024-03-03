@@ -39,8 +39,8 @@
             </ImageView>
             <HBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="185.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#modifier" text="Modifier" />
-                  <Button mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
+                  <Button mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Modifier" />
+                  <Button mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Supprimer" />
                </children>
             </HBox>
          </children>

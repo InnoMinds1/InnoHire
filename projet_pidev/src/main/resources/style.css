@@ -114,3 +114,30 @@
 .green-button:pressed {
     -fx-background-color: linear-gradient(to right, #008000, #004000); /* Dégradé plus sombre de Vert à Vert foncé lorsqu'il est pressé */
 }
+
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-button {
+    appearance: none;
+    padding: 8px;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.radio-button:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.radio-button.checked {
+    background-color: #3498db;
+    color: #fff;
+}
