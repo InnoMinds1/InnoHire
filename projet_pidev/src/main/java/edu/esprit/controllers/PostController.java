@@ -231,7 +231,7 @@ public class PostController implements Initializable {
         }
 
         // Set date
-        date.setText(post.getDate());
+        date.setText(String.valueOf(post.getDate()));
 
         // Set audience image
         Image img;

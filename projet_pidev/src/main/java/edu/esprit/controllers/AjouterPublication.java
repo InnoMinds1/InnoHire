@@ -7,6 +7,7 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -19,10 +20,14 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class AjouterPublication  {
+public class AjouterPublication implements Initializable {
 
 
 
@@ -53,7 +58,7 @@ public class AjouterPublication  {
     @FXML
     void ajouterPublicationAction(ActionEvent event) {
         try {
-            LocalDate dateActuelle = LocalDate.now();
+
 
             // Vérifier la conformité de la saisie pour le champ audience
             String audienceText = TFaudience.getText().toUpperCase();
@@ -88,7 +93,7 @@ public class AjouterPublication  {
             post.setTotalReactions(0);
             post.setNbComments(0);
             post.setNbShares(0);
-            post.setDate(String.valueOf(dateActuelle));
+
 
             sp.ajouter(post);
 
@@ -191,6 +196,13 @@ public class AjouterPublication  {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        LocalDateTime currentDate = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = currentDate.format(formatter);
+        TFdate.setText(formattedDate);
+    }
 }
 
 

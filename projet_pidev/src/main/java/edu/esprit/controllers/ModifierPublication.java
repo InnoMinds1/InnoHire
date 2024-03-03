@@ -130,7 +130,7 @@ public class ModifierPublication {
             TFcaption.setText(post.getCaption());
             imageETF.setText(post.getImage());
             setUser(post.getUtilisateur());
-            setDate(post.getDate());
+
             setTotalReactions(post.getTotalReactions());
             setNbComments(post.getNbComments());
             setNbShares(post.getNbShares());
@@ -157,7 +157,7 @@ public class ModifierPublication {
             newPost.setCaption(TFcaption.getText()); // Assurez-vous que TFdate est un DatePicker
             newPost.setImage(imageETF.getText());
             newPost.setUtilisateur(getUser());
-            newPost.setDate(getDate());
+
             newPost.setTotalReactions(getTotalReactions());
             newPost.setNbComments(getNbComments());
             newPost.setNbShares(getNbShares());

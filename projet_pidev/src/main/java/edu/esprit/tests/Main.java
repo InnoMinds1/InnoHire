@@ -30,7 +30,7 @@ public class Main {
 
         //---------------------Publication---------------------------------------//
 
-        Post po = new Post(55968,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
+      //  Post po = new Post(55968,u,PostAudience.PUBLIC,"dcsc","dsf","sdvsdf",1,1,1);
         //sr.ajouter(u);
         //sb.modifier(p);
         //so.supprimer(2);
@@ -42,7 +42,7 @@ public class Main {
 
         //----------------------Commentaire--------------------------------------//
         //sb.ajouter(pc);
-         Commentaire c=new Commentaire(po,u,"heybabygirl", LocalDate.of(2023,02,4),200);
+        // Commentaire c=new Commentaire(po,u,"heybabygirl", LocalDate.of(2023,02,4),200);
 
        // sc.ajouter(c);
         //sc.modifier(c);
@@ -83,8 +83,7 @@ public class Main {
 
 
 
-System.out.println(sc.getListCommentsByPost(po));
-
+//System.out.println(sc.getListCommentsByPost(po));
 
 
 

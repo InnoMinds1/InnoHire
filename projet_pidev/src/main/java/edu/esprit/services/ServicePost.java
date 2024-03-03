@@ -7,13 +7,9 @@ import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,12 +18,14 @@ public class ServicePost implements IService<Post> {
 
     @Override
     public void ajouter(Post post) throws SQLException {
+        LocalDateTime currentDate = LocalDateTime.now();
         String req = "INSERT INTO `post`(`id_utilisateur`, `audience`, `date`, `caption`, `image`, `totalReactions`, `nbComments`, `nbShares`) VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, post.getUtilisateur().getId_utilisateur());
             ps.setString(2, post.getAudience().toString());
-            ps.setString(3, post.getDate());
+
+            ps.setTimestamp(3, Timestamp.valueOf(currentDate));
             ps.setString(4, post.getCaption());
             ps.setString(5, post.getImage());
             ps.setInt(6, post.getTotalReactions());
@@ -47,10 +45,12 @@ public class ServicePost implements IService<Post> {
         int id = post.getId_post();
         String req = "UPDATE post SET id_utilisateur = ?, audience = ?, date = ?, caption = ?, image = ?, totalReactions = ?, nbComments = ?, nbShares = ? WHERE id_post = ?";
         try {
+            LocalDateTime currentDate = LocalDateTime.now();
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, post.getUtilisateur().getId_utilisateur());
             ps.setString(2, post.getAudience().toString());
-            ps.setString(3, post.getDate());
+            ps.setTimestamp(3, Timestamp.valueOf(currentDate));
+
             ps.setString(4, post.getCaption());
             ps.setString(5, post.getImage());
             ps.setInt(6, post.getTotalReactions());
@@ -95,7 +95,12 @@ public class ServicePost implements IService<Post> {
                 int id_post = rs.getInt("id_post");
                 int id_utilisateur = rs.getInt("id_utilisateur");
                 String audienceStr = rs.getString("audience");
-                String dateStr = rs.getString("date");
+
+
+                Timestamp timestamp = rs.getTimestamp("date");
+                LocalDateTime date = timestamp.toLocalDateTime();
+
+
                 String caption = rs.getString("caption");
                 String image = rs.getString("image");
                 int totalReactions = rs.getInt("totalReactions");
@@ -107,7 +112,7 @@ public class ServicePost implements IService<Post> {
 
                 PostAudience audience = PostAudience.valueOf(audienceStr); // Assuming PostAudience is an enum
 
-                Post post = new Post(id_post, utilisateur, audience, dateStr, caption, image, totalReactions, nbComments, nbShares);
+                Post post = new Post(id_post, utilisateur, audience, date, caption, image, totalReactions, nbComments, nbShares);
                 posts.add(post);
             }
         } catch (SQLException e) {
@@ -127,7 +132,11 @@ public class ServicePost implements IService<Post> {
             if (rs.next()) {
                 int id_utilisateur = rs.getInt("id_utilisateur");
                 String audienceStr = rs.getString("audience");
-                String dateStr = rs.getString("date");
+
+
+                Timestamp timestamp = rs.getTimestamp("date");
+                LocalDateTime date = timestamp.toLocalDateTime();
+
                 String caption = rs.getString("caption");
                 String image = rs.getString("image");
                 int totalReactions = rs.getInt("totalReactions");
@@ -141,7 +150,7 @@ public class ServicePost implements IService<Post> {
 
                 PostAudience audience = PostAudience.valueOf(audienceStr); // Assuming PostAudience is an enum
 
-                Post post1 = new Post(id_post,user,audience,dateStr,caption,image,totalReactions,nbComments,nbShares);
+                Post post1 = new Post(id_post,user,audience,date,caption,image,totalReactions,nbComments,nbShares);
                 return post1 ;
             } else {
                 System.out.println("Post with ID " + id_post + " not found");

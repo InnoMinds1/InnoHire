@@ -1,12 +1,14 @@
 package edu.esprit.entities;
 
 
+import java.time.LocalDateTime;
+
 public class Post {
 
     private int id_post ;
     private Utilisateur utilisateur;
     private PostAudience audience;
-    private String date;
+    private LocalDateTime date;
     private String caption;
     private String image;
     private int totalReactions;
@@ -27,7 +29,7 @@ public class Post {
 
     }
 
-    public Post(int id_post , Utilisateur utilisateur, PostAudience audience, String date, String caption, String image, int totalReactions, int nbComments, int nbShares) {
+    public Post(int id_post , Utilisateur utilisateur, PostAudience audience, LocalDateTime date, String caption, String image, int totalReactions, int nbComments, int nbShares) {
         this.id_post=id_post;
         this.utilisateur = utilisateur;
         this.audience = audience;
@@ -63,11 +65,11 @@ public class Post {
         this.audience = audience;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
