@@ -176,5 +176,16 @@ public class LoginController {
 
 
     }
+    @FXML
+    void navigateToPassRecovery(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/getCinforpassRec.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        TFcin.getScene().setRoot(root);
+
+    }
 
 }

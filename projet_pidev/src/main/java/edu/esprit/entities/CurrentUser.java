@@ -11,6 +11,15 @@ public class CurrentUser {
     private static String mdp;
     private static int role;
     private static String ProfileImagePath;
+    private static int otp;
+    public static int getOtp()
+    {
+        return otp;
+    }
+    public static void setOtp(int otp)
+    { CurrentUser.otp=otp;
+    }
+    public
     static ServiceUtilisateur su = new ServiceUtilisateur();
 
     public static int getRole() {

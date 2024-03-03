@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 public class ServiceUtilisateur implements IService<Utilisateur> {
@@ -414,6 +415,31 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         return -1;
 
     }
+    public int generateOTP()
+    {
+
+        Random random = new Random();
+        return 1000 + random.nextInt(9000);
+
+    }
+    public void modifier_OTP_par_cin(int cin) {
+        String req = "UPDATE utilisateur SET OTP =? WHERE cin = ?";
+        int otp = this.generateOTP();
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, otp);
+            ps.setInt(2, cin);
+
+            ps.executeUpdate();
+            System.out.println("OTP modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+
     public Utilisateur getOneByCin(int cin) throws SQLException {
         String req = "SELECT * FROM utilisateur WHERE cin = ?";
         try {

@@ -26,15 +26,20 @@
             <Label layoutX="277.0" layoutY="110.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 35;" text="Welcome Back" />
             <ImageView fitHeight="110.0" fitWidth="97.0" layoutX="349.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Documents/java/InnoHire/projet_pidev/src/main/resources/images/blink.gif" />
+                  <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/382876686_2550356941793712_7809494747563560197_n.gif" />
                </image>
             </ImageView>
-            <Button layoutX="653.0" layoutY="631.0" mnemonicParsing="false" onAction="#navigateToCreateAccount" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 12;" text="Reister Now !!">
+            <Button layoutX="653.0" layoutY="631.0" mnemonicParsing="false" onAction="#navigateToCreateAccount" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 12;" text="Register Now !!">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <PasswordField fx:id="TFmdp" layoutX="153.0" layoutY="320.0" prefHeight="45.0" prefWidth="453.0" promptText="Password" style="-fx-background-color: #f2f5ec; -fx-border-radius: 10;" />
+            <Button layoutX="606.0" layoutY="365.0" mnemonicParsing="false" onAction="#navigateToPassRecovery" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 12;" text="mot de passe oublié">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
