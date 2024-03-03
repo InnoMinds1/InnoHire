@@ -9,7 +9,7 @@ public class Reclamation {
     public String type,titre,description;
     public Timestamp date;
 
-    Publication pub;
+    Post pub;
 
     Utilisateur user;
 
@@ -24,7 +24,7 @@ public class Reclamation {
         this.date = date;
     }
 
-    public Reclamation(int status, String type, String titre, String description, Timestamp  date, Publication pub, Utilisateur user) {
+    public Reclamation(int status, String type, String titre, String description, Timestamp  date, Post pub, Utilisateur user) {
         this.status = status;
         this.type = type;
         this.titre = titre;
@@ -34,7 +34,7 @@ public class Reclamation {
         this.user = user;
     }
 
-    public Reclamation(int idReclamation, int status, String type, String titre, String description, Timestamp  date, Publication pub, Utilisateur user) {
+    public Reclamation(int idReclamation, int status, String type, String titre, String description, Timestamp  date, Post pub, Utilisateur user) {
         this.idReclamation = idReclamation;
         this.status = status;
         this.type = type;
@@ -94,11 +94,11 @@ public class Reclamation {
         this.date = date;
     }
 
-    public Publication getPub() {
+    public Post getPub() {
         return pub;
     }
 
-    public void setPub(Publication pub) {
+    public void setPub(Post pub) {
         this.pub = pub;
     }
 

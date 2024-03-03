@@ -1,17 +1,9 @@
 package edu.esprit.tests;
 
 
-import edu.esprit.entities.Messagerie;
-import edu.esprit.entities.Publication;
-import edu.esprit.entities.Reclamation;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceMessagerie;
-import edu.esprit.services.ServicePublication;
-import edu.esprit.services.ServiceReclamation;
-import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
-
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args)

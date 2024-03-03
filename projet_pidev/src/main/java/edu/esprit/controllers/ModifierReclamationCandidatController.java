@@ -55,8 +55,8 @@ public class ModifierReclamationCandidatController {
         TADescription.setText(selectedReclamation.getDescription());
         labelFullName.setText(selectedReclamation.getPub().getUtilisateur().getNom() + " " + selectedReclamation.getPub().getUtilisateur().getPrenom());
         labelCin.setText(String.valueOf(selectedReclamation.getUser().getCin()));
-        labelCodePub.setText(selectedReclamation.getPub().getCode_pub());
-        labelNbReports.setText(String.valueOf(selectedReclamation.getPub().getNb_report()));
+        labelCodePub.setText(String.valueOf(selectedReclamation.getPub().getAudience()));
+        //labelNbReports.setText(String.valueOf(selectedReclamation.getPub().getNb_report()));
         // Set user photo
         String imageName = selectedReclamation.getPub().getUtilisateur().getImage();
         System.out.println(imageName);// Replace with the actual method to get the image name

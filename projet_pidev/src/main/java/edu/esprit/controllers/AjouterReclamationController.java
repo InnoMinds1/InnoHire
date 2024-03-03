@@ -1,31 +1,23 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.Publication;
-import edu.esprit.entities.Reclamation;
-import edu.esprit.entities.Utilisateur;
+import edu.esprit.entities.*;
 import edu.esprit.services.ServiceReclamation;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class AjouterReclamationController {
     @FXML
@@ -43,8 +35,12 @@ public class AjouterReclamationController {
 
 
     private final ServiceReclamation sr = new ServiceReclamation();
+    private final ServiceUtilisateur su = new ServiceUtilisateur();
+    Utilisateur userSender = su.getOneByID(CurrentUser.getId_utilisateur());
     Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
-    Publication pub=new Publication(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
+    //Post pub=new Post(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
+    Post pub = new Post(1,userSender
+,PostAudience.PUBLIC,"2024-03-02 13:29:57","Fk off","blog.png",15,15,15);
 
 
     public void navigateToAfficherReclamationAction(ActionEvent actionEvent) {
@@ -182,7 +178,8 @@ public class AjouterReclamationController {
 
         try {
             // Call the update method from ServiceReclamation to update the record in the database
-            sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, user));
+            sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, userSender
+));
 
             // Show success alert
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);

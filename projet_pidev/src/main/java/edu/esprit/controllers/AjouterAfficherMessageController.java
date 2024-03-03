@@ -243,6 +243,7 @@ public class AjouterAfficherMessageController implements Initializable{
             if (message.getSenderId().getId_utilisateur()!=CurrentUser.getId_utilisateur()) {
                 //  if (message.getSender_id().getId_utilisateur() == 1) {
                 //System.out.println(receiverProfileImage);
+                //profileImage = new ImageView(new Image("/images/"+CurrentUser.getProfileImagePath()));
                 profileImage = new ImageView(new Image("/images/"+userPhoto));
                 profileImage.setFitWidth(40.0);
                 profileImage.setFitHeight(40.0);
@@ -254,6 +255,7 @@ public class AjouterAfficherMessageController implements Initializable{
                 messageHbox.getChildren().add(EditButton);
             } else {
                 profileImage = new ImageView(new Image("/images/"+CurrentUser.getProfileImagePath()));
+                //profileImage = new ImageView(new Image("/images/"+userPhoto));
                 profileImage.setFitWidth(40.0);
                 profileImage.setFitHeight(40.0);
                 //DeleteButton.setLayoutX(370);

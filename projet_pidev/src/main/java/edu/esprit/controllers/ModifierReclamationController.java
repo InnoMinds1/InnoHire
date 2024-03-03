@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
@@ -19,30 +21,74 @@ import java.time.LocalDateTime;
 
 public class ModifierReclamationController {
     @FXML
-    private Label labelFullName;
+    private TextField TFType;
+
     @FXML
-    private Label labelCin;
+    private TextArea TADescription;
+
     @FXML
-    private Label labelCodePub;
-    @FXML
-    private Label labelNbReports;
+    private TextField TFTitre;
+
     @FXML
     private Label TitleError;
+
     @FXML
     private Label TypeError;
+
     @FXML
     private Label DescriptionError;
 
     @FXML
-    private TextField TFType;
-    @FXML
-    private TextField TFTitre;
-    @FXML
-    private TextArea TADescription;
-    @FXML
     private ImageView userPhoto;
+
     @FXML
-    private Button confirmButton;
+    private Label labelFullName;
+
+    @FXML
+    private Label labelCin;
+
+    @FXML
+    private Label labelEmail;
+
+    @FXML
+    private Label labelRole;
+
+    @FXML
+    private ImageView userPhotoPub;
+
+    @FXML
+    private Label labelFullNamePub;
+
+    @FXML
+    private Label labelCinPub;
+
+    @FXML
+    private Label labelEmailPub;
+
+    @FXML
+    private Label labelRolePub;
+
+
+    @FXML
+    private ImageView userPhoto2;
+
+    @FXML
+    private Label labelHashTagPub;
+
+    @FXML
+    private Label labelDatePub;
+
+    @FXML
+    private Label labelCodePub;
+
+    @FXML
+    private Label labelNbReports;
+
+    @FXML
+    private Label receiverNameLabel2;
+    @FXML
+    private AnchorPane AnchoPaneClaim;
+
 
     private Reclamation selectedReclamation;
     private ServiceReclamation serviceReclamation = new ServiceReclamation();
@@ -56,20 +102,55 @@ public class ModifierReclamationController {
         TFTitre.setText(selectedReclamation.getTitre());
         //datePicker.setValue(LocalDate.now());
         TADescription.setText(selectedReclamation.getDescription());
-        labelFullName.setText(selectedReclamation.getUser().getNom()+" "+selectedReclamation.getUser().getPrenom());
-        labelCin.setText(String.valueOf(selectedReclamation.getUser().getCin()));
-        labelCodePub.setText(selectedReclamation.getPub().getCode_pub());
-        labelNbReports.setText(String.valueOf(selectedReclamation.getPub().getNb_report()));
+        if (CurrentUser.getRole()==0){
+            labelFullName.setText(selectedReclamation.getUser().getNom()+" "+selectedReclamation.getUser().getPrenom());
+            labelCin.setText(String.valueOf(selectedReclamation.getUser().getCin()));
+            if (selectedReclamation.getUser().getRole()==1)
+            {
+                labelRole.setText("Representant");
+                labelRole.setText("Representant");
+            }else {
+                labelRole.setText("Candidat");
+                labelRolePub.setText("Candidat");
+            }
+            labelEmail.setText(selectedReclamation.getUser().getAdresse());
+        }else
+        {
+            AnchoPaneClaim.setVisible(false);
+        }
+
+
+
+        labelFullNamePub.setText(selectedReclamation.getPub().getUtilisateur().getNom()+" "+selectedReclamation.getPub().getUtilisateur().getPrenom());
+        labelCinPub.setText(String.valueOf(selectedReclamation.getPub().getUtilisateur().getCin()));
+        labelEmailPub.setText(selectedReclamation.getPub().getUtilisateur().getAdresse());
+
+        String imageNamePub = selectedReclamation.getPub().getUtilisateur().getImage();
+        if (imageNamePub!=null && imageNamePub.isEmpty()) {
+            System.out.println("imageNamePub"+imageNamePub);
+            String imagePathPub = "/images/" + imageNamePub; // Assuming images are stored in src/main/resources/images
+            System.out.println("imagePathPub"+imagePathPub);
+            Image imagePub = new Image(getClass().getResource(imagePathPub).toExternalForm());
+            System.out.println("imagePub"+imagePub);
+            userPhotoPub.setImage(imagePub);
+        } else {
+            // Set a default image if the name is not available
+            userPhoto.setImage(new Image(getClass().getResource("/images/edit.png").toExternalForm()));
+        }
+
+        labelCodePub.setText(String.valueOf(selectedReclamation.getPub().getAudience()));
+        //labelNbReports.setText(String.valueOf(selectedReclamation.getPub().getNb_report()));
         // Set user photo
         String imageName = selectedReclamation.getUser().getImage();
-        System.out.println(imageName);// Replace with the actual method to get the image name
-        if (imageName != null && !imageName.isEmpty()) {
+
+        ///System.out.println(imageNamePub);// Replace with the actual method to get the image name
+        if (imageName != null  && !imageName.isEmpty()) {
             String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             userPhoto.setImage(image);
         } else {
             // Set a default image if the name is not available
-            userPhoto.setImage(new Image(getClass().getResource("/images/edit.png.jpg").toExternalForm()));
+            userPhoto.setImage(new Image(getClass().getResource("/images/edit.png").toExternalForm()));
         }
 
     }

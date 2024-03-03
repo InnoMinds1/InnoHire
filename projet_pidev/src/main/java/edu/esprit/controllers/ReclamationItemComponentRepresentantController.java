@@ -48,8 +48,8 @@ public class ReclamationItemComponentRepresentantController {
 
         // Set data to UI elements
         userFullName.setText(reclamation.getPub().getUtilisateur().getNom() + " " + reclamation.getPub().getUtilisateur().getPrenom());
-        tag.setText("#"+reclamation.getPub().getHashtag());
-        pubCode.setText(reclamation.getPub().getCode_pub());
+        //tag.setText("#"+reclamation.getPub().getHashtag());
+        //pubCode.setText(reclamation.getPub().getCode_pub());
         dateRec.setText(String.valueOf(reclamation.getDate()));
         // Set user photo
         String imageName = reclamation.getPub().getUtilisateur().getImage();
