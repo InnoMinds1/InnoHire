@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="grandAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1451.0" style="-fx-background-color: #632DE9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.EtablissementController">
@@ -20,7 +21,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/businessmanOwner.png" />
+                        <Image url="@img/notif.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -47,7 +48,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/home.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -59,7 +60,7 @@
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/listUsers.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -71,31 +72,31 @@
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/makePost.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List Claim">
+                  <Button layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/establishment.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="17.0" layoutY="229.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
+                  <Button layoutX="17.0" layoutY="229.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="ListClaim">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/listClaim.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -107,7 +108,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/settings.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -119,7 +120,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/help.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -131,7 +132,7 @@
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/businessmanOwner.png" />
+                              <Image url="@img/chat.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -145,7 +146,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/businessmanOwner.png" />
+                        <Image url="@img/leave.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -204,19 +205,6 @@
                            </image>
                         </ImageView>
                         <Label fx:id="receiverNameLabel2111111" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="284.0" prefHeight="25.0" prefWidth="72.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Balance : " textAlignment="CENTER" />
-                        <Label fx:id="balanceLabel" layoutX="172.0" layoutY="285.0" prefHeight="25.0" prefWidth="114.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="11425368 $" />
-                        <Button fx:id="ajouterWalletBtn" layoutX="171.0" layoutY="331.0" mnemonicParsing="false" onAction="#ajouterWallet" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Wallet">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <graphic>
-                              <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/wallet (2).png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <Button fx:id="afficherWalletListImg" layoutX="286.0" layoutY="276.0" mnemonicParsing="false" onAction="#afficherWalletList" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Details">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -229,7 +217,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="acheterQuizzBtn" layoutX="60.0" layoutY="400.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="296.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="By Quiz">
+                        <Button fx:id="acheterQuizzBtn" layoutX="60.0" layoutY="377.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="296.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="By Quiz">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -246,11 +234,27 @@
                               <Image url="@img/exclamation-mark.png" />
                            </image>
                         </ImageView>
+                        <StackPane layoutX="180.0" layoutY="254.0" prefHeight="86.0" prefWidth="98.0">
+                           <children>
+                              <Label fx:id="balanceLabel" prefHeight="25.0" prefWidth="114.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="11425368 $" />
+                              <Button fx:id="ajouterWalletBtn" mnemonicParsing="false" onAction="#ajouterWallet" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Wallet">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/wallet (2).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </StackPane>
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
-            <Label fx:id="consulterWalletLabel" layoutX="719.0" layoutY="644.0" text="consulter wallet" />
             <HBox fx:id="Hbox_no_data" layoutX="247.0" layoutY="572.0" prefHeight="36.0" prefWidth="187.0">
                <children>
                   <AnchorPane prefHeight="57.0" prefWidth="381.0">
@@ -264,7 +268,7 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <ScrollPane fx:id="scroll" layoutX="464.0" layoutY="65.0" prefHeight="472.0" prefWidth="467.0" styleClass="transparent" stylesheets="@style.css">
+            <ScrollPane fx:id="scroll" layoutX="439.0" layoutY="65.0" prefHeight="472.0" prefWidth="512.0" styleClass="transparent" stylesheets="@style.css">
                <content>
                   <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                      <rowConstraints>

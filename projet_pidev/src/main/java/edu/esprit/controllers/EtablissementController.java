@@ -76,8 +76,7 @@ private AnchorPane grandAnchor;
     @FXML
     private Button acheterQuizzBtn;
 
-    @FXML
-  private Label consulterWalletLabel;
+
 
 
     private List<Etablissement> getData() throws SQLException {
@@ -158,6 +157,7 @@ private AnchorPane grandAnchor;
 
             // Afficher balanceLabel et masquer ajouterWalletBtn
             balanceLabel.setVisible(true);
+            afficherWalletListImg.setVisible(true);
             ajouterWalletBtn.setVisible(false);
             acheterQuizzBtn.setVisible(true);
 
@@ -165,6 +165,7 @@ private AnchorPane grandAnchor;
 
             // Masquer balanceLabel et afficher ajouterWalletBtn
             balanceLabel.setVisible(false);
+            afficherWalletListImg.setVisible(false);
             ajouterWalletBtn.setVisible(true);
             acheterQuizzBtn.setVisible(false);
             CurrentWallet.setIdWallet(0);
@@ -201,18 +202,20 @@ private AnchorPane grandAnchor;
         setupListeners();
 
         if (etablissements.isEmpty()) {
-            label_no_data.setText("Vous n'avez pas encore d'établissement.");
+
             Hbox_no_data.setVisible(true);
             chosenetablissementCard.setVisible(false); // Hide chosenetablissementCard
-            afficherWalletListImg.setVisible(false);
-            consulterWalletLabel.setText("Selectionne Etablissement");
+
+
         } else {
-            setChosenetablissement(etablissements.get(0));
-            afficherWalletListImg.setVisible(true);
-            consulterWalletLabel.setText("Consulte Wallet");
-            populateGrid();
             Hbox_no_data.setVisible(false);
             chosenetablissementCard.setVisible(true); // Show chosenetablissementCard
+            setChosenetablissement(etablissements.get(0));
+
+
+            populateGrid();
+
+
         }
     }
 
@@ -329,18 +332,19 @@ private AnchorPane grandAnchor;
             etablissements.addAll(getData()); // Recharge les données
 
             if (etablissements.isEmpty()) {
-                label_no_data.setText("Vous n'avez pas encore d'établissement.");
+
                 Hbox_no_data.setVisible(true);
-                afficherWalletListImg.setVisible(false);
-                consulterWalletLabel.setText("Selectionne Etablissement");
                 chosenetablissementCard.setVisible(false); // Hide chosenetablissementCard
+
+
+
             } else {
-                setChosenetablissement(etablissements.get(0));
-                afficherWalletListImg.setVisible(true);
-                consulterWalletLabel.setText("Consulte Wallet");
-                populateGrid();
                 Hbox_no_data.setVisible(false);
                 chosenetablissementCard.setVisible(true); // Show chosenetablissementCard
+                setChosenetablissement(etablissements.get(0));
+                populateGrid();
+
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

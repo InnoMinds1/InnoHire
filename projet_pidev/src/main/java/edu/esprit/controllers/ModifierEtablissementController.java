@@ -75,11 +75,15 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     private CheckBox checkBoxRegle;
     private ServiceUtilisateur serviceU = new ServiceUtilisateur();
 
-    Set<Utilisateur> setU;
+
+    @FXML
     private HBox hboxSelectionne;
 
+    @FXML
+    private ComboBox<String> comboBox ;
 
 
+    Set<Utilisateur> setU;
 
 
     {
@@ -146,8 +150,27 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             LieuETF.setText(etablissement.getLieu());
             NomETF.setText(etablissement.getNom());
             TypeETF.setText(etablissement.getTypeEtablissement());
+            //------------------------------setup ComboBox
 
+            // Ajoutez le texte du TextField au ComboBox
+            comboBox.getItems().add(TypeETF.getText());
 
+// Ajoutez d'autres éléments prédéfinis au ComboBox
+            comboBox.getItems().addAll("faculte", "lycee", "college", "ecole");
+
+// Ajoutez un gestionnaire d'événements pour détecter les changements dans le ComboBox
+            comboBox.setOnAction(event -> {
+                // Obtenez l'élément sélectionné dans le ComboBox
+                String selectedValue = comboBox.getSelectionModel().getSelectedItem();
+
+                // Mettez à jour le TextField avec l'élément sélectionné (ou le texte par défaut si aucun élément n'est sélectionné)
+                TypeETF.setText(selectedValue != null ? selectedValue : TypeETF.getText());
+            });
+
+// Définissez le texte par défaut du ComboBox après d'avoir ajouté les éléments
+            comboBox.setValue(TypeETF.getText());
+
+//------------------------------End setup ComboBox
 
             String cheminImage = etablissement.getImage();
             int indexDernierSlash = cheminImage.lastIndexOf('/');
@@ -320,6 +343,13 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        TypeETF.setVisible(false);
+
+
+
+
+
 
         cin_utilisateurETF.setVisible(false);
 

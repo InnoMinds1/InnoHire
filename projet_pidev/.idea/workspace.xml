@@ -6,18 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2a6f953e-625e-49ba-b711-99a3c03dcba0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterWalletController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierEtablissementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentEtablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWalletController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterEtablissement.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Etablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ItemEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ItemEtablissement.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierEtablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +94,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-17.0.9-jbr-17.0.9-4caba194b151-51f1b679" />
-        <option value="jdk-17.0.9-jbr-17.0.9-f644763e9732-a052894f" />
+        <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
       </set>
     </attachedChunks>
   </component>
@@ -144,6 +139,8 @@
       <workItem from="1709381673982" duration="10551000" />
       <workItem from="1709400819863" duration="6990000" />
       <workItem from="1709412136501" duration="4574000" />
+      <workItem from="1709462666070" duration="7984000" />
+      <workItem from="1709500371792" duration="473000" />
     </task>
     <servers />
   </component>
