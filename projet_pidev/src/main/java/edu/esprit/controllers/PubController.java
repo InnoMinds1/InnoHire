@@ -123,7 +123,7 @@ public class PubController implements Initializable {
         Utilisateur user = new Utilisateur();
         user.setName(post1.getUtilisateur().getName());
         user.setProfileImg(post1.getUtilisateur().getProfileImg());
-        user.setVerified(post1.getUtilisateur().getVerified());
+
         post.setUtilisateur(user);
         post.setDate(post1.getDate());
         post.setAudience(post1.getAudience());

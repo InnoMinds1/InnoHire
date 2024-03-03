@@ -35,8 +35,7 @@ public class PostController implements Initializable {
     @FXML
     private Label username;
 
-    @FXML
-    private ImageView imgVerified;
+
 
     @FXML
     private Label date;
@@ -224,10 +223,10 @@ public class PostController implements Initializable {
             }
         }
 
-        // Set username and verified status
+
         if (post.getUtilisateur() != null) {
             username.setText(post.getUtilisateur().getName());
-            imgVerified.setVisible(post.getUtilisateur().getVerified() == 1);
+
         }
 
         // Set date
@@ -287,7 +286,7 @@ public class PostController implements Initializable {
         Utilisateur user = new Utilisateur();
         user.setName(post1.getUtilisateur().getName());
         user.setProfileImg(post1.getUtilisateur().getProfileImg());
-        user.setVerified(post1.getUtilisateur().getVerified());
+
         post.setUtilisateur(user);
         post.setDate(post1.getDate());
         post.setAudience(post1.getAudience());

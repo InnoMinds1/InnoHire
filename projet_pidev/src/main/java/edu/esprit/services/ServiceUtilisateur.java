@@ -211,13 +211,13 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 Utilisateur user = new Utilisateur();
                 user.setId_utilisateur(id);
                 user.setCin(rs.getInt("cin"));
-                user.setName(rs.getString("name"));
+                user.setName(rs.getString("nom"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));
                 user.setRole(rs.getInt("role"));
                 user.setProfileImg(rs.getString("image"));
-                user.setVerified(rs.getInt("verified"));
+
                 // Set other properties as needed
                 return user;
             } else {
