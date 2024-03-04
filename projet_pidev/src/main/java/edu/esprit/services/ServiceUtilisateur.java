@@ -422,9 +422,9 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         return 1000 + random.nextInt(9000);
 
     }
-    public void modifier_OTP_par_cin(int cin) {
+    public void modifier_OTP_par_cin(int cin,int otp) {
         String req = "UPDATE utilisateur SET OTP =? WHERE cin = ?";
-        int otp = this.generateOTP();
+
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, otp);

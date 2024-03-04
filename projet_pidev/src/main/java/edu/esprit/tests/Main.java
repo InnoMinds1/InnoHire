@@ -1,9 +1,11 @@
 package edu.esprit.tests;
 
+import com.emailsender.sendemail.SendemailApplication;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.utils.DataSource;
+import org.springframework.boot.SpringApplication;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -53,6 +55,7 @@ public class Main {
         System.out.println(sr.getOneByID(1));
         System.out.println(sr.getOneAdminByID(12));
         System.out.println(sr.getOneAdminByID(1));*/
+
 
 
 

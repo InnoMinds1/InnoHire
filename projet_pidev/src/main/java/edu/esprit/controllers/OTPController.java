@@ -1,8 +1,6 @@
 package edu.esprit.controllers;
-import edu.esprit.entities.Admin;
-import edu.esprit.entities.Candidat;
-import edu.esprit.entities.Representant;
-import edu.esprit.entities.Utilisateur;
+import edu.esprit.entities.*;
+import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceUtilisateur;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -35,6 +33,39 @@ public class OTPController {
 
     @FXML
     void OTPverifyAction(ActionEvent event) {
+        int code;
+        ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur() ;
+        try {
+            code = Integer.parseInt(TFcode.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("ENTREZ LE CODE ENVOYE VIA MAIL !");
+            alert.showAndWait();
+            return;
+        }
+        if (code!= CurrentUser.getOtp())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Le code OTP n'est pas juste !");
+            alert.showAndWait();
+        }
+        else
+        {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/Newmdp.fxml"));
+                TFcode.getScene().setRoot(root);
+            } catch (IOException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Sorry");
+                alert.setTitle("Error");
+                alert.show();
+            }
+        }
+
 
     }
 }

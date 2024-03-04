@@ -1,7 +1,6 @@
 package edu.esprit.controllers;
 
 
-import com.google.protobuf.StringValue;
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;

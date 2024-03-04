@@ -4,55 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9f83f92-291e-436f-ae7d-40c99f7e56b8" name="Changes" comment="" />
+    <list default="true" id="21b2f2ae-2615-464f-ab63-25385d315798" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="FxmlFile" />
-        <option value="Class" />
-      </list>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 1
 }</component>
-  <component name="ProjectId" id="2cMooca8ychqTVfkm8DbzLQh1HP" />
+  <component name="ProjectId" id="2dBVMnON7e27LlI9zSwEyRRCnOK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainFX.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/msi/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\msi\IdeaProjects\SECOND_TRY\projet_pidev\src" />
-    </key>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="SendemailApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="projet_pidev" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.emailsender.sendemail.SendemailApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -64,50 +61,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e9f83f92-291e-436f-ae7d-40c99f7e56b8" name="Changes" comment="" />
-      <created>1707930987168</created>
+      <changelist id="21b2f2ae-2615-464f-ab63-25385d315798" name="Changes" comment="" />
+      <created>1709481413370</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1707930987168</updated>
-      <workItem from="1707930988241" duration="4372000" />
-      <workItem from="1707948952667" duration="1144000" />
-      <workItem from="1707991291970" duration="122000" />
-      <workItem from="1707991535292" duration="1099000" />
-      <workItem from="1708088134645" duration="1529000" />
-      <workItem from="1708271288239" duration="925000" />
-      <workItem from="1708275009296" duration="505000" />
-      <workItem from="1708275523664" duration="11982000" />
-      <workItem from="1708357287493" duration="2222000" />
-      <workItem from="1708359769675" duration="94000" />
-      <workItem from="1708359875727" duration="385000" />
-      <workItem from="1708360328630" duration="4070000" />
-      <workItem from="1708364502528" duration="258000" />
-      <workItem from="1708364921117" duration="5245000" />
-      <workItem from="1708435658947" duration="2049000" />
-      <workItem from="1708452966617" duration="773000" />
-      <workItem from="1708515713405" duration="16472000" />
-      <workItem from="1708857626088" duration="17077000" />
-      <workItem from="1708935154490" duration="13114000" />
-      <workItem from="1708968287390" duration="3929000" />
-      <workItem from="1709025906900" duration="11988000" />
-      <workItem from="1709037997264" duration="1177000" />
-      <workItem from="1709111974886" duration="5475000" />
-      <workItem from="1709208798910" duration="4311000" />
-      <workItem from="1709291793143" duration="332000" />
-      <workItem from="1709293565024" duration="7731000" />
-      <workItem from="1709312886695" duration="4874000" />
-      <workItem from="1709319544735" duration="7200000" />
-      <workItem from="1709371188119" duration="10448000" />
-      <workItem from="1709384429464" duration="2361000" />
-      <workItem from="1709467611046" duration="2711000" />
+      <updated>1709481413370</updated>
+      <workItem from="1709481416314" duration="26000" />
+      <workItem from="1709481501692" duration="717000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

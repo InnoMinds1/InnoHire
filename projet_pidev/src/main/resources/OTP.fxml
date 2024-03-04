@@ -14,7 +14,7 @@
             <children>
                 <TextField fx:id="TFcode" layoutX="153.0" layoutY="225.0" prefHeight="45.0" prefWidth="453.0" promptText="code" style="-fx-background-color: #f2f5ec; -fx-border-radius: 10;" />
                 <Label fx:id="LabelCIN" alignment="CENTER" contentDisplay="CENTER" layoutX="153.0" layoutY="200.0" prefHeight="25.0" prefWidth="85.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 16;" text="CODE" textAlignment="CENTER" />
-                <Button layoutX="139.0" layoutY="302.0" mnemonicParsing="false" onAction="#OTPverifyAction" prefHeight="45.0" prefWidth="453.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="ENTRE VOTRE CIN">
+                <Button layoutX="139.0" layoutY="302.0" mnemonicParsing="false" onAction="#OTPverifyAction" prefHeight="45.0" prefWidth="453.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="ENTRE VOTRE CODE">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
