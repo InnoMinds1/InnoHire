@@ -183,7 +183,7 @@ public class AjouterPublication implements Initializable {
             // The user selected a file, you can handle it here
             String imagePath = selectedFile.toURI().toString();
 
-            // Set the image file name to the TextField
+            // Set the image file nom to the TextField
             imageETF.setText(selectedFile.getName());
 
             // Display the selected image on the ImageView

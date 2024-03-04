@@ -2,8 +2,8 @@ package edu.esprit.entities;
 
 public class CurrentUser {
     private static int id_utilisateur =2215;
-    private static  int cin=2212;
-    private static String name="condidatName";
+    private static  int cin=22121452;
+    private static String nom="condidatnom";
     private static String prenom;
     private static String adresse;
     private static String mdp;
@@ -37,12 +37,12 @@ public class CurrentUser {
         CurrentUser.cin = cin;
     }
 
-    public static String getName() {
-        return name;
+    public static String getNom() {
+        return nom;
     }
 
-    public static void setName(String name) {
-        CurrentUser.name = name;
+    public static void setnom(String nom) {
+        CurrentUser.nom = nom;
     }
 
     public static String getPrenom() {

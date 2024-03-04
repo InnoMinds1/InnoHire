@@ -36,8 +36,7 @@ public class AjouterCommentaire implements Initializable {
 
     @FXML
     private TextField ratingTF1;
-    @FXML
-    private ListView<Post> listView;
+
 
     @FXML
     private Button afficherCommentaire;
@@ -45,7 +44,7 @@ public class AjouterCommentaire implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listView.setVisible(false);
+
         cinTF1.setText(String.valueOf(CurrentUser.getCin()));
 
         ServicePost serviceService = new ServicePost();
@@ -61,7 +60,7 @@ public class AjouterCommentaire implements Initializable {
 
 
         // Set the items in your ListView
-        listView.setItems(FXCollections.observableArrayList(publications));
+
     }
 
 

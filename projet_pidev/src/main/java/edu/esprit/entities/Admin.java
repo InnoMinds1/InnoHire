@@ -20,7 +20,7 @@ public class Admin extends Utilisateur{
         return "Admin{" +
                 "id_utilisateur=" + this.getId_utilisateur() +
                 ", cin=" + this.getCin() +
-                ", nom='" + this.getName() + '\'' +
+                ", nom='" + this.getNom() + '\'' +
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
                 ", mdp='" + this.getMdp() + '\'' +
@@ -28,9 +28,9 @@ public class Admin extends Utilisateur{
                 '}';
     }
 
-    public Admin(int id_utilisateur,int cin,String name ,String prenom,String adresse, String mdp)
+    public Admin(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
     {
-        super(id_utilisateur, cin, name, prenom, adresse, mdp);
+        super(id_utilisateur, cin, nom, prenom, adresse, mdp);
 
     }
 

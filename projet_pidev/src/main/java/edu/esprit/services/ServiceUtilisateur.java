@@ -20,11 +20,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     public void ajouter(Utilisateur utilisateur) {
         if (utilisateur instanceof Admin) {
             Admin a = (Admin) utilisateur;
-            String req = "INSERT INTO `admin`( `cin`, `name`, `prenom`, `email`, `mdp`) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `admin`( `cin`, `nom`, `prenom`, `email`, `mdp`) VALUES (?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setInt(1, a.getCin());
-                ps.setString(2, a.getName());
+                ps.setString(2, a.getNom());
                 ps.setString(3, a.getPrenom());
                 ps.setString(4, a.getAdresse());
                 String hashed =hashPassword(a.getMdp());
@@ -37,11 +37,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 System.out.println(e.getMessage());
             }
         } else {
-            String req = "INSERT INTO `utilisateur`( `cin`, `name`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
+            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setInt(1, utilisateur.getCin());
-                ps.setString(2, utilisateur.getName());
+                ps.setString(2, utilisateur.getNom());
                 ps.setString(3, utilisateur.getPrenom());
                 ps.setString(4, utilisateur.getAdresse());
                 String hashed= hashPassword(utilisateur.getMdp());
@@ -67,11 +67,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     @Override
     public void modifier(Utilisateur utilisateur) {
-        String req = "UPDATE utilisateur SET cin =?, name = ?, prenom = ?, adresse = ?, mdp = ? WHERE id_utilisateur = ?";
+        String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE id_utilisateur = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, utilisateur.getCin());
-            ps.setString(2, utilisateur.getName());
+            ps.setString(2, utilisateur.getNom());
             ps.setString(3, utilisateur.getPrenom());
             ps.setString(4, utilisateur.getAdresse());
             ps.setString(5, utilisateur.getMdp());
@@ -87,11 +87,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     }
 
     public void modifier_admin(Admin admin) {
-        String req = "UPDATE admin SET cin =?, name = ?, prenom = ?, email = ?, mdp = ? WHERE id_admin = ?";
+        String req = "UPDATE admin SET cin =?, nom = ?, prenom = ?, email = ?, mdp = ? WHERE id_admin = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, admin.getCin());
-            ps.setString(2, admin.getName());
+            ps.setString(2, admin.getNom());
             ps.setString(3, admin.getPrenom());
             ps.setString(4, admin.getAdresse());
             ps.setString(5, admin.getMdp());
@@ -150,16 +150,16 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 int cin = rs.getInt(2);
-                String name = rs.getString("name");
+                String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 String adresse = rs.getString("adresse");
                 String mdp = rs.getString("mdp");
                 int role = rs.getInt(7);
                 if (role == 0) {
-                    Utilisateur p = new Representant(id, cin, name, prenom, adresse, mdp);
+                    Utilisateur p = new Representant(id, cin, nom, prenom, adresse, mdp);
                     utilisateurs.add(p);
                 } else {
-                    Utilisateur p = new Candidat(id, cin, name, prenom, adresse, mdp);
+                    Utilisateur p = new Candidat(id, cin, nom, prenom, adresse, mdp);
                     utilisateurs.add(p);
                 }
 
@@ -181,11 +181,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 int cin = rs.getInt(2);
-                String name = rs.getString("name");
+                String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 String adresse = rs.getString("email");
                 String mdp = rs.getString("mdp");
-                Admin p = new Admin(id, cin, name, prenom, adresse, mdp);
+                Admin p = new Admin(id, cin, nom, prenom, adresse, mdp);
                 admins.add(p);
 
 
@@ -211,7 +211,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 Utilisateur user = new Utilisateur();
                 user.setId_utilisateur(id);
                 user.setCin(rs.getInt("cin"));
-                user.setName(rs.getString("nom"));
+                user.setnom(rs.getString("nom"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));
@@ -239,7 +239,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 // Assuming Utilisateur has appropriate constructor
                 Admin user = new Admin();
                 user.setCin(rs.getInt("cin"));
-                user.setName(rs.getString("nom"));
+                user.setnom(rs.getString("nom"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("email"));
                 user.setMdp(rs.getString("mdp"));
@@ -282,7 +282,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 Utilisateur user = new Utilisateur();
                 user.setId_utilisateur(rs.getInt("id_utilisateur"));
                 user.setCin(rs.getInt("cin"));
-                user.setName(rs.getString("name"));
+                user.setnom(rs.getString("nom"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));

@@ -6,7 +6,7 @@ public class Utilisateur {
 
     private int id_utilisateur ;
     private int cin;
-    private String name;
+    private String nom;
     private String prenom;
     private String adresse;
     private String mdp;
@@ -15,12 +15,12 @@ public class Utilisateur {
     private String profileImg;
     private int verified ;
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setnom(String nom) {
+        this.nom = nom;
     }
 
     public String getProfileImg() {
@@ -88,7 +88,7 @@ public class Utilisateur {
         return "Utilisateur{" +
                 "id_utilisateur=" + id_utilisateur +
                 ", cin=" + cin +
-                ", name='" + name + '\'' +
+                ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", mdp='" + mdp + '\'' +
@@ -100,29 +100,29 @@ public class Utilisateur {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Utilisateur that = (Utilisateur) o;
-        return id_utilisateur == that.id_utilisateur && cin == that.cin && Objects.equals(name, that.name) && Objects.equals(prenom, that.prenom) && Objects.equals(adresse, that.adresse) && Objects.equals(mdp, that.mdp);
+        return id_utilisateur == that.id_utilisateur && cin == that.cin && Objects.equals(nom, that.nom) && Objects.equals(prenom, that.prenom) && Objects.equals(adresse, that.adresse) && Objects.equals(mdp, that.mdp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_utilisateur, cin, name, prenom, adresse, mdp);
+        return Objects.hash(id_utilisateur, cin, nom, prenom, adresse, mdp);
     }
     public Utilisateur(){};
-    public Utilisateur(int id_utilisateur,int cin,String name ,String prenom,String adresse, String mdp)
+    public Utilisateur(int id_utilisateur,int cin,String nom ,String prenom,String adresse, String mdp)
     {
         this.id_utilisateur=id_utilisateur;
         this.cin=cin;
-        this.name=name;
+        this.nom=nom;
         this.prenom=prenom;
         this.adresse=adresse;
         this.mdp=mdp;
 
     }
 
-    public Utilisateur(int id_utilisateur, int cin, String name, String prenom, String adresse, String mdp, int role, String profileImg, int verified) {
+    public Utilisateur(int id_utilisateur, int cin, String nom, String prenom, String adresse, String mdp, int role, String profileImg, int verified) {
         this.id_utilisateur = id_utilisateur;
         this.cin = cin;
-        this.name = name;
+        this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.mdp = mdp;

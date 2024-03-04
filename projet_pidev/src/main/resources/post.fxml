@@ -23,7 +23,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Label fx:id="username">
+                        <Label fx:id="usernom">
                            <font>
                               <Font name="Segoe UI Semibold" size="18.0" />
                            </font>
@@ -170,7 +170,7 @@
                         <Image url="@img/ic_like_outline.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="reactionName" text="Like" textFill="#606266">
+                  <Label fx:id="reactionnom" text="Like" textFill="#606266">
                      <font>
                         <Font name="Segoe UI Semibold" size="18.0" />
                      </font>

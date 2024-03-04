@@ -14,13 +14,13 @@ public enum Reactions {
     ANGRY(7,"Angry","#DD6B0E","/img/ic_angry.png");
 
     private int id;
-    private String name;
+    private String nom;
     private String color;
     private String imgSrc;
 
-    Reactions(int id, String name, String color, String imgSrc) {
+    Reactions(int id, String nom, String color, String imgSrc) {
         this.id = id;
-        this.name = name;
+        this.nom = nom;
         this.color = color;
         this.imgSrc = imgSrc;
     }
@@ -33,12 +33,12 @@ public enum Reactions {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setnom(String nom) {
+        this.nom = nom;
     }
 
     public String getColor() {

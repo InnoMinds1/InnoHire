@@ -43,7 +43,7 @@ public class PubController implements Initializable {
     private VBox postsContainer;
 
     @FXML
-    private Label receiverNameLabel2;
+    private Label receivernomLabel2;
     private List<Post> posts = new ArrayList<>();
 
     @FXML
@@ -121,7 +121,7 @@ public class PubController implements Initializable {
 
         Post post = new Post();
         Utilisateur user = new Utilisateur();
-        user.setName(post1.getUtilisateur().getName());
+        user.setnom(post1.getUtilisateur().getNom());
         user.setProfileImg(post1.getUtilisateur().getProfileImg());
 
         post.setUtilisateur(user);

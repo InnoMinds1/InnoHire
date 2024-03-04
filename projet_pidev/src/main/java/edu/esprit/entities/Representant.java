@@ -27,7 +27,7 @@ public class Representant extends Utilisateur{
         return "Representant{" +
                 "id_utilisateur=" + this.getId_utilisateur() +
                 ", cin=" + this.getCin() +
-                ", nom='" + this.getName() + '\'' +
+                ", nom='" + this.getNom() + '\'' +
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
                 ", mdp='" + this.getMdp() + '\'' +
@@ -35,9 +35,9 @@ public class Representant extends Utilisateur{
                 '}';
     }
 
-    public Representant(int id_utilisateur, int cin, String name , String prenom, String adresse, String mdp)
+    public Representant(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp)
     {
-        super(id_utilisateur, cin, name, prenom, adresse, mdp);
+        super(id_utilisateur, cin, nom, prenom, adresse, mdp);
         this.ROLE=0;
     }
 

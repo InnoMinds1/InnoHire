@@ -126,7 +126,7 @@ public class ModifierPublication {
     public void initData(Post post) {
         if (post != null) {
             setId(post.getId_post());
-            TFaudience.setText(post.getAudience().getName());
+            TFaudience.setText(post.getAudience().getNom());
             TFcaption.setText(post.getCaption());
             imageETF.setText(post.getImage());
             setUser(post.getUtilisateur());
@@ -209,7 +209,7 @@ public class ModifierPublication {
             // The user selected a file, you can handle it here
             String imagePath = selectedFile.toURI().toString();
 
-            // Set the image file name to the TextField
+            // Set the image file nom to the TextField
             imageETF.setText(selectedFile.getName());
 
             // Display the selected image on the ImageView

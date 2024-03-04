@@ -33,7 +33,7 @@ public class PostController implements Initializable {
     private ImageView imgProfile;
 
     @FXML
-    private Label username;
+    private Label usernom;
 
 
 
@@ -89,7 +89,7 @@ public class PostController implements Initializable {
     private ImageView imgReaction;
 
     @FXML
-    private Label reactionName;
+    private Label reactionnom;
 
     @FXML
     private Button Modifier;
@@ -168,8 +168,8 @@ public class PostController implements Initializable {
 
             Image image = new Image(getClass().getResourceAsStream(reaction.getImgSrc()));
             imgReaction.setImage(image);
-            reactionName.setText(reaction.getName());
-            reactionName.setTextFill(Color.web(reaction.getColor()));
+            reactionnom.setText(reaction.getNom());
+            reactionnom.setTextFill(Color.web(reaction.getColor()));
 
             if (currentReaction == Reactions.NON) {
                 post.setTotalReactions(post.getTotalReactions() + 1);
@@ -225,7 +225,7 @@ public class PostController implements Initializable {
 
 
         if (post.getUtilisateur() != null) {
-            username.setText(post.getUtilisateur().getName());
+            usernom.setText(post.getUtilisateur().getNom());
 
         }
 
@@ -284,7 +284,7 @@ public class PostController implements Initializable {
 
         Post post = new Post();
         Utilisateur user = new Utilisateur();
-        user.setName(post1.getUtilisateur().getName());
+        user.setnom(post1.getUtilisateur().getNom());
         user.setProfileImg(post1.getUtilisateur().getProfileImg());
 
         post.setUtilisateur(user);

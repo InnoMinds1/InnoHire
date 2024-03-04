@@ -26,7 +26,7 @@ public class Candidat extends Utilisateur{
         return "Candidat{" +
                 "id_utilisateur=" + this.getId_utilisateur() +
                 ", cin=" + this.getCin() +
-                ", nom='" + this.getName() + '\'' +
+                ", nom='" + this.getNom() + '\'' +
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
                 ", mdp='" + this.getMdp() + '\'' +
@@ -34,9 +34,9 @@ public class Candidat extends Utilisateur{
                 '}';
     }
 
-    public Candidat(int id_utilisateur,int cin,String name ,String prenom,String adresse, String mdp)
+    public Candidat(int id_utilisateur,int cin,String nom,String prenom,String adresse, String mdp)
     {
-        super(id_utilisateur, cin, name, prenom, adresse, mdp);
+        super(id_utilisateur, cin, nom, prenom, adresse, mdp);
         this.ROLE=1;
     }
 

@@ -41,7 +41,7 @@ public class ItemCommentController {
 
     public void setData(Commentaire commentaire) {
         this.commentaire = commentaire;
-        labelUser.setText(String.valueOf(commentaire.getUtilisateur().getName()));
+        labelUser.setText(String.valueOf(commentaire.getUtilisateur().getNom()));
         labelDescription.setText(String.valueOf(commentaire.getDescription_co()));
         labelDate.setText(String.valueOf(commentaire.getDate_co()));
         labelRate.setText(String.valueOf(commentaire.getNb_etoile()));

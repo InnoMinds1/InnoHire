@@ -8,12 +8,12 @@ public enum PostAudience {
     FRIENDS(1,"FRIENDS","/img/ic_friend.png");
 
     private int id;
-    private String name;
+    private String nom;
     private String imgSrc;
 
-    PostAudience(int id, String name, String imgSrc) {
+    PostAudience(int id, String nom, String imgSrc) {
         this.id = id;
-        this.name = name;
+        this.nom = nom;
         this.imgSrc = imgSrc;
     }
 
@@ -21,8 +21,8 @@ public enum PostAudience {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
     public String getImgSrc() {
