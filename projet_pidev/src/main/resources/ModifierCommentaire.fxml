@@ -5,41 +5,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierCommentaire">
+<AnchorPane prefHeight="549.0" prefWidth="785.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierCommentaire">
    <children>
-      <DatePicker fx:id="dateTf1" layoutX="255.0" layoutY="251.0" prefHeight="37.0" prefWidth="225.0" promptText="jj-mm-yyyy" stylesheets="@style.css" />
-      <TextField fx:id="ratingTF1" layoutX="255.0" layoutY="328.0" prefHeight="38.0" prefWidth="114.0" promptText="rating" stylesheets="@style.css" />
-      <TextField fx:id="descriptionTF1" layoutX="255.0" layoutY="115.0" prefHeight="86.0" prefWidth="248.0" promptText="description" stylesheets="@style.css" />
-      <Button fx:id="modifierCommentaire" layoutX="471.0" layoutY="424.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="46.0" prefWidth="114.0" styleClass="green-button" stylesheets="@service2.css" text="Modifier" />
-      <Button fx:id="AfficherCommentaire" layoutX="605.0" layoutY="424.0" mnemonicParsing="false" onAction="#AfficherCommentaire" prefHeight="46.0" prefWidth="101.0" styleClass="green-button" stylesheets="@service2.css" text="Afficher" />
-      <AnchorPane prefHeight="600.0" prefWidth="186.0" style="-fx-background-color: #FFE4B5;" styleClass="-fx-background-radius" stylesheets="@style.css">
+      <AnchorPane fx:id="container" layoutX="14.0" layoutY="14.0" prefHeight="498.0" prefWidth="733.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
-            <Label layoutX="20.0" layoutY="58.0" prefHeight="46.0" prefWidth="157.0" text="INNOHIRE">
-               <font>
-                  <Font name="System Bold Italic" size="27.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0" startX="0.5454545445514448">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.3451332151889801" green="0.019103314727544785" blue="0.3684210479259491" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
+            <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="List Claim" />
+            <TextField fx:id="ratingTF1" layoutX="83.0" layoutY="279.0" prefHeight="38.0" prefWidth="114.0" promptText="rating" stylesheets="@style.css" />
+            <Button fx:id="modifierCommentaire" layoutX="235.0" layoutY="405.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-background-radius: 10; -fx-text-fill: #FFFFFF; -fx-font-weight: Bold;" styleClass="green-button" stylesheets="@service2.css" text="Modifier" />
+            <Button fx:id="AfficherCommentaire" layoutX="383.0" layoutY="405.0" mnemonicParsing="false" onAction="#AfficherCommentaire" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-font-weight: bold; -fx-text-fill: #FFFFFF; -fx-background-radius: 10;" styleClass="green-button" stylesheets="@service2.css" text="Afficher" />
+            <TextField fx:id="descriptionTF1" layoutX="49.0" layoutY="94.0" prefHeight="86.0" prefWidth="248.0" promptText="description" stylesheets="@style.css" />
+            <DatePicker fx:id="dateTf1" layoutX="60.0" layoutY="207.0" prefHeight="37.0" prefWidth="225.0" promptText="jj-mm-yyyy" stylesheets="@style.css" />
          </children>
       </AnchorPane>
    </children>
