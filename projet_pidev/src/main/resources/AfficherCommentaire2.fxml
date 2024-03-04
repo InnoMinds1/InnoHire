@@ -59,7 +59,6 @@
                                     <Label prefHeight="18.0" prefWidth="207.0" text="User" textAlignment="CENTER" />
                                     <Label prefHeight="18.0" prefWidth="207.0" text="Description" textAlignment="CENTER" />
                                     <Label prefHeight="18.0" prefWidth="238.0" text="Date" />
-                                    <Label prefHeight="18.0" prefWidth="191.0" text="Nb Etoile" textAlignment="CENTER" />
                                  </children>
                               </HBox>
                            </top>

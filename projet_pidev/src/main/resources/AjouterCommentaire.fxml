@@ -14,7 +14,6 @@
             <TextField fx:id="cinTF1" editable="false" layoutX="52.0" layoutY="84.0" promptText="cin" />
             <DatePicker fx:id="dateTf1" layoutX="46.0" layoutY="168.0" promptText="jj-mm-yyyy" />
             <TextField fx:id="descriptionTF1" layoutX="52.0" layoutY="122.0" promptText="description" />
-            <TextField fx:id="ratingTF1" layoutX="52.0" layoutY="218.0" promptText="rating" />
             <Button fx:id="validerCommentaire" layoutX="185.0" layoutY="312.0" mnemonicParsing="false" onAction="#validerCommentaire" prefHeight="36.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-background-radius: 10; -fx-text-fill: #FFFFFF; -fx-font-weight: bold;" text="Ajouter" />
       
             <Button fx:id="afficherCommentaire" layoutX="97.0" layoutY="314.0" mnemonicParsing="false" onAction="#navigatetoAfficherCommentaireAction" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-background-radius: 10; -fx-text-fill: #FFFFFF; -fx-font-weight: bold;" styleClass="label2" text="Afficher">

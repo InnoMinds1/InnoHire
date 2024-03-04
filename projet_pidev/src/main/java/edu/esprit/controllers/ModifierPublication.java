@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Post;
 import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Utilisateur;
@@ -8,23 +9,37 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 
-public class ModifierPublication {
+public class ModifierPublication implements Initializable {
 
+
+    @FXML
+    private AnchorPane AdminPane;
+    @FXML
+    private AnchorPane CandidatPane;
+    @FXML
+    private AnchorPane RepresentantPane;
+    @FXML
+    private Label nameUserLabel;
 
     private int id ;
     private Utilisateur user;
@@ -223,4 +238,29 @@ public class ModifierPublication {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        int userRole = CurrentUser.getRole();
+        switch (userRole) {
+            case 0:
+                AdminPane.setVisible(true);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(false);
+                nameUserLabel.setText("Admin " + CurrentUser.getNom());
+                break;
+            case 1:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(true);
+                CandidatPane.setVisible(false);
+                nameUserLabel.setText(CurrentUser.getNom());
+                break;
+            case 2:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(true);
+                nameUserLabel.setText(CurrentUser.getNom());
+                break;
+
+        }
+    }
 }

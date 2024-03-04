@@ -9,31 +9,31 @@ public class Commentaire {
  private Utilisateur utilisateur ;
  private String description_co ;
  private LocalDate date_co ;
- private   int  nb_etoile ;
+ //private   int  nb_etoile ;
 
- public Commentaire(int id_commentaire, String description_co, LocalDate date_co ,int  nb_etoile) {
+ public Commentaire(int id_commentaire, String description_co, LocalDate date_co /*,int  nb_etoile*/) {
   this.id_commentaire = id_commentaire;
   this.description_co = description_co;
   this.date_co = date_co;
-  this.nb_etoile=nb_etoile;
+  //this.nb_etoile=nb_etoile;
  }
 
 
- public Commentaire(int id_commentaire, Post publication, Utilisateur utilisateur, String description_co, LocalDate date_co,int  nb_etoile) {
+ public Commentaire(int id_commentaire, Post publication, Utilisateur utilisateur, String description_co, LocalDate date_co/*,int  nb_etoile*/) {
   this.id_commentaire = id_commentaire;
   this.publication = publication;
   this.utilisateur = utilisateur;
   this.description_co = description_co;
   this.date_co = date_co;
-  this.nb_etoile=nb_etoile;
+  //this.nb_etoile=nb_etoile;
  }
 
- public Commentaire(Post publication, Utilisateur utilisateur, String description_co, LocalDate date_co,int  nb_etoile) {
+ public Commentaire(Post publication, Utilisateur utilisateur, String description_co, LocalDate date_co/*,int  nb_etoile*/) {
   this.publication = publication;
   this.utilisateur = utilisateur;
   this.description_co = description_co;
   this.date_co = date_co;
-  this.nb_etoile=nb_etoile;
+  //this.nb_etoile=nb_etoile;
  }
 
  public Commentaire() {
@@ -79,13 +79,13 @@ public class Commentaire {
   this.date_co = date_co;
  }
 
- public int getNb_etoile() {
+ /*public int getNb_etoile() {
   return nb_etoile;
  }
 
  public void setNb_etoile(int nb_etoile) {
   this.nb_etoile = nb_etoile;
- }
+ }*/
 
  @Override
  public boolean equals(Object o) {
@@ -109,7 +109,7 @@ public class Commentaire {
           ",Cin_utilisateur=" + utilisateur.getCin() +
           ", description_co='" + description_co + '\'' +
           ", date_co=" + date_co +
-          ",nb_etoile=" +nb_etoile+
+          //",nb_etoile=" +nb_etoile+
           '}';
  }
 }

@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Post;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
@@ -38,7 +39,14 @@ public class PubController implements Initializable {
 
     @FXML
     private AnchorPane container;
-
+    @FXML
+    private AnchorPane AdminPane;
+    @FXML
+    private AnchorPane CandidatPane;
+    @FXML
+    private AnchorPane RepresentantPane;
+    @FXML
+    private Label nameUserLabel;
     @FXML
     private VBox postsContainer;
 
@@ -64,7 +72,28 @@ public class PubController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        int userRole = CurrentUser.getRole();
+        switch (userRole) {
+            case 0:
+                AdminPane.setVisible(true);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(false);
+                nameUserLabel.setText("Admin " + CurrentUser.getNom());
+                break;
+            case 1:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(true);
+                CandidatPane.setVisible(false);
+                nameUserLabel.setText(CurrentUser.getNom());
+                break;
+            case 2:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(true);
+                nameUserLabel.setText(CurrentUser.getNom());
+                break;
 
+        }
 
         try {
             posts.addAll(getData());

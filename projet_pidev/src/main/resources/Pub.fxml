@@ -46,7 +46,7 @@
                   </cursor>
                </Button>
                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="100.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="candidat@esprit.tn" />
-               <Label fx:id="receivernomLabel22" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="79.0" prefHeight="27.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Candidat user" textAlignment="CENTER" />
+               <Label fx:id="nameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="79.0" prefHeight="27.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Candidat user" textAlignment="CENTER" />
                <AnchorPane fx:id="AnchoPaneMessage13" layoutX="24.0" layoutY="491.0" prefHeight="117.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                   <children>
                      <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@styles.css" text="Settings &amp; Privacy">
@@ -109,7 +109,7 @@
                         <graphic>
                            <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@img/postCandi.png" />
+                                 <Image url="@img/chatbot.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -133,7 +133,7 @@
                         <graphic>
                            <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@img/meetme.png" />
+                                 <Image url="@img/postCandi.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -177,7 +177,7 @@
                   </cursor>
                </Button>
                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="100.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="representer@esprit.tn" />
-               <Label fx:id="receivernomLabel2" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="79.0" prefHeight="27.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Representer" textAlignment="CENTER" />
+               <Label fx:id="nameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="79.0" prefHeight="27.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Representer" textAlignment="CENTER" />
                <Label layoutX="101.0" layoutY="644.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
                <AnchorPane fx:id="AnchoPaneMessage131" layoutX="24.0" layoutY="165.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                   <children>
@@ -212,7 +212,7 @@
                         <graphic>
                            <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@img/postCandi.png" />
+                                 <Image url="@img/chatbot.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -272,7 +272,7 @@
                         <graphic>
                            <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@img/meetme.png" />
+                                 <Image url="@img/postCandi.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -316,7 +316,7 @@
                </ImageView>
                <Label layoutX="34.0" layoutY="131.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Desktop" />
                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="105.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
-               <Label fx:id="receivernomLabel21" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="84.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
+               <Label fx:id="nameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="84.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
                <Label layoutX="292.0" layoutY="149.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See all" />
                <AnchorPane fx:id="AnchoPaneMessage1311" layoutX="24.0" layoutY="175.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                   <children>
@@ -344,14 +344,14 @@
                            </ImageView>
                         </graphic>
                      </Button>
-                     <Button layoutX="14.0" layoutY="118.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@styles.css" text="Make Post">
+                     <Button layoutX="14.0" layoutY="118.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@styles.css" text="Chat">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                         <graphic>
                            <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@img/postCandi.png" />
+                                 <Image url="@img/chatbot.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -404,14 +404,14 @@
                            </ImageView>
                         </graphic>
                      </Button>
-                     <Button layoutX="17.0" layoutY="288.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Chat">
+                     <Button layoutX="17.0" layoutY="288.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Make Post">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                         <graphic>
                            <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@img/meetme.png" />
+                                 <Image url="@img/postCandi.png" />
                               </image>
                            </ImageView>
                         </graphic>

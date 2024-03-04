@@ -199,7 +199,7 @@ public class PostController implements Initializable {
 
             ServiceUtilisateur su = new ServiceUtilisateur();
             Utilisateur cu = su.getOneByID(CurrentUser.getId_utilisateur());
-            Commentaire c1 = new Commentaire(post, cu, "", LocalDate.of(2023, 02, 4), 1);
+            Commentaire c1 = new Commentaire(post, cu, "", LocalDate.of(2023, 02, 4));
             try {
                 sc.ajouter(c1);
             } catch (SQLException e) {
@@ -298,27 +298,7 @@ public class PostController implements Initializable {
         return post;
     }
 
-    /* @Override
-     public void initialize(URL location, ResourceBundle resources) {
-         try {
-             setData(getPost());
-         } catch (SQLException e) {
-             throw new RuntimeException(e);
-         }
-     }*/
-   /*@FXML
-   void navigatetoModifierPublicationAction(ActionEvent event) {
-       try {
-           Parent root = FXMLLoader.load(getClass().getResource("/ModifierPublication.fxml"));
-           Scene scene = new Scene(root);
-           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-           stage.setScene(scene);
-           stage.show();
-       } catch (IOException e) {
-           throw new RuntimeException(e);
-       }
 
-   }*/
     @FXML
     public void navigatetoModifierPublicationAction(ActionEvent actionEvent) {
         // Code to modify the selected post in the list

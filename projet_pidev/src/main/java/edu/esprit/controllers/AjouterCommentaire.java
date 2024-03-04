@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -56,56 +58,13 @@ public class AjouterCommentaire implements Initializable {
             throw new RuntimeException(e);
         }
 
-        // Convert the Set to a List
-
-
-        // Set the items in your ListView
 
     }
 
 
 
     @FXML
-   /* void validerCommentaire(ActionEvent event) throws SQLException {
-ServicePost sp = new ServicePost();
-        Post publicationSelectionne = sp.getOneByID(CurrentPost.getId_post());
-        ServiceUtilisateur su = new ServiceUtilisateur();
-        // Récupération des données des champs
-        int cin = Integer.parseInt(cinTF1.getText());
-        String descrption_co = descriptionTF1.getText();
-        LocalDate date_co = dateTf1.getValue();
-        String nb_etoile = ratingTF1.getText();
-        Utilisateur u = new Utilisateur();
-        u = su.getByCin(cin);
 
-
-        if (publicationSelectionne != null && u != null && !descrption_co.isEmpty() && date_co != null && !nb_etoile.isEmpty()) {
-            LocalDate dateActuelle = LocalDate.now();
-            if (!date_co.isBefore(dateActuelle) && !date_co.isAfter(dateActuelle)) {
-                // La date est valide, procédez à l'ajout du commentaire
-                Commentaire commentaire = new Commentaire();
-                commentaire.setPublication(publicationSelectionne);
-                commentaire.setUtilisateur(u);
-                commentaire.setDescription_co(descrption_co);
-                commentaire.setDate_co(date_co);
-                commentaire.setNb_etoile(Integer.parseInt(nb_etoile));
-                // Ajoutez l'utilisateur actuel au commentaire
-
-                ServiceCommentaire serviceCommentaire = new ServiceCommentaire();
-                try {
-                    serviceCommentaire.ajouter(commentaire);
-                    AfficherInformation("Commentaire ajouté", "Le commentaire a été ajouté avec succès.");
-                } catch (SQLException e) {
-                    AfficherErreur("Erreur d'ajout", "Une erreur s'est produite lors de l'ajout du commentaire.", e.getMessage());
-                }
-            } else {
-                AfficherAvertissement("Date non valide", "Veuillez sélectionner une date valide.");
-            }
-        } else {
-            AfficherAvertissement("Champs non remplis", "Veuillez remplir tous les champs avant de valider le commentaire.");
-
-        }
-    }*/
     void validerCommentaire(ActionEvent event) throws SQLException {
         ServicePost sp = new ServicePost();
         Post publicationSelectionne = sp.getOneByID(CurrentPost.getId_post());
@@ -115,7 +74,7 @@ ServicePost sp = new ServicePost();
         int cin = Integer.parseInt(cinTF1.getText());
         String description_co = descriptionTF1.getText();
         LocalDate date_co = dateTf1.getValue();
-        String nb_etoile = ratingTF1.getText();
+        //String nb_etoile = ratingTF1.getText();
         Utilisateur u = new Utilisateur();
         u = su.getByCin(cin);
 
@@ -125,37 +84,29 @@ ServicePost sp = new ServicePost();
             return;
         }
 
-        // Vérification du nombre d'étoiles
-        try {
-            int nbEtoiles = Integer.parseInt(nb_etoile);
-            if (nbEtoiles < 1 || nbEtoiles > 5) {
-                AfficherAvertissement("Nombre d'étoiles invalide", "Le nombre d'étoiles doit être compris entre 1 et 5.");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            AfficherAvertissement("Nombre d'étoiles invalide", "Veuillez entrer un nombre valide pour les étoiles.");
-            return;
-        }
-
         // Vérification des autres champs
-        if (publicationSelectionne != null && u != null && !description_co.isEmpty() && date_co != null && !nb_etoile.isEmpty()) {
+        if (publicationSelectionne != null && u != null && !description_co.isEmpty() && date_co != null) {
             LocalDate dateActuelle = LocalDate.now();
             if (!date_co.isBefore(dateActuelle) && !date_co.isAfter(dateActuelle)) {
-                // La date est valide, procédez à l'ajout du commentaire
-                Commentaire commentaire = new Commentaire();
-                commentaire.setPublication(publicationSelectionne);
-                commentaire.setUtilisateur(u);
-                commentaire.setDescription_co(description_co);
-                commentaire.setDate_co(date_co);
-                commentaire.setNb_etoile(Integer.parseInt(nb_etoile));
-                // Ajoutez l'utilisateur actuel au commentaire
+                // Vérifiez s'il y a des mots interdits
+                if (!verif(description_co)) {
+                    // La date est valide et il n'y a pas de mots interdits, procédez à l'ajout du commentaire
+                    Commentaire commentaire = new Commentaire();
+                    commentaire.setPublication(publicationSelectionne);
+                    commentaire.setUtilisateur(u);
+                    commentaire.setDescription_co(description_co);
+                    commentaire.setDate_co(date_co);
+                    // Ajoutez l'utilisateur actuel au commentaire
 
-                ServiceCommentaire serviceCommentaire = new ServiceCommentaire();
-                try {
-                    serviceCommentaire.ajouter(commentaire);
-                    AfficherInformation("Commentaire ajouté", "Le commentaire a été ajouté avec succès.");
-                } catch (SQLException e) {
-                    AfficherErreur("Erreur d'ajout", "Une erreur s'est produite lors de l'ajout du commentaire.", e.getMessage());
+                    ServiceCommentaire serviceCommentaire = new ServiceCommentaire();
+                    try {
+                        serviceCommentaire.ajouter(commentaire);
+                        AfficherInformation("Commentaire ajouté", "Le commentaire a été ajouté avec succès.");
+                    } catch (SQLException e) {
+                        AfficherErreur("Erreur d'ajout", "Une erreur s'est produite lors de l'ajout du commentaire.", e.getMessage());
+                    }
+                } else {
+                    AfficherAvertissement("Mots interdits", "Votre commentaire contient des mots interdits. Veuillez les retirer avant de valider.");
                 }
             } else {
                 AfficherAvertissement("Date non valide", "Veuillez sélectionner une date valide.");
@@ -164,6 +115,7 @@ ServicePost sp = new ServicePost();
             AfficherAvertissement("Champs non remplis", "Veuillez remplir tous les champs avant de valider le commentaire.");
         }
     }
+
 
 
 
@@ -213,6 +165,55 @@ private void AfficherErreur(String titre, String contenu, String details) {
         }
 
     }
+    public boolean verif(String message){
+
+        List<String> badWords = new ArrayList<>();
+        badWords.add("Connard");
+        badWords.add("Va te faire foutre");
+        badWords.add("Ferme ta gueule");
+        badWords.add("Bâtard");
+        badWords.add("Trou du cul");
+        badWords.add("Sac à merde");
+        badWords.add("Casse-couilles");
+        badWords.add("Enfoiré");
+        badWords.add("Tête de bite");
+        badWords.add("Pas le couteau le plus affûté du tiroir");
+        badWords.add("Fini à la pisse");
+        badWords.add("Pétasse");
+        badWords.add("Abruti");
+        badWords.add("Pas la lumière à tous les étages");
+        badWords.add("Cn");
+        badWords.add("Sale merde");
+        badWords.add("Tocard");
+        badWords.add("Sous-merde");
+        badWords.add("Mange-merde");
+        badWords.add("Pouffiasse");
+        badWords.add("Va te faire cuire le cul");
+        badWords.add("Bercé un peu trop près du mur");
+        badWords.add("Petite bite");
+        badWords.add("Bouffon");
+        badWords.add("Branleur");
+        badWords.add("Grognasse");
+        badWords.add("Couille molle");
+        badWords.add("Branquignole");
+        badWords.add("Fils de chien");
+        badWords.add("Salaud");
+        badWords.add("cul");
+        badWords.add("fuck");
+        badWords.add("pute");
+        badWords.add("ass");
+        badWords.add("bite");
+        badWords.add("cnne");
+        badWords.add("bonjour");
+
+        for (String badWord : badWords) {
+            if (message.toLowerCase().contains(badWord.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 }

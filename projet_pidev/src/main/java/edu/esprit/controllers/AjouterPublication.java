@@ -11,9 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -51,6 +53,14 @@ public class AjouterPublication implements Initializable {
 
     @FXML
     private ImageView imgPost;
+    @FXML
+    private AnchorPane AdminPane;
+    @FXML
+    private AnchorPane CandidatPane;
+    @FXML
+    private AnchorPane RepresentantPane;
+    @FXML
+    private Label nameUserLabel;
 
     private final ServicePost sp=new ServicePost();
     private final ServiceUtilisateur  su=new ServiceUtilisateur();
@@ -114,39 +124,6 @@ public class AjouterPublication implements Initializable {
         }
     }
 
-
-    /*void ajouterPublicationAction(ActionEvent event) {
-        try {
-            LocalDate dateActuelle = LocalDate.now();
-
-            // Convertir la chaîne de texte de la date en LocalDate
-            //String dateString = TFdate.getText();
-            //LocalDate datePost = LocalDate.parse(dateString);
-
-            int idUtilisateur = CurrentUser.getId_utilisateur();
-            Utilisateur utilisateur = su.getOneByID(idUtilisateur);
-          Post post = new Post(PostAudience.valueOf(TFaudience.getText()),TFcaption.getText(),imageETF.getText());
-            //post.setDate(String.valueOf(datePost));
-            post.setUtilisateur(utilisateur);
-            post.setTotalReactions(0);
-            post.setNbComments(0);
-            post.setNbShares(0);
-            post.setDate(String.valueOf(dateActuelle));
-            //
-            sp.ajouter(post);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("GG");
-            alert.show();
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-        }
-
-    }*/
-
     public void navigatetoAfficherPublicationAction(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
@@ -159,9 +136,6 @@ public class AjouterPublication implements Initializable {
         }
 
     }
-
-
-
 
     public void importImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
@@ -198,10 +172,33 @@ public class AjouterPublication implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        int userRole = CurrentUser.getRole();
+        switch (userRole) {
+            case 0:
+                AdminPane.setVisible(true);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(false);
+                nameUserLabel.setText("Admin " + CurrentUser.getNom());
+                break;
+            case 1:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(true);
+                CandidatPane.setVisible(false);
+                nameUserLabel.setText(CurrentUser.getNom());
+                break;
+            case 2:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(true);
+                nameUserLabel.setText(CurrentUser.getNom());
+                break;
+
+        }
         LocalDateTime currentDate = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDate = currentDate.format(formatter);
         TFdate.setText(formattedDate);
+
     }
 }
 

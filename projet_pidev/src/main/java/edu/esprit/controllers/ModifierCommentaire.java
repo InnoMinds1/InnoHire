@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static edu.esprit.controllers.ModifierPublication.showAlert;
 
@@ -29,8 +31,7 @@ public class ModifierCommentaire {
     @FXML
     private Button modifierCommentaire;
 
-    @FXML
-    private TextField ratingTF1;
+
     @FXML
     private Button AfficherCommentaire;
     int id;
@@ -66,27 +67,10 @@ public class ModifierCommentaire {
     }
 
     @FXML
-   /* void modifierCommentaire(ActionEvent event) throws SQLException {
-        if (controlSaisie(descriptionTF1) && controlSaisie(ratingTF1)) {
-            Commentaire c = new Commentaire();
-            c.setId_commentaire(getId());
-            c.setDescription_co(descriptionTF1.getText());
-            c.setDate_co(dateTf1.getValue());
-            c.setNb_etoile(Integer.parseInt(ratingTF1.getText()));
-            ServiceCommentaire sc = new ServiceCommentaire();
-            // Appel de la méthode pour effectuer la modification dans la base de données
-            sc.modifier(c);
-
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Commentaire modifiée avec succès");
-            // Assurez-vous d'ajuster le code pour afficher les publications après la modification
-            AfficherCommentaire(event);
-        }
-    }*/
-
-       void modifierCommentaire(ActionEvent event) throws SQLException {
-        if (controlSaisie(descriptionTF1) && controlSaisie(ratingTF1)) {
+    /*void modifierCommentaire(ActionEvent event) throws SQLException {
+        if (controlSaisie(descriptionTF1) ) {
             String description_co = descriptionTF1.getText();
-            String nb_etoile = ratingTF1.getText();
+            //String nb_etoile = ratingTF1.getText();
 
             // Vérification de la longueur de la description
             if (description_co.split("\\s+").length > 50) {
@@ -94,23 +78,13 @@ public class ModifierCommentaire {
                 return;
             }
 
-            // Vérification du nombre d'étoiles
-            try {
-                int nbEtoiles = Integer.parseInt(nb_etoile);
-                if (nbEtoiles < 1 || nbEtoiles > 5) {
-                    showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Le nombre d'étoiles doit être compris entre 1 et 5.");
-                    return;
-                }
-            } catch (NumberFormatException e) {
-                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Veuillez entrer un nombre valide pour les étoiles.");
-                return;
-            }
+
 
             Commentaire c = new Commentaire();
             c.setId_commentaire(getId());
             c.setDescription_co(description_co);
             c.setDate_co(dateTf1.getValue());
-            c.setNb_etoile(Integer.parseInt(nb_etoile));
+            //c.setNb_etoile(Integer.parseInt(nb_etoile));
             ServiceCommentaire sc = new ServiceCommentaire();
             // Appel de la méthode pour effectuer la modification dans la base de données
             sc.modifier(c);
@@ -119,7 +93,38 @@ public class ModifierCommentaire {
             // Assurez-vous d'ajuster le code pour afficher les publications après la modification
             AfficherCommentaire(event);
         }
+    }*/
+    void modifierCommentaire(ActionEvent event) throws SQLException {
+        if (controlSaisie(descriptionTF1)) {
+            String description_co = descriptionTF1.getText();
+
+            // Vérification de la longueur de la description
+            if (description_co.split("\\s+").length > 50) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "La description ne doit pas dépasser 50 mots.");
+                return;
+            }
+
+            // Vérification des mots interdits
+            if (!verif(description_co)) {
+                // Pas de mots interdits, procédez à la modification du commentaire
+                Commentaire c = new Commentaire();
+                c.setId_commentaire(getId());
+                c.setDescription_co(description_co);
+                c.setDate_co(dateTf1.getValue());
+
+                ServiceCommentaire sc = new ServiceCommentaire();
+                // Appel de la méthode pour effectuer la modification dans la base de données
+                sc.modifier(c);
+
+                showAlert(Alert.AlertType.INFORMATION, "Succès", "Commentaire modifié avec succès");
+                // Assurez-vous d'ajuster le code pour afficher les commentaires après la modification
+                AfficherCommentaire(event);
+            } else {
+                showAlert(Alert.AlertType.WARNING, "Mots interdits", "Votre commentaire contient des mots interdits. Veuillez les retirer avant de valider la modification.");
+            }
+        }
     }
+
 
 
     public void initData(Commentaire commentaire) {
@@ -128,7 +133,7 @@ public class ModifierCommentaire {
 
             descriptionTF1.setText(commentaire.getDescription_co());
             dateTf1.setValue(commentaire.getDate_co()); // Assuming publication.getDate() returns LocalDate
-            ratingTF1.setText(String.valueOf(commentaire.getNb_etoile()));
+            //ratingTF1.setText(String.valueOf(commentaire.getNb_etoile()));
 
         }
     }
@@ -147,5 +152,53 @@ public class ModifierCommentaire {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public boolean verif(String message){
+
+        List<String> badWords = new ArrayList<>();
+        badWords.add("Connard");
+        badWords.add("Va te faire foutre");
+        badWords.add("Ferme ta gueule");
+        badWords.add("Bâtard");
+        badWords.add("Trou du cul");
+        badWords.add("Sac à merde");
+        badWords.add("Casse-couilles");
+        badWords.add("Enfoiré");
+        badWords.add("Tête de bite");
+        badWords.add("Pas le couteau le plus affûté du tiroir");
+        badWords.add("Fini à la pisse");
+        badWords.add("Pétasse");
+        badWords.add("Abruti");
+        badWords.add("Pas la lumière à tous les étages");
+        badWords.add("Cn");
+        badWords.add("Sale merde");
+        badWords.add("Tocard");
+        badWords.add("Sous-merde");
+        badWords.add("Mange-merde");
+        badWords.add("Pouffiasse");
+        badWords.add("Va te faire cuire le cul");
+        badWords.add("Bercé un peu trop près du mur");
+        badWords.add("Petite bite");
+        badWords.add("Bouffon");
+        badWords.add("Branleur");
+        badWords.add("Grognasse");
+        badWords.add("Couille molle");
+        badWords.add("Branquignole");
+        badWords.add("Fils de chien");
+        badWords.add("Salaud");
+        badWords.add("cul");
+        badWords.add("fuck");
+        badWords.add("pute");
+        badWords.add("ass");
+        badWords.add("bite");
+        badWords.add("cnne");
+        badWords.add("bonjour");
+
+        for (String badWord : badWords) {
+            if (message.toLowerCase().contains(badWord.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
