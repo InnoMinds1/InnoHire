@@ -7,7 +7,7 @@ public class CurrentUser {
     private static String prenom;
     private static String adresse;
     private static String mdp;
-    private static int role = 2;
+    private static int role = 1;
 
     public static int getRole() {
         return role;

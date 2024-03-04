@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainFX extends Application {
@@ -12,19 +13,25 @@ public class MainFX extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
         Parent root = loader.load();
+
+// Assuming your root is a Pane, you can replace it with the actual type of your root node
+        Pane paneRoot = (Pane) root;
+
+// Set your preferred width and height
+        paneRoot.setPrefWidth(1451);  // Set your preferred width
+        paneRoot.setPrefHeight(830); // Set your preferred height
+
         Scene scene = new Scene(root);
 
-        // Set full screen
-        stage.setFullScreen(true);
-
-        // Set the scene to the stage
+// Set the scene to the stage
         stage.setScene(scene);
 
-        // Set the title
+// Set the title
         stage.setTitle("Gestion Etablissement");
 
-        // Show the stage
+// Show the stage
         stage.show();
+
     }
 
 

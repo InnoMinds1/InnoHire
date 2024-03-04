@@ -45,11 +45,9 @@ public class AfficherWalletController extends AjouterEtablissementController imp
     @FXML
     private ScrollPane scrollA;
 
+
+
     ServiceWallet serviceW = new ServiceWallet();
-
-
-
-
 
 
 

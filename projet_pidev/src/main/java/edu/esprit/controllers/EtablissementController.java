@@ -7,13 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import edu.esprit.services.MyListener;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -83,6 +87,7 @@ private AnchorPane grandAnchor;
 
     @FXML
     private Button acheterQuizzBtn;
+
 
 
 
@@ -188,7 +193,8 @@ private AnchorPane grandAnchor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nameUserLabel.setText("Admin " + CurrentUser.getNom());
+
+
 
         /* Navbar */
         int userRole = CurrentUser.getRole();
@@ -197,20 +203,23 @@ private AnchorPane grandAnchor;
                 AdminPane.setVisible(true);
                 RepresentantPane.setVisible(false);
                 CandidatPane.setVisible(false);
+                nameUserLabel.setText("Admin " + CurrentUser.getNom());
                 break;
             case 1:
                 AdminPane.setVisible(false);
                 RepresentantPane.setVisible(true);
                 CandidatPane.setVisible(false);
+                nameUserLabel.setText(CurrentUser.getNom());
                 break;
             case 2:
                 AdminPane.setVisible(false);
                 RepresentantPane.setVisible(false);
                 CandidatPane.setVisible(true);
+                nameUserLabel.setText(CurrentUser.getNom());
                 break;
 
         }
-        nameUserLabel.setText(CurrentUser.getNom());
+
 
         try {
             etablissements.addAll(getData());
@@ -306,16 +315,21 @@ private AnchorPane grandAnchor;
 
 
     public void ajouterEtablissement(ActionEvent actionEvent) {
+
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissement.fxml"));
-            grid.getScene().setRoot(root);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEtablissement.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) nameUserLabel.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Vous pouvez fermer la fenêtre actuelle si nécessaire
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry");
-            alert.setTitle("Error");
-            alert.show();
         }
+
     }
     //-------------------WALLETS------------------
 

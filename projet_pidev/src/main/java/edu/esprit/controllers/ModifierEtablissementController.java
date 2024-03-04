@@ -83,6 +83,9 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
     private ComboBox<String> comboBox ;
 
 
+
+
+
     Set<Utilisateur> setU;
 
 
@@ -98,6 +101,8 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
 
 
     private final ServiceEtablissement serviceEtablissement = new ServiceEtablissement();
+
+
 
     public int getId() {
         return id;

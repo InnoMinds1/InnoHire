@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -76,6 +77,7 @@ public class AjouterEtablissementController implements Initializable {
     private RadioButton faculteRadio,ecoleRadio,lyceeRadio,collegeRadio;
     @FXML
     private Label labelType;
+
 
 
     private ServiceUtilisateur serviceU = new ServiceUtilisateur();
@@ -291,21 +293,21 @@ if (CurrentUser.getRole()!=0) {
 
 
       public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
-            Parent root = loader.load();
+          try {
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
+              Parent root = loader.load();
 
-            Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
-            stage.show();
+              Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+              stage.setScene(new Scene(root));
+              stage.show();
 
-            // Vous pouvez fermer la fenêtre actuelle si nécessaire
-            // ((Node)(event.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+              // Vous pouvez fermer la fenêtre actuelle si nécessaire
+              // ((Node)(event.getSource())).getScene().getWindow().hide();
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
 
-    }
+      }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
