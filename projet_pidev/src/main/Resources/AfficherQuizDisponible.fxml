@@ -21,29 +21,29 @@
                 <VBox prefHeight="200.0" prefWidth="435.0" styleClass="left-bar" BorderPane.alignment="CENTER">
                     <children>
                         <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
-                            <children>
-                                <Label text="LA LISTE DES QUIZ DISPO" textFill="#FFFFFF">
+                     <children>
+                                <Label prefHeight="27.0" prefWidth="409.0" text="LA LISTE DES QUIZ DISPO" textFill="#FFFFFF">
                                     <font>
                                         <Font size="36.0" />
                                     </font>
                                 </Label>
-                            </children>
+                     </children>
                         </HBox>
                         <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
                             <children>
                                 <HBox layoutX="42.0" layoutY="14.0" prefHeight="30.0" prefWidth="393.0" spacing="20.0" style="-fx-background-color: #8B5F7A;">
                                     <children>
-                                        <Label text="Image" textFill="#FFFFFF">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </Label>
                                         <Label text="Nom" textFill="#FFFFFF">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
                                         </Label>
                                         <Label text="Prix" textFill="#FFFFFF">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Image" textFill="#FFFFFF">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>

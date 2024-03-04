@@ -83,7 +83,10 @@
                                         -fx-font-size: 14px; /* Taille de la police */
                                     </style>
                                 </Button>
-                        <Text layoutX="184.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ou" />
+                        <Text layoutX="178.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ou">
+                           <font>
+                              <Font size="23.0" />
+                           </font></Text>
 
                             </children>
                         </Pane>
