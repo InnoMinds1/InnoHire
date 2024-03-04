@@ -53,7 +53,15 @@ public class EtablissementController implements Initializable {
     @FXML
 private AnchorPane grandAnchor;
     @FXML
-    private AnchorPane NavBar ;
+    private StackPane StackPane ;
+
+    @FXML
+    private AnchorPane CandidatPane ;
+    @FXML
+    private AnchorPane RepresentantPane ;
+    @FXML
+    private AnchorPane AdminPane ;
+
     @FXML
     private AnchorPane anchorContenu;
     @FXML
@@ -183,15 +191,26 @@ private AnchorPane grandAnchor;
         nameUserLabel.setText("Admin " + CurrentUser.getNom());
 
         /* Navbar */
-        if (CurrentUser.getRole() != 0) {
-            NavBar.setVisible(false);
-            NavBar.setManaged(false);
+        int userRole = CurrentUser.getRole();
+        switch (userRole) {
+            case 0:
+                AdminPane.setVisible(true);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(false);
+                break;
+            case 1:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(true);
+                CandidatPane.setVisible(false);
+                break;
+            case 2:
+                AdminPane.setVisible(false);
+                RepresentantPane.setVisible(false);
+                CandidatPane.setVisible(true);
+                break;
 
-            anchorContenu.setLayoutX(0);
-            grandAnchor.setPrefWidth(anchorContenu.getPrefWidth());
-
-            nameUserLabel.setText(CurrentUser.getNom());
         }
+        nameUserLabel.setText(CurrentUser.getNom());
 
         try {
             etablissements.addAll(getData());

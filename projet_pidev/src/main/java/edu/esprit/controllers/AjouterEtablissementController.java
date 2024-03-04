@@ -34,6 +34,7 @@ import javafx.scene.image.Image;
 
 
 public class AjouterEtablissementController implements Initializable {
+
     @FXML
     private TextField CodeETF;
 
@@ -308,6 +309,8 @@ if (CurrentUser.getRole()!=0) {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+       labelType.setVisible(false);
+
         cin_utilisateurETF.setVisible(false);
 
         if(CurrentUser.getRole() == 0) {
