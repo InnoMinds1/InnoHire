@@ -7,6 +7,7 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -20,17 +21,21 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ModifierUtilisateurController {
+public class ModifierUtilisateurController  {
 
 
     private int id ;
     @FXML
     private TextField TFcin;
+    @FXML
+    private TextField imageETF;
 
     @FXML
     private TextField TFadresse;
@@ -81,6 +86,13 @@ public class ModifierUtilisateurController {
             TFprenom.setText(utilisateur.getPrenom());
             TFadresse.setText(utilisateur.getAdresse());
             TFmdp.setText(utilisateur.getMdp());
+            imageETF.setText(serviceUtilisateur.getImagefromCin(utilisateur.getCin()));
+
+            String imagePath = serviceUtilisateur.getImagefromCin(utilisateur.getCin());
+            if (imagePath != null && !imagePath.isEmpty()) {
+                Image image = new Image("file:" + imagePath); // Assuming imagePath is a file path
+                profileImageView.setImage(image);
+            }
 
             // Assign the cin to the user
             if (utilisateur instanceof Admin) {
@@ -106,7 +118,8 @@ public class ModifierUtilisateurController {
             u.setPrenom(TFprenom.getText());
             u.setAdresse(TFadresse.getText());
             u.setMdp(TFmdp.getText());
-            u.setImage(photoUrl);
+            u.setImage(serviceUtilisateur.getImagefromCin(u.getCin()));
+
 
 
 
@@ -160,12 +173,12 @@ public class ModifierUtilisateurController {
                 Utilisateur utilisateur = serviceUtilisateur.getOneByCin(u.getCin());
                 if(!mdp.equals(utilisateur.getMdp()))
                 {serviceUtilisateur.modifier_par_cin(u);
-                    serviceUtilisateur.modifier_Image(u,photoUrl);
+                    serviceUtilisateur.modifier_Image(u,imageETF.getText());
                 }
                 else
                 {
                     serviceUtilisateur.modifier_par_cin_sansmdp(u);
-                    serviceUtilisateur.modifier_Image(u,photoUrl);
+                    serviceUtilisateur.modifier_Image(u,imageETF.getText());
                 }
 
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Utilisateur modifié avec succès");  // Corrected line
@@ -209,19 +222,47 @@ public class ModifierUtilisateurController {
     @FXML
     void choosePhoto(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-        );
+        fileChooser.setTitle("Choisir une image");
 
-        // Afficher la boîte de dialogue de choix de fichier
-        selectedFile = fileChooser.showOpenDialog(null);
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/img"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null) {
-            // Charger l'image sélectionnée dans ImageView
-            Image selectedImage = new Image(selectedFile.toURI().toString());
-            profileImageView.setImage(selectedImage);
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
+
+            // Set the image file name to the TextField
+
+
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
+
+
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+
+            System.out.println("Selected Image: " + imagePath);
+            System.out.println(selectedFile.getName());
+            profileImageView.setImage(image);
+            imageETF.setText(selectedFile.getName());
+
+
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
         }
     }
+
 
 
 }

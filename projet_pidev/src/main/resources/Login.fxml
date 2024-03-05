@@ -48,7 +48,7 @@
       <Label layoutX="990.0" layoutY="656.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 15;" text="InnoHire 2024/2025 © (copyright)" />
       <ImageView fitHeight="539.0" fitWidth="577.0" layoutX="804.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/429754006_4516447245246591_2302902658115282336_n.png" />
+            <Image url="@img/429633241_3224965130971874_9121688183739140822_n.png" />
          </image>
       </ImageView>
    </children>

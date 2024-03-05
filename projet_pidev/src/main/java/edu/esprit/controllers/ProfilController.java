@@ -57,19 +57,48 @@ public class ProfilController implements Initializable {
     ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
     private File selectedFile;
     @FXML
+    private TextField imageETF;
+    @FXML
     void choosePhoto(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-        );
+        fileChooser.setTitle("Choisir une image");
 
-        // Afficher la boîte de dialogue de choix de fichier
-        selectedFile = fileChooser.showOpenDialog(null);
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/img"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null) {
-            // Charger l'image sélectionnée dans ImageView
-            Image selectedImage = new Image(selectedFile.toURI().toString());
-            profileImageView.setImage(selectedImage);
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
+
+            // Set the image file name to the TextField
+
+
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
+
+
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+
+            System.out.println("Selected Image: " + imagePath);
+            System.out.println(selectedFile.getName());
+            profileImageView.setImage(image);
+            imageETF.setText(selectedFile.getName());
+
+
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
         }
     }
 
@@ -116,7 +145,7 @@ public class ProfilController implements Initializable {
             u.setNom(TFnom.getText());
             u.setPrenom(TFprenom.getText());
             u.setAdresse(TFadresse.getText());
-            u.setImage(photoUrl);
+            u.setImage(serviceUtilisateur.getImagefromCin(u.getCin()));
 
 
 
@@ -168,7 +197,7 @@ public class ProfilController implements Initializable {
             }
 
             serviceUtilisateur.modifier_par_cin_sansmdp(u);
-            serviceUtilisateur.modifier_Image(u,photoUrl);
+            serviceUtilisateur.modifier_Image(u,imageETF.getText());
 
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Utilisateur modifié avec succès");  // Corrected line
             CurrentUser.setNom(u.getNom());
@@ -186,6 +215,7 @@ public class ProfilController implements Initializable {
         TFadresse.setText(CurrentUser.getAdresse());
         TFnom.setText(CurrentUser.getNom());
         TFprenom.setText(CurrentUser.getPrenom());
+        imageETF.setText(serviceUtilisateur.getImagefromCin(CurrentUser.getCin()));
 
 
 

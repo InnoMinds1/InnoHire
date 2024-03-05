@@ -71,7 +71,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Desktop/projet_pidev/src/img/notification%20(2).png" />
+                        <Image url="@img/notif.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -82,7 +82,7 @@
             <Label layoutX="101.0" layoutY="644.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
             <ImageView fitHeight="70.0" fitWidth="84.0" layoutX="154.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/profile.png" />
+                  <Image url="@img/profile.png" />
                </image>
             </ImageView>
             <Label layoutX="34.0" layoutY="121.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Desktop" />
@@ -98,7 +98,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/categories%20(2).png" />
+                              <Image url="@img/home.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -110,7 +110,7 @@
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/developers.png" />
+                              <Image url="@img/developers.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -122,7 +122,7 @@
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/426360086_334643536230167_8994031759795792389_n.png" />
+                              <Image url="@img/426360086_334643536230167_8994031759795792389_n.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -134,7 +134,7 @@
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/cv.png" />
+                              <Image url="@img/cv.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -146,7 +146,7 @@
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/office-building%20(1).png" />
+                              <Image url="@img/establishment.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -158,7 +158,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/cogwheel.png" />
+                              <Image url="@img/cogwheel.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -170,7 +170,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/chatbot.png" />
+                              <Image url="@img/chatbot.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -182,7 +182,7 @@
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/meetme.png" />
+                              <Image url="@img/chat.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -196,7 +196,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Desktop/projet_pidev/src/img/door.png" />
+                        <Image url="@img/door.png" />
                      </image>
                   </ImageView>
                </graphic>
