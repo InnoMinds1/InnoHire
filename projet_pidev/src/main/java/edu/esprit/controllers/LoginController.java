@@ -230,6 +230,7 @@ public class LoginController {
 
         MatrixToImageWriter.writeToPath(matrix,"jpg", Paths.get(path));
         System.out.println("QR code sucessfully created");
+
     }
 
 
