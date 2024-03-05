@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchor" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="520.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWalletController">
+<AnchorPane fx:id="mainAnchor" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="520.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWallet2Controller">
    <children>
       <AnchorPane fx:id="container" layoutX="41.0" layoutY="17.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="436.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>

@@ -412,7 +412,7 @@ private AnchorPane grandAnchor;
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierWallet2.fxml"));
                     Parent root = loader.load();
-                    ModifierWalletController controller = loader.getController();
+                    ModifierWallet2Controller controller = loader.getController();
                     controller.initDataWallet(walletConnecte);
                     grid.getScene().setRoot(root);
                 } catch (IOException e) {
