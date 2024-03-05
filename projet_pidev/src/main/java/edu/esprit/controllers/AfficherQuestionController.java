@@ -11,7 +11,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -20,10 +24,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class AfficherQuestionController implements Initializable {
     @FXML
@@ -31,6 +33,8 @@ public class AfficherQuestionController implements Initializable {
 
     @FXML
     private ScrollPane scrollA;
+    @FXML
+    private TextField TFsearch;
 
 
     private questionService serviceQ = new questionService();
@@ -80,6 +84,96 @@ public class AfficherQuestionController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void navigateToAjouter(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterQuestion.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void searchByCode(KeyEvent event) {
+        // Récupérer le texte de recherche
+        String searchQuery = TFsearch.getText().trim();
+
+        // Appliquer la recherche seulement si la saisie n'est pas vide
+        if (!searchQuery.isEmpty()) {
+            try {
+                // Récupérer toutes les questions
+                Set<Question> allQuestions = serviceQ.getAll();
+
+                // Filtrer les questions en fonction du code Quiz
+                List<Question> filteredQuestions = allQuestions.stream()
+                        .filter(question -> String.valueOf(question.getQuiz().getCode_quiz()).equals(searchQuery))
+                        .collect(Collectors.toList());
+                Set<Question> filteredQuestionsSet = new HashSet<>(filteredQuestions);
+
+                // Mettre à jour la vue avec les résultats de la recherche
+                updateQuestionGridView(filteredQuestionsSet);
+            } catch (NumberFormatException e) {
+                // Gérer l'exception si la saisie n'est pas un nombre
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur de saisie");
+                alert.setContentText("Veuillez saisir un code Quiz valide (nombre entier).");
+                alert.show();
+            } catch (SQLException e) {
+                // Gérer les exceptions SQL, par exemple afficher un message d'erreur ou lancer une nouvelle exception
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                // Récupérer toutes les questions
+                Set<Question> allQuestions = serviceQ.getAll();
+
+                // Mettre à jour la vue avec toutes les questions
+                updateQuestionGridView(allQuestions);
+            } catch (SQLException e) {
+                // Gérer les exceptions SQL, par exemple afficher un message d'erreur ou lancer une nouvelle exception
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void updateQuestionGridView(Set<Question> questions) {
+        // Effacer le contenu actuel du GridPane
+        gridA.getChildren().clear();
+
+        // Mettre à jour le GridPane avec les nouvelles données
+        int rowIndex = 0;
+
+        for (Question question : questions) {
+            // Charger le composant QuestionItem à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/QuestionItem.fxml"));
+            try {
+                Parent questionItem = loader.load();
+
+                // Accéder au contrôleur du composant QuestionItem
+                QuestionItemController questionItemController = loader.getController();
+
+                // Configurer les données pour le QuestionItem
+                questionItemController.setData(question);
+
+                // Ajouter le QuestionItem à la GridPane
+                gridA.add(questionItem, 0, rowIndex);
+
+                // Incrémenter l'indice de ligne pour la prochaine question
+                rowIndex++;
+            } catch (IOException e) {
+                // Gérer les exceptions liées au chargement du composant QuestionItem
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
 
 
 

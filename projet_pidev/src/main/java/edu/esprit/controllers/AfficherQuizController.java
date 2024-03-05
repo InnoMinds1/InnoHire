@@ -89,6 +89,20 @@ public class AfficherQuizController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void navigateToQuestion(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuestion.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

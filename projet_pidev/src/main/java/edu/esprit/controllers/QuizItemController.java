@@ -156,33 +156,27 @@ public class QuizItemController {
 
         // Créer une ListView pour afficher les détails des questions
         ListView<HBox> listView = new ListView<>();
-        questionService qs1=new questionService();
 
-        // Ajouter des boutons de suppression à côté de chaque question
+        // Ajouter seulement l'attribut "question" et "reponse_correcte"
         for (Question question : questions) {
-            Button deleteButton = new Button("Supprimer Question");
-            deleteButton.setOnAction(event1 -> {
-                try {
-                    qs1.supprimer(question.getId_question());
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
-            // Ajouter seulement l'attribut "question" et "reponse_correcte"
-            String questionDetails = "Question: " + question.getQuestion() +
+            String questionDetails = "Question: " + question.getQuestion() +"\nChoix:"+ question.getChoix()+
                     "\nRéponse correcte: " + question.getReponse_correcte() + "\n";
 
-            HBox hbox = new HBox(new Label(questionDetails), deleteButton);
+            Label label = new Label(questionDetails);
+            label.setStyle("-fx-font-size: 14; -fx-text-fill: #333333;"); // Ajouter des styles CSS au label
+
+            HBox hbox = new HBox(label);
+            hbox.setStyle("-fx-border-color: #CCCCCC; -fx-border-width: 1; -fx-padding: 5; -fx-background-color: #FFFFFF;");
             hbox.setSpacing(10);
 
-            // Ajouter la ligne entière (Label + Button) à la liste d'affichage
+            // Ajouter la ligne entière (Label) à la liste d'affichage
             listView.getItems().add(hbox);
         }
 
         // Créer une boîte pour contenir la ListView
         VBox vbox = new VBox(listView);
         vbox.setPadding(new Insets(10));
+        vbox.setStyle("-fx-background-color: #F5F5F5;"); // Ajouter un fond à la VBox
 
         // Afficher la boîte de dialogue
         Alert alert = new Alert(Alert.AlertType.NONE);

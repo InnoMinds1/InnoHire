@@ -97,6 +97,10 @@ public class ModifierQuestionController {
                 question.setQuiz(qs1.getOneByID(idQuiz));
                 question.getQuiz().setCode_quiz(selectedCodeQuiz);
                 question.setReponse_correcte(modifiedReponseCorrecte);
+                if (qs==null)
+                {
+                    qs=new questionService();
+                }
 
                 try {
                     qs.modifier(question);

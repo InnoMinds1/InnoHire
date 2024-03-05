@@ -44,7 +44,7 @@
                   <Font size="16.0" />
                </font>
             </TextField>
-            <ImageView fx:id="imageViewQ" fitHeight="75.0" fitWidth="84.0" layoutX="262.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageViewQ" fitHeight="75.0" fitWidth="84.0" layoutX="304.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true" />
             <Button layoutX="395.0" layoutY="521.0" mnemonicParsing="false" onAction="#navigateToAfficher" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff;" styleClass="button-normal" stylesheets="@css/styles.css" text="Afficher List Quiz">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -84,7 +84,7 @@
             <Label layoutX="227.0" layoutY="217.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="DONNEZ LE NOM" />
             <Label layoutX="237.0" layoutY="168.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="DONNEZ LE CODE" />
             <Label layoutX="217.0" layoutY="339.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="DONNEZ LE PRIX" />
-            <Label layoutX="320.0" layoutY="400.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="IMAGE" />
+            <Label layoutX="227.0" layoutY="399.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="IMAGE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="1017.0" layoutY="32.0" prefHeight="675.0" prefWidth="363.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
