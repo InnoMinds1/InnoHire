@@ -1,6 +1,5 @@
 package edu.esprit.entities;
 
-<<<<<<< HEAD
 import edu.esprit.services.ServiceUtilisateur;
 
 public class CurrentUser {
@@ -22,22 +21,11 @@ public class CurrentUser {
     }
     public
     static ServiceUtilisateur su = new ServiceUtilisateur();
-=======
-public class CurrentUser {
-    private static int id_utilisateur = 2217 ;
-    private static  int cin= 1444;
-    private static String nom="repname";
-    private static String prenom;
-    private static String adresse;
-    private static String mdp;
-    private static int role = 1;
->>>>>>> gestion-etablissement
 
     public static int getRole() {
         return role;
     }
 
-<<<<<<< HEAD
     public static String getProfileImagePath() {
         return su.getImagefromCin(cin);
     }
@@ -46,8 +34,6 @@ public class CurrentUser {
         ProfileImagePath = profileImagePath;
     }
 
-=======
->>>>>>> gestion-etablissement
     public static void setRole(int role) {
         CurrentUser.role = role;
     }
@@ -103,8 +89,5 @@ public class CurrentUser {
         CurrentUser.mdp = mdp;
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> gestion-etablissement
 }

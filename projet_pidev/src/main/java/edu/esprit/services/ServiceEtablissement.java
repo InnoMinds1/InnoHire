@@ -1,13 +1,9 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Etablissement;
-<<<<<<< HEAD
-import edu.esprit.entities.Utilisateur;
-=======
 import edu.esprit.entities.Quiz;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.entities.Wallet;
->>>>>>> gestion-etablissement
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
@@ -38,17 +34,11 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, etablissement.getNom());
             ps.setString(2, etablissement.getLieu());
-<<<<<<< HEAD
-            ps.setInt(3, etablissement.getCode_etablissement());
-            ps.setString(4, etablissement.getType_etablissement());
-            ps.setInt(5, etablissement.getUser().getId_utilisateur());
-=======
             ps.setInt(3, etablissement.getCodeEtablissement());
             ps.setString(4, etablissement.getTypeEtablissement());
             ps.setString(5, etablissement.getImage());
             ps.setInt(6, etablissement.getUser().getId_utilisateur());
 
->>>>>>> gestion-etablissement
 
 
             ps.executeUpdate();
@@ -60,11 +50,7 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
 
     @Override
     public void modifier(Etablissement etablissement) throws SQLException {
-<<<<<<< HEAD
-        int id = etablissement.getId_etablissement();
-=======
         int id = etablissement.getIdEtablissement();
->>>>>>> gestion-etablissement
         Etablissement existingEtablissement = getOneByID(id);
         if (existingEtablissement != null) {
             String req = "UPDATE `etablissement` SET `nom`=?, `lieu`=?, `code_etablissement`=?, `type_etablissement`=?, `image`=?, `id_utilisateur`=? WHERE `id_etablissement`=?";
@@ -72,19 +58,12 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setString(1, etablissement.getNom());
                 ps.setString(2, etablissement.getLieu());
-<<<<<<< HEAD
-                ps.setInt(3, etablissement.getCode_etablissement());
-                ps.setString(4, etablissement.getType_etablissement());
-                ps.setInt(5, etablissement.getUser().getId_utilisateur());
-                ps.setInt(6, id);
-=======
                 ps.setInt(3, etablissement.getCodeEtablissement());
                 ps.setString(4, etablissement.getTypeEtablissement());
                 ps.setString(5, etablissement.getImage());
                 ps.setInt(6, etablissement.getUser().getId_utilisateur());
 
                 ps.setInt(7, id);
->>>>>>> gestion-etablissement
 
                 ps.executeUpdate();
                 System.out.println("Etablissement updated !");
@@ -96,11 +75,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
         }
     }
 
-<<<<<<< HEAD
-    @Override
-    public void supprimer(int id_etablissement) throws SQLException {
-=======
->>>>>>> gestion-etablissement
 
     @Override
     public void supprimer(int idEtablissement) throws SQLException {
@@ -134,16 +108,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 int idEtablissement = rs.getInt("id_etablissement"); //wala t7ot num colomn kima eli ta7etha
                 String nom = rs.getString(2); //wala t7ot esm colomn kima eli fou9ha
                 String lieu = rs.getString("lieu");
-<<<<<<< HEAD
-                int code_etablissement = rs.getInt("code_etablissement");
-                String type_etablissement = rs.getString("type_etablissement");
-                int id_utilisateur = rs.getInt("id_utilisateur");
-
-                ServiceUtilisateur su = new ServiceUtilisateur();
-                Utilisateur user = su.getOneByID(id_utilisateur);
-
-                Etablissement e = new Etablissement(id_etablissement,nom,lieu,code_etablissement,type_etablissement,user);
-=======
                 int codeEtablissement = rs.getInt("code_etablissement");
                 String typeEtablissement = rs.getString("type_etablissement");
                 String image = rs.getString("image");
@@ -179,11 +143,10 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 String image = rs.getString("image");
 
                 ServiceUtilisateur su = new ServiceUtilisateur();
-                 Utilisateur user = su.getOneByID(idUtilisateur);
+                Utilisateur user = su.getOneByID(idUtilisateur);
 
                 // Vous pouvez créer l'objet Etablissement sans l'utilisateur
                 Etablissement e = new Etablissement(idEtablissement, nom, lieu, codeEtablissement, typeEtablissement, image, null, user);
->>>>>>> gestion-etablissement
                 etablissements.add(e);
             }
         } catch (SQLException e) {
@@ -194,14 +157,9 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
 
-<<<<<<< HEAD
-    @Override
-    public Etablissement getOneByID(int id_etablissement) throws SQLException {
-=======
 
     @Override
     public Etablissement getOneByID(int idEtablissement) throws SQLException {
->>>>>>> gestion-etablissement
         String req = "SELECT * FROM etablissement WHERE id_etablissement = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -210,16 +168,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             if (rs.next()) {
                 String nom = rs.getString(2); //wala t7ot esm colomn kima eli fou9ha
                 String lieu = rs.getString("lieu");
-<<<<<<< HEAD
-                int code_etablissement = rs.getInt("code_etablissement");
-                String type_etablissement = rs.getString("type_etablissement");
-                int id_utilisateur = rs.getInt("id_utilisateur");
-
-                ServiceUtilisateur su = new ServiceUtilisateur();
-                Utilisateur user = su.getOneByID(id_utilisateur);
-
-                return new Etablissement(id_etablissement, nom, lieu,code_etablissement,type_etablissement,user);
-=======
                 int codeEtablissement = rs.getInt("code_etablissement");
                 String typeEtablissement = rs.getString("type_etablissement");
                 String image = rs.getString("image");
@@ -230,7 +178,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 Utilisateur user = su.getOneByID(idUtilisateur);
 
                 return new Etablissement(idEtablissement, nom, lieu,codeEtablissement,typeEtablissement,image,null,user);
->>>>>>> gestion-etablissement
             } else {
                 System.out.print("Echec! Etablissement with ID " + idEtablissement + " est" + " " );
                 return null;
@@ -252,8 +199,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             return false;
         }
     }
-<<<<<<< HEAD
-=======
     public boolean existeParNom(String nom) throws SQLException {
         String req = "SELECT * FROM etablissement WHERE nom = ?";
         try {
@@ -267,7 +212,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
         }
     }
 
->>>>>>> gestion-etablissement
 
     public Etablissement getOneByCode(int code) {
         String req = "SELECT * FROM etablissement WHERE code_etablissement = ?";
@@ -278,13 +222,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             if (rs.next()) {
                 // Assuming Utilisateur has appropriate constructor
                 Etablissement etablissement = new Etablissement();
-<<<<<<< HEAD
-                etablissement.setId_etablissement(rs.getInt("id_etablissement"));
-                etablissement.setCode_etablissement(rs.getInt("code_etablissement"));
-                etablissement.setNom(rs.getString("nom"));
-                etablissement.setLieu(rs.getString("lieu"));
-                etablissement.setType_etablissement(rs.getString("type_etablissement"));
-=======
                 etablissement.setIdEtablissement(rs.getInt("id_etablissement"));
                 etablissement.setCodeEtablissement(rs.getInt("code_etablissement"));
                 etablissement.setNom(rs.getString("nom"));
@@ -292,7 +229,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
                 etablissement.setTypeEtablissement(rs.getString("type_etablissement"));
                 etablissement.setImage(rs.getString("image"));
 
->>>>>>> gestion-etablissement
                 int id_user=rs.getInt("id_utilisateur");
 
 
@@ -331,8 +267,6 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -393,5 +327,4 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
     }
 
 
->>>>>>> gestion-etablissement
 }

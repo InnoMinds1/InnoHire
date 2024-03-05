@@ -1,17 +1,11 @@
 package edu.esprit.entities;
 
 import java.sql.SQLException;
-<<<<<<< HEAD
-import java.util.Objects;
-import java.util.Set;
-import edu.esprit.entities.Utilisateur;
-=======
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
->>>>>>> gestion-etablissement
 
 public class Etablissement {
 
@@ -19,13 +13,6 @@ public class Etablissement {
     private int idEtablissement;
     private String nom;
     private String lieu;
-<<<<<<< HEAD
-    private int code_etablissement;
-    private String type_etablissement;
-    //image
-    private Utilisateur user;
-
-=======
     private int codeEtablissement;
     private String typeEtablissement;
 
@@ -43,38 +30,10 @@ public class Etablissement {
 
 
 
->>>>>>> gestion-etablissement
     public Etablissement() {
 
     }
 
-<<<<<<< HEAD
-    public Etablissement(int id_etablissement, String nom, String lieu, int code_etablissement, String type_etablissement, Utilisateur user) {
-        this.id_etablissement = id_etablissement;
-        this.nom = nom;
-        this.lieu = lieu;
-        this.code_etablissement = code_etablissement;
-        this.type_etablissement = type_etablissement;
-        this.user = user;
-    }
-
-    public Etablissement(String nom, String lieu, int code_etablissement, String type_etablissement, Utilisateur user) {
-        this.nom = nom;
-        this.lieu = lieu;
-        this.code_etablissement = code_etablissement;
-        this.type_etablissement = type_etablissement;
-        this.user = user;
-    }
-
-    public Utilisateur getUser() {
-        return user;
-    }
-
-
-
-    public void setUser(Utilisateur user) {
-        this.user = user;
-=======
     public Etablissement(int idEtablissement, String nom, String lieu, int codeEtablissement, String typeEtablissement,String image, List<Quiz> listeQuizzAchetes, Utilisateur user) {
         this.idEtablissement = idEtablissement;
         this.nom = nom;
@@ -98,7 +57,6 @@ public class Etablissement {
 
         this.user = user;
 
->>>>>>> gestion-etablissement
     }
 
     public Utilisateur getUser() {
@@ -144,13 +102,6 @@ public class Etablissement {
         this.typeEtablissement = typeEtablissement;
     }
 
-<<<<<<< HEAD
-
-
-
-
-
-=======
 
     public String getImage() {
         return image;
@@ -164,7 +115,6 @@ public class Etablissement {
     public int getIdEtablissement() {
         return idEtablissement;
     }
->>>>>>> gestion-etablissement
 
     public void setIdEtablissement(int idEtablissement) {
         this.idEtablissement = idEtablissement;
@@ -206,11 +156,6 @@ public class Etablissement {
 
                 "nom='" + nom + '\'' +
                 ", lieu='" + lieu + '\'' +
-<<<<<<< HEAD
-                ", code_etablissement=" + code_etablissement +  '\''+
-                ", type_etablissement='" + type_etablissement + '\'' +
-                ", Cin_utilisateur=" + user.getCin() +
-=======
                 ", codeEtablissement=" + codeEtablissement +  '\''+
                 ", typeEtablissement='" + typeEtablissement + '\'' +
                 ", image=" + image +
@@ -218,7 +163,6 @@ public class Etablissement {
 
                 ", Cin_utilisateur=" + user.getCin() +
 
->>>>>>> gestion-etablissement
                 '}'+'\n';
     }
 

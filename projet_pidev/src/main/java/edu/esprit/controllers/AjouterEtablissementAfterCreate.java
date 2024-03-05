@@ -129,9 +129,9 @@ public class AjouterEtablissementAfterCreate implements Initializable {
         // Créer un nouvel objet Service avec les valeurs saisies
         Etablissement etablissement = new Etablissement();
         etablissement.setNom(Nom);
-        etablissement.setCode_etablissement(codeE);
+        etablissement.setCodeEtablissement(codeE);
         etablissement.setLieu(Lieu);
-        etablissement.setType_etablissement(Type);
+        etablissement.setTypeEtablissement(Type);
 
         ServiceUtilisateur su=new ServiceUtilisateur();
         Utilisateur user = su.getOneByCin(CurrentUser.getCin());
@@ -226,8 +226,8 @@ public class AjouterEtablissementAfterCreate implements Initializable {
             PreparedStatement ps = cnx.prepareStatement(req, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, etablissement.getNom());
             ps.setString(2, etablissement.getLieu());
-            ps.setInt(3, etablissement.getCode_etablissement());
-            ps.setString(4, etablissement.getType_etablissement());
+            ps.setInt(3, etablissement.getCodeEtablissement());
+            ps.setString(4, etablissement.getTypeEtablissement());
 
             int affectedRows = ps.executeUpdate();
 
@@ -236,7 +236,7 @@ public class AjouterEtablissementAfterCreate implements Initializable {
                 ResultSet generatedKeys = ps.getGeneratedKeys();
                 if (generatedKeys.next()) {
                     int id_etablissement = generatedKeys.getInt(1);
-                    etablissement.setId_etablissement(id_etablissement);
+                    etablissement.setIdEtablissement(id_etablissement);
                     System.out.println("Etablissement added with ID: " + id_etablissement);
                 }
             }
@@ -251,13 +251,13 @@ public class AjouterEtablissementAfterCreate implements Initializable {
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, su.getUserIdByCin(CurrentUser.getCin()));
-            ps.setInt(2, etablissement.getId_etablissement());
+            ps.setInt(2, etablissement.getIdEtablissement());
 
 
             int affectedRows = ps.executeUpdate();
 
             if (affectedRows > 0) {
-                System.out.println("id added to etablissement: " + etablissement.getId_etablissement());
+                System.out.println("id added to etablissement: " + etablissement.getIdEtablissement());
             } else {
                 System.out.println("Failed to add id to etablissement");
             }
