@@ -164,4 +164,18 @@ public class ListUsersControllers implements Initializable {
     public void onSearchTextChanged(KeyEvent keyEvent) {
         // Handle search text change
     }
+    @FXML
+    void NavigateToEtablissement(ActionEvent event) {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/Etablissement.fxml"));
+            utilisateurContainer.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
 }

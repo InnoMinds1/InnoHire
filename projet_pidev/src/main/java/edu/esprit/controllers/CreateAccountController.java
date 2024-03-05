@@ -28,11 +28,13 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateAccountController {
+public class CreateAccountController implements Initializable{
     private File selectedFile;
 
     @FXML
     private TextField TFadresse;
+    @FXML
+    private TextField imageETF;
 
     @FXML
     private TextField TFcin;
@@ -56,7 +58,7 @@ public class CreateAccountController {
     private ComboBox<?> comboRole;
 
     @FXML
-    void ajouterUtilisateurAction(ActionEvent event) {
+    void ajouterUtilisateurAction(ActionEvent event)  {
         // Créer une instance de ServiceService
         String photoUrl = (selectedFile != null) ? selectedFile.toURI().toString() : null;
 
@@ -110,7 +112,7 @@ public class CreateAccountController {
             alert.showAndWait();
             return;
         }
-        if (photoUrl==null)
+        if (imageETF.getText().equals("no Photo chosen"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -186,7 +188,7 @@ public class CreateAccountController {
             u.setMdp(mdp);
             u.setAdresse(adresse);
             u.setPrenom(prenom);
-            u.setImage(photoUrl);
+            u.setImage(imageETF.getText());
             try {
                 serviceUtilisateur.ajouter(u);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -226,7 +228,7 @@ public class CreateAccountController {
                 u.setMdp(mdp);
                 u.setAdresse(adresse);
                 u.setPrenom(prenom);
-                u.setImage(photoUrl);
+                u.setImage(selectedFile.getName());
                 try {
                     serviceUtilisateur.ajouter(u);
                     serviceUtilisateur.modifier_Status_par_cin(u.getCin());
@@ -306,7 +308,13 @@ public class CreateAccountController {
 
             // Do something with the imagePath, for example, display the image
             // imageView.setImage(new Image(imagePath));
+
             System.out.println("Selected Image: " + imagePath);
+            System.out.println(selectedFile.getName());
+            profileImageView.setImage(image);
+            imageETF.setText(selectedFile.getName());
+
+
         } else {
             // The user canceled the operation
             System.out.println("Operation canceled.");
@@ -323,5 +331,47 @@ public class CreateAccountController {
         TFadresse.getScene().setRoot(root);
 
     }
+    @FXML
+    public void importImage(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
 
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/img"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", ".jpeg", ".gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        if (selectedFile != null) {
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
+
+            // Set the image file name to the TextField
+            imageETF.setText(selectedFile.getName());
+
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
+            profileImageView.setImage(image);
+
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+            System.out.println("Selected Image: " + imagePath);
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        imageETF.setText("no Photo chosen");
+
+    }
 }
