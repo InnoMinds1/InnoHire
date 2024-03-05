@@ -230,6 +230,13 @@ public class LoginController {
 
         MatrixToImageWriter.writeToPath(matrix,"jpg", Paths.get(path));
         System.out.println("QR code sucessfully created");
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/ytbRedir.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        TFcin.getScene().setRoot(root);
 
     }
 
