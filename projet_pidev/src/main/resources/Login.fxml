@@ -41,6 +41,12 @@
                   <Image url="@img/382876686_2550356941793712_7809494747563560197_n.gif" />
                </image>
             </ImageView>
+            <Label fx:id="LabelFORGOT1" alignment="CENTER" contentDisplay="CENTER" layoutX="546.0" layoutY="595.0" prefHeight="30.0" prefWidth="107.0" style="-fx-text-fill: #632DE9; -fx-font-size: 12;" text="Confused?" textAlignment="CENTER" />
+            <Button layoutX="653.0" layoutY="595.0" mnemonicParsing="false" onAction="#navigateToQR" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 12;" text="Click here!">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
 

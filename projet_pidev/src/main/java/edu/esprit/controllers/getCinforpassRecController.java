@@ -100,4 +100,19 @@ public class getCinforpassRecController {
             }
         }
     }
-}
+    @FXML
+    void backTOLOGIN(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+            TFcin.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
+    }
+
+

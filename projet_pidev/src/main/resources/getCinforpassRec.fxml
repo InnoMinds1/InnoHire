@@ -25,6 +25,11 @@
                         <Image url="@../../Documents/java/InnoHire/projet_pidev/src/main/resources/images/blink.gif" />
                     </image>
                 </ImageView>
+            <Button layoutX="133.0" layoutY="362.0" mnemonicParsing="false" onAction="#backTOLOGIN" prefHeight="45.0" prefWidth="453.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Annuler">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             </children>
         </AnchorPane>
         <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
