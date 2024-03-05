@@ -33,10 +33,35 @@ public class AccueilController implements Initializable {
     private TextField TFcurrentusercin;
 
     @FXML
+    private Button chatButton;
+
+    @FXML
     private AnchorPane container;
 
     @FXML
     private Label currentUserName;
+
+    @FXML
+    private Button etablissementButton;
+
+    @FXML
+    private Button helpButton;
+
+    @FXML
+    private Button homeButton;
+
+    @FXML
+    private Button listClaimButton;
+
+    @FXML
+    private Button listUserButton;
+
+    @FXML
+    private Button postButton;
+
+    @FXML
+    private Button settingsButton;
+
 
 
 
@@ -72,6 +97,12 @@ public class AccueilController implements Initializable {
         TFcurrentusercin.setText(CurrentUser.getNom());
         currentUserName.setText(CurrentUser.getNom());
         CurrentUserEmail.setText(CurrentUser.getAdresse());
+        if (CurrentUser.getRole()!=0)
+        {
+            listUserButton.setVisible(false);
+            listClaimButton.setVisible(false);
+            etablissementButton.setVisible(false);
+        }
 
     }
     @FXML
