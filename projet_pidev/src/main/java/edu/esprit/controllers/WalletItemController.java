@@ -1,5 +1,7 @@
 package edu.esprit.controllers;
 
+
+import com.stripe.model.Charge;
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceWallet;
@@ -15,11 +17,30 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+
+
+
+
+
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
+import com.stripe.param.PaymentIntentCreateParams;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+
 
 public class WalletItemController implements Initializable {
     @FXML
@@ -129,6 +150,12 @@ public class WalletItemController implements Initializable {
             modifierBtn.setManaged(false);
         }
     }
+
+    public void rechargerWallet(ActionEvent actionEvent) {
+
+
+    }
+
 
 }
     // ... (autres méthodes)

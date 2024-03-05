@@ -407,13 +407,21 @@ private AnchorPane grandAnchor;
             }
 
             if (walletConnecte != null) {
+
+
                 try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/AfficherWallet.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierWallet2.fxml"));
+                    Parent root = loader.load();
+                    ModifierWalletController controller = loader.getController();
+                    controller.initDataWallet(walletConnecte);
                     grid.getScene().setRoot(root);
                 } catch (IOException e) {
                     e.printStackTrace();
                     afficherAlerte("Erreur lors du chargement d'AfficherWallet.fxml : " + e.getMessage());
                 }
+
+
+
             } else {
                 // Afficher une alerte demandant d'ajouter un portefeuille
                 afficherAlerte("Ajoutez un portefeuille à votre établissement.");
