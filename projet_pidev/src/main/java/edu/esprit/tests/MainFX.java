@@ -9,25 +9,30 @@ import javafx.stage.Stage;
 
 public class MainFX extends Application {
    // public static final String CURRENCY = "$";
-    @Override
-    public void start(Stage stage) throws Exception {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+   @Override
+   public void start(Stage stage) throws Exception {
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+       Parent root = loader.load();
 
-        Parent root = loader.load();
+// Assuming your root is a Pane, you can replace it with the actual type of your root node
+       Pane paneRoot = (Pane) root;
 
+// Set your preferred width and height
+       paneRoot.setPrefWidth(1451);  // Set your preferred width
+       paneRoot.setPrefHeight(830); // Set your preferred height
 
-
-
-        Scene scene = new Scene(root);
+       Scene scene = new Scene(root);
 
 // Set the scene to the stage
-        stage.setScene(scene);
+       stage.setScene(scene);
 
-        stage.setTitle("Login");
+// Set the title
+       stage.setTitle("Gestion Etablissement");
 
+// Show the stage
+       stage.show();
 
-
-    }
+   }
 
 
     public static void main(String[] args) {

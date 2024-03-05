@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import javax.swing.plaf.ColorUIResource;
@@ -277,17 +278,38 @@ public class CreateAccountController {
     @FXML
     void choosePhoto(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-        );
+        fileChooser.setTitle("Choisir une image");
 
-        // Afficher la boîte de dialogue de choix de fichier
-        selectedFile = fileChooser.showOpenDialog(null);
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/img"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null) {
-            // Charger l'image sélectionnée dans ImageView
-            Image selectedImage = new Image(selectedFile.toURI().toString());
-            profileImageView.setImage(selectedImage);
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
+
+            // Set the image file name to the TextField
+
+
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
+
+
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+            System.out.println("Selected Image: " + imagePath);
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
         }
     }
     @FXML
