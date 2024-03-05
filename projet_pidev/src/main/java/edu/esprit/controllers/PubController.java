@@ -5,6 +5,9 @@ import edu.esprit.entities.Post;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServiceUtilisateur;
+import edu.esprit.services.ServicePost;
+
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +17,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -26,6 +32,12 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 public class PubController implements Initializable {
+
+    @FXML
+    private ImageView trierordredecroissant;
+    private ServicePost servicePost;
+
+
     /*@FXML
     private VBox postsContainer;
     private List<Post> posts = new ArrayList<>();
@@ -33,6 +45,8 @@ public class PubController implements Initializable {
     private Button Naviguerversajouter;*/
     @FXML
     private AnchorPane AnchoPaneMessage131;
+    @FXML
+    private TextField nomRechercheTF;
 
     @FXML
     private Button Naviguerversajouter;
@@ -49,6 +63,9 @@ public class PubController implements Initializable {
     private Label nameUserLabel;
     @FXML
     private VBox postsContainer;
+
+    @FXML
+    private ImageView chercherparnom;
 
     @FXML
     private Label receivernomLabel2;
@@ -120,6 +137,7 @@ public class PubController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        servicePost = new ServicePost();
     }
 
 
@@ -192,7 +210,7 @@ public class PubController implements Initializable {
 
 
 
-    public void refreshUI() {
+    /*public void refreshUI() {
         postsContainer.getChildren().clear();
         for (Post post : posts) {
             try {
@@ -208,5 +226,148 @@ public class PubController implements Initializable {
         }
 
 
+    }*/
+    // Méthode pour rafraîchir l'interface utilisateur avec les posts
+//    public void refreshUI() {
+//        postsContainer.getChildren().clear();
+//        try {
+//            for (Post post : posts) {
+//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
+//                AnchorPane anchorPane = fxmlLoader.load();
+//
+//                // Récupérer le contrôleur de post.fxml
+//                PostController postController = fxmlLoader.getController();
+//
+//                // Envoyer les données du post au contrôleur
+//                postController.setData(post);
+//
+//                // Ajouter le post à votre conteneur
+//                postsContainer.getChildren().add(anchorPane);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    public void refreshUI() {
+        postsContainer.getChildren().clear();
+        try {
+            for (Post post : posts) {
+                // Récupérer les données de l'utilisateur associé à chaque post
+                Utilisateur utilisateur = post.getUtilisateur();
+
+                // Charger le fichier FXML du post
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                // Récupérer le contrôleur de post.fxml
+                PostController postController = fxmlLoader.getController();
+
+                // Envoyer les données du post et de l'utilisateur au contrôleur
+                postController.setData(post);
+
+                // Ajouter le post à votre conteneur
+                postsContainer.getChildren().add(anchorPane);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
+
+    @FXML
+    void chercherparnom(MouseEvent event) {
+        String nomUtilisateur = nomRechercheTF.getText();
+        try {
+            // Appel de la méthode rechercherParNom du servicePost pour obtenir les posts correspondants
+            Set<Post> posts = servicePost.rechercherParNom(nomUtilisateur);
+
+            // Nettoyer d'abord le conteneur
+            postsContainer.getChildren().clear();
+
+            // Charger chaque post dans le conteneur
+            for (Post post : posts) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                // Récupérer le contrôleur de post.fxml
+                PostController postController = fxmlLoader.getController();
+
+                // Envoyer les données du post au contrôleur
+                postController.setData(post);
+
+                // Ajouter le post à votre conteneur
+                postsContainer.getChildren().add(anchorPane);
+            }
+        } catch (SQLException | IOException e) {
+            // Gérer les exceptions
+            System.out.println("Erreur lors de la recherche par nom: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+
+    @FXML
+    void trierordredecroissant(MouseEvent event) {
+        try {
+            // Appel de la fonction de tri
+            Set<Post> sortedPosts = servicePost.trierPostsParDateDecroissante();
+            // Mettre à jour la liste de posts avec les posts triés
+            posts.clear();
+            posts.addAll(sortedPosts);
+            // Rafraîchir l'interface utilisateur avec les posts triés
+            refreshUI();
+        } catch (SQLException e) {
+            afficherAlerte("Erreur", "Erreur lors du tri des posts", e.getMessage());
+        }
+    }
+
+    // Méthode pour rafraîchir l'interface utilisateur avec les posts
+//    private void refreshUI() {
+//        // Nettoyer d'abord le conteneur
+//        postsContainer.getChildren().clear();
+//
+//        // Charger chaque post dans le conteneur
+//        for (Post post : posts) {
+//            try {
+//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
+//                AnchorPane anchorPane = fxmlLoader.load();
+//
+//                // Récupérer le contrôleur de post.fxml
+//                PostController postController = fxmlLoader.getController();
+//
+//                // Envoyer les données du post au contrôleur
+//                postController.setData(post);
+//
+//                // Ajouter le post à votre conteneur
+//                postsContainer.getChildren().add(anchorPane);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+    // Méthode pour afficher une alerte en cas d'erreur
+    private void afficherAlerte(String titre, String enTete, String contenu) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titre);
+        alert.setHeaderText(enTete);
+        alert.setContentText(contenu);
+        alert.showAndWait();
+    }
+
+
+
+
+
+
+
+
+
 }
+
+

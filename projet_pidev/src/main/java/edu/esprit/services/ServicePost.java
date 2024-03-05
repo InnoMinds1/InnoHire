@@ -1,20 +1,28 @@
 package edu.esprit.services;
 
 
+import edu.esprit.controllers.PostController;
 import edu.esprit.entities.Commentaire;
 import edu.esprit.entities.Post;
 import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ServicePost implements IService<Post> {
     Connection cnx = DataSource.getInstance().getCnx();
+
+    //private Connection connection;
+
+
 
     @Override
     public void ajouter(Post post) throws SQLException {
@@ -162,10 +170,129 @@ public class ServicePost implements IService<Post> {
         }
     }
 
+   /* public Set<Post> rechercherParNom(String nom) throws SQLException {
+        Set<Post> posts = new HashSet<>();
+
+        String req = "SELECT * FROM post WHERE id_utilisateur LIKE ?";
+
+        try (PreparedStatement st = cnx.prepareStatement(req)) {
+            st.setString(1, "%" + nom + "%");
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int id_post = rs.getInt("id_post");
+                int id_utilisateur = rs.getInt("id_utilisateur");
+                String audienceStr = rs.getString("audience");
+                Timestamp timestamp = rs.getTimestamp("date");
+                LocalDateTime date = timestamp.toLocalDateTime();
+                String caption = rs.getString("caption");
+                String image = rs.getString("image");
+                int totalReactions = rs.getInt("totalReactions");
+                int nbComments = rs.getInt("nbComments");
+                int nbShares = rs.getInt("nbShares");
+
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setnom(nom);
+
+                PostAudience audience = PostAudience.valueOf(audienceStr);
+
+                Post post = new Post(id_post, utilisateur, audience, date, caption, image, totalReactions, nbComments, nbShares);
+                posts.add(post);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving posts by user name: " + e.getMessage());
+        }
+
+        return posts;
+    }*/
+  /* public Set<Post> rechercherParNom(String nom) throws SQLException {
+       Set<Post> posts = new HashSet<>();
+
+       String req = "SELECT * FROM post WHERE id_utilisateur IN (SELECT id_utilisateur FROM utilisateur WHERE nom LIKE ?)";
+
+       try (PreparedStatement st = cnx.prepareStatement(req)) {
+           st.setString(1, "%" + nom + "%");
+           ResultSet rs = st.executeQuery();
+
+           while (rs.next()) {
+               int id_post = rs.getInt("id_post");
+               int id_utilisateur = rs.getInt("id_utilisateur");
+               String audienceStr = rs.getString("audience");
+               Timestamp timestamp = rs.getTimestamp("date");
+               LocalDateTime date = timestamp.toLocalDateTime();
+               String caption = rs.getString("caption");
+               String image = rs.getString("image");
+               int totalReactions = rs.getInt("totalReactions");
+               int nbComments = rs.getInt("nbComments");
+               int nbShares = rs.getInt("nbShares");
+
+               // Créer un objet Utilisateur avec l'ID récupéré
+               Utilisateur utilisateur = new Utilisateur();
+               utilisateur.setId_utilisateur(id_utilisateur);
+
+               // Convertir la chaîne d'audience en PostAudience enum
+               PostAudience audience = PostAudience.valueOf(audienceStr);
+
+               // Créer un objet Post avec les données récupérées
+               Post post = new Post(id_post, utilisateur, audience, date, caption, image, totalReactions, nbComments, nbShares);
+               posts.add(post);
+           }
+       } catch (SQLException e) {
+           System.out.println("Error retrieving posts by user name: " + e.getMessage());
+       }
+
+       return posts;
+   }*/
+   public Set<Post> rechercherParNom(String nom) throws SQLException {
+       Set<Post> posts = new HashSet<>();
+
+       String req = "SELECT * FROM post INNER JOIN utilisateur ON post.id_utilisateur = utilisateur.id_utilisateur WHERE utilisateur.nom LIKE ?";
+
+       try (PreparedStatement st = cnx.prepareStatement(req)) {
+           st.setString(1, "%" + nom + "%");
+           ResultSet rs = st.executeQuery();
+
+           while (rs.next()) {
+               int id_post = rs.getInt("id_post");
+               int id_utilisateur = rs.getInt("id_utilisateur");
+               String audienceStr = rs.getString("audience");
+               Timestamp timestamp = rs.getTimestamp("date");
+               LocalDateTime date = timestamp.toLocalDateTime();
+               String caption = rs.getString("caption");
+               String image = rs.getString("image");
+               int totalReactions = rs.getInt("totalReactions");
+               int nbComments = rs.getInt("nbComments");
+               int nbShares = rs.getInt("nbShares");
+
+               // Maintenant, récupérez les informations de l'utilisateur à partir de la base de données en utilisant son ID
+               ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
+               Utilisateur utilisateur = serviceUtilisateur.getOneByID(id_utilisateur);
+
+               PostAudience audience = PostAudience.valueOf(audienceStr);
+
+               Post post = new Post(id_post, utilisateur, audience, date, caption, image, totalReactions, nbComments, nbShares);
+               posts.add(post);
+           }
+       } catch (SQLException e) {
+           System.out.println("Error retrieving posts by user name: " + e.getMessage());
+       }
+
+       return posts;
+   }
 
 
 
-//getlistcommentsbyidpost
+
+
+
+
+    public Set<Post> trierPostsParDateDecroissante() throws SQLException {
+        Set<Post> postsTries = new TreeSet<>(Comparator.comparing(Post::getDate).reversed());
+        postsTries.addAll(getAll());
+        return postsTries;
+    }
+
+
 
 
 }

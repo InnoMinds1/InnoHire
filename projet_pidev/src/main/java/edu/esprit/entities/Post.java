@@ -133,4 +133,6 @@ public class Post {
         Post post = (Post) o;
         return id_post == post.id_post;
     }
+
+
 }
