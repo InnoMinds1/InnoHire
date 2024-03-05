@@ -139,7 +139,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="17.0" layoutY="229.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
+                  <Button layoutX="17.0" layoutY="229.0" mnemonicParsing="false" onAction="#NavigateToEtablissement" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

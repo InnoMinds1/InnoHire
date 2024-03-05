@@ -59,7 +59,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="529.0" layoutY="386.0" mnemonicParsing="false" onAction="#choosePhoto" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
+                  <Button layoutX="529.0" layoutY="386.0" mnemonicParsing="false" onAction="#choosePhoto" prefHeight="46.0" prefWidth="95.0" style="-fx-background-color: #632DE9;" stylesheets="@service2.css" text="Ajouter" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -115,6 +115,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <TextField fx:id="imageETF" layoutX="463.0" layoutY="446.0" prefHeight="46.0" prefWidth="250.0" promptText="image" styleClass="text-field" stylesheets="@styles.css">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
                </children>
             </AnchorPane>
             <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">

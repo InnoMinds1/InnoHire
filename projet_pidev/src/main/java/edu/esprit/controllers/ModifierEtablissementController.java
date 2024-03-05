@@ -283,7 +283,7 @@ public class ModifierEtablissementController extends AjouterEtablissementControl
             }
 
             ServiceUtilisateur su = new ServiceUtilisateur();
-            Utilisateur user = su.getOneByCin(cin_utilisateurE);
+            Utilisateur user = su.get_One_ByCin(cin_utilisateurE);
 
             if (user == null) {
                 // Show an error alert for non-existent user

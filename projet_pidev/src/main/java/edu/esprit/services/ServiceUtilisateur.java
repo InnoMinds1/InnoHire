@@ -322,14 +322,14 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String adresse = rs.getString("adresse");
                 String mdp = rs.getString("mdp");
                 int role = rs.getInt(7);
+                String image=rs.getString("image");
                 if (role == 1) {
-                    Representant p = new Representant(cin, nom, prenom, adresse, mdp);
+                    Representant p = new Representant(cin, nom, prenom, adresse, mdp,image);
                     utilisateurs.add(p);
                 } else if (role==2) {
-                    Candidat p = new Candidat( cin, nom, prenom, adresse, mdp);
+                    Candidat p = new Candidat(cin, nom, prenom, adresse, mdp,image);
                     utilisateurs.add(p);
                 }
-
 
 
             }
@@ -339,7 +339,6 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         }
         return utilisateurs;
     }
-
     public Set<Admin> getAll_admin() {
         Set<Admin> admins = new HashSet<>();
         String req = "Select * from utilisateur";
@@ -647,6 +646,34 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             return null;
         }
     }
+    public Utilisateur get_One_ByCin(int cin) {
+        String req = "SELECT * FROM utilisateur WHERE cin = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, cin);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Assuming Utilisateur has an appropriate constructor
+                    Utilisateur user = new Utilisateur();
+                    user.setId_utilisateur(rs.getInt("id_utilisateur"));
+                    user.setCin(rs.getInt("cin"));
+                    user.setNom(rs.getString("nom"));
+                    user.setPrenom(rs.getString("prenom"));
+                    user.setAdresse(rs.getString("adresse"));
+                    user.setMdp(rs.getString("mdp"));
+                    // Set other properties as needed
+                    return user;
+                } else {
+                    // If no user found, return null
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Log the exception for debugging
+            // Handle or rethrow the exception as needed
+        }
+        return null; // Return null in case of an exception
+    }
+
 
 
 }

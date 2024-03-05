@@ -47,7 +47,7 @@ public class UtilisateurItemController {
 
     public void setData(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
-        String imageName = utilisateur.getImage();
+       String imageName = utilisateur.getImage();
         String imagePath = "/img/" + imageName;
         Image image = new Image(getClass().getResourceAsStream(imagePath));
         imageUser.setImage(image);
