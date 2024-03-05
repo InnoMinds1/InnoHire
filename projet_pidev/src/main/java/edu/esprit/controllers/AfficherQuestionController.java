@@ -15,7 +15,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -80,40 +79,6 @@ public class AfficherQuestionController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    @FXML
-    void navigateToAjouter(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterQuestion.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            Scene scene = new Scene(root);
-
-            stage.setScene(scene);
-            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    void navigateToQuiz(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuiz.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
 

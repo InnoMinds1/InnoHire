@@ -55,35 +55,9 @@ public class AjouterQuizController {
                 return;
             }
 
-
             // Convertir les valeurs en types appropriés
             int codeQuiz = Integer.parseInt(codeQuizText);
             int prixQuiz = Integer.parseInt(prixQuizText);
-            if (isValidDifficulty(description)) {
-                if ((description.equalsIgnoreCase("facile") && (prixQuiz < 0 || prixQuiz > 15)))
-                {
-                    showAlert("Erreur de saisie", "Le prix du quiz pour la description '" + description + "' doit être dans la plage [0..15]");
-                    return;
-                }
-                if ((description.equalsIgnoreCase("moyen") && (prixQuiz < 16 || prixQuiz > 30)))
-                {
-                    showAlert("Erreur de saisie", "Le prix du quiz pour la description '" + description + "' doit être dans la plage [16..30]");
-                    return;
-                }
-                if ((description.equalsIgnoreCase("difficile") && (prixQuiz < 31 || prixQuiz > 49)))
-                {
-                    showAlert("Erreur de saisie", "Le prix du quiz pour la description '" + description + "' doit être dans la plage [31..49]");
-                    return;
-                }
-
-
-
-            } else {
-                // Afficher une alerte si la description n'est pas valide
-                showAlert("Erreur de saisie", "La description doit être 'facile', 'moyen' ou 'difficile'.");
-                return;
-            }
-
 
             // Vérifier que prixQuiz est supérieur à 0 et inférieur à 50
             if (prixQuiz <= 0 || prixQuiz >= 50) {
@@ -112,10 +86,6 @@ public class AjouterQuizController {
             showAlert("SQL Exception", "Erreur SQL : " + e.getMessage());
         }
     }
-    private boolean isValidDifficulty(String description) {
-        return description.equalsIgnoreCase("facile") || description.equalsIgnoreCase("moyen") || description.equalsIgnoreCase("difficile");
-    }
-
 
     // Méthode pour afficher une alerte
     private void showAlert(String title, String content) {
@@ -130,11 +100,10 @@ public class AjouterQuizController {
             Parent root = loader.load();
 
             Stage stage = (Stage) TFCode.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            Scene scene = new Scene(root);
-
-            stage.setScene(scene);
-            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
+            stage.setScene(new Scene(root));
             stage.show();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

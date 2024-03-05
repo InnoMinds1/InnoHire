@@ -3,7 +3,6 @@ package edu.esprit.controllers;
 import edu.esprit.entities.Question;
 import edu.esprit.services.questionService;
 
-import edu.esprit.services.quizService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -131,20 +130,29 @@ public class QuestionItemController {
     }
     public void modifierQuestionOnClick(ActionEvent event) {
         try {
+            // Initialiser le serviceQuestion si ce n'est pas déjà fait
+            if (qs == null) {
+                qs = new questionService();
+            }
+
+            // Charger la vue de modification de question
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierQuestion.fxml"));
             Parent root = loader.load();
 
-            Stage stage = (Stage) labelCodeQuiz.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            Scene scene = new Scene(root);
+            // Passer la question à modifier au contrôleur de modification
+            ModifierQuestionController controller = loader.getController();
+            controller.setData(question);
 
-            stage.setScene(scene);
-            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
-            stage.show();
+            // Afficher la vue de modification de question
+            LabelChoix.getScene().setRoot(root);
         } catch (IOException e) {
-            e.printStackTrace();
+            // Gérer les exceptions liées au chargement de la vue de modification
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Erreur lors de la modification de la question.");
+            alert.setTitle("Erreur de modification");
+            alert.show();
         }
     }
-
 
 
 }

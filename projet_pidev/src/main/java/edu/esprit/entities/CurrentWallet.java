@@ -10,6 +10,7 @@ public class CurrentWallet {
     private static int status;
     private static Etablissement etablissement;
 
+
     // Make sure to set these values before accessing them
     public static void setIdWallet(int id) {
         idWallet = id;
@@ -30,6 +31,7 @@ public class CurrentWallet {
     public static void setEtablissement(Etablissement etab) {
         etablissement = etab;
     }
+
 
     // Getters...
 

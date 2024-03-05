@@ -21,7 +21,6 @@
             </font>
         </Text>
         <Button fx:id="btnAcheter" mnemonicParsing="false" onAction="#AcheterQuizOnClick" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #32CD32; -fx-text-fill: white;" text="ACHETER" />
-      <Button mnemonicParsing="false" onAction="#showQuizDetails" prefHeight="28.0" prefWidth="84.0" text="Consulter" />
 
 
     </children>

@@ -1,7 +1,5 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.CurrentWallet;
-import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Quiz;
 import edu.esprit.services.quizService;
 import javafx.fxml.FXML;
@@ -9,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -25,8 +22,6 @@ public class AfficherQuizDisponibleController implements Initializable {
 
     @FXML
     private ScrollPane scrollA;
-
-
     private quizService serviceQ = new quizService();
     Set<Quiz> setQ;
 
@@ -37,19 +32,18 @@ public class AfficherQuizDisponibleController implements Initializable {
 
 
 
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         int column = 0;
         int row = 1;
         try {
-            for (Quiz quiz : setQ) {
+            for (Quiz quiz1 : setQ) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/QuizPourAcheter.fxml"));
                 HBox hbox = fxmlLoader.load();
 
                 QuizPourAcheterController itemController = fxmlLoader.getController();
-                itemController.setData(quiz);
+                itemController.setData(quiz1);
 
                 if (column == 1) {
                     column = 0;

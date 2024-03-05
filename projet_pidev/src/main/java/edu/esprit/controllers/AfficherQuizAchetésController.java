@@ -1,43 +1,37 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.Question;
+import edu.esprit.entities.CurrentWallet;
 import edu.esprit.entities.Quiz;
-import edu.esprit.services.questionService;
 import edu.esprit.services.quizService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.Optional;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class AfficherQuizController implements Initializable {
-
+public class AfficherQuizAchetésController implements Initializable {
     @FXML
     private GridPane gridA;
 
     @FXML
     private ScrollPane scrollA;
     private quizService serviceQ = new quizService();
+
+
     Set<Quiz> setQ;
 
     {
-        setQ = serviceQ.getAll();
+        setQ = serviceQ.getQuizbyIDetablissement();
     }
 
 
@@ -48,13 +42,13 @@ public class AfficherQuizController implements Initializable {
         int column = 0;
         int row = 1;
         try {
-            for (Quiz quiz : setQ) {
+            for (Quiz quiz1 : setQ) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/QuizItem.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/QuizAchetesItem.fxml"));
                 HBox hbox = fxmlLoader.load();
 
-                QuizItemController itemController = fxmlLoader.getController();
-                itemController.setData(quiz);
+                QuizAchetesItemController itemController = fxmlLoader.getController();
+                itemController.setData(quiz1);
 
                 if (column == 1) {
                     column = 0;
@@ -75,22 +69,5 @@ public class AfficherQuizController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void navigateToAjouter(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterQuiz.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
 
 }

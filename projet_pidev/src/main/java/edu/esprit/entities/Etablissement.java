@@ -17,6 +17,6 @@ public class Etablissement {
     }
 
     public void setIdEtablissement(int idEtablissement) {
-        this.idEtablissement = idEtablissement;
+        this.idEtablissement = 7;
     }
 }

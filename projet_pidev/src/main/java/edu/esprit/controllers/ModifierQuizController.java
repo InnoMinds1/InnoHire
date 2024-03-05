@@ -56,85 +56,60 @@ public class ModifierQuizController {
         }
     }
 @FXML
+    void ModifierQuizAction(ActionEvent event) {
+        try {
+            // Récupérer les valeurs des champs
+            String codeQuizText = TFCode1.getText();
+            String nomQuiz = TFNom1.getText();
+            String description = TFDesc1.getText();
+            String prixQuizText = TFprix1.getText();
 
-void ModifierQuizAction(ActionEvent event) {
-    try {
-        // Récupérer les valeurs des champs
-        String codeQuizText = TFCode1.getText();
-        String nomQuiz = TFNom1.getText();
-        String description = TFDesc1.getText();
-        String prixQuizText = TFprix1.getText();
-
-        // Vérifier si tous les champs sont remplis
-        if (codeQuizText.isEmpty() || nomQuiz.isEmpty() || description.isEmpty() || prixQuizText.isEmpty()) {
-            // Afficher une alerte en cas de champs manquants
-            showAlert("Champs manquants", "Veuillez remplir tous les champs.");
-            return;
-        }
-
-        // Convertir les valeurs en types appropriés
-        int codeQuiz = Integer.parseInt(codeQuizText);
-
-        // Ajouter ici le même scénario de contrôle de saisie pour la description que dans AjouterQuizAction
-        if (!isValidDifficulty(description)) {
-            // Afficher une alerte si la description n'est pas valide
-            showAlert("Erreur de saisie", "La description doit être 'facile', 'moyen' ou 'difficile'.");
-            return;
-        }
-
-        int prixQuiz = Integer.parseInt(prixQuizText);
-
-        // Ajouter ici le même scénario de contrôle de saisie pour le prix que dans AjouterQuizAction
-        if (isValidDifficulty(description)) {
-            if (description.equalsIgnoreCase("facile") && (prixQuiz < 0 || prixQuiz > 15)) {
-                showAlert("Erreur de saisie", "Le prix du quiz pour la description 'facile' doit être dans la plage [0..15].");
-                return;
-            } else if (description.equalsIgnoreCase("moyen") && (prixQuiz < 16 || prixQuiz > 30)) {
-                showAlert("Erreur de saisie", "Le prix du quiz pour la description 'moyen' doit être dans la plage [16..30].");
-                return;
-            } else if (description.equalsIgnoreCase("difficile") && (prixQuiz < 31 || prixQuiz > 49)) {
-                showAlert("Erreur de saisie", "Le prix du quiz pour la description 'difficile' doit être dans la plage [31..49].");
+            // Vérifier si tous les champs sont remplis
+            if (codeQuizText.isEmpty() || nomQuiz.isEmpty() || description.isEmpty() || prixQuizText.isEmpty()) {
+                // Afficher une alerte en cas de champs manquants
+                showAlert("Champs manquants", "Veuillez remplir tous les champs.");
                 return;
             }
-        } else {
-            showAlert("Erreur de saisie", "La description doit être 'facile', 'moyen' ou 'difficile'.");
-            return;
+
+            // Convertir les valeurs en types appropriés
+            int codeQuiz = Integer.parseInt(codeQuizText);
+            int prixQuiz = Integer.parseInt(prixQuizText);
+
+            // Vérifier que prixQuiz est supérieur à 0 et inférieur à 50
+            if (prixQuiz <= 0 || prixQuiz >= 50) {
+                // Afficher une alerte en cas de prix incorrect
+                showAlert("Erreur de saisie", "Le prix du quiz doit être supérieur à 0 et inférieur à 50.");
+                return;
+            }
+
+            // Mettre à jour les attributs du quiz
+            quiz.setCode_quiz(codeQuiz);
+            quiz.setNom_quiz(nomQuiz);
+            quiz.setDescription(description);
+            quiz.setPrix_quiz(prixQuiz);
+
+            // Mettre à jour le chemin de l'image dans le quiz
+            quiz.setImage_quiz(imageView1.getText());
+
+            if (qs == null) {
+                qs = new quizService();
+            }
+
+            qs.modifier(quiz);
+
+            // Afficher une alerte de succès
+            showAlert("Success", "Le quiz a été modifié avec succès.");
+
+        } catch (NumberFormatException e) {
+            // Afficher une alerte d'erreur si une exception de format numérique se produit
+            e.printStackTrace();
+            showAlert("Number Format Exception", "Erreur de format numérique : " + e.getMessage());
+        } catch (SQLException e) {
+            // Afficher une alerte d'erreur si une exception SQL se produit
+            e.printStackTrace();
+            showAlert("SQL Exception", "Erreur SQL : " + e.getMessage());
         }
-
-
-        // Mettre à jour les attributs du quiz
-        quiz.setCode_quiz(codeQuiz);
-        quiz.setNom_quiz(nomQuiz);
-        quiz.setDescription(description);
-        quiz.setPrix_quiz(prixQuiz);
-
-        // Mettre à jour le chemin de l'image dans le quiz
-        quiz.setImage_quiz(imageView1.getText());
-
-        if (qs == null) {
-            qs = new quizService();
-        }
-
-        qs.modifier(quiz);
-
-        // Afficher une alerte de succès
-        showAlert("Success", "Le quiz a été modifié avec succès.");
-
-    } catch (NumberFormatException e) {
-        // Afficher une alerte d'erreur si une exception de format numérique se produit
-        e.printStackTrace();
-        showAlert("Number Format Exception", "Erreur de format numérique : " + e.getMessage());
-    } catch (SQLException e) {
-        // Afficher une alerte d'erreur si une exception SQL se produit
-        e.printStackTrace();
-        showAlert("SQL Exception", "Erreur SQL : " + e.getMessage());
     }
-}
-    private boolean isValidDifficulty(String description) {
-        return description.equalsIgnoreCase("facile") || description.equalsIgnoreCase("moyen") || description.equalsIgnoreCase("difficile");
-    }
-
-
 
     // Méthode pour afficher une alerte
     private void showAlert(String title, String content) {
@@ -163,11 +138,10 @@ void ModifierQuizAction(ActionEvent event) {
             Parent root = loader.load();
 
             Stage stage = (Stage) TFCode1.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-            Scene scene = new Scene(root);
-
-            stage.setScene(scene);
-            stage.sizeToScene(); // Redimensionne le stage pour s'adapter à la taille de la scène
+            stage.setScene(new Scene(root));
             stage.show();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,5 +1,7 @@
 package edu.esprit.services;
 
+import edu.esprit.entities.CurrentWallet;
+import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Question;
 import edu.esprit.entities.Quiz;
 import edu.esprit.utils.DataSource;
@@ -192,6 +194,44 @@ public class quizService implements IService<Quiz> {
 
 
         return -1;
+    }
+    public Set<Quiz> getQuizbyIDetablissement() {
+        Set<Quiz> quizSet = new HashSet<>();
+
+        try {
+            Etablissement e = new Etablissement();
+            CurrentWallet.setEtablissement(e);
+            int idEtablissement = CurrentWallet.getEtablissement().getIdEtablissement();
+
+            // Connexion à votre base de données (assurez-vous d'avoir une connexion valide ici)
+            /* obtenir votre connexion à la base de données */;
+
+            // Requête SQL pour récupérer les ID de Quiz associés à l'établissement
+            String sql = "SELECT id_quiz FROM etablissement_quiz WHERE id_etablissement = ?";
+
+            try (PreparedStatement statement = cnx.prepareStatement(sql)) {
+                statement.setInt(1, idEtablissement);
+
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    // Parcourir les résultats et ajouter les Quiz à l'ensemble
+                    while (resultSet.next()) {
+                        int idQuiz = resultSet.getInt("id_quiz");
+
+                        // Ajouter le Quiz à l'ensemble en utilisant une méthode de votre choix pour récupérer les Quiz
+                        // par exemple, vous pouvez avoir une méthode serviceQ.getQuizById(idQuiz) dans votre service
+                        Quiz quiz =getOneByID(idQuiz);
+
+                        if (quiz != null) {
+                            quizSet.add(quiz);
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return quizSet;
     }
 
 
