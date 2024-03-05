@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="504.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.AccueilController">
+   <children>
+      <Label layoutX="157.0" layoutY="27.0" prefHeight="96.0" prefWidth="219.0" text="Accueil">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TFcurrentusercin" editable="false" layoutX="648.0" layoutY="9.0" prefHeight="37.0" prefWidth="154.0" promptText="CurrentUsercin" styleClass="text-field">
+         <stylesheets>
+            <URL value="@service2.css" />
+            <URL value="@service2.css" />
+         </stylesheets>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="438.0" layoutY="10.0" prefHeight="35.0" prefWidth="199.0" text="BIENVENUE MR:">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="6.0" layoutY="354.0" mnemonicParsing="false" onAction="#Logout" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="SE DECONNNECTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="665.0" layoutY="56.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: #9c95a7; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Mon Profil">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="665.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/profile.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
