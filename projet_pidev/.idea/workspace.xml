@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="21b2f2ae-2615-464f-ab63-25385d315798" name="Changes" comment="" />
+=======
+    <list default="true" id="2a6f953e-625e-49ba-b711-99a3c03dcba0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrencyConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifierWallet2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierWalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/WalletItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/WalletItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Etablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/WalletItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/WalletItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/esprit/tests/Main.class" afterDir="false" />
+    </list>
+>>>>>>> gestion-etablissement
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +30,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="CSS File" />
+>>>>>>> gestion-etablissement
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -28,25 +49,60 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
+<<<<<<< HEAD
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2dBVMnON7e27LlI9zSwEyRRCnOK" />
+=======
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2cdbtuGAsLaXztQ58u5UCffsm1x" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+>>>>>>> gestion-etablissement
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+<<<<<<< HEAD
     &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+=======
+    &quot;Application.CurrencyConverter.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainFX.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Payment.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.1:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:jlink].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gestion-etablissement&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/resources&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+>>>>>>> gestion-etablissement
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+<<<<<<< HEAD
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -65,10 +121,47 @@
         <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
       </set>
     </attachedChunks>
+=======
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\images" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\entities" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\services" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\.idea" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\services" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\java\edu\esprit\entities" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="edu.esprit.controllers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.esprit.controllers" />
+      <recent name="edu.esprit.services" />
+    </key>
+>>>>>>> gestion-etablissement
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-jbr-17.0.9-4caba194b151-51f1b679" />
+        <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="21b2f2ae-2615-464f-ab63-25385d315798" name="Changes" comment="" />
       <created>1709481413370</created>
       <option name="number" value="Default" />
@@ -83,10 +176,70 @@
       <workItem from="1709574153812" duration="1843000" />
       <workItem from="1709632474097" duration="859000" />
       <workItem from="1709633597708" duration="94000" />
+=======
+      <changelist id="2a6f953e-625e-49ba-b711-99a3c03dcba0" name="Changes" comment="" />
+      <created>1708440975934</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708440975934</updated>
+      <workItem from="1708440977555" duration="3078000" />
+      <workItem from="1708444638063" duration="7235000" />
+      <workItem from="1708627580857" duration="3934000" />
+      <workItem from="1708637857641" duration="4659000" />
+      <workItem from="1708643198105" duration="8996000" />
+      <workItem from="1708682267903" duration="6207000" />
+      <workItem from="1708689680771" duration="160000" />
+      <workItem from="1708693684156" duration="789000" />
+      <workItem from="1708812914171" duration="1169000" />
+      <workItem from="1708872569383" duration="2345000" />
+      <workItem from="1708895167416" duration="19124000" />
+      <workItem from="1708916528908" duration="2518000" />
+      <workItem from="1708960399559" duration="6427000" />
+      <workItem from="1708974859994" duration="12978000" />
+      <workItem from="1708992079700" duration="6760000" />
+      <workItem from="1708999004237" duration="7157000" />
+      <workItem from="1709039382419" duration="3914000" />
+      <workItem from="1709067192352" duration="2873000" />
+      <workItem from="1709070146640" duration="12350000" />
+      <workItem from="1709084262516" duration="4643000" />
+      <workItem from="1709095778657" duration="8816000" />
+      <workItem from="1709132104760" duration="10294000" />
+      <workItem from="1709149677655" duration="6751000" />
+      <workItem from="1709217595770" duration="293000" />
+      <workItem from="1709234858384" duration="3526000" />
+      <workItem from="1709249203449" duration="2320000" />
+      <workItem from="1709286218080" duration="444000" />
+      <workItem from="1709286875025" duration="390000" />
+      <workItem from="1709292806720" duration="5461000" />
+      <workItem from="1709353511003" duration="391000" />
+      <workItem from="1709381673982" duration="10551000" />
+      <workItem from="1709400819863" duration="6990000" />
+      <workItem from="1709412136501" duration="4574000" />
+      <workItem from="1709462666070" duration="7984000" />
+      <workItem from="1709500371792" duration="473000" />
+      <workItem from="1709563648872" duration="5319000" />
+      <workItem from="1709571111079" duration="233000" />
+      <workItem from="1709576215314" duration="26229000" />
+      <workItem from="1709634168605" duration="349000" />
+>>>>>>> gestion-etablissement
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+>>>>>>> gestion-etablissement
 </project>

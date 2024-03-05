@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainAnchor" prefHeight="830.0" prefWidth="1451.0" styleClass="text-field" stylesheets="@service2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ModifierWalletController">
+   <children>
+      <Label layoutX="549.5999999999999" layoutY="215.0" prefHeight="86.0" prefWidth="324.0" text="Modifer Wallet" textFill="#000000a9" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="578.0">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <TextField fx:id="code_EtabETF" editable="false" layoutX="550.0" layoutY="379.0" prefHeight="46.0" prefWidth="250.0" promptText="code etablissement" styleClass="text-field" stylesheets="@service2.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button layoutX="630.0" layoutY="428.0" mnemonicParsing="false" onAction="#okWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="631.0" layoutY="476.0" mnemonicParsing="false" onAction="#AfficherWallet" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Annuler" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="BalanceETF" layoutX="226.0" layoutY="192.0" prefHeight="46.0" prefWidth="250.0" promptText="Balance" styleClass="text-field" stylesheets="@service2.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="dateCreationETF" editable="false" layoutX="227.0" layoutY="265.0" prefHeight="46.0" prefWidth="250.0" promptText="Date Creattion" styleClass="text-field" stylesheets="@service2.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="statusETF" layoutX="228.0" layoutY="333.0" prefHeight="46.0" prefWidth="250.0" promptText="Statut" styleClass="text-field" stylesheets="@service2.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="175.0" layoutY="206.0" text="Balance" />
+      <Label layoutX="145.0" layoutY="279.0" text="Date Creation" />
+      <Label layoutX="188.0" layoutY="345.0" text="Status" />
+      <Line endX="11.4000244140625" endY="359.6000061035156" layoutX="483.0" layoutY="138.0" startX="11.4000244140625" startY="-7.600006103515625" />
+   </children>
+</AnchorPane>

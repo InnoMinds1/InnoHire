@@ -1,6 +1,10 @@
 .button
  {
+<<<<<<< HEAD
   -fx-background-color : #5d20d3;
+=======
+  -fx-background-color :  #5d20d3;
+>>>>>>> gestion-etablissement
  -fx-border-radius: 20px; /* Rayon de courbure de la bordure */
  -fx-background-radius: 20px; /* Rayon de courbure du fond */
   }
@@ -12,25 +16,42 @@
   }
   .button:pressed
     {
+<<<<<<< HEAD
     -fx-background-color : #5d20d3;
+=======
+    -fx-background-color :  #5d20d3;
+>>>>>>> gestion-etablissement
       -fx-border-radius: 20px; /* Rayon de courbure de la bordure */
       -fx-background-radius: 20px; /* Rayon de courbure du fond */
     }
   .text-field {
       -fx-background-color: #FFFFFF; /* Couleur de fond blanche */
+<<<<<<< HEAD
       -fx-border-color: #5d20d3; /* Couleur de la bordure */
+=======
+      -fx-border-color:  #5d20d3; /* Couleur de la bordure */
+>>>>>>> gestion-etablissement
       -fx-border-width: 1px; /* Largeur de la bordure */
       -fx-background-radius: 20px; /* Rayon de courbure du fond */
       -fx-border-radius: 20px; /* Rayon de courbure de la bordure */
   }
 .label {
     -fx-font-weight: bold;
+<<<<<<< HEAD
 
     }
     .label2 {
         -fx-font-weight: SemiBold;
 
         }
+=======
+}
+
+.label2 {
+    -fx-font-weight: normal; /* Use "bold", "normal", or a numeric value */
+}
+
+>>>>>>> gestion-etablissement
 /* Style de base pour un tableau */
 .table {
     width: 100%;
@@ -45,7 +66,11 @@
 
 /* Style des en-têtes de colonne */
 .table th {
+<<<<<<< HEAD
     background-color: #5d20d3; /* Couleur de fond spécifique */
+=======
+    background-color:  #5d20d3; /* Couleur de fond spécifique */
+>>>>>>> gestion-etablissement
     color: #FFFFFF; /* Couleur du texte */
     border: 1px solid #dddddd;
     padding: 8px;
@@ -72,11 +97,19 @@
 
 .spinner .decrement-arrow-button .decrement-arrow {
     -fx-shape: "M 0 0 L 6 6 L 12 0 Z"; /* Forme des flèches */
+<<<<<<< HEAD
     -fx-fill: #5d20d3; /* Couleur des flèches */
 }
 .spinner .increment-arrow-button .increment-arrow{
 -fx-shape: "M 0 0 L 6 6 L 12 0 Z"; /* Forme des flèches */
 -fx-fill: #5d20d3; /* Couleur des flèches */
+=======
+    -fx-fill:  #5d20d3; /* Couleur des flèches */
+}
+.spinner .increment-arrow-button .increment-arrow{
+-fx-shape: "M 0 0 L 6 6 L 12 0 Z"; /* Forme des flèches */
+-fx-fill:  #5d20d3; /* Couleur des flèches */
+>>>>>>> gestion-etablissement
  }
 
 

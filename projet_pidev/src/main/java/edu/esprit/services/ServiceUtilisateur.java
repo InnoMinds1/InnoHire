@@ -5,12 +5,19 @@ import edu.esprit.entities.Candidat;
 import edu.esprit.entities.Representant;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
+<<<<<<< HEAD
+=======
+import jdk.jshell.execution.Util;
+>>>>>>> gestion-etablissement
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.HashSet;
+<<<<<<< HEAD
 import java.util.Random;
+=======
+>>>>>>> gestion-etablissement
 import java.util.Set;
 
 public class ServiceUtilisateur implements IService<Utilisateur> {
@@ -20,7 +27,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     public void ajouter(Utilisateur utilisateur) throws SQLException {
         if (utilisateur instanceof Admin) {
             Admin a = (Admin) utilisateur;
+<<<<<<< HEAD
             String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`,`image`) VALUES (?,?,?,?,?,?,?)";
+=======
+            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
+>>>>>>> gestion-etablissement
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 if(!utilisateurExiste(a.getCin())){
@@ -31,7 +42,10 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String hashed =hashPassword(a.getMdp());
                 ps.setString(5, hashed);
                 ps.setInt(6,0);
+<<<<<<< HEAD
                 ps.setString(7,a.getImage());
+=======
+>>>>>>> gestion-etablissement
                 ps.executeUpdate();
                 System.out.println("Admin added");}
 
@@ -41,7 +55,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 System.out.println(e.getMessage());
             }
         } else {
+<<<<<<< HEAD
             String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`,`image`) VALUES (?,?,?,?,?,?,?)";
+=======
+            String req = "INSERT INTO `utilisateur`( `cin`, `nom`, `prenom`, `adresse`, `mdp`, `role`) VALUES (?,?,?,?,?,?)";
+>>>>>>> gestion-etablissement
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -53,12 +71,18 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 ps.setString(5, hashed);
                 if (utilisateur instanceof Representant) {
                     ps.setInt(6, 1);
+<<<<<<< HEAD
                     ps.setString(7,utilisateur.getImage());
+=======
+>>>>>>> gestion-etablissement
                     ps.executeUpdate();
                     System.out.println("Representant added");
                 } else {
                     ps.setInt(6,2);
+<<<<<<< HEAD
                     ps.setString(7,utilisateur.getImage());
+=======
+>>>>>>> gestion-etablissement
                     ps.executeUpdate();
                     System.out.println("Candidat added");
                 }
@@ -74,7 +98,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     @Override
     public void modifier(Utilisateur utilisateur) throws SQLException {
+<<<<<<< HEAD
         String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? , image=? WHERE id_utilisateur = ?";
+=======
+        String req = "UPDATE utilisateur SET cin =?, nom = ?, prenom = ?, adresse = ?, mdp = ? WHERE id_utilisateur = ?";
+>>>>>>> gestion-etablissement
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, utilisateur.getCin());
@@ -82,6 +110,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setString(3, utilisateur.getPrenom());
             ps.setString(4, utilisateur.getAdresse());
             ps.setString(5, utilisateur.getMdp());
+<<<<<<< HEAD
             ps.setString(6,utilisateur.getImage());
             ps.setInt(7, utilisateur.getId_utilisateur());
 
@@ -141,6 +170,9 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setString(3, utilisateur.getAdresse());
             ps.setInt(4, utilisateur.getCin());
 
+=======
+            ps.setInt(6, utilisateur.getId_utilisateur());
+>>>>>>> gestion-etablissement
 
             ps.executeUpdate();
             System.out.println("utilisateur modifié!");
@@ -271,7 +303,11 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         }
     }
     public int getUserIdByCin(int cin) {
+<<<<<<< HEAD
         String req = "SELECT id_utilisateur FROM utilisateur WHERE cin = ?";
+=======
+        String req = "SELECT id FROM utilisateur WHERE cin = ?";
+>>>>>>> gestion-etablissement
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, cin);
@@ -280,6 +316,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 return rs.getInt(1);
             } else {
                 System.out.println("No user found with cin " + cin);
+<<<<<<< HEAD
                 return -1;
             }
         } catch (SQLException e) {
@@ -287,6 +324,13 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             e.printStackTrace();
             return -1;
         }
+=======
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return -1; // Return -1 if no user found
+>>>>>>> gestion-etablissement
     }
 
 
@@ -322,16 +366,28 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 String adresse = rs.getString("adresse");
                 String mdp = rs.getString("mdp");
                 int role = rs.getInt(7);
+<<<<<<< HEAD
                 if (role == 1) {
                     Representant p = new Representant(cin, nom, prenom, adresse, mdp);
                     utilisateurs.add(p);
                 } else if (role==2) {
                     Candidat p = new Candidat( cin, nom, prenom, adresse, mdp);
+=======
+                String image=rs.getString("image");
+                if (role == 1) {
+                    Representant p = new Representant(cin, nom, prenom, adresse, mdp,image);
+                    utilisateurs.add(p);
+                } else if (role==2) {
+                    Candidat p = new Candidat(cin, nom, prenom, adresse, mdp,image);
+>>>>>>> gestion-etablissement
                     utilisateurs.add(p);
                 }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> gestion-etablissement
             }
 
         } catch (SQLException e) {
@@ -377,6 +433,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+<<<<<<< HEAD
                 // Assuming Utilisateur has an appropriate constructor
                 Utilisateur user = new Utilisateur(
                         rs.getInt("id_utilisateur"),
@@ -483,6 +540,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setInt(1, cin);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+=======
+>>>>>>> gestion-etablissement
                 // Assuming Utilisateur has appropriate constructor
                 Utilisateur user = new Utilisateur();
                 user.setCin(rs.getInt("cin"));
@@ -490,11 +549,18 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));
+<<<<<<< HEAD
                 user.setImage("image");
                 // Set other properties as needed
                 return user;
             } else {
                 System.out.println("pas de utilisateur avec ce cin " + cin);
+=======
+                // Set other properties as needed
+                return user;
+            } else {
+                System.out.println("pas de utilisateur avec ce id " + id);
+>>>>>>> gestion-etablissement
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -527,8 +593,12 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         return null; // Return null if no user found
     }
 
+<<<<<<< HEAD
 
     public String hashPassword(String password) {
+=======
+    private String hashPassword(String password) {
+>>>>>>> gestion-etablissement
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashBytes = md.digest(password.getBytes());
@@ -576,6 +646,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         }
         return false; // Si une erreur se produit ou si aucun résultat n'est trouvé
     }
+<<<<<<< HEAD
     public int getStatusfromCIN(int cin)
     {
         String req = "SELECT status FROM utilisateur WHERE cin = ?";
@@ -649,4 +720,35 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
     }
 
 
+=======
+
+    public Utilisateur getOneByCin(int cin) {
+        String req = "SELECT * FROM utilisateur WHERE cin = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, cin);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Assuming Utilisateur has an appropriate constructor
+                    Utilisateur user = new Utilisateur();
+                    user.setId_utilisateur(rs.getInt("id_utilisateur"));
+                    user.setCin(rs.getInt("cin"));
+                    user.setNom(rs.getString("nom"));
+                    user.setPrenom(rs.getString("prenom"));
+                    user.setAdresse(rs.getString("adresse"));
+                    user.setMdp(rs.getString("mdp"));
+                    // Set other properties as needed
+                    return user;
+                } else {
+                    // If no user found, return null
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Log the exception for debugging
+            // Handle or rethrow the exception as needed
+        }
+        return null; // Return null in case of an exception
+    }
+
+>>>>>>> gestion-etablissement
 }

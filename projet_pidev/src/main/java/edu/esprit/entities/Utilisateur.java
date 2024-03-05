@@ -1,7 +1,10 @@
 package edu.esprit.entities;
 
+<<<<<<< HEAD
 import edu.esprit.services.ServiceUtilisateur;
 
+=======
+>>>>>>> gestion-etablissement
 import java.util.Objects;
 
 public class Utilisateur {
@@ -12,6 +15,7 @@ public class Utilisateur {
     private String prenom;
     private String adresse;
     private String mdp;
+<<<<<<< HEAD
     private String image;
    //this is for modifier usage
     private  String ProfileImagePath;
@@ -21,6 +25,12 @@ public class Utilisateur {
     }
 
 
+=======
+
+
+
+    private String image;
+>>>>>>> gestion-etablissement
     public String getImage() {
         return image;
     }
@@ -28,7 +38,10 @@ public class Utilisateur {
     public void setImage(String image) {
         this.image = image;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> gestion-etablissement
     public int getId_utilisateur() {
         return id_utilisateur;
     }
@@ -76,6 +89,7 @@ public class Utilisateur {
     public void setMdp(String mdp) {
         this.mdp = mdp;
     }
+<<<<<<< HEAD
     public int getRole() {
         // Assuming Admin, Representant, and Candidat are subclasses of Utilisateur
         if (this instanceof Admin) {
@@ -88,6 +102,8 @@ public class Utilisateur {
             return -1; // Default role (modify according to your logic)
         }
     }
+=======
+>>>>>>> gestion-etablissement
 
     @Override
     public String toString() {
@@ -98,10 +114,17 @@ public class Utilisateur {
                 ", prenom='" + prenom + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", mdp='" + mdp + '\'' +
+<<<<<<< HEAD
                 '}'+'\n';
     }
 
 
+=======
+                ", image='" + image + '\'' +
+                '}'+'\n';
+    }
+
+>>>>>>> gestion-etablissement
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,12 +137,24 @@ public class Utilisateur {
     public int hashCode() {
         return Objects.hash(id_utilisateur, cin, nom, prenom, adresse, mdp);
     }
+<<<<<<< HEAD
     public Utilisateur(){}
     public Utilisateur(int id_utilisateur )
     {
         this.id_utilisateur=id_utilisateur;
     }
 
+=======
+    public Utilisateur(){};
+
+    public Utilisateur(int cin, String nom, String prenom, String adresse, String mdp) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.mdp = mdp;
+    }
+>>>>>>> gestion-etablissement
     public Utilisateur(int cin, String nom, String prenom, String adresse, String mdp,String image) {
         this.cin = cin;
         this.nom = nom;
@@ -128,6 +163,7 @@ public class Utilisateur {
         this.mdp = mdp;
         this.image=image;
     }
+<<<<<<< HEAD
 
     public Utilisateur(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp,String image)
     {
@@ -149,6 +185,8 @@ public class Utilisateur {
 
     }
 
+=======
+>>>>>>> gestion-etablissement
     public Utilisateur(int id_utilisateur, int cin, String nom , String prenom, String adresse, String mdp)
     {
         this.id_utilisateur=id_utilisateur;

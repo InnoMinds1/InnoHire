@@ -1,12 +1,24 @@
 package edu.esprit.entities;
 
 public class Representant extends Utilisateur{
+<<<<<<< HEAD
     private int ROLE=1;
 
     public  int getROLE() {
         return ROLE;
     }
 
+=======
+    private static int ROLE=1;
+
+    public static int getROLE() {
+        return ROLE;
+    }
+
+    public static void setROLE(int ROLE) {
+        Representant.ROLE = ROLE;
+    }
+>>>>>>> gestion-etablissement
 
     public Representant() {
     }
@@ -28,7 +40,12 @@ public class Representant extends Utilisateur{
                 ", prenom='" + this.getPrenom() + '\'' +
                 ", adresse='" + this.getAdresse() + '\'' +
 
+<<<<<<< HEAD
                 ", role='" + this.getROLE() + '\'' +
+=======
+                ", role='" + Representant.getROLE() + '\'' +
+                ", image='" + getImage() + '\'' +
+>>>>>>> gestion-etablissement
                 '}'+'\n';
     }
 
@@ -42,13 +59,20 @@ public class Representant extends Utilisateur{
         super(cin,nom,prenom, adresse, mdp);
         this.ROLE=1;
     }
+<<<<<<< HEAD
     public Representant(int cin, String nom , String prenom, String adresse, String mdp,String image)
     {
+=======
+    public Representant(int cin, String nom, String prenom, String adresse, String mdp,String image) {
+>>>>>>> gestion-etablissement
         super(cin,nom,prenom, adresse, mdp,image);
         this.ROLE=1;
     }
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> gestion-etablissement
 }
