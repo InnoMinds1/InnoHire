@@ -146,4 +146,27 @@ public class UtilisateurItemComponent {
             }
         }
     }
+
+    @FXML
+    void activateUser(ActionEvent event) {
+        if (this.utilisateur != null)
+        {
+            if (serviceUtilisateur.getStatusfromCIN(utilisateur.getCin())!=1)
+            {
+                serviceUtilisateur.modifier_Status_par_cin(utilisateur.getCin());
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Compte Utilisateur activé ");
+                alert.setTitle("GG");
+                alert.show();
+            }
+            else
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Compte Utilisateur deja actif ");
+                alert.setTitle("GG");
+                alert.show();
+            }
+        }
+
+    }
 }

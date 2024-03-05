@@ -161,7 +161,7 @@ public class AjouterEtablissementAfterCreate implements Initializable {
             CodeETF.clear();
             TypeETF.clear();
             cin_utilisateurETF.clear();
-            Parent root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/EnAttente.fxml"));
             cin_utilisateurETF.getScene().setRoot(root);
         }
 
@@ -208,7 +208,7 @@ public class AjouterEtablissementAfterCreate implements Initializable {
             CurrentUser.setRole(1);
 
 
-            root = FXMLLoader.load(getClass().getResource("/accueil.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/EnAttente.fxml"));
         } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
@@ -248,17 +248,13 @@ public class AjouterEtablissementAfterCreate implements Initializable {
     public void addIdToEtab(Etablissement etablissement) {
         ServiceUtilisateur su = new ServiceUtilisateur();
         String req = "UPDATE etablissement SET id_utilisateur = ? WHERE id_etablissement = ?";
-        String req1 = "UPDATE utilisateur SET status = ? WHERE id_utilisateur = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            PreparedStatement ps1 = cnx.prepareStatement(req1);
             ps.setInt(1, su.getUserIdByCin(CurrentUser.getCin()));
             ps.setInt(2, etablissement.getId_etablissement());
-            ps1.setInt(1,1);
-            ps1.setInt(2,su.getUserIdByCin(CurrentUser.getCin()));
+
 
             int affectedRows = ps.executeUpdate();
-            int i = ps1.executeUpdate();
 
             if (affectedRows > 0) {
                 System.out.println("id added to etablissement: " + etablissement.getId_etablissement());

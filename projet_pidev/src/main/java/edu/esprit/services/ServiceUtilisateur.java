@@ -93,6 +93,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
 
     }
+
     public void modifier_par_cin(Utilisateur utilisateur) throws SQLException {
         String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ?  WHERE cin = ?";
         try {
@@ -438,6 +439,41 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
 
     }
+    public void modifier_Status_par_cin(int cin) {
+        String req = "UPDATE utilisateur SET Status =? WHERE cin = ?";
+
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, 1);
+            ps.setInt(2, cin);
+
+            ps.executeUpdate();
+            System.out.println("OTP modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+    public int getIdByCin(int cin) {
+        String req = "SELECT id_utilisateur FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id_utilisateur");
+            } else {
+                System.out.println("No user found with cin " + cin);
+                return -1; // You may choose a different value to represent "not found"
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            e.printStackTrace();
+            return -1; // Handle the exception, you may choose a different value here as well
+        }
+    }
+
 
 
     public Utilisateur getOneByCin(int cin) throws SQLException {
@@ -454,6 +490,7 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 user.setPrenom(rs.getString("prenom"));
                 user.setAdresse(rs.getString("adresse"));
                 user.setMdp(rs.getString("mdp"));
+                user.setImage("image");
                 // Set other properties as needed
                 return user;
             } else {
@@ -577,6 +614,20 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             return null;
         }
     }
+    public boolean verifyUser_Etab(int id) {
+        String req = "SELECT * FROM etablissement WHERE id_utilisateur = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();  // Returns true if a user with the specified ID is found, false otherwise
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public String getImagefromCin(int cin)
     {
         String req = "SELECT image FROM utilisateur WHERE cin = ?";

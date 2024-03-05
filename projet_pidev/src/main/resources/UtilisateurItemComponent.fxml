@@ -48,6 +48,18 @@
                   </Button>
                   <Label fx:id="userNOM" layoutX="130.0" layoutY="23.0" prefHeight="27.0" prefWidth="129.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="2750" />
                   <Label fx:id="UserRole" layoutX="633.0" layoutY="24.0" prefHeight="27.0" prefWidth="33.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="2024-02-22 00:00:00" />
+                  <Button layoutX="696.0" layoutY="20.0" mnemonicParsing="false" onAction="#activateUser" prefHeight="36.0" prefWidth="0.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/jaccepte.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

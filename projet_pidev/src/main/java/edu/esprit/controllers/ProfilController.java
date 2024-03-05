@@ -19,6 +19,7 @@ import javafx.util.Callback;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -51,6 +52,8 @@ public class ProfilController implements Initializable {
 
     @FXML
     private Label tfnom_init;
+    @FXML
+    private ImageView TFimage;
     ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
     private File selectedFile;
     @FXML
@@ -185,6 +188,7 @@ public class ProfilController implements Initializable {
         TFprenom.setText(CurrentUser.getPrenom());
 
 
+
         if(CurrentUser.getRole()==0)
         {
             TFrole.setText("Admin");
@@ -198,10 +202,18 @@ public class ProfilController implements Initializable {
             TFrole.setText("Candidat");
         }
         tfnom_init.setText(CurrentUser.getNom());
-        String imagePath = CurrentUser.getProfileImagePath();  // Change this to the actual method to get the image path
+
+        String imagePath = CurrentUser.getProfileImagePath();
         if (imagePath != null && !imagePath.isEmpty()) {
-            Image image = new Image("file:" + imagePath); // Assuming imagePath is a file path
-            profileImageView.setImage(image);
+            try {
+                // Use toURI().toURL() to convert the file path to a valid URL
+                Image image = new Image(new File(imagePath).toURI().toURL().toString());
+                System.out.println("path="+image);
+                TFimage.setImage(image);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
     }
     @FXML

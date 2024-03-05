@@ -20,7 +20,7 @@
          <children>
             <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="676.0" prefWidth="773.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 30 30 30;">
                <children>
-                  <Button layoutX="102.0" layoutY="578.0" mnemonicParsing="false" onAction="#ajouterUtilisateurAction" prefHeight="45.0" prefWidth="453.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Ajouter">
+                  <Button layoutX="102.0" layoutY="578.0" mnemonicParsing="false" onAction="#ajouterUtilisateurAction" prefHeight="45.0" prefWidth="233.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Ajouter">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -110,6 +110,11 @@
                      </font>
                   </Label>
                   <PasswordField fx:id="tfmdp_confirm" layoutX="203.0" layoutY="423.0" prefHeight="46.0" prefWidth="250.0" promptText="confirmmdp" stylesheets="@service2.css" />
+                  <Button layoutX="418.0" layoutY="581.0" mnemonicParsing="false" onAction="#cancelAjouter" prefHeight="45.0" prefWidth="233.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Cancel">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
             <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">

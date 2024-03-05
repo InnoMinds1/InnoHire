@@ -37,6 +37,7 @@ public class LoginController {
             return;
         }
         int cin = Integer.parseInt(TFcin.getText());
+        int id= sp.getIdByCin(cin);
 
 
         if (mdp.isEmpty())
@@ -115,15 +116,34 @@ public class LoginController {
                            alert1.show();
                        }
                        }
-                       else
-                       {
+                       else if (status==0 && !sp.verifyUser_Etab(id))
+                       {          System.out.println("first");
+                           System.out.println(status);
+                           System.out.println(u.getId_utilisateur());
                            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                           alert1.setContentText("VEILLEZ CREER UNE SOCIETE");
+                           alert1.setContentText("VEILLEZ creer un etablissement");
                            alert1.setTitle("Error");
                            alert1.show();
                            Parent root = null;
                            try {
                                root = FXMLLoader.load(getClass().getResource("/AjouterEtablissementAfterCreate.fxml"));
+                           } catch (IOException e) {
+                               throw new RuntimeException(e);
+                           }
+                           TFcin.getScene().setRoot(root);
+                       }
+                       else  if (status==0 && sp.verifyUser_Etab(id))
+                       {
+                           System.out.println("last");
+                           System.out.println(status);
+                           sp.verifyUser_Etab(u.getId_utilisateur());
+                           Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                           alert1.setContentText("EN ATTENTE");
+                           alert1.setTitle("ATTENDRE");
+                           alert1.show();
+                           Parent root = null;
+                           try {
+                               root = FXMLLoader.load(getClass().getResource("/EnAttente.fxml"));
                            } catch (IOException e) {
                                throw new RuntimeException(e);
                            }

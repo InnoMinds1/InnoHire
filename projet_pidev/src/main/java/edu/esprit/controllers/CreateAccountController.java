@@ -191,7 +191,7 @@ public class CreateAccountController {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText(null);
-                alert.setContentText("Representant ajouté avec succès.Veillez ajouter une société !");
+                alert.setContentText("Representant ajouté avec succès.Veillez ajouter un etablissement !");
                 alert.showAndWait();
                 CurrentUser.setCin(Integer.parseInt(TFcin.getText()));
                 CurrentUser.setId_utilisateur(serviceUtilisateur.getUserIdByCin(CurrentUser.getCin()));
@@ -228,6 +228,7 @@ public class CreateAccountController {
                 u.setImage(photoUrl);
                 try {
                     serviceUtilisateur.ajouter(u);
+                    serviceUtilisateur.modifier_Status_par_cin(u.getCin());
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Succès");
                     alert.setHeaderText(null);
@@ -289,6 +290,16 @@ public class CreateAccountController {
             profileImageView.setImage(selectedImage);
         }
     }
+    @FXML
+    void cancelAjouter(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        TFadresse.getScene().setRoot(root);
 
+    }
 
 }
