@@ -9,13 +9,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -27,9 +31,13 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class AjouterPublication implements Initializable {
+    @FXML
+    private Pane panee;
 
 
 
@@ -67,6 +75,32 @@ public class AjouterPublication implements Initializable {
 
     @FXML
     void ajouterPublicationAction(ActionEvent event) {
+
+        String captcha = generateCaptcha();
+
+        TextInputDialog dialog = new TextInputDialog();
+        //ouvrir dialogue
+        dialog.setTitle("CAPTCHA Verification");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Please enter the CAPTCHA code:\n");
+        Optional<String> result = dialog.showAndWait(); //afficher le dialogue  //optional se traite lorsque tu retournes une valeur nul
+        if (result.isPresent()) {
+            String userInput = result.get();
+            if (!userInput.equals(captcha)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("CAPTCHA Verification Failed");
+                alert.setHeaderText(null);
+                alert.setContentText("The CAPTCHA code you entered is incorrect. Please try again.");
+                alert.showAndWait();
+                return;
+            }
+        }
+
+
+
+
+
+
         try {
 
 
@@ -122,6 +156,70 @@ public class AjouterPublication implements Initializable {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
+    }
+
+
+    private String generateRandomString(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder stringBuilder = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            stringBuilder.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return stringBuilder.toString();
+    }
+    private String generateCaptcha() {
+        // Generate a random 4-character CAPTCHA code consisting of letters and numbers
+        String captcha = generateRandomString(4);
+
+        // Clear the existing content in the pane
+        panee.getChildren().clear();
+
+        // Set up random number generator for colors
+        Random random = new Random();
+
+        // Add shapes and text to the CAPTCHA
+        for (int i = 0; i < captcha.length(); i++) {
+            char character = captcha.charAt(i);
+
+            // Determine shape based on character type (letter or number)
+            Shape shape;
+            if (Character.isDigit(character)) {
+                // If character is a number, add a rectangle
+                shape = new Rectangle(30, 30);
+            } else {
+                // If character is a letter, do not add any shape
+                shape = null;
+            }
+
+            if (shape != null) {
+
+
+
+                shape.setLayoutX(i * 50 + 20);
+                shape.setLayoutY(30);
+
+                shape.setRotate(random.nextInt(40) - 20);
+
+                // Add the shape to the pane
+                panee.getChildren().add(shape);
+            }
+            Text text = new Text(String.valueOf(character));
+            text.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+            text.setFill(Color.rgb(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+
+            // Position the text
+            text.setLayoutX(i * 50 + 30);
+            text.setLayoutY(50);
+
+            // Rotate the text slightly
+            text.setRotate(random.nextInt(40) - 15); // Rotate between -5 and 5 degrees
+
+            // Add the text to the pane
+            panee.getChildren().add(text);
+        }
+
+        return captcha;
     }
 
     public void navigatetoAfficherPublicationAction(ActionEvent actionEvent) {
