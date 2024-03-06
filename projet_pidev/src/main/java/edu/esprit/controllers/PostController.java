@@ -214,7 +214,8 @@ public class PostController implements Initializable {
 
         // Set profile image
         if (post.getUtilisateur() != null && post.getUtilisateur().getImage() != null) {
-            String profileImgPath = post.getUtilisateur().getImage();
+            String imageName = post.getUtilisateur().getImage();
+            String profileImgPath = "/img/" + imageName;
             if (getClass().getResource(profileImgPath) != null) { // Vérifie si le chemin d'accès est valide
                 Image img = new Image(getClass().getResourceAsStream(profileImgPath));
                 this.imgProfile.setImage(img);
