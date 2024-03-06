@@ -67,6 +67,17 @@ public class AccueilController implements Initializable {
 
     @FXML
     void NavigateToEtablissement(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/Etablissement.fxml"));
+            TFcurrentusercin.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
 
     }
 
@@ -101,7 +112,7 @@ public class AccueilController implements Initializable {
         {
             listUserButton.setVisible(false);
             listClaimButton.setVisible(false);
-            etablissementButton.setVisible(false);
+            etablissementButton.setVisible(true);//khaleha ya kthiri aandha ma3na (sayari)
         }
 
     }
@@ -141,4 +152,6 @@ public class AccueilController implements Initializable {
         }
 
     }
+
+
 }

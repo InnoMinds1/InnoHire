@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,6 +46,9 @@ public class AjouterWalletController implements Initializable {
     private Label labelRegle;
     @FXML
     private CheckBox checkBoxRegle;
+
+    @FXML
+    private ImageView changeStatus;
     private final ServiceWallet sw = new ServiceWallet();
     private final ServiceEtablissement se = new ServiceEtablissement();
 
@@ -53,12 +58,14 @@ public class AjouterWalletController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDate = currentDate.format(formatter);
         dateCreationETF.setText(formattedDate);
+        code_EtabETF.setVisible(false);
+        statusETF.setText("En attente de Confirmation Admin");
 
-if (CurrentEtablissement.getIdEtablissement()!=0) {
-    Etablissement etablissement = null;
-    try {
-        etablissement = se.getOneByID(CurrentEtablissement.getIdEtablissement());
-    } catch (SQLException e) {
+        if (CurrentEtablissement.getIdEtablissement()!=0) {
+      Etablissement etablissement = null;
+     try {
+         etablissement = se.getOneByID(CurrentEtablissement.getIdEtablissement());
+         } catch (SQLException e) {
         throw new RuntimeException(e);
     }
     code_EtabETF.setText(String.valueOf(etablissement.getCodeEtablissement()));
@@ -70,8 +77,8 @@ if (CurrentEtablissement.getIdEtablissement()!=0) {
         if (CurrentUser.getRole() != 0) {
             BalanceETF.setText("0");
             BalanceETF.setEditable(false);
-            statusETF.setText("0");
             statusETF.setEditable(false);
+            changeStatus.setVisible(false);
         }
         else {
             labelRegle.setVisible(false);
@@ -119,22 +126,17 @@ if (CurrentEtablissement.getIdEtablissement()!=0) {
             return;
         }
 
-        int statueE;
-        try {
-            statueE = Integer.parseInt(status);
+          // Replace this with the actual status text
 
-            // Check if the parsed value is either 0 or 1
-            if (statueE != 0 && statueE != 1) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Le statut doit être soit '0 : Wallet non actif ' soit '1 : Wallet actif ' !");
-            alert.showAndWait();
-            return;
+        int statueE;
+
+// Check the status text and set statueE accordingly
+        if ("En attente de Confirmation Admin".equals(status)) {
+            statueE = 0;
+        }  else {
+            statueE = 1;
         }
+
 
 
 
@@ -234,5 +236,19 @@ if (CurrentEtablissement.getIdEtablissement()!=0) {
     }
 
 
+    public void changeStatus(MouseEvent mouseEvent) {
+        String currentStatus = statusETF.getText();
+
+        if ("Actif".equals(currentStatus)) {
+            // Changement à "Non Actif"
+            statusETF.setText("En attente de Confirmation Admin");
+        } else if ("En attente de Confirmation Admin".equals(currentStatus)) {
+            // Changement à "Actif"
+            statusETF.setText("Actif");
+        } else {
+            // Gérez le cas où le texte ne correspond ni à "Actif" ni à "Non Actif"
+            System.out.println("Statut inconnu : " + currentStatus);
+        }
+    }
 }
 

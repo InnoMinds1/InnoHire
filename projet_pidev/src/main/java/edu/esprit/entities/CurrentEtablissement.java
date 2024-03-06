@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CurrentEtablissement {
 
-    private static int idEtablissement=646;
+    private static int idEtablissement;
     private static String nom;
     private static String lieu;
     private static int codeEtablissement;

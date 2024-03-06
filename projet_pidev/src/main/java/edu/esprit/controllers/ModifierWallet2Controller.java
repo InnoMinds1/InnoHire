@@ -200,15 +200,18 @@ public class ModifierWallet2Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
             Parent root = loader.load();
 
-            // Obtenir la scène actuelle
-            Scene currentScene = BalanceETF.getScene();
+// Set your preferred width and height
+            double preferredWidth = 1451;
+            double preferredHeight = 830;
 
-            // Créer une nouvelle scène avec la même taille que la scène actuelle
-            Scene newScene = new Scene(root, currentScene.getWidth(), currentScene.getHeight());
+            Scene currentScene = mainAnchor.getScene();
 
-            Stage stage = (Stage) BalanceETF.getScene().getWindow();
-            stage.setScene(newScene);
-            stage.show();
+
+
+            currentScene.setRoot(root);
+            currentScene.getWindow().setWidth(preferredWidth);
+            currentScene.getWindow().setHeight(preferredHeight);
+
 
         } catch (IOException e) {
             e.printStackTrace();
