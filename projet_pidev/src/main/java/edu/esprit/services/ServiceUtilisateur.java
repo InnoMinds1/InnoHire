@@ -674,6 +674,31 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
         return null; // Return null in case of an exception
     }
 
+    public Utilisateur getByCin(int cin) {
+        String req = "SELECT * FROM utilisateur WHERE cin = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, cin);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Utilisateur user = new Utilisateur();
+                user.setId_utilisateur(rs.getInt("id_utilisateur"));
+                user.setCin(rs.getInt("cin"));
+                user.setNom(rs.getString("nom"));
+                user.setPrenom(rs.getString("prenom"));
+                user.setAdresse(rs.getString("adresse"));
+                user.setMdp(rs.getString("mdp"));
+                // Set other properties as needed
+                return user;
+            } else {
+                System.out.println("Aucun utilisateur avec ce CIN : " + cin);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null; // Retourner null si aucun utilisateur n'est trouvé
+    }
+
 
 
 }

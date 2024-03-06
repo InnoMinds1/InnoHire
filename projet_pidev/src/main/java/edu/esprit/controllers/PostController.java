@@ -3,6 +3,7 @@ package edu.esprit.controllers;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePost;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -197,7 +198,7 @@ public class PostController implements Initializable {
 
 
             ServiceUtilisateur su = new ServiceUtilisateur();
-            Utilisateur cu = su.getOneByID(CurrentUser.getId_utilisateur());
+            Utilisateur cu = su.get_One_ByCin(CurrentUser.getCin());
             Commentaire c1 = new Commentaire(post, cu, "", LocalDate.of(2023, 02, 4));
             try {
                 sc.ajouter(c1);
@@ -212,8 +213,8 @@ public class PostController implements Initializable {
         this.post = post;
 
         // Set profile image
-        if (post.getUtilisateur() != null && post.getUtilisateur().getProfileImg() != null) {
-            String profileImgPath = post.getUtilisateur().getProfileImg();
+        if (post.getUtilisateur() != null && post.getUtilisateur().getImage() != null) {
+            String profileImgPath = post.getUtilisateur().getImage();
             if (getClass().getResource(profileImgPath) != null) { // Vérifie si le chemin d'accès est valide
                 Image img = new Image(getClass().getResourceAsStream(profileImgPath));
                 this.imgProfile.setImage(img);
@@ -283,8 +284,8 @@ public class PostController implements Initializable {
 
         Post post = new Post();
         Utilisateur user = new Utilisateur();
-        user.setnom(post1.getUtilisateur().getNom());
-        user.setProfileImg(post1.getUtilisateur().getProfileImg());
+        user.setNom(post1.getUtilisateur().getNom());
+        user.setImage(post1.getUtilisateur().getImage());
 
         post.setUtilisateur(user);
         post.setDate(post1.getDate());
@@ -314,7 +315,8 @@ public class PostController implements Initializable {
             return; // Exit the method as there's nothing to modify
         } else {
             // Check if the current user has the right to modify posts
-            if (CurrentUser.getRole() == 0 || selectedPost.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur()) {
+
+            if (CurrentUser.getRole() == 0 || selectedPost.getUtilisateur().getCin() == CurrentUser.getCin()) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierPublication.fxml"));
                     Parent root = loader.load();
@@ -366,7 +368,7 @@ public class PostController implements Initializable {
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Check if the current user has the right to delete posts
-            if (CurrentUser.getRole() == 0 || (CurrentUser.getRole() != 0 && post.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur())) {
+            if (CurrentUser.getRole() == 0 || (CurrentUser.getRole() != 0 && post.getUtilisateur().getCin() == CurrentUser.getCin())) {
                 try {
                     int idPost = post.getId_post();
                     ServicePost servicePost = new ServicePost();

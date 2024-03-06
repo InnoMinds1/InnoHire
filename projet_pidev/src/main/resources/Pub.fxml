@@ -189,7 +189,7 @@
                   </cursor>
                </Button>
                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="100.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="representer@esprit.tn" />
-               <Label fx:id="nameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="79.0" prefHeight="27.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Representer" textAlignment="CENTER" />
+               <Label fx:id="userRepName" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="79.0" prefHeight="27.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Representer" textAlignment="CENTER" />
                <Label layoutX="101.0" layoutY="644.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
                <AnchorPane fx:id="AnchoPaneMessage131" layoutX="24.0" layoutY="165.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                   <children>

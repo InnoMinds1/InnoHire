@@ -3,6 +3,7 @@ package edu.esprit.services;
 
 import edu.esprit.entities.Post;
 import edu.esprit.entities.PostAudience;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
@@ -50,7 +51,6 @@ public class ServicePost implements IService<Post> {
             ps.setInt(1, post.getUtilisateur().getId_utilisateur());
             ps.setString(2, post.getAudience().toString());
             ps.setTimestamp(3, Timestamp.valueOf(currentDate));
-
             ps.setString(4, post.getCaption());
             ps.setString(5, post.getImage());
             ps.setInt(6, post.getTotalReactions());

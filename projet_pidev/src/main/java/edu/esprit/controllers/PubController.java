@@ -1,9 +1,12 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Post;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
 
 
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,6 +67,9 @@ public class PubController implements Initializable {
 
     @FXML
     private Label receivernomLabel2;
+
+@FXML
+    private Label userRepName;
     private List<Post> posts = new ArrayList<>();
 
     @FXML
@@ -97,6 +103,7 @@ public class PubController implements Initializable {
                 RepresentantPane.setVisible(true);
                 CandidatPane.setVisible(false);
                 nameUserLabel.setText(CurrentUser.getNom());
+                userRepName.setText( CurrentUser.getNom());
                 break;
             case 2:
                 AdminPane.setVisible(false);
@@ -163,8 +170,8 @@ public class PubController implements Initializable {
 
         Post post = new Post();
         Utilisateur user = new Utilisateur();
-        user.setnom(post1.getUtilisateur().getNom());
-        user.setProfileImg(post1.getUtilisateur().getProfileImg());
+        user.setNom(post1.getUtilisateur().getNom());
+        user.setImage(post1.getUtilisateur().getImage());
 
         post.setUtilisateur(user);
         post.setDate(post1.getDate());

@@ -119,7 +119,7 @@ public class LoginController {
                        alert.setTitle("Oui");
                        alert.show();
                        try {
-                           Parent root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
+                           Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
                            TFcin.getScene().setRoot(root);
                        } catch (IOException e) {
                            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
@@ -174,7 +174,7 @@ public class LoginController {
                        alert.setTitle("Oui");
                        alert.show();
                        try {
-                           Parent root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
+                           Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
                            TFcin.getScene().setRoot(root);
                        } catch (IOException e) {
                            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);

@@ -3,6 +3,7 @@ package edu.esprit.controllers;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServicePost;
 
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,7 +70,7 @@ public class AjouterPublication implements Initializable {
     private Label nameUserLabel;
 
     private final ServicePost sp=new ServicePost();
-    private final ServiceUtilisateur  su=new ServiceUtilisateur();
+    private final ServiceUtilisateur su=new ServiceUtilisateur();
 
     @FXML
     void ajouterPublicationAction(ActionEvent event) {
@@ -128,8 +129,8 @@ public class AjouterPublication implements Initializable {
             }
             String imageBDD= "/img/"+imageETF.getText();
 
-            int idUtilisateur = CurrentUser.getId_utilisateur();
-            Utilisateur utilisateur = su.getOneByID(idUtilisateur);
+            int cinUtilisateur = CurrentUser.getCin();
+            Utilisateur utilisateur = su.get_One_ByCin(cinUtilisateur);
             Post post = new Post(PostAudience.valueOf(audienceText), captionText, imageBDD);
             post.setUtilisateur(utilisateur);
             post.setTotalReactions(0);

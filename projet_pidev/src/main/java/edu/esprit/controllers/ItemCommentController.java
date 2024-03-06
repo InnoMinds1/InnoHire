@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 import edu.esprit.entities.Commentaire;
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.services.ServiceCommentaire;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,7 +54,7 @@ public class ItemCommentController {
         // Check if the current user has the right to modify comments
         if (CurrentUser.getRole() != 0) {
             // Check if the selected comment belongs to the current user
-            if (selectedCommentaire.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur()) {
+            if (selectedCommentaire.getUtilisateur().getCin() == CurrentUser.getCin()) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaire.fxml"));
                     Parent root = loader.load();
@@ -95,7 +96,7 @@ public class ItemCommentController {
         // Check if the current user's role is not 0
         if (CurrentUser.getRole() != 0) {
             // Check if the selected comment belongs to the current user
-            if (selectedCommentaire.getUtilisateur().getId_utilisateur() == CurrentUser.getId_utilisateur()) {
+            if (selectedCommentaire.getUtilisateur().getCin() == CurrentUser.getCin()) {
                 // If an element is selected, show the confirmation of deletion
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Confirmation de suppression");
