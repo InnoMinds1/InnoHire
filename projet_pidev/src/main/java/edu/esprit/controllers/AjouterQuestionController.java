@@ -42,6 +42,9 @@ public class AjouterQuestionController {
         private final questionService qs = new questionService();
         private final quizService quizService = new quizService();
 
+    public AjouterQuestionController() throws SQLException {
+    }
+
     @FXML
     public void initialize() {
         List<Integer> codesQuiz;
@@ -176,6 +179,7 @@ public class AjouterQuestionController {
             e.printStackTrace();
         }
     }
+
 
 
     }

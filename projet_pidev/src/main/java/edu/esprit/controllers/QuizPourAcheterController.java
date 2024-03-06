@@ -1,9 +1,8 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.Etablissement;
-import edu.esprit.entities.Question;
-import edu.esprit.entities.Quiz;
-import edu.esprit.entities.CurrentWallet;
+import edu.esprit.entities.*;
+import edu.esprit.services.ServiceEtablissement;
+import edu.esprit.services.ServiceWallet;
 import edu.esprit.services.quizService;
 import edu.esprit.utils.DataSource;
 import javafx.event.ActionEvent;
@@ -39,6 +38,12 @@ public class QuizPourAcheterController {
     private ImageView imageView;
     private Quiz quiz;
     private quizService qs;
+    Connection cnx = DataSource.getInstance().getCnx();
+
+
+
+    public QuizPourAcheterController() throws SQLException {
+    }
 
 
     public void setData(Quiz quiz) {
@@ -55,14 +60,20 @@ public class QuizPourAcheterController {
         }
     }
 
+
+
     @FXML
     void AcheterQuizOnClick(ActionEvent event) {
+
         try {
+            ServiceEtablissement se =new ServiceEtablissement();
+            ServiceWallet sw =new ServiceWallet();
+            Etablissement etablissementCo=se.getOneByID(CurrentEtablissement.getIdEtablissement());
+            Wallet walletCo=sw.getOneByID(CurrentWallet.getIdWallet());
+
             int idQuiz = quiz.getId_quiz();
-            Etablissement e = new Etablissement();
-            CurrentWallet.setEtablissement(e);
-            CurrentWallet.setBalance(90);
-            int idEtablissement = CurrentWallet.getEtablissement().getIdEtablissement();
+
+            int idEtablissement = etablissementCo.getIdEtablissement();
             Connection cnx = DataSource.getInstance().getCnx();
 
             // Vérifier si le quiz est déjà acheté
@@ -84,7 +95,7 @@ public class QuizPourAcheterController {
 
             // Vérifier si le solde est suffisant pour l'achat
             int prixQuiz = quiz.getPrix_quiz(); // Remplacez getPrixQuiz par la méthode réelle pour obtenir le prix du quiz
-            if (CurrentWallet.getBalance() < prixQuiz) {
+            if (walletCo.getBalance() < prixQuiz) {
                 // Afficher un message indiquant que le solde est insuffisant
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Solde insuffisant");
@@ -102,13 +113,13 @@ public class QuizPourAcheterController {
                 int rowsAffected = preparedStatement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    // Mettre à jour le solde après l'achat
-                    CurrentWallet.setBalance(CurrentWallet.getBalance() - prixQuiz);
-
                     // Afficher une alerte de succès
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Achat réussi");
-                    alert.setContentText("Achat du quiz réussi. Nouveau solde : " + CurrentWallet.getBalance());
+
+                    // Mettre à jour le solde après l'achat
+                    walletCo.setBalance(walletCo.getBalance() - prixQuiz);
+                    alert.setContentText("Achat du quiz réussi. Nouveau solde : " + walletCo.getBalance());
                     alert.show();
                 } else {
                     // Afficher une alerte d'échec
@@ -117,6 +128,7 @@ public class QuizPourAcheterController {
                     alert.setContentText("Échec de l'achat du quiz.");
                     alert.show();
                 }
+                sw.modifier(walletCo);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -129,8 +141,10 @@ public class QuizPourAcheterController {
 
 
 
+
+
     @FXML
-    private void showQuizDetails(ActionEvent event) {
+    private void showQuizDetails(ActionEvent event) throws SQLException {
         int codeQuiz = quiz.getCode_quiz();
         if (qs == null) {
             qs = new quizService();

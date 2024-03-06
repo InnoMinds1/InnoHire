@@ -1,9 +1,6 @@
 package edu.esprit.services;
 
-import edu.esprit.entities.CurrentWallet;
-import edu.esprit.entities.Etablissement;
-import edu.esprit.entities.Question;
-import edu.esprit.entities.Quiz;
+import edu.esprit.entities.*;
 import edu.esprit.utils.DataSource;
 
 import java.sql.Connection;
@@ -17,6 +14,14 @@ import java.util.Set;
 
 public class quizService implements IService<Quiz> {
     Connection cnx = DataSource.getInstance().getCnx();
+    ServiceEtablissement se =new ServiceEtablissement();
+    ServiceWallet sw =new ServiceWallet();
+    Etablissement etablissementCo=se.getOneByID(CurrentEtablissement.getIdEtablissement());
+    Wallet walletCo=sw.getOneByID(CurrentWallet.getIdWallet());
+
+    public quizService() throws SQLException {
+    }
+
     @Override
     public void ajouter(Quiz quiz) throws SQLException {
 
@@ -69,7 +74,7 @@ public class quizService implements IService<Quiz> {
     }
 
     @Override
-    public Set<Quiz> getAll() {
+    public Set<Quiz> getAll() throws SQLException{
         Set<Quiz> quizSet = new HashSet<>();
 
         try {
@@ -199,9 +204,8 @@ public class quizService implements IService<Quiz> {
         Set<Quiz> quizSet = new HashSet<>();
 
         try {
-            Etablissement e = new Etablissement();
-            CurrentWallet.setEtablissement(e);
-            int idEtablissement = CurrentWallet.getEtablissement().getIdEtablissement();
+
+            int idEtablissement = walletCo.getEtablissement().getIdEtablissement();
 
             // Connexion à votre base de données (assurez-vous d'avoir une connexion valide ici)
             /* obtenir votre connexion à la base de données */;

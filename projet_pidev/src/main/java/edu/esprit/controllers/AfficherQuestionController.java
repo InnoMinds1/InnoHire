@@ -1,8 +1,11 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Question;
 import edu.esprit.entities.Quiz;
 import edu.esprit.services.questionService;
+import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +23,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -35,6 +44,11 @@ public class AfficherQuestionController implements Initializable {
     private ScrollPane scrollA;
     @FXML
     private TextField TFsearch;
+    @FXML
+    private Label receiverNameLabel21;
+
+    @FXML
+    private Label LabelMail;
 
 
     private questionService serviceQ = new questionService();
@@ -47,12 +61,29 @@ public class AfficherQuestionController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    private void remplirReceiverNameLabel() {
+        // Assurez-vous que CurrentUser.getNom() renvoie la valeur souhaitée.
+        String nomUtilisateur = CurrentUser.getNom();
+
+        // Mettez à jour le texte du Label avec le nom de l'utilisateur.
+        receiverNameLabel21.setText(nomUtilisateur);
+    }
+    private void remplirReceiverMailLabel() {
+        // Assurez-vous que CurrentUser.getNom() renvoie la valeur souhaitée.
+        String mail = CurrentUser.getAdresse();
+
+        // Mettez à jour le texte du Label avec le nom de l'utilisateur.
+        LabelMail.setText(mail);
+    }
 
 
     // Méthode pour récupérer la question à partir de la grille
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        remplirReceiverNameLabel();
+        remplirReceiverMailLabel();
 
         int column = 0;
         int row = 1;
@@ -110,9 +141,15 @@ public class AfficherQuestionController implements Initializable {
                 Set<Question> allQuestions = serviceQ.getAll();
 
                 // Filtrer les questions en fonction du code Quiz
-                List<Question> filteredQuestions = allQuestions.stream()
-                        .filter(question -> String.valueOf(question.getQuiz().getCode_quiz()).equals(searchQuery))
-                        .collect(Collectors.toList());
+                List<Question> filteredQuestions = new ArrayList<>();
+
+                for (Question question : allQuestions) {
+                    String codeString = String.valueOf(question.getQuiz().getCode_quiz());
+                    if (codeString.startsWith(searchQuery)) {
+                        filteredQuestions.add(question);
+                    }
+                }
+
                 Set<Question> filteredQuestionsSet = new HashSet<>(filteredQuestions);
 
                 // Mettre à jour la vue avec les résultats de la recherche
@@ -140,6 +177,11 @@ public class AfficherQuestionController implements Initializable {
             }
         }
     }
+
+
+
+
+
 
     private void updateQuestionGridView(Set<Question> questions) {
         // Effacer le contenu actuel du GridPane
@@ -171,6 +213,68 @@ public class AfficherQuestionController implements Initializable {
             }
         }
     }
+    public void navigateToQuiz(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuiz.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void exportToExcel(ActionEvent event) {
+        try {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Questions par Code Quiz");
+
+            // En-têtes de colonnes
+            Row headerRow = sheet.createRow(0);
+            String[] columns = {"Code Quiz", "Question", "Choix", "Réponse Correcte"};
+            for (int i = 0; i < columns.length; i++) {
+                Cell cell = headerRow.createCell(i);
+                cell.setCellValue(columns[i]);
+            }
+
+            // Remplir les données dans la feuille Excel
+            int rowIndex = 1;
+            for (Question question : setQ) {
+                Row row = sheet.createRow(rowIndex++);
+                row.createCell(0).setCellValue(question.getQuiz().getCode_quiz());
+                row.createCell(1).setCellValue(question.getQuestion());
+                row.createCell(2).setCellValue(question.getChoix());
+                row.createCell(3).setCellValue(question.getReponse_correcte());
+            }
+
+            // Ajuster automatiquement la largeur des colonnes
+            for (int i = 0; i < columns.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            // Enregistrer le fichier Excel
+            String excelFilePath = "QuestionsParCodeQuiz.xlsx";
+            try (FileOutputStream outputStream = new FileOutputStream(excelFilePath)) {
+                workbook.write(outputStream);
+            }
+
+            // Afficher une confirmation
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Export Excel");
+            alert.setHeaderText(null);
+            alert.setContentText("Les questions ont été exportées vers le fichier Excel : " + excelFilePath);
+            alert.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs liées à l'écriture du fichier Excel
+        }
+    }
+    }
 
 
 
@@ -180,4 +284,6 @@ public class AfficherQuestionController implements Initializable {
 
 
 
-}
+
+
+

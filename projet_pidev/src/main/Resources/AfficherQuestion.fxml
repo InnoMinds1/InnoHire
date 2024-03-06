@@ -31,6 +31,16 @@
                   </GridPane>
                </content>
             </ScrollPane>
+            <Button layoutX="21.0" layoutY="637.0" mnemonicParsing="false" onAction="#navigateToQuiz" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="VERS QUIZ">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="738.0" layoutY="637.0" mnemonicParsing="false" onAction="#exportToExcel" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="EXPORT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <StackPane fx:id="StackPane" layoutX="994.0" layoutY="21.0" prefHeight="677.0" prefWidth="362.0">
@@ -39,7 +49,7 @@
                <children>
                   <Label layoutX="101.0" layoutY="630.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
                   <Label layoutX="34.0" layoutY="131.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Desktop" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="105.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
+                  <Label fx:id="LabelMail" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="105.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
                   <Label fx:id="receiverNameLabel21" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="84.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
                   <Label layoutX="292.0" layoutY="149.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See all" />
                   <AnchorPane fx:id="AnchoPaneMessage1311" layoutX="24.0" layoutY="175.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">

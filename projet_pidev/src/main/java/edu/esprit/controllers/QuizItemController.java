@@ -142,10 +142,12 @@ public class QuizItemController {
             alert.setContentText("Erreur lors de la modification du quiz.");
             alert.setTitle("Erreur de modification");
             alert.show();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
     @FXML
-    private void showQuizDetails(ActionEvent event) {
+    private void showQuizDetails(ActionEvent event) throws SQLException {
         int codeQuiz = quiz.getCode_quiz();
         if (qs == null) {
             qs = new quizService();

@@ -73,8 +73,6 @@
             <children>
                 <Label layoutX="101.0" layoutY="630.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
                 <Label layoutX="34.0" layoutY="131.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Desktop" />
-                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="105.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
-                <Label fx:id="receiverNameLabel21" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="84.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
                 <Label layoutX="292.0" layoutY="149.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See all" />
                 <AnchorPane fx:id="AnchoPaneMessage1311" layoutX="24.0" layoutY="175.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                     <children>

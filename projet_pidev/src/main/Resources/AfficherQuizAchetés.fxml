@@ -13,7 +13,7 @@
     <children>
         <AnchorPane fx:id="container" layoutX="31.0" layoutY="22.0" prefHeight="675.0" prefWidth="956.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
             <children>
-                <Label layoutX="21.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="List Des Quiz Achetés" />
+                <Label layoutX="21.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Liste Des Quiz Achetés" />
                 <ScrollPane fx:id="scrollA" fitToWidth="true" layoutX="21.0" layoutY="80.0" prefHeight="547.0" prefWidth="919.0">
                     <content>
                         <GridPane fx:id="gridA" prefHeight="74.0" prefWidth="904.0">
@@ -31,7 +31,7 @@
                     <children>
                         <Label layoutX="101.0" layoutY="630.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
                         <Label layoutX="34.0" layoutY="131.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="Desktop" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="105.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
+                        <Label fx:id="LabelMail" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="105.0" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="Admin@esprit.tn" />
                         <Label fx:id="receiverNameLabel21" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="84.0" prefHeight="20.0" prefWidth="219.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Admin" textAlignment="CENTER" />
                         <Label layoutX="292.0" layoutY="149.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="See all" />
                         <AnchorPane fx:id="AnchoPaneMessage1311" layoutX="24.0" layoutY="175.0" prefHeight="455.0" prefWidth="315.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">

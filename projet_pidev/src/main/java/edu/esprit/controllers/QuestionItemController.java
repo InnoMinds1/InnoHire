@@ -151,6 +151,8 @@ public class QuestionItemController {
             alert.setContentText("Erreur lors de la modification de la question.");
             alert.setTitle("Erreur de modification");
             alert.show();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

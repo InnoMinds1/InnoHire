@@ -7,7 +7,7 @@ package edu.esprit.entities;
         private static  int cin= 1444;
         private static String nom="repname";
         private static String prenom;
-        private static String adresse;
+        private static String adresse="Reprentant@gmail.com";
         private static String mdp;
         private static int role = 1;
 

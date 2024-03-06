@@ -36,7 +36,7 @@ public class ModifierQuestionController {
 
     private Question question;
     private questionService qs;
-    public void setData(Question question) {
+    public void setData(Question question) throws SQLException {
         this.question = question;
         TFquestionModify.setText(question.getQuestion());
         TFchoixModify.setText(question.getChoix());

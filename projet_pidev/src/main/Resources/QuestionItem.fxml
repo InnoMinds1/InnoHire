@@ -18,17 +18,17 @@
                   <Font size="21.0" />
                </font>
             </Text>
-            <Text fx:id="LabelChoix" layoutX="442.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="1)ey 2)le 3) verifvier" wrappingWidth="172.00003356933598">
+            <Text fx:id="LabelChoix" layoutX="386.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="1)ey 2)le 3) verifvier" wrappingWidth="197.60000915527348">
                <font>
                   <Font size="21.0" />
                </font>
             </Text>
-            <Text fx:id="labelCodeQuiz" layoutX="633.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="125" wrappingWidth="41.59999999999991">
+            <Text fx:id="labelCodeQuiz" layoutX="633.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="125" wrappingWidth="35.19997558593741">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="LabelReponseCorrecte" layoutX="700.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="1" wrappingWidth="30.936891555786133">
+            <Text fx:id="LabelReponseCorrecte" layoutX="698.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="1" wrappingWidth="20.536867141723633">
                <font>
                   <Font size="21.0" />
                </font>
