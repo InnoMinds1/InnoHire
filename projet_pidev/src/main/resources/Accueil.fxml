@@ -85,7 +85,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="listUserButton" layoutX="14.0" layoutY="63.0" mnemonicParsing="false" onAction="#NavigatoToListUsers" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List users">
+                        <Button fx:id="listUserButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#NavigatoToListUsers" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List users">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -97,7 +97,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="postButton" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Make Post">
+                        <Button fx:id="postButton" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Make Post">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -109,7 +109,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="listClaimButton" layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List Claim">
+                        <Button fx:id="listClaimButton" layoutX="14.0" layoutY="422.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="List Claim">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -121,7 +121,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="etablissementButton" layoutX="17.0" layoutY="229.0" mnemonicParsing="false" onAction="#NavigateToEtablissement" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
+                        <Button fx:id="etablissementButton" layoutX="14.0" layoutY="131.0" mnemonicParsing="false" onAction="#NavigateToEtablissement" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Etablishment">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -133,7 +133,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="settingsButton" layoutX="17.0" layoutY="345.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Settings &amp; Privacy">
+                        <Button fx:id="settingsButton" layoutX="14.0" layoutY="245.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Settings &amp; Privacy">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -145,7 +145,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="helpButton" layoutX="17.0" layoutY="399.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Help &amp; Support">
+                        <Button fx:id="helpButton" layoutX="14.0" layoutY="300.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Help &amp; Support">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -157,7 +157,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="chatButton" layoutX="17.0" layoutY="288.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Chat">
+                        <Button fx:id="chatButton" layoutX="14.0" layoutY="189.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Chat">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
