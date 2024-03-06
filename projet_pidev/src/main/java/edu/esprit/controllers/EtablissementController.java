@@ -94,6 +94,9 @@ public class EtablissementController implements Initializable {
     @FXML
     private Button acheterQuizzBtn;
 
+    @FXML
+    private TextField searchField;
+
 
 
 
@@ -268,7 +271,38 @@ public class EtablissementController implements Initializable {
 
 
         }
+
+
+
+
+// Add an event listener to the textProperty of the searchField
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                if (newValue.isEmpty()) {
+                    // If the search text is empty, reload the full list of establishments
+                    etablissements.clear();
+                    etablissements.addAll(getData());
+                    populateGrid();
+                } else {
+                    // Filter the establishments based on the search text
+                    List<Etablissement> filteredData = filterData(newValue);
+
+                    // Update the UI with the filtered data
+                    updateUI(filteredData);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle the exception appropriately
+            }
+        });
+
+
+
     }
+
+
+
+
+
 
     private void setupListeners() {
         myListener = new MyListener() {
@@ -465,6 +499,46 @@ public class EtablissementController implements Initializable {
             afficherAlerte("Ajoutez un portefeuille à votre établissement.");
         }
     }
+
+
+    /***-------------------------Metier-----------------------**/
+            /***-------------Recherche----------------**/
+    private List<Etablissement> filterData(String searchText) throws SQLException {
+        List<Etablissement> filteredEtablissements = new ArrayList<>();
+
+        for (Etablissement etablissement : etablissements) {
+            // Check if the name or other relevant fields contain the search text
+            if (etablissement.getNom().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredEtablissements.add(etablissement);
+            }
+        }
+
+        return filteredEtablissements;
+    }
+
+    // Add a method to update the UI with the filtered data
+    private void updateUI(List<Etablissement> filteredData) {
+        // Update the UI with the filtered data
+        etablissements.clear();
+        etablissements.addAll(filteredData);
+
+        // Populate the grid with the updated data
+        populateGrid();
+    }
+
+                        /***-------------Tri----------------**/
+  @FXML
+  private void sortByName() {
+      // Sort the etablissements by name
+      etablissements.sort(Comparator.comparing(Etablissement::getNom));
+      // Update the UI with the sorted data
+      populateGrid();
+  }
+
+    /***-------------------------End Metier-----------------------**/
+
+
+
 
     public void acheterQuiz(ActionEvent actionEvent) {
         //Jaww Etablissement
