@@ -1,7 +1,6 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Commentaire;
-import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceCommentaire;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

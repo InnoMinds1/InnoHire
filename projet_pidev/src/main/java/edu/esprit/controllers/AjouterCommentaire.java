@@ -3,8 +3,6 @@ package edu.esprit.controllers;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePost;
-import edu.esprit.services.ServiceUtilisateur;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
