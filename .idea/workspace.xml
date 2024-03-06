@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/TestKhedmetGafsi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/testKhedmetGafsi.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AccueilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AccueilController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterWalletController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierWallet2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierWallet2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CurrentEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CurrentEtablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceEtablissement.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceEtablissement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Accueil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Accueil.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/AjouterWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/AjouterWallet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/ModifierWallet2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/ModifierWallet2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Candidat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Representant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Utilisateur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/IService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/ServiceUtilisateur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/tests/Main.class" beforeDir="false" />
-    </list>
+    <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,18 +36,23 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.3.2:clean].executor": "Run",
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor": "Run",
     "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java",
-    "last_opened_file_path": "C:/Users/digoh/IdeaProjects/InnoHire",
+    "last_opened_file_path": "C:/Users/digoh/OneDrive/Bureau/InnoHire",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15820312",
+    "project.structure.side.proportion": "0.31609195",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -83,6 +68,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
         <option value="jdk-20.0.2-corretto-20.0.2.1-4caba194b151-5bc9ecd2" />
       </set>
     </attachedChunks>
@@ -98,11 +84,17 @@
       <workItem from="1709638882521" duration="4461000" />
       <workItem from="1709645984452" duration="352000" />
       <workItem from="1709682551554" duration="1709000" />
-      <workItem from="1709685308879" duration="14672000" />
+      <workItem from="1709685308879" duration="33978000" />
+      <workItem from="1709747344349" duration="108000" />
+      <workItem from="1709752147454" duration="6428000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

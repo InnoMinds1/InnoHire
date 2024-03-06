@@ -187,6 +187,20 @@ public class ListUsersControllers implements Initializable {
 
     }
 
+    public void navigateToMakePost(ActionEvent actionEvent) {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
+            utilisateurContainer.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
+
     @FXML
     void Logout(ActionEvent event) {
         CurrentUser.setId_utilisateur(0);
@@ -207,6 +221,7 @@ public class ListUsersControllers implements Initializable {
             alert.show();
         }
     }
+
     private void performSearch(String searchTerm) {
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
 
