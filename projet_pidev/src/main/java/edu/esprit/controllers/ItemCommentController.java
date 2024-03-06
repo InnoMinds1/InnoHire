@@ -79,11 +79,25 @@ public class ItemCommentController {
             }
         } else {
             // Display a message indicating that the user does not have the right to modify comments
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Attention");
-            alert.setHeaderText(null);
-            alert.setContentText("Vous n'avez pas le droit de modifier des commentaires.");
-            alert.showAndWait();
+
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaire.fxml"));
+                Parent root = loader.load();
+                ModifierCommentaire controller = loader.getController();
+                controller.initData(selectedCommentaire); // Pass the selected comment to the modification interface controller
+
+                // Get the current scene
+                Scene scene = labelDescription.getScene();
+
+                // Change the content of the scene
+                scene.setRoot(root);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+
         }
     }
 
@@ -92,6 +106,7 @@ public class ItemCommentController {
     public void supprimer(ActionEvent actionEvent) {
 
         Commentaire selectedCommentaire = commentaire;
+        System.out.println(CurrentUser.getRole());
 
         // Check if the current user's role is not 0
         if (CurrentUser.getRole() != 0) {
@@ -124,12 +139,30 @@ public class ItemCommentController {
                 alert.showAndWait();
             }
         } else {
-            // Display a message indicating that the user does not have the right to delete comments
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Attention");
+
+
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation de suppression");
             alert.setHeaderText(null);
-            alert.setContentText("Vous n'avez pas le droit de supprimer des commentaires.");
-            alert.showAndWait();
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer ce commentaire ?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                try {
+                    int id_commentaire = selectedCommentaire.getId_commentaire();
+                    ServiceCommentaire serviceCommentaire = new ServiceCommentaire();
+                    serviceCommentaire.supprimer(id_commentaire);
+                    actualiserVueQuestions();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
+
         }
     }
 
