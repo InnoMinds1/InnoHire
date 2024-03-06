@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="" />
+    <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AfficherWalletController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierWallet2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/WalletItemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/AfficherWallet.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/ModifierWallet.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/ModifierWallet2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/ModifierWallet2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/WalletItem.fxml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,6 +78,7 @@
       <updated>1709638881372</updated>
       <workItem from="1709638882521" duration="4461000" />
       <workItem from="1709645984452" duration="352000" />
+      <workItem from="1709682551554" duration="1709000" />
     </task>
     <servers />
   </component>

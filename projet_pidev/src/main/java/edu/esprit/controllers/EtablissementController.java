@@ -7,16 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import edu.esprit.services.MyListener;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -412,7 +409,7 @@ private AnchorPane grandAnchor;
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierWallet2.fxml"));
                     Parent root = loader.load();
-                    ModifierWalletController controller = loader.getController();
+                    ModifierWallet2Controller controller = loader.getController();
                     controller.initDataWallet(walletConnecte);
                     grid.getScene().setRoot(root);
                 } catch (IOException e) {
