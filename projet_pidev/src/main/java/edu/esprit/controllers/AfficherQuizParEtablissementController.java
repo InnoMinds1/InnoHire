@@ -7,4 +7,6 @@ public class AfficherQuizParEtablissementController {
     @FXML
     public GridPane gridA;
 
+
+
 }

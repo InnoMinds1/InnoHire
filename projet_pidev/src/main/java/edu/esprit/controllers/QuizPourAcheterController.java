@@ -38,7 +38,7 @@ public class QuizPourAcheterController {
     private ImageView imageView;
     private Quiz quiz;
     private quizService qs;
-    Connection cnx = DataSource.getInstance().getCnx();
+
 
 
 

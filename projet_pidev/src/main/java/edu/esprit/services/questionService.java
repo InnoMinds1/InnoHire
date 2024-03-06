@@ -24,8 +24,7 @@ import edu.esprit.utils.DataSource;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -147,6 +146,40 @@ public class questionService implements IService<Question> {
             e.printStackTrace();
         }
         return null;
+    }
+    public List<Map<String, Object>> getQuestionsForQuiz(int codeQuiz) throws SQLException {
+        List<Map<String, Object>> questions = new ArrayList<>();
+        quizService qs=new quizService();
+       int id_quiz= qs.getIdQuizByCode(codeQuiz);
+
+
+
+
+        try  {
+            String query = "SELECT question, choix, reponse_correcte FROM question WHERE id_quiz =?";
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+                preparedStatement.setInt(1, id_quiz);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        String questionText = resultSet.getString("question");
+                        String choix = resultSet.getString("choix");
+                        int reponseCorrecte = resultSet.getInt("reponse_correcte");
+
+                        // Créer une map pour stocker les données de la question
+                        Map<String, Object> questionMap = new HashMap<>();
+                        questionMap.put("question", questionText);
+                        questionMap.put("choix", choix);
+                        questionMap.put("reponse_correcte", reponseCorrecte);
+
+                        questions.add(questionMap);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return questions;
     }
 
 }

@@ -237,6 +237,33 @@ public class quizService implements IService<Quiz> {
 
         return quizSet;
     }
+    public Quiz getQuizByCode(int codeQuiz) {
+        Quiz quiz = null;
+        String query = "SELECT * FROM quiz WHERE code_quiz = ?";
+
+        try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
+            pstmt.setInt(1, codeQuiz);
+
+            try (ResultSet resultSet = pstmt.executeQuery()) {
+                if (resultSet.next()) {
+                    int idQuiz = resultSet.getInt("id_quiz");
+                    String nomQuiz = resultSet.getString("nom_quiz");
+                    String descriptionQuiz = resultSet.getString("description");
+                    int prixQuiz = resultSet.getInt("prix_quiz");
+                    String imageQuiz = resultSet.getString("image_quiz");
+                    // Ajoutez d'autres colonnes au besoin
+
+                    // Créez l'instance de Quiz avec les données de la base de données
+                    quiz = new Quiz(idQuiz, codeQuiz, nomQuiz, descriptionQuiz, prixQuiz, imageQuiz);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return quiz;
+    }
+
 
 
 
