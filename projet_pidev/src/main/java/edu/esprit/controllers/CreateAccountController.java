@@ -17,7 +17,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import javax.imageio.ImageIO;
 import javax.swing.plaf.ColorUIResource;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +35,10 @@ public class CreateAccountController implements Initializable{
 
     @FXML
     private TextField TFadresse;
+    @FXML
+    private TextField captchaETF;
+    @FXML
+    private ImageView profileImageCaptcha;
     @FXML
     private TextField imageETF;
 
@@ -121,6 +127,25 @@ public class CreateAccountController implements Initializable{
             alert.showAndWait();
             return;
         }
+        if (captchaETF.getText().equals("no capctha generated"))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("GENERER CAPCTHA POUR VERIFICATION!");
+            alert.showAndWait();
+            return;
+        }
+        if (!captchaETF.getText().equals(CurrentUser.getCaptcha()))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Ecrire le captcha correctement!");
+            alert.showAndWait();
+            return;
+        }
+
         if (!mdp.equals(mdp_confirm))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -154,6 +179,7 @@ public class CreateAccountController implements Initializable{
             alert.showAndWait();
             return;
         }
+
 
 
         if (serviceUtilisateur.utilisateurExiste(cin))
@@ -228,7 +254,7 @@ public class CreateAccountController implements Initializable{
                 u.setMdp(mdp);
                 u.setAdresse(adresse);
                 u.setPrenom(prenom);
-                u.setImage(selectedFile.getName());
+                u.setImage(imageETF.getText());
                 try {
                     serviceUtilisateur.ajouter(u);
                     serviceUtilisateur.modifier_Status_par_cin(u.getCin());
@@ -372,6 +398,39 @@ public class CreateAccountController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageETF.setText("no Photo chosen");
+        captchaETF.setText("no captcha generated");
 
     }
-}
+
+    @FXML
+    void GenererCaptcha(ActionEvent event) {
+        CaptchaGenerator captchaGenerator = new CaptchaGenerator();
+
+        // Generate captcha
+        CaptchaGenerator.CaptchaResult captchaResult = captchaGenerator.generateCaptcha();
+        String captchaCode = captchaResult.getCaptchaCode();
+        BufferedImage captchaImage = captchaResult.getCaptchaImage();
+
+        // Print captcha code
+        System.out.println("Generated Captcha Code: " + captchaCode);
+        CurrentUser.setCaptcha(captchaCode);
+
+        // Save the captcha image to a file (optional)
+        try {
+            ImageIO.write(captchaImage, "png", new File("captcha.png"));
+            System.out.println("Captcha image saved to captcha.png");
+            System.out.println(captchaCode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Display the image in the ImageView
+        Image image = new Image("file:./captcha.png");
+        profileImageCaptcha.setImage(image);
+
+
+        // Do something with the imagePath, for example, display the image
+        // imageView.setImage(new Image(imagePath));
+        System.out.println("Selected Image: " + "captcha.png");
+    }
+    }
+

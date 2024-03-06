@@ -16,9 +16,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.CreateAccountController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1417.0" style="-fx-background-color: #632DE9;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="1427.0" style="-fx-background-color: #632DE9;">
          <children>
-            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="676.0" prefWidth="773.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 30 30 30;">
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="747.0" prefWidth="1008.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 30 30 30;">
                <children>
                   <Button layoutX="102.0" layoutY="578.0" mnemonicParsing="false" onAction="#ajouterUtilisateurAction" prefHeight="45.0" prefWidth="233.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 16;" text="Ajouter">
                      <cursor>
@@ -59,7 +59,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="529.0" layoutY="386.0" mnemonicParsing="false" onAction="#choosePhoto" prefHeight="46.0" prefWidth="140.0" style="-fx-background-color: #632DE9;" stylesheets="@service2.css" text="Ajouter Photo" textFill="WHITE">
+                  <Button layoutX="519.0" layoutY="464.0" mnemonicParsing="false" onAction="#choosePhoto" prefHeight="46.0" prefWidth="140.0" style="-fx-background-color: #632DE9;" stylesheets="@service2.css" text="Ajouter Photo" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -102,7 +102,7 @@
                         </FXCollections>
                      </items>
                   </ComboBox>
-                  <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="150.0" layoutX="532.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="profileImageView" fitHeight="123.0" fitWidth="145.0" layoutX="517.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
                   <PasswordField fx:id="tfmdp" layoutX="203.0" layoutY="363.0" prefHeight="46.0" prefWidth="250.0" promptText="mdp" stylesheets="@service2.css" />
                   <Label layoutX="28.0" layoutY="423.0" prefHeight="46.0" prefWidth="150.0" text="Confirmer " textFill="#000000a9">
                      <font>
@@ -115,19 +115,30 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TextField fx:id="imageETF" layoutX="463.0" layoutY="446.0" prefHeight="46.0" prefWidth="250.0" promptText="image" styleClass="text-field" stylesheets="@styles.css">
+                  <TextField fx:id="imageETF" layoutX="464.0" layoutY="510.0" prefHeight="46.0" prefWidth="250.0" promptText="image" styleClass="text-field" stylesheets="@styles.css">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
+                  <TextField fx:id="captchaETF" layoutX="470.0" layoutY="195.0" prefHeight="46.0" prefWidth="250.0" promptText="captcha" styleClass="text-field" stylesheets="@styles.css">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fx:id="profileImageCaptcha" fitHeight="294.0" fitWidth="294.0" layoutX="720.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="525.0" layoutY="243.0" mnemonicParsing="false" onAction="#GenererCaptcha" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #632DE9;" stylesheets="@service2.css" text="Generer Captcha" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
-            <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="383.0" fitWidth="282.0" layoutX="1035.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/429754006_4516447245246591_2302902658115282336_n.png" />
                </image>
             </ImageView>
-            <Label layoutX="1027.0" layoutY="60.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 35;" text="InnoHire" />
+            <Label layoutX="1088.0" layoutY="58.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 35;" text="InnoHire" />
             <Label layoutX="990.0" layoutY="656.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 15;" text="InnoHire 2024/2025 © (copyright)" />
          </children>
       </AnchorPane>

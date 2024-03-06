@@ -16,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -107,6 +109,8 @@ public class AjouterUtilisateurController implements Initializable {
     void ajouterUtilisateurAction(ActionEvent event) {
         // Créer une instance de ServiceService
         String photoUrl = (selectedFile != null) ? selectedFile.toURI().toString() : null;
+
+
 
         ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
 

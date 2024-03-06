@@ -41,6 +41,7 @@ public class ListUsersControllers implements Initializable {
     @FXML
     private Label cinLabel;
 
+
     @FXML
     private AnchorPane container;
 
@@ -164,6 +165,7 @@ public class ListUsersControllers implements Initializable {
     public void onSearchTextChanged(KeyEvent keyEvent) {
         // Handle search text change
     }
+
     @FXML
     void NavigateToEtablissement(ActionEvent event) {
         try {
@@ -177,5 +179,26 @@ public class ListUsersControllers implements Initializable {
             alert.show();
         }
 
+    }
+
+    @FXML
+    void Logout(ActionEvent event) {
+        CurrentUser.setId_utilisateur(0);
+        CurrentUser.setCin(0);
+        CurrentUser.setNom("");
+        CurrentUser.setPrenom("");
+        CurrentUser.setMdp("");
+        CurrentUser.setAdresse("");
+        CurrentUser.setRole(-1);
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+            cinLabel.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
     }
 }

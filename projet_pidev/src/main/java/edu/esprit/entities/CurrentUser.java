@@ -12,6 +12,16 @@ public class CurrentUser {
     private static int role;
     private static String ProfileImagePath;
     private static int otp;
+    private static String captcha;
+
+    public static String getCaptcha() {
+        return captcha;
+    }
+
+    public static void setCaptcha(String captcha) {
+        CurrentUser.captcha = captcha;
+    }
+
     public static int getOtp()
     {
         return otp;
