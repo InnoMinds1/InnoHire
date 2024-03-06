@@ -7,16 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import edu.esprit.services.MyListener;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,6 +22,8 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class EtablissementController implements Initializable {
+    private Wallet walletCo;
+    private Etablissement etablissementCo;
     @FXML
     private VBox chosenetablissementCard;
 
@@ -55,7 +54,7 @@ public class EtablissementController implements Initializable {
     @FXML
     private Label cinETF;
     @FXML
-private AnchorPane grandAnchor;
+    private AnchorPane grandAnchor;
     @FXML
     private StackPane StackPane ;
 
@@ -69,7 +68,14 @@ private AnchorPane grandAnchor;
     @FXML
     private AnchorPane anchorContenu;
     @FXML
-    private Label nameUserLabel;
+    private Label nameAdminLabel;
+    @FXML
+    private Label nameRepLabel;
+    @FXML
+    private Label emailAdminLabel;
+    @FXML
+    private Label emailRepLabel;
+
     @FXML
     private Button afficherWalletListImg;
 
@@ -88,6 +94,9 @@ private AnchorPane grandAnchor;
     @FXML
     private Button acheterQuizzBtn;
 
+    @FXML
+    private TextField searchField;
+
 
 
 
@@ -98,7 +107,12 @@ private AnchorPane grandAnchor;
 
          Set<Etablissement> etablissements = se.getAll();//admin
         if (CurrentUser.getRole() != 0) {
-          etablissements = se.getByUserId(CurrentUser.getId_utilisateur());//front
+
+            if(CurrentUser.getCin()==0){
+                System.out.println("CurrentUser Introuvable");
+            }
+
+          etablissements = se.getByCin(CurrentUser.getCin());//front
         }
 
 
@@ -160,8 +174,10 @@ private AnchorPane grandAnchor;
             if (wallet.getStatus() != 0) {
                 int balance = wallet.getBalance();
                 balanceLabel.setText(String.valueOf(balance) + "DT");
+                acheterQuizzBtn.setVisible(true);
             } else {
                 balanceLabel.setText("Non Actif");
+                acheterQuizzBtn.setVisible(false);
             }
 
 
@@ -172,7 +188,7 @@ private AnchorPane grandAnchor;
             balanceLabel.setVisible(true);
             afficherWalletListImg.setVisible(true);
             ajouterWalletBtn.setVisible(false);
-            acheterQuizzBtn.setVisible(true);
+
 
         } else {
 
@@ -180,13 +196,17 @@ private AnchorPane grandAnchor;
             balanceLabel.setVisible(false);
             afficherWalletListImg.setVisible(false);
             ajouterWalletBtn.setVisible(true);
-            acheterQuizzBtn.setVisible(false);
+
             CurrentWallet.setIdWallet(0);
         }
 
 
 
         chosenetablissementCard.requestLayout(); // Force la mise à jour du layout
+
+
+        etablissementCo=etablissement;//lkhedmet lgafsi
+        walletCo=wallet;//lkhedmet lgafsi
     }
 
 
@@ -194,31 +214,37 @@ private AnchorPane grandAnchor;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        grandAnchor.setPrefWidth(1451);  // Set your preferred width
+        grandAnchor.setPrefHeight(830);
 
-
-        /* Navbar */
+        /*----------------------------- Affichage Quel Navbar?----------------------- */
         int userRole = CurrentUser.getRole();
         switch (userRole) {
             case 0:
                 AdminPane.setVisible(true);
                 RepresentantPane.setVisible(false);
                 CandidatPane.setVisible(false);
-                nameUserLabel.setText("Admin " + CurrentUser.getNom());
+                nameAdminLabel.setText("Admin " + CurrentUser.getNom());
+                emailAdminLabel.setText(CurrentUser.getAdresse());
                 break;
             case 1:
                 AdminPane.setVisible(false);
                 RepresentantPane.setVisible(true);
                 CandidatPane.setVisible(false);
-                nameUserLabel.setText(CurrentUser.getNom());
+                nameRepLabel.setText(CurrentUser.getNom());
+                emailRepLabel.setText(CurrentUser.getAdresse());
                 break;
             case 2:
                 AdminPane.setVisible(false);
                 RepresentantPane.setVisible(false);
                 CandidatPane.setVisible(true);
-                nameUserLabel.setText(CurrentUser.getNom());
+               // nameUserLabel.setText(CurrentUser.getNom());
+                //emailUserLabel.setText(CurrentUser.getAdresse());
                 break;
 
         }
+
+        acheterQuizzBtn.setVisible(false);
 
 
         try {
@@ -245,7 +271,38 @@ private AnchorPane grandAnchor;
 
 
         }
+
+
+
+
+// Add an event listener to the textProperty of the searchField
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                if (newValue.isEmpty()) {
+                    // If the search text is empty, reload the full list of establishments
+                    etablissements.clear();
+                    etablissements.addAll(getData());
+                    populateGrid();
+                } else {
+                    // Filter the establishments based on the search text
+                    List<Etablissement> filteredData = filterData(newValue);
+
+                    // Update the UI with the filtered data
+                    updateUI(filteredData);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle the exception appropriately
+            }
+        });
+
+
+
     }
+
+
+
+
+
 
     private void setupListeners() {
         myListener = new MyListener() {
@@ -320,7 +377,7 @@ private AnchorPane grandAnchor;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEtablissement.fxml"));
             Parent root = loader.load();
 
-            Stage stage = (Stage) nameUserLabel.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            Stage stage = (Stage) grid.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
             stage.setScene(new Scene(root));
             stage.show();
 
@@ -410,11 +467,22 @@ private AnchorPane grandAnchor;
 
 
                 try {
+
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierWallet2.fxml"));
                     Parent root = loader.load();
-                    ModifierWalletController controller = loader.getController();
+                    ModifierWallet2Controller controller = loader.getController();
                     controller.initDataWallet(walletConnecte);
-                    grid.getScene().setRoot(root);
+
+// Get the scene from the current grid
+                    Scene currentScene = balanceLabel.getScene();
+
+// Set your preferred width and height
+                    double preferredWidth = 520;
+                    double preferredHeight = 520;
+
+                    currentScene.setRoot(root);
+                    currentScene.getWindow().setWidth(preferredWidth);
+                    currentScene.getWindow().setHeight(preferredHeight);
                 } catch (IOException e) {
                     e.printStackTrace();
                     afficherAlerte("Erreur lors du chargement d'AfficherWallet.fxml : " + e.getMessage());
@@ -431,4 +499,86 @@ private AnchorPane grandAnchor;
             afficherAlerte("Ajoutez un portefeuille à votre établissement.");
         }
     }
+
+
+    /***-------------------------Metier-----------------------**/
+            /***-------------Recherche----------------**/
+    private List<Etablissement> filterData(String searchText) throws SQLException {
+        List<Etablissement> filteredEtablissements = new ArrayList<>();
+
+        for (Etablissement etablissement : etablissements) {
+            // Check if the name or other relevant fields contain the search text
+            if (etablissement.getNom().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredEtablissements.add(etablissement);
+            }
+        }
+
+        return filteredEtablissements;
+    }
+
+    // Add a method to update the UI with the filtered data
+    private void updateUI(List<Etablissement> filteredData) {
+        // Update the UI with the filtered data
+        etablissements.clear();
+        etablissements.addAll(filteredData);
+
+        // Populate the grid with the updated data
+        populateGrid();
+    }
+
+                        /***-------------Tri----------------**/
+  @FXML
+  private void sortByName() {
+      // Sort the etablissements by name
+      etablissements.sort(Comparator.comparing(Etablissement::getNom));
+      // Update the UI with the sorted data
+      populateGrid();
+  }
+
+    /***-------------------------End Metier-----------------------**/
+
+
+
+
+    public void acheterQuiz(ActionEvent actionEvent) {
+        //Jaww Etablissement
+       CurrentEtablissement.setIdEtablissement(etablissementCo.getIdEtablissement());
+        CurrentEtablissement.setNom(etablissementCo.getNom());
+        CurrentEtablissement.setCodeEtablissement(etablissementCo.getCodeEtablissement());
+        CurrentEtablissement.setImage(etablissementCo.getImage());
+        CurrentEtablissement.setListeQuizzAchetes(etablissementCo.getListeQuizzAchetes());
+        //Jaww Wallet
+        CurrentWallet.setIdWallet(walletCo.getIdWallet());
+        CurrentWallet.setBalance(walletCo.getBalance());
+
+
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/testkhedmetGafsi.fxml"));
+            chosenetablissementCard.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+//-------------------------------NAVBAR REDIRECTIONS---------------------------------------------------------------
+//-------------------------------------ADMIN---------------------------------------------------------------
+
+    public void listUsersNavBar(ActionEvent actionEvent) {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/ListUsers.fxml"));
+            chosenetablissementCard.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
+
+
 }

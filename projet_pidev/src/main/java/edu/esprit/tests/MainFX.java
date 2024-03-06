@@ -23,6 +23,8 @@ public class MainFX extends Application {
 
        Scene scene = new Scene(root);
 
+       stage.setResizable(true);
+
 // Set the scene to the stage
        stage.setScene(scene);
 

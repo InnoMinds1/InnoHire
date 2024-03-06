@@ -10,7 +10,6 @@ import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Wallet;
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceWallet;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,9 +33,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Set;
 
-public class ModifierWalletController implements Initializable {
+public class ModifierWallet2Controller implements Initializable {
     private int idW ;
     private int CodeInit;
     @FXML
@@ -202,15 +200,18 @@ public class ModifierWalletController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
             Parent root = loader.load();
 
-            // Obtenir la scène actuelle
-            Scene currentScene = BalanceETF.getScene();
+// Set your preferred width and height
+            double preferredWidth = 1451;
+            double preferredHeight = 830;
 
-            // Créer une nouvelle scène avec la même taille que la scène actuelle
-            Scene newScene = new Scene(root, currentScene.getWidth(), currentScene.getHeight());
+            Scene currentScene = mainAnchor.getScene();
 
-            Stage stage = (Stage) BalanceETF.getScene().getWindow();
-            stage.setScene(newScene);
-            stage.show();
+
+
+            currentScene.setRoot(root);
+            currentScene.getWindow().setWidth(preferredWidth);
+            currentScene.getWindow().setHeight(preferredHeight);
+
 
         } catch (IOException e) {
             e.printStackTrace();
