@@ -1,8 +1,11 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Post;
 import edu.esprit.entities.PostAudience;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServicePost;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -4,6 +4,7 @@ package edu.esprit.controllers;
 import edu.esprit.entities.Commentaire;
 import edu.esprit.entities.CurrentPost;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Post;
 import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePost;

@@ -50,8 +50,8 @@
                </children>
             </VBox>
             <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button fx:id="Modifier" mnemonicParsing="false" onAction="#navigatetoModifierPublicationAction" prefHeight="26.0" prefWidth="63.0" styleClass="green-button" stylesheets="@service2Oum.css" text="UPDATE" />
-            <Button fx:id="Supprimer" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="15.0" styleClass="green-button" stylesheets="@service2Oum.css" text="X" />
+            <Button fx:id="Modifier" mnemonicParsing="false" onAction="#navigatetoModifierPublicationAction" prefHeight="26.0" prefWidth="63.0" styleClass="green-button" stylesheets="@service2.css" text="UPDATE" />
+            <Button fx:id="Supprimer" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="15.0" styleClass="green-button" stylesheets="@service2.css" text="X" />
          </children>
          <padding>
             <Insets left="20.0" right="20.0" />
@@ -114,7 +114,7 @@
                   <Insets left="10.0" right="10.0" />
                </padding>
             </HBox>
-            <HBox fx:id="reactionsContainer" maxWidth="-Infinity" styleClass="reactions-container" stylesheets="@stylesOum.css" visible="false">
+            <HBox fx:id="reactionsContainer" maxWidth="-Infinity" styleClass="reactions-container" stylesheets="@styles.css" visible="false">
                <children>
                   <ImageView fx:id="imgLike" fitHeight="50.0" fitWidth="50.0" onMousePressed="#onReactionImgPressed" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -161,7 +161,7 @@
             </HBox>
          </children>
       </StackPane>
-      <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@stylesOum.css">
+      <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@styles.css">
          <children>
             <HBox fx:id="likeContainer" alignment="CENTER" onMousePressed="#onLikeContainerPressed" onMouseReleased="#onLikeContainerMouseReleased" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>

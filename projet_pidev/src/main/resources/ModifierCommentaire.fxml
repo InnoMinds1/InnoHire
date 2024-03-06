@@ -11,10 +11,10 @@
       <AnchorPane fx:id="container" layoutX="14.0" layoutY="14.0" prefHeight="498.0" prefWidth="733.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
             <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="List Claim" />
-            <Button fx:id="modifierCommentaire" layoutX="235.0" layoutY="405.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-background-radius: 10; -fx-text-fill: #FFFFFF; -fx-font-weight: Bold;" styleClass="green-button" stylesheets="@service2Oum.css" text="Modifier" />
-            <Button fx:id="AfficherCommentaire" layoutX="383.0" layoutY="405.0" mnemonicParsing="false" onAction="#AfficherCommentaire" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-font-weight: bold; -fx-text-fill: #FFFFFF; -fx-background-radius: 10;" styleClass="green-button" stylesheets="@service2Oum.css" text="Afficher" />
-            <TextField fx:id="descriptionTF1" layoutX="49.0" layoutY="94.0" prefHeight="86.0" prefWidth="248.0" promptText="description" stylesheets="@styleOum.css" />
-            <DatePicker fx:id="dateTf1" layoutX="60.0" layoutY="207.0" prefHeight="37.0" prefWidth="225.0" promptText="jj-mm-yyyy" stylesheets="@styleOum.css" />
+            <Button fx:id="modifierCommentaire" layoutX="235.0" layoutY="405.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-background-radius: 10; -fx-text-fill: #FFFFFF; -fx-font-weight: Bold;" styleClass="green-button" stylesheets="@service2.css" text="Modifier" />
+            <Button fx:id="AfficherCommentaire" layoutX="383.0" layoutY="405.0" mnemonicParsing="false" onAction="#AfficherCommentaire" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #00cc00; -fx-font-weight: bold; -fx-text-fill: #FFFFFF; -fx-background-radius: 10;" styleClass="green-button" stylesheets="@service2.css" text="Afficher" />
+            <TextField fx:id="descriptionTF1" layoutX="49.0" layoutY="94.0" prefHeight="86.0" prefWidth="248.0" promptText="description" stylesheets="@style.css" />
+            <DatePicker fx:id="dateTf1" layoutX="60.0" layoutY="207.0" prefHeight="37.0" prefWidth="225.0" promptText="jj-mm-yyyy" stylesheets="@style.css" />
          </children>
       </AnchorPane>
    </children>
