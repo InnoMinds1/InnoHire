@@ -20,9 +20,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.swing.plaf.ColorUIResource;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -51,8 +55,10 @@ public class AjouterEtablissementAfterCreate implements Initializable {
     private TextField TypeETF;
 
     @FXML
-    private ListView<Utilisateur> ListViewUser;
+    private TextField imageETF;
 
+    @FXML
+    private ImageView EtabImageView;
 
     private final ServiceEtablissement se = new ServiceEtablissement();
 
@@ -119,6 +125,14 @@ public class AjouterEtablissementAfterCreate implements Initializable {
                 alert.showAndWait();
                 return;
             }
+        if (imageETF.getText().equals("no Photo chosen"))
+        {  Alert alert1 = new Alert(Alert.AlertType.ERROR);
+            alert1.setTitle("Erreur");
+            alert1.setHeaderText(null);
+            alert1.setContentText("Choisir photo!");
+            alert1.showAndWait();
+            return;
+        }
 
 
 
@@ -132,6 +146,7 @@ public class AjouterEtablissementAfterCreate implements Initializable {
         etablissement.setCodeEtablissement(codeE);
         etablissement.setLieu(Lieu);
         etablissement.setTypeEtablissement(Type);
+        etablissement.setImage(imageETF.getText());
 
         ServiceUtilisateur su=new ServiceUtilisateur();
         Utilisateur user = su.getOneByCin(CurrentUser.getCin());
@@ -173,6 +188,49 @@ public class AjouterEtablissementAfterCreate implements Initializable {
             alert.showAndWait();
         }
 
+    }
+    @FXML
+    void choosePhoto(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/img"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        if (selectedFile != null) {
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
+
+            // Set the image file name to the TextField
+
+
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
+
+
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+
+            System.out.println("Selected Image: " + imagePath);
+            System.out.println(selectedFile.getName());
+            EtabImageView.setImage(image);
+            imageETF.setText(selectedFile.getName());
+
+
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
+        }
     }
 
 
@@ -219,15 +277,17 @@ public class AjouterEtablissementAfterCreate implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cin_utilisateurETF.setText(String.valueOf(CurrentUser.getCin()));
+        imageETF.setText("no Photo chosen");
     }
     public void ajoutEtab_sansid(Etablissement etablissement) {
-        String req = "INSERT INTO `etablissement`(`nom`, `lieu`, `code_etablissement`, `type_etablissement`) VALUES (?,?,?,?)";
+        String req = "INSERT INTO `etablissement`(`nom`, `lieu`, `code_etablissement`, `type_etablissement`,`image`) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, etablissement.getNom());
             ps.setString(2, etablissement.getLieu());
             ps.setInt(3, etablissement.getCodeEtablissement());
             ps.setString(4, etablissement.getTypeEtablissement());
+            ps.setString(5, etablissement.getImage());
 
             int affectedRows = ps.executeUpdate();
 
