@@ -31,6 +31,8 @@ public class ListUsersControllers implements Initializable {
 
     @FXML
     private AnchorPane AnchoPaneMessage131;
+    @FXML
+    private TextField searchField;
 
     @FXML
     private TextField TFrecherche;
@@ -118,6 +120,10 @@ public class ListUsersControllers implements Initializable {
                 e.printStackTrace();
             }
         });
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Call your search method here, passing the newValue as the search term
+            performSearch(newValue);
+        });
     }
 
     // Helper method to load UtilisateurItemComponent
@@ -151,7 +157,7 @@ public class ListUsersControllers implements Initializable {
     @FXML
     void navigatotoAccueil(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
             utilisateurContainer.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -201,4 +207,68 @@ public class ListUsersControllers implements Initializable {
             alert.show();
         }
     }
+    private void performSearch(String searchTerm) {
+        ServiceUtilisateur serviceService = new ServiceUtilisateur();
+
+        // Get the selected role from the combo box
+        String role = comboRole.getValue();
+
+        try {
+            // Retrieve all users based on the selected role
+            Set<Utilisateur> utilisateurs = serviceService.getAll();
+            Set<Admin> admins = serviceService.getAll_admin();
+            utilisateurs.addAll(admins);
+
+            // Clear previous components
+            utilisateurContainer.getChildren().clear();
+
+            // Load and add UtilisateurItemComponent for each Utilisateur based on the selected role and search term
+            for (Utilisateur utilisateur : utilisateurs) {
+                boolean roleFilterPassed = roleFilterPassed(role, serviceService, utilisateur);
+                boolean searchTermMatched = searchTermMatched(searchTerm, utilisateur);
+
+                if (roleFilterPassed && searchTermMatched) {
+                    loadUtilisateurItemComponent(utilisateur);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Helper method to check if the user passes the role filter
+    private boolean roleFilterPassed(String role, ServiceUtilisateur serviceService, Utilisateur utilisateur) {
+        if (role == null || role.equals("NO FILTER")) {
+            return true; // No role filter, so all users pass
+        }
+
+        int roleByCin = serviceService.verifyRoleByCin(utilisateur.getCin());
+
+        switch (role) {
+            case "Admin":
+                return roleByCin == 0;
+            case "Representant":
+                return roleByCin == 1;
+            case "Candidat":
+                return roleByCin == 2;
+            default:
+                return false; // Unknown role, consider as not passing
+        }
+    }
+
+    // Helper method to check if the user matches the search term
+    private boolean searchTermMatched(String searchTerm, Utilisateur utilisateur) {
+        if (searchTerm == null || searchTerm.isEmpty()) {
+            return true; // No search term, so all users pass
+        }
+
+        String lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+        return utilisateur.getNom().toLowerCase().contains(lowerCaseSearchTerm)
+                || utilisateur.getPrenom().toLowerCase().contains(lowerCaseSearchTerm)
+                || utilisateur.getAdresse().toLowerCase().contains(lowerCaseSearchTerm)
+                || String.valueOf(utilisateur.getCin()).contains(lowerCaseSearchTerm);
+    }
+
+
 }
