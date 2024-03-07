@@ -266,13 +266,16 @@ public class PostController implements Initializable {
         }
 
         // Set post image
+        // Set post image
         if (post.getImage() != null && !post.getImage().isEmpty()) {
-            Image img2 = new Image(getClass().getResourceAsStream(post.getImage()));
+            String imagePath = "/img/" + post.getImage(); // Concatenate "/img/" to the image name
+            Image img2 = new Image(getClass().getResourceAsStream(imagePath));
             this.imgPost.setImage(img2);
         } else {
             imgPost.setVisible(false);
             imgPost.setManaged(false);
         }
+
 
         // Set reactions count
         nbReactions.setText(String.valueOf(post.getTotalReactions()));

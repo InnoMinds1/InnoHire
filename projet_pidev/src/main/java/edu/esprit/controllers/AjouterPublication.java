@@ -127,7 +127,7 @@ public class AjouterPublication implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            String imageBDD= "/img/"+imageETF.getText();
+            String imageBDD= imageETF.getText();
 
             int cinUtilisateur = CurrentUser.getCin();
             Utilisateur utilisateur = su.get_One_ByCin(cinUtilisateur);
