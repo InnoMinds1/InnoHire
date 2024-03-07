@@ -18,8 +18,8 @@ public class MainFX extends Application {
        Pane paneRoot = (Pane) root;
 
 // Set your preferred width and height
-       paneRoot.setPrefWidth(1451);  // Set your preferred width
-       paneRoot.setPrefHeight(830); // Set your preferred height
+       paneRoot.setPrefWidth(700);  // Set your preferred width
+       paneRoot.setPrefHeight(500); // Set your preferred height
 
        Scene scene = new Scene(root);
 

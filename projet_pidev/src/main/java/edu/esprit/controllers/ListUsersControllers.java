@@ -201,7 +201,19 @@ public class ListUsersControllers implements Initializable {
             alert.show();
         }
     }
+    public void navigateToReclamation(ActionEvent actionEvent) {
+        try {
 
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamation.fxml"));
+            utilisateurContainer.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
 
     @FXML
     void Logout(ActionEvent event) {

@@ -325,7 +325,19 @@ public class PubController implements Initializable {
         alert.showAndWait();
     }
 
+    public void navigateToReclamation(ActionEvent actionEvent) {
+        try {
 
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamation.fxml"));
+            nomRechercheTF.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
 
 
 

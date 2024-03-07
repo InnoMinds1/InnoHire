@@ -449,8 +449,20 @@ public class PostController implements Initializable {
     }
 
 
-
+    public void NavigateToClaim(MouseEvent mouseEvent) {
+        try {
+            CurrentPost.setId_post(post.getId_post());
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterReclamation.fxml"));
+            caption.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
 
     }
+}
 
 

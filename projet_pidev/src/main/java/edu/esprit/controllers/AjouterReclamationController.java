@@ -119,7 +119,7 @@ public class AjouterReclamationController {
     }*/
 
     @FXML
-    void ajouterReclamationAction(ActionEvent event) {
+    void ajouterReclamationAction(ActionEvent event) throws SQLException {
 
         String type = TFType.getText().trim();
         String titre = TFTitre.getText().trim();
@@ -182,17 +182,22 @@ public class AjouterReclamationController {
         }
 
         // Call the update method from ServiceReclamation to update the record in the database
-        try {
-            sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, userSender));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+        System.out.println(type);
+        System.out.println(titre);
+        System.out.println(description);
+        System.out.println(timestamp);
+        System.out.println(pub);
         System.out.println(userSender);
+            sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, userSender));
+
+
+
 
         // Show success alert
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Success");
-        successAlert.setContentText("Reclamation updated successfully!");
+        successAlert.setContentText("Reclamation added successfully!");
         successAlert.show();
         navigateToAfficherReclamationAction(event);
 
