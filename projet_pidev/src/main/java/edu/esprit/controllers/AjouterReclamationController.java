@@ -42,7 +42,7 @@ public class AjouterReclamationController {
     Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
     //Post pub=new Post(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
     LocalDateTime customDateTime = LocalDateTime.of(2024, 3, 7, 12, 30);
-    Post pub = new Post(55974,userSender
+    Post pub = new Post(4,userSender
 ,PostAudience.PUBLIC,customDateTime,"Fk off","blog.png",15,15);
 
 

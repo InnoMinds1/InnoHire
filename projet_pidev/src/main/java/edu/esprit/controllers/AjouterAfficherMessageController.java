@@ -646,8 +646,10 @@ public class AjouterAfficherMessageController implements Initializable{
                 "\nImage: " + userReciver.getImage()+
                 "\nRole: Representant";
 
-        String directoryPath = "C:/Users/HACHEM/Documents/java/InnoHire/projet_pidev/src/main/resources/downloads";
+        String currentDir = System.getProperty("user.dir");
+        String directoryPath = currentDir+"src/main/resources/downloads";
         String fileName = "QrCode"+userReciver.getNom()+userReciver.getPrenom()+".jpg";
+
 
         // Create the directory if it doesn't exist
         Path directory = Paths.get(directoryPath);
