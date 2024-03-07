@@ -161,7 +161,7 @@ public class ChatBotAiController implements Initializable {
 
 
     private String getChatbotResponse(String userMessage) {
-        
+        //5edma mzlt
         return null;
     }
 
