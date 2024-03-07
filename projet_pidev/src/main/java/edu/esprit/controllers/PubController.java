@@ -180,7 +180,7 @@ public class PubController implements Initializable {
         post.setImage(post1.getImage());
         post.setTotalReactions(post1.getTotalReactions());
         post.setNbComments(post1.getNbComments());
-        post.setNbShares(post1.getNbShares());
+
         return post;
     }
 
@@ -196,7 +196,7 @@ public class PubController implements Initializable {
             modifiedEtablissement.setCaption(etablissement.getCaption());
             modifiedEtablissement.setAudience(etablissement.getAudience());
             modifiedEtablissement.setDate(etablissement.getDate());
-            modifiedEtablissement.setNbShares(etablissement.getNbShares());
+
             modifiedEtablissement.setNbComments(etablissement.getNbComments());
             modifiedEtablissement.setTotalReactions(etablissement.getTotalReactions());
             // If setPrice method is available, you can uncomment the following line
@@ -212,44 +212,7 @@ public class PubController implements Initializable {
 
 
 
-    /*public void refreshUI() {
-        postsContainer.getChildren().clear();
-        for (Post post : posts) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/post.fxml"));
-                VBox vBox = fxmlLoader.load();
-                PostController postController = fxmlLoader.getController();
-                postController.setData(post);
-                postsContainer.getChildren().add(vBox);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
 
-
-    }*/
-    // Méthode pour rafraîchir l'interface utilisateur avec les posts
-//    public void refreshUI() {
-//        postsContainer.getChildren().clear();
-//        try {
-//            for (Post post : posts) {
-//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
-//                AnchorPane anchorPane = fxmlLoader.load();
-//
-//                // Récupérer le contrôleur de post.fxml
-//                PostController postController = fxmlLoader.getController();
-//
-//                // Envoyer les données du post au contrôleur
-//                postController.setData(post);
-//
-//                // Ajouter le post à votre conteneur
-//                postsContainer.getChildren().add(anchorPane);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public void refreshUI() {
         postsContainer.getChildren().clear();

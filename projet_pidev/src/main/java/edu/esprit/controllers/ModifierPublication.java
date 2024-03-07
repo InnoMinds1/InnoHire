@@ -46,7 +46,7 @@ public class ModifierPublication implements Initializable {
     private String date;
     private int totalReactions;
     private int nbComments;
-    private int nbShares;
+
 
     public Utilisateur getUser() {
         return user;
@@ -80,13 +80,7 @@ public class ModifierPublication implements Initializable {
         this.nbComments = nbComments;
     }
 
-    public int getNbShares() {
-        return nbShares;
-    }
 
-    public void setNbShares(int nbShares) {
-        this.nbShares = nbShares;
-    }
 
 
 
@@ -148,7 +142,7 @@ public class ModifierPublication implements Initializable {
 
             setTotalReactions(post.getTotalReactions());
             setNbComments(post.getNbComments());
-            setNbShares(post.getNbShares());
+
 
 
         }
@@ -175,7 +169,7 @@ public class ModifierPublication implements Initializable {
 
             newPost.setTotalReactions(getTotalReactions());
             newPost.setNbComments(getNbComments());
-            newPost.setNbShares(getNbShares());
+
 
 
 

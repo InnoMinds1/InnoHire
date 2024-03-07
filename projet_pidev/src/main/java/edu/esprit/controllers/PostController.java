@@ -61,8 +61,6 @@ public class PostController implements Initializable {
     @FXML
     private Label nbComments;
 
-    @FXML
-    private Label nbShares;
 
     @FXML
     private HBox reactionsContainer;
@@ -282,8 +280,7 @@ public class PostController implements Initializable {
         // Set comments count
         nbComments.setText(post.getNbComments() + " comments");
 
-        // Set shares count
-        nbShares.setText(post.getNbShares() + " shares");
+
 
         // Reset current reaction
         currentReaction = Reactions.NON;
@@ -337,7 +334,7 @@ public class PostController implements Initializable {
         post.setImage(post1.getImage());
         post.setTotalReactions(post1.getTotalReactions());
         post.setNbComments(post1.getNbComments());
-        post.setNbShares(post1.getNbShares());
+
         return post;
     }
 

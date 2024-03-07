@@ -199,7 +199,7 @@
                         <Image url="@img/ic_share.png" />
                      </image>
                   </ImageView>
-                  <Label text="Share" textFill="#606266">
+                  <Label text="Claim" textFill="#606266">
                      <font>
                         <Font name="Segoe UI Semibold" size="18.0" />
                      </font>

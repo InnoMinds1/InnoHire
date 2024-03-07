@@ -135,7 +135,8 @@ public class AjouterPublication implements Initializable {
             post.setUtilisateur(utilisateur);
             post.setTotalReactions(0);
             post.setNbComments(0);
-            post.setNbShares(0);
+
+
 
 
             sp.ajouter(post);

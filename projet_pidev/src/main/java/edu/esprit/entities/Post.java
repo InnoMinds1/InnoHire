@@ -13,12 +13,12 @@ public class Post {
     private String image;
     private int totalReactions;
     private int nbComments;
-    private int nbShares;
+
 
     public Post() {
         this.totalReactions=0;
          this.nbComments=0;
-         this.nbShares=0;
+
     }
 
 
@@ -29,7 +29,7 @@ public class Post {
 
     }
 
-    public Post(int id_post , Utilisateur utilisateur, PostAudience audience, LocalDateTime date, String caption, String image, int totalReactions, int nbComments, int nbShares) {
+    public Post(int id_post , Utilisateur utilisateur, PostAudience audience, LocalDateTime date, String caption, String image, int totalReactions, int nbComments) {
         this.id_post=id_post;
         this.utilisateur = utilisateur;
         this.audience = audience;
@@ -38,7 +38,7 @@ public class Post {
         this.image = image;
         this.totalReactions = totalReactions;
         this.nbComments = nbComments;
-        this.nbShares = nbShares;
+
     }
 
     public int getId_post() {
@@ -105,13 +105,7 @@ public class Post {
         this.nbComments = nbComments;
     }
 
-    public int getNbShares() {
-        return nbShares;
-    }
 
-    public void setNbShares(int nbShares) {
-        this.nbShares = nbShares;
-    }
 
     @Override
     public String toString() {
@@ -124,7 +118,7 @@ public class Post {
                 ", image='" + image + '\'' +
                 ", totalReactions=" + totalReactions +
                 ", nbComments=" + nbComments +
-                ", nbShares=" + nbShares +
+
                 '}';
     }
     public boolean equals(Object o) {
