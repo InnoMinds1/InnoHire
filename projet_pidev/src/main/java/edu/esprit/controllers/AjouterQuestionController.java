@@ -28,19 +28,19 @@ import javafx.stage.Stage;
 public class AjouterQuestionController {
 
 
-        @FXML
-        private ComboBox<Integer> TFcode_quiz;
+    @FXML
+    private ComboBox<Integer> TFcode_quiz;
 
-        @FXML
-        private TextField TFchoix;
+    @FXML
+    private TextField TFchoix;
 
-        @FXML
-        private TextField TFquestion;
-        @FXML
-        private TextField TFreponse_correcte;
+    @FXML
+    private TextField TFquestion;
+    @FXML
+    private TextField TFreponse_correcte;
 
-        private final questionService qs = new questionService();
-        private final quizService quizService = new quizService();
+    private final questionService qs = new questionService();
+    private final quizService quizService = new quizService();
 
     public AjouterQuestionController() throws SQLException {
     }
@@ -182,7 +182,7 @@ public class AjouterQuestionController {
 
 
 
-    }
+}
 
 
 

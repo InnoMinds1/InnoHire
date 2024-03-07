@@ -372,7 +372,20 @@ public class ListUsersControllers implements Initializable {
             alert.show();
         }
     }
+    @FXML
+    void NavigateToQuiz(ActionEvent event) {
+       Parent root =null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/AfficherQuiz.fxml"));
+            comboRole.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
 
+    }
 
 
 }

@@ -326,6 +326,52 @@ String req = "INSERT INTO `etablissement`(`nom`, `prenom`) VALUES ('"+personne.g
             return null;
         }
     }
+    public int getIdEtablissementByCode(int codeEtablissement) {
+        String req = "SELECT id_etablissement FROM etablissement WHERE code_etablissement = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, codeEtablissement);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id_etablissement");
+            } else {
+                System.out.println("Aucun établissement trouvé avec le code " + codeEtablissement);
+                return -1; // Retourne -1 si aucun établissement trouvé
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return -1; // Retourne -1 en cas d'erreur
+        }
+    }
+
+    public Set<Quiz> getQuizzesForEtablissement(int idEtablissement) {
+        Set<Quiz> quizzes = new HashSet<>();
+
+        String query = "SELECT q.* FROM quiz q " +
+                "JOIN etablissement_quiz eq ON q.id_quiz = eq.id_quiz " +
+                "WHERE eq.id_etablissement = ?";
+
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setInt(1, idEtablissement);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Quiz quiz = new Quiz();
+                quiz.setId_quiz(resultSet.getInt("id_quiz"));
+                quiz.setCode_quiz(resultSet.getInt("code_quiz"));
+                quiz.setNom_quiz(resultSet.getString("nom_quiz"));
+                quiz.setDescription(resultSet.getString("description"));
+                quiz.setPrix_quiz(resultSet.getInt("prix_quiz"));
+                // quiz.setImage_quiz(resultSet.getString("image_quiz"));
+                quizzes.add(quiz);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return quizzes;
+    }
+
 
 
 }

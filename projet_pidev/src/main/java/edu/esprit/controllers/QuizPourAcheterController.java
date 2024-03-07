@@ -59,7 +59,7 @@ public class QuizPourAcheterController {
             imageView.setImage(image);
         }*/
         if (quiz.getImage_quiz() != null && !quiz.getImage_quiz().isEmpty()) {
-            Image image = new Image(getClass().getResourceAsStream("/images/" + quiz.getImage_quiz()));
+            Image image = new Image(getClass().getResourceAsStream("/img/" + quiz.getImage_quiz()));
             imageView.setImage(image);
 
         }
