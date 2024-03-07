@@ -11,7 +11,7 @@ public class MainFX extends Application {
    // public static final String CURRENCY = "$";
    @Override
    public void start(Stage stage) throws Exception {
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamation.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pub.fxml"));
        Parent root = loader.load();
 
 // Assuming your root is a Pane, you can replace it with the actual type of your root node

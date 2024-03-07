@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ChatBotAiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ChatBotAiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceMessagerie.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceMessagerie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceReclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceReclamation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/QrCodeAmenKthiri.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/QrCodeYoussef Sayari.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/qrcode.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Candidat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Representant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Utilisateur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/IService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/ServiceUtilisateur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/tests/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +99,7 @@
       <workItem from="1709752147454" duration="18485000" />
       <workItem from="1709804903556" duration="404000" />
       <workItem from="1709805412712" duration="648000" />
-      <workItem from="1709806093648" duration="7427000" />
+      <workItem from="1709806093648" duration="7766000" />
     </task>
     <servers />
   </component>
