@@ -1,5 +1,8 @@
 package edu.esprit.controllers;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePost;
@@ -42,6 +45,11 @@ public class AjouterCommentaire implements Initializable {
     @FXML
     private Button afficherCommentaire;
     private final ServicePost es = new ServicePost();
+
+
+    public static final String ACCOUNT_SID = "AC70a74de16f73d480ab10ed142e6c3060";
+    public static final String AUTH_TOKEN = "efd6a1334fcc43a1cacf7cb88b94d9e9";
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -105,8 +113,28 @@ public class AjouterCommentaire implements Initializable {
                         AfficherErreur("Erreur d'ajout", "Une erreur s'est produite lors de l'ajout du commentaire.", e.getMessage());
                     }
                 } else {
-                    AfficherAvertissement("Mots interdits", "Votre commentaire contient des mots interdits. Veuillez les retirer avant de valider.");
+                    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+                    String fromPhoneNumber = "+14846462181";
+                    String toPhoneNumber = "+21621545013";  // Remplacez par le numéro de téléphone du destinataire
+
+                    String messageBody = "l'utilisateur d'ID : "+cinTF1.getText()+" utilise des mots interdits";
+
+                    Message message = Message.creator(
+                                    new PhoneNumber(toPhoneNumber),
+                                    new PhoneNumber(fromPhoneNumber),
+                                    messageBody)
+                            .create();
+
+                    System.out.println("Message SID: " + message.getSid());
+
+
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Attention");
+                    alert.setContentText("SVP de ne pas utiliser des mots interdits");
+                    alert.showAndWait();
                 }
+
             } else {
                 AfficherAvertissement("Date non valide", "Veuillez sélectionner une date valide.");
             }
