@@ -6,43 +6,41 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects ;
 public class Quiz {
-
-
     private int id_quiz ;
     private int code_quiz ;
     private String nom_quiz ;
     private String description ;
     private int prix_quiz ;
-    private int id_etablissement ;
+    private String image_quiz ;
+    private List<Question> questions;
     public Quiz ()
     {
 
     }
 
-    public Quiz(int id_quiz, int code_quiz, String nom_quiz, String description, int prix_quiz, int id_etablissement) {
+    public Quiz(int id_quiz, int code_quiz, String nom_quiz, String description, int prix_quiz, String image_quiz) {
         this.id_quiz = id_quiz;
         this.code_quiz = code_quiz;
         this.nom_quiz = nom_quiz;
         this.description = description;
         this.prix_quiz = prix_quiz;
-        this.id_etablissement = id_etablissement;
+        this.image_quiz=image_quiz;
     }
-    public Quiz( int code_quiz, String nom_quiz, String description, int prix_quiz, int id_etablissement) {
+    public Quiz( int code_quiz, String nom_quiz, String description, int prix_quiz, String image_quiz) {
         this.code_quiz = code_quiz;
         this.nom_quiz = nom_quiz;
         this.description = description;
         this.prix_quiz = prix_quiz;
-        this.id_etablissement = id_etablissement;
+        this.image_quiz = image_quiz;
     }
 
-    public int getIdQuiz() {
+    public int getId_quiz() {
         return id_quiz;
     }
-    public void setId_quiz(int id_quiz) {
-        this.id_quiz = id_quiz;
-    }
+
     public int getCode_quiz() {
         return code_quiz;
     }
@@ -59,11 +57,11 @@ public class Quiz {
         return prix_quiz;
     }
 
-    public int getId_etablissement() {
-        return id_etablissement;
+    public String getImage_quiz() {
+        return image_quiz;
     }
 
-    public void setIdQuiz(int id_quiz) {
+    public void setId_quiz(int id_quiz) {
         this.id_quiz = id_quiz;
     }
 
@@ -83,8 +81,15 @@ public class Quiz {
         this.prix_quiz = prix_quiz;
     }
 
-    public void setId_etablissement(int id_etablissement) {
-        this.id_etablissement = id_etablissement;
+    public void setImage_quiz(String image_quiz) {
+        this.image_quiz= image_quiz;
+    }
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     @Override
@@ -95,7 +100,7 @@ public class Quiz {
                 ", nom_quiz='" + nom_quiz + '\'' +
                 ", description='" + description + '\'' +
                 ", prix_quiz=" + prix_quiz +
-                ", id_etablissement=" + id_etablissement +
+                ", image_quiz=" + image_quiz +
                 '}';
     }
 
