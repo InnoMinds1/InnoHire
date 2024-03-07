@@ -554,7 +554,7 @@ public class EtablissementController implements Initializable {
 
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/testkhedmetGafsi.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherQuizDisponible.fxml"));
             chosenetablissementCard.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

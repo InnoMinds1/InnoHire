@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="761.0" prefWidth="1370.0" style="-fx-background-color: #5955b3;" styleClass="text-field" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.PubController">
+<AnchorPane prefHeight="761.0" prefWidth="1370.0" style="-fx-background-color: #5955b3;" styleClass="text-field" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.PubController">
    <AnchorPane fx:id="container" layoutX="22.0" layoutY="11.0" prefHeight="734.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
       <children>
          <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="List Claim" />
@@ -212,7 +212,7 @@
                            </ImageView>
                         </graphic>
                      </Button>
-                     <Button layoutX="14.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@stylesOum.css" text="By Quiz">
+                     <Button layoutX="14.0" layoutY="63.0" mnemonicParsing="false" onAction="#NavigateToDisponnible" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@stylesOum.css" text="By Quiz">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
@@ -378,7 +378,7 @@
                            </ImageView>
                         </graphic>
                      </Button>
-                     <Button layoutX="14.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@stylesOum.css" text="Do Quiz">
+                     <Button layoutX="14.0" layoutY="63.0" mnemonicParsing="false" onAction="#NavigateToPasserQuiz" prefHeight="39.0" prefWidth="282.0" styleClass="button-normal" stylesheets="@stylesOum.css" text="Do Quiz">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>

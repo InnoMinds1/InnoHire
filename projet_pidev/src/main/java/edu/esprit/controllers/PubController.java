@@ -338,6 +338,35 @@ public class PubController implements Initializable {
         }
 
     }
+    @FXML
+    void NavigateToDisponnible(ActionEvent event) {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherQuizDisponible.fxml"));
+            nomRechercheTF.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+
+    }
+    @FXML
+    void NavigateToPasserQuiz(ActionEvent event) {
+       try{
+        Parent root = FXMLLoader.load(getClass().getResource("/PasserQuiz.fxml"));
+        nomRechercheTF.getScene().setRoot(root);
+    } catch (IOException e) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Sorry");
+        alert.setTitle("Error");
+        alert.show();
+    }
+
+    }
+
 
 
 

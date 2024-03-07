@@ -58,7 +58,7 @@
             </Button>
                   <ImageView fitHeight="22.0" fitWidth="31.0" layoutX="221.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                       <image>
-                          <Image url="@images/bin.png" />
+                          <Image url="@img/delete.png" />
                       </image>
                   </ImageView>
             </children>

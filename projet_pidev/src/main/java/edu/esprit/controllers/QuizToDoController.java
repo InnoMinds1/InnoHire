@@ -2,6 +2,7 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Question;
+import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.services.quizService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -103,9 +104,9 @@ public class QuizToDoController {
                 int score = calculerScore();
                 // Afficher le score (c'est facultatif, vous pouvez le retirer si vous le souhaitez)
                 afficherAlerte("Résultat du Quiz", "Score final : " + score);
-
+                ServiceUtilisateur su = new ServiceUtilisateur();
                 // Enregistrez le passage du quiz par le candidat avec le score final
-                int idCandidat = CurrentUser.getId_utilisateur();
+                int idCandidat =  su.getUserIdByCin(CurrentUser.getCin());
                 qs1.saveQuizPass(codeQuiz, idCandidat, score);
 
                 // Fermez la vue

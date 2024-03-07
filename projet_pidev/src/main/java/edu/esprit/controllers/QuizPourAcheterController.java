@@ -74,6 +74,7 @@ public class QuizPourAcheterController {
             ServiceEtablissement se =new ServiceEtablissement();
             ServiceWallet sw =new ServiceWallet();
             Etablissement etablissementCo=se.getOneByID(CurrentEtablissement.getIdEtablissement());
+            System.out.println(etablissementCo);
             Wallet walletCo=sw.getOneByID(CurrentWallet.getIdWallet());
 
             int idQuiz = quiz.getId_quiz();
