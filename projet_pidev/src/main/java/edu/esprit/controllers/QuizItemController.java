@@ -69,12 +69,19 @@ public class QuizItemController {
         LabelPrix.setText(String.valueOf(quiz.getPrix_quiz()));
 
         // Charger et afficher l'image du Quiz
-        String imagePath = quiz.getImage_quiz();
+    /*    String imagePath = quiz.getImage_quiz();
         if (imagePath != null && !imagePath.isEmpty()) {
             Image image = new Image(imagePath);
             imageView.setImage(image);
-        }
-    }
+
+        }*/
+        if (quiz.getImage_quiz() != null && !quiz.getImage_quiz().isEmpty()) {
+            Image image = new Image(getClass().getResourceAsStream("/images/" + quiz.getImage_quiz()));
+            imageView.setImage(image);
+
+
+        }}
+
 
 
 

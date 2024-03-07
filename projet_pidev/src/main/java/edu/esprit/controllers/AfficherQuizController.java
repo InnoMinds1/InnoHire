@@ -128,6 +128,7 @@ public class AfficherQuizController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        TFsearch.setOnKeyReleased(this::searchByCode);
     }
     public void navigateToAjouter(ActionEvent actionEvent) {
         try {
@@ -165,23 +166,23 @@ public class AfficherQuizController implements Initializable {
         // Appliquer la recherche seulement si la saisie n'est pas vide
         if (!searchQuery.isEmpty()) {
             try {
-                // Récupérer toutes les questions
-                Set<Quiz> allQuiz = serviceQ.getAll();
+                // Récupérer tous les quiz
+                Set<Quiz> allQuizzes = serviceQ.getAll();
 
-                // Filtrer les questions en fonction du code Quiz
-                List<Quiz> filteredQuestions = new ArrayList<>();
+                // Filtrer les quiz en fonction du code Quiz
+                List<Quiz> filteredQuizzes = new ArrayList<>();
 
-                for (Quiz quiz : allQuiz) {
+                for (Quiz quiz : allQuizzes) {
                     String codeString = String.valueOf(quiz.getCode_quiz());
                     if (codeString.startsWith(searchQuery)) {
-                        filteredQuestions.add(quiz);
+                        filteredQuizzes.add(quiz);
                     }
                 }
 
-                Set<Quiz> filteredQuestionsSet = new HashSet<>(filteredQuestions);
+                Set<Quiz> filteredQuizzesSet = new HashSet<>(filteredQuizzes);
 
                 // Mettre à jour la vue avec les résultats de la recherche
-                updateQuizGridView(filteredQuestionsSet);
+                updateQuizGridView(filteredQuizzesSet);
             } catch (NumberFormatException e) {
                 // Gérer l'exception si la saisie n'est pas un nombre
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -194,11 +195,11 @@ public class AfficherQuizController implements Initializable {
             }
         } else {
             try {
-                // Récupérer toutes les questions
-                Set<Quiz> allQuiz = serviceQ.getAll();
+                // Récupérer tous les quiz
+                Set<Quiz> allQuizzes = serviceQ.getAll();
 
-                // Mettre à jour la vue avec toutes les questions
-                updateQuizGridView(allQuiz);
+                // Mettre à jour la vue avec tous les quiz
+                updateQuizGridView(allQuizzes);
             } catch (SQLException e) {
                 // Gérer les exceptions SQL, par exemple afficher un message d'erreur ou lancer une nouvelle exception
                 e.printStackTrace();

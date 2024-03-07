@@ -114,6 +114,9 @@ public class AfficherQuestionController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        TFsearch.setOnKeyReleased(this::searchByCode);
+
+
     }
     public void navigateToAjouter(ActionEvent actionEvent) {
         try {
@@ -141,14 +144,9 @@ public class AfficherQuestionController implements Initializable {
                 Set<Question> allQuestions = serviceQ.getAll();
 
                 // Filtrer les questions en fonction du code Quiz
-                List<Question> filteredQuestions = new ArrayList<>();
-
-                for (Question question : allQuestions) {
-                    String codeString = String.valueOf(question.getQuiz().getCode_quiz());
-                    if (codeString.startsWith(searchQuery)) {
-                        filteredQuestions.add(question);
-                    }
-                }
+                List<Question> filteredQuestions = allQuestions.stream()
+                        .filter(question -> String.valueOf(question.getQuiz().getCode_quiz()).startsWith(searchQuery))
+                        .collect(Collectors.toList());
 
                 Set<Question> filteredQuestionsSet = new HashSet<>(filteredQuestions);
 
@@ -177,7 +175,6 @@ public class AfficherQuestionController implements Initializable {
             }
         }
     }
-
 
 
 

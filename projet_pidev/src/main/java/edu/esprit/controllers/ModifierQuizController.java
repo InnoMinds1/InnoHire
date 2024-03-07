@@ -49,12 +49,15 @@ public class ModifierQuizController {
         TFprix1.setText(String.valueOf(quiz.getPrix_quiz()));
 
         // Afficher l'image actuelle du quiz
-        String imagePath = quiz.getImage_quiz();
+     /*   String imagePath = quiz.getImage_quiz();
         if (imagePath != null && !imagePath.isEmpty()) {
             Image image = new Image(imagePath);
             imageViewQ1.setImage(image);
-        }
-    }
+        }*/
+        if (quiz.getImage_quiz() != null && !quiz.getImage_quiz().isEmpty()) {
+            Image image = new Image(getClass().getResourceAsStream("/images/" + quiz.getImage_quiz()));
+            imageViewQ1.setImage(image);
+    }}
 @FXML
     void ModifierQuizAction(ActionEvent event) {
         try {
@@ -123,15 +126,42 @@ public class ModifierQuizController {
     private void importImage1(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir une image");
-        File selectedFile = fileChooser.showOpenDialog(null);
+
+        // Set the initial directory to the img folder in the resources
+        String currentDir = System.getProperty("user.dir");
+        fileChooser.setInitialDirectory(new File(currentDir + "/src/main/resources/images"));
+
+        // Set the file extension filters if needed (e.g., for images)
+        FileChooser.ExtensionFilter imageFilter =
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null) {
-            imageView1.setText(selectedFile.getAbsolutePath());
+            // The user selected a file, you can handle it here
+            String imagePath = selectedFile.toURI().toString();
 
-            Image image = new Image(selectedFile.toURI().toString());
+            // Set the image file name to the TextField
+            imageView1.setText(selectedFile.getName());
+
+            // Display the image in the ImageView
+            Image image = new Image(imagePath);
             imageViewQ1.setImage(image);
+
+
+
+            // Do something with the imagePath, for example, display the image
+            // imageView.setImage(new Image(imagePath));
+            System.out.println("Selected Image: " + imagePath);
+        } else {
+            // The user canceled the operation
+            System.out.println("Operation canceled.");
         }
     }
+
+
     public void navigateToAfficher(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuiz.fxml"));

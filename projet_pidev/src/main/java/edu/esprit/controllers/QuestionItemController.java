@@ -63,6 +63,7 @@ public class QuestionItemController {
                 if (qs == null) {
                     qs = new questionService();
                 }
+
                 qs.supprimer(question.getId_question());
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Question a été supprimée avec succès.");
