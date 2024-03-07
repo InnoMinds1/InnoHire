@@ -40,56 +40,78 @@
 		</dependency>
 
 
-		<dependency>
-			<groupId>com.stripe</groupId>
-			<artifactId>stripe-java</artifactId>
-			<version>24.17.0</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20210307</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.zxing/javase -->
+
+
+
+
 		<dependency>
 			<groupId>com.google.zxing</groupId>
 			<artifactId>javase</artifactId>
 			<version>3.5.3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+		
 		<dependency>
 			<groupId>com.google.zxing</groupId>
 			<artifactId>core</artifactId>
 			<version>3.5.3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20230618</version>
-		</dependency>
 
+		<!-- OUMAYMA DEP -->
 		<dependency>
 			<groupId>com.twilio.sdk</groupId>
 			<artifactId>twilio</artifactId>
 			<version>10.0.0</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20210307</version>
+		</dependency>
+		<!-- END OUMAYMA DEP -->
+
+									<!-- SAYARI DEP -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>24.17.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20230618</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-web</artifactId>
+			<version>20.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openpnp</groupId>
+			<artifactId>opencv</artifactId>
+			<version>4.5.1-1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sarxos</groupId>
+			<artifactId>webcam-capture</artifactId>
+			<version>0.3.12</version>
+		</dependency>
+								<!-- END SAYARI DEP -->
 
 
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+
 			<plugin>
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-maven-plugin</artifactId>
@@ -97,6 +119,10 @@
 				<configuration>
 					<mainClass>edu.esprit.tests.MainFX</mainClass>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 
@@ -117,6 +143,10 @@
 			<releases>
 				<enabled>false</enabled>
 			</releases>
+		</repository>
+		<repository>
+			<id>jcenter</id>
+			<url>https://jcenter.bintray.com/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
