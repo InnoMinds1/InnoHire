@@ -7,6 +7,7 @@
 <<<<<<< Updated upstream
     <list default="true" id="30789ae1-67c4-4111-bd20-6b305a8703f5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" afterDir="false" />
     </list>
 =======
     <list default="true" id="30789ae1-67c4-4111-bd20-6b305a8703f5" name="Changes" comment="" />
@@ -110,7 +111,11 @@
       <workItem from="1709722674394" duration="289000" />
       <workItem from="1709723516466" duration="4251000" />
       <workItem from="1709751233359" duration="970000" />
+<<<<<<< Updated upstream
       <workItem from="1709806521626" duration="459000" />
+=======
+      <workItem from="1709814391694" duration="586000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
