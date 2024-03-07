@@ -30,7 +30,7 @@
          </ImageView>
          <ImageView fx:id="trierordredecroissant" fitHeight="53.0" fitWidth="51.0" layoutX="743.0" layoutY="65.0" onMouseClicked="#trierordredecroissant" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@img/cogwheel.png" />
+               <Image url="@img/down-arrow.png" />
             </image>
          </ImageView>
       </children>
