@@ -144,7 +144,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fx:id="qrCodeImage" fitHeight="154.0" fitWidth="263.0" layoutX="9.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="qrCodeImage" fitHeight="154.0" fitWidth="160.0" layoutX="77.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true" />
             <Button layoutX="77.0" layoutY="609.0" mnemonicParsing="false" onAction="#GenerateQrCode" prefHeight="52.0" prefWidth="139.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="User Info">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
