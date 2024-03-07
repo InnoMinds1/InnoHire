@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java",
-    "last_opened_file_path": "C:/Users/digoh/OneDrive/Bureau/unsplash-js-master",
+    "last_opened_file_path": "C:/InnoHire",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,7 +79,6 @@
     <attachedChunks>
       <set>
         <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
-        <option value="jdk-20.0.2-corretto-20.0.2.1-4caba194b151-5bc9ecd2" />
       </set>
     </attachedChunks>
   </component>
@@ -100,6 +99,7 @@
       <workItem from="1709804903556" duration="404000" />
       <workItem from="1709805412712" duration="648000" />
       <workItem from="1709806093648" duration="7766000" />
+      <workItem from="1709814632874" duration="479000" />
     </task>
     <servers />
   </component>
