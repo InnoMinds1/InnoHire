@@ -6,19 +6,24 @@ import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ResourceBundle;
 
-public class AjouterReclamationController {
+public class AjouterReclamationController{
     @FXML
     private TextField TFTitre;
     @FXML
@@ -31,6 +36,7 @@ public class AjouterReclamationController {
     private Label TypeError;
     @FXML
     private Label DescriptionError;
+    private Post pub;
 
 
     private final ServiceReclamation sr = new ServiceReclamation();
@@ -42,9 +48,15 @@ public class AjouterReclamationController {
     Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
     //Post pub=new Post(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
     LocalDateTime customDateTime = LocalDateTime.of(2024, 3, 7, 12, 30);
-    Post pub = new Post(4,userSender
-,PostAudience.PUBLIC,customDateTime,"Fk off","blog.png",15,15);
+    //Post pub = new Post(55974,userSender,PostAudience.PUBLIC,customDateTime,"Fk off","blog.png",15,15);
 
+
+    public void initData(Post selectedPost) {
+        // Use the selectedPost to initialize your UI elements
+        // Example: TFTitre.setText(selectedPost.getTitle());
+        System.out.println(selectedPost);
+         pub =selectedPost;
+    }
 
 
     public void navigateToAfficherReclamationAction(ActionEvent actionEvent) {
@@ -191,18 +203,24 @@ public class AjouterReclamationController {
         System.out.println(userSender);
             sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, userSender));
 
+        TFType.setText("");
+        TFTitre.setText("");
+        TADescription.setText("");
 
-
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
 
         // Show success alert
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Success");
         successAlert.setContentText("Reclamation added successfully!");
         successAlert.show();
-        navigateToAfficherReclamationAction(event);
+        //navigateToAfficherReclamationAction(event);
 
 
     }
+
 
 
 }

@@ -70,9 +70,9 @@ public class AfficherReclamationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Set a default value for the ChoiceBox
-        CbFilter.setValue("All");
+    //    CbFilter.setValue("All");
         // Add an event listener to the ChoiceBox
-        CbFilter.setOnAction(this::handleFilterChange);
+      //  CbFilter.setOnAction(this::handleFilterChange);
 
         searchField.setOnKeyReleased(this::handleSearch);
         if (CurrentUser.getRole() == 0) {
@@ -131,16 +131,16 @@ public class AfficherReclamationController implements Initializable {
             e.printStackTrace();
         }
     }
-    private void handleFilterChange(ActionEvent event) {
+    /*private void handleFilterChange(ActionEvent event) {
         // Get the selected filter from the ChoiceBox
         String selectedFilter = CbFilter.getValue();
         System.out.println("Selected Filter: " + selectedFilter);
 
         // Update the reclamation list based on the selected filter
         updateReclamationsList(selectedFilter);
-    }
+    }*/
 
-    private void updateReclamationsList(String filter) {
+   /* private void updateReclamationsList(String filter) {
         // Clear existing reclamation items
         reclamationsContainer.getChildren().clear();
 
@@ -179,7 +179,7 @@ public class AfficherReclamationController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @FXML
     private void handleSearch(KeyEvent event) {
@@ -270,4 +270,23 @@ public class AfficherReclamationController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void navigateToChatBot(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/ChatBotAi.fxml"));
+            searchField.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
+    public void OrderByDate(ActionEvent event) {
+
+    }
+
+
+
 }

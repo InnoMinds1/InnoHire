@@ -160,7 +160,7 @@ public class ServiceReclamation implements IService<Reclamation>{
         return reclamations;
     }
 
-    public Set<Reclamation> getAllOrderByDate() throws SQLException{
+    public Set<Reclamation> getAllOrderByDateAndTime() throws SQLException {
         Set<Reclamation> reclamations = new HashSet<>();
         String req = "SELECT * FROM `reclamation` ORDER BY `date` DESC"; // Order by date in descending order
         try (PreparedStatement ps = cnx.prepareStatement(req);
@@ -189,6 +189,8 @@ public class ServiceReclamation implements IService<Reclamation>{
         }
         return reclamations;
     }
+
+
 
     public Set<Reclamation> getAllByStatusOrderByDate(int status) throws SQLException {
         Set<Reclamation> reclamations = new HashSet<>();

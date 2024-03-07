@@ -12,10 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -463,6 +460,49 @@ public class PostController implements Initializable {
         }
 
     }
+
+    public void MakeClaim(ActionEvent event) {
+        try {
+            Post selectedPost = post;
+            // Load the AjouterReclamation.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterReclamation.fxml"));
+            Parent root = loader.load();
+
+            // Access the controller
+            AjouterReclamationController ajouterReclamationController = loader.getController();
+
+            // Set the data in the controller
+            ajouterReclamationController.initData(selectedPost);
+
+            // Create a new dialog
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Ajouter Réclamation");
+            dialog.getDialogPane().setContent(root);
+
+            // Add a button to the dialog
+            ButtonType closeButton = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialog.getDialogPane().getButtonTypes().add(closeButton);
+
+            // Show the dialog
+            dialog.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle IO exceptions
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error loading FXML file");
+            alert.setTitle("Error");
+            alert.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle other exceptions
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Unexpected error");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
 }
 
 
