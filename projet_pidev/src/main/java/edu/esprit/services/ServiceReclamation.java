@@ -159,4 +159,103 @@ public class ServiceReclamation implements Iservice<Reclamation>{
         return reclamations;
     }
 
+    public Set<Reclamation> getAllOrderByDate() throws SQLException{
+        Set<Reclamation> reclamations = new HashSet<>();
+        String req = "SELECT * FROM `reclamation` ORDER BY `date` DESC"; // Order by date in descending order
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Reclamation rec = new Reclamation();
+                rec.setIdReclamation(rs.getInt("id_reclamation"));
+                rec.setStatus(rs.getInt("status"));
+                rec.setType(rs.getString("type"));
+                rec.setTitre(rs.getString("titre"));
+                rec.setDescription(rs.getString("description"));
+                rec.setDate(rs.getTimestamp("date"));
+
+                // Use ServicePublication to get Publication by ID
+                Post post = new ServicePost().getOneByID(rs.getInt("id_post"));
+                rec.setPub(post);
+
+                // Use ServiceUtilisateur to get Utilisateur by ID
+                Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));
+                rec.setUser(utilisateur);
+
+                reclamations.add(rec);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Reclamations: " + e.getMessage());
+        }
+        return reclamations;
+    }
+
+    public Set<Reclamation> getAllByStatusOrderByDate(int status) throws SQLException {
+        Set<Reclamation> reclamations = new HashSet<>();
+        String req = "SELECT * FROM `reclamation` WHERE `status` = ? ORDER BY `date` DESC"; // Order by date in descending order
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, status); // Set the status parameter
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Reclamation rec = new Reclamation();
+                    rec.setIdReclamation(rs.getInt("id_reclamation"));
+                    rec.setStatus(rs.getInt("status"));
+                    rec.setType(rs.getString("type"));
+                    rec.setTitre(rs.getString("titre"));
+                    rec.setDescription(rs.getString("description"));
+                    rec.setDate(rs.getTimestamp("date"));
+
+                    // Use ServicePublication to get Publication by ID
+                    Post post = new ServicePost().getOneByID(rs.getInt("id_post"));
+                    rec.setPub(post);
+
+                    // Use ServiceUtilisateur to get Utilisateur by ID
+                    Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));
+                    rec.setUser(utilisateur);
+
+                    reclamations.add(rec);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Reclamations: " + e.getMessage());
+        }
+        return reclamations;
+    }
+
+    public Set<Reclamation> getAllOrderByMostReactions() throws SQLException {
+        Set<Reclamation> reclamations = new HashSet<>();
+        String req = "SELECT r.*, p.totalReactions " +
+                "FROM `reclamation` r " +
+                "JOIN `post` p ON r.id_post = p.id_post " +
+                "ORDER BY p.totalReactions ASC"; // Order by totalReactions in descending order
+
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Reclamation rec = new Reclamation();
+                rec.setIdReclamation(rs.getInt("id_reclamation"));
+                rec.setStatus(rs.getInt("status"));
+                rec.setType(rs.getString("type"));
+                rec.setTitre(rs.getString("titre"));
+                rec.setDescription(rs.getString("description"));
+                rec.setDate(rs.getTimestamp("date"));
+
+                // Use ServicePublication to get Publication by ID
+                Post post = new ServicePost().getOneByID(rs.getInt("id_post"));
+                post.setTotalReactions(rs.getInt("totalReactions")); // Set totalReactions
+                rec.setPub(post);
+
+                // Use ServiceUtilisateur to get Utilisateur by ID
+                Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));
+                rec.setUser(utilisateur);
+
+                reclamations.add(rec);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Reclamations: " + e.getMessage());
+        }
+        return reclamations;
+    }
+
+
+
 }

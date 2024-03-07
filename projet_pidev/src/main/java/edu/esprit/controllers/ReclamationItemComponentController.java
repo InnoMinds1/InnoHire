@@ -62,8 +62,13 @@ public class ReclamationItemComponentController {
 
         // Set data to UI elements
         userFullName.setText(reclamation.getUser().getNom() + " " + reclamation.getUser().getPrenom());
-        //tag.setText(reclamation.getPub().);
-        //pubCode.setText(reclamation.getPub().getCode_pub());
+        if (reclamation.getStatus() == 0) {
+            tag.setText("Unseen"); // You can change this to set the appropriate text
+        } else {
+            tag.setText("Seen"); // You can change this to set the appropriate text
+        }
+        System.out.println();
+        pubCode.setText(String.valueOf(reclamation.getPub().getAudience()));
         dateRec.setText(String.valueOf(reclamation.getDate()));
         // Set user photo
         String imageName = reclamation.getUser().getImage();

@@ -15,6 +15,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -377,6 +382,78 @@ public class ModifierReclamationController {
             errorAlert.setTitle("SQL Exception");
             errorAlert.setContentText(e.getMessage());
             errorAlert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void downloadFileHandler() {
+        String nbShares = String.valueOf(selectedReclamation.getPub().getNbShares());
+        String nbReactions = String.valueOf(selectedReclamation.getPub().getTotalReactions());
+        String nbComments = String.valueOf(selectedReclamation.getPub().getNbShares());
+        String date = selectedReclamation.getPub().getDate();
+
+        try {
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            // Set font
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+
+            // Write data to the PDF
+            // Write data to the PDF
+            contentStream.beginText();
+            contentStream.newLineAtOffset(50, 700);
+            contentStream.showText("Invoice");
+            contentStream.endText();
+
+            contentStream.beginText();
+            contentStream.newLineAtOffset(100, 680);
+            contentStream.showText("Shares: " + nbShares);
+            contentStream.endText();
+
+            contentStream.beginText();
+            contentStream.newLineAtOffset(100, 660);
+            contentStream.showText("Reactions: " + nbReactions);
+            contentStream.endText();
+
+            contentStream.beginText();
+            contentStream.newLineAtOffset(100, 640);
+            contentStream.showText("Comments: " + nbComments);
+            contentStream.endText();
+
+            contentStream.beginText();
+            contentStream.newLineAtOffset(100, 620);
+            contentStream.showText("Date: " + date);
+            contentStream.endText();
+
+            // Add an image to the PDF
+            //PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/images/folder.png", document);
+            //contentStream.drawImage(pdImage, 50, 500, pdImage.getWidth(), pdImage.getHeight());
+            // Add an image to the PDF
+            PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/images/folder.png", document);
+            float imageWidth = 50;//pdImage.getWidth();
+            float imageHeight = 50;//pdImage.getHeight();
+            float xImage = page.getMediaBox().getWidth() - imageWidth - 50; // X-coordinate of the image (top right corner)
+            float yImage = page.getMediaBox().getHeight() - imageHeight - 50; // Y-coordinate of the image (top right corner)
+            contentStream.drawImage(pdImage, xImage, yImage, imageWidth, imageHeight);
+
+
+            // Close the content stream
+            contentStream.close();
+
+            // Save the document to a file (you can modify this as needed)
+            document.save("src/main/resources/downloads/invoice.pdf");
+
+            // Close the document
+            document.close();
+
+            System.out.println("PDF invoice generated successfully.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

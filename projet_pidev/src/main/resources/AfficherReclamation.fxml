@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -25,8 +28,8 @@
                            <children>
                               <Label fx:id="receiverNameLabel211111" prefHeight="27.0" prefWidth="97.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="    Photo" />
                               <Label fx:id="receiverNameLabel2111111" prefHeight="27.0" prefWidth="178.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Full Name" />
-                              <Label fx:id="receiverNameLabel21111121" prefHeight="27.0" prefWidth="116.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Code" />
-                              <Label fx:id="receiverNameLabel2111112" prefHeight="27.0" prefWidth="116.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Tag" />
+                              <Label fx:id="receiverNameLabel21111121" prefHeight="27.0" prefWidth="116.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Audience" />
+                              <Label fx:id="receiverNameLabel2111112" prefHeight="27.0" prefWidth="116.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="Status" />
                               <Label fx:id="receiverNameLabel2111113" prefHeight="27.0" prefWidth="197.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="      Date " />
                               <Label fx:id="receiverNameLabel21111131" prefHeight="27.0" prefWidth="155.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 16;" text="      Actions" />
                            </children>
@@ -35,7 +38,7 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <TextField layoutX="644.0" layoutY="16.0" prefHeight="32.0" prefWidth="229.0" promptText="Search" stylesheets="@css/styles.css" />
+            <TextField fx:id="searchField" layoutX="644.0" layoutY="16.0" onAction="#handleSearch" prefHeight="32.0" prefWidth="229.0" promptText="Search" stylesheets="@css/styles.css" />
             <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="883.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/search.png" />
@@ -54,6 +57,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <ChoiceBox fx:id="CbFilter" layoutX="403.0" layoutY="20.0" prefWidth="150.0" style="-fx-background-color: #f2f5ec;">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Date" />
+                     <String fx:value="Alphabetic" />
+                     <String fx:value="Seen" />
+                     <String fx:value="Unseen" />
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
+
+            <Label layoutX="333.0" layoutY="22.0" prefHeight="20.0" prefWidth="70.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 14;" text="Order By :" />
          </children>
       </AnchorPane>
       <StackPane fx:id="StackPane" layoutX="983.0" layoutY="13.0" prefHeight="677.0" prefWidth="362.0">

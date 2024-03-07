@@ -45,8 +45,8 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <TextField fx:id="TFmessage" layoutX="288.0" layoutY="618.0" prefHeight="35.0" prefWidth="566.0" promptText="Write your message her ..." stylesheets="@css/styles.css" />
-            <Button layoutX="861.0" layoutY="618.0" mnemonicParsing="false" onAction="#ajouterMessageAction" prefHeight="35.0" prefWidth="78.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Send">
+            <TextField fx:id="TFmessage" layoutX="345.0" layoutY="618.0" prefHeight="35.0" prefWidth="509.0" promptText="Write your message her ..." stylesheets="@css/styles.css" />
+            <Button layoutX="861.0" layoutY="618.0" mnemonicParsing="false" onAction="#ajouterMessageAction" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Send">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -63,7 +63,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <AnchorPane layoutX="37.0" prefHeight="520.0" prefWidth="218.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20;">
+            <AnchorPane layoutX="37.0" prefHeight="407.0" prefWidth="218.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20;">
                <children>
                   <AnchorPane layoutX="76.0" layoutY="38.0" prefHeight="63.0" prefWidth="45.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 20;">
                      <children>
@@ -119,6 +119,44 @@
                </cursor>
             </Button>
             <Label fx:id="messageError" layoutX="288.0" layoutY="595.0" prefHeight="17.0" prefWidth="282.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Sorry fill it" />
+            <Button layoutX="268.0" layoutY="618.0" mnemonicParsing="false" onAction="#fileButtonAction" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="File">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/up.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="fileName" layoutX="361.0" layoutY="624.0" prefHeight="21.0" prefWidth="391.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 15;" text="fileName" />
+            <Button fx:id="cancelSendingFileButton" layoutX="758.0" layoutY="618.0" mnemonicParsing="false" onAction="#cancelSendingFileAction" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/multiply.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="qrCodeImage" fitHeight="154.0" fitWidth="160.0" layoutX="67.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="77.0" layoutY="609.0" mnemonicParsing="false" onAction="#GenerateQrCode" prefHeight="52.0" prefWidth="139.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="User Info">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/qr-code.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <StackPane fx:id="StackPane" layoutX="993.0" layoutY="14.0" prefHeight="677.0" prefWidth="362.0">

@@ -14,11 +14,11 @@
    <children>
       <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="678.0" prefWidth="953.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" stylesheets="@css/styles.css">
          <children>
-            <TextField fx:id="TFType" layoutX="25.0" layoutY="179.0" prefHeight="25.0" prefWidth="270.0" promptText="Type" stylesheets="@css/styles.css" />
+            <TextField fx:id="TFType" layoutX="25.0" layoutY="179.0" prefHeight="25.0" prefWidth="270.0" promptText="Object" stylesheets="@css/styles.css" />
             <TextArea fx:id="TADescription" layoutX="25.0" layoutY="263.0" prefHeight="372.0" prefWidth="649.0" promptText="Description" stylesheets="@css/styles.css" />
             <TextField id="css\styles.css" fx:id="TFTitre" layoutX="26.0" layoutY="105.0" prefHeight="25.0" prefWidth="270.0" promptText="Title" />
             <Label layoutX="38.0" layoutY="14.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 25;" text="Update Claim" />
-            <Button layoutX="817.0" layoutY="602.0" mnemonicParsing="false" onAction="#ModifierReclamation" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
+            <Button layoutX="810.0" layoutY="585.0" mnemonicParsing="false" onAction="#ModifierReclamation" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Update">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +30,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="707.0" layoutY="602.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
+            <Button layoutX="715.0" layoutY="585.0" mnemonicParsing="false" onAction="#navigateToAfficherReclamationAction" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Cancel">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                </cursor>
             </Button>
             <Label layoutX="26.0" layoutY="85.0" prefHeight="20.0" prefWidth="72.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Title" />
-            <Label layoutX="26.0" layoutY="157.0" prefHeight="20.0" prefWidth="72.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Objet" />
+            <Label layoutX="26.0" layoutY="157.0" prefHeight="20.0" prefWidth="72.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Object" />
             <Label layoutX="31.0" layoutY="235.0" prefHeight="17.0" prefWidth="134.0" style="-fx-text-fill: #632DE9; -fx-font-weight: bold; -fx-font-size: 15;" text="Description" />
             <Label fx:id="TitleError" layoutX="38.0" layoutY="142.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty title" />
             <Label fx:id="TypeError" layoutX="37.0" layoutY="218.0" style="-fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Please enter a non-empty type" />
@@ -84,7 +84,7 @@
                   <Label fx:id="labelHashTagPub1" layoutX="10.0" layoutY="1.0" prefHeight="27.0" prefWidth="45.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Poster" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="AnchoPaneClaim" layoutX="700.0" layoutY="339.0" prefHeight="222.0" prefWidth="211.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
+            <AnchorPane fx:id="AnchoPaneClaim" layoutX="700.0" layoutY="338.0" prefHeight="222.0" prefWidth="211.0" style="-fx-background-color: #f2f5ec; -fx-background-radius: 10;">
                <children>
                   <ImageView fx:id="userPhoto" fitHeight="81.0" fitWidth="72.0" layoutX="80.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -98,7 +98,18 @@
                   <Label fx:id="labelHashTagPub11" layoutX="14.0" layoutY="1.0" prefHeight="27.0" prefWidth="54.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 14;" text="Claimer" />
                </children>
             </AnchorPane>
-            <Button fx:id="btnDownloadFile" layoutX="817.0" layoutY="32.0" mnemonicParsing="false" onAction="#downloadFileHandler" text="Button" />
+            <Button layoutX="714.0" layoutY="635.0" mnemonicParsing="false" onAction="#downloadFileHandler" prefHeight="32.0" prefWidth="194.0" style="-fx-background-color: #5955b3; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Dowlonad file">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/pdf.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <StackPane fx:id="StackPane" layoutX="983.0" layoutY="14.0" prefHeight="677.0" prefWidth="362.0">
@@ -386,7 +397,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label layoutX="101.0" layoutY="630.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
+                  <Label layoutX="98.0" layoutY="646.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
                   <ImageView fitHeight="70.0" fitWidth="84.0" layoutX="151.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/profile.png" />
