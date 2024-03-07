@@ -4,6 +4,8 @@ import edu.esprit.entities.Question;
 import edu.esprit.entities.Quiz;
 import edu.esprit.services.questionService;
 import edu.esprit.services.quizService;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,7 +25,7 @@ import java.util.Map;
 public class QuizParEtablissementItemController {
     @FXML
     private Button btnPasser;
-
+    private Timeline timeline;
     @FXML
     private Text TFcodeA ;
     @FXML
@@ -44,16 +47,12 @@ public class QuizParEtablissementItemController {
     void PasserQuiz(ActionEvent event) throws SQLException {
         // Obtenez le code du quiz à partir du Text (convertissez-le en int si nécessaire)
         int codeQuiz = Integer.parseInt(TFcodeA.getText());
-        System.out.println("Code du quiz à récupérer : " + codeQuiz);
-
-        Quiz quiz = qs1.getQuizByCode(codeQuiz);
 
         // Appelez la méthode pour obtenir les questions, choix et réponses correctes
         List<Map<String, Object>> questionsData = qs.getQuestionsForQuiz(codeQuiz);
 
         // Créez une liste de questions
         List<Question> questions = new ArrayList<>();
-        System.out.println("Nombre de questions récupérées : " + questionsData.size());
 
         // Maintenant, questionsData contient les données nécessaires pour chaque question du quiz
         // Vous pouvez traiter ces données selon vos besoins
@@ -61,10 +60,11 @@ public class QuizParEtablissementItemController {
             String questionText = (String) questionData.get("question");
             String choix = (String) questionData.get("choix");
             int reponseCorrecte = (int) questionData.get("reponse_correcte");
-
+            Quiz Q = new Quiz();
+            Q.setCode_quiz(codeQuiz);
 
             // Créez un objet Question avec les données récupérées
-            Question question = new Question(questionText, choix, quiz, reponseCorrecte);
+            Question question = new Question(questionText, choix, Q, reponseCorrecte);
             questions.add(question);
         }
 
@@ -74,6 +74,12 @@ public class QuizParEtablissementItemController {
         try {
             root = loader.load();
             QuizToDoController quizToDoController = loader.getController();
+
+            // Initialisez et démarrez le chronomètre avec une durée en minutes (6 minutes pour l'exemple)
+            int dureeQuizEnMinutes = 10;
+
+            quizToDoController.initialiserChronometre(dureeQuizEnMinutes);
+
             quizToDoController.displayQuestions(questions);
 
             // Créez une nouvelle scène avec la vue QuizToDo
@@ -86,6 +92,10 @@ public class QuizParEtablissementItemController {
             e.printStackTrace();
         }
     }
+
+
+
+
 
 
 }

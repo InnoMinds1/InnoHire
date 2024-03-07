@@ -50,7 +50,7 @@ public class QuizPourAcheterController {
         this.quiz = quiz;
         TFnomA.setText(quiz.getNom_quiz());
 
-        TFprixA.setText(String.valueOf(quiz.getPrix_quiz()));
+        TFprixA.setText(String.valueOf(quiz.getPrix_quiz())+"DT");
 
         // Charger et afficher l'image du Quiz
         String imagePath = quiz.getImage_quiz();
