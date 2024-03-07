@@ -231,7 +231,7 @@ private void AfficherErreur(String titre, String contenu, String details) {
         badWords.add("ass");
         badWords.add("bite");
         badWords.add("cnne");
-        badWords.add("bonjour");
+
 
         for (String badWord : badWords) {
             if (message.toLowerCase().contains(badWord.toLowerCase())) {

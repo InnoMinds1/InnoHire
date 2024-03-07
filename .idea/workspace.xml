@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ItemCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ItemCommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/AfficherCommentaire2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/AfficherCommentaire2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/AjouterCommentaire.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/AjouterCommentaire.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/ModifierCommentaire.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/ModifierCommentaire.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterCommentaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterCommentaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PostController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +52,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.SendemailApplication.executor": "Debug",
+    "Spring Boot.SendemailApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java",
@@ -106,7 +103,7 @@
       <workItem from="1709805412712" duration="648000" />
       <workItem from="1709806093648" duration="7766000" />
       <workItem from="1709814632874" duration="479000" />
-      <workItem from="1709818349263" duration="19599000" />
+      <workItem from="1709818349263" duration="21486000" />
     </task>
     <servers />
   </component>

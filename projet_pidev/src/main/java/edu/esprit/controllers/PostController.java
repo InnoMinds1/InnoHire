@@ -303,11 +303,11 @@ public class PostController implements Initializable {
         if (seconds < 60) {
             return "Just Now";
         } else if (minutes < 60) {
-            return "publié il y a " + minutes + " minutes";
+            return "publié il y a " + minutes + " m";
         } else if (hours < 24) {
-            return "publié il y a " + hours + " hours";
+            return "publié il y a " + hours + " h";
         } else if (days < 7) {
-            return "publié il y a " + days + " days";
+            return "publié il y a " + days + " d";
         } else {
             return "plus 1 week";
         }
