@@ -65,6 +65,26 @@
                </items>
             </ComboBox>
             <TextField fx:id="searchField" layoutX="378.0" layoutY="20.0" prefHeight="27.0" prefWidth="174.0" promptText="Recherche" stylesheets="@service2.css" />
+            <Button layoutX="23.0" layoutY="628.0" mnemonicParsing="false" onAction="#trierparCin" prefHeight="20.0" prefWidth="133.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="  Trier par cin">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="21.0" layoutX="23.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/folders.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="167.0" layoutY="628.0" mnemonicParsing="false" onAction="#trierparNom" prefHeight="20.0" prefWidth="133.0" style="-fx-background-color: #00cc00; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Trier par Nom">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="21.0" layoutX="169.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/folders.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="983.0" layoutY="14.0" prefHeight="675.0" prefWidth="362.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">

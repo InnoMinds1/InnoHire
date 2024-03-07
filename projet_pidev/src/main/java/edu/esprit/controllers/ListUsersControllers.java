@@ -1,6 +1,7 @@
 package edu.esprit.controllers;
 
 import edu.esprit.entities.Admin;
+import java.util.Comparator;
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceUtilisateur;
@@ -26,6 +27,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ListUsersControllers implements Initializable {
 
@@ -284,6 +286,81 @@ public class ListUsersControllers implements Initializable {
                 || utilisateur.getAdresse().toLowerCase().contains(lowerCaseSearchTerm)
                 || String.valueOf(utilisateur.getCin()).contains(lowerCaseSearchTerm);
     }
+    @FXML
+    void trierparCin(ActionEvent event) {
+        try {
+            // Get the selected role
+            String selectedRole = comboRole.getValue();
+
+            // If role is null, set it to "NO FILTER"
+            final String role = (selectedRole == null) ? "NO FILTER" : selectedRole;
+
+            // Retrieve all users
+            Set<Utilisateur> utilisateurs = new ServiceUtilisateur().getAll();
+            Set<Admin> admins = new ServiceUtilisateur().getAll_admin();
+            utilisateurs.addAll(admins);
+
+            // Clear previous components
+            utilisateurContainer.getChildren().clear();
+
+            // Sort and filter users based on the selected role
+            utilisateurs.stream()
+                    .filter(utilisateur -> {
+                        int roleByCin = new ServiceUtilisateur().verifyRoleByCin(utilisateur.getCin());
+                        return role.equals("NO FILTER") || (roleByCin == 0 && role.equals("Admin")) ||
+                                (roleByCin == 1 && role.equals("Representant")) ||
+                                (roleByCin == 2 && role.equals("Candidat"));
+                    })
+                    .sorted(Comparator.comparingInt(Utilisateur::getCin))
+                    .forEach(this::loadUtilisateurItemComponent);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception (e.g., show an alert)
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error sorting users by Cin.");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+    @FXML
+    void trierparNom(ActionEvent event) {
+        try {
+            // Get the selected role
+            String selectedRole = comboRole.getValue();
+
+            // If role is null, set it to "NO FILTER"
+            final String role = (selectedRole == null) ? "NO FILTER" : selectedRole;
+
+            // Retrieve all users
+            Set<Utilisateur> utilisateurs = new ServiceUtilisateur().getAll();
+            Set<Admin> admins = new ServiceUtilisateur().getAll_admin();
+            utilisateurs.addAll(admins);
+
+            // Clear previous components
+            utilisateurContainer.getChildren().clear();
+
+            // Sort and filter users based on the selected role
+            utilisateurs.stream()
+                    .filter(utilisateur -> {
+                        int roleByCin = new ServiceUtilisateur().verifyRoleByCin(utilisateur.getCin());
+                        return role.equals("NO FILTER") || (roleByCin == 0 && role.equals("Admin")) ||
+                                (roleByCin == 1 && role.equals("Representant")) ||
+                                (roleByCin == 2 && role.equals("Candidat"));
+                    })
+                    .sorted(Comparator.comparing(Utilisateur::getNom, String.CASE_INSENSITIVE_ORDER))
+                    .forEach(this::loadUtilisateurItemComponent);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception (e.g., show an alert)
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error sorting users by Name.");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
 
 
 }
