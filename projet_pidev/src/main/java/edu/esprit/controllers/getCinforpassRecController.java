@@ -80,8 +80,8 @@ public class getCinforpassRecController {
             CurrentUser.setOtp(serviceUtilisateur.generateOTP());
             System.out.println("otp = " + CurrentUser.getOtp());
             serviceUtilisateur.modifier_OTP_par_cin(CurrentUser.getCin(), CurrentUser.getOtp());
-            String[] args = {};
-            SpringApplication.run(SendemailApplication.class, args);
+            EmailClass test = new EmailClass();
+            test.envoyer(CurrentUser.getAdresse(), String.valueOf(CurrentUser.getOtp()));
 
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
             alert1.setTitle("CIN FOUND");
