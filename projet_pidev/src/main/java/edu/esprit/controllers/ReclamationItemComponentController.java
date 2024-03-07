@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
 import javafx.event.ActionEvent;
@@ -70,12 +71,12 @@ public class ReclamationItemComponentController {
         String imageName = reclamation.getUser().getImage();
         //System.out.println(imageName);// Replace with the actual method to get the image name
         if (imageName != null && !imageName.isEmpty()) {
-            String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
+            String imagePath = "/img/" + imageName; // Assuming images are stored in src/main/resources/images
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             userPhoto.setImage(image);
         } else {
             // Set a default image if the name is not available
-            userPhoto.setImage(new Image(getClass().getResource("/images/edit.png.jpg").toExternalForm()));
+            userPhoto.setImage(new Image(getClass().getResource("/img/edit.png").toExternalForm()));
         }
     }
 

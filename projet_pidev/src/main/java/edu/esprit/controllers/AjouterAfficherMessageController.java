@@ -7,6 +7,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceMessagerie;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.animation.PauseTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -130,7 +131,7 @@ public class AjouterAfficherMessageController implements Initializable{
         receiverNameLabel.setText(receiverName);
         String imageName = userReciver.getImage();
         if (imageName != null && !imageName.isEmpty()) {
-            String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
+            String imagePath = "/img/" + imageName; // Assuming images are stored in src/main/resources/images
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             receiverProfileImage.setImage(image);
             if (userReciver != null) {
@@ -142,7 +143,7 @@ public class AjouterAfficherMessageController implements Initializable{
             }
         } else {
             // Set a default image if the name is not available
-            receiverProfileImage.setImage(new Image(getClass().getResource("/images/edit.png.jpg").toExternalForm()));
+            receiverProfileImage.setImage(new Image(getClass().getResource("/img/edit.png.jpg").toExternalForm()));
         }
         //receiverProfileImage.setImage(new Image(profileImageUrl));
     }
@@ -181,7 +182,7 @@ public class AjouterAfficherMessageController implements Initializable{
         HBox messageHbox = new HBox();
         messageHbox.setSpacing(10.0);
 
-        ImageView profileImage = new ImageView(new Image("/images/manh.png"));
+        ImageView profileImage = new ImageView(new Image("/img/manh.png"));
         profileImage.setFitWidth(40.0);
         profileImage.setFitHeight(40.0);
 
@@ -202,21 +203,21 @@ public class AjouterAfficherMessageController implements Initializable{
         dateLabel.setLayoutY(40.0);
         dateLabel.setStyle("-fx-text-fill: #888888; -fx-font-size: 10;");
 
-        Button deleteButton = new Button("", new ImageView(new Image("/images/de.png")));
+        Button deleteButton = new Button("", new ImageView(new Image("/img/de.png")));
         deleteButton.setLayoutX(370);
         deleteButton.setLayoutY(-40);
         ((ImageView) deleteButton.getGraphic()).setFitWidth(15);
         ((ImageView) deleteButton.getGraphic()).setFitHeight(15);
         deleteButton.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13; -fx-cursor: hand;");
 
-        Button editButton = new Button("", new ImageView(new Image("/images/message.png")));
+        Button editButton = new Button("", new ImageView(new Image("/img/message.png")));
         editButton.setLayoutX(380);
         editButton.setLayoutY(-40);
         ((ImageView) editButton.getGraphic()).setFitWidth(17);
         ((ImageView) editButton.getGraphic()).setFitHeight(17);
         editButton.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13; -fx-cursor: hand;");
 
-        Button downloadButton = new Button("", new ImageView(new Image("/images/d3.png")));
+        Button downloadButton = new Button("", new ImageView(new Image("/img/d3.png")));
         downloadButton.setLayoutX(380);
         downloadButton.setLayoutY(-40);
 
@@ -337,8 +338,8 @@ public class AjouterAfficherMessageController implements Initializable{
             if (message.getSenderId().getId_utilisateur()!=CurrentUser.getId_utilisateur()) {
                 //  if (message.getSender_id().getId_utilisateur() == 1) {
                 //System.out.println(receiverProfileImage);
-                //profileImage = new ImageView(new Image("/images/"+CurrentUser.getProfileImagePath()));
-                profileImage = new ImageView(new Image("/images/"+userPhoto));
+                //profileImage = new ImageView(new Image("/img/"+CurrentUser.getProfileImagePath()));
+                profileImage = new ImageView(new Image("/img/"+userPhoto));
                 profileImage.setFitWidth(40.0);
                 profileImage.setFitHeight(40.0);
                 // messageHbox.getChildren().addAll(messagePane, dateLabel);
@@ -360,10 +361,10 @@ public class AjouterAfficherMessageController implements Initializable{
                     fileTypeImage.setLayoutY(14.0);
 
                     if (fileExtension.equals("pdf")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/pdf.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/pdf.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else if (fileExtension.equals("png") || fileExtension.equals("jpg")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/image.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/image.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else {
                         messagePane.getChildren().addAll(contentLabel);
@@ -374,8 +375,8 @@ public class AjouterAfficherMessageController implements Initializable{
                     // messageHbox.getChildren().add(downloadButton);
                 }
             } else {
-                profileImage = new ImageView(new Image("/images/"+CurrentUser.getProfileImagePath()));
-                //profileImage = new ImageView(new Image("/images/"+userPhoto));
+                profileImage = new ImageView(new Image("/img/"+CurrentUser.getProfileImagePath()));
+                //profileImage = new ImageView(new Image("/img/"+userPhoto));
                 profileImage.setFitWidth(40.0);
                 profileImage.setFitHeight(40.0);
                 //DeleteButton.setLayoutX(370);
@@ -398,10 +399,10 @@ public class AjouterAfficherMessageController implements Initializable{
                     fileTypeImage.setLayoutY(14.0);
 
                     if (fileExtension.equals("pdf")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/pdf.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/pdf.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else if (fileExtension.equals("png") || fileExtension.equals("jpg")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/image.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/image.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else {
                         messagePane.getChildren().addAll(contentLabel);
@@ -417,7 +418,7 @@ public class AjouterAfficherMessageController implements Initializable{
             if (message.getSenderId().getId_utilisateur()!=CurrentUser.getId_utilisateur()) {
                 //  if (message.getSender_id().getId_utilisateur() == 1) {
                 //System.out.println(receiverProfileImage);
-                profileImage = new ImageView(new Image("/images/"+userPhoto));
+                profileImage = new ImageView(new Image("/img/"+userPhoto));
                 profileImage.setFitWidth(40.0);
                 profileImage.setFitHeight(40.0);
                 // messageHbox.getChildren().addAll(messagePane, dateLabel);
@@ -438,10 +439,10 @@ public class AjouterAfficherMessageController implements Initializable{
                     fileTypeImage.setLayoutY(14.0);
 
                     if (fileExtension.equals("pdf")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/pdf.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/pdf.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else if (fileExtension.equals("png") || fileExtension.equals("jpg")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/image.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/image.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else {
                         messagePane.getChildren().addAll(contentLabel);
@@ -455,7 +456,7 @@ public class AjouterAfficherMessageController implements Initializable{
                 //messageHbox.getChildren().add(EditButton);
             } else {
                 System.out.println(CurrentUser.getProfileImagePath());
-                profileImage = new ImageView(new Image("/images/"+CurrentUser.getProfileImagePath()));
+                profileImage = new ImageView(new Image("/img/"+CurrentUser.getProfileImagePath()));
                 profileImage.setFitWidth(40.0);
                 profileImage.setFitHeight(40.0);
                 //DeleteButton.setLayoutX(370);
@@ -478,10 +479,10 @@ public class AjouterAfficherMessageController implements Initializable{
                     fileTypeImage.setLayoutY(14.0);
 
                     if (fileExtension.equals("pdf")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/pdf.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/pdf.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else if (fileExtension.equals("png") || fileExtension.equals("jpg")) {
-                        fileTypeImage.setImage(new Image(getClass().getResource("/images/image.png").toExternalForm()));
+                        fileTypeImage.setImage(new Image(getClass().getResource("/img/image.png").toExternalForm()));
                         messageHbox.getChildren().add(downloadButton);
                     } else {
                         messagePane.getChildren().addAll(contentLabel);
@@ -599,7 +600,7 @@ public class AjouterAfficherMessageController implements Initializable{
         editTextArea.setPrefColumnCount(20);
 
         // Create a button to save the edited message
-        Button saveButton = new Button("Update", new ImageView(new Image("/images/edit.png")));
+        Button saveButton = new Button("Update", new ImageView(new Image("/img/edit.png")));
         ((ImageView) saveButton.getGraphic()).setFitWidth(15);
         ((ImageView) saveButton.getGraphic()).setFitHeight(15);
 
@@ -637,7 +638,10 @@ public class AjouterAfficherMessageController implements Initializable{
                 "\nImage: " + userReciver.getImage()+
                 "\nRole: Representant";
 
-        String directoryPath = "C:/Users/HACHEM/Documents/java/InnoHire/projet_pidev/src/main/resources/downloads";
+        String currentDir = System.getProperty("user.dir");
+        //directoryPath.setInitialDirectory(new File(currentDir + "/src/main/resources/downloads"));
+        String directoryPath = currentDir+"/src/main/resources/downloads";
+       // String directoryPath = "C:/Users/diagoh/IdeaProjects/InnoHire/projet_pidev";
         String fileName = "QrCode"+userReciver.getNom()+userReciver.getPrenom()+".jpg";
 
         // Create the directory if it doesn't exist

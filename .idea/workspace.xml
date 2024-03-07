@@ -5,11 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CameraCapture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ChatBotAiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ChatBotAiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceMessagerie.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceMessagerie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceReclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceReclamation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/QrCodeAmenKthiri.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/QrCodeYoussef Sayari.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/qrcode.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Candidat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Representant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/entities/Utilisateur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/IService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/ServiceUtilisateur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/tests/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,37 +56,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CameraCapture.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GeolocationExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StreetViewApp.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.3.2:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.SendemailApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/digoh/OneDrive/Bureau/unsplash-js-master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15820312&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31609195&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CameraCapture.executor": "Run",
+    "Application.GeolocationExample.executor": "Run",
+    "Application.StreetViewApp.executor": "Run",
+    "Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.3.2:clean].executor": "Run",
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor": "Run",
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.SendemailApplication.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java",
+    "last_opened_file_path": "C:/Users/digoh/OneDrive/Bureau/unsplash-js-master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15820312",
+    "project.structure.side.proportion": "0.31609195",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="SendemailApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="projet_pidev" />
@@ -102,6 +119,8 @@
       <workItem from="1709747344349" duration="108000" />
       <workItem from="1709752147454" duration="18485000" />
       <workItem from="1709804903556" duration="404000" />
+      <workItem from="1709805412712" duration="648000" />
+      <workItem from="1709806093648" duration="7427000" />
     </task>
     <servers />
   </component>

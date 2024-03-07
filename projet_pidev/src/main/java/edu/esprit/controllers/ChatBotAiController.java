@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

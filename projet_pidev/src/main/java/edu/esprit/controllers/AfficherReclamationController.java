@@ -1,5 +1,6 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
 import javafx.event.ActionEvent;

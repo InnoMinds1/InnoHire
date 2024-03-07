@@ -1,6 +1,7 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Messagerie;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.Connection;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ServiceMessagerie implements Iservice<Messagerie> {
+public class ServiceMessagerie implements IService<Messagerie> {
     private Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouter(Messagerie mess) throws SQLException{

@@ -2,6 +2,7 @@ package edu.esprit.controllers;
 
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceReclamation;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,11 +35,16 @@ public class AjouterReclamationController {
 
     private final ServiceReclamation sr = new ServiceReclamation();
     private final ServiceUtilisateur su = new ServiceUtilisateur();
-    Utilisateur userSender = su.getOneByID(CurrentUser.getId_utilisateur());
+    Utilisateur userSender = su.get_One_ByCin(CurrentUser.getCin());
+
+
+
     Utilisateur user=new Utilisateur(1,11417264,"dhawadi","hachem","bizerte","123456789","edit.png");
     //Post pub=new Post(1,"code",user,"desc","hshtag","seen","image",LocalDate.of(2021,02,4),5);
-    Post pub = new Post(1,userSender
-,PostAudience.PUBLIC,"2024-03-02 13:29:57","Fk off","blog.png",15,15,15);
+    LocalDateTime customDateTime = LocalDateTime.of(2024, 3, 7, 12, 30);
+    Post pub = new Post(55974,userSender
+,PostAudience.PUBLIC,customDateTime,"Fk off","blog.png",15,15);
+
 
 
     public void navigateToAfficherReclamationAction(ActionEvent actionEvent) {
@@ -114,6 +120,7 @@ public class AjouterReclamationController {
 
     @FXML
     void ajouterReclamationAction(ActionEvent event) {
+
         String type = TFType.getText().trim();
         String titre = TFTitre.getText().trim();
         String description = TADescription.getText().trim();
@@ -174,27 +181,20 @@ public class AjouterReclamationController {
             return;
         }
 
+        // Call the update method from ServiceReclamation to update the record in the database
         try {
-            // Call the update method from ServiceReclamation to update the record in the database
-            sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, userSender
-));
-
-            // Show success alert
-            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-            successAlert.setTitle("Success");
-            successAlert.setContentText("Reclamation updated successfully!");
-            successAlert.show();
-            navigateToAfficherReclamationAction(event);
+            sr.ajouter(new Reclamation(0, type, titre, description, timestamp, pub, userSender));
         } catch (SQLException e) {
-            // Handle any SQL exception that might occur during the update
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setTitle("SQL Exception");
-            errorAlert.setContentText(e.getMessage());
-            errorAlert.showAndWait();
+            throw new RuntimeException(e);
         }
+        System.out.println(userSender);
 
-
-
+        // Show success alert
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        successAlert.setTitle("Success");
+        successAlert.setContentText("Reclamation updated successfully!");
+        successAlert.show();
+        navigateToAfficherReclamationAction(event);
 
 
     }

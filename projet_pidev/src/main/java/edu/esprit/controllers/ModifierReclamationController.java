@@ -1,7 +1,10 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
+import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Reclamation;
 import edu.esprit.services.ServiceReclamation;
+import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -121,24 +124,24 @@ public class ModifierReclamationController {
         // Store the selected Reclamation for later use
         this.selectedReclamation = selectedReclamation;
 
-        labelNbShares.setText(String.valueOf(selectedReclamation.getPub().getNbShares()));
+        //labelNbShares.setText(String.valueOf(selectedReclamation.getPub().getNbShares()));
         labelNbReactions.setText(String.valueOf(selectedReclamation.getPub().getTotalReactions()));
-        labelNbComments.setText(String.valueOf(selectedReclamation.getPub().getNbShares()));
-        labelDatePub.setText(selectedReclamation.getPub().getDate());
+        //labelNbComments.setText(String.valueOf(selectedReclamation.getPub().getNbShares()));
+        labelDatePub.setText(String.valueOf(selectedReclamation.getPub().getDate()));
         if (selectedReclamation.getPub().getAudience()== PostAudience.PUBLIC) {
-            ppPublic.setImage(new Image(getClass().getResource("/images/world (1).png").toExternalForm()));
+            ppPublic.setImage(new Image(getClass().getResource("/img/world (1).png").toExternalForm()));
         } else {
             // Set a default image if the name is not available
-            ppPublic.setImage(new Image(getClass().getResource("/images/friends.png").toExternalForm()));
+            ppPublic.setImage(new Image(getClass().getResource("/img/friends.png").toExternalForm()));
         }
         String imgPost = selectedReclamation.getPub().getImage();
         if (imgPost != null  && !imgPost.isEmpty()) {
-            String imagePath = "/images/" + imgPost; // Assuming images are stored in src/main/resources/images
+            String imagePath = "/img/" + imgPost; // Assuming images are stored in src/main/resources/images
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             ImagePub.setImage(image);
         } else {
             // Set a default image if the name is not available
-            ImagePub.setImage(new Image(getClass().getResource("/images/postCandi.png").toExternalForm()));
+            ImagePub.setImage(new Image(getClass().getResource("/img/postCandi.png").toExternalForm()));
         }
 
 
@@ -175,12 +178,12 @@ public class ModifierReclamationController {
         String imageNamePub = selectedReclamation.getPub().getUtilisateur().getImage();
         //String imageNamePub = su.getImagefromCin(cinPub);
         if (imageNamePub != null  && !imageNamePub.isEmpty()) {
-            String imagePath = "/images/" + imageNamePub; // Assuming images are stored in src/main/resources/images
+            String imagePath = "/img/" + imageNamePub; // Assuming images are stored in src/main/resources/images
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             userPhotoPub.setImage(image);
         } else {
             // Set a default image if the name is not available
-            userPhotoPub.setImage(new Image(getClass().getResource("/images/edit.png").toExternalForm()));
+            userPhotoPub.setImage(new Image(getClass().getResource("/img/edit.png").toExternalForm()));
         }
 
         //labelNbReports.setText(String.valueOf(selectedReclamation.getPub().getNb_report()));
@@ -189,12 +192,12 @@ public class ModifierReclamationController {
 
         ///System.out.println(imageNamePub);// Replace with the actual method to get the image name
         if (imageName != null  && !imageName.isEmpty()) {
-            String imagePath = "/images/" + imageName; // Assuming images are stored in src/main/resources/images
+            String imagePath = "/img/" + imageName; // Assuming images are stored in src/main/resources/images
             Image image = new Image(getClass().getResource(imagePath).toExternalForm());
             userPhoto.setImage(image);
         } else {
             // Set a default image if the name is not available
-            userPhoto.setImage(new Image(getClass().getResource("/images/edit.png").toExternalForm()));
+            userPhoto.setImage(new Image(getClass().getResource("/img/edit.png").toExternalForm()));
         }
 
     }
@@ -380,10 +383,10 @@ public class ModifierReclamationController {
 
     @FXML
     private void downloadFileHandler() {
-        String nbShares = String.valueOf(selectedReclamation.getPub().getNbShares());
+        //String nbShares = String.valueOf(selectedReclamation.getPub().getNbShares());
         String nbReactions = String.valueOf(selectedReclamation.getPub().getTotalReactions());
-        String nbComments = String.valueOf(selectedReclamation.getPub().getNbShares());
-        String date = selectedReclamation.getPub().getDate();
+        //String nbComments = String.valueOf(selectedReclamation.getPub().getNbShares());
+        String date = String.valueOf(selectedReclamation.getPub().getDate());
 
         try {
             PDDocument document = new PDDocument();
@@ -402,20 +405,20 @@ public class ModifierReclamationController {
             contentStream.showText("Invoice");
             contentStream.endText();
 
-            contentStream.beginText();
+            /*contentStream.beginText();
             contentStream.newLineAtOffset(100, 680);
             contentStream.showText("Shares: " + nbShares);
-            contentStream.endText();
+            contentStream.endText();*/
 
             contentStream.beginText();
             contentStream.newLineAtOffset(100, 660);
             contentStream.showText("Reactions: " + nbReactions);
             contentStream.endText();
 
-            contentStream.beginText();
+          /*  contentStream.beginText();
             contentStream.newLineAtOffset(100, 640);
             contentStream.showText("Comments: " + nbComments);
-            contentStream.endText();
+            contentStream.endText();*/
 
             contentStream.beginText();
             contentStream.newLineAtOffset(100, 620);
@@ -423,10 +426,10 @@ public class ModifierReclamationController {
             contentStream.endText();
 
             // Add an image to the PDF
-            //PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/images/folder.png", document);
+            //PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/img/folder.png", document);
             //contentStream.drawImage(pdImage, 50, 500, pdImage.getWidth(), pdImage.getHeight());
             // Add an image to the PDF
-            PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/images/folder.png", document);
+            PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/img/folder.png", document);
             float imageWidth = 50;//pdImage.getWidth();
             float imageHeight = 50;//pdImage.getHeight();
             float xImage = page.getMediaBox().getWidth() - imageWidth - 50; // X-coordinate of the image (top right corner)

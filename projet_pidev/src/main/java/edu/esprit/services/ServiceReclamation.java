@@ -1,13 +1,16 @@
 package edu.esprit.services;
 
+import edu.esprit.entities.CurrentUser;
+import edu.esprit.entities.Post;
 import edu.esprit.entities.Reclamation;
+import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ServiceReclamation implements Iservice<Reclamation>{
+public class ServiceReclamation implements IService<Reclamation>{
     private Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
