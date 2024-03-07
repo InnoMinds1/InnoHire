@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class CurrentWallet {
 
-    private static int idWallet=17;
+    private static int idWallet=20;
     private static int balance;
     private static LocalDateTime dateCreation;
     private static int status;

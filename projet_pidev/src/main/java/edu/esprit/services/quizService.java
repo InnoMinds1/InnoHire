@@ -176,6 +176,40 @@ public class quizService implements IService<Quiz> {
 
         return questions;
     }
+    public void saveQuizPass(int codeQuiz, int idCandidat,int score) throws SQLException {
+        try {
+            // Assurez-vous que la table quiz_pass existe dans votre base de données
+            String query = "INSERT INTO quiz_pass (code_quiz, id_candidat,score) VALUES (?, ?,?)";
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+                preparedStatement.setInt(1, codeQuiz);
+                preparedStatement.setInt(2, idCandidat);
+                preparedStatement.setInt(3, score);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Méthode pour vérifier si un candidat a déjà passé un quiz
+    public boolean candidatHasPassedQuiz(int codeQuiz, int idCandidat) throws SQLException {
+        try {
+            // Assurez-vous que la table quiz_pass existe dans votre base de données
+            String query = "SELECT * FROM quiz_pass WHERE code_quiz = ? AND id_candidat = ?";
+            try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+                preparedStatement.setInt(1, codeQuiz);
+                preparedStatement.setInt(2, idCandidat);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    return resultSet.next(); // Retourne true si une ligne est trouvée, indiquant que le candidat a déjà passé le quiz
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 
     public int getIdQuizByCode(Integer codeQuiz) throws SQLException {

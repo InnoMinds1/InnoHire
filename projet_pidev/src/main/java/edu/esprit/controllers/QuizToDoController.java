@@ -1,6 +1,8 @@
 package edu.esprit.controllers;
 
+import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Question;
+import edu.esprit.services.quizService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
@@ -15,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +34,16 @@ public class QuizToDoController {
     private Button btnValider;
 
     private List<Integer> reponsesCorrectes;
+    quizService qs1=new quizService();
+    private int codeQuiz;
+    public void setCodeQuiz(int codeQuiz) {
+        this.codeQuiz = codeQuiz;
+    }
+
+
+
+    public QuizToDoController() throws SQLException {
+    }
 
     public void displayQuestions(List<Question> questions) {
         // Créez le VBox pour contenir les questions
@@ -71,13 +84,15 @@ public class QuizToDoController {
         // Appliquez le style du VBox
         vBox.setStyle("-fx-background-color: #f4f4f4; -fx-border-radius: 10; -fx-padding: 20;");
 
+        // Appliquez le style du ScrollPane
+        scrollPane.setStyle("-fx-background-color: #ffffff; -fx-border-radius: 15; -fx-padding: 10;");
+
         // Ajoutez le VBox au ScrollPane
         scrollPane.setContent(vBox);
     }
 
-
     @FXML
-    void validerQuiz(ActionEvent event) {
+    void validerQuiz(ActionEvent event) throws SQLException {
         // Vérifier d'abord si le temps est écoulé
         if (tempsRestant() <= 0) {
             // Afficher une alerte indiquant que le temps est écoulé
@@ -86,8 +101,19 @@ public class QuizToDoController {
             // Si le temps n'est pas écoulé, vérifier les réponses
             if (toutesReponsesRemplies()) {
                 int score = calculerScore();
-                // Afficher le score
+                // Afficher le score (c'est facultatif, vous pouvez le retirer si vous le souhaitez)
                 afficherAlerte("Résultat du Quiz", "Score final : " + score);
+
+                // Enregistrez le passage du quiz par le candidat avec le score final
+                int idCandidat = CurrentUser.getId_utilisateur();
+                qs1.saveQuizPass(codeQuiz, idCandidat, score);
+
+                // Fermez la vue
+                Stage stage = (Stage) lblChronometre.getScene().getWindow();
+                stage.close();
+
+                // Fermez la vue (vous devrez ajuster cela en fonction de votre logique)
+
             } else {
                 // Si toutes les réponses ne sont pas remplies, afficher un avertissement
                 afficherAlerte("Attention", "Veuillez répondre à toutes les questions avant de valider.");
@@ -155,7 +181,7 @@ public class QuizToDoController {
         stage.close();
     }
 
-    private int calculerScore() {
+    public int calculerScore() {
         int score = 0;
         ObservableList<Node> children = ((VBox) scrollPane.getContent()).getChildren();
 
