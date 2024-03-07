@@ -40,7 +40,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Label fx:id="date" textFill="#616770">
+                        <Label fx:id="dateETF" textFill="#616770">
                            <font>
                               <Font name="Segoe UI Historic" size="15.0" />
                            </font>

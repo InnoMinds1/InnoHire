@@ -4,6 +4,7 @@ import edu.esprit.entities.*;
 import edu.esprit.services.ServiceCommentaire;
 import edu.esprit.services.ServicePost;
 import edu.esprit.services.ServiceUtilisateur;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,9 +25,14 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class PostController implements Initializable {
     @FXML
@@ -38,7 +44,7 @@ public class PostController implements Initializable {
 
 
     @FXML
-    private Label date;
+    private Label dateETF;
 
     @FXML
     private ImageView audience;
@@ -105,10 +111,22 @@ public class PostController implements Initializable {
     private Reactions currentReaction;
     private Post post;
 
+    private ScheduledExecutorService scheduler;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        // Initialisez le planificateur pour mettre à jour la date toutes les 1 minute
+        scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(this::updateRelativeDate, 0, 1, TimeUnit.MINUTES);
 
+
+    }
+    private void updateRelativeDate() {
+        Platform.runLater(() -> {
+            String relativeDate = formatRelativeDate(post.getDate());
+            dateETF.setText(relativeDate);
+        });
     }
 
     @FXML
@@ -230,8 +248,8 @@ public class PostController implements Initializable {
 
         }
 
-        // Set date
-        date.setText(String.valueOf(post.getDate()));
+        String relativeDate = formatRelativeDate(post.getDate());
+        dateETF.setText(relativeDate);
 
         // Set audience image
         Image img;
@@ -272,6 +290,30 @@ public class PostController implements Initializable {
 
 
 
+    }
+
+
+    public static String formatRelativeDate(LocalDateTime postDate) {
+        LocalDateTime now = LocalDateTime.now();
+        Duration duration = Duration.between(postDate, now);
+
+        long seconds = duration.getSeconds();
+        long minutes = seconds / 60;
+        long hours = minutes / 60;
+        long days = hours / 24;
+        long weeks = days / 7;
+
+        if (seconds < 60) {
+            return "Just Now";
+        } else if (minutes < 60) {
+            return "publié il y a " + minutes + " minutes";
+        } else if (hours < 24) {
+            return "publié il y a " + hours + " hours";
+        } else if (days < 7) {
+            return "publié il y a " + days + " days";
+        } else {
+            return "plus 1 week";
+        }
     }
 
     private Post getPost() throws SQLException {
@@ -390,18 +432,7 @@ public class PostController implements Initializable {
         }
     }
 
-    /*public void Naviguerversajouter(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterCommentaire.fxml"));
-            caption.getScene().setRoot(root);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry");
-            alert.setTitle("Error");
-            alert.show();
-        }
 
-    }*/
     @FXML
     void NavigatetoC(MouseEvent event) {
         try {
