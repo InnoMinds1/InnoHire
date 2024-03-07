@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/projet_pidev/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ChatBotAiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ChatBotAiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Candidat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CurrentUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Post.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/PostAudience.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Representant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Utilisateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/Iservice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceMessagerie.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceMessagerie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServicePost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceReclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceReclamation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceUtilisateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/utils/DataSource.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2dGeXPiTsjHwRQTtYcVuRAeZcby" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CameraCapture.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GeolocationExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StreetViewApp.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.3.2:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SendemailApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gestion-reclamation&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/digoh/OneDrive/Bureau/unsplash-js-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15820312&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.31609195&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="SendemailApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="projet_pidev" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.emailsender.sendemail.SendemailApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
+        <option value="jdk-20.0.2-corretto-20.0.2.1-4caba194b151-5bc9ecd2" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="" />
+      <created>1709638881372</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709638881372</updated>
+      <workItem from="1709638882521" duration="4461000" />
+      <workItem from="1709645984452" duration="352000" />
+      <workItem from="1709682551554" duration="1709000" />
+      <workItem from="1709685308879" duration="33978000" />
+      <workItem from="1709747344349" duration="108000" />
+      <workItem from="1709752147454" duration="18485000" />
+      <workItem from="1709804903556" duration="404000" />
+      <workItem from="1709805412712" duration="648000" />
+      <workItem from="1709806093648" duration="366000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

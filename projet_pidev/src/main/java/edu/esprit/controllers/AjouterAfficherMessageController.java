@@ -5,10 +5,8 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.oned.Code128Writer;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceMessagerie;
-import edu.esprit.services.ServiceUtilisateur;
 import javafx.animation.PauseTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -38,7 +36,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.*;
-import com.google.zxing.pdf417.PDF417Writer;
 
 public class AjouterAfficherMessageController implements Initializable{
     @FXML

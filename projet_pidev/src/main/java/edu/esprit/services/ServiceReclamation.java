@@ -1,8 +1,6 @@
 package edu.esprit.services;
 
-import edu.esprit.entities.Post;
 import edu.esprit.entities.Reclamation;
-import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
