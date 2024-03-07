@@ -18,6 +18,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,8 @@ public class QuizToDoController {
 
     public QuizToDoController() throws SQLException {
     }
+
+
 
     public void displayQuestions(List<Question> questions) {
         // Créez le VBox pour contenir les questions
@@ -91,6 +95,7 @@ public class QuizToDoController {
         // Ajoutez le VBox au ScrollPane
         scrollPane.setContent(vBox);
     }
+
 
     @FXML
     void validerQuiz(ActionEvent event) throws SQLException {
