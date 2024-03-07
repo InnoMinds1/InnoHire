@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="750b91a3-14b9-4ec1-b487-4cdb6726728e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ChatBotAiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ChatBotAi.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AfficherReclamationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterAfficherMessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ModifierReclamationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/ReclamationItemComponentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/entities/CurrentUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceReclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/services/ServiceReclamation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherReclamation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherReclamation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterAfficherMessage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterAfficherMessage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierReclamation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierReclamation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/controllers/AjouterReclamationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/esprit/tests/MainFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,27 +37,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Debug",
-    "Application.MainFX.executor": "Debug",
-    "Application.MainFx.executor": "Debug",
-    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor": "Run",
-    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "gestion-reclamation",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.MainFX.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.MainFx.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gestion-reclamation&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="MainFx" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="edu.esprit.tests.MainFX" />
@@ -107,7 +95,8 @@
       <workItem from="1709678163901" duration="2077000" />
       <workItem from="1709727394924" duration="122000" />
       <workItem from="1709730523099" duration="31820000" />
-      <workItem from="1709790750120" duration="6037000" />
+      <workItem from="1709790750120" duration="7129000" />
+      <workItem from="1709807847816" duration="1702000" />
     </task>
     <servers />
   </component>
