@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import java.io.IOException;
@@ -51,55 +53,39 @@ public class ItemCommentController {
     public void modifier(ActionEvent actionEvent) {
         Commentaire selectedCommentaire = commentaire;
 
-        // Check if the current user has the right to modify comments
         if (CurrentUser.getRole() != 0) {
-            // Check if the selected comment belongs to the current user
-            if (selectedCommentaire.getUtilisateur().getCin() == CurrentUser.getCin()) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaire.fxml"));
-                    Parent root = loader.load();
-                    ModifierCommentaire controller = loader.getController();
-                    controller.initData(selectedCommentaire); // Pass the selected comment to the modification interface controller
-
-                    // Get the current scene
-                    Scene scene = labelDescription.getScene();
-
-                    // Change the content of the scene
-                    scene.setRoot(root);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                // Display a message indicating that the user can only modify their own comments
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Attention");
-                alert.setHeaderText(null);
-                alert.setContentText("Vous ne pouvez modifier que vos propres commentaires.");
-                alert.showAndWait();
-            }
-        } else {
             // Display a message indicating that the user does not have the right to modify comments
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Attention");
+            alert.setHeaderText(null);
+            alert.setContentText("Vous n'avez pas le droit de modifier les commentaires.");
+            alert.showAndWait();
+            return; // Exit the method if the user does not have the right to modify comments
+        }
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaire.fxml"));
+            Parent root = loader.load();
+            ModifierCommentaire controller = loader.getController();
+            controller.initData(selectedCommentaire); // Pass the selected comment to the modification interface controller
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaire.fxml"));
-                Parent root = loader.load();
-                ModifierCommentaire controller = loader.getController();
-                controller.initData(selectedCommentaire); // Pass the selected comment to the modification interface controller
+            // Create a new dialog
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Modifier Commentaire");
+            dialog.getDialogPane().setContent(root);
 
-                // Get the current scene
-                Scene scene = labelDescription.getScene();
+            // Add a button to the dialog
+            ButtonType closeButton = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialog.getDialogPane().getButtonTypes().add(closeButton);
 
-                // Change the content of the scene
-                scene.setRoot(root);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            // Show the dialog
+            dialog.showAndWait();
 
-
-
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+
 
 
 

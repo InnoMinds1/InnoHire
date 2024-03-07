@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="projet_pidev" options="-parameters" />
+      <module name="projet_pidev" options="" />
     </option>
   </component>
 </project>
