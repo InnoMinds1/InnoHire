@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -57,26 +54,28 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ChoiceBox fx:id="CbFilter" layoutX="182.0" layoutY="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #f2f5ec;">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="Date" />
-                     <String fx:value="Alphabetic" />
-                     <String fx:value="Seen" />
-                     <String fx:value="Unseen" />
-                  </FXCollections>
-               </items>
-            </ChoiceBox>
 
             <Label layoutX="238.0" layoutY="22.0" prefHeight="20.0" prefWidth="70.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 14;" text="Order By :" />
-            <Button layoutX="308.0" layoutY="15.0" mnemonicParsing="false" onAction="#OrderByDate" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #f2f5ec;" styleClass="button-normal" stylesheets="@css/styles.css" text="Date">
+            <Button fx:id="newestDateButton" layoutX="308.0" layoutY="15.0" mnemonicParsing="false" onAction="#OrderByDate" prefHeight="36.0" prefWidth="114.0" style="-fx-background-color: #f2f5ec;" styleClass="button-normal" stylesheets="@css/styles.css" text="New Date">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/categories%20(2).png" />
+                        <Image url="@img/triangle.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="oldestDateButton" layoutX="432.0" layoutY="14.0" mnemonicParsing="false" onAction="#OrderByOldestDate" prefHeight="36.0" prefWidth="114.0" style="-fx-background-color: #f2f5ec;" styleClass="button-normal" stylesheets="@css/styles.css" text="Old Date">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/down%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>

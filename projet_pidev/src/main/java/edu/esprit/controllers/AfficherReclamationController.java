@@ -45,6 +45,7 @@ import java.util.ResourceBundle;
 public class AfficherReclamationController implements Initializable {
 
     private final ServiceReclamation serviceReclamation = new ServiceReclamation();
+    private boolean orderByDateAsc = true;
 
     @FXML
     private VBox reclamationsContainer;
@@ -64,6 +65,7 @@ public class AfficherReclamationController implements Initializable {
     private TextField searchField;
     @FXML
     private ChoiceBox<String> CbFilter;
+
 
 
 
@@ -283,9 +285,48 @@ public class AfficherReclamationController implements Initializable {
         }
     }
 
-    public void OrderByDate(ActionEvent event) {
+    private void refreshReclamationsByDateOrder(boolean orderByOldest) {
+        // Clear existing reclamation items
+        reclamationsContainer.getChildren().clear();
 
+        try {
+            Set<Reclamation> reclamations;
+
+            // Order reclamations based on the specified order
+            if (orderByOldest) {
+                reclamations = serviceReclamation.getAllOrderByOldestDateAndTime();
+            } else {
+                reclamations = serviceReclamation.getAllOrderByNewestDateAndTime();
+            }
+
+            // Load and add ReclamationItemComponent for each ordered Reclamation
+            for (Reclamation reclamation : reclamations) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReclamationItemComponent.fxml"));
+                try {
+                    reclamationsContainer.getChildren().add(loader.load());
+                    ReclamationItemComponentController controller = loader.getController();
+                    controller.setReclamationData(reclamation, container);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+    @FXML
+    private void OrderByDate(ActionEvent event) {
+        // Refresh the displayed reclamations by ordering them by the newest date
+        refreshReclamationsByDateOrder(false);
+    }
+
+    @FXML
+    public void OrderByOldestDate(ActionEvent event) {
+        // Refresh the displayed reclamations by ordering them by the oldest date
+        refreshReclamationsByDateOrder(true);
+    }
+
 
 
 

@@ -7,8 +7,10 @@ import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.*;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class ServiceReclamation implements IService<Reclamation>{
     private Connection cnx = DataSource.getInstance().getCnx();
@@ -161,8 +163,10 @@ public class ServiceReclamation implements IService<Reclamation>{
     }
 
     public Set<Reclamation> getAllOrderByDateAndTime() throws SQLException {
-        Set<Reclamation> reclamations = new HashSet<>();
+        Set<Reclamation> reclamations = new TreeSet<>((rec1, rec2) -> rec2.getDate().compareTo(rec1.getDate()));
+
         String req = "SELECT * FROM `reclamation` ORDER BY `date` DESC"; // Order by date in descending order
+
         try (PreparedStatement ps = cnx.prepareStatement(req);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
@@ -189,6 +193,7 @@ public class ServiceReclamation implements IService<Reclamation>{
         }
         return reclamations;
     }
+
 
 
 
@@ -258,6 +263,66 @@ public class ServiceReclamation implements IService<Reclamation>{
         }
         return reclamations;
     }
+
+
+    private Reclamation createReclamationFromResultSet(ResultSet rs) throws SQLException {
+        Reclamation rec = new Reclamation();
+        rec.setIdReclamation(rs.getInt("id_reclamation"));
+        rec.setStatus(rs.getInt("status"));
+        rec.setType(rs.getString("type"));
+        rec.setTitre(rs.getString("titre"));
+        rec.setDescription(rs.getString("description"));
+        rec.setDate(rs.getTimestamp("date"));
+
+        // Use ServicePublication to get Publication by ID
+        Post post = new ServicePost().getOneByID(rs.getInt("id_post"));
+        rec.setPub(post);
+
+        // Use ServiceUtilisateur to get Utilisateur by ID
+        Utilisateur utilisateur = new ServiceUtilisateur().getOneByID(rs.getInt("id_utilisateur"));
+        rec.setUser(utilisateur);
+
+        return rec;
+    }
+
+
+    public Set<Reclamation> getAllOrderByNewestDateAndTime() throws SQLException {
+        Set<Reclamation> reclamations = new TreeSet<>((rec1, rec2) -> rec2.getDate().compareTo(rec1.getDate()));
+
+        String req = "SELECT * FROM `reclamation` ORDER BY `date` DESC"; // Order by date in descending order
+
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Reclamation rec = createReclamationFromResultSet(rs);
+                reclamations.add(rec);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Reclamations: " + e.getMessage());
+        }
+        return reclamations;
+    }
+
+    public Set<Reclamation> getAllOrderByOldestDateAndTime() throws SQLException {
+        Set<Reclamation> reclamations = new TreeSet<>(Comparator.comparing(Reclamation::getDate));
+
+        String req = "SELECT * FROM `reclamation` ORDER BY `date` ASC"; // Order by date in ascending order
+
+        try (PreparedStatement ps = cnx.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Reclamation rec = createReclamationFromResultSet(rs);
+                reclamations.add(rec);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting Reclamations: " + e.getMessage());
+        }
+        return reclamations;
+    }
+
+
+
+
 
 
 

@@ -638,37 +638,38 @@ public class AjouterAfficherMessageController implements Initializable{
         editStage.show();
     }
 
-    public void GenerateQrCode(ActionEvent event) throws WriterException, IOException {
-        // Include user information in the data variable
-        String data = "Name: " + userReciver.getNom() + " " + userReciver.getPrenom() +
-                "\nEmail: " + userReciver.getAdresse() +
-                "\nCIN: " + userReciver.getCin() +
-                "\nImage: " + userReciver.getImage()+
-                "\nRole: Representant";
+        public void GenerateQrCode(ActionEvent event) throws WriterException, IOException {
+            // Include user information in the data variable
+           String data = "Name: " + userReciver.getNom() + " " + userReciver.getPrenom() +
+                    "\nEmail: " + userReciver.getAdresse() +
+                    "\nCIN: " + userReciver.getCin() +
+                    "\nImage: " + userReciver.getImage()+
+                    "\nRole: Representant";
 
-        String currentDir = System.getProperty("user.dir");
-        String directoryPath = currentDir+"src/main/resources/downloads";
-        String fileName = "QrCode"+userReciver.getNom()+userReciver.getPrenom()+".jpg";
+            String currentDir = System.getProperty("user.dir");
+            String directoryPath = currentDir+"src/main/resources/downloads";
+            String fileName = "QrCode"+userReciver.getNom()+userReciver.getPrenom()+".jpg";
 
 
-        // Create the directory if it doesn't exist
-        Path directory = Paths.get(directoryPath);
-        Files.createDirectories(directory);
+            // Create the directory if it doesn't exist
+            Path directory = Paths.get(directoryPath);
+            Files.createDirectories(directory);
 
-        // Create the QR code
-        BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 500, 500);
+            // Create the QR code
+            BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 500, 500);
 
-        // Write the QR code image to the file
-        Path filePath = directory.resolve(fileName);
-        MatrixToImageWriter.writeToPath(matrix, "jpg", filePath);
+            // Write the QR code image to the file
+            Path filePath = directory.resolve(fileName);
+            MatrixToImageWriter.writeToPath(matrix, "jpg", filePath);
 
-        // Load the generated QR code image
-        File qrCodeFile = new File(directoryPath, fileName);
-        Image qrCodeImage = new Image(qrCodeFile.toURI().toString());
+            // Load the generated QR code image
+            File qrCodeFile = new File(directoryPath, fileName);
+            Image qrCodeImage = new Image(qrCodeFile.toURI().toString());
 
-        // Set the loaded image to the ImageView
-        this.qrCodeImage.setImage(qrCodeImage);
+            // Set the loaded image to the ImageView
+            this.qrCodeImage.setImage(qrCodeImage);
 
-        System.out.println("QRCode successfully created at: " + filePath.toAbsolutePath());
-    }
+            System.out.println("QRCode successfully created at: " + filePath.toAbsolutePath());
+
+        }
 }
