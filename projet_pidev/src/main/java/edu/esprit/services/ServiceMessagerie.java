@@ -1,7 +1,6 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Messagerie;
-import edu.esprit.entities.Utilisateur;
 import edu.esprit.utils.DataSource;
 
 import java.sql.Connection;

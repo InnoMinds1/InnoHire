@@ -1,6 +1,5 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.CurrentUser;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,15 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 public class ChatBotAiController implements Initializable {
 

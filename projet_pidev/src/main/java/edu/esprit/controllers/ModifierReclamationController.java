@@ -1,11 +1,7 @@
 package edu.esprit.controllers;
 
-import edu.esprit.entities.CurrentUser;
-import edu.esprit.entities.PostAudience;
 import edu.esprit.entities.Reclamation;
-import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceReclamation;
-import edu.esprit.services.ServiceUtilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,9 +19,6 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class ModifierReclamationController {
     @FXML
