@@ -3,8 +3,8 @@ package edu.esprit.entities;
 import edu.esprit.services.ServiceUtilisateur;
 
 public class CurrentUser {
-    private static int id_utilisateur=2215 ;
-    private static  int cin=22;
+    private static int id_utilisateur;
+    private static  int cin;
     private static String nom;
     private static String prenom;
     private static String adresse;

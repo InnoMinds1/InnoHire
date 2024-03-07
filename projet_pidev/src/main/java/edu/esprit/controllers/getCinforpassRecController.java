@@ -1,7 +1,6 @@
 package edu.esprit.controllers;
 
-import com.emailsender.sendemail.SendEmail;
-import com.emailsender.sendemail.SendemailApplication;
+
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Utilisateur;
 import edu.esprit.services.ServiceUtilisateur;
@@ -12,19 +11,15 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CurrencyEditor;
-import org.springframework.boot.SpringApplication;
-import org.springframework.stereotype.Controller;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Controller
+
 public class getCinforpassRecController {
 
-    @Autowired
-    private SendEmail senderservice;
+
 
     @FXML
     private Label LabelCIN;
