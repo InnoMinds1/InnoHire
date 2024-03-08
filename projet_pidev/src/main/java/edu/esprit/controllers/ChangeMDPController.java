@@ -45,8 +45,7 @@ public class ChangeMDPController {
     private PasswordField TFnouveau;
     @FXML
     private PasswordField TFnouveau_confirm;
-    @FXML
-    private ImageView Qr_image;
+
 
 
     @FXML

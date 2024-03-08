@@ -13,11 +13,7 @@
         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="676.0" prefWidth="773.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 30 30 30;">
             <children>
                 <Label layoutX="277.0" layoutY="110.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 35;" text="Modifer Votre MDP " />
-                <ImageView fitHeight="110.0" fitWidth="97.0" layoutX="349.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../Documents/java/InnoHire/projet_pidev/src/main/resources/images/blink.gif" />
-                    </image>
-                </ImageView>
+
             <Button layoutX="402.0" layoutY="387.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
                <font>
                   <Font size="16.0" />
@@ -46,13 +42,6 @@
                   <Font size="31.0" />
                </font>
             </Label>
-            <PasswordField fx:id="TFnouveau_confirm1" layoutX="71.0" layoutY="394.0" prefHeight="46.0" prefWidth="250.0" promptText="GenererQrpourlemdp" stylesheets="@service2.css" />
-            <Button layoutX="84.0" layoutY="461.0" mnemonicParsing="false" onAction="#genererQR" prefHeight="46.0" prefWidth="177.0" styleClass="label2" stylesheets="@service2.css" text="Generer Qr" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <ImageView fx:id="Qr_image" fitHeight="203.0" fitWidth="261.0" layoutX="387.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
         <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">

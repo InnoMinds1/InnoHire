@@ -221,7 +221,7 @@ public class LoginController {
 
     }
 
-    @FXML
+  /*@FXML
     void navigateToQR(ActionEvent event) throws IOException, WriterException {
         try {
             String text = "test";
@@ -247,7 +247,7 @@ public class LoginController {
         } catch (Exception e) {
             System.out.println("Error while creating barcode: " + e.getMessage());
         }
-    }
+    }*/
 
 }
 
