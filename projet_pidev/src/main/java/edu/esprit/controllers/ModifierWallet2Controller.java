@@ -241,7 +241,7 @@ public class ModifierWallet2Controller implements Initializable {
             // Logique à exécuter si l'utilisateur a confirmé
             try {
 // Set your secret key here
-                Stripe.apiKey = "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";
+                Stripe.apiKey = "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";
 
                 int amount;
                 try {
@@ -271,8 +271,6 @@ public class ModifierWallet2Controller implements Initializable {
             }
         }
     }
-
-
 
 
     public void rechargerBtn(ActionEvent actionEvent) {

@@ -40,7 +40,7 @@ public class ChatBotAiController implements Initializable{
     private ImageView loadingImageView;
 
 
-    private static final String OPENAI_API_KEY = "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";
+    private static final String OPENAI_API_KEY = "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";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

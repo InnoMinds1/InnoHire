@@ -434,7 +434,7 @@
                      </Button>
                   </children>
                </AnchorPane>
-               <Button layoutX="307.0" layoutY="13.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="37.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
+               <Button layoutX="307.0" layoutY="13.0" mnemonicParsing="false" onAction="#Logout" prefHeight="41.0" prefWidth="37.0" style="-fx-background-color: #ffffff; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 50; -fx-font-size: 13;">
                   <graphic>
                      <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                         <image>
