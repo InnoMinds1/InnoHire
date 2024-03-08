@@ -18,6 +18,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -510,6 +515,80 @@ public class PostController implements Initializable {
             alert.setContentText("Unexpected error");
             alert.setTitle("Error");
             alert.show();
+        }
+        downloadFileHandler();
+    }
+
+    @FXML
+    private void downloadFileHandler() {
+        Post selectedPost = post;
+            String caption = selectedPost.getCaption();
+            String imagePost = selectedPost.getImage();
+        System.out.println(caption);
+        System.out.println(imagePost);
+
+        try {
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            // Set font
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+
+            // Write data to the PDF
+            // Write data to the PDF
+            contentStream.beginText();
+            contentStream.newLineAtOffset(60, 720);
+            contentStream.showText("-- Post Details --");
+            contentStream.endText();
+
+            /*contentStream.beginText();
+            contentStream.newLineAtOffset(100, 680);
+            contentStream.showText("Shares: " + nbShares);
+            contentStream.endText();*/
+
+            contentStream.beginText();
+            contentStream.newLineAtOffset(200, 700); // Adjust the X and Y coordinates for the caption
+            contentStream.showText("Caption: " + caption);
+            contentStream.endText();
+
+          /*  contentStream.beginText();
+            contentStream.newLineAtOffset(100, 640);
+            contentStream.showText("Comments: " + nbComments);
+            contentStream.endText();*/
+
+            /*contentStream.beginText();
+            contentStream.newLineAtOffset(100, 620);
+            contentStream.showText(": " + userName);
+            contentStream.endText();*/
+
+            // Add an image to the PDF
+            //PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/img/folder.png", document);
+            //contentStream.drawImage(pdImage, 50, 500, pdImage.getWidth(), pdImage.getHeight());
+            // Add an image to the PDF
+            PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/img/" + imagePost, document);
+            float imageWidth = 250; // pdImage.getWidth();
+            float imageHeight = 250; // pdImage.getHeight();
+            float xImage = 150; // Adjust the X-coordinate of the image
+            float yImage = 400; // Adjust the Y-coordinate of the image
+            contentStream.drawImage(pdImage, xImage, yImage, imageWidth, imageHeight);
+
+
+            // Close the content stream
+            contentStream.close();
+
+            // Save the document to a file (you can modify this as needed)
+            document.save("src/main/resources/downloads/invoice.pdf");
+
+            // Close the document
+            document.close();
+
+            System.out.println("PDF invoice generated successfully.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

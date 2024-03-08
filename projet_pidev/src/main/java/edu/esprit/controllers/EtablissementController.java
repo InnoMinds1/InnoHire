@@ -588,7 +588,10 @@ public class EtablissementController implements Initializable {
 
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     public void downloadFileHandler(ActionEvent event) {
         //String nbShares = String.valueOf(selectedReclamation.getPub().getNbShares());
         String NomEtab = etablissementCo.getNom();
@@ -663,6 +666,10 @@ public class EtablissementController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 
     public void camera(ActionEvent actionEvent) {

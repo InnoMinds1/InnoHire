@@ -14,9 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
@@ -40,6 +42,8 @@ import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+
 
 
 public class AfficherReclamationController implements Initializable {
@@ -66,6 +70,12 @@ public class AfficherReclamationController implements Initializable {
     @FXML
     private ChoiceBox<String> CbFilter;
 
+    @FXML
+    private ImageView currentUserPhoto;
+    @FXML
+    private javafx.scene.control.Label currentUserFullName;
+    @FXML
+    private Label currentUserAdresse;
 
 
 
@@ -75,6 +85,20 @@ public class AfficherReclamationController implements Initializable {
     //    CbFilter.setValue("All");
         // Add an event listener to the ChoiceBox
       //  CbFilter.setOnAction(this::handleFilterChange);
+        String imagePath = CurrentUser.getProfileImagePath();
+        System.out.println(imagePath);
+        String currentDir = System.getProperty("user.dir");
+// imagePath = currentDir + "\\src\\main\\resources\\img" + imagePath; // Use double backslashes for path separators
+        System.out.println(imagePath);
+
+// Set the image file name to the TextField
+
+// Display the image in the ImageView
+        Image image = new Image("file:" + currentDir + "/src/main/resources/img/" + imagePath); // Use forward slashes for path separators
+        currentUserPhoto.setImage(image);
+
+        currentUserFullName.setText(CurrentUser.getNom() +" "+CurrentUser.getPrenom());
+        currentUserAdresse.setText(CurrentUser.getAdresse());
 
         searchField.setOnKeyReleased(this::handleSearch);
         if (CurrentUser.getRole() == 0) {
@@ -328,6 +352,55 @@ public class AfficherReclamationController implements Initializable {
     }
 
 
+    public void navigateToUserList(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/listUsers.fxml"));
+            searchField.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
 
+    public void navigateToPostList(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
+            searchField.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
 
+    public void navigateToEtablissementList(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Etablissement.fxml"));
+            searchField.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
+    public void navigateToSettings(ActionEvent event) {
+        System.out.println("settings");
+    }
+
+    public void navigateToChat(ActionEvent event) {
+        /*try {
+            Parent root = FXMLLoader.load(getClass().getResource("/ChatBotAi.fxml"));
+            searchField.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }*/
+    }
 }
