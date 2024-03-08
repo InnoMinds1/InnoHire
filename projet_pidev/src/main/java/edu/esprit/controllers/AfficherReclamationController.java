@@ -273,7 +273,6 @@ public class AfficherReclamationController implements Initializable {
         }
     }
 
-    @FXML
     public void navigateToChatBot(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/ChatBotAi.fxml"));
