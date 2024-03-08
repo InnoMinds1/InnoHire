@@ -11,13 +11,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import org.controlsfx.control.Notifications;
 
 
 import java.sql.SQLException;
@@ -35,6 +36,9 @@ public class QuizToDoController {
     private ScrollPane scrollPane;
     @FXML
     private Button btnValider;
+    private static final int SECONDS_BEFORE_NOTIFICATION = 10;
+    private boolean notificationAffichee = false;
+
 
     private List<Integer> reponsesCorrectes;
     quizService qs1=new quizService();
@@ -172,8 +176,25 @@ public class QuizToDoController {
 
         // Démarrez le chronomètre
         timeline.play();
-    }
+        timeline.currentTimeProperty().addListener((observable, oldValue, newValue) -> {
+            long tempsRestant = Math.round(dureeEnSecondes - newValue.toSeconds());
+            int minutes = (int) (tempsRestant / 60);
+            int secondes = (int) (tempsRestant % 60);
+            lblChronometre.setText(String.format("%02d:%02d", minutes, secondes));
 
+            // Vérifiez si le temps restant est égal à 10 secondes et que la notification n'a pas encore été affichée
+            if (tempsRestant == SECONDS_BEFORE_NOTIFICATION && !notificationAffichee) {
+                afficherNotification("Attention", "Il reste 10 secondes !");
+                notificationAffichee = true;
+            }
+        });
+    }
+    private void afficherNotification(String titre, String texte) {
+        Notifications.create()
+                .title(titre)
+                .text(texte)
+                .showInformation();
+    }
     private void tempsEcoule() {
         // Arrêtez le chronomètre
         timeline.stop();
@@ -181,12 +202,20 @@ public class QuizToDoController {
         // Affichez l'alerte "Temps épuisé"
         afficherAlerte("Temps épuisé", "Le temps pour le quiz est écoulé.");
 
-        // Fermez la vue (vous devrez ajuster cela en fonction de votre logique)
-        // Par exemple, fermez la scène actuelle ou le stage.
-        Stage stage = (Stage) LVquestion.getScene().getWindow();
-        stage.close();
+        // Fermez la vue
+        fermerVueQuiz();
     }
 
+    private void fermerVueQuiz() {
+        // Obtenez la scène actuelle à partir de n'importe quel élément de la vue (ici, j'utilise LVquestion)
+        Scene scene = lblChronometre.getScene();
+
+        // Obtenez la fenêtre (stage) à partir de la scène
+        Stage stage = (Stage) scene.getWindow();
+
+        // Fermez la fenêtre (vue du quiz)
+        stage.close();
+    }
     public int calculerScore() {
         int score = 0;
         ObservableList<Node> children = ((VBox) scrollPane.getContent()).getChildren();

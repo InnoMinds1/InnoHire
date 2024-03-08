@@ -79,6 +79,14 @@ public class ModifierQuestionController {
                 return;
             }
 
+            // Vérification du format des choix
+            if (!isValidFormatChoix(modifiedChoix)) {
+                // Afficher un message d'erreur
+                setModifyTextFieldErrorStyle(TFchoixModify);
+                showAlert("Erreur de saisie", "Le format des choix est incorrect. Utilisez le format '1) ... 2) ... 3) ...'.");
+                return;
+            }
+
             // Vérification de la réponse correcte
             try {
                 int modifiedReponseCorrecte = Integer.parseInt(TFreponse_correcteModify.getText());
@@ -97,9 +105,8 @@ public class ModifierQuestionController {
                 question.setQuiz(qs1.getOneByID(idQuiz));
                 question.getQuiz().setCode_quiz(selectedCodeQuiz);
                 question.setReponse_correcte(modifiedReponseCorrecte);
-                if (qs==null)
-                {
-                    qs=new questionService();
+                if (qs == null) {
+                    qs = new questionService();
                 }
 
                 try {
@@ -124,6 +131,15 @@ public class ModifierQuestionController {
             showAlert("Erreur de modification", "Erreur lors de la modification de la question.");
         }
     }
+
+    private boolean isValidFormatChoix(String choix) {
+        // Vérifiez si le format des choix est correct
+        String regex = "\\d+\\)[^\\d]*\\d+\\)[^\\d]*\\d+.*";
+
+        return choix.matches(regex);
+    }
+
+
 
     // Méthode pour réinitialiser le style des TextFields de modification
     private void resetModifyTextFieldStyles() {

@@ -58,7 +58,7 @@ public class ModifierQuizController {
             Image image = new Image(getClass().getResourceAsStream("/img/" + quiz.getImage_quiz()));
             imageViewQ1.setImage(image);
     }}
-@FXML
+    @FXML
     void ModifierQuizAction(ActionEvent event) {
         try {
             // Récupérer les valeurs des champs
@@ -78,10 +78,31 @@ public class ModifierQuizController {
             int codeQuiz = Integer.parseInt(codeQuizText);
             int prixQuiz = Integer.parseInt(prixQuizText);
 
+            // Vérifier que codeQuiz est supérieur à 0
+            if (codeQuiz <= 0) {
+                // Afficher une alerte en cas de codeQuiz incorrect
+                showAlert("Erreur de saisie", "Le code du quiz doit être supérieur à 0.");
+                return;
+            }
+
             // Vérifier que prixQuiz est supérieur à 0 et inférieur à 50
             if (prixQuiz <= 0 || prixQuiz >= 50) {
                 // Afficher une alerte en cas de prix incorrect
                 showAlert("Erreur de saisie", "Le prix du quiz doit être supérieur à 0 et inférieur à 50.");
+                return;
+            }
+
+            // Vérifier la validité de la description
+            if (!description.equalsIgnoreCase("facile") && !description.equalsIgnoreCase("moyen") && !description.equalsIgnoreCase("difficile")) {
+                showAlert("Erreur de saisie", "La description doit être 'facile', 'moyen' ou 'difficile'.");
+                return;
+            }
+
+            // Vérifier la correspondance entre la description et le prix
+            if ((description.equalsIgnoreCase("facile") && (prixQuiz < 0 || prixQuiz > 15)) ||
+                    (description.equalsIgnoreCase("moyen") && (prixQuiz < 16 || prixQuiz > 39)) ||
+                    (description.equalsIgnoreCase("difficile") && (prixQuiz < 40 || prixQuiz > 49))) {
+                showAlert("Erreur de saisie", "La correspondance entre la description et le prix est incorrecte.");
                 return;
             }
 
@@ -113,6 +134,7 @@ public class ModifierQuizController {
             showAlert("SQL Exception", "Erreur SQL : " + e.getMessage());
         }
     }
+
 
     // Méthode pour afficher une alerte
     private void showAlert(String title, String content) {

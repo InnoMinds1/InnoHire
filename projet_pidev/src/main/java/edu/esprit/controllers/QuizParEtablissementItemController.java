@@ -3,6 +3,7 @@ package edu.esprit.controllers;
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Question;
 import edu.esprit.entities.Quiz;
+import edu.esprit.services.ServiceUtilisateur;
 import edu.esprit.services.questionService;
 import edu.esprit.services.quizService;
 import javafx.animation.KeyFrame;
@@ -49,7 +50,9 @@ public class QuizParEtablissementItemController {
     void PasserQuiz(ActionEvent event) throws SQLException {
         // Obtenez le code du quiz à partir du Text (convertissez-le en int si nécessaire)
         int codeQuiz = Integer.parseInt(TFcodeA.getText());
-        int idCandidat = CurrentUser.getId_utilisateur(); // Remplacez cela par la méthode appropriée pour obtenir l'ID du candidat
+        ServiceUtilisateur su = new ServiceUtilisateur();
+        // Enregistrez le passage du quiz par le candidat avec le score final
+        int idCandidat =  su.getUserIdByCin(CurrentUser.getCin()); // Remplacez cela par la méthode appropriée pour obtenir l'ID du candidat
 
         // Vérifiez si le candidat a déjà passé le quiz
         if (qs1.candidatHasPassedQuiz(codeQuiz, idCandidat)) {
@@ -86,7 +89,7 @@ public class QuizParEtablissementItemController {
                 QuizToDoController quizToDoController = loader.getController();
 
                 // Initialisez et démarrez le chronomètre avec une durée en minutes (6 minutes pour l'exemple)
-                int dureeQuizEnMinutes = 10;
+                int dureeQuizEnMinutes = 1;
 
                 quizToDoController.initialiserChronometre(dureeQuizEnMinutes);
 

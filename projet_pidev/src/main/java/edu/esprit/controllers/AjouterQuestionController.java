@@ -83,6 +83,14 @@ public class AjouterQuestionController {
                 return;
             }
 
+            // Vérification du format des choix
+            if (!isValidFormatChoix(choix)) {
+                // Afficher un message d'erreur
+                setTextFieldErrorStyle(TFchoix);
+                showAlert("Erreur de saisie", "Le format des choix est incorrect. Utilisez le format '1) ... 2) ... 3) ...'.");
+                return;
+            }
+
             // Vérification de la réponse correcte
             try {
                 int reponseCorrecte = Integer.parseInt(TFreponse_correcte.getText());
@@ -117,6 +125,12 @@ public class AjouterQuestionController {
         }
     }
 
+    private boolean isValidFormatChoix(String choix) {
+        // Vérifiez si le format des choix est correct
+        String regex = "\\d+\\)[^\\d]*\\d+\\)[^\\d]*\\d+.*";
+
+        return choix.matches(regex);
+    }
     // Méthode pour réinitialiser le style des TextFields
     private void resetTextFieldStyles() {
         TFquestion.setStyle(null);

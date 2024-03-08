@@ -59,10 +59,35 @@ public class AjouterQuizController {
             int codeQuiz = Integer.parseInt(codeQuizText);
             int prixQuiz = Integer.parseInt(prixQuizText);
 
+            // Vérifier que codeQuiz est supérieur à 0
+            if (codeQuiz <= 0) {
+                // Afficher une alerte en cas de codeQuiz incorrect
+                showAlert("Erreur de saisie", "Le code du quiz doit être supérieur à 0.");
+                return;
+            }
+
             // Vérifier que prixQuiz est supérieur à 0 et inférieur à 50
             if (prixQuiz <= 0 || prixQuiz >= 50) {
                 // Afficher une alerte en cas de prix incorrect
                 showAlert("Erreur de saisie", "Le prix du quiz doit être supérieur à 0 et inférieur à 50.");
+                return;
+            }
+
+            // Vérifier que la description est valide
+            if (!description.equalsIgnoreCase("facile") && !description.equalsIgnoreCase("moyen") && !description.equalsIgnoreCase("difficile")) {
+                showAlert("Erreur de saisie", "La description doit être 'facile', 'moyen' ou 'difficile'.");
+                return;
+            }
+
+            // Vérifier les conditions spécifiques en fonction de la description
+            if (description.equalsIgnoreCase("facile") && (prixQuiz < 0 || prixQuiz > 15)) {
+                showAlert("Erreur de saisie", "Pour la description 'facile', le prix doit être entre 0 et 15.");
+                return;
+            } else if (description.equalsIgnoreCase("moyen") && (prixQuiz < 16 || prixQuiz > 39)) {
+                showAlert("Erreur de saisie", "Pour la description 'moyen', le prix doit être entre 16 et 39.");
+                return;
+            } else if (description.equalsIgnoreCase("difficile") && (prixQuiz < 40 || prixQuiz > 49)) {
+                showAlert("Erreur de saisie", "Pour la description 'difficile', le prix doit être entre 40 et 49.");
                 return;
             }
 
@@ -76,6 +101,8 @@ public class AjouterQuizController {
             // Afficher une alerte de succès
             showAlert("Success", "Le quiz a été ajouté avec succès.");
 
+            // Appeler la fonction pour afficher la notification
+
         } catch (NumberFormatException e) {
             // Afficher une alerte d'erreur si une exception de format numérique se produit
             e.printStackTrace();
@@ -86,6 +113,7 @@ public class AjouterQuizController {
             showAlert("SQL Exception", "Erreur SQL : " + e.getMessage());
         }
     }
+
 
     // Méthode pour afficher une alerte
     private void showAlert(String title, String content) {
