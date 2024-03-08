@@ -11,13 +11,9 @@ import java.awt.event.WindowEvent;
 
 public class CameraCapture {
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(CameraCapture::startCameraCapture);
-    }
-
-    private static void startCameraCapture() {
+    public static void startCameraCapture() {
         JFrame frame = new JFrame("Camera Capture");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         Webcam webcam = Webcam.getDefault();
         webcam.setViewSize(WebcamResolution.VGA.getSize());

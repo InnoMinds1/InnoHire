@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterCommentaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterCommentaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CameraCapture.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CameraCapture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +55,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.SendemailApplication.executor": "Run",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java",
     "last_opened_file_path": "C:/InnoHire",
@@ -82,6 +84,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
+        <option value="jdk-20.0.2-corretto-20.0.2.1-4caba194b151-5bc9ecd2" />
       </set>
     </attachedChunks>
   </component>
@@ -104,6 +107,7 @@
       <workItem from="1709806093648" duration="7766000" />
       <workItem from="1709814632874" duration="479000" />
       <workItem from="1709818349263" duration="21486000" />
+      <workItem from="1709886352345" duration="647000" />
     </task>
     <servers />
   </component>

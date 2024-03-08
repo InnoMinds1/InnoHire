@@ -21,6 +21,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -218,6 +219,8 @@ public class EtablissementController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
 
         grandAnchor.setPrefWidth(1451);  // Set your preferred width
         grandAnchor.setPrefHeight(830);
@@ -586,6 +589,7 @@ public class EtablissementController implements Initializable {
     }
 
 
+<<<<<<< Updated upstream
     public void downloadFileHandler(ActionEvent event) {
         //String nbShares = String.valueOf(selectedReclamation.getPub().getNbShares());
         String NomEtab= etablissementCo.getNom();
@@ -660,5 +664,9 @@ public class EtablissementController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+=======
+    public void camera(ActionEvent actionEvent) {
+        SwingUtilities.invokeLater(CameraCapture::startCameraCapture);
+>>>>>>> Stashed changes
     }
 }
