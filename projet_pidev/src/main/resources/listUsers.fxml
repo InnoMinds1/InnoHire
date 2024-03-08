@@ -102,7 +102,7 @@
                </cursor>
             </Button>
             <Label layoutX="101.0" layoutY="644.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 12;" text="InnoHire 2024/2025 © (copyright)" />
-            <ImageView fitHeight="70.0" fitWidth="84.0" layoutX="154.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="image_view" fitHeight="70.0" fitWidth="84.0" layoutX="154.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/profile.png" />
                </image>

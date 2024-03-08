@@ -37,7 +37,7 @@ public class CurrentUser {
     }
 
     public static String getProfileImagePath() {
-        return su.getImagefromCin(cin);
+        return CurrentUser.ProfileImagePath;
     }
 
     public static void setProfileImagePath(String profileImagePath) {

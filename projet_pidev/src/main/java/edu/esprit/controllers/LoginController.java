@@ -44,6 +44,7 @@ public class LoginController {
 
     @FXML
     private PasswordField TFmdp;
+    ServiceUtilisateur su = new ServiceUtilisateur();
 
     @FXML
     void loginAction(ActionEvent event) {
@@ -96,6 +97,8 @@ public class LoginController {
                         CurrentUser.setAdresse(u.getAdresse());
                         CurrentUser.setMdp(u.getMdp());
                         CurrentUser.setRole(0);
+                        CurrentUser.setProfileImagePath(su.getImagefromCin(CurrentUser.getCin()));
+                        System.out.println(CurrentUser.getProfileImagePath());
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setContentText("WELCOME ADMINE");
                         alert.setTitle("Oui");
@@ -116,6 +119,8 @@ public class LoginController {
                         CurrentUser.setAdresse(u.getAdresse());
                         CurrentUser.setMdp(u.getMdp());
                         CurrentUser.setRole(1);
+                        CurrentUser.setProfileImagePath(su.getImagefromCin(CurrentUser.getCin()));
+                        System.out.println(CurrentUser.getProfileImagePath());
                         int status = sp.getStatusfromCIN(u.getCin());
                         if (status == 1) {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -169,6 +174,8 @@ public class LoginController {
                         CurrentUser.setAdresse(u.getAdresse());
                         CurrentUser.setMdp(u.getMdp());
                         CurrentUser.setRole(2);
+                        CurrentUser.setProfileImagePath(su.getImagefromCin(CurrentUser.getCin()));
+                        System.out.println(CurrentUser.getProfileImagePath());
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setContentText("WELCOME CANDIDAT");
                         alert.setTitle("Oui");
