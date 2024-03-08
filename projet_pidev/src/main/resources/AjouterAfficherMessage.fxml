@@ -80,7 +80,7 @@
                   <Label fx:id="userCin" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="177.0" prefHeight="19.0" prefWidth="72.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 12;" text="11417264" textAlignment="CENTER" />
                   <Label fx:id="userRole" alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="196.0" prefHeight="19.0" prefWidth="88.0" style="-fx-text-fill: #FFBF40; -fx-font-weight: bold; -fx-font-size: 13;" text="Representant" textAlignment="CENTER" />
                   <Label fx:id="emptyMessage" layoutX="45.0" layoutY="375.0" prefHeight="21.0" prefWidth="160.0" style="-fx-text-fill: #000000; -fx-font-weight: bold; -fx-font-size: 15;" text="Start Chatting Now !!" />
-                  <Button layoutX="45.0" layoutY="237.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="139.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Video call">
+                  <Button layoutX="45.0" layoutY="237.0" mnemonicParsing="false" onAction="#makeCall" prefHeight="52.0" prefWidth="139.0" style="-fx-background-color: #f2f5ec; -fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Video call">
                      <graphic>
                         <ImageView fitHeight="42.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>

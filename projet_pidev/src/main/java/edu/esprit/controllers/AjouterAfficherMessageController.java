@@ -672,4 +672,10 @@ public class AjouterAfficherMessageController implements Initializable{
             System.out.println("QRCode successfully created at: " + filePath.toAbsolutePath());
 
         }
+
+
+
+    public void makeCall(ActionEvent event) {
+
+    }
 }
