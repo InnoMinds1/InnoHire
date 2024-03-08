@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="538.0" prefWidth="760.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ChatBotAiController">
+<AnchorPane prefHeight="538.0" prefWidth="726.0" style="-fx-background-color: #5955b3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.ChatBotAiController">
    <children>
       <AnchorPane layoutX="40.0" layoutY="36.0" prefHeight="477.0" prefWidth="643.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;">
          <children>
