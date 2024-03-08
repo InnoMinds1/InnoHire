@@ -40,11 +40,24 @@
             </Label>
             <PasswordField fx:id="TFancienmdp" layoutX="372.0" layoutY="187.0" prefHeight="46.0" prefWidth="250.0" promptText="ancienmdp" stylesheets="@service2.css" />
             <PasswordField fx:id="TFnouveau" layoutX="372.0" layoutY="247.0" prefHeight="46.0" prefWidth="250.0" promptText="nouveaumdp" stylesheets="@service2.css" />
+            <PasswordField fx:id="TFnouveau_confirm" layoutX="372.0" layoutY="304.0" prefHeight="46.0" prefWidth="250.0" promptText="nouveaumdp_confirm" stylesheets="@service2.css" />
+            <Label layoutX="127.0" layoutY="304.0" prefHeight="46.0" prefWidth="184.0" text="CONFIRMER" textFill="#000000a9">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="TFnouveau_confirm1" layoutX="71.0" layoutY="394.0" prefHeight="46.0" prefWidth="250.0" promptText="GenererQrpourlemdp" stylesheets="@service2.css" />
+            <Button layoutX="84.0" layoutY="461.0" mnemonicParsing="false" onAction="#genererQR" prefHeight="46.0" prefWidth="177.0" styleClass="label2" stylesheets="@service2.css" text="Generer Qr" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="Qr_image" fitHeight="203.0" fitWidth="261.0" layoutX="387.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
         <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/429633241_3224965130971874_9121688183739140822_n.png" />
+                <Image url="@img/429633241_3224965130971874_9121688183739140822_n.png" />
             </image>
         </ImageView>
         <Label layoutX="1027.0" layoutY="60.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 35;" text="InnoHire" />

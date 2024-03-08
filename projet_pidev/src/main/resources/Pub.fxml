@@ -15,15 +15,15 @@
    <AnchorPane fx:id="container" layoutX="22.0" layoutY="11.0" prefHeight="734.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
       <children>
          <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="List Claim" />
-         <Label layoutX="567.0" layoutY="22.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 14;" text="Search By :" />
+         <Label layoutX="518.0" layoutY="22.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 14;" text="Search By :" />
          <Button fx:id="Naviguerversajouter" layoutX="784.0" layoutY="672.0" mnemonicParsing="false" onAction="#Naviguerversajouter" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #00cc00; -fx-background-radius: 10; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" styleClass="green-button" stylesheets="@service2Oum.css" text="Add" />
          <ScrollPane layoutX="128.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="606.0">
             <content>
                <VBox fx:id="postsContainer" prefHeight="778.0" prefWidth="591.0" />
             </content>
          </ScrollPane>
-         <TextField fx:id="nomRechercheTF" layoutX="653.0" layoutY="10.0" prefHeight="36.0" prefWidth="150.0" />
-         <ImageView fx:id="chercherparnom" fitHeight="31.0" fitWidth="37.0" layoutX="768.0" layoutY="13.0" onMouseClicked="#chercherparnom" pickOnBounds="true" preserveRatio="true">
+         <TextField fx:id="nomRechercheTF" layoutX="599.0" layoutY="10.0" prefHeight="36.0" prefWidth="150.0" />
+         <ImageView fx:id="chercherparnom" fitHeight="31.0" fitWidth="37.0" layoutX="761.0" layoutY="13.0" onMouseClicked="#chercherparnom" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@img/ef280fc3c74b2ce735e1be6424d2a92f.jpg" />
             </image>
@@ -31,6 +31,16 @@
          <ImageView fx:id="trierordredecroissant" fitHeight="53.0" fitWidth="51.0" layoutX="743.0" layoutY="65.0" onMouseClicked="#trierordredecroissant" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@img/down-arrow.png" />
+            </image>
+         </ImageView>
+         <Button layoutX="789.0" layoutY="124.0" mnemonicParsing="false" onAction="#profilAction" prefHeight="39.0" prefWidth="121.0" style="-fx-background-color: #9c95a7; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Mon Profil">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="789.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/profile.png" />
             </image>
          </ImageView>
       </children>
