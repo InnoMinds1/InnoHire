@@ -23,11 +23,6 @@
             </content>
          </ScrollPane>
          <TextField fx:id="nomRechercheTF" layoutX="599.0" layoutY="10.0" prefHeight="36.0" prefWidth="150.0" />
-         <ImageView fx:id="chercherparnom" fitHeight="31.0" fitWidth="37.0" layoutX="761.0" layoutY="13.0" onMouseClicked="#chercherparnom" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@img/ef280fc3c74b2ce735e1be6424d2a92f.jpg" />
-            </image>
-         </ImageView>
          <ImageView fx:id="trierordredecroissant" fitHeight="53.0" fitWidth="51.0" layoutX="743.0" layoutY="65.0" onMouseClicked="#trierordredecroissant" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@img/down-arrow.png" />
@@ -40,7 +35,7 @@
          </Button>
          <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="789.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="file:/C:/Users/msi/IdeaProjects/SECOND_TRY/projet_pidev/src/img/profile.png" />
+               <Image url="@img/businessmanOwner.png" />
             </image>
          </ImageView>
       </children>

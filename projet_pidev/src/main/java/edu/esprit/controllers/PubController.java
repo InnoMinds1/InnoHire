@@ -148,12 +148,12 @@ public class PubController implements Initializable {
             for (Post post : posts) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/post.fxml"));
-               // VBox vBox = fxmlLoader.load();
+                // VBox vBox = fxmlLoader.load();
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 PostController postController = fxmlLoader.getController();
                 postController.setData(post);
-               // postsContainer.getChildren().add(vBox);
+                // postsContainer.getChildren().add(vBox);
                 postsContainer.getChildren().add(anchorPane);
 
             }
@@ -163,6 +163,10 @@ public class PubController implements Initializable {
             e.printStackTrace();
         }
         servicePost = new ServicePost();
+        nomRechercheTF.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Call your search method here, passing the newValue as the search term
+            chercherparnom(newValue);
+        });
     }
 
 
@@ -265,32 +269,33 @@ public class PubController implements Initializable {
 
 
     @FXML
-    void chercherparnom(MouseEvent event) {
-        String nomUtilisateur = nomRechercheTF.getText();
-        try {
-            // Appel de la méthode rechercherParNom du servicePost pour obtenir les posts correspondants
-            Set<Post> posts = servicePost.rechercherParNom(nomUtilisateur);
+    private void chercherparnom(String searchTerm) {
+        ServicePost serviceService = new ServicePost();
 
-            // Nettoyer d'abord le conteneur
+        try {
+            // Récupérer tous les posts basés sur le terme de recherche
+            Set<Post> posts = serviceService.rechercherParNom(searchTerm);
+
+            // Nettoyer les composants précédents
             postsContainer.getChildren().clear();
 
-            // Charger chaque post dans le conteneur
+            // Charger chaque post correspondant dans le conteneur
             for (Post post : posts) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/post.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
-                // Récupérer le contrôleur de post.fxml
+                // Récupérer le contrôleur du post.fxml
                 PostController postController = fxmlLoader.getController();
 
                 // Envoyer les données du post au contrôleur
                 postController.setData(post);
 
-                // Ajouter le post à votre conteneur
+                // Ajouter le post au conteneur
                 postsContainer.getChildren().add(anchorPane);
             }
         } catch (SQLException | IOException e) {
             // Gérer les exceptions
-            System.out.println("Erreur lors de la recherche par nom: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -377,9 +382,9 @@ public class PubController implements Initializable {
         alert.setContentText("Sorry");
         alert.setTitle("Error");
         alert.show();
-    }
+    }}
 
-    }
+
     @FXML
     void profilAction(ActionEvent event) {
         Parent root = null;
@@ -394,6 +399,7 @@ public class PubController implements Initializable {
         }
 
     }
+
 
 
     public void navigateToEtablissement(ActionEvent actionEvent) {

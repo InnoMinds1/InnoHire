@@ -43,7 +43,7 @@ public class EtablissementController implements Initializable {
 
     @FXML
     private Label label_no_data;
-@FXML
+    @FXML
     private HBox Hbox_no_data;
 
     @FXML
@@ -64,14 +64,14 @@ public class EtablissementController implements Initializable {
     @FXML
     private AnchorPane grandAnchor;
     @FXML
-    private StackPane StackPane ;
+    private StackPane StackPane;
 
     @FXML
-    private AnchorPane CandidatPane ;
+    private AnchorPane CandidatPane;
     @FXML
-    private AnchorPane RepresentantPane ;
+    private AnchorPane RepresentantPane;
     @FXML
-    private AnchorPane AdminPane ;
+    private AnchorPane AdminPane;
 
     @FXML
     private AnchorPane anchorContenu;
@@ -106,8 +106,10 @@ public class EtablissementController implements Initializable {
     private TextField searchField;
 
 
+
     @FXML
     private ImageView imageRepresenter;
+
 
 
 
@@ -116,17 +118,15 @@ public class EtablissementController implements Initializable {
     private List<Etablissement> getData() throws SQLException {
 
 
-
-         Set<Etablissement> etablissements = se.getAll();//admin
+        Set<Etablissement> etablissements = se.getAll();//admin
         if (CurrentUser.getRole() != 0) {
 
-            if(CurrentUser.getCin()==0){
+            if (CurrentUser.getCin() == 0) {
                 System.out.println("CurrentUser Introuvable");
             }
 
-          etablissements = se.getByCin(CurrentUser.getCin());//front
+            etablissements = se.getByCin(CurrentUser.getCin());//front
         }
-
 
 
         List<Etablissement> modifiedEtablissements = new ArrayList<>();
@@ -157,7 +157,6 @@ public class EtablissementController implements Initializable {
     private void setChosenetablissement(Etablissement etablissement) {
 
 
-
         etablissementNameLable.setText(etablissement.getNom());
         etablissementCodeLabel.setText(String.valueOf(etablissement.getCodeEtablissement()));
 
@@ -168,19 +167,13 @@ public class EtablissementController implements Initializable {
         cinETF.setText(String.valueOf(etablissement.getUser().getCin()));
 
 
+        CurrentEtablissement.setIdEtablissement(etablissement.getIdEtablissement());
 
 
-                CurrentEtablissement.setIdEtablissement(etablissement.getIdEtablissement());
-
-
-
-
-       Wallet wallet = se.getWalletByEtablissement(etablissement);
+        Wallet wallet = se.getWalletByEtablissement(etablissement);
 
         if (wallet != null) {
             // Le portefeuille existe pour cet établissement
-
-
 
 
             if (wallet.getStatus() != 0) {
@@ -191,7 +184,6 @@ public class EtablissementController implements Initializable {
                 balanceLabel.setText("Non Actif");
                 acheterQuizzBtn.setVisible(false);
             }
-
 
 
             CurrentWallet.setIdWallet(wallet.getIdWallet());
@@ -213,19 +205,16 @@ public class EtablissementController implements Initializable {
         }
 
 
-
         chosenetablissementCard.requestLayout(); // Force la mise à jour du layout
 
 
-        etablissementCo=etablissement;//lkhedmet lgafsi
-        walletCo=wallet;//lkhedmet lgafsi
+        etablissementCo = etablissement;//lkhedmet lgafsi
+        walletCo = wallet;//lkhedmet lgafsi
     }
-
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
 
 
         grandAnchor.setPrefWidth(1451);  // Set your preferred width
@@ -270,7 +259,7 @@ public class EtablissementController implements Initializable {
                 AdminPane.setVisible(false);
                 RepresentantPane.setVisible(false);
                 CandidatPane.setVisible(true);
-               // nameUserLabel.setText(CurrentUser.getNom());
+                // nameUserLabel.setText(CurrentUser.getNom());
                 //emailUserLabel.setText(CurrentUser.getAdresse());
                 break;
 
@@ -305,8 +294,6 @@ public class EtablissementController implements Initializable {
         }
 
 
-
-
 // Add an event listener to the textProperty of the searchField
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
@@ -328,12 +315,7 @@ public class EtablissementController implements Initializable {
         });
 
 
-
     }
-
-
-
-
 
 
     private void setupListeners() {
@@ -354,7 +336,7 @@ public class EtablissementController implements Initializable {
                     // Display a message when there are no elements in the list
                     label_no_data.setText("Vous n'avez pas encore d'établissement.");
                     Hbox_no_data.setVisible(true);
-                   // chosenetablissementCard.setVisible(false);// Show the HBox
+                    // chosenetablissementCard.setVisible(false);// Show the HBox
 
 
                 }
@@ -402,7 +384,6 @@ public class EtablissementController implements Initializable {
     }
 
 
-
     public void ajouterEtablissement(ActionEvent actionEvent) {
 
         try {
@@ -424,21 +405,19 @@ public class EtablissementController implements Initializable {
 
     public void ajouterWallet(ActionEvent actionEvent) {
 
-            try {
+        try {
 
-                Parent root = FXMLLoader.load(getClass().getResource("/AjouterWallet.fxml"));
-                grid.getScene().setRoot(root);
-            } catch (IOException e) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Sorry");
-                alert.setTitle("Error");
-                alert.show();
-            }
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterWallet.fxml"));
+            grid.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
 
 
     }
-
-
 
 
     private void afficherAlerte(String message) {
@@ -457,7 +436,6 @@ public class EtablissementController implements Initializable {
 
                 Hbox_no_data.setVisible(true);
                 chosenetablissementCard.setVisible(false); // Hide chosenetablissementCard
-
 
 
             } else {
@@ -521,7 +499,6 @@ public class EtablissementController implements Initializable {
                 }
 
 
-
             } else {
                 // Afficher une alerte demandant d'ajouter un portefeuille
                 afficherAlerte("Ajoutez un portefeuille à votre établissement.");
@@ -534,7 +511,7 @@ public class EtablissementController implements Initializable {
 
 
     /***-------------------------Metier-----------------------**/
-            /***-------------Recherche----------------**/
+    /***-------------Recherche----------------**/
     private List<Etablissement> filterData(String searchText) throws SQLException {
         List<Etablissement> filteredEtablissements = new ArrayList<>();
 
@@ -558,23 +535,21 @@ public class EtablissementController implements Initializable {
         populateGrid();
     }
 
-                        /***-------------Tri----------------**/
-  @FXML
-  private void sortByName() {
-      // Sort the etablissements by name
-      etablissements.sort(Comparator.comparing(Etablissement::getNom));
-      // Update the UI with the sorted data
-      populateGrid();
-  }
+    /***-------------Tri----------------**/
+    @FXML
+    private void sortByName() {
+        // Sort the etablissements by name
+        etablissements.sort(Comparator.comparing(Etablissement::getNom));
+        // Update the UI with the sorted data
+        populateGrid();
+    }
 
     /***-------------------------End Metier-----------------------**/
 
 
-
-
     public void acheterQuiz(ActionEvent actionEvent) {
         //Jaww Etablissement
-       CurrentEtablissement.setIdEtablissement(etablissementCo.getIdEtablissement());
+        CurrentEtablissement.setIdEtablissement(etablissementCo.getIdEtablissement());
         CurrentEtablissement.setNom(etablissementCo.getNom());
         CurrentEtablissement.setCodeEtablissement(etablissementCo.getCodeEtablissement());
         CurrentEtablissement.setImage(etablissementCo.getImage());
@@ -582,7 +557,6 @@ public class EtablissementController implements Initializable {
         //Jaww Wallet
         CurrentWallet.setIdWallet(walletCo.getIdWallet());
         CurrentWallet.setBalance(walletCo.getBalance());
-
 
 
         try {
@@ -611,6 +585,7 @@ public class EtablissementController implements Initializable {
         }
 
     }
+
 
 
 
@@ -695,5 +670,9 @@ public class EtablissementController implements Initializable {
 
 
     }
-}
+
+
+
+
+    }
 

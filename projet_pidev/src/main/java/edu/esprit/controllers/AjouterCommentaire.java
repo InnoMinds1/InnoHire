@@ -48,7 +48,7 @@ public class AjouterCommentaire implements Initializable {
 
 
     public static final String ACCOUNT_SID = "AC70a74de16f73d480ab10ed142e6c3060";
-    public static final String AUTH_TOKEN = "efd6a1334fcc43a1cacf7cb88b94d9e9";
+    public static final String AUTH_TOKEN = "9f26bc225cc773e0b87c20a8a52f681c";
 
 
     @Override
@@ -120,19 +120,25 @@ public class AjouterCommentaire implements Initializable {
 
                     String messageBody = "l'utilisateur d'ID : "+cinTF1.getText()+" utilise des mots interdits";
 
-                    Message message = Message.creator(
+                    try
+                    {Message message = Message.creator(
                                     new PhoneNumber(toPhoneNumber),
                                     new PhoneNumber(fromPhoneNumber),
                                     messageBody)
                             .create();
+                        System.out.println("Message SID: " + message.getSid());
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
 
-                    System.out.println("Message SID: " + message.getSid());
 
-
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    AfficherAvertissement("Attention", "SVP de ne pas utiliser des mots interdits");
+                   /* Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Attention");
                     alert.setContentText("SVP de ne pas utiliser des mots interdits");
-                    alert.showAndWait();
+                    alert.showAndWait();*/
                 }
 
             } else {
