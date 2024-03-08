@@ -25,7 +25,7 @@ public class CurrentEtablissement {
         codeEtablissement = code;
         typeEtablissement = type;
         image = img;
-        listeQuizzAchetes = (quizzes != null) ? List.copyOf(quizzes) : List.of();
+       // listeQuizzAchetes = (quizzes != null) ? List.copyOf(quizzes) : List.of();
         user = utilisateur;
     }
 
@@ -77,13 +77,9 @@ public class CurrentEtablissement {
         CurrentEtablissement.image = image;
     }
 
-    public static List<Quiz> getListeQuizzAchetes() {
-        return List.copyOf(listeQuizzAchetes);
-    }
 
-    public static void setListeQuizzAchetes(List<Quiz> listeQuizzAchetes) {
-        CurrentEtablissement.listeQuizzAchetes = (listeQuizzAchetes != null) ? List.copyOf(listeQuizzAchetes) : List.of();
-    }
+
+
 
     public static Utilisateur getUser() {
         return user;
