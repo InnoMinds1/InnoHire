@@ -25,8 +25,10 @@ import java.sql.SQLException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -37,6 +39,8 @@ public class PostController implements Initializable {
 
     @FXML
     private Label usernom;
+    @FXML
+    private Button TFfavori;
 
 
 
@@ -106,6 +110,8 @@ public class PostController implements Initializable {
     private Reactions currentReaction;
     private Post post;
 
+
+
     private ScheduledExecutorService scheduler;
 
     @Override
@@ -144,6 +150,7 @@ public class PostController implements Initializable {
             }
         }
     }
+
 
 
     @FXML
@@ -320,6 +327,7 @@ public class PostController implements Initializable {
         ServiceUtilisateur su = new ServiceUtilisateur();
 
 
+
         Post post1 = sp.getOneByID(1);
 
         Post post = new Post();
@@ -337,6 +345,7 @@ public class PostController implements Initializable {
 
         return post;
     }
+
 
 
     @FXML
@@ -444,6 +453,7 @@ public class PostController implements Initializable {
             alert.show();
         }
     }
+
 
 
     public void NavigateToClaim(MouseEvent mouseEvent) {

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="761.0" prefWidth="1370.0" style="-fx-background-color: #5955b3;" styleClass="text-field" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controllers.PubController">
-   <AnchorPane fx:id="container" layoutX="22.0" layoutY="11.0" prefHeight="734.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
+   <AnchorPane fx:id="container" layoutX="22.0" layoutY="13.0" prefHeight="734.0" prefWidth="910.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
       <children>
-         <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="List Claim" />
+         <Label layoutX="59.0" layoutY="14.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 25;" text="InnoHire" />
          <Label layoutX="567.0" layoutY="22.0" style="-fx-text-fill: #9c95a7; -fx-font-weight: bold; -fx-font-size: 14;" text="Search By :" />
          <Button fx:id="Naviguerversajouter" layoutX="784.0" layoutY="672.0" mnemonicParsing="false" onAction="#Naviguerversajouter" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #00cc00; -fx-background-radius: 10; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" styleClass="green-button" stylesheets="@service2Oum.css" text="Add" />
          <ScrollPane layoutX="128.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="606.0">
@@ -23,7 +23,7 @@
             </content>
          </ScrollPane>
          <TextField fx:id="nomRechercheTF" layoutX="653.0" layoutY="10.0" prefHeight="36.0" prefWidth="150.0" />
-         <ImageView fx:id="chercherparnom" fitHeight="31.0" fitWidth="37.0" layoutX="768.0" layoutY="13.0" onMouseClicked="#chercherparnom" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="chercherparnom" fitHeight="31.0" fitWidth="37.0" layoutX="768.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@img/ef280fc3c74b2ce735e1be6424d2a92f.jpg" />
             </image>
@@ -33,6 +33,7 @@
                <Image url="@img/down-arrow.png" />
             </image>
          </ImageView>
+
       </children>
    </AnchorPane>
    <StackPane fx:id="StackPane" layoutX="965.0" layoutY="14.0" prefHeight="677.0" prefWidth="362.0">
