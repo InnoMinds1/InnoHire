@@ -553,7 +553,7 @@ public class EtablissementController implements Initializable {
         CurrentEtablissement.setNom(etablissementCo.getNom());
         CurrentEtablissement.setCodeEtablissement(etablissementCo.getCodeEtablissement());
         CurrentEtablissement.setImage(etablissementCo.getImage());
-        CurrentEtablissement.setListeQuizzAchetes(etablissementCo.getListeQuizzAchetes());
+       // CurrentEtablissement.setListeQuizzAchetes(etablissementCo.getListeQuizzAchetes());
         //Jaww Wallet
         CurrentWallet.setIdWallet(walletCo.getIdWallet());
         CurrentWallet.setBalance(walletCo.getBalance());

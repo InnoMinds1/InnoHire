@@ -73,9 +73,10 @@ public class CameraCapture {
             webcam.open();
 
             ImageIO.write(webcam.getImage(), "JPG", imageFile);
+            jaw.setImageJdida(imageFile.getAbsolutePath());
 
             JOptionPane.showMessageDialog(null, "Image captured and saved to: " + imageFile.getAbsolutePath());
-            jaw.setImageJdida(imageFile.getAbsolutePath());
+
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {

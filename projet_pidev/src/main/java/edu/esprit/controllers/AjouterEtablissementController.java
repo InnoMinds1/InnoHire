@@ -257,16 +257,22 @@ public class AjouterEtablissementController implements Initializable {
                 SwingUtilities.invokeLater(() -> CameraCapture.startCameraCapture());
                 currentDir = System.getProperty("user.dir");
                 File imgDir = new File(currentDir + "/src/main/resources/img");
-                 imagePath = jaw.getImageJdida(); // Assuming this returns the full path
-                Path path = Paths.get(imagePath);
+                String chemin=jaw.getImageJdida();// Assuming this returns the full path
+                int dernierIndiceBarre = Math.max(chemin.lastIndexOf('/'), chemin.lastIndexOf('\\'));
+                String nomFichier = (dernierIndiceBarre > -1 && dernierIndiceBarre < chemin.length() - 1)
+                        ? chemin.substring(dernierIndiceBarre + 1)
+                        : chemin;
 
 // Get the filename with extension
-                String fileNameWithExtension = path.getFileName().toString();
 
-                System.out.println(fileNameWithExtension);
 
-                user.setImage(fileNameWithExtension);
-                su.modifier(user);
+                System.out.println(nomFichier);
+
+                Utilisateur user1 = su.get_One_ByCin(CurrentUser.getCin()) ;
+
+                user1.setImage(nomFichier);
+                user1.setId_utilisateur(CurrentUser.getId_utilisateur());
+                su.modifier(user1);
 
 
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
