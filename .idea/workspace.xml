@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/projet_pidev/captured_image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/captured_image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/captured_image_20240308_100802.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/captured_image_20240308_101716.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/captured_image_20240308_111707.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/captured_image_20240308_112305.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/jaw.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PubController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PubController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CameraCapture.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/CameraCapture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Pub.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Pub.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +44,16 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2dGeXPiTsjHwRQTtYcVuRAeZcby" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.CameraCapture.executor": "Run",
     "Application.GeolocationExample.executor": "Run",
     "Application.StreetViewApp.executor": "Run",
@@ -107,12 +121,15 @@
       <workItem from="1709806093648" duration="7766000" />
       <workItem from="1709814632874" duration="479000" />
       <workItem from="1709818349263" duration="21486000" />
-      <workItem from="1709886352345" duration="647000" />
+      <workItem from="1709886352345" duration="8052000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

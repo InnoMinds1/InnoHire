@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import edu.esprit.services.MyListener;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -22,6 +23,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -102,6 +104,10 @@ public class EtablissementController implements Initializable {
 
     @FXML
     private TextField searchField;
+
+
+    @FXML
+    private ImageView imageRepresenter;
 
 
 
@@ -241,6 +247,24 @@ public class EtablissementController implements Initializable {
                 CandidatPane.setVisible(false);
                 nameRepLabel.setText(CurrentUser.getNom());
                 emailRepLabel.setText(CurrentUser.getAdresse());
+
+
+                String imagePath = CurrentUser.getProfileImagePath();
+                System.out.println(imagePath);
+                String currentDir = System.getProperty("user.dir");
+// imagePath = currentDir + "\\src\\main\\resources\\img" + imagePath; // Use double backslashes for path separators
+                System.out.println(imagePath);
+
+// Set the image file name to the TextField
+
+// Display the image in the ImageView
+                Image image = new Image("file:" + currentDir + "/src/main/resources/img/" + imagePath); // Use forward slashes for path separators
+                imageRepresenter.setImage(image);
+
+
+
+
+
                 break;
             case 2:
                 AdminPane.setVisible(false);
@@ -589,11 +613,11 @@ public class EtablissementController implements Initializable {
     }
 
 
-<<<<<<< Updated upstream
+
     public void downloadFileHandler(ActionEvent event) {
         //String nbShares = String.valueOf(selectedReclamation.getPub().getNbShares());
-        String NomEtab= etablissementCo.getNom();
-        int CodeEtab= etablissementCo.getCodeEtablissement();
+        String NomEtab = etablissementCo.getNom();
+        int CodeEtab = etablissementCo.getCodeEtablissement();
         String Location = etablissementCo.getLieu();
         String type = etablissementCo.getTypeEtablissement();
 
@@ -664,9 +688,12 @@ public class EtablissementController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-=======
+    }
+
     public void camera(ActionEvent actionEvent) {
-        SwingUtilities.invokeLater(CameraCapture::startCameraCapture);
->>>>>>> Stashed changes
+
+
+
     }
 }
+

@@ -1,6 +1,7 @@
 package edu.esprit.controllers;
 
 
+import edu.esprit.entities.CameraCapture;
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Etablissement;
 import edu.esprit.entities.Utilisateur;
@@ -27,11 +28,16 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.scene.image.Image;
+
+import javax.swing.*;
 
 
 public class AjouterEtablissementController implements Initializable {
@@ -55,9 +61,6 @@ public class AjouterEtablissementController implements Initializable {
     private ImageView imageViewETF;
 
 
-
-
-
     @FXML
     private GridPane gridA;
 
@@ -74,10 +77,9 @@ public class AjouterEtablissementController implements Initializable {
     private CheckBox checkBoxRegle;
 
     @FXML
-    private RadioButton faculteRadio,ecoleRadio,lyceeRadio,collegeRadio;
+    private RadioButton faculteRadio, ecoleRadio, lyceeRadio, collegeRadio;
     @FXML
     private Label labelType;
-
 
 
     private ServiceUtilisateur serviceU = new ServiceUtilisateur();
@@ -92,15 +94,7 @@ public class AjouterEtablissementController implements Initializable {
     }
 
 
-
-
-
-
-
-
     private final ServiceEtablissement se = new ServiceEtablissement();
-
-
 
 
     @FXML
@@ -112,12 +106,12 @@ public class AjouterEtablissementController implements Initializable {
         String Nom = NomETF.getText();
         String Lieu = LieuETF.getText();
         String Code = CodeETF.getText();
-      //  String Type = TypeETF.getText();
+        //  String Type = TypeETF.getText();
         String image = imageETF.getText();
 
 
         // Vérifier si les champs requis sont vides
-        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() ||  image.isEmpty() ) {
+        if (Nom.isEmpty() || Lieu.isEmpty() || Code.isEmpty() || image.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -134,7 +128,6 @@ public class AjouterEtablissementController implements Initializable {
             alert.showAndWait();
             return;
         }
-
 
 
         if (serviceEtablissement.existeParNom(Nom)) {
@@ -171,13 +164,6 @@ public class AjouterEtablissementController implements Initializable {
         }
 
 
-
-
-
-
-
-
-
         String currentDir = System.getProperty("user.dir");
         String imagePath = currentDir + "/src/main/resources/img/" + image;
         File imageFile = new File(imagePath);
@@ -190,10 +176,6 @@ public class AjouterEtablissementController implements Initializable {
             alert.showAndWait();
             return;
         }
-
-
-
-
 
 
         String cin_utilisateur = cin_utilisateurETF.getText();
@@ -236,19 +218,16 @@ public class AjouterEtablissementController implements Initializable {
         }
 
 
-
-
-if (CurrentUser.getRole()!=0) {
-    if (!checkBoxRegle.isSelected()) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur");
-        alert.setHeaderText(null);
-        alert.setContentText("Veuillez accepter les conditions d'utilisation.");
-        alert.showAndWait();
-        return;
-    }
-}
-
+        if (CurrentUser.getRole() != 0) {
+            if (!checkBoxRegle.isSelected()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Veuillez accepter les conditions d'utilisation.");
+                alert.showAndWait();
+                return;
+            }
+        }
 
 
         // Créer un nouvel objet Service avec les valeurs saisies
@@ -268,6 +247,34 @@ if (CurrentUser.getRole()!=0) {
             alert.setHeaderText(null);
             alert.setContentText("Etablissement ajouté avec succès !");
             alert.showAndWait();
+            if (CurrentUser.getRole()!=0) {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Veuiller faire une photo RealTime pour la verification");
+                alert.showAndWait();
+
+                SwingUtilities.invokeLater(() -> CameraCapture.startCameraCapture());
+                currentDir = System.getProperty("user.dir");
+                File imgDir = new File(currentDir + "/src/main/resources/img");
+                 imagePath = jaw.getImageJdida(); // Assuming this returns the full path
+                Path path = Paths.get(imagePath);
+
+// Get the filename with extension
+                String fileNameWithExtension = path.getFileName().toString();
+
+                System.out.println(fileNameWithExtension);
+
+                user.setImage(fileNameWithExtension);
+                su.modifier(user);
+
+
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Merci");
+                alert.showAndWait();
+            }
 
             // Effacer les champs du formulaire après l'ajout réussi
             NomETF.clear();
@@ -277,9 +284,7 @@ if (CurrentUser.getRole()!=0) {
             cin_utilisateurETF.clear();
             imageViewETF.setImage(null);
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
@@ -291,37 +296,35 @@ if (CurrentUser.getRole()!=0) {
     }
 
 
+    public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
+            Parent root = loader.load();
 
-      public void navigatetoAfficherEtablissementAction(ActionEvent actionEvent) {
-          try {
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etablissement.fxml"));
-              Parent root = loader.load();
+            Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
 
-              Stage stage = (Stage) NomETF.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
-              stage.setScene(new Scene(root));
-              stage.show();
+            // Vous pouvez fermer la fenêtre actuelle si nécessaire
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-              // Vous pouvez fermer la fenêtre actuelle si nécessaire
-              // ((Node)(event.getSource())).getScene().getWindow().hide();
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
-
-      }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       labelType.setVisible(false);
+        labelType.setVisible(false);
 
         cin_utilisateurETF.setVisible(false);
 
-        if(CurrentUser.getRole() == 0) {
+        if (CurrentUser.getRole() == 0) {
             labelRegle.setVisible(false);
             labelRegle.setManaged(false);
             checkBoxRegle.setVisible(false);
             checkBoxRegle.setManaged(false);
-        }
-        else  {
+        } else {
             // Hide and reclaim space
             selecUserAnchor.setVisible(false);
             selecUserAnchor.setManaged(false);
@@ -330,8 +333,6 @@ if (CurrentUser.getRole()!=0) {
             cin_utilisateurETF.setText(String.valueOf(CurrentUser.getCin()));
             cin_utilisateurETF.setEditable(false);
         }
-
-
 
 
         ServiceUtilisateur serviceService = new ServiceUtilisateur();
@@ -377,9 +378,6 @@ if (CurrentUser.getRole()!=0) {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
 
 
     }
@@ -429,18 +427,28 @@ if (CurrentUser.getRole()!=0) {
 
 
     public void getType(ActionEvent actionEvent) {
-        if(faculteRadio.isSelected()) {
+        if (faculteRadio.isSelected()) {
             labelType.setText(faculteRadio.getText());
-        }
-        else if(lyceeRadio.isSelected()) {
+        } else if (lyceeRadio.isSelected()) {
             labelType.setText(lyceeRadio.getText());
-        }
-        else if(collegeRadio.isSelected()) {
+        } else if (collegeRadio.isSelected()) {
             labelType.setText(collegeRadio.getText());
-        }
-        else if(ecoleRadio.isSelected()) {
+        } else if (ecoleRadio.isSelected()) {
             labelType.setText(ecoleRadio.getText());
         }
 
+    }
+
+
+    private static String getLatestImageFileName(File imgDir) {
+        File[] files = imgDir.listFiles();
+
+        if (files != null && files.length > 0) {
+            // Sort files by last modified timestamp in descending order
+            Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+            return files[0].getName(); // Return the name of the latest file
+        }
+
+        return null; // No files in the directory
     }
 }

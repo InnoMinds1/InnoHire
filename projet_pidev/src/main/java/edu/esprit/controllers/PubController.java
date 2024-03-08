@@ -396,16 +396,18 @@ public class PubController implements Initializable {
     }
 
 
+    public void navigateToEtablissement(ActionEvent actionEvent) {
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("/Etablissement.fxml"));
+            nomRechercheTF.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
 
-
-
-
-
-
-
-
-
-
+    }
 }
 
 
