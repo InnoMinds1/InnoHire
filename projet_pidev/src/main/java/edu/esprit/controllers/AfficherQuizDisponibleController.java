@@ -3,15 +3,19 @@ package edu.esprit.controllers;
 import edu.esprit.entities.CurrentUser;
 import edu.esprit.entities.Quiz;
 import edu.esprit.services.quizService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -98,6 +102,20 @@ public class AfficherQuizDisponibleController implements Initializable {
 
                 GridPane.setMargin(hbox, new Insets(10));
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void navigateToAfficher(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuizAchetés.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) gridA.getScene().getWindow(); // Utilisez la même fenêtre (Stage) actuelle
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
