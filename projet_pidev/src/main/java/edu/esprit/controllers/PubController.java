@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -33,7 +34,15 @@ public class PubController implements Initializable {
 
     @FXML
     private ImageView trierordredecroissant;
+    @FXML
+    private ImageView image_view;
+    @FXML
+    private ImageView image_view_rep;
+    @FXML
+    private ImageView image_view_admin;
+
     private ServicePost servicePost;
+
 
 
     /*@FXML
@@ -91,6 +100,20 @@ public class PubController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int userRole = CurrentUser.getRole();
+        String imagePath = CurrentUser.getProfileImagePath();
+        System.out.println(imagePath);
+        String currentDir = System.getProperty("user.dir");
+// imagePath = currentDir + "\\src\\main\\resources\\img" + imagePath; // Use double backslashes for path separators
+        System.out.println(imagePath);
+
+// Set the image file name to the TextField
+
+// Display the image in the ImageView
+        Image image = new Image("file:" + currentDir + "/src/main/resources/img/" + imagePath); // Use forward slashes for path separators
+        image_view.setImage(image);
+        image_view_rep.setImage(image);
+        image_view_admin.setImage(image);
+
         switch (userRole) {
             case 0:
                 AdminPane.setVisible(true);
