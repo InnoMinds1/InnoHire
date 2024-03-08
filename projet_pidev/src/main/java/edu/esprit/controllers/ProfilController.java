@@ -121,7 +121,7 @@ public class ProfilController implements Initializable {
     void RetourAccueil(ActionEvent event) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/Accueil.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
             TFadresse.getScene().setRoot(root);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -22,7 +22,7 @@
                         <Image url="@img/382876686_2550356941793712_7809494747563560197_n.gif" />
                     </image>
                 </ImageView>
-            <ImageView fx:id="TFimage" fitHeight="347.0" fitWidth="401.0" layoutX="193.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="TFimage" fitHeight="347.0" fitWidth="761.0" layoutX="10.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
 

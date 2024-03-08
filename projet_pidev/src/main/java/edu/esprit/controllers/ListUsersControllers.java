@@ -16,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -35,6 +36,8 @@ public class ListUsersControllers implements Initializable {
     private AnchorPane AnchoPaneMessage131;
     @FXML
     private TextField searchField;
+    @FXML
+    private ImageView image_view;
 
     @FXML
     private TextField TFrecherche;
@@ -81,6 +84,22 @@ public class ListUsersControllers implements Initializable {
 
         CurrentUserEmail.setText(CurrentUser.getAdresse());
         currentUserName.setText(CurrentUser.getNom());
+        String imagePath = CurrentUser.getProfileImagePath();
+        System.out.println(imagePath);
+        String currentDir = System.getProperty("user.dir");
+// imagePath = currentDir + "\\src\\main\\resources\\img" + imagePath; // Use double backslashes for path separators
+        System.out.println(imagePath);
+
+// Set the image file name to the TextField
+
+// Display the image in the ImageView
+        Image image = new Image("file:" + currentDir + "/src/main/resources/img/" + imagePath); // Use forward slashes for path separators
+        image_view.setImage(image);
+
+
+
+        // Do something with the imagePath, for example, display the image
+        // imageView.setImage(new Image(imagePath));
 
         // Load all utilisateurs initially
         Set<Utilisateur> utilisateurs1 = null;

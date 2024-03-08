@@ -13,11 +13,7 @@
         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="676.0" prefWidth="773.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 30 30 30;">
             <children>
                 <Label layoutX="277.0" layoutY="110.0" style="-fx-text-fill: #5955b3; -fx-font-weight: bold; -fx-font-size: 35;" text="Modifer Votre MDP " />
-                <ImageView fitHeight="110.0" fitWidth="97.0" layoutX="349.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../Documents/java/InnoHire/projet_pidev/src/main/resources/images/blink.gif" />
-                    </image>
-                </ImageView>
+
             <Button layoutX="402.0" layoutY="387.0" mnemonicParsing="false" onAction="#ok" prefHeight="46.0" prefWidth="95.0" styleClass="label2" stylesheets="@service2.css" text="Update" textFill="WHITE">
                <font>
                   <Font size="16.0" />
@@ -40,11 +36,17 @@
             </Label>
             <PasswordField fx:id="TFancienmdp" layoutX="372.0" layoutY="187.0" prefHeight="46.0" prefWidth="250.0" promptText="ancienmdp" stylesheets="@service2.css" />
             <PasswordField fx:id="TFnouveau" layoutX="372.0" layoutY="247.0" prefHeight="46.0" prefWidth="250.0" promptText="nouveaumdp" stylesheets="@service2.css" />
+            <PasswordField fx:id="TFnouveau_confirm" layoutX="372.0" layoutY="304.0" prefHeight="46.0" prefWidth="250.0" promptText="nouveaumdp_confirm" stylesheets="@service2.css" />
+            <Label layoutX="127.0" layoutY="304.0" prefHeight="46.0" prefWidth="184.0" text="CONFIRMER" textFill="#000000a9">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <ImageView fitHeight="465.0" fitWidth="471.0" layoutX="852.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="file:/C:/Users/msi/Desktop/projet_pidev/src/img/429633241_3224965130971874_9121688183739140822_n.png" />
+                <Image url="@img/429633241_3224965130971874_9121688183739140822_n.png" />
             </image>
         </ImageView>
         <Label layoutX="1027.0" layoutY="60.0" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 35;" text="InnoHire" />
