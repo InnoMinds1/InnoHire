@@ -205,11 +205,24 @@ public class ServicePost implements IService<Post> {
 
 
     public Set<Post> trierPostsParDateDecroissante() throws SQLException {
-        Set<Post> postsTries = new TreeSet<>(Comparator.comparing(Post::getDate).reversed());
-        postsTries.addAll(getAll());
+        // Récupérer tous les posts
+        Set<Post> posts = getAll();
+
+        // Créer un TreeSet trié par date décroissante
+        TreeSet<Post> postsTries = new TreeSet<>((post1, post2) -> post2.getDate().compareTo(post1.getDate()));
+
+        // Ajouter tous les posts triés dans le TreeSet
+        postsTries.addAll(posts);
+
+        // Charger les informations de l'utilisateur pour chaque post
+        ServiceUtilisateur serviceUtilisateur = new ServiceUtilisateur();
+        for (Post post : postsTries) {
+            Utilisateur utilisateur = serviceUtilisateur.getOneByID(post.getUtilisateur().getId_utilisateur());
+            post.setUtilisateur(utilisateur);
+        }
+
         return postsTries;
     }
-
 
 
 
