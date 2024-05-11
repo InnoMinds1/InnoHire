@@ -516,8 +516,9 @@ public class PostController implements Initializable {
             alert.setTitle("Error");
             alert.show();
         }
-        downloadFileHandler();
+
     }
+
 
     @FXML
     private void downloadFileHandler() {
@@ -537,37 +538,19 @@ public class PostController implements Initializable {
             // Set font
             contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
 
-            // Write data to the PDF
-            // Write data to the PDF
             contentStream.beginText();
             contentStream.newLineAtOffset(60, 720);
             contentStream.showText("-- Post Details --");
             contentStream.endText();
 
-            /*contentStream.beginText();
-            contentStream.newLineAtOffset(100, 680);
-            contentStream.showText("Shares: " + nbShares);
-            contentStream.endText();*/
+
 
             contentStream.beginText();
             contentStream.newLineAtOffset(200, 700); // Adjust the X and Y coordinates for the caption
             contentStream.showText("Caption: " + caption);
             contentStream.endText();
 
-          /*  contentStream.beginText();
-            contentStream.newLineAtOffset(100, 640);
-            contentStream.showText("Comments: " + nbComments);
-            contentStream.endText();*/
 
-            /*contentStream.beginText();
-            contentStream.newLineAtOffset(100, 620);
-            contentStream.showText(": " + userName);
-            contentStream.endText();*/
-
-            // Add an image to the PDF
-            //PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/img/folder.png", document);
-            //contentStream.drawImage(pdImage, 50, 500, pdImage.getWidth(), pdImage.getHeight());
-            // Add an image to the PDF
             PDImageXObject pdImage = PDImageXObject.createFromFile("src/main/resources/img/" + imagePost, document);
             float imageWidth = 250; // pdImage.getWidth();
             float imageHeight = 250; // pdImage.getHeight();

@@ -1,5 +1,6 @@
 package edu.esprit.tests;
 
+import edu.esprit.controllers.EmailClass;
 import edu.esprit.entities.*;
 import edu.esprit.services.ServiceEtablissement;
 import edu.esprit.services.ServiceUtilisateur;
@@ -28,6 +29,8 @@ public class Main {
         }*/
         Utilisateur u = new Utilisateur();
         u.setCin(123);
+        EmailClass emailClass = new EmailClass();
+        emailClass.envoyer("Kthiri1919@gmail.com","1443");
        /* Etablissement e = new Etablissement("esprit","lie",133,"er",u);
         ServiceEtablissement se= new ServiceEtablissement();
         try {

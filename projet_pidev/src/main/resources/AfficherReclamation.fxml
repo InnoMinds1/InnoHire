@@ -75,7 +75,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/down%20(1).png" />
+                        <Image url="@img/circle.png" />
                      </image>
                   </ImageView>
                </graphic>

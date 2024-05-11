@@ -65,7 +65,7 @@ public class ChangeMDPController {
     @FXML
     void ok(ActionEvent event) throws WriterException, IOException {
         ServiceUtilisateur su = new ServiceUtilisateur();
-        String ancienMDP = su.hashPassword(TFancienmdp.getText());
+        String ancienMDP = TFancienmdp.getText();
 
         try {
             String verifmdp = su.getMDPfromCIN(CurrentUser.getCin());

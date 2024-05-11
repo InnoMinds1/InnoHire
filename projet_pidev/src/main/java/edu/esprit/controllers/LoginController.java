@@ -81,8 +81,8 @@ public class LoginController {
         else if (sp.utilisateurExiste(cin)) {
             try {
                 Utilisateur u = sp.getOneByCin(cin);
-                String hashed_mdp = sp.hashPassword(mdp);
-                if (!u.getMdp().equals(hashed_mdp)) {
+                //String hashed_mdp = sp.hashPassword(mdp);
+                if (!u.getMdp().equals(mdp)) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("MDP INCORRECT");
                     alert.setTitle("NON");
@@ -108,8 +108,8 @@ public class LoginController {
                             TFcin.getScene().setRoot(root);
                         } catch (IOException e) {
                             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                            alert1.setContentText("Sorry");
-                            alert1.setTitle("Error");
+                            alert1.setContentText("houni");
+                            alert1.setTitle("houni");
                             alert1.show();
                         }
                     } else if (role == 1) {

@@ -28,8 +28,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
                 ps.setString(2, a.getNom());
                 ps.setString(3, a.getPrenom());
                 ps.setString(4, a.getAdresse());
-                String hashed =hashPassword(a.getMdp());
-                ps.setString(5, hashed);
+                //String hashed =hashPassword(a.getMdp());
+                ps.setString(5, a.getMdp());
                 ps.setInt(6,0);
                 ps.setString(7,a.getImage());
                 ps.executeUpdate();
@@ -94,6 +94,22 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
 
     }
 
+    public void modifierSayari(Utilisateur utilisateur) throws SQLException {
+        String req = "UPDATE utilisateur SET image=? WHERE id_utilisateur = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, utilisateur.getImage());
+
+            ps.setInt(2, utilisateur.getId_utilisateur());
+
+            ps.executeUpdate();
+            System.out.println("utilisateur modifié!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
     public void modifier_par_cin(Utilisateur utilisateur) throws SQLException {
         String req = "UPDATE utilisateur SET  nom = ?, prenom = ?, adresse = ?, mdp = ?  WHERE cin = ?";
         try {
@@ -101,8 +117,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setString(1, utilisateur.getNom());
             ps.setString(2, utilisateur.getPrenom());
             ps.setString(3, utilisateur.getAdresse());
-            String mdp = hashPassword(utilisateur.getMdp());
-            ps.setString(4, mdp);
+            //String mdp = hashPassword(utilisateur.getMdp());
+            ps.setString(4, utilisateur.getMdp());
             ps.setInt(5, utilisateur.getCin());
 
 
@@ -158,8 +174,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setString(1, u.getNom());
             ps.setString(2, u.getPrenom());
             ps.setString(3, u.getAdresse());
-            String hashed =hashPassword(u.getMdp());
-            ps.setString(4, hashed);
+            //String hashed =hashPassword(u.getMdp());
+            ps.setString(4, u.getMdp());
             ps.setInt(5, 1);
             ps.setInt(6, u.getCin());
 
@@ -178,8 +194,8 @@ public class ServiceUtilisateur implements IService<Utilisateur> {
             ps.setString(1, representant.getNom());
             ps.setString(2, representant.getPrenom());
             ps.setString(3, representant.getAdresse());
-            String hashed =hashPassword(representant.getMdp());
-            ps.setString(4, hashed);
+            //String hashed =hashPassword(representant.getMdp());
+            ps.setString(4, representant.getMdp());
             ps.setInt(5, 2);
             ps.setInt(6, representant.getCin());
 

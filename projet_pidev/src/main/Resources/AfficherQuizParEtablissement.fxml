@@ -26,9 +26,7 @@
                     </content>
                 </ScrollPane>
             <ImageView fitHeight="164.0" fitWidth="293.0" layoutX="649.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/jouer.jpg" />
-               </image>
+
             </ImageView>
             </children>
         </AnchorPane>

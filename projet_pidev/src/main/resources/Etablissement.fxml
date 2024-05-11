@@ -148,13 +148,12 @@
                </font>
             </Label>
             <Button layoutX="893.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #5955b3;" stylesheets="@service2.css" text="Reset" textFill="#faf4f4" />
-            <Button layoutX="577.0" layoutY="25.0" mnemonicParsing="false" onAction="#sortByName" text="Truer Par Nom" />
+            <Button layoutX="577.0" layoutY="25.0" mnemonicParsing="false" onAction="#sortByName" stylesheets="@service2.css" text="Trier Par Nom" textFill="#fcfcfc" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="134.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/education.gif" />
                </image>
             </ImageView>
-            <Button layoutX="347.0" layoutY="16.0" mnemonicParsing="false" onAction="#camera" text="Button" />
          </children>
       </AnchorPane>
       <StackPane fx:id="StackPane" layoutX="1027.0" layoutY="42.0" prefHeight="677.0" prefWidth="362.0">

@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class EmailClass {
     private String username = "Innohire45@gmail.com";
-    private String password = "urrc gyro inoo zoov";
+    private String password = "uxdr xntp qoaa gtdi";
 
     public void envoyer(String reciever,String OTP) {
         // Etape 1 : Création de la session
@@ -31,7 +31,7 @@ public class EmailClass {
         try {
             // Etape 2 : Création de l'objet Message
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("Innohire@gmail.com"));
+            message.setFrom(new InternetAddress("Innohire45@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(reciever));
             message.setSubject("Innohire code");

@@ -207,6 +207,7 @@
                      </Label>
                   </children>
                </HBox>
+               <Button fx:id="Modifier1" mnemonicParsing="false" onAction="#downloadFileHandler" prefHeight="26.0" prefWidth="38.0" styleClass="green-button" stylesheets="@service2Oum.css" text="Pdf" />
 
             </children>
             <VBox.margin>
