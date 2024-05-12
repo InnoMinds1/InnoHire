@@ -238,7 +238,7 @@ public class ModifierWallet2Controller implements Initializable {
             // Logique à exécuter si l'utilisateur a confirmé
             try {
 // Set your secret key here
-                Stripe.apiKey = "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";
+                Stripe.apiKey = "sk_test_51OqhXjJva8icsVFnMSIRaC96mFFkuxUSauUF3Sm3j1vWBQ4MCFvACCWiBfbPeH7660Dy4DZz87lDeMlk6rmlxsNI009Kw7CrJn";
 
                 int amount;
                 try {
