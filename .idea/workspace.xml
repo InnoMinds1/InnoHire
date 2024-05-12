@@ -5,52 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/370318541_6645120922230246_5910000804689221571_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/380157069_873012487546127_4108185629786938638_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/382876686_2550356941793712_7809494747563560197_n.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/426808548_3676155596045641_5241302496940080339_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/429625904_393896399911413_4095254220528490978_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/429633241_3224965130971874_9121688183739140822_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/429754006_4516447245246591_2302902658115282336_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/5453666.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/5570027.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/fond.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/fond_blanc.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/fond_login.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/inoohire1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/inoohire2_create.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/inoohire_login.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/jaccepte.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/mauve.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/mauve1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/post_etab.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/post_etab1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/clock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/esprit.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/etablissement.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/eve.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/maison.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/manh.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/message.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/post.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/post_etab.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/post_etab1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/sesame.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/ss4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/tekup.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/tt.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/télécharger.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/wallet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/captcha.png" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/captcha.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Wallet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/images/gradient-minimalist-background_23-2149976755.avif" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/images/gradient-minimalist-background_23-2149976755.avif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/OIP.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/OIP.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +124,7 @@
       <workItem from="1711887215706" duration="283000" />
       <workItem from="1712233806515" duration="6000" />
       <workItem from="1715468910902" duration="969000" />
-      <workItem from="1715470311935" duration="1988000" />
+      <workItem from="1715470311935" duration="3070000" />
     </task>
     <servers />
   </component>
