@@ -110,7 +110,7 @@
                               </Button>
                            </children>
                         </StackPane>
-                        <Button layoutX="294.0" layoutY="13.0" mnemonicParsing="false" onAction="#downloadFileHandler" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="download">
+                        <Button layoutX="294.0" layoutY="13.0" mnemonicParsing="false" onAction="#downloadFileHandler" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #5955b3; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 10; -fx-font-size: 13;" text="Genrate PDF">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
