@@ -247,7 +247,8 @@ public class AjouterEtablissementController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Etablissement ajouté avec succès !");
             alert.showAndWait();
-            if (CurrentUser.getRole()!=0) {
+ /*           if (CurrentUser.getRole()!=0) {
+
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText(null);
@@ -281,7 +282,7 @@ public class AjouterEtablissementController implements Initializable {
                 alert.setContentText("Merci");
                 alert.showAndWait();
             }
-
+*/
             // Effacer les champs du formulaire après l'ajout réussi
             NomETF.clear();
             LieuETF.clear();
@@ -456,5 +457,20 @@ public class AjouterEtablissementController implements Initializable {
         }
 
         return null; // No files in the directory
+    }
+
+    public void navigateToMap(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/map.fxml"));
+            Parent root = loader.load();
+
+            Stage newStage = new Stage(); // Create a new stage
+            newStage.setScene(new Scene(root)); // Set the scene to the new stage
+            newStage.setTitle("Map Window"); // Set the title of the new stage
+            newStage.show(); // Show the new stage
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

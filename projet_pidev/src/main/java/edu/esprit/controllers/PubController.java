@@ -436,6 +436,22 @@ public class PubController implements Initializable {
 
 
     }
+    //-------------------------------NAVBAR REDIRECTIONS---------------------------------------------------------------
+//-------------------------------------ADMIN---------------------------------------------------------------
+
+    public void listUsersNavBar(ActionEvent actionEvent) {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/ListUsers.fxml"));
+            nomRechercheTF.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
 }
 
 

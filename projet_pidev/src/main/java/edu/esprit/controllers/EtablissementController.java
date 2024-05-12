@@ -569,22 +569,7 @@ public class EtablissementController implements Initializable {
             alert.show();
         }
     }
-//-------------------------------NAVBAR REDIRECTIONS---------------------------------------------------------------
-//-------------------------------------ADMIN---------------------------------------------------------------
 
-    public void listUsersNavBar(ActionEvent actionEvent) {
-        try {
-
-            Parent root = FXMLLoader.load(getClass().getResource("/ListUsers.fxml"));
-            chosenetablissementCard.getScene().setRoot(root);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sorry");
-            alert.setTitle("Error");
-            alert.show();
-        }
-
-    }
 
 
 
@@ -671,9 +656,48 @@ public class EtablissementController implements Initializable {
 
 
     }
+//-------------------------------NAVBAR REDIRECTIONS---------------------------------------------------------------
+//-------------------------------------ADMIN---------------------------------------------------------------
 
+    public void listUsersNavBar(ActionEvent actionEvent) {
+        try {
 
-
+            Parent root = FXMLLoader.load(getClass().getResource("/ListUsers.fxml"));
+            chosenetablissementCard.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
 
     }
+    public void makePostNavBar(ActionEvent actionEvent) {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/Pub.fxml"));
+            chosenetablissementCard.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+
+    }
+    public void listClaimNavBar(ActionEvent actionEvent) {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamation.fxml"));
+            chosenetablissementCard.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sorry");
+            alert.setTitle("Error");
+            alert.show();
+        }
+    }
+
+
+}
 
