@@ -5,17 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/370318541_6645120922230246_5910000804689221571_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/380157069_873012487546127_4108185629786938638_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/382876686_2550356941793712_7809494747563560197_n.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/426808548_3676155596045641_5241302496940080339_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/429625904_393896399911413_4095254220528490978_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/429633241_3224965130971874_9121688183739140822_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/429754006_4516447245246591_2302902658115282336_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/5453666.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/5570027.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/fond.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/fond_blanc.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/fond_login.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/inoohire1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/inoohire2_create.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/inoohire_login.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/jaccepte.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/mauve.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/mauve1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/post_etab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/images/post_etab1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/esprit.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/etablissement.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/eve.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/maison.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/manh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/message.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/post.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/post_etab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/post_etab1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/sesame.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/shadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/ss4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/tekup.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/tt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/télécharger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/wallet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet_pidev/captcha.png" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/captcha.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierWallet2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ModifierWallet2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceUtilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/services/ServiceUtilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/entities/Wallet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/post.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/post.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/ServiceUtilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/target/classes/edu/esprit/services/ServiceUtilisateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidevsrc/main/resources/downloads/QrCodeAmelGafsi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidevsrc/main/resources/downloads/QrCodeAmelGafsi.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/images/gradient-minimalist-background_23-2149976755.avif" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/images/gradient-minimalist-background_23-2149976755.avif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/OIP.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/OIP.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,40 +83,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.CameraCapture.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GeolocationExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StreetViewApp.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.3.2:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.SendemailApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/InnoHire&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15820312&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31609195&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.CameraCapture.executor": "Run",
+    "Application.GeolocationExample.executor": "Run",
+    "Application.StreetViewApp.executor": "Run",
+    "Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.projet_pidev [org.apache.maven.plugins:maven-clean-plugin:3.3.2:clean].executor": "Run",
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.2:run].executor": "Run",
+    "Maven.projet_pidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.SendemailApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java",
+    "last_opened_file_path": "C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15820312",
+    "project.structure.side.proportion": "0.31609195",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\img" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\images" />
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\img" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="SendemailApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="projet_pidev" />
@@ -94,7 +136,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.9-jbrsdk-17.0.9-4caba194b151-b614c381" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -119,6 +162,13 @@
       <workItem from="1709818349263" duration="21486000" />
       <workItem from="1709886352345" duration="8052000" />
       <workItem from="1715426806515" duration="345000" />
+      <workItem from="1711155143408" duration="412000" />
+      <workItem from="1711162110902" duration="18000" />
+      <workItem from="1711825983763" duration="640000" />
+      <workItem from="1711887215706" duration="283000" />
+      <workItem from="1712233806515" duration="6000" />
+      <workItem from="1715468910902" duration="969000" />
+      <workItem from="1715470311935" duration="1988000" />
     </task>
     <servers />
   </component>
