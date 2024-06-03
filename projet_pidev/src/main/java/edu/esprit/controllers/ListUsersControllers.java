@@ -402,6 +402,7 @@ public class ListUsersControllers implements Initializable {
             alert.setContentText("Sorry");
             alert.setTitle("Error");
             alert.show();
+            e.printStackTrace();
         }
 
     }

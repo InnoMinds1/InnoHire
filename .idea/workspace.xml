@@ -5,16 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174b8c46-d0e2-4cda-9c2a-131bd243379f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/map.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/MapController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/Anglais.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/Math.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/ai.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/attachment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/bitcoin (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/d3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/dollar-sign.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/dollar-symbol.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/dollar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/downf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/facebook-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/francais.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/game.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/game2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/gg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/gg2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/gg3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/group.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/inf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/inf2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/interrogation-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/like.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/love.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/meetme2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/messenger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/pdf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/pp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/pp2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/pp3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/pp4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/question-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/request (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/robot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/ss.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/ss2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/ss3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/team-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/team-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/team-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/team-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/team-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/upf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/us.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/us2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/us3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/us4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/user.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/user2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/user3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/user4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet_pidev/src/main/Resources/img/xls-file.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterEtablissementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/EtablissementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PubController.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/PubController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/AjouterEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/AjouterEtablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Etablissement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/Pub.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/Pub.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterCommentaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/AjouterCommentaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ListUsersControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/java/edu/esprit/controllers/ListUsersControllers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/downloads/invoice.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/gradient-minimalist-background_23-2149976755.avif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/inner.png" beforeDir="false" afterPath="$PROJECT_DIR$/projet_pidev/src/main/resources/img/inner.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +117,7 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/img&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/digoh/IdeaProjects/InnoHire/projet_pidev/src/main/resources/img&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -83,9 +132,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\img" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\img" />
       <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\images" />
-      <recent name="C:\Users\digoh\IdeaProjects\InnoHire\projet_pidev\src\main\resources\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,6 +183,10 @@
       <workItem from="1715468910902" duration="969000" />
       <workItem from="1715470311935" duration="3070000" />
       <workItem from="1715475721000" duration="5367000" />
+      <workItem from="1715620240359" duration="2298000" />
+      <workItem from="1715639041833" duration="4033000" />
+      <workItem from="1715677114322" duration="1380000" />
+      <workItem from="1715864841955" duration="2217000" />
     </task>
     <servers />
   </component>
